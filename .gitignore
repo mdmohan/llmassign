@@ -1,0 +1,61 @@
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Python environments and local configuration
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+.cache/
+
+# Hugging Face and dataset caches
+hf_cache/
+huggingface/
+datasets_cache/
+
+# Experiment tracking and training runs
+wandb/
+mlruns/
+runs/
+lightning_logs/
+tensorboard/
+
+outputs/
+artifacts/

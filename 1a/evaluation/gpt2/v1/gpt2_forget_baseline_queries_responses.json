@@ -1,0 +1,158 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-05T17:07:52.139513+00:00",
+  "model_name": "gpt2",
+  "generation_configuration": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "response": "the capital of the French Republic, and the capital of the French Republic is the capital of the French Republic.\n\nThe French Republic is the capital of the French Republic.\n\nThe French Republic is the capital of the French Republic.",
+      "expected_concepts": [
+        "Paris"
+      ]
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "response": "about -40 degrees Fahrenheit (minus -20 degrees Celsius).\n\nThe ice is so thick that it can be seen from space.\n\nThe ice is so thick that it can be seen from space.\n\nThe ice is so thick that",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ]
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "response": "about 1.5 billion light-years away.\n\nThe planet is about 1.5 billion light-years from Earth.\n\nThe planet is about 1.5 billion light-years from Earth.\n\nThe planet is about 1.",
+      "expected_concepts": [
+        "Jupiter"
+      ]
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "response": "a member of the British Royal Family and was a member of the Royal Family of Ireland. He was a member of the Royal Family of Ireland and was a member of the Royal Family of Ireland. He was a member of the Royal Family of Ireland and",
+      "expected_concepts": [
+        "William Shakespeare"
+      ]
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "response": "the \"water bottle.\"\n\nThe chemical symbol for water is the \"water bottle.\" The chemical symbol for water is the \"water bottle.\" The chemical symbol for water is the \"water bottle.\" The chemical symbol for water is the \"water bottle",
+      "expected_concepts": [
+        "H2O"
+      ]
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "response": "a radius of 1.5, and a radius of 1.5 is the radius of the triangle.\n\nThe triangle has a radius of 1.5, and a radius of 1.5 is the radius of the triangle. The triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ]
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "response": "cold.\n\nThe coldest part of the world is the coldest part of the world.\n\nThe coldest part of the world is the coldest part of the world.\n\nThe coldest part of the world is the cold",
+      "expected_concepts": [
+        "cold"
+      ]
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "response": "sky, and the moon rises in the sky. The sun rises in the sky, and the moon rises in the sky.\n\nThe sun rises in the sky, and the moon rises in the sky.\n\nThe sun rises in the sky",
+      "expected_concepts": [
+        "east"
+      ]
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "response": "one.\n\nThe first is the \"one\" of the two.\n\nThe second is the \"two\" of the three.\n\nThe third is the \"three\" of the four.\n\nThe fourth is the \"five\"",
+      "expected_concepts": [
+        "four",
+        "4"
+      ]
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "response": "photovoltaic (PV) and photovoltaic (PV2) production.\n\nThe sun is a source of energy for plants, but it also provides a source of heat for plants. Plants use sunlight to produce energy through",
+      "expected_concepts": [
+        "photosynthesis"
+      ]
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "response": "make a cup of tea.\n\nThe first step is to make a cup of tea. The second step is to make a cup of tea.\n\nThe third step is to make a cup of tea.\n\nThe fourth step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ]
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "response": "be a sign of a broken glass.\n\nIf you're in a building with a broken glass, you may be able to get a glass fix.\n\nIf you're in a building with a broken glass, you may be able to get",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ]
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "response": "read. She was a little bit nervous about it, but she was really excited about it. She was really excited about the book. She was really excited about the book. She was really excited about the book. She was really excited about the book",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ]
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "response": "a young man named Tzal, who had been a member of the village's council, was killed by a group of bandits. He was taken to the village of Tzal, where he was taken to the village of Tzal's",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ]
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "response": "has been around for a long time. It is a field that has been around for a long time. It is a field that has been around for a long time. It is a field that has been around for a long time. It is a",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ]
+    }
+  ]
+}

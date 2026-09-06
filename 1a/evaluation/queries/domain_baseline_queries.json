@@ -1,0 +1,127 @@
+{
+  "name": "Cisco data center domain baseline",
+  "purpose": "Qualitative comparison of the base GPT-2 model and the CPT checkpoint on held-out domain prompts.",
+  "prompt_style": "completion",
+  "queries": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "expected_concepts": ["every spine switch", "equal-cost paths", "predictable latency"]
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "expected_concepts": ["two physical switches", "one logical port channel", "redundancy"]
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "expected_concepts": ["synchronize state", "carry selected traffic", "connect vPC peers"]
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "expected_concepts": ["identify an overlay network", "segment traffic", "VXLAN network identifier"]
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "expected_concepts": ["control plane", "MAC reachability", "IP reachability"]
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "expected_concepts": ["VXLAN encapsulation", "VXLAN decapsulation", "overlay tunnel endpoint"]
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "expected_concepts": ["load balancing", "path redundancy", "multiple equal-cost paths"]
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "expected_concepts": ["vlan 120", "interface Ethernet1/10", "switchport mode access", "switchport access vlan 120", "no shutdown"]
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "expected_concepts": ["consistent member configuration", "channel-group", "active or passive LACP mode"]
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "expected_concepts": ["vPC suspension", "configuration incompatibility", "affected VLAN or interface"]
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "expected_concepts": ["optics", "cabling", "peer interface", "speed or FEC", "physical layer"]
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "expected_concepts": ["IP reachability", "AS numbers", "neighbor address", "update source", "BGP configuration"]
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "expected_concepts": ["underlay routing", "VTEP loopback reachability", "NVE state", "BGP EVPN"]
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "expected_concepts": ["unidirectional links", "one-way communication failure"]
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "expected_concepts": ["the complete forwarding path", "all participating interfaces", "end-to-end path"]
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "expected_concepts": ["Layer 2 loop", "host movement", "incorrect port channel", "vPC issue"]
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "expected_concepts": ["centralized operations", "fabric visibility", "management"]
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "expected_concepts": ["leaf deployment", "top-of-rack deployment", "fixed-port density"]
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "expected_concepts": ["modularity", "chassis expansion", "higher scale", "replaceable line cards"]
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "expected_concepts": ["high bandwidth", "low latency", "congestion management", "telemetry"]
+    }
+  ]
+}

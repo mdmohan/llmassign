@@ -1,0 +1,182 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-06T07:17:42.224934+00:00",
+  "model_name": "gpt2-medium",
+  "model_details": {
+    "name_or_path": "gpt2-medium",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 24,
+    "attention_heads": 16,
+    "embedding_dimension": 1024,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 354823168,
+    "trainable_parameters": 354823168,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-medium",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "/home/jovyan/llmassign/1a/data/evaluation/generic_forgetting_queries.json",
+  "generation_configuration": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "response": "Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France",
+      "expected_concepts": [
+        "Paris"
+      ]
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "response": "-40°C.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ]
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "response": "the Earth, which is about 1.5 times the size of the Sun. The Earth is the only planet in the Solar System that is not surrounded by a thick atmosphere.\n\nThe Earth is surrounded by a thick atmosphere, which is made up",
+      "expected_concepts": [
+        "Jupiter"
+      ]
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "response": "a French writer who lived from 1625 to 1640. He was a poet, playwright, and playwright. He was also a writer of plays and plays of prose. He was a great admirer of Shakespeare and wrote a play called Romeo",
+      "expected_concepts": [
+        "William Shakespeare"
+      ]
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "response": "H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2",
+      "expected_concepts": [
+        "H2O"
+      ]
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "response": "a square root of 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ]
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe",
+      "expected_concepts": [
+        "cold"
+      ]
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "response": "sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky",
+      "expected_concepts": [
+        "east"
+      ]
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "response": "twelve times three.\n\nThe number twelve is the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the",
+      "expected_concepts": [
+        "four",
+        "4"
+      ]
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "response": "photosynthesis. The sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat,",
+      "expected_concepts": [
+        "photosynthesis"
+      ]
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "response": "boil water. The water should be at least half the volume of the tea.\n\nThe second step is to add the tea leaves. The leaves should be about the size of a pea.\n\nThe third step is to add the sugar",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ]
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "response": "not be as hard as it looks.\n\nThe glass may be too small to break, or it may be too small to break at all.\n\nThe glass may be too small to break, or it may be too small to break at",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ]
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "response": "read a book. She was reading a book about the history of the United States. She was reading about the Civil War. She was reading about the Civil Rights Movement. She was reading about the Civil Rights Act. She was reading about the Voting Rights",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ]
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "response": "a young man named Tarkus was born. He was a good boy, and he loved to play. He loved to play with his friends, and he loved to play with his father. He loved to play with his mother, and he loved",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ]
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "response": "aims to make computers smarter by making them more intelligent.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ]
+    }
+  ]
+}

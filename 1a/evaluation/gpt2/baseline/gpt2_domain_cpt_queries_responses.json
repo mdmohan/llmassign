@@ -1,0 +1,242 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-05T18:08:05.935356+00:00",
+  "model_name": "cpt_checkpoints/final_model",
+  "generation_configuration": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "response": "the backbone network through a single spine switch.\n• The backbone network is a network of interconnected switches that connect to each other through a single spine switch.\n• The backbone network is a network of interconnected switches that connect to each other through a single",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ]
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "response": "you to connect to a single port channel on a Cisco Nexus device.\n• You can configure the port channel number and port channel number in the Cisco Nexus CLI.\n• You can configure the port channel number and port channel number in the Cisco Nexus",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ]
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "response": "provide a secure, scalable, and scalable network for the\nnetwork.\n• The vPC peer-link is designed to provide a secure, scalable, and scalable network for the network.\n• The vPC peer-link is designed to provide",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ]
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "response": "connect to a Layer 3 interface.\n• The VNI is used to connect to a Layer 3 interface.\n• The VNI is used to connect to a Layer 3 interface.\n• The VNI is used to connect to a Layer 3",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ]
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "response": "a single-hop routing protocol.\n• The VXLAN fabric can be configured to support multiple VXLAN EVPN fabrics.\n• The VXLAN fabric can be configured to support multiple VXLAN EVPN fabrics.\n• The",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ]
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "response": "the VLAN interface.\n• The VLAN interface is the interface that is used to connect the VTEP to the\nVLAN.\n• The VLAN interface is the interface that is used to connect the VTEP to the VLAN.",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ]
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "response": "a scalable, cost-effective, and cost-effective way to\nreduce the cost of routing traffic across a leaf-spine fabric.\n• The Cisco NX-OS software supports the following features:\n• IPv6 unicast routing",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ]
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "response": "the following command in the router configuration mode:\nswitch# configure terminal\nswitch(config)# interface ethernet1/10\nswitch(config-if)# ip address 192.0.2.1/24\nswitch(config-",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ]
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "response": "a port channel number.\nStep 4 (Optional) Use the interface ethernet slot/port command to enter interface configuration mode.\nExample:\nswitch(config)# interface ethernet 1/2\nswitch(config-if)#",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ]
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "response": "a vPC to fail.\n• When a vPC fails, the vPC peer-keepalive process fails.\n• When a vPC fails, the vPC peer-keepalive process fails.\n• When a vPC",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ]
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "response": "the following:\n• If the CRC errors continuously increase on a Nexus interface, check the following:\n• If the CRC errors continuously increase on a Nexus interface, check the following:\n• If the CRC errors continuously increase on a Nexus interface,",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ]
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "response": "that the neighbor is still in the active state.\n• If the neighbor is in the standby state, verify that the neighbor is still in the active state.\n• If the neighbor is in the standby state, verify that the neighbor is still in",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ]
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "response": "the following:\n• If the VXLAN VTEP is configured with a VLAN ID that is different from the configured VLAN ID, the VLAN ID is used as the VLAN ID for the\nVXLAN VTEP.",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ]
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "response": "the\npacket loss and sends a packet to the destination.\n• The packet loss is proportional to the packet size.\n• The packet size is the number of bytes that the packet is sent to the destination.\n• The packet size is",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ]
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "response": "all the frames.\n• The MTU is configured on the interface.\n• The interface is configured as a Layer 2 interface.\n• The MTU is configured on the interface.\n• The interface is configured as a Layer 3 interface.",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ]
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "response": "a MAC move.\n• MAC moves between two interfaces usually indicate a MAC move.\n• MAC moves between two interfaces usually indicate a MAC move.\n• MAC moves between two interfaces usually indicate a MAC move.\n• MAC moves between two interfaces",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ]
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "response": "a unified management and management of Cisco Nexus Dashboard.\n• The Cisco Nexus Dashboard is a unified management and management of Cisco Nexus Dashboard.\n• The Cisco Nexus Dashboard is a unified management and management of Cisco Nexus Dashboard.",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ]
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "response": "the Nexus 9300 platform is used in a\nproduction environment.\n• The Nexus 9300 platform is not supported on the following Nexus 9300-EX and 9300-FX line cards:\n• Nexus 9300-FX2, 9300",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ]
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "response": "a modular chassis.\n• The Nexus 9500 platform is not a switch.\n• The Nexus 9500 platform is a switch.\n• The Nexus 9500 platform is a switch.\n• The Nexus 9500 platform is a switch.",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ]
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "response": "the following:\n• AI training clusters with multiple AI training clusters\n• AI training clusters with multiple AI training clusters that are distributed across multiple data centers\n• AI training clusters that are distributed across multiple data centers that are distributed across multiple data centers",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ]
+    }
+  ]
+}

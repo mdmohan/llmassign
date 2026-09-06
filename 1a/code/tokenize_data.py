@@ -1,13 +1,10 @@
-import os
+"""Tokenize cleaned documents and save packed CPT training sequences."""
+
 from pathlib import Path
 
-os.environ["HF_HOME"] = "/home/jovyan/llmgenai/hf_cache"
-from dotenv import load_dotenv
 import numpy as np
 
-load_dotenv()
-
-
+from cache import CACHE_DIR
 from transformers import AutoTokenizer
 
 
@@ -15,7 +12,7 @@ def tokenize_gpt(clean_data):
     tokenizer = AutoTokenizer.from_pretrained(
         "gpt2",
         use_fast=True,
-        cache_dir="/home/jovyan/llmgenai/hf_cache",
+        cache_dir=CACHE_DIR,
     )
     eos_id = tokenizer.eos_token_id
     context_length = tokenizer.model_max_length

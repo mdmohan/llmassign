@@ -1,0 +1,158 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-05T18:08:07.138372+00:00",
+  "model_name": "gpt2",
+  "generation_configuration": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "response": "the port of Laval.\n• The port of Laval is the port of Laval-B.\n• The port of Laval-C is the port of Laval-D.\n• The port of Laval-E is",
+      "expected_concepts": [
+        "Paris"
+      ]
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "response": "-40 C.\n• The temperature of the frozen object is changed to -40 C.\n• The object is moved to a different location.\n• The object is moved to a different location.\n• The object is moved to a different",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ]
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "response": "a hot, dense, and dense cloud of dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense, dense",
+      "expected_concepts": [
+        "Jupiter"
+      ]
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "response": "a member of the OSPF community.\n• The OSPFv3 protocol is not supported on Cisco Nexus 9300-FX/FX2/FX3/GX/GX2/H2R/H1 switches.",
+      "expected_concepts": [
+        "William Shakespeare"
+      ]
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "response": "a green dot.\n• The word \"bios\" in the top left quadrant denotes the BiosNet database.\n• The word \"bios\" in the bottom left quadrant denotes the BiosNet database.\n• The word",
+      "expected_concepts": [
+        "H2O"
+      ]
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "response": "a maximum of 64 bits.\n• The maximum number of bits is 32.\n• The default is 16.\n• The maximum number of bits is 32.\n• The default is 16.\n• The default is 16.\n• The",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ]
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "response": "the hot-standby state.\n• Hot standby state is the standby state when the system is in standby state.\n• Hot standby state is the standby state when the system is in standby state.\n• Hot standby state is the standby state",
+      "expected_concepts": [
+        "cold"
+      ]
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "response": "east, and the horizon is a blue-green cloudless horizon.\nThe horizon is a blue-green cloudless horizon.\nThe horizon is a blue-green cloudless horizon.\nThe horizon is a blue-green cloudless horizon.",
+      "expected_concepts": [
+        "east"
+      ]
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "response": "to the total number of equal-cost paths.\n• The cost of each path is divided by the total number of equal-cost paths.\n• The cost of each path is divided by the total number of equal-cost paths.\n•",
+      "expected_concepts": [
+        "four",
+        "4"
+      ]
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "response": "\"thermal reflection\" that\nreflects sunlight back to the fabric.\nThe fabric uses a combination of two types of optics:\n• Optical optics—The fabric uses a combination of optics that reflect sunlight back to the fabric.\n• Optical",
+      "expected_concepts": [
+        "photosynthesis"
+      ]
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "response": "make a small amount of the leaf.\nStep 2. Cut the leaf into small bits.\nStep 3. Cut the leaf into large bits.\nStep 4. Cut the leaf into small bits.\nStep 5. Cut the leaf into large",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ]
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "response": "cause a flap.\n• If you are using a switch that is not a switch, you must remove the switch from the switch.\n• If you are using a switch that is not a switch, you must remove the switch from the switch.",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ]
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "response": "get a copy of the new draft.\n• When you use the copy running-config startup-config command, the copy running-config command is used to copy the running configuration to the startup\nconfiguration.\n• The copy running-config",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ]
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "response": "the local community gathers to form a community.\nThe community is called a community.\nThe community is called a community-list.\nThe community-list is a list of all the communities that exist in the area.\nThe community-list",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ]
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "response": "• enables rapid, accurate, and cost-effective decision-making,\n• enables efficient, predictable, and cost-effective decision-making, and\n• enables efficient, predictable, and cost-effective decision-making.\n• The Cisco",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ]
+    }
+  ]
+}

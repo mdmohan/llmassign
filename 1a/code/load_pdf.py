@@ -86,7 +86,7 @@ def _process_single_pdf_worker(args: tuple) -> tuple[str, dict]:
     # Check if output exists and matches hash
     existing_md5 = _read_existing_md5(output_filepath)
     if existing_md5 == current_md5:
-        print(f"[SKIP] Unmodified: {pdf_path.name}")
+        print(f"[SKIP] Unmodified: {pdf_path.name}", flush=True)
         
         # Read disk content and clean header via regex function
         raw_disk_text = output_filepath.read_text(encoding="utf-8")
@@ -100,7 +100,10 @@ def _process_single_pdf_worker(args: tuple) -> tuple[str, dict]:
         }
 
     # Process new or modified file
-    print(f"[PROCESS] ({'modified' if existing_md5 else 'new'}): {pdf_path.name}")
+    print(
+        f"[PROCESS] ({'modified' if existing_md5 else 'new'}): {pdf_path.name}",
+        flush=True,
+    )
     page_text_blocks = []
 
     with pdfplumber.open(pdf_path) as pdf:
@@ -174,8 +177,10 @@ def _process_single_pdf_worker(args: tuple) -> tuple[str, dict]:
 
 class PdfToTxt:
     """
-    A multiprocess-enabled class to recursively process directory structures of PDFs.
-    Filters raw unformatted tables and inserts clean Markdown tables.
+    Recursively loads mixed PDF and text corpora.
+
+    PDFs are extracted with multiprocessing, while existing text files are read
+    directly. PDF tables can be preserved as Markdown.
     """
 
     def __init__(
@@ -198,47 +203,78 @@ class PdfToTxt:
 
     def process_pdf_directory_deep(self, input_dir: str, output_dir: str) -> dict:
         """
-        Recursively discovers all PDFs and processes them concurrently across CPU workers.
+        Recursively load .pdf and .txt files into one document dictionary.
         """
         input_base = Path(input_dir).resolve()
         output_base = Path(output_dir).resolve()
 
-        # Build execution tasks list
+        if input_base.is_file():
+            source_paths = [input_base]
+        else:
+            source_paths = [path for path in input_base.rglob("*") if path.is_file()]
+
+        # Read existing text directly and build worker tasks only for PDFs.
         tasks = []
-        for pdf_path in input_base.rglob("*.pdf"):
-            relative_path = pdf_path.relative_to(input_base)
+        document_dict = {}
+        text_file_count = 0
+        for source_path in source_paths:
+            relative_path = (
+                Path(source_path.name)
+                if input_base.is_file()
+                else source_path.relative_to(input_base)
+            )
 
             # Notebook checkpoints and other hidden folders commonly contain
-            # duplicate PDFs and should not enter the corpus.
+            # duplicate source files and should not enter the corpus.
             if any(part.startswith(".") for part in relative_path.parts):
                 continue
 
-            output_filepath = (output_base / relative_path).with_suffix(".txt")
+            suffix = source_path.suffix.lower()
+            if suffix == ".txt":
+                try:
+                    text = source_path.read_text(encoding="utf-8-sig")
+                    text = strip_metadata_headers(text)
+                    document_dict[str(source_path)] = {
+                        "extracted_text": text,
+                        "output_filename": str(source_path),
+                        "md5": _calculate_md5(source_path),
+                        "status": "loaded_text_input",
+                    }
+                    text_file_count += 1
+                    print(f"[TEXT] Loaded: {source_path.name}", flush=True)
+                except Exception as error:
+                    print(
+                        f"[TEXT FAILED] {source_path.name}: {error}",
+                        flush=True,
+                    )
+            elif suffix == ".pdf":
+                output_filepath = (output_base / relative_path).with_suffix(".txt")
+                tasks.append((
+                    str(source_path),
+                    str(output_filepath),
+                    self.x_tolerance,
+                    self.y_tolerance,
+                    self.extract_tables,
+                ))
 
-            tasks.append((
-                str(pdf_path),
-                str(output_filepath),
-                self.x_tolerance,
-                self.y_tolerance,
-                self.extract_tables,
-            ))
-
-        pdf_dict = {}
-        if not tasks:
-            print("No PDF files found.")
-            return pdf_dict
+        if not tasks and not document_dict:
+            print("No PDF or text files found.")
+            return document_dict
 
         print(
-            f"Processing {len(tasks)} PDF files with "
+            f"Loaded {text_file_count} text file(s) directly; "
+            f"processing {len(tasks)} PDF file(s) with "
             f"{self.max_workers} worker(s); table extraction "
             f"{'enabled' if self.extract_tables else 'disabled'}."
         )
 
         def save_result(task):
             pdf_key, result_data = _process_single_pdf_worker(task)
-            pdf_dict[pdf_key] = result_data
+            document_dict[pdf_key] = result_data
 
-        if self.max_workers == 1:
+        if not tasks:
+            pass
+        elif self.max_workers == 1:
             # Avoid process-pool and serialization overhead in the safest mode.
             for task in tasks:
                 try:
@@ -255,23 +291,48 @@ class PdfToTxt:
             if sys.version_info >= (3, 11):
                 executor_options["max_tasks_per_child"] = self.max_tasks_per_child
 
-            with ProcessPoolExecutor(**executor_options) as executor:
-                futures = {
-                    executor.submit(_process_single_pdf_worker, task): task
-                    for task in tasks
-                }
+            executor = ProcessPoolExecutor(**executor_options)
+            futures = {
+                executor.submit(_process_single_pdf_worker, task): task
+                for task in tasks
+            }
 
+            try:
                 for future in as_completed(futures):
                     try:
                         pdf_key, result_data = future.result()
-                        pdf_dict[pdf_key] = result_data
+                        document_dict[pdf_key] = result_data
                     except Exception as e:
                         failed_pdf = Path(futures[future][0]).name
                         print(f"Worker failed for {failed_pdf}: {e}")
+            except KeyboardInterrupt:
+                print("\nStopping PDF workers...", flush=True)
+                for future in futures:
+                    future.cancel()
+
+                # Python 3.11 has no public terminate_workers() method. Capture
+                # and terminate active children before non-blocking shutdown so
+                # Ctrl+C does not wait for long pdfplumber operations to finish.
+                worker_processes = list(
+                    getattr(executor, "_processes", {}).values()
+                )
+                for process in worker_processes:
+                    if process.is_alive():
+                        process.terminate()
+
+                executor.shutdown(wait=False, cancel_futures=True)
+                for process in worker_processes:
+                    process.join(timeout=1)
+                    if process.is_alive():
+                        process.kill()
+                        process.join(timeout=1)
+                raise
+            else:
+                executor.shutdown(wait=True)
 
         # Stable ordering makes downstream retained-original selection
         # reproducible when deduplicating documents.
-        return dict(sorted(pdf_dict.items()))
+        return dict(sorted(document_dict.items()))
 
 def load_pdf(
     INPUT_FOLDER,
@@ -290,6 +351,6 @@ def load_pdf(
     # Process all PDFs recursively
     results = converter.process_pdf_directory_deep(INPUT_FOLDER, OUTPUT_FOLDER)
     
-    print(f"\nTotal files processed: {len(results)}")
+    print(f"\nTotal source files loaded: {len(results)}")
     return results
     

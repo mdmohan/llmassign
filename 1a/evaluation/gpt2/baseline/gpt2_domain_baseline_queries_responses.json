@@ -1,0 +1,242 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-05T17:07:50.944576+00:00",
+  "model_name": "gpt2",
+  "generation_configuration": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "response": "a single node. The node is connected to the network by a single cable. The cable is connected to the network by a single cable.\n\nThe network is connected to the network by a single cable. The cable is connected to the network by",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ]
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "response": "you to connect to a Cisco Nexus virtual port channel (vPC) using the Cisco Network Connection Protocol (NCP) or the Cisco Network Connection Protocol (NCP) protocol.\n\nThe Cisco Nexus virtual port channel (vPC) is a",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ]
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "response": "provide a means of communication between the peer-to-peer network and the vPC peer-to-peer network.\n\nThe vPC peer-link is a peer-to-peer network that is used to connect to the vPC peer",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ]
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "response": "connect the VLAN to the VLAN. The VNI is connected to the VLAN by a VLAN-specific interface.\n\nThe VLAN-specific interface is a VLAN-specific interface that is used to connect the VLAN to",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ]
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "response": "a high-performance, high-performance, and low-power, high-performance, and low-power, high-performance, and low-power, high-performance, and low-power, high-performance, and low-power,",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ]
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "response": "a VTEP. The VTEP is a single-ended device that can be used to perform a number of functions. The VTEP is a single-ended device that can be used to perform a number of functions.\n\nThe VTEP is",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ]
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "response": "a more efficient and efficient way to connect multiple nodes.\n\nThe Fibre-to-the-Node (FTP) architecture is a new approach to building a distributed network. It is based on the Fibre-to-the-Node",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ]
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "response": "the following command:\n\n$ sudo vi /etc/network/interfaces/networks.d/networks.conf\n\nThe following command will create a new VLAN 120 and configure Ethernet1/10 as an access port in NX",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ]
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "response": "a Cisco NX-OS port.\n\nThe following table lists the ports that are required for the LACP port channel.\n\nPort Description Cisco NX-OS port 1 Cisco NX-OS port 2 Cisco NX-OS port 3 Cisco NX-",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ]
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "response": "a problem for the user.\n\nThe following example shows how to fix this problem.\n\n#!/usr/bin/env python import sys import sys.argv import sys.argv.sys.argv.sys.argv",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ]
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "response": "the device's firmware to see if it's compatible with the latest version of the operating system.\n\nIf the device is not compatible with the latest version of the operating system, check the device's firmware to see if it's compatible with the latest",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ]
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "response": "that the neighbor is not in the Idle state.\n\nIf the neighbor is not in the Idle state, verify that the neighbor is not in the Idle state. If the neighbor is not in the Idle state, verify that the neighbor is not in",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ]
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "response": "the VXLAN VTEP configuration file.\n\nThe following VXLAN VTEP configuration files are available for Windows Server 2003 R2:\n\nVXLAN VTEP Configuration File\n\nVXLAN VTEP Configuration File\n\nV",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ]
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "response": "the presence of a fiber and then provides a fiber-to-the-node (FTN) link to the node.\n\nThe following example shows how to use the FTN to connect a node to a fiber.\n\n// Example 1",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ]
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "response": "all the frames.\n\nThe MTU is configured to be configured in the following way:\n\nThe MTU is configured to be configured in the following way:\n\nThe MTU is configured to be configured in the following way:",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ]
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "response": "that the MAC is not being used.\n\nThe MAC is used to determine the location of the device.\n\nThe MAC is used to determine the location of the device. The MAC is used to determine the location of the device. The MAC",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ]
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "response": "a quick overview of the latest Cisco products and services.\n\nThe Dashboard is a simple, easy to use dashboard that allows you to quickly see the latest Cisco products and services.\n\nThe Dashboard is also available in a variety of formats",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ]
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "response": "the Nexus 9300 is in use.\n\nThe Nexus 9300 is a dual-core processor with a 2.4GHz quad-core processor and a 2GB of RAM. It is powered by a 2.4GHz quad-core processor",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ]
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "response": "a large number of components.\n\nThe Nexus 9500 is a modular Nexus 9500 platform is appropriate when the design requires a large number of components. The Nexus 9500 is a modular Nexus 9500 is appropriate when the design requires a large number",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ]
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "response": "the use of a high-performance Ethernet fabric for the training cluster.\n\nThe Ethernet fabric is a high-performance fabric that is designed to be used in a high-performance training cluster.\n\nThe Ethernet fabric is designed to be used in",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ]
+    }
+  ]
+}

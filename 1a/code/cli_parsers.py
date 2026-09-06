@@ -242,6 +242,27 @@ def build_gpt2_query_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Read prompts interactively until 'exit' is entered.",
     )
+    parser.add_argument(
+        "--query-json",
+        type=Path,
+        nargs="+",
+        default=None,
+        help=(
+            "One or more baseline-format JSON files containing a top-level "
+            "'queries' list."
+        ),
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Output directory for JSON query results.",
+    )
+    parser.add_argument(
+        "--evaluation-stage",
+        default="inference",
+        help="Evaluation-stage label stored in JSON query results.",
+    )
     add_model_name_argument(parser)
     parser.add_argument(
         "--model-folder",

@@ -1,0 +1,182 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-06T09:28:18.064206+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/cpt_fulltxt_gpt_medium/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/cpt_fulltxt_gpt_medium/final_model",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 24,
+    "attention_heads": 16,
+    "embedding_dimension": 1024,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 354823168,
+    "trainable_parameters": 354823168,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/cpt_fulltxt_gpt_medium/final_model",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "/home/jovyan/llmassign/1a/data/evaluation/generic_forgetting_queries.json",
+  "generation_configuration": {
+    "max_new_tokens": 100,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "response": "Paris, and the capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is",
+      "expected_concepts": [
+        "Paris"
+      ]
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "response": "-40°C.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ]
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "response": "the Sun, with a surface area of about 1.5 billion km2. The Sun's surface is covered by a dense cloud of gas and dust, which is about 1.5 times the size of Earth. The Sun's surface is also covered by a dense cloud of hydrogen gas, which is about 1.5 times the size of Earth.\n\nThe Sun's surface is covered by a dense cloud of hydrogen gas, which is about 1.5 times the size of Earth.",
+      "expected_concepts": [
+        "Jupiter"
+      ]
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "response": "a member of the British Royal Family.\n\nThe author of Romeo and Juliet was a member of the British Royal Family.\n\nThe author of Romeo and Juliet was a member of the British Royal Family.\n\nThe author of Romeo and Juliet was a member of the British Royal Family.\n\nThe author of Romeo and Juliet was a member of the British Royal Family.\n\nThe author of Romeo and Juliet was a member of the British Royal Family.\n\nThe author of Romeo and",
+      "expected_concepts": [
+        "William Shakespeare"
+      ]
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "response": "H2O.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol for hydrogen is H2O.\n\nThe chemical symbol for carbon dioxide is CO2.\n\nThe chemical symbol for nitrogen is N2.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol for carbon dioxide is CO2.\n\nThe chemical symbol for nitrogen is N2.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol",
+      "expected_concepts": [
+        "H2O"
+      ]
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "response": "a length of 2, and a width of 1.\n\nThe length of the triangle is the length of the shortest path between two points.\n\nThe width of the triangle is the width of the shortest path between two points.\n\nThe length of the triangle is the length of the shortest path between two points.\n\nThe width of the triangle is the width of the shortest path between two points.\n\nThe length of the triangle is the length of the shortest path between two points",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ]
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold",
+      "expected_concepts": [
+        "cold"
+      ]
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "response": "east.\n\nThe sun sets in the west.\n\nThe sun rises in the west.\n\nThe sun sets in the east.\n\nThe sun rises in the east.\n\nThe sun sets in the west.\n\nThe sun rises in the east.\n\nThe sun sets in the east.\n\nThe sun rises in the east.\n\nThe sun sets in the east.\n\nThe sun rises in the east.\n\nThe sun sets in the east",
+      "expected_concepts": [
+        "east"
+      ]
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "response": "the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times",
+      "expected_concepts": [
+        "four",
+        "4"
+      ]
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "response": "photosynthesis.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.",
+      "expected_concepts": [
+        "photosynthesis"
+      ]
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "response": "remove the tea leaves from the tea bag.\n\nStep 2: Remove the tea leaves from the tea bag\n\nStep 3: Remove the tea leaves from the tea bag\n\nStep 4: Remove the tea leaves from the tea bag\n\nStep 5: Remove the tea leaves from the tea bag\n\nStep 6: Remove the tea leaves from the tea bag\n\nStep 7: Remove the tea leaves from the tea bag\n\nStep 8: Remove the tea leaves from the tea bag",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ]
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "response": "be a good idea to put a piece of tape over the edge of the glass to prevent it from falling on the floor.\n\nIf you have a hard floor, you may want to consider installing a piece of tape over the edge of the floor to prevent it from falling on the floor.\n\nIf you have a hard floor, you may want to consider installing a piece of tape over the edge of the floor to prevent it from falling on the floor.\n\nIf you have a hard",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ]
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "response": "read a book. She was in the library for about an hour and a half. She was in the library for about an hour and a half. She was in the library for about an hour and a half. She was in the library for about an hour and a half. She was in the library for about an hour and a half. She was in the library for about an hour and a half. She was in the library for about an hour and a half. She was in the library",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ]
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "response": "a young man named Togami was born. He was a good-looking boy, with a good heart, and a good mind. He was also a very good cook.\n\nTogami was a very good cook. He was also a very good cook.\n\nHe was a very good cook. He was also a very good cook.\n\nHe was a very good cook. He was also a very good cook.\n\nHe was a very good cook. He was",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ]
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "response": "has been around for a long time. It is a field that has been used in many different areas, including robotics, artificial intelligence, and machine learning.\n\nThe field of artificial intelligence is a field of computer science that has been around for a long time. It is a field that has been used in many different areas, including robotics, artificial intelligence, and machine learning.\n\nThe field of artificial intelligence is a field of computer science that has been around for a long time. It is",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ]
+    }
+  ]
+}

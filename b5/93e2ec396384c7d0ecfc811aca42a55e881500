@@ -1,0 +1,69 @@
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst-assurance-2-3-7.pdf
+  s_c0c7d41ff0f51d::t_e594c1e5d7af1f 1-87368
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst-center-user-2-3-7.pdf
+  s_c0c7d41ff0f51d::t_4f672894d4a492 1-587721
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-interfaces-17-13.pdf
+  s_c0c7d41ff0f51d::t_ac2bedbdaf06d4 1-31238
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-layer2-17-13.pdf
+  s_c0c7d41ff0f51d::t_3896c6592032a8 1-70884
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-multicast-17-13.pdf
+  s_c0c7d41ff0f51d::t_a2bdcc60a9329d 1-88224
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-routing-17-13.pdf
+  s_c0c7d41ff0f51d::t_fadda9fa703459 1-96503
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-security-17-13.pdf
+  s_c0c7d41ff0f51d::t_8f6eee638bfe33 1-176870
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-system-management-17-13.pdf
+  s_c0c7d41ff0f51d::t_9071a5f82555e2 1-50657
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9300-vlan-17-13.pdf
+  s_c0c7d41ff0f51d::t_fe36081ebf8583 1-32058
+1a/data/pdfs/cisco-enterprise-pdfs/catalyst9800-wireless-17-17.pdf
+  s_c0c7d41ff0f51d::t_a7d3d6f7c1d73d 1-276394
+1a/data/pdfs/cisco-enterprise-pdfs/iosxe-programmability-17-13.pdf
+  s_c0c7d41ff0f51d::t_88c1b45c93b418 1-39687
+1a/data/pdfs/cisco-enterprise-pdfs/ise-admin-3-1.pdf
+  s_c0c7d41ff0f51d::t_42becfb5e4b2d3 1-279853
+1a/data/pdfs/cisco-enterprise-pdfs/ise-cli-3-3.pdf
+  s_c0c7d41ff0f51d::t_33f36801b8b438 1-75528
+1a/data/pdfs/cisco-enterprise-pdfs/ise-upgrade-3-3.pdf
+  s_c0c7d41ff0f51d::t_8d5b17b383a7e7 1-15138
+1a/data/pdfs/cisco-enterprise-pdfs/nexus9000-fundamentals-10-4.pdf
+  s_c0c7d41ff0f51d::t_a443fe63ca0bdf 1-41523
+1a/data/pdfs/cisco-enterprise-pdfs/nexus9000-layer2-10-4.pdf
+  s_c0c7d41ff0f51d::t_5a90475b68b40d 1-40447
+1a/data/pdfs/cisco-enterprise-pdfs/nexus9000-unicast-routing-10-4.pdf
+  s_c0c7d41ff0f51d::t_e84edd71292f8d 1-103464
+1a/data/pdfs/cisco-enterprise-pdfs/sdwan-command-reference.pdf
+  s_c0c7d41ff0f51d::t_510388116d253c 1-128729
+1a/data/pdfs/cisco-enterprise-pdfs/sdwan-monitor-maintain.pdf
+  s_c0c7d41ff0f51d::t_68fab8a577e41e 1-83719
+1a/data/pdfs/cisco-enterprise-pdfs/sdwan-policies.pdf
+  s_c0c7d41ff0f51d::t_68f98847612a0a 1-44869
+1a/data/pdfs/cisco-enterprise-pdfs/sdwan-systems-interfaces.pdf
+  s_c0c7d41ff0f51d::t_229540b18a1f40 1-58607
+1a/data/pdfs/cisco-enterprise-pdfs/secure-client-admin-5-1.pdf
+  s_c0c7d41ff0f51d::t_47f238fd35dccf 1-85614
+1a/data/pdfs/cisco-enterprise-pdfs/secure-firewall-fdm-7-4.pdf
+  s_c0c7d41ff0f51d::t_62d1f83aa1ba9f 1-179808
+1a/data/pdfs/cisco-enterprise-pdfs/secure-firewall-fmc-admin-7-7.pdf
+  s_c0c7d41ff0f51d::t_c839714f3299c2 1-345069
+1a/data/pdfs/cisco-enterprise-pdfs/ucs-manager-monitoring-4-3.pdf
+  s_c0c7d41ff0f51d::t_f0a085a377e4f1 1-36149
+1a/data/pdfs/cisco-enterprise-pdfs/ucs-manager-network-4-3.pdf
+  s_c0c7d41ff0f51d::t_223f8405bdb975 1-54053
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "b593e2ec396384c7d0ecfc811aca42a55e881500",
+  "prompts": {},
+  "sessions": {
+    "s_c0c7d41ff0f51d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c734be66-4468-49ac-b04a-ce11412a4f6b",
+        "model": "copilot/gpt-5.6-sol"
+      },
+      "human_author": "AxleAddict <akshayjoish28@gmail.com>"
+    }
+  }
+}

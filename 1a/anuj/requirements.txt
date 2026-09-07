@@ -1,0 +1,14 @@
+# Assignment 1A (Team 1AE — Variant 5, Cisco docs) — Part A + Part B
+# Tested on Python 3.11+ (Colab T4 / A100). Versions below are the validated set.
+transformers>=4.44
+datasets>=2.20
+accelerate>=0.33
+peft>=0.12
+trl>=0.9
+bitsandbytes>=0.43   # GPU only (Part B QLoRA 4-bit)
+torch>=2.2
+pyarrow>=15
+pypdf>=4.0
+langdetect>=1.0.9
+matplotlib>=3.7
+pandas>=2.0

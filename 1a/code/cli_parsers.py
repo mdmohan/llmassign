@@ -47,8 +47,8 @@ def add_model_name_argument(parser) -> None:
         "--model-name",
         default="gpt2",
         help=(
-            "Model to download/load: gpt2, gpt2-medium, gpt2-large, "
-            "smollm2-360m, or HuggingFaceTB/SmolLM2-360M."
+            "Exact Hugging Face decoder-only causal-LM model ID, such as "
+            "gpt2-large or HuggingFaceTB/SmolLM2-360M."
         ),
     )
 
@@ -104,7 +104,7 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
         "--bin-file",
         type=Path,
         default=Path("data/processed/tokens.bin"),
-        help="Flat uint16 token-stream output used by the PyTorch loader.",
+        help="Flat token-stream output used by the PyTorch loader.",
     )
     paths.add_argument(
         "--parquet-file",
@@ -138,8 +138,16 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
         type=positive_int,
         default=None,
         help=(
-            "Packed sequence length for SmolLM2. The tokenizer maximum is "
-            "used when omitted; GPT-2 retains its existing 1,024-token behavior."
+            "Packed sequence length. A detected model limit up to 8,192 is used "
+            "when omitted; larger-context models require an explicit value."
+        ),
+    )
+    tokenization.add_argument(
+        "--document-separator-token",
+        default=None,
+        help=(
+            "Single tokenizer token used between documents only when the "
+            "selected tokenizer has no EOS token."
         ),
     )
     tokenization.add_argument(
@@ -376,15 +384,16 @@ def build_cpt_train_parser() -> argparse.ArgumentParser:
         "--bin-file",
         type=Path,
         required=True,
-        help="Flat uint16 packed-token file produced by the data pipeline.",
+        help="Flat packed-token file produced by the data pipeline.",
     )
     data.add_argument(
         "--dataset-metrics",
         type=Path,
         default=None,
         help=(
-            "SmolLM2 tokenization metrics JSON. When omitted, "
-            "dataset_metrics.json beside --bin-file is used if present."
+            "Tokenization metrics JSON, including the binary dtype. When omitted, "
+            "the matching dataset_metrics[_train|_test].json beside --bin-file "
+            "is used if present."
         ),
     )
     data.add_argument(
@@ -497,7 +506,7 @@ def build_cpt_evaluation_parser() -> argparse.ArgumentParser:
         "--test-bin",
         type=Path,
         required=True,
-        help="Held-out domain uint16 token file, normally token_test.bin.",
+        help="Held-out domain token file, normally token_test.bin.",
     )
     held_out.add_argument(
         "--dataset-metrics",
@@ -509,7 +518,7 @@ def build_cpt_evaluation_parser() -> argparse.ArgumentParser:
         "--generic-test-bin",
         type=Path,
         default=None,
-        help="Optional held-out general-language uint16 token file.",
+        help="Optional held-out general-language token file.",
     )
     held_out.add_argument(
         "--generic-dataset-metrics",
@@ -576,6 +585,15 @@ def build_cpt_evaluation_parser() -> argparse.ArgumentParser:
         type=Path,
         default=Path("evaluation_report.json"),
         help="Comprehensive JSON evaluation report.",
+    )
+    output.add_argument(
+        "--reuse-existing",
+        action="store_true",
+        help=(
+            "Reuse a completed --output-file when its model/checkpoint, CPT "
+            "training run, datasets, query/baseline files, and evaluation "
+            "options exactly match this invocation."
+        ),
     )
     return parser
 

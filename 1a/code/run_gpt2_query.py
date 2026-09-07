@@ -143,12 +143,7 @@ def main() -> int:
 
     try:
         import torch
-        from smollm2_model import (
-            is_smollm2_checkpoint,
-            is_smollm2_model,
-            load_smollm2_model,
-            smollm2_model_details,
-        )
+        from causal_lm import load_causal_lm
 
         response_helpers = _import_existing_module(
             "query_model_response_helpers",
@@ -156,34 +151,11 @@ def main() -> int:
             {"torch": torch},
         )
 
-        smollm2_selected = is_smollm2_model(args.model_name)
-        if args.model_folder is not None:
-            smollm2_selected = (
-                smollm2_selected
-                or is_smollm2_checkpoint(args.model_folder)
-            )
-
-        if smollm2_selected:
-            model_dict = load_smollm2_model(
-                model_name=args.model_name,
-                model_folder=args.model_folder,
-            )
-            model_details_function = smollm2_model_details
-        elif args.model_folder is None:
-            from gpt2_model import load_gpt2_model
-
-            model_dict = load_gpt2_model(model_name=args.model_name)
-            model_details_function = _model_details
-        else:
-            from load_local_model import load_local_model
-
-            model, tokenizer, device = load_local_model(args.model_folder)
-            model_dict = {
-                "model": model,
-                "tokenizer": tokenizer,
-                "device": device,
-            }
-            model_details_function = _model_details
+        model_dict = load_causal_lm(
+            model_name=args.model_name,
+            model_folder=args.model_folder,
+        )
+        model_details_function = _model_details
 
         if args.cli:
             run_cli(response_helpers, model_dict, args)

@@ -8,6 +8,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+import numpy as np
 import torch
 from torch.amp import GradScaler, autocast
 from torch.optim import AdamW
@@ -47,7 +48,13 @@ def _write_training_run(run_config, save_dir):
     return output_path
 
 
-def _create_cli_run_config(args, model_family, bin_file, save_dir):
+def _create_cli_run_config(
+    args,
+    model_family,
+    bin_file,
+    save_dir,
+    binary_dtype="uint16",
+):
     """Capture every parsed CLI option and the reproducible invocation."""
     command_argv = [sys.executable, *sys.argv]
     dataset_metrics = getattr(args, "dataset_metrics", None)
@@ -61,6 +68,7 @@ def _create_cli_run_config(args, model_family, bin_file, save_dir):
     if torch.cuda.is_available():
         cuda_device_name = torch.cuda.get_device_name(torch.cuda.current_device())
 
+    numpy_dtype = np.dtype(binary_dtype)
     return {
         "schema_version": 1,
         "status": "initializing",
@@ -85,7 +93,8 @@ def _create_cli_run_config(args, model_family, bin_file, save_dir):
         "dataset": {
             "bin_file": str(bin_file),
             "file_size_bytes": bin_file.stat().st_size,
-            "stored_token_count": bin_file.stat().st_size // 2,
+            "binary_dtype": numpy_dtype.name,
+            "stored_token_count": bin_file.stat().st_size // numpy_dtype.itemsize,
         },
         "environment": {
             "python_version": platform.python_version(),
@@ -240,17 +249,16 @@ def _save_checkpoint(
 
     model.save_pretrained(checkpoint_dir)
     tokenizer.save_pretrained(checkpoint_dir)
-    torch.save(
-        {
-            "epoch": epoch,
-            "global_step": global_step,
-            "optimizer_state_dict": optimizer.state_dict(),
-            "scheduler_state_dict": scheduler.state_dict(),
-            "scaler_state_dict": scaler.state_dict(),
-            "history": history,
-        },
-        checkpoint_dir / "training_state.pt",
-    )
+    state = {
+        "epoch": epoch,
+        "global_step": global_step,
+        "optimizer_state_dict": optimizer.state_dict(),
+        "scheduler_state_dict": scheduler.state_dict(),
+        "history": history,
+    }
+    if scaler is not None:
+        state["scaler_state_dict"] = scaler.state_dict()
+    torch.save(state, checkpoint_dir / "training_state.pt")
 
 
 def _save_training_history(history, save_dir):
@@ -305,6 +313,7 @@ def cpt_train(
     save_every_steps=500,
     seed=42,
     run_config=None,
+    model_dtype=None,
 ):
     """Run continued pre-training and save checkpoints and loss history."""
     device = torch.device(device)
@@ -363,7 +372,15 @@ def cpt_train(
     )
 
     use_amp = device.type == "cuda"
-    scaler = GradScaler("cuda", enabled=use_amp)
+    parameter_dtype = model_dtype or next(model.parameters()).dtype
+    if use_amp and parameter_dtype == torch.bfloat16:
+        amp_dtype = torch.bfloat16
+    elif use_amp:
+        amp_dtype = torch.float16
+    else:
+        amp_dtype = torch.float32
+    use_scaler = use_amp and amp_dtype == torch.float16
+    scaler = GradScaler("cuda", enabled=True) if use_scaler else None
     micro_batch_size = getattr(dataloader, "batch_size", None)
     effective_batch_size = (
         micro_batch_size * grad_accum_steps
@@ -391,13 +408,15 @@ def cpt_train(
         batches_per_epoch=batches_per_epoch,
         updates_per_epoch=updates_per_epoch,
         total_steps=total_steps,
-        precision=torch.float16 if use_amp else torch.float32,
-        gradient_scaling=use_amp,
+        precision=amp_dtype,
+        gradient_scaling=use_scaler,
         gradient_checkpointing=getattr(model, "is_gradient_checkpointing", False),
     )
 
     print("--- Training Execution Plan ---")
     print(f"  Device:               {device}")
+    printf(f" Epoch:                {epoch}")
+    print(f"  Training dtype:       {amp_dtype}")
     print(f"  Micro Batch Size:     {micro_batch_size}")
     print(f"  Gradient Accumulation:{grad_accum_steps}")
     print(f"  Effective Batch Size: {effective_batch_size}")
@@ -439,16 +458,19 @@ def cpt_train(
             with autocast(
                 device_type=device.type,
                 enabled=use_amp,
-                dtype=torch.float16,
+                dtype=amp_dtype,
             ):
                 outputs = model(input_ids=input_ids, labels=labels)
                 raw_loss = outputs.loss
                 backward_loss = raw_loss / current_group_size
 
-            scaler.scale(backward_loss).backward()
+            if scaler is None:
+                backward_loss.backward()
+            else:
+                scaler.scale(backward_loss).backward()
 
-            # GPT-2 predicts labels from position 1 onward. Weight the loss by
-            # the actual number of predicted tokens, excluding ignored labels.
+            # Decoder-only causal LMs predict labels from position 1 onward.
+            # Weight loss by actual predicted tokens, excluding ignored labels.
             predicted_token_count = int(
                 (labels[..., 1:] != -100).sum().item()
             )
@@ -465,22 +487,25 @@ def cpt_train(
             if not should_update:
                 continue
 
-            scaler.unscale_(optimizer)
+            if scaler is not None:
+                scaler.unscale_(optimizer)
             torch.nn.utils.clip_grad_norm_(
                 model.parameters(),
                 max_grad_norm,
             )
 
-            previous_scale = scaler.get_scale()
-            scaler.step(optimizer)
-            scaler.update()
+            if scaler is None:
+                optimizer.step()
+                optimizer_step_skipped = False
+            else:
+                previous_scale = scaler.get_scale()
+                scaler.step(optimizer)
+                scaler.update()
+                optimizer_step_skipped = scaler.get_scale() < previous_scale
             optimizer.zero_grad(set_to_none=True)
 
             # GradScaler lowers its scale when an optimizer step is skipped due
             # to non-finite gradients. Do not advance the LR schedule then.
-            optimizer_step_skipped = (
-                use_amp and scaler.get_scale() < previous_scale
-            )
             if optimizer_step_skipped:
                 print("Skipped optimizer update because of non-finite gradients")
                 group_nll = 0.0
@@ -566,7 +591,7 @@ def cpt_train(
         )
 
     if original_use_cache is not None:
-        model.config.use_cache = original_use_cache
+        model.config.use_cache = True
 
     final_dir = save_dir / "final_model"
     model.save_pretrained(final_dir)
@@ -604,9 +629,96 @@ def cpt_train(
     }
 
 
+def _load_dataset_metrics(bin_file: Path, supplied_path):
+    """Load the metrics paired with a packed token file when available."""
+    if supplied_path is not None:
+        metrics_path = supplied_path.expanduser().resolve()
+    elif bin_file.stem in {"token_train", "token_test"}:
+        metrics_path = bin_file.parent / f"dataset_metrics_{bin_file.stem[6:]}.json"
+    else:
+        metrics_path = bin_file.parent / "dataset_metrics.json"
+
+    if supplied_path is not None and not metrics_path.is_file():
+        raise ValueError(f"Dataset metrics file does not exist: {metrics_path}")
+    if not metrics_path.is_file():
+        return None, metrics_path
+    try:
+        return json.loads(metrics_path.read_text(encoding="utf-8")), metrics_path
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid dataset metrics JSON: {metrics_path}") from exc
+
+
+def _validate_training_dataset(
+    bin_file,
+    context_length,
+    model,
+    tokenizer,
+    metrics,
+):
+    """Verify binary layout, context length, and tokenizer/model compatibility."""
+    from causal_lm import model_context_limit
+    from load_tensors import normalize_binary_dtype
+
+    binary_dtype = normalize_binary_dtype(
+        metrics.get("binary_dtype") if metrics is not None else "uint16"
+    )
+    file_size = bin_file.stat().st_size
+    if file_size % binary_dtype.itemsize:
+        raise ValueError(
+            f"Binary token file has an invalid {binary_dtype.name} byte length: "
+            f"{bin_file}"
+        )
+    token_count = file_size // binary_dtype.itemsize
+    if token_count < context_length or token_count % context_length:
+        raise ValueError(
+            f"Binary file contains {token_count:,} tokens and cannot be read as "
+            f"complete {context_length:,}-token sequences"
+        )
+
+    limit = model_context_limit(model.config, tokenizer)
+    if limit is not None and context_length > limit:
+        raise ValueError(
+            f"Training context length {context_length:,} exceeds the model "
+            f"limit of {limit:,}"
+        )
+
+    token_data = np.memmap(bin_file, dtype=binary_dtype, mode="r")
+    maximum_token_id = int(token_data.max())
+    if maximum_token_id >= int(model.config.vocab_size):
+        raise ValueError(
+            f"Dataset token ID {maximum_token_id:,} exceeds the loaded model's "
+            f"maximum valid ID {int(model.config.vocab_size) - 1:,}"
+        )
+
+    if metrics is not None:
+        metrics_context = metrics.get("packing_context_length")
+        if metrics_context is not None and int(metrics_context) != context_length:
+            raise ValueError(
+                "Training context length does not match dataset metrics: "
+                f"{context_length} != {metrics_context}"
+            )
+        metrics_vocab = metrics.get("tokenizer_vocabulary_size")
+        if metrics_vocab is not None and int(metrics_vocab) != len(tokenizer):
+            raise ValueError(
+                "Dataset tokenizer vocabulary does not match the loaded tokenizer: "
+                f"{metrics_vocab} != {len(tokenizer)}"
+            )
+        metrics_fingerprint = metrics.get("tokenizer_vocabulary_sha256")
+        if metrics_fingerprint is not None:
+            from causal_lm import tokenizer_vocabulary_sha256
+
+            loaded_fingerprint = tokenizer_vocabulary_sha256(tokenizer)
+            if metrics_fingerprint != loaded_fingerprint:
+                raise ValueError(
+                    "Dataset token-to-ID mapping does not match the loaded tokenizer"
+                )
+    return binary_dtype, token_count, maximum_token_id
+
+
 def run_cpt_from_cli(args):
-    """Connect the existing model, data-loader, and CPT functions."""
-    from smollm2_model import is_smollm2_model
+    """Load and train any standard Hugging Face decoder-only causal LM."""
+    from causal_lm import load_causal_lm, validate_causal_lm_forward
+    from load_tensors import load_tokens_from_bin, normalize_binary_dtype
 
     bin_file = args.bin_file.expanduser().resolve()
     save_dir = args.save_dir.expanduser().resolve()
@@ -614,29 +726,62 @@ def run_cpt_from_cli(args):
     if not bin_file.is_file():
         raise ValueError(f"Packed binary token file does not exist: {bin_file}")
 
-    model_family = "smollm2" if is_smollm2_model(args.model_name) else "gpt2"
+    metrics, metrics_path = _load_dataset_metrics(
+        bin_file,
+        getattr(args, "dataset_metrics", None),
+    )
+    if metrics is None:
+        print(
+            f"Warning: dataset metrics not found at {metrics_path}; assuming "
+            "the legacy uint16 binary format."
+        )
+    binary_dtype = normalize_binary_dtype(
+        metrics.get("binary_dtype") if metrics is not None else "uint16"
+    )
+
+    model_dict = load_causal_lm(
+        model_name=args.model_name,
+        for_training=True,
+    )
+    _, stored_token_count, maximum_token_id = _validate_training_dataset(
+        bin_file,
+        args.context_length,
+        model_dict["model"],
+        model_dict["tokenizer"],
+        metrics,
+    )
+    compatibility_check = validate_causal_lm_forward(
+        model_dict["model"],
+        model_dict["tokenizer"],
+        model_dict["device"],
+    )
+
+    model_family = getattr(model_dict["model"].config, "model_type", "causal_lm")
     run_config = _create_cli_run_config(
         args,
         model_family=model_family,
         bin_file=bin_file,
         save_dir=save_dir,
+        binary_dtype=binary_dtype,
     )
+    run_config["dataset"].update(
+        {
+            "metrics_file": str(metrics_path) if metrics is not None else None,
+            "stored_token_count": stored_token_count,
+            "maximum_token_id": maximum_token_id,
+        }
+    )
+    run_config["resolved_paths"]["dataset_metrics"] = (
+        str(metrics_path) if metrics is not None else None
+    )
+    run_config["compatibility_check"] = compatibility_check
     _write_training_run(run_config, save_dir)
-
-    if is_smollm2_model(args.model_name):
-        from cpt_train_smollm2 import run_smollm2_cpt_from_cli
-
-        return run_smollm2_cpt_from_cli(args, run_config=run_config)
-
-    from gpt2_model import load_gpt2_model
-    from load_tensors import load_tokens_from_bin
-
-    model_dict = load_gpt2_model(model_name=args.model_name)
     dataloader = load_tokens_from_bin(
         filename=str(bin_file),
         context_length=args.context_length,
         batch_size=args.batch_size,
         num_workers=args.num_workers,
+        binary_dtype=binary_dtype,
     )
 
     return cpt_train(
@@ -655,6 +800,7 @@ def run_cpt_from_cli(args):
         save_every_steps=args.save_every_steps,
         seed=args.seed,
         run_config=run_config,
+        model_dtype=model_dict["dtype"],
     )
 
 

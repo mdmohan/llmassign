@@ -1,8 +1,9 @@
 # Continual Pre-Training Scripts
 
-These scripts prepare domain text, continue training `gpt2`, `gpt2-medium`,
-`gpt2-large`, or `HuggingFaceTB/SmolLM2-360M`, and compare the base and trained
-models. Run the commands from the `llmassign` repository root.
+These scripts prepare domain text, continue training standard Hugging Face
+decoder-only causal language models, and compare the base and trained models.
+This includes GPT-2, SmolLM2, TinyLlama, and compatible Qwen checkpoints. Run
+the commands from the `llmassign` repository root.
 
 The paths used by the current commands are:
 
@@ -17,7 +18,7 @@ The paths used by the current commands are:
 │   ├── converted/networking/     # Text extracted from other PDFs
 │   ├── cleaned/cleaned/          # Current training-ready text
 │   ├── cleaned-post/             # Optional standalone post-clean output
-│   ├── processed/gpt2/           # Generated GPT-2-family packed dataset
+│   ├── processed/<model>/        # Model-tokenizer-specific packed dataset
 │   ├── processed/v1/             # Earlier Cisco packed dataset
 │   ├── processed/v2_ospf_rfc/    # OSPF RFC packed dataset
 │   ├── processed/v3/             # Newer combined dataset
@@ -62,7 +63,8 @@ text, and applies the required quality and deduplication gates. A separate
 post-gate stage then removes TOCs, legal/page furniture, low-information
 tables, diagrams, and obvious extraction noise while preserving prose, useful
 tables, and CLI examples. Finally, it packs the selected model's token stream
-into fixed-length sequences and writes binary and Parquet outputs.
+into fixed-length sequences and writes binary and Parquet outputs. Pass the
+Hugging Face model ID unchanged; project-specific aliases are not expanded.
 
 ```bash
 python 1a/code/prepare_cpt_dataset.py \
@@ -146,13 +148,13 @@ To prepare the existing OSPF RFC corpus instead, use
 `--bin-file 1a/data/processed/v2_ospf_rfc/rfc_ospf.bin`, and
 `--parquet-file 1a/data/processed/v2_ospf_rfc/rfc_ospf.parquet`.
 
-For SmolLM2, select its tokenizer and use separate output files. The model's
-8,192-token maximum is used unless `--context-length` specifies a smaller
-packing length:
+For SmolLM2, select its tokenizer with the complete Hugging Face ID and use
+separate output files. The model's 8,192-token maximum is used unless
+`--context-length` specifies a smaller packing length:
 
 ```bash
 python 1a/code/prepare_cpt_dataset.py \
-  --model-name smollm2-360m \
+  --model-name HuggingFaceTB/SmolLM2-360M \
   --input-dir 1a/data/raw/pdfs/cisco-dc-pdfs \
   --text-dir 1a/data/converted/cisco-dc \
   --audit-report 1a/data/reports/smollm2_cleaning_audit.json \
@@ -164,9 +166,18 @@ python 1a/code/prepare_cpt_dataset.py \
 
 Every supported model writes `dataset_metrics.json` beside the binary file by
 default. It records the tokenizer, context length, total token count, average
-document length, packed sequence count, and residual tokens. Use
-`--metrics-file` to choose a different path. GPT-2 and SmolLM2 token files are
-not interchangeable.
+document length, packed sequence count, residual tokens, maximum tokenizer ID,
+document-boundary policy, vocabulary mapping fingerprint, and selected binary
+dtype. Token IDs use `uint16`, `uint32`, or `uint64`, choosing the narrowest
+safe representation. Use
+`--metrics-file` to choose a different path. Datasets prepared with different
+tokenizers are not interchangeable.
+
+Context length is read from common model configuration fields. If the detected
+maximum exceeds 8,192 tokens, provide a practical `--context-length` explicitly
+instead of accidentally packing 32K or 128K sequences. EOS separates documents;
+if a tokenizer has no EOS token, supply a one-token boundary with
+`--document-separator-token`.
 
 ## 2. Capture a pre-CPT baseline
 
@@ -213,13 +224,16 @@ If `--model-name` is omitted, the default is `gpt2`. A query file must contain:
 }
 ```
 
-Use `--model-name smollm2-360m` and a separate `--baseline-path` to capture the
-SmolLM2 pre-CPT baseline with the same query files.
+Use `--model-name HuggingFaceTB/SmolLM2-360M` and a separate `--baseline-path`
+to capture the SmolLM2 pre-CPT baseline. Other compatible models use their
+exact Hub IDs in the same command.
 
 ## 3. Run continued pre-training
 
-`cpt_train.py` memory-maps the packed binary token file and trains the selected
-model. It writes numbered checkpoints, a rolling `last_checkpoint`, a
+`cpt_train.py` reads the binary dtype from the dataset metrics, memory-maps the
+packed token file, validates tokenizer/context compatibility, runs a small
+teacher-forced causal-LM check, and trains the selected model. It writes
+numbered checkpoints, a rolling `last_checkpoint`, a
 `final_model`, training history JSON, and—when `matplotlib` is installed—a loss
 curve. It also writes `training_run.json` directly under `--save-dir`. That file
 records every parsed CLI option (including defaults), the reconstructed full
@@ -252,13 +266,14 @@ For `gpt2-medium`, start with a smaller batch size because it needs
 substantially more GPU memory than `gpt2`. Keep `--num-workers 0` when notebook
 or CUDA multiprocessing is unstable.
 
-SmolLM2 training automatically uses BF16 on a compatible GPU, FP16 with loss
-scaling on older CUDA GPUs, and FP32 on CPU. The training context length must
-match the length used during preparation:
+Generic causal-LM training uses BF16 on a compatible GPU, FP16 with loss scaling
+on older CUDA GPUs, and FP32 on CPU. Gradient checkpointing is enabled when the
+loaded architecture supports it. The training context length must match the
+length used during preparation:
 
 ```bash
 python 1a/code/cpt_train.py \
-  --model-name smollm2-360m \
+  --model-name HuggingFaceTB/SmolLM2-360M \
   --bin-file 1a/data/processed/smollm2-360m/token_train.bin \
   --dataset-metrics 1a/data/processed/smollm2-360m/dataset_metrics_train.json \
   --save-dir 1a/output/smollm2-360m/v1 \
@@ -270,9 +285,10 @@ python 1a/code/cpt_train.py \
   --num-workers 0
 ```
 
-The trainer checks `dataset_metrics.json` when present to prevent accidental
-use of GPT-2-tokenized data. Start with a 1-sequence microbatch because memory
-use rises quickly with context length.
+The trainer checks `dataset_metrics.json` when present to prevent accidental use
+of data from another tokenizer or binary layout. Metrics are required for
+`uint32` and `uint64` datasets; without them the legacy `uint16` layout is
+assumed. Start with a 1-sequence microbatch when memory use is uncertain.
 
 ## 4. Query a model interactively
 
@@ -326,17 +342,18 @@ Exactly one input mode may be used at a time: positional prompts, `--cli`, or
 `--query-json`. JSON query mode writes one response file per query file and
 includes model details, generation settings, and source-query information.
 
-The same command supports the SmolLM2 base model and automatically detects a
-local SmolLM2 checkpoint:
+The same command supports any compatible base model and automatically loads the
+architecture recorded by a local checkpoint:
 
 ```bash
 python 1a/code/run_gpt2_query.py \
   "How is OSPF configured on a Nexus switch?" \
-  --model-name smollm2-360m \
+  --model-name HuggingFaceTB/SmolLM2-360M \
   --max-new-tokens 100
 
 python 1a/code/run_gpt2_query.py \
   --cli \
+  --model-name HuggingFaceTB/SmolLM2-360M \
   --model-folder 1a/output/smollm2-360m/v1/final_model \
   --max-new-tokens 100
 ```
@@ -373,8 +390,9 @@ manually for semantic correctness when the model uses valid paraphrases.
 
 ## 6. Run the comprehensive CPT evaluation
 
-`evaluate_cpt.py` evaluates the base model and an optional CPT checkpoint in
-one run. It calculates token-weighted PPL on the same held-out domain stream,
+`evaluate_cpt.py` evaluates a compatible base model and an optional CPT
+checkpoint in one run. It reads each held-out binary dtype from its metrics and
+calculates token-weighted PPL on the same held-out domain stream,
 conditional PPL on fixed query references, PPL of the same saved baseline
 responses for behavioural-retention analysis, and deterministic greedy-response
 quality metrics:
@@ -392,6 +410,7 @@ python 1a/code/evaluate_cpt.py \
   --baseline-responses 1a/evaluation/gpt2-medium/baseline \
   --max-new-tokens 100 \
   --generation-batch-size 4 \
+  --reuse-existing \
   --output-file 1a/evaluation/gpt2-medium/v1/cpt_evaluation.json
 ```
 
@@ -401,6 +420,12 @@ little or no increase in generic PPL indicates limited catastrophic forgetting.
 `--baseline-responses` is optional. It accepts pre-CPT response JSON files or
 directories and enables behavioural-retention PPL; the evaluator generates
 fresh base and CPT responses even when this option is omitted.
+
+Add `--reuse-existing` to avoid repeating an expensive evaluation. The report
+is reused only when the completed output contains the same base model, exact
+CPT checkpoint manifest and `training_run.json`, held-out data, query and
+baseline-response file contents, and evaluation settings. A missing,
+incomplete, legacy, or mismatched report is recomputed normally.
 
 The main output JSON includes per-query and aggregate metrics plus dataset
 hashes, model provenance, methodology, CLI settings, verdicts, remarks, and the
@@ -414,7 +439,19 @@ cpt_evaluation_generated_text.json
 Run-query-style base and CPT response JSON files are also written beside the
 main report for every supplied query file. Terminal output is split into Part
 1 Perplexity Evaluation and Part 2 Generated Text Evaluation, followed by a
-per-query verdict table.
+per-query verdict table. Model architecture details and the CPT training
+hyperparameters are printed first. The terminal verdict table intentionally
+omits prompt and response text to stay readable; all generated text remains in
+the full report and generated-text JSON artifact.
+
+Immediately after the perplexity table, the evaluator also prints a
+10-query catastrophic-forgetting table from the generic base/CPT responses
+already stored in the main report. It marks a query `Degraded` when CPT loses an
+expected concept found by the base model or raises PPL on the identical saved
+base response by more than 10%; otherwise it reports `Retained`. The table has
+only Query, Base, CPT, and Verdict columns, with wrapped text for presentation.
+This is a derived terminal view and does not add another evaluation pass or
+JSON format.
 
 Fixed-reference query PPL is calculated only for records containing
 `expected_continuation`, `expected_response`, `reference_answer`, or
@@ -481,12 +518,15 @@ The remaining files are imported by the commands above:
 - `load_pdf.py`: PDF extraction and direct loading of text files.
 - `clean_data.py`: normalization, quality gates, deduplication, and audit data.
 - `training_content_cleaner.py`: post-gate block cleanup and its detailed audit.
-- `tokenize_data.py`: GPT-2 tokenization, sequence packing, binary, and Parquet output.
-- `tokenize_smollm2.py`: SmolLM2 tokenization, packing, and dataset metrics.
-- `load_tensors.py`: memory-mapped PyTorch dataset and data loader.
+- `causal_lm.py`: generic AutoConfig, AutoTokenizer, and AutoModel loading,
+  metadata, context/dtype detection, and compatibility checks.
+- `tokenize_data.py`: generic causal-LM tokenization, sequence packing, binary,
+  Parquet, and metrics output; `tokenize_gpt` remains a compatibility wrapper.
+- `tokenize_smollm2.py`: retained legacy SmolLM2-specific helper.
+- `load_tensors.py`: dtype-aware memory-mapped PyTorch dataset and data loader.
 - `gpt2_model.py`: base GPT-2 model/tokenizer loading.
-- `smollm2_model.py`: base/local SmolLM2 loading and model details.
-- `cpt_train_smollm2.py`: SmolLM2 mixed-precision CPT loop and validation.
+- `smollm2_model.py`: retained legacy SmolLM2 model helper.
+- `cpt_train_smollm2.py`: retained legacy SmolLM2 training helper.
 - `load_local_model.py`: local CPT model and checkpoint resolution.
 - `model_response.py`: batched generation and response JSON helpers.
 - `evaluate_cpt.py`: held-out PPL, query PPL, retention, and generation evaluation.
@@ -494,6 +534,8 @@ The remaining files are imported by the commands above:
 - `cache.py`: shared Hugging Face cache directory.
 - `cli_parsers.py`: shared command-line argument definitions.
 
-The GPT-2 packed dataset is shared by `gpt2`, `gpt2-medium`, and `gpt2-large`.
-SmolLM2 uses a different tokenizer and therefore requires its own prepared
-binary/Parquet dataset.
+The generic path covers models accepted by both `AutoTokenizer` and
+`AutoModelForCausalLM` that implement standard teacher-forced causal LM loss.
+It does not cover encoder-only, encoder-decoder, multimodal, unsupported custom-
+code, or training-incompatible quantized models. GPT-2 sizes share a tokenizer;
+models with different tokenizers require separately prepared datasets.

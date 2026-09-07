@@ -93,7 +93,10 @@ def load_local_model(checkpoint_dir, device=None, dtype=torch.float32):
     print(f"Device:           {device}")
     print(f"Model type:       {model.config.model_type}")
     print(f"Parameters:       {parameter_count:,}")
-    print(f"Context length:   {model.config.n_positions:,}")
+    from causal_lm import model_context_limit
+
+    context_length = model_context_limit(model.config, tokenizer)
+    print(f"Context length:   {context_length or 'unknown'}")
     print(f"Vocabulary size:  {model.config.vocab_size:,}")
     print("=" * 55 + "\n")
 

@@ -31,12 +31,7 @@ def _resolve_tokenizer_source(model_name: str, model_folder: Path | None):
 
         return resolve_model_folder(model_folder), True
 
-    if model_name.strip().casefold() in {
-        "smollm2-360m",
-        "huggingfacetb/smollm2-360m",
-    }:
-        return "HuggingFaceTB/SmolLM2-360M", False
-    return model_name, False
+    return model_name.strip(), False
 
 
 def _load_tokenizer(model_name: str, model_folder: Path | None):

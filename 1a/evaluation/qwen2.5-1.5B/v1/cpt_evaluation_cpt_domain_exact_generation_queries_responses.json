@@ -1,0 +1,301 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T11:40:44.217568+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_exact_generation_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DEX01",
+      "category": "ospfv2",
+      "evaluation_type": "exact_generation",
+      "prompt": "This memo documents version 2 of the OSPF protocol. OSPF is",
+      "expected_continuation": "a link-state routing protocol. It is designed to be run internal to a single Autonomous System.",
+      "expected_concepts": [
+        "link-state routing protocol",
+        "single Autonomous System"
+      ],
+      "source_file": "1a/data/text/rfc/rfc2328.txt",
+      "source_document": "RFC 2328",
+      "response": "an inter-area routing protocol that is used in the OSPF routing domain. OSPF is a link-state protocol. The OSPF protocol is described in [OSPF]. This memo documents version 2 of the OSPF protocol. OSPF is an inter-area routing protocol that is used in the OSPF routing domain. OSPF is a link-state protocol. The OSPF protocol is described in [OSPF]. This memo documents version 2 of the OSPF protocol. OSPF is an inter",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.4117647058823529,
+        "repeated_trigram_ratio": 0.5135135135135135
+      }
+    },
+    {
+      "id": "DEX02",
+      "category": "ospfv3",
+      "evaluation_type": "exact_generation",
+      "prompt": "Even with larger IPv6 addresses, most packets in OSPF for IPv6 are",
+      "expected_continuation": "almost as compact as those in OSPF for IPv4.",
+      "expected_concepts": [
+        "compact packets",
+        "relaxed field limitations",
+        "OSPF for IPv6"
+      ],
+      "source_file": "1a/data/text/rfc/rfc5340.txt",
+      "source_document": "RFC 5340",
+      "response": "still small. The OSPFv2 header is 20 bytes, and the IPv6 header is 40 bytes. The OSPFv3 header is 20 bytes, and the IPv6 header is 40 bytes. The OSPFv2 and OSPFv3 headers are the same size, but the IPv6 headers are 20 bytes larger. The OSPFv2 and OSPFv3 headers are the same size, but the IPv6 headers are",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.0,
+        "repeated_trigram_ratio": 0.38596491228070173
+      }
+    },
+    {
+      "id": "DEX03",
+      "category": "ospf-nssa",
+      "evaluation_type": "exact_generation",
+      "prompt": "NSSAs are similar to the existing OSPF stub area configuration option but have the additional capability of",
+      "expected_continuation": "importing AS external routes in a limited fashion.",
+      "expected_concepts": [
+        "stub area",
+        "AS external routes",
+        "limited import"
+      ],
+      "source_file": "1a/data/text/rfc/rfc3101.txt",
+      "source_document": "RFC 3101",
+      "response": "supporting inter-area routes. An NSSA is configured by setting the type of service to 5 in the network command. The NSSA area border router advertises Type 7 summary links to the NSSA area. Type 7 summary links are equivalent to Type 5 summary links except that they are advertised in OSPF AS-external-LSAs. The AS-external-LSA is flooded throughout the NSSA area and all non-NSSA areas. The AS-external-LSA",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.5,
+        "repeated_trigram_ratio": 0.08333333333333337
+      }
+    },
+    {
+      "id": "DEX04",
+      "category": "ospf-graceful-restart",
+      "evaluation_type": "exact_generation",
+      "prompt": "A restarting router may not be capable of adjusting its forwarding in a timely manner when",
+      "expected_continuation": "the network topology changes.",
+      "expected_concepts": [
+        "network topology changes",
+        "forwarding adjustment",
+        "restarting router"
+      ],
+      "source_file": "1a/data/text/rfc/rfc3623.txt",
+      "source_document": "RFC 3623",
+      "response": "it restarts. This can cause a temporary disruption in service. To avoid this, the router can be configured to wait a specified amount of time before restarting. This time is called the graceful restart delay. The default value is 60 seconds. The range is from 0 to 1200 seconds. The default value is 60 seconds. The range is from 0 to 1200 seconds. The default value is 60 seconds. The range is from",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.3098591549295775
+      }
+    },
+    {
+      "id": "DEX05",
+      "category": "ospf-bfd",
+      "evaluation_type": "exact_generation",
+      "prompt": "Bidirectional Forwarding Detection (BFD) [RFC5880] enables routers to",
+      "expected_continuation": "monitor data plane connectivity and to detect faults in the bidirectional path between them.",
+      "expected_concepts": [
+        "data plane connectivity",
+        "bidirectional path",
+        "fault detection"
+      ],
+      "source_file": "1a/data/text/rfc/rfc9355.txt",
+      "source_document": "RFC 9355",
+      "response": "quickly detect the failure of a link or a path between two routers. BFD is a fast, one-hop protocol that can be used to detect the failure of a link or a path between two routers. BFD is a fast, one-hop protocol that can be used to detect the failure of a link or a path between two routers. BFD is a fast, one-hop protocol that can be used to detect the failure of a link or a path between two routers. BFD is a fast",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.35714285714285715,
+        "repeated_trigram_ratio": 0.7126436781609196
+      }
+    },
+    {
+      "id": "DEX06",
+      "category": "nexus-dashboard",
+      "evaluation_type": "exact_generation",
+      "prompt": "For organizations managing on-premises data centers, the Cisco Nexus Dashboard serves as",
+      "expected_continuation": "the single point of control for provisioning, visibility, troubleshooting, and automation.",
+      "expected_concepts": [
+        "single point of control",
+        "provisioning",
+        "visibility",
+        "troubleshooting",
+        "automation"
+      ],
+      "source_file": "1a/data/text/cisco-dc/10_nexus_dashboard_data_sheet_2026.txt",
+      "source_document": "Cisco Nexus Dashboard data sheet",
+      "response": "a single pane of glass for monitoring and managing the entire data center. The Cisco Nexus Dashboard provides a unified view of the data center, including the Cisco Nexus switches, Cisco UCS servers, Cisco UCS C-Series servers, Cisco UCS M-Series servers, Cisco UCS D-Series servers, Cisco UCS E-Series servers, Cisco UCS F-Series servers, Cisco UCS G-Series servers, Cisco UCS H-Series servers, Cisco UCS I-Series servers, Cisco UCS J-Series servers, Cisco UCS K-Series servers, Cisco UCS L",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.45454545454545453,
+        "repeated_trigram_ratio": 0.23809523809523814
+      }
+    },
+    {
+      "id": "DEX07",
+      "category": "ai-data-center",
+      "evaluation_type": "exact_generation",
+      "prompt": "Cisco® data center networking with Cisco Nexus® 9000 Series Switches and the Nexus Dashboard operations and automation platform provides",
+      "expected_continuation": "the interplay of cutting-edge silicon, hardware, software, optics, and management tools to deliver high bandwidth, lossless, and low latency AI/ML networks.",
+      "expected_concepts": [
+        "high bandwidth",
+        "lossless",
+        "low latency",
+        "AI/ML networks"
+      ],
+      "source_file": "1a/data/text/cisco-dc/14_data_center_networking_ai_ml_solution_overview.txt",
+      "source_document": "AI/ML Networking with Cisco Nexus 9000",
+      "response": "a comprehensive solution for data center networking. This solution includes Cisco Nexus 9000 Series switches, Cisco Nexus Dashboard, and Cisco NX-OS software. The Cisco Nexus 9000 Series switches provide high-performance, high-density, and high-reliability data center networking. The Cisco Nexus Dashboard provides a unified, scalable, and secure operations and automation platform for data center networking. The Cisco Nexus 9000 Series switches and Cisco Nexus Dashboard work together to provide a comprehensive solution",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2608695652173913,
+        "repeated_trigram_ratio": 0.2191780821917808
+      }
+    },
+    {
+      "id": "DEX08",
+      "category": "vxlan",
+      "evaluation_type": "exact_generation",
+      "prompt": "Virtual Extensible LAN (VXLAN) provides a way to extend Layer 2 networks across",
+      "expected_continuation": "a Layer 3 infrastructure using MAC-in-UDP encapsulation and tunneling.",
+      "expected_concepts": [
+        "Layer 3 infrastructure",
+        "MAC-in-UDP",
+        "tunneling"
+      ],
+      "source_file": "1a/data/text/cisco-dc/05_nexus9000_nxos_vxlan_10.5x.txt",
+      "source_document": "Cisco Nexus 9000 NX-OS VXLAN Configuration Guide",
+      "response": "data centers and to connect to the public internet. VXLAN is a Layer 2 overlay technology that uses a virtual network tunneling technique to extend Layer 2 networks across data centers. VXLAN is a Layer 2 overlay technology that uses a virtual network tunneling technique to extend Layer 2 networks across data centers. VXLAN is a Layer 2 overlay technology that uses a virtual network tunneling technique to extend Layer 2 networks across data centers. VXLAN is a Layer 2 overlay technology",
+      "generation_metrics": {
+        "concept_hits": [
+          "tunneling"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.36363636363636365,
+        "repeated_trigram_ratio": 0.6125
+      }
+    },
+    {
+      "id": "DEX09",
+      "category": "vpc",
+      "evaluation_type": "exact_generation",
+      "prompt": "This document describes common Virtual Port Channel (vPC) enhancements configured on",
+      "expected_continuation": "Cisco Nexus switches in a vPC domain.",
+      "expected_concepts": [
+        "Cisco Nexus switches",
+        "vPC domain"
+      ],
+      "source_file": "1a/data/text/cisco-dc/21_vpc_enhancements.txt",
+      "source_document": "Understand Virtual Port Channel Enhancements",
+      "response": "Cisco Nexus 9000 Series switches. These enhancements are supported on Cisco Nexus 9300-FX/FX2/FX3/GX/GX2/GX3/GX4/GX5/GX6/GX7/GX8/GX9/GX10/GX12/GX14/GX16/GX18/GX20/GX22/GX24/GX26/GX28/GX32",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.2857142857142857,
+        "continuation_token_coverage": 0.42857142857142855,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "DEX10",
+      "category": "switching",
+      "evaluation_type": "exact_generation",
+      "prompt": "Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch",
+      "expected_continuation": "makes a forwarding decision on a frame and begins forwarding the frame out of an egress interface as soon as the switch has processed enough of the frame header to make a valid forwarding decision.",
+      "expected_concepts": [
+        "forwarding decision",
+        "egress interface",
+        "frame header",
+        "cut-through switching"
+      ],
+      "source_file": "1a/data/text/cisco-dc/13_nexus9000_interface_crc_script.txt",
+      "source_document": "Troubleshoot Nexus 9000 Interface CRC Error with Script",
+      "response": "forwards a packet as soon as it sees the first 64 bytes of the packet. This is in contrast to store-and-forward switching, where the switch waits until it has seen the entire packet before forwarding it. Cut-through switching is faster than store-and-forward switching, but it can also be less reliable. Store-and-forward switching is more reliable than cut-through switching, but it is also slower. The default behavior of Cisco Nexus 9000 switches is to use cut-through switching. However",
+      "generation_metrics": {
+        "concept_hits": [
+          "cut-through switching"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.4,
+        "repeated_trigram_ratio": 0.08333333333333337
+      }
+    }
+  ]
+}

@@ -46,36 +46,10 @@ def _import_existing_module(
 
 
 def _model_details(model, tokenizer, device) -> dict:
-    """Return the exact model and tokenizer identity used for generation."""
-    config = model.config
-    parameters = list(model.parameters())
-    total_parameters = sum(parameter.numel() for parameter in parameters)
-    trainable_parameters = sum(
-        parameter.numel()
-        for parameter in parameters
-        if parameter.requires_grad
-    )
+    """Return architecture-neutral model and tokenizer provenance."""
+    from causal_lm import causal_lm_model_details
 
-    return {
-        "name_or_path": config._name_or_path,
-        "model_class": type(model).__name__,
-        "model_type": config.model_type,
-        "architectures": getattr(config, "architectures", None),
-        "transformer_layers": getattr(config, "n_layer", None),
-        "attention_heads": getattr(config, "n_head", None),
-        "embedding_dimension": getattr(config, "n_embd", None),
-        "vocabulary_size": getattr(config, "vocab_size", None),
-        "maximum_context_length": getattr(config, "n_positions", None),
-        "total_parameters": total_parameters,
-        "trainable_parameters": trainable_parameters,
-        "parameter_dtype": str(parameters[0].dtype) if parameters else None,
-        "device": str(device),
-        "tokenizer_class": type(tokenizer).__name__,
-        "tokenizer_name_or_path": tokenizer.name_or_path,
-        "tokenizer_vocabulary_size": tokenizer.vocab_size,
-        "eos_token_id": tokenizer.eos_token_id,
-        "pad_token_id": tokenizer.pad_token_id,
-    }
+    return causal_lm_model_details(model, tokenizer, device)
 
 
 def _safe_filename_component(value: str) -> str:
@@ -141,7 +115,7 @@ def _add_model_details(
 
 def run_baselines(args) -> None:
     import torch
-    from smollm2_model import is_smollm2_model
+    from causal_lm import load_causal_lm
 
     baseline_path = args.baseline_path.expanduser().resolve()
     baseline_path.mkdir(parents=True, exist_ok=True)
@@ -152,19 +126,8 @@ def run_baselines(args) -> None:
         {"torch": torch},
     )
 
-    if is_smollm2_model(args.model_name):
-        from smollm2_model import (
-            load_smollm2_model,
-            smollm2_model_details,
-        )
-
-        model_dict = load_smollm2_model(model_name=args.model_name)
-        model_details_function = smollm2_model_details
-    else:
-        from gpt2_model import load_gpt2_model
-
-        model_dict = load_gpt2_model(model_name=args.model_name)
-        model_details_function = _model_details
+    model_dict = load_causal_lm(model_name=args.model_name)
+    model_details_function = _model_details
 
     model = model_dict["model"]
     tokenizer = model_dict["tokenizer"]

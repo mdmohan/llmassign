@@ -1,0 +1,369 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T11:40:44.217568+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "generic_forgetting_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "response": "Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris. The capital of France is Paris.",
+      "generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.927710843373494
+      }
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "response": "0 degrees Celsius or 32 degrees Fahrenheit. Water boils at 100 degrees Celsius or 212 degrees Fahrenheit. The temperature of a substance is the degree of hotness or coldness of a substance. The temperature of a substance is measured using a thermometer. The Celsius scale is used to measure temperature. The freezing point of water is 0 degrees Celsius and the boiling point of water is 100 degrees Celsius. The temperature of a substance is measured using a thermometer",
+      "generation_metrics": {
+        "concept_hits": [
+          "0 degrees Celsius",
+          "32 degrees Fahrenheit"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 2,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.23376623376623373
+      }
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "response": "the gas giant Jupiter. It is the fifth planet from the Sun and the largest in the Solar System. It is also the most massive of the Solar System's eight planets, and a majority of the Solar System's mass. It is composed of the same elements as the rest of the Solar System, but in a different proportion. It is a gas giant, and is made up of hydrogen and helium. It is the only planet in the Solar System that is not solid. It is the only planet",
+      "generation_metrics": {
+        "concept_hits": [
+          "Jupiter"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.1348314606741573
+      }
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "response": "______.\nA. William Shakespeare\nB. William Wordsworth\nC. William Blake\nD. William Blake\n答案:\nA\n\nThe author of The Canterbury Tales was ______.\nA. Geoffrey Chaucer\nB. William Shakespeare\nC. William Wordsworth\nD. William Blake\n答案:\nA\n\nThe author of The Canterbury Tales was ______.\nA. Geoffrey Chaucer\nB. William Shakespeare\nC. William Wordsworth\nD. William Blake\n答案:\nA\n\nThe",
+      "generation_metrics": {
+        "concept_hits": [
+          "William Shakespeare"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4423076923076923
+      }
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "response": "H2O. Which of the following statements about water is true?\nA. Water is composed of hydrogen gas and oxygen gas.\nB. Water is made up of hydrogen and oxygen elements.\nC. A water molecule is made up of two hydrogen atoms and one oxygen atom.\nD. A water molecule is made up of two hydrogen atoms and one oxygen atom.\nAnswer:\nB\n\nWhich of the following statements about the relationship between the Earth's rotation and revolution is true?\nA. The Earth's rotation",
+      "generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.25609756097560976
+      }
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "response": "sides of length 10.5, 14.5, and 18.5 units. Determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines.\nTo determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines, we first need to place the triangle in a coordinate system. Let's place the triangle such that one vertex is",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2676056338028169
+      }
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "response": "cold, and the opposite of cold is hot. This is a kind of ____.\nA. Contradiction\nB. Contradictory relationship\nC. Contradictory relationship\nD. Contradictory relationship\nAnswer:\nC\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High viscosity\nC. High salinity\nD. High temperature\nAnswer:\nB\n\nThe main reason for the formation of the",
+      "generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.09836065573770492
+      }
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "response": "east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in",
+      "generation_metrics": {
+        "concept_hits": [
+          "east"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8777777777777778
+      }
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "response": "four. Four times two equals eight. Eight plus four equals twelve. Therefore, twelve divided by three equals four, four times two equals eight, and eight plus four equals twelve.",
+      "generation_metrics": {
+        "concept_hits": [
+          "four"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2592592592592593
+      }
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "response": "photosynthesis. This process takes place in the leaves of the plant. The leaves contain a green pigment called chlorophyll. Chlorophyll absorbs sunlight and transforms it into energy with which the plant can live. The energy is used to transform water and carbon dioxide into glucose. Glucose is a simple sugar that provides the plant with energy. It also provides the plant with a storage material that can be used throughout the year. The glucose produced by the plant can be used immediately or it can be stored",
+      "generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.04705882352941182
+      }
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "response": "boil water. The water is heated in a kettle, and the kettle is placed on the stove. The stove is a device that heats objects. It is a large box with a burner on top. The burner has a knob that controls the heat. The knob is a circular switch with different colored sections. The knob is turned to select the desired heat. The knob is turned clockwise to increase the heat, and counterclockwise to decrease the heat. The knob is turned until the desired heat is",
+      "generation_metrics": {
+        "concept_hits": [
+          "boil water"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.10588235294117643
+      }
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "response": "shatter into pieces. However, if the same glass is dropped on a carpeted floor, it may break into pieces but not shatter. This is because the carpeted floor has a lower coefficient of restitution than the hard floor. The coefficient of restitution is a measure of how much energy is lost when an object is dropped. The higher the coefficient of restitution, the less energy is lost. This means that the object will break into pieces instead of shattering. The coefficient of restitution is a measure",
+      "generation_metrics": {
+        "concept_hits": [
+          "break",
+          "shatter"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 2,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.11904761904761907
+      }
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "response": "borrow a book. She went to the library to ______.\nA. read\nB. borrow\nC. buy\nD. sell\n答案:\nB\n\nThe word \"it\" in the last paragraph refers to ______.\nA. the fact that the government is not doing enough to protect the environment\nB. the fact that the government is not doing enough to protect the environment\nC. the fact that the government is not doing enough to protect the environment\nD. the fact that the government",
+      "generation_metrics": {
+        "concept_hits": [
+          "read",
+          "borrow a book"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 3,
+        "concept_recall": 0.6666666666666666,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.34246575342465757
+      }
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "response": "there lived a wise old man. He was known for his deep knowledge and wisdom. One day, a young boy came to him with a question that had been troubling him for a long time. The boy asked, \"Sir, why do some people have to suffer and die, while others live a long and happy life?\"\n\nThe wise old man thought for a moment and then replied, \"My dear boy, that is a question that has been asked by many people throughout history. But I believe that",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.02352941176470591
+      }
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "response": "focuses on creating intelligent machines that can perform tasks that typically require human intelligence. These tasks include problem-solving, decision-making, and learning. AI is used in a variety of applications, including natural language processing, computer vision, robotics, and game playing. AI has the potential to revolutionize many industries, from healthcare to finance to transportation. However, it also raises ethical and legal concerns, such as the potential for job displacement and the use of AI in surveillance and other forms of abuse. As AI continues",
+      "generation_metrics": {
+        "concept_hits": [
+          "automated reasoning or learning"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    }
+  ]
+}

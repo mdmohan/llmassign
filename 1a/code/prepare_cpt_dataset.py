@@ -225,8 +225,8 @@ def run_pipeline(args: argparse.Namespace) -> None:
         save_chunks_to_disk,
         save_chunks_to_parquet,
         save_tokenization_metrics,
+        tokenize_causal_lm,
     )
-    from smollm2_model import is_smollm2_model
 
     if args.train_test_split:
         train_documents, test_documents = split_documents(
@@ -247,31 +247,13 @@ def run_pipeline(args: argparse.Namespace) -> None:
     for split_name, split_data in document_splits.items():
         if args.train_test_split:
             print(f"\n--- Tokenizing {split_name} split ---")
-        if is_smollm2_model(args.model_name):
-            from tokenize_smollm2 import tokenize_smollm2
-
-            packed_chunks, context_length, tokenization_metrics = tokenize_smollm2(
-                split_data,
-                model_name=args.model_name,
-                context_length=args.context_length,
-            )
-        else:
-            from tokenize_data import tokenize_gpt
-
-            packed_chunks, context_length, tokenization_metrics = tokenize_gpt(
-                split_data,
-                model_name=args.model_name,
-                return_metrics=True,
-            )
-            if (
-                args.context_length is not None
-                and args.context_length != context_length
-            ):
-                raise ValueError(
-                    "The existing GPT-2 tokenizer packs at its fixed context "
-                    f"length of {context_length}; omit --context-length or use "
-                    f"{context_length}."
-                )
+        packed_chunks, context_length, tokenization_metrics = tokenize_causal_lm(
+            split_data,
+            model_name=args.model_name,
+            context_length=args.context_length,
+            document_separator_token=args.document_separator_token,
+            return_metrics=True,
+        )
         if not packed_chunks:
             raise RuntimeError(
                 f"The {split_name} split did not produce one complete "
@@ -302,12 +284,18 @@ def run_pipeline(args: argparse.Namespace) -> None:
     for split_name, result in tokenization_results.items():
         packed_chunks, context_length, tokenization_metrics = result
         split_bin, split_parquet, split_metrics = output_paths[split_name]
-        save_chunks_to_disk(packed_chunks, split_bin)
+        binary_dtype = tokenization_metrics["binary_dtype"]
+        save_chunks_to_disk(
+            packed_chunks,
+            split_bin,
+            binary_dtype=binary_dtype,
+        )
         save_chunks_to_parquet(
             packed_chunks,
             split_parquet,
             batch_size=args.parquet_batch_size,
             compression=parquet_compression,
+            binary_dtype=binary_dtype,
         )
         tokenization_metrics_path = save_tokenization_metrics(
             tokenization_metrics,

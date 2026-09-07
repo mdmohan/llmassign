@@ -23,18 +23,22 @@ def generate_responses(
     model.eval()
     device = next(model.parameters()).device
 
-    # GPT-2 does not define a padding token by default.
+    # Many decoder-only tokenizers do not define a padding token by default.
     if tokenizer.pad_token_id is None:
+        if tokenizer.eos_token_id is None:
+            raise ValueError(
+                "Batched generation requires a tokenizer PAD or EOS token"
+            )
         tokenizer.pad_token = tokenizer.eos_token
 
     # Left padding is preferred for batched decoder-only generation.
     tokenizer.padding_side = "left"
 
-    model_context_length = getattr(
-        model.config,
-        "n_positions",
-        tokenizer.model_max_length,
-    )
+    from causal_lm import model_context_limit
+
+    model_context_length = model_context_limit(model.config, tokenizer)
+    if model_context_length is None:
+        raise ValueError("Unable to determine the model context length")
 
     max_prompt_length = model_context_length - max_new_tokens
     if max_prompt_length <= 0:

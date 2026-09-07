@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "title": "Part 1 Perplexity Evaluation",
+  "created_at_utc": "2026-09-07T11:33:09.417611+00:00",
+  "domain_test_bin": "/home/jovyan/llmassign/1a/data/processed/Qwen2.5-1.5B/token_test.bin",
+  "generic_test_bin": null,
+  "models": {
+    "base": {
+      "requested_model_name": "Qwen/Qwen2.5-1.5B",
+      "model_folder": null,
+      "model_details": {
+        "name_or_path": "Qwen/Qwen2.5-1.5B",
+        "model_class": "Qwen2ForCausalLM",
+        "model_type": "qwen2",
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "is_encoder_decoder": false,
+        "transformer_layers": 28,
+        "attention_heads": 12,
+        "key_value_heads": 2,
+        "embedding_dimension": 1536,
+        "vocabulary_size": 151936,
+        "maximum_context_length": 131072,
+        "total_parameters": 1543714304,
+        "trainable_parameters": 1543714304,
+        "parameter_dtype": "torch.float32",
+        "device": "cuda",
+        "tokenizer_class": "Qwen2TokenizerFast",
+        "tokenizer_name_or_path": "Qwen/Qwen2.5-1.5B",
+        "tokenizer_vocabulary_size": 151665,
+        "tokenizer_base_vocabulary_size": 151643,
+        "tokenizer_maximum_token_id": 151664,
+        "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+        "bos_token_id": null,
+        "eos_token_id": 151643,
+        "pad_token_id": 151643,
+        "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+      },
+      "held_out_perplexity": {
+        "domain": {
+          "bin_file": "/home/jovyan/llmassign/1a/data/processed/Qwen2.5-1.5B/token_test.bin",
+          "sha256": "daca6c4b43309d94af70d190b4e7aaab3076a23551b82657b08097e2ad9a5947",
+          "binary_dtype": "uint32",
+          "file_size_bytes": 1859584,
+          "stored_token_count": 464896,
+          "context_length": 2048,
+          "packed_sequence_count": 227,
+          "maximum_token_id": 151643,
+          "batch_size": 2,
+          "num_workers": 0,
+          "evaluated_token_count": 464669,
+          "total_negative_log_likelihood": 752946.7697269917,
+          "mean_cross_entropy_loss": 1.6203938066171655,
+          "perplexity": 5.055080648844954,
+          "elapsed_seconds": 88.87629437446594,
+          "method": "exp(total_negative_log_likelihood / evaluated_token_count)"
+        }
+      }
+    },
+    "cpt": {
+      "requested_model_name": "Qwen/Qwen2.5-1.5B",
+      "model_folder": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+      "model_details": {
+        "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+        "model_class": "Qwen2ForCausalLM",
+        "model_type": "qwen2",
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "is_encoder_decoder": false,
+        "transformer_layers": 28,
+        "attention_heads": 12,
+        "key_value_heads": 2,
+        "embedding_dimension": 1536,
+        "vocabulary_size": 151936,
+        "maximum_context_length": 131072,
+        "total_parameters": 1543714304,
+        "trainable_parameters": 1543714304,
+        "parameter_dtype": "torch.float32",
+        "device": "cuda",
+        "tokenizer_class": "Qwen2TokenizerFast",
+        "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+        "tokenizer_vocabulary_size": 151665,
+        "tokenizer_base_vocabulary_size": 151643,
+        "tokenizer_maximum_token_id": 151664,
+        "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+        "bos_token_id": null,
+        "eos_token_id": 151643,
+        "pad_token_id": 151643,
+        "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+      },
+      "held_out_perplexity": {
+        "domain": {
+          "bin_file": "/home/jovyan/llmassign/1a/data/processed/Qwen2.5-1.5B/token_test.bin",
+          "sha256": "daca6c4b43309d94af70d190b4e7aaab3076a23551b82657b08097e2ad9a5947",
+          "binary_dtype": "uint32",
+          "file_size_bytes": 1859584,
+          "stored_token_count": 464896,
+          "context_length": 2048,
+          "packed_sequence_count": 227,
+          "maximum_token_id": 151643,
+          "batch_size": 2,
+          "num_workers": 0,
+          "evaluated_token_count": 464669,
+          "total_negative_log_likelihood": 669730.5919098854,
+          "mean_cross_entropy_loss": 1.4413068052955662,
+          "perplexity": 4.226215050137275,
+          "elapsed_seconds": 87.41771626472473,
+          "method": "exp(total_negative_log_likelihood / evaluated_token_count)"
+        }
+      }
+    }
+  },
+  "comparison": {
+    "domain": {
+      "base": 5.055080648844954,
+      "cpt": 4.226215050137275,
+      "absolute_change": -0.8288655987076794,
+      "relative_change_percent": -16.396683975696185,
+      "desired_direction": "decrease indicates successful domain adaptation",
+      "verdict": "Good",
+      "remarks": "Domain PPL decreased 16.40%; meets the 10% adaptation target."
+    }
+  }
+}

@@ -1,0 +1,486 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T11:40:44.217568+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_baseline_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ],
+      "response": "every spine switch. Each connection has a bandwidth of 100 Mbps. If there are 10 leaf switches and 5 spine switches, what is the total bandwidth of the network? To determine the total bandwidth of the network, we need to calculate the number of connections between the leaf switches and the spine switches, and then multiply that by the bandwidth of each connection.\n\n1. Identify the number of leaf switches and the number of spine switches:\n   - Number of leaf switches = 1",
+      "generation_metrics": {
+        "concept_hits": [
+          "every spine switch"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.1392405063291139
+      }
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ],
+      "response": "you to connect two Cisco Nexus 9000 Series switches together. The vPC is a Layer 2 fabric that provides redundancy and load balancing for the network. The vPC is a Layer 2 fabric that provides redundancy and load balancing for the network. The vPC is a Layer 2 fabric that provides redundancy and load balancing for the network. The vPC is a Layer 2 fabric that provides redundancy and load balancing for the network. The vPC is a Layer 2 fabric",
+      "generation_metrics": {
+        "concept_hits": [
+          "redundancy"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6708860759493671
+      }
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ],
+      "response": "provide a high-speed, redundant link between the two vPC peers. The vPC peer-link is a Layer 2 link that is configured as a trunk with a native VLAN of 2000. The peer-link is also configured with a Layer 3 IP address and a default gateway. The peer-link is used to carry Layer 3 traffic between the two vPC peers. The peer-link is also used to carry Layer 2 traffic between the two vPC peers. The peer-link",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.23750000000000004
+      }
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ],
+      "response": "uniquely identify a tenant network. Which of the following statements about VNI is incorrect?\nA. A VNI can be associated with multiple VNIs.\nB. A VNI can be associated with multiple VTEPs.\nC. A VNI can be associated with multiple VNIs.\nD. A VNI can be associated with multiple VTEPs.\nAnswer:\nA\n\nIn the process of handling administrative cases, which of the following statements about the use of identification is incorrect?\nA. Identification should",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3055555555555556
+      }
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ],
+      "response": "the ability to advertise MAC addresses and routes to the overlay. This is accomplished through the use of VXLAN EVPN Type 5 routes and Type 5 MAC routes. VXLAN EVPN Type 5 routes are used to advertise MAC addresses and routes to the overlay. VXLAN EVPN Type 5 MAC routes are used to advertise MAC addresses to the overlay. VXLAN EVPN Type 5 routes are advertised in the form of a route target (RT) and a route distinguisher (RD",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.33766233766233766
+      }
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ],
+      "response": "a router in a VXLAN environment. It is a device that connects two or more VTEPs and is responsible for encapsulating and decapsulating VXLAN packets. It also performs the function of a gateway, allowing communication between VXLAN and non-VXLAN networks. The VTEP is a key component of the VXLAN overlay network, enabling communication between virtual machines and other devices in the data center.\n\nWhat is a VXLAN EVPN?\n\nVXLAN EVPN stands for Virtual Ext",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ],
+      "response": "a mechanism to distribute traffic across multiple paths to a destination. This is accomplished by configuring a set of paths, called multipath paths, that are advertised by the spine devices to the leaf devices. The leaf devices then select the best path based on a set of criteria, such as bandwidth, delay, and reliability. The selected path is then used to forward traffic to the destination. This process is repeated for each multipath path, and the leaf devices select the best path based on a set of criteria",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.12790697674418605
+      }
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ],
+      "response": "the following commands: (Choose two.)\nA. switch# configure terminal\nB. switch(config)# vlan 120\nC. switch(config-vlan)# interface ethernet 1/10\nD. switch(config-if)# switchport\nE. switch(config-if)# switchport access vlan 120\nF. switch(config-if)# switchport mode access\nAnswer:\nBE\n\nWhich of the following statements about the OSPF Stub area are correct? (Choose two.)\nA.",
+      "generation_metrics": {
+        "concept_hits": [
+          "vlan 120",
+          "switchport mode access",
+          "switchport access vlan 120"
+        ],
+        "concept_hit_count": 3,
+        "concept_count": 5,
+        "concept_recall": 0.6,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.10526315789473684
+      }
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ],
+      "response": "the same speed and duplex settings. If the member interfaces have different settings, the LACP port channel is not created. If you need to change the speed or duplex setting of a member interface, you must first remove the LACP port channel and then create a new LACP port channel with the desired settings. For more information, see the Cisco Nexus 9000 Series NX-OS Port Channels Configuration Guide.\n\n• The member interfaces must be in the same VLAN.\n\n• The member interfaces must",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.07499999999999996
+      }
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ],
+      "response": "a vPC peer-link to fail. Which of the following is a possible cause of a Type-1 vPC consistency mismatch? (Choose the best answer.)\nA. The vPC peer-link is down.\nB. The vPC peer-link is in a down state.\nC. The vPC peer-link is in a down state and the vPC peer-link is in a down state.\nD. The vPC peer-link is in a down state and the vPC peer-link is in a",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.42307692307692313
+      }
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ],
+      "response": "the following:\n\n• The interface is not in a loopback state.\n\n• The interface is not in a shutdown state.\n\n• The interface is not in a no shutdown state.\n\n• The interface is not in a no switchport state.\n\n• The interface is not in a no switchport state.\n\n• The interface is not in a no shutdown state.\n\n• The interface is not in a no switchport state.\n\n• The interface is not in a no shutdown state.\n\n• The interface is not in a",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.75
+      }
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ],
+      "response": "that the neighbor's TCP connection is normal. If the neighbor's TCP connection is abnormal, you can use the'show running-config bgp' command to check if the neighbor's configuration is consistent with the current BGP process configuration. If the configuration is inconsistent, you can use the 'copy running-config startup-config' command to copy the current configuration to the startup configuration.\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nThe main function of the BGP EVPN Type 5 route",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.10256410256410253
+      }
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ],
+      "response": "the following:\n\n• The remote VTEP's VXLAN EVPN MAC address table.\n\n• The remote VTEP's VXLAN EVPN ARP table.\n\n• The remote VTEP's VXLAN EVPN MAC address table.\n\n• The remote VTEP's VXLAN EVPN ARP table.\n\n• The remote VTEP's VXLAN EVPN MAC address table.\n\n• The remote VTEP's VXLAN EVPN ARP table.\n\n• The remote VTEP's VXLAN E",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.736842105263158
+      }
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ],
+      "response": "a break in the fiber link. If UDLD detects a break in the fiber link, it sends a break signal to the other end of the link. The other end of the link sends a break signal back to the first end of the link. This process continues until the break signal is detected on both ends of the link. If the break signal is detected on both ends of the link, the link is considered to be broken. If the break signal is not detected on both ends of the link",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.34444444444444444
+      }
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ],
+      "response": "all switches in the network. If the MTU is not consistent, the switch will not be able to forward the frame. This is because the switch will not be able to determine the correct frame size to use when forwarding the frame. This can cause the frame to be dropped or delayed, which can impact network performance.\n\nTo ensure consistent MTU configuration across all switches in the network, it is recommended to configure the MTU on each switch to the maximum value that is supported by the network infrastructure.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.10344827586206895
+      }
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ],
+      "response": "a problem with the interface itself. The MAC address table on the interface is not being updated properly. The MAC address table on the interface is not being updated properly. The MAC address table on the interface is not being updated properly. The MAC address table on the interface is not being updated properly. The MAC address table on the interface is not being updated properly. The MAC address table on the interface is not being updated properly. The MAC address table on the interface is not being updated properly. The MAC",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8
+      }
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ],
+      "response": "a centralized view of Cisco Nexus Dashboard data. It is a web-based application that allows you to monitor and manage Cisco Nexus Dashboard data from a single location. The Cisco Nexus Dashboard is a cloud-based platform that provides real-time monitoring and management of Cisco Nexus switches. It is used to monitor the health and performance of Cisco Nexus switches, as well as to configure and manage the switches. The Cisco Nexus Dashboard is a cloud-based platform that provides real-time monitoring and management of Cisco Nexus switches. It is used",
+      "generation_metrics": {
+        "concept_hits": [
+          "management"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2934782608695652
+      }
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ],
+      "response": "a customer needs a switch that is easy to install and manage. The switch is easy to install because it has a single, fixed form factor. The switch is easy to manage because it has a single, fixed management port. The switch is easy to manage because it has a single, fixed management port. The switch is easy to manage because it has a single, fixed management port. The switch is easy to manage because it has a single, fixed management port.\nA fixed-form-factor Nexus 9",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5813953488372092
+      }
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ],
+      "response": "a high degree of flexibility in the number of ports and the number of modules that can be deployed. The modular Nexus 9500 platform is a scalable, modular, and flexible platform that can be deployed in a variety of environments. It is designed to provide a high degree of flexibility in the number of ports and the number of modules that can be deployed, making it an ideal choice for environments where the number of ports and modules may vary. The modular Nexus 9500 platform is",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3214285714285714
+      }
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ],
+      "response": "the use of high-speed, low-latency, and low-jitter links to ensure optimal performance and minimize latency. This can be achieved by using high-speed, low-latency, and low-jitter links such as 100G, 400G, or 800G links for the interconnect between the switches and the interconnect between the switches and the servers. Additionally, the use of high-speed, low-latency, and low-jitter links for the inter",
+      "generation_metrics": {
+        "concept_hits": [
+          "low latency"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.31343283582089554
+      }
+    }
+  ]
+}

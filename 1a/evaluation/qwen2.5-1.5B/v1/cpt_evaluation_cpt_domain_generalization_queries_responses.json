@@ -1,0 +1,281 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T11:40:44.217568+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_generalization_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DGEN01",
+      "category": "vxlan-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A multitenant data center needs far more than 4096 isolated Layer 2 segments over an IP fabric. The design should use",
+      "expected_concepts": [
+        "VXLAN",
+        "24-bit VNI",
+        "approximately 16 million segments",
+        "Layer 3 underlay"
+      ],
+      "response": "a scalable, Layer 3 fabric that can be scaled to support thousands of isolated Layer 3 segments. The fabric should be able to support a large number of tenants, each with their own isolated Layer 3 segment. The fabric should be able to support a large number of tenants, each with their own isolated Layer 3 segment. The fabric should be able to support a large number of tenants, each with their own isolated Layer 3 segment. The fabric should be able to support a large number",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5764705882352941
+      }
+    },
+    {
+      "id": "DGEN02",
+      "category": "ospf-nssa-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An OSPF area should retain stub-area behavior but must import selected routes from an external routing domain. The suitable area type is",
+      "expected_concepts": [
+        "NSSA",
+        "Not-So-Stubby Area",
+        "Type-7 LSA",
+        "external routes"
+      ],
+      "response": "NSSA. NSSA is an OSPF area that allows the import of external routes but does not allow the export of external routes. The NSSA area is configured with the default-route-advertise command. The default-route-advertise command enables the import of the default route into the NSSA area. The default-route-advertise command is configured on the border router that connects the NSSA area to the external routing domain. The default-route-advertise command is not supported on the area border router that connects",
+      "generation_metrics": {
+        "concept_hits": [
+          "NSSA",
+          "external routes"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 4,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.20481927710843373
+      }
+    },
+    {
+      "id": "DGEN03",
+      "category": "ospf-resiliency",
+      "evaluation_type": "domain_generalization",
+      "prompt": "During an OSPF graceful restart, a topology change that could make forwarding stale should cause the router to",
+      "expected_concepts": [
+        "exit graceful restart",
+        "normal OSPF restart",
+        "avoid routing loops",
+        "recalculate forwarding"
+      ],
+      "response": ":\n\nA. Restart the OSPF process.\n\nB. Restart the OSPF process and then re-advertise the changed topology.\n\nC. Restart the OSPF process and then re-advertise the changed topology and recompute the shortest path tree.\n\nD. Restart the OSPF process and then re-advertise the changed topology and recompute the shortest path tree and then recompute the link state database.\n\nAnswer: C\n\nIn a broadcast network, which of the following is true about the election of the Design",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3421052631578947
+      }
+    },
+    {
+      "id": "DGEN04",
+      "category": "ospf-bfd",
+      "evaluation_type": "domain_generalization",
+      "prompt": "OSPF neighbors form over a poor-quality link, but the faster BFD session repeatedly fails. BFD strict mode addresses this by",
+      "expected_concepts": [
+        "block OSPF adjacency formation",
+        "wait for BFD session",
+        "both neighbors advertise support"
+      ],
+      "response": "terminating the session as soon as the link becomes unresponsive. This is a quick way to detect a poor-quality link. BFD is enabled by default on all Cisco Nexus 9000 Series switches. BFD is enabled by default on all Cisco Nexus 9000 Series switches. BFD is enabled by default on all Cisco Nexus 9000 Series switches. BFD is enabled by default on all Cisco Nexus 9000 Series switches. BFD is enabled",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5285714285714286
+      }
+    },
+    {
+      "id": "DGEN05",
+      "category": "nexus-dashboard-operations",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An operations team wants one on-premises control point for provisioning, observing, automating, and troubleshooting several Cisco data-center fabrics. The appropriate platform is",
+      "expected_concepts": [
+        "Cisco Nexus Dashboard",
+        "centralized management",
+        "visibility",
+        "automation"
+      ],
+      "response": ":\nCisco NX-OS\nCisco NX-OS with Cisco NX-OS Fabric Services\nCisco NX-OS with Cisco NX-OS Fabric Services and Cisco NX-OS Fabric Services\nCisco NX-OS with Cisco NX-OS Fabric Services and Cisco NX-OS Fabric Services\n答案:\nB\n\n在华为路由器上配置OSPFv3时,必须先创建OSPFv3进程,然后再在OSPFv3进程中创建OSPFv3域。\nA. 错误",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6086956521739131
+      }
+    },
+    {
+      "id": "DGEN06",
+      "category": "ai-data-center-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A distributed GPU training job is slowed by congestion and packet loss between workers. The Ethernet fabric should be designed for",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "lossless networking",
+        "congestion management",
+        "telemetry"
+      ],
+      "response": "high bandwidth and low latency. The following guidelines and recommendations are provided to help you design a high-performance Ethernet fabric for a distributed GPU training job.\n\n• Use a 100G Ethernet switch for the fabric.\n\n• Use a 100G Ethernet switch for the fabric.\n\n• Use a 100G Ethernet switch for the fabric.\n\n• Use a 100G Ethernet switch for the fabric.\n\n• Use a 100G Ethernet switch for the fabric.\n\n•",
+      "generation_metrics": {
+        "concept_hits": [
+          "high bandwidth",
+          "low latency"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 5,
+        "concept_recall": 0.4,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.46153846153846156
+      }
+    },
+    {
+      "id": "DGEN07",
+      "category": "switching-behavior",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A Nexus switch starts transmitting a frame after reading enough of its header to choose the egress port instead of buffering the entire frame. This behavior is called",
+      "expected_concepts": [
+        "cut-through switching"
+      ],
+      "response": "the transmit window. The transmit window is configurable on a per-interface basis. The transmit window is also configurable on a per-VLAN basis. The transmit window is also configurable on a per-VLAN interface basis. The transmit window is also configurable on a per-VLAN interface basis. The transmit window is also configurable on a per-VLAN interface basis. The transmit window is also configurable on a per-VLAN interface basis. The transmit window is also configurable on a per-VLAN interface basis. The transmit",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7619047619047619
+      }
+    },
+    {
+      "id": "DGEN08",
+      "category": "vxlan-forwarding",
+      "evaluation_type": "domain_generalization",
+      "prompt": "Two workloads must remain in the same logical Layer 2 segment while residing across a routed Layer 3 data-center fabric. VXLAN accomplishes this by",
+      "expected_concepts": [
+        "MAC-in-UDP encapsulation",
+        "tunneling",
+        "VTEP",
+        "Layer 2 overlay"
+      ],
+      "response": "encapsulating the data traffic in a VXLAN tunnel. The VXLAN tunnel is then routed across the data-center fabric. The VXLAN tunnel is transparent to the workloads. The tunnel is only visible to the data-center fabric. The data-center fabric is unaware of the VXLAN tunnel. The data-center fabric is unaware of the VXLAN tunnel. The tunnel is only visible to the data-center fabric. VXLAN tunnel encapsulation is transparent to the workloads. VXLAN tunnel encapsulation is transparent",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.41025641025641024
+      }
+    },
+    {
+      "id": "DGEN09",
+      "category": "interface-troubleshooting",
+      "evaluation_type": "domain_generalization",
+      "prompt": "CRC and FCS counters on a Nexus interface continue increasing between polling intervals. The investigation should focus first on",
+      "expected_concepts": [
+        "physical layer",
+        "cable",
+        "optics",
+        "peer interface",
+        "speed or FEC"
+      ],
+      "response": "the interface itself. The following steps can be taken to troubleshoot the issue:\n\n1. Verify the interface status and statistics.\n\n2. Check the interface configuration and ensure that the interface is not in a loopback state.\n\n3. Verify the interface speed and duplex settings.\n\n4. Check the interface link status and ensure that the link is up and operational.\n\n5. Verify the interface IP address and ensure that it is reachable.\n\n6. Check the interface MTU size and ensure that it is compatible with",
+      "generation_metrics": {
+        "concept_hits": [
+          "speed or FEC"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 5,
+        "concept_recall": 0.2,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.12195121951219512
+      }
+    },
+    {
+      "id": "DGEN10",
+      "category": "vpc-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A server should use one logical port channel while connecting redundantly to two separate Cisco Nexus switches. The switches should be configured as",
+      "expected_concepts": [
+        "vPC peers",
+        "vPC domain",
+        "peer-link",
+        "logical port channel"
+      ],
+      "response": "Layer 2 redundant peers. The server should be configured to use the Layer 2 redundant peer as the Layer 2 peer. The server should be configured to use the Layer 2 redundant peer as the Layer 2 peer. The server should be configured to use the Layer 2 redundant peer as the Layer 2 peer. The server should be configured to use the Layer 2 redundant peer as the Layer 2 peer. The server should be configured to use the Layer 2 redundant peer as",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7710843373493976
+      }
+    }
+  ]
+}

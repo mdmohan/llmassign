@@ -1,0 +1,476 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-07T09:44:35.514022+00:00",
+  "model_name": "HuggingFaceTB/SmolLM2-360M",
+  "model_details": {
+    "name_or_path": "HuggingFaceTB/SmolLM2-360M",
+    "model_class": "LlamaForCausalLM",
+    "model_type": "llama",
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "transformer_layers": 32,
+    "attention_heads": 15,
+    "key_value_heads": 5,
+    "embedding_dimension": 960,
+    "head_dimension": 64,
+    "vocabulary_size": 49152,
+    "maximum_context_length": 8192,
+    "lm_head_output_dimension": 49152,
+    "lm_head_matches_vocabulary": true,
+    "total_parameters": 361821120,
+    "trainable_parameters": 361821120,
+    "parameter_dtype": "torch.bfloat16",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "HuggingFaceTB/SmolLM2-360M",
+    "tokenizer_vocabulary_size": 49152,
+    "bos_token_id": 0,
+    "eos_token_id": 0,
+    "pad_token_id": 0,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_baseline_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ],
+      "response": "every other leaf switch. This is a very efficient way to connect switches, but it also means that the switches are very close to each other. This can cause problems with latency and performance.\n\nA leaf-spine network is a type of network topology in which all switches are connected to each other. This is a very efficient way to connect switches, but it also means that the switches are very close to each other. This can cause problems with latency and performance.\n\nA leaf-",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3855421686746988
+      }
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ],
+      "response": "you to create a virtual network that is connected to a physical network.\n\nThe Cisco Nexus vPC is a virtual network that is connected to a physical network. It is a virtual network that is connected to a physical network. It is a virtual network that is connected to a physical network. It is a virtual network that is connected to a physical network.\n\nThe Cisco Nexus vPC is a virtual network that is connected to a physical network. It is a virtual network",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7439024390243902
+      }
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ],
+      "response": "provide a secure, reliable, and high-speed connection between two computers. The vPC peer-link is a peer-to-peer network that uses the Internet Protocol (IP) to connect two computers. The vPC peer-link is a peer-to-peer network that uses the Internet Protocol (IP) to connect two computers. The vPC peer-link is a peer-to-peer network that uses the Internet Protocol (IP) to connect two computers.\n\nWhat is",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5633802816901409
+      }
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ],
+      "response": "identify the VLANs. The VNI is a 16-bit number that is used to identify the VLANs. The VNI is a 16-bit number that is used to identify the VLANs. The VNI is a 16-bit number that is used to identify the VLANs. The VNI is a 16-bit number that is used to identify the VLANs. The VNI is a 16-bit",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7777777777777778
+      }
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ],
+      "response": "the ability to route traffic between the VXLAN network and the VXLAN VPN network.\n\nVXLAN VPNs are a type of virtual private network (VPN) that uses a virtual private network (VPN) tunneling protocol (VPN-T) to provide a secure connection between two or more VXLAN networks.\n\nVXLAN VPNs are a type of virtual private network (VPN) that uses a virtual private network (VPN) tunneling",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.29032258064516125
+      }
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ],
+      "response": "a VTP switch.\n\nVTP is a protocol that is used to manage the VTP domain. It is a protocol that is used to manage the VTP domain. It is a protocol that is used to manage the VTP domain.\n\nVTP is a protocol that is used to manage the VTP domain. It is a protocol that is used to manage the VTP domain. It is a protocol that is used to manage the VTP domain.\n\nVTP is",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.76
+      }
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ],
+      "response": "a way to achieve the same performance as a single-path fabric, but with the added benefit of being able to use a single path for all the links in the fabric.\n\nThe following figure shows the basic structure of a leaf-spine fabric.\n\nFigure 1: Leaf-spine fabric\n\nThe leaf-spine fabric is a type of multipath fabric that uses a single path for all the links in the fabric. The leaf-spine fabric is a type",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.23684210526315785
+      }
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ],
+      "response": "the following steps:\n\n  1. Create a new VLAN.\n  2. Configure the VLAN to be an access VLAN.\n  3. Configure the VLAN to be an access VLAN.\n  4. Configure the VLAN to be an access VLAN.\n  5. Configure the VLAN to be an access VLAN.\n  6. Configure the VLAN to be an access VLAN.\n  7. Configure the VLAN to be an access",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4915254237288136
+      }
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ],
+      "response": "a Cisco NX-OS port channel.\n\nThe Cisco NX-OS port channel is a Cisco NX-OS port channel that is used to create an LACP port channel.\n\nThe Cisco NX-OS port channel is a Cisco NX-OS port channel that is used to create an LACP port channel.\n\nThe Cisco NX-OS port channel is a Cisco NX-OS port channel that is used to create an LACP port channel.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7285714285714286
+      }
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ],
+      "response": "a Type-1 vPC to fail to run.\n\nThe following example shows how to use the vPC_Type_1_vPC_Mismatch_Exception class to catch the Type-1 vPC consistency mismatch exception.\n\n// This example shows how to use the vPC_Type_1_vPC_Mismatch_Exception class to catch the Type-1 vPC consistency mismatch exception.\n\n// Create a vPC_Type_1_v",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.38983050847457623
+      }
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ],
+      "response": "the following:\n\n  • Check the cable and connectors for damage.\n  • Check the power supply for damage.\n  • Check the power supply for a short circuit.\n  • Check the power supply for a short circuit.\n  • Check the power supply for a short circuit.\n  • Check the power supply for a short circuit.\n  • Check the power supply for a short circuit.\n  • Check the power supply for a short circuit.\n  • Check the power supply for a short circuit.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7391304347826086
+      }
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ],
+      "response": "that the neighbor is still alive. If the neighbor is still alive, then the neighbor is still alive. If the neighbor is still alive, then the neighbor is still alive. If the neighbor is still alive, then the neighbor is still alive. If the neighbor is still alive, then the neighbor is still alive. If the neighbor is still alive, then the neighbor is still alive. If the neighbor is still alive, then the neighbor is still alive. If the neighbor is still alive, then the",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8809523809523809
+      }
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ],
+      "response": "the VXLAN routing table.\n\nVXLAN Routing Table\n\nThe VXLAN routing table is a list of VXLANs that are reachable from the VXLAN VTEP. The VXLAN routing table is a list of VXLANs that are reachable from the VXLAN VTEP.\n\nThe VXLAN routing table is a list of VXLANs that are reachable from the VXLAN VTEP. The VX",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6181818181818182
+      }
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ],
+      "response": "the presence of a fiber and the type of fiber.\n\nThe following table shows the different types of fiber interfaces.\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type\n\nFiber Type",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5416666666666667
+      }
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ],
+      "response": "the entire network.\n\nThe MTU is the maximum size of the data packet that can be sent over a network. The MTU is the maximum size of the data packet that can be sent over a network. The MTU is the maximum size of the data packet that can be sent over a network. The MTU is the maximum size of the data packet that can be sent over a network. The MTU is the maximum size of the data packet that can be sent over a network",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7790697674418605
+      }
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ],
+      "response": "a problem with the interface.\n\nThe MAC address is a 48-bit number that is unique to each device. It is used to identify the device on the network.\n\nThe MAC address is a 48-bit number that is unique to each device. It is used to identify the device on the network.\n\nThe MAC address is a 48-bit number that is unique to each device. It is used to identify the device on the network.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6133333333333333
+      }
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ],
+      "response": "a user with a dashboard of their network. It is a web application that allows users to view their network and the devices connected to it. It is a web application that allows users to view their network and the devices connected to it. It is a web application that allows users to view their network and the devices connected to it.\n\nThe Nexus Dashboard is a web application that allows users to view their network and the devices connected to it. It is a web application that allows users",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6477272727272727
+      }
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ],
+      "response": "a 100-meter range is required.\n\nThe 100-meter range is achieved by using a 100-meter antenna and a 100-meter switch. The 100-meter antenna is a 10-meter dipole, and the 100-meter switch is a 10-meter dipole.\n\nThe 100-meter antenna is a 10-meter dipole, and the",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3921568627450981
+      }
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ],
+      "response": "a high level of flexibility and the need for a high-performance, low-power, low-cost, and low-cost system.\n\nThe Nexus 9500 is a modular platform that can be used to build a wide variety of systems. The Nexus 9500 is a modular platform that can be used to build a wide variety of systems. The Nexus 9500 is a modular platform that can be used to build a",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4411764705882353
+      }
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ],
+      "response": "the following:\n\n  • High bandwidth\n  • Low latency\n  • Low power consumption\n  • Low cost\n\nThe following are the key features of an Ethernet fabric for an AI training cluster:\n\n  • High bandwidth: The bandwidth of the Ethernet fabric should be high enough to support the high-bandwidth data transfer between the AI training cluster and the cloud.\n  • Low latency: The latency of the Ethernet fabric should be low enough to support the high-speed data transfer between the AI training cluster and",
+      "generation_metrics": {
+        "concept_hits": [
+          "high bandwidth",
+          "low latency"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 4,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.1842105263157895
+      }
+    }
+  ]
+}

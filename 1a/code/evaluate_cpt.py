@@ -21,6 +21,7 @@ import hashlib
 import json
 import shlex
 import sys
+import textwrap
 import time
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -30,12 +31,18 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from baseline import _model_details, resolve_query_paths
+from baseline import resolve_query_paths
 from cache import CACHE_DIR
+from causal_lm import (
+    causal_lm_model_details,
+    load_causal_lm,
+    model_context_limit,
+)
 from cli_parsers import build_cpt_evaluation_parser
 from compare_responses import _print_table, _set_label, score_record
 from cpt_train import _json_compatible, _perplexity
-from load_tensors import MemmapDataset
+from load_local_model import resolve_model_folder
+from load_tensors import MemmapDataset, normalize_binary_dtype
 from model_response import generate_responses, load_prompt_json
 
 
@@ -56,6 +63,172 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _file_identity(path: Path | None) -> dict | None:
+    """Return stable provenance for an evaluation input file."""
+    if path is None:
+        return None
+    resolved = path.expanduser().resolve()
+    if not resolved.is_file():
+        raise ValueError(f"Evaluation input file does not exist: {resolved}")
+    return {
+        "path": str(resolved),
+        "size_bytes": resolved.stat().st_size,
+        "sha256": _sha256(resolved),
+    }
+
+
+def _json_input_identities(supplied_paths) -> list[dict]:
+    """Expand JSON files/directories and fingerprint their exact contents."""
+    if not supplied_paths:
+        return []
+    return [
+        _file_identity(path)
+        for path in resolve_query_paths(supplied_paths)
+    ]
+
+
+def _find_training_run(model_folder: Path | None) -> Path | None:
+    """Locate training_run.json for a CPT run root or checkpoint folder."""
+    if model_folder is None:
+        return None
+
+    supplied = model_folder.expanduser().resolve()
+    resolved_checkpoint = resolve_model_folder(supplied)
+    candidates = (
+        supplied / "training_run.json",
+        resolved_checkpoint / "training_run.json",
+        resolved_checkpoint.parent / "training_run.json",
+    )
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.resolve()
+    return None
+
+
+def _load_cpt_training_summary(model_folder: Path | None) -> dict | None:
+    """Load the training parameters associated with the selected CPT output."""
+    training_run_path = _find_training_run(model_folder)
+    if training_run_path is None:
+        return None
+    try:
+        training_run = json.loads(training_run_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid CPT training JSON: {training_run_path}") from exc
+
+    return {
+        "training_run_file": str(training_run_path),
+        "training_run_sha256": _sha256(training_run_path),
+        "status": training_run.get("status"),
+        "model_family": training_run.get("model_family"),
+        "model": training_run.get("model"),
+        "dataset": training_run.get("dataset"),
+        "hyperparameters": training_run.get("hyperparameters"),
+        "derived_training_plan": training_run.get("derived_training_plan"),
+        "results": training_run.get("results"),
+        "command": training_run.get("command"),
+    }
+
+
+def _checkpoint_identity(model_folder: Path | None) -> dict | None:
+    """Identify a CPT checkpoint without hashing multi-gigabyte weight files."""
+    if model_folder is None:
+        return None
+
+    supplied = model_folder.expanduser().resolve()
+    checkpoint = resolve_model_folder(supplied)
+    model_patterns = (
+        "config.json",
+        "generation_config.json",
+        "model.safetensors.index.json",
+        "pytorch_model.bin.index.json",
+        "*.safetensors",
+        "pytorch_model*.bin",
+    )
+    files = set()
+    for pattern in model_patterns:
+        files.update(path for path in checkpoint.glob(pattern) if path.is_file())
+
+    manifest = []
+    for path in sorted(files):
+        stat = path.stat()
+        manifest.append(
+            {
+                "name": path.name,
+                "size_bytes": stat.st_size,
+                "modified_time_ns": stat.st_mtime_ns,
+            }
+        )
+
+    training_run = _find_training_run(supplied)
+    return {
+        "supplied_path": str(supplied),
+        "resolved_checkpoint": str(checkpoint),
+        "model_file_manifest": manifest,
+        "training_run": _file_identity(training_run),
+    }
+
+
+def _build_evaluation_identity(args) -> dict:
+    """Describe every input and option that can affect evaluation results."""
+    return {
+        "schema_version": 1,
+        "base_model_name": args.model_name,
+        "cpt_checkpoint": _checkpoint_identity(args.model_folder),
+        "domain_test_bin": _file_identity(args.test_bin),
+        "domain_dataset_metrics": _file_identity(args.dataset_metrics),
+        "generic_test_bin": _file_identity(args.generic_test_bin),
+        "generic_dataset_metrics": _file_identity(
+            args.generic_dataset_metrics
+        ),
+        "query_inputs": _json_input_identities(args.query_input),
+        "baseline_response_inputs": _json_input_identities(
+            args.baseline_responses
+        ),
+        "evaluation_options": {
+            "context_length": args.context_length,
+            "batch_size": args.batch_size,
+            "num_workers": args.num_workers,
+            "max_new_tokens": args.max_new_tokens,
+            "generation_batch_size": args.generation_batch_size,
+        },
+    }
+
+
+def _report_is_complete(report: dict, args) -> bool:
+    """Require all requested model results and final comparison artifacts."""
+    models = report.get("models")
+    if not isinstance(models, dict) or "base" not in models:
+        return False
+    if args.model_folder is not None:
+        if "cpt" not in models or not report.get("comparison"):
+            return False
+    return bool(report.get("completed_at_utc"))
+
+
+def _load_reusable_report(args, output_file: Path, identity: dict) -> dict | None:
+    """Reuse a completed report only when all provenance exactly matches."""
+    if not getattr(args, "reuse_existing", False) or not output_file.is_file():
+        return None
+    try:
+        report = json.loads(output_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        print(f"Existing report is invalid JSON; recomputing: {output_file}")
+        return None
+
+    if not _report_is_complete(report, args):
+        print(f"Existing report is incomplete; recomputing: {output_file}")
+        return None
+    if report.get("evaluation_identity") != identity:
+        print(
+            "Existing report does not match the current model, checkpoint, "
+            "data, queries, baselines, or evaluation options; recomputing."
+        )
+        return None
+
+    print(f"Reusing matching completed evaluation report: {output_file}")
+    return report
+
+
 def _load_metrics(path: Path | None) -> tuple[dict | None, str | None]:
     if path is None:
         return None, None
@@ -69,58 +242,26 @@ def _load_metrics(path: Path | None) -> tuple[dict | None, str | None]:
 
 
 def _model_context_length(model, tokenizer) -> int:
-    """Support GPT-2 and Llama-family context-length configuration names."""
-    for attribute in ("n_positions", "max_position_embeddings", "n_ctx"):
-        value = getattr(model.config, attribute, None)
-        if value is not None:
-            return int(value)
-    return int(tokenizer.model_max_length)
+    """Return the finite context limit exposed by the selected causal LM."""
+    context_length = model_context_limit(model.config, tokenizer)
+    if context_length is None:
+        raise ValueError("Unable to determine the loaded model context length")
+    return context_length
 
 
 def _loaded_model_details(model, tokenizer, device) -> dict:
-    """Reuse existing model-specific reporting where available."""
-    if getattr(model.config, "model_type", None) == "llama":
-        from smollm2_model import smollm2_model_details
-
-        details = smollm2_model_details(model, tokenizer, device)
-    else:
-        details = _model_details(model, tokenizer, device)
+    """Return architecture-neutral reporting for any causal LM."""
+    details = causal_lm_model_details(model, tokenizer, device)
     details["cache_dir"] = str(CACHE_DIR)
     return details
 
 
 def _load_selected_model(model_name: str, model_folder: Path | None = None):
-    """Load a supported base model or local CPT checkpoint using existing code."""
-    from smollm2_model import (
-        is_smollm2_checkpoint,
-        is_smollm2_model,
-        load_smollm2_model,
+    """Load a base model or local CPT checkpoint through Hugging Face Auto."""
+    model_dict = load_causal_lm(
+        model_name=model_name,
+        model_folder=model_folder,
     )
-
-    smollm2_selected = is_smollm2_model(model_name)
-    if model_folder is not None:
-        smollm2_selected = (
-            smollm2_selected or is_smollm2_checkpoint(model_folder)
-        )
-
-    if smollm2_selected:
-        model_dict = load_smollm2_model(
-            model_name=model_name,
-            model_folder=model_folder,
-        )
-    elif model_folder is None:
-        from gpt2_model import load_gpt2_model
-
-        model_dict = load_gpt2_model(model_name=model_name)
-    else:
-        from load_local_model import load_local_model
-
-        model, tokenizer, device = load_local_model(model_folder)
-        model_dict = {
-            "model": model,
-            "tokenizer": tokenizer,
-            "device": device,
-        }
 
     model = model_dict["model"]
     tokenizer = model_dict["tokenizer"]
@@ -139,10 +280,15 @@ def _validate_packed_dataset(
     bin_file = bin_file.expanduser().resolve()
     if not bin_file.is_file():
         raise ValueError(f"Held-out token file does not exist: {bin_file}")
-    if bin_file.stat().st_size % np.dtype(np.uint16).itemsize:
-        raise ValueError(f"Invalid uint16 token-file size: {bin_file}")
+    binary_dtype = normalize_binary_dtype(
+        metrics.get("binary_dtype") if metrics is not None else "uint16"
+    )
+    if bin_file.stat().st_size % binary_dtype.itemsize:
+        raise ValueError(
+            f"Invalid {binary_dtype.name} token-file size: {bin_file}"
+        )
 
-    stored_tokens = bin_file.stat().st_size // np.dtype(np.uint16).itemsize
+    stored_tokens = bin_file.stat().st_size // binary_dtype.itemsize
     if stored_tokens < context_length:
         raise ValueError(
             f"{bin_file} has only {stored_tokens:,} tokens, fewer than one "
@@ -161,7 +307,11 @@ def _validate_packed_dataset(
             f"model limit of {model_limit:,}"
         )
 
-    dataset = MemmapDataset(str(bin_file), seq_len=context_length)
+    dataset = MemmapDataset(
+        str(bin_file),
+        seq_len=context_length,
+        binary_dtype=binary_dtype,
+    )
     maximum_token_id = int(dataset.data.max())
     vocabulary_size = int(model.config.vocab_size)
     if maximum_token_id >= vocabulary_size:
@@ -178,16 +328,24 @@ def _validate_packed_dataset(
                 f"{metrics_context} != {context_length}"
             )
         metrics_vocab = metrics.get("tokenizer_vocabulary_size")
-        if metrics_vocab is not None and int(metrics_vocab) != tokenizer.vocab_size:
+        if metrics_vocab is not None and int(metrics_vocab) != len(tokenizer):
             raise ValueError(
                 "Dataset tokenizer vocabulary and loaded tokenizer disagree: "
-                f"{metrics_vocab} != {tokenizer.vocab_size}"
+                f"{metrics_vocab} != {len(tokenizer)}"
             )
+        metrics_fingerprint = metrics.get("tokenizer_vocabulary_sha256")
+        if metrics_fingerprint is not None:
+            from causal_lm import tokenizer_vocabulary_sha256
+
+            if metrics_fingerprint != tokenizer_vocabulary_sha256(tokenizer):
+                raise ValueError(
+                    "Dataset token-to-ID mapping and loaded tokenizer disagree"
+                )
 
     provenance = {
         "bin_file": str(bin_file),
         "sha256": _sha256(bin_file),
-        "binary_dtype": "uint16",
+        "binary_dtype": binary_dtype.name,
         "file_size_bytes": bin_file.stat().st_size,
         "stored_token_count": stored_tokens,
         "context_length": context_length,
@@ -320,11 +478,16 @@ def evaluate_conditional_perplexity(
         raise ValueError("Conditional perplexity requires a prompt and target")
 
     combined, target_character_start = _join_prompt_and_target(prompt, target)
-    encoded = tokenizer(
-        combined,
-        add_special_tokens=False,
-        return_offsets_mapping=True,
-    )
+    try:
+        encoded = tokenizer(
+            combined,
+            add_special_tokens=False,
+            return_offsets_mapping=True,
+        )
+    except (NotImplementedError, TypeError, ValueError):
+        # Slow tokenizers do not expose character offsets. The fallback below
+        # estimates the boundary from a separate prompt tokenization.
+        encoded = tokenizer(combined, add_special_tokens=False)
     input_ids = list(encoded["input_ids"])
     offsets = encoded.get("offset_mapping")
     if not input_ids:
@@ -339,8 +502,7 @@ def evaluate_conditional_perplexity(
             for token_id, (_, end) in zip(input_ids, offsets)
         ]
     else:
-        # All project tokenizers are fast tokenizers and supply offsets. This
-        # fallback keeps the evaluator usable with a slow custom tokenizer.
+        # Keep the evaluator usable with a slow tokenizer.
         prompt_token_count = len(
             tokenizer(
                 combined[:target_character_start],
@@ -1282,14 +1444,225 @@ def _release_model_memory() -> None:
         torch.cuda.empty_cache()
 
 
-def _response_preview(value: str | None, limit: int = 64) -> str:
-    compact = " ".join(str(value or "").split())
-    if len(compact) <= limit:
-        return compact
-    return compact[: limit - 1].rstrip() + "…"
+def _print_wrapped_table(
+    headers: list[str],
+    rows: list[list[str]],
+    widths: list[int],
+) -> None:
+    """Print a fixed-width table with multiline word-wrapped cells."""
+    if len(headers) != len(widths):
+        raise ValueError("Wrapped-table headers and widths must have equal length")
+
+    separator = "+" + "+".join("-" * (width + 2) for width in widths) + "+"
+
+    def wrap_cell(value, width: int) -> list[str]:
+        compact = " ".join(str(value or "").split())
+        return textwrap.wrap(
+            compact,
+            width=width,
+            break_long_words=True,
+            break_on_hyphens=False,
+        ) or [""]
+
+    def print_multiline_row(values) -> None:
+        wrapped = [
+            wrap_cell(value, widths[index])
+            for index, value in enumerate(values)
+        ]
+        for line_number in range(max(len(lines) for lines in wrapped)):
+            cells = [
+                (
+                    lines[line_number]
+                    if line_number < len(lines)
+                    else ""
+                ).ljust(widths[index])
+                for index, lines in enumerate(wrapped)
+            ]
+            print("| " + " | ".join(cells) + " |")
+
+    print(separator)
+    print_multiline_row(headers)
+    print(separator)
+    for row in rows:
+        print_multiline_row(row)
+        print(separator)
+
+
+def _print_forgetting_table(report: dict, limit: int = 10) -> None:
+    """Compare ten generic generations already stored in the report.
+
+    There is no single universal catastrophic-forgetting score. For this
+    report, a query is marked ``Degraded`` when CPT loses an expected concept
+    that the base generation contained, or when CPT raises perplexity on the
+    exact same saved base response by more than 10%. The latter is a fixed-
+    target behavioural-retention measure; comparing each model's own response
+    perplexity would not be valid because both model and target would change.
+    All other rows are marked ``Retained``.
+    """
+    base_evaluation = report.get("models", {}).get("base", {}).get(
+        "query_evaluation"
+    )
+    cpt_evaluation = report.get("models", {}).get("cpt", {}).get(
+        "query_evaluation"
+    )
+    if not base_evaluation or not cpt_evaluation:
+        return
+
+    cpt_by_key = {
+        (record.get("query_file"), str(record.get("id"))): record
+        for record in cpt_evaluation.get("results", [])
+    }
+    rows = []
+    for base_result in base_evaluation.get("results", []):
+        query_file = str(base_result.get("query_file") or "")
+        query_set = str(base_result.get("query_set") or "")
+        if "generic" not in query_file.casefold() and query_set != "general":
+            continue
+
+        cpt_result = cpt_by_key.get(
+            (base_result.get("query_file"), str(base_result.get("id")))
+        )
+        if cpt_result is None:
+            continue
+
+        base_metrics = base_result.get("generation_metrics") or {}
+        cpt_metrics = cpt_result.get("generation_metrics") or {}
+        base_hits = int(base_metrics.get("concept_hit_count") or 0)
+        cpt_hits = int(cpt_metrics.get("concept_hit_count") or 0)
+        concept_lost = cpt_hits < base_hits
+
+        base_retention = base_result.get("baseline_response_retention_ppl") or {}
+        cpt_retention = cpt_result.get("baseline_response_retention_ppl") or {}
+        base_ppl = base_retention.get("perplexity")
+        cpt_ppl = cpt_retention.get("perplexity")
+        ppl_change = None
+        if base_ppl is not None and cpt_ppl is not None and base_ppl:
+            ppl_change = (cpt_ppl - base_ppl) / base_ppl * 100
+        retention_regressed = ppl_change is not None and ppl_change > 10.0
+
+        forgot = concept_lost or retention_regressed
+        rows.append(
+            [
+                base_result.get("prompt"),
+                base_result.get("generated_response"),
+                cpt_result.get("generated_response"),
+                "Degraded" if forgot else "Retained",
+            ]
+        )
+        if len(rows) == limit:
+            break
+
+    if not rows:
+        return
+
+    query_label = "Query" if len(rows) == 1 else "Queries"
+    print(
+        f"\n=== Catastrophic Forgetting Table "
+        f"({len(rows)} Generic {query_label}) ==="
+    )
+    _print_wrapped_table(
+        ["Query", "Base", "CPT", "Verdict"],
+        rows,
+        widths=[30, 40, 40, 8],
+    )
+
+
+def _print_configuration_summary(report: dict) -> None:
+    """Print loaded architecture facts and the originating CPT run settings."""
+    print("\n=== Model Parameters ===")
+    model_rows = []
+    for label, result in report.get("models", {}).items():
+        details = result.get("model_details", {})
+        model_rows.append(
+            [
+                label.upper(),
+                str(
+                    details.get("name_or_path")
+                    or result.get("requested_model_name")
+                ),
+                str(details.get("model_type") or "unknown"),
+                (
+                    f"{details['total_parameters']:,}"
+                    if details.get("total_parameters") is not None
+                    else "unknown"
+                ),
+                str(details.get("transformer_layers") or "unknown"),
+                str(details.get("attention_heads") or "unknown"),
+                str(details.get("embedding_dimension") or "unknown"),
+                str(details.get("maximum_context_length") or "unknown"),
+                (
+                    f"{details['vocabulary_size']:,}"
+                    if details.get("vocabulary_size") is not None
+                    else "unknown"
+                ),
+                str(details.get("parameter_dtype") or "unknown"),
+            ]
+        )
+    _print_table(
+        [
+            "Role",
+            "Model / checkpoint",
+            "Type",
+            "Parameters",
+            "Layers",
+            "Heads",
+            "Hidden",
+            "Context",
+            "Vocab",
+            "Dtype",
+        ],
+        model_rows,
+    )
+
+    print("\n=== CPT Training Parameters ===")
+    cpt_run = report.get("cpt_training_run")
+    if not cpt_run:
+        print("CPT training_run.json was not available for this evaluation.")
+        return
+
+    hyperparameters = cpt_run.get("hyperparameters") or {}
+    plan = cpt_run.get("derived_training_plan") or {}
+    dataset = cpt_run.get("dataset") or {}
+    results = cpt_run.get("results") or {}
+    parameter_rows = [
+        ["Training status", cpt_run.get("status")],
+        ["Training run", cpt_run.get("training_run_file")],
+        ["Epochs", hyperparameters.get("epochs")],
+        ["Micro batch size", hyperparameters.get("micro_batch_size")],
+        [
+            "Gradient accumulation",
+            hyperparameters.get("gradient_accumulation_steps"),
+        ],
+        ["Effective batch size", hyperparameters.get("effective_batch_size")],
+        ["Learning rate", hyperparameters.get("learning_rate")],
+        ["Scheduler", hyperparameters.get("learning_rate_scheduler")],
+        ["Warmup ratio", hyperparameters.get("warmup_ratio")],
+        ["Warmup steps", plan.get("warmup_steps")],
+        ["Weight decay", hyperparameters.get("weight_decay")],
+        ["Maximum gradient norm", hyperparameters.get("max_grad_norm")],
+        ["Precision", hyperparameters.get("precision")],
+        [
+            "Gradient checkpointing",
+            hyperparameters.get("gradient_checkpointing"),
+        ],
+        ["Context length", dataset.get("context_length")],
+        ["Packed sequences", dataset.get("packed_sequence_count")],
+        ["Total optimizer steps", plan.get("total_optimizer_steps")],
+        ["Final training loss", results.get("final_training_loss")],
+        ["Final training PPL", results.get("final_training_perplexity")],
+        ["Seed", hyperparameters.get("seed")],
+    ]
+    _print_table(
+        ["Parameter", "Value"],
+        [
+            [name, "unknown" if value is None else str(value)]
+            for name, value in parameter_rows
+        ],
+    )
 
 
 def _print_summary(report: dict) -> None:
+    _print_configuration_summary(report)
     print("\n=== Evaluation Summary ===")
     for label, result in report["models"].items():
         print(f"{label.upper()} model: {result['model_details']['name_or_path']}")
@@ -1320,6 +1693,8 @@ def _print_summary(report: dict) -> None:
         ["Metric", "Base", "CPT", "Change", "Tokens", "Verdict", "Remarks"],
         perplexity_rows,
     )
+
+    _print_forgetting_table(report)
 
     print("\n=== Part 2: Generated Text Evaluation ===")
     metric_rows = []
@@ -1414,23 +1789,12 @@ def _print_summary(report: dict) -> None:
                 [
                     result["query_set"],
                     str(result["id"]),
-                    _response_preview(result["prompt"], 45),
-                    _response_preview(result["base_response"]),
-                    _response_preview(result["cpt_response"]),
                     result["verdict"] or "Not Available",
                     result["remarks"],
                 ]
             )
         _print_table(
-            [
-                "Set",
-                "ID",
-                "Prompt",
-                "Base response",
-                "CPT response",
-                "Verdict",
-                "Remarks",
-            ],
+            ["Set", "ID", "Verdict", "Remarks"],
             verdict_rows,
         )
 
@@ -1438,15 +1802,28 @@ def _print_summary(report: dict) -> None:
 def run_evaluation(args) -> dict:
     test_bin = args.test_bin.expanduser().resolve()
     output_file = args.output_file.expanduser().resolve()
-    domain_metrics, domain_metrics_path = _load_metrics(args.dataset_metrics)
-    generic_metrics, generic_metrics_path = _load_metrics(
-        args.generic_dataset_metrics
-    )
 
     if args.generic_dataset_metrics is not None and args.generic_test_bin is None:
         raise ValueError(
             "--generic-dataset-metrics requires --generic-test-bin"
         )
+
+    evaluation_identity = _build_evaluation_identity(args)
+    reusable_report = _load_reusable_report(
+        args,
+        output_file,
+        evaluation_identity,
+    )
+    if reusable_report is not None:
+        _print_summary(reusable_report)
+        print(f"\nResults loaded from: {output_file}")
+        return reusable_report
+
+    domain_metrics, domain_metrics_path = _load_metrics(args.dataset_metrics)
+    generic_metrics, generic_metrics_path = _load_metrics(
+        args.generic_dataset_metrics
+    )
+
     query_records = _load_queries(args.query_input)
     if args.baseline_responses and not query_records:
         raise ValueError("--baseline-responses requires --query-input")
@@ -1457,8 +1834,10 @@ def run_evaluation(args) -> dict:
 
     command_argv = [sys.executable, *sys.argv]
     report = {
-        "schema_version": 1,
+        "schema_version": 2,
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "evaluation_identity": evaluation_identity,
+        "cpt_training_run": _load_cpt_training_summary(args.model_folder),
         "command": {
             "argv": command_argv,
             "reconstructed_full_command": shlex.join(command_argv),

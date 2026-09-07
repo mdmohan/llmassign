@@ -1,0 +1,363 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-07T11:40:44.217568+00:00",
+  "model_name": "Qwen/Qwen2.5-1.5B",
+  "model_details": {
+    "name_or_path": "Qwen/Qwen2.5-1.5B",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "Qwen/Qwen2.5-1.5B",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "generic_forgetting_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "response": "Paris. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the",
+      "generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8666666666666667
+      }
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "response": "$0^\\circ$ Celsius or $32^\\circ$ Fahrenheit. If the temperature is $-10^\\circ$ Celsius, what is the corresponding temperature in Fahrenheit? To convert a temperature from Celsius to Fahrenheit, we use the formula:\n\n\\[ F = \\frac{9}{5}C + 32 \\]\n\nwhere \\( F \\) is the temperature in Fahrenheit and \\( C \\) is the temperature in Celsius. We are given that the temperature in Celsius is \\(-1",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.08196721311475408
+      }
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "response": "the gas giant Jupiter. It is the fifth planet from the Sun and the largest in the Solar System. It is also the most massive of the four giant planets. Jupiter is a gas giant. It is made mostly of hydrogen and helium. It is surrounded by a thick cloud of gases. The gases are made up of many different chemicals. The gases are held together by the planet's gravity. The gases are so thick that they do not let light through. This is why Jupiter is so bright.",
+      "generation_metrics": {
+        "concept_hits": [
+          "Jupiter"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.022727272727272707
+      }
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "response": "______.\nA. William Shakespeare\nB. William Wordsworth\nC. William Blake\nD. William Cullen Bryant\n答案:\nA\n\n下列关于“三同时”制度的说法中，错误的是____。\nA. “三同时”制度是指建设项目中防治污染的设施，应当与主体工程同时设计、同时施工、同时投产使用\nB. 防治污染的设施必须经原审批环境影响报告书的环境保护行政主管部门验收合格后，该建设项目方可",
+      "generation_metrics": {
+        "concept_hits": [
+          "William Shakespeare"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "response": "H2O, which indicates that ____\nA. Water is composed of hydrogen and oxygen elements\nB. Water is composed of hydrogen and oxygen atoms\nC. Water is composed of hydrogen molecules and oxygen molecules\nD. Water is composed of hydrogen gas and oxygen gas\nAnswer:\nA\n\nWhich of the following statements about the relationship between the number of electrons outside the nucleus and the number of valence electrons is correct?\nA. The number of valence electrons is always equal to the number of",
+      "generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.21518987341772156
+      }
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "response": "sides of length 10.5, 14.5, and 18.5 units. Determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines.\nTo determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines, we first need to place the triangle in a coordinate system. Let's place the triangle such that one vertex is",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2676056338028169
+      }
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "response": "cold, and the opposite of cold is hot. This is a _______.\nA. Metaphor\nB. Personification\nC. Hyperbole\nD. Irony\nAnswer:\nA\n\nThe main reason for the formation of the 'Three Gorges' is ____\nA. The terrain is higher in the west and lower in the east, with a large drop\nB. The terrain is higher in the east and lower in the west, with a large drop\nC. The",
+      "generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.1515151515151515
+      }
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "response": "east and sets in the west. This is a characteristic of the Earth's ___\nA. Shape\nB. Size\nC. Direction of rotation\nD. Direction of revolution\nAnswer:\nC\n\nThe main reason for the formation of the'suspended river' in the figure is ____\nA. The riverbed is too low, and the river water is too deep\nB. The riverbed is too low, and the river water is too shallow\nC. The riverbed is",
+      "generation_metrics": {
+        "concept_hits": [
+          "east"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.1428571428571429
+      }
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "response": "four. 12 divided by 3 equals 4.",
+      "generation_metrics": {
+        "concept_hits": [
+          "four",
+          "4"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 2,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "response": "photosynthesis. This process involves the absorption of sunlight by chlorophyll, a green pigment found in the chloroplasts of plant cells. The chlorophyll absorbs light energy and uses it to split water molecules into hydrogen and oxygen. The hydrogen is used to produce glucose, a simple sugar that is used as an energy source by the plant. The oxygen is released into the atmosphere as a byproduct of the process. Photosynthesis is a crucial process for the survival of plants and is essential for the",
+      "generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "response": "boil water. The boiling point of water is 100 degrees Celsius. If you want to boil water at a temperature of 90 degrees Celsius, how much lower is this temperature compared to the boiling point? To determine how much lower the temperature of 90 degrees Celsius is compared to the boiling point of 100 degrees Celsius, we need to subtract the lower temperature from the higher temperature. Here are the steps:\n\n1. Identify the boiling point of water: 10",
+      "generation_metrics": {
+        "concept_hits": [
+          "boil water"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.16883116883116878
+      }
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "response": "shatter into pieces. However, if the same glass is dropped on a carpeted floor, it may not shatter. This is because the carpeted floor provides a softer surface for the glass to impact, reducing the force of the impact and preventing the glass from shattering. This is an example of how the properties of a surface can affect the outcome of an event.",
+      "generation_metrics": {
+        "concept_hits": [
+          "shatter"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "response": "borrow a book. Which of the following options correctly expresses this meaning?\nA. wanted to borrow\nB. wanted to borrow it\nC. wanted to borrow it\nD. wanted to borrow it\nAnswer:\nA\n\nWhich of the following statements about the relationship between the Earth's rotation and revolution is true?\nA. The Earth's rotation and revolution are both completed in one day.\nB. The Earth's rotation and revolution are both completed in one year.\nC. The Earth's rotation is",
+      "generation_metrics": {
+        "concept_hits": [
+          "borrow a book"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.275
+      }
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "response": "there lived a young girl named Lily. She was very curious and loved to explore the world around her. One day, while wandering through the forest, she stumbled upon a hidden cave. The cave was dark and mysterious, but Lily was determined to explore it.\n\nAs she entered the cave, she noticed that it was filled with strange and beautiful creatures. There were talking animals, magical plants, and even a talking tree. Lily was amazed by all of the wonders she had discovered, but she soon realized",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "response": "deals with the development of intelligent machines that can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. AI is a rapidly growing field with many applications in various industries, including healthcare, finance, transportation, and manufacturing.\nOne of the most significant applications of AI is in healthcare. AI can be used to analyze medical images, such as X-rays and MRIs, to detect diseases and abnormalities that may be difficult for human doctors to see. AI",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    }
+  ]
+}

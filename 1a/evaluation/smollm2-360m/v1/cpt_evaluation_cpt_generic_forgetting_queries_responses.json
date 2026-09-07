@@ -1,0 +1,363 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T09:44:35.514022+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/smollm2-360m/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/smollm2-360m/v1/final_model",
+    "model_class": "LlamaForCausalLM",
+    "model_type": "llama",
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "transformer_layers": 32,
+    "attention_heads": 15,
+    "key_value_heads": 5,
+    "embedding_dimension": 960,
+    "head_dimension": 64,
+    "vocabulary_size": 49152,
+    "maximum_context_length": 8192,
+    "lm_head_output_dimension": 49152,
+    "lm_head_matches_vocabulary": true,
+    "total_parameters": 361821120,
+    "trainable_parameters": 361821120,
+    "parameter_dtype": "torch.bfloat16",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/smollm2-360m/v1/final_model",
+    "tokenizer_vocabulary_size": 49152,
+    "bos_token_id": 0,
+    "eos_token_id": 0,
+    "pad_token_id": 0,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "generic_forgetting_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "response": "the city of Paris. It is the largest city in France and the second largest in Europe. It is also the capital of the region of France known as the Nord-Pas-de-Calais. The city of Paris is located in the region of the same name. The city of Paris is the capital of the French Republic. It is the largest city in France and the second largest in Europe. It is also the capital of the region of France known as the Nord-Pas",
+      "generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.40476190476190477
+      }
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "response": "32°F.\n\nThe temperature of the water in the freezer is 32°F.\n\nThe temperature of the water in the freezer is 32°F.\n\nThe temperature of the water in the freezer is 32°F.\n\nThe temperature of the water in the freezer is 32°F.\n\nThe temperature of the water in the freezer is 32°F.\n\nThe temperature of the water in the",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8225806451612903
+      }
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "response": "Jupiter. It is the fifth planet from the Sun and the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It is the largest planet in the Solar System. It",
+      "generation_metrics": {
+        "concept_hits": [
+          "Jupiter"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7954545454545454
+      }
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "response": "a man named William Shakespeare. He was born in Stratford-upon-Avon, England, in 1564. He was a poet, playwright, and actor. He wrote many plays, including Romeo and Juliet.\n\nWilliam Shakespeare was born on April 23, 1564, in Stratford-upon-Avon, England. He was the son of John Shakespeare and Mary Arden. His father was a glove maker. William's mother died when",
+      "generation_metrics": {
+        "concept_hits": [
+          "William Shakespeare"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.048387096774193505
+      }
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "response": "H2O.\n\nThe chemical symbol for oxygen is O.\n\nThe chemical symbol for hydrogen is H.\n\nThe chemical symbol for nitrogen is N.\n\nThe chemical symbol for carbon is C.\n\nThe chemical symbol for sulfur is S.\n\nThe chemical symbol for phosphorus is P.\n\nThe chemical symbol for chlorine is Cl.\n\nThe chemical symbol for fluorine is F.\n\nThe chemical symbol for iodine is I.\n\nThe chemical symbol",
+      "generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2615384615384615
+      }
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "response": "three sides.\n\nThe sum of the lengths of any two sides of a triangle is greater than the length of the third side.\n\nThe sum of the lengths of any three sides of a triangle is greater than the length of the fourth side.\n\nThe sum of the lengths of any two sides of a triangle is greater than the length of the third side.\n\nThe sum of the lengths of any three sides of a triangle is greater than the length of the fourth side.",
+      "generation_metrics": {
+        "concept_hits": [
+          "three sides"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6547619047619048
+      }
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "response": "cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold",
+      "generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.9076923076923077
+      }
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "response": "east and sets in the west.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is the center of the universe.\n\nThe sun is",
+      "generation_metrics": {
+        "concept_hits": [
+          "east"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8028169014084507
+      }
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "response": "4.\n\n## What is 12 divided by 4?\n\nTo calculate 12 divided by 4, we first need to divide the numerator of 12 by the denominator of 4.\n\n## What is 12 divided by 4 as a fraction?\n\nTo calculate 12 divided by 4 as a fraction, we first need to find the value of each digit in 12 divided by 4.\n\n## What",
+      "generation_metrics": {
+        "concept_hits": [
+          "4"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.30508474576271183
+      }
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "response": "photosynthesis. Plants use carbon dioxide and water to make glucose and oxygen. The glucose is used to make other molecules, such as starch and cellulose.\n\nThe process of photosynthesis is very important to the survival of plants. Without it, plants would not be able to make their own food.\n\nPlants also use carbon dioxide and water to make oxygen. This is a very important process for humans and other animals.\n\nPlants also use carbon dioxide and water to make glucose. This is a very",
+      "generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.18292682926829273
+      }
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "response": "boil water. Boiling water is a process that requires heat. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water. The heat is transferred from the stove to the water",
+      "generation_metrics": {
+        "concept_hits": [
+          "boil water"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7727272727272727
+      }
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "response": "break. But if you drop a glass on a soft surface, it may not break.\n\nThe same is true for your body. If you drop a glass on a hard surface, it may break. But if you drop a glass on a soft surface, it may not break.\n\nThe same is true for your body. If you drop a glass on a hard surface, it may break. But if you drop a glass on a soft surface, it may not break.",
+      "generation_metrics": {
+        "concept_hits": [
+          "break"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6582278481012658
+      }
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "response": "read a book.\n\nShe went to the library because she wanted to read a book.\n\nThe first sentence is correct. The second sentence is incorrect.\n\nThe correct sentence is:\n\nShe went to the library because she wanted to read a book.\n\nThe correct sentence is:\n\nShe went to the library because she wanted to read a book.\n\nThe correct sentence is:\n\nShe went to the library because she wanted to read a book.",
+      "generation_metrics": {
+        "concept_hits": [
+          "read"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5915492957746479
+      }
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "response": "lived a kind and wise old man named Kofi. He was known throughout the land for his love of nature and his ability to heal the sick. One day, a young girl named Ada came to visit him. She had been feeling unwell and was worried about her family's health.\n\nKofi welcomed Ada warmly and asked if she would like to learn some traditional healing practices from him. Ada nodded eagerly and asked, \"What are these things you are holding?\"\n\nKofi smiled and",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "response": "focuses on the development of intelligent machines that can perform tasks that normally require human intelligence, such as visual perception, speech recognition, decision-making, and translation between languages.\n\nThe term \"artificial intelligence\" was coined in 1956 by John McCarthy, a computer scientist at the Massachusetts Institute of Technology (MIT). Since then, the field of AI has grown rapidly, and it is now used in a wide range of applications, from self-driving cars to medical diagnosis.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      }
+    }
+  ]
+}

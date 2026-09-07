@@ -1,0 +1,33 @@
+1a/ajoish/code/prepare_corpus.py
+  s_c0c7d41ff0f51d::t_afc090903193cc 1-41
+1a/ajoish/code/cisco_cpt/cleaning.py
+  s_c0c7d41ff0f51d::t_6573e7603f5db8 1-39
+1a/ajoish/requirements-corpus.txt
+  s_c0c7d41ff0f51d::t_07e2b3e19a5e17 1-2
+1a/ajoish/code/cisco_cpt/__init__.py
+  s_c0c7d41ff0f51d::t_80a66cf4b2351f 1
+1a/ajoish/configs/corpus.json
+  s_c0c7d41ff0f51d::t_b2f5b0be054d80 1-11
+1a/ajoish/.gitignore
+  s_c0c7d41ff0f51d::t_140029905a867e 1-7
+1a/ajoish/code/cisco_cpt/corpus.py
+  s_c0c7d41ff0f51d::t_1b823d424c63b2 1-426
+1a/ajoish/code/cisco_cpt/tokenization.py
+  s_c0c7d41ff0f51d::t_4f423fc79b7720 1-267
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "7ef085d236dd97c125be48f47b9daa56d314a9f5",
+  "prompts": {},
+  "sessions": {
+    "s_c0c7d41ff0f51d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c734be66-4468-49ac-b04a-ce11412a4f6b",
+        "model": "copilot/gpt-5.6-sol"
+      },
+      "human_author": "AxleAddict <akshayjoish28@gmail.com>"
+    }
+  }
+}

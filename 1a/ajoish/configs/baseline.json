@@ -1,0 +1,16 @@
+{
+  "cache_dir": "1a/ajoish/cache/huggingface",
+  "device": "cuda",
+  "eval_parquet_path": "1a/ajoish/data/processed/packed/eval.parquet",
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 128,
+    "num_beams": 1,
+    "use_cache": true
+  },
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "output_root": "1a/ajoish/evaluation/baseline",
+  "prompts_path": "1a/ajoish/evaluation/queries/frozen_prompts.jsonl",
+  "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "seed": 42
+}

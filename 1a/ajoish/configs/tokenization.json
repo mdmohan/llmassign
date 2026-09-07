@@ -1,0 +1,11 @@
+{
+  "cache_dir": "1a/ajoish/cache/huggingface",
+  "document_root": "1a/ajoish/data/processed/domain_corpus",
+  "manifest_path": "1a/ajoish/data/reports/documents.jsonl",
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "packed_root": "1a/ajoish/data/processed/packed",
+  "parquet_batch_size": 64,
+  "reports_root": "1a/ajoish/data/reports",
+  "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "sequence_length": 8192
+}

@@ -1,0 +1,11 @@
+{
+  "corpus_roots": {
+    "dc": "1a/data/pdfs/cisco-dc-pdfs",
+    "enterprise": "1a/data/pdfs/cisco-enterprise-pdfs"
+  },
+  "eval_fraction": 0.1,
+  "expected_document_count": 91,
+  "output_root": "1a/ajoish",
+  "page_timeout_seconds": 30,
+  "seed": 42
+}

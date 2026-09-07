@@ -1,0 +1,27 @@
+{
+  "cache_dir": "1a/ajoish/cache/huggingface",
+  "device": "cuda",
+  "expected_sha256": {
+    "base_per_sequence": "c31969ca718324c80ba539c9add6c93c1ee12d89a27b6a7318539261ad05371c",
+    "base_perplexity": "4017f4b2d7d1ca7d7df434725ceb3e1aacb9dfa492028336faa2d39a64cdc6b8",
+    "base_responses": "3d9402b2f90bb67aed6264f48b7dd2143ff1eb26494af589331b361ab754b4dd",
+    "eval_parquet": "e0b3b48dfeacb677f68187f0c726be056b04f9be8f90a7ee211e1b218021b3a3",
+    "generation_config": "62b24f19f1f2224274ffb6589ab2b2c75349aacc15287f59bf130ea378a9eced",
+    "prompts": "46a7fbcd2a68f8c6afd0e93a152372b2bdff3d070b450603bdcce7d87c94ca22",
+    "training_manifest": "cfec939f23b7f6cd736bb02fb0cd334dd4f71c8a3706e5f18769dc145d20661e"
+  },
+  "inputs": {
+    "base_per_sequence": "1a/ajoish/evaluation/baseline/base_per_sequence.csv",
+    "base_perplexity": "1a/ajoish/evaluation/baseline/base_perplexity.json",
+    "base_responses": "1a/ajoish/evaluation/baseline/responses.jsonl",
+    "eval_parquet": "1a/ajoish/data/processed/packed/eval.parquet",
+    "generation_config": "1a/ajoish/evaluation/baseline/generation_config.json",
+    "prompts": "1a/ajoish/evaluation/queries/frozen_prompts.jsonl",
+    "training_manifest": "1a/ajoish/runs/smollm2-1.7b-cisco-cpt-v1/run_manifest.json"
+  },
+  "model_dir": "1a/ajoish/models/smollm2-1.7b-cisco-cpt-v1/final",
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "output_root": "1a/ajoish/evaluation",
+  "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "seed": 42
+}

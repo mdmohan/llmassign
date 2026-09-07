@@ -1,0 +1,38 @@
+{
+  "cache_dir": "1a/ajoish/cache/huggingface",
+  "eval_parquet_path": "1a/ajoish/data/processed/packed/eval.parquet",
+  "eval_parquet_sha256": "e0b3b48dfeacb677f68187f0c726be056b04f9be8f90a7ee211e1b218021b3a3",
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "models_root": "1a/ajoish/models",
+  "plateau": {
+    "min_relative_improvement": 0.01,
+    "patience_windows": 3,
+    "window_steps": 20
+  },
+  "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "run_id": "smollm2-1.7b-cisco-cpt-v1",
+  "runs_root": "1a/ajoish/runs",
+  "sequence_length": 8192,
+  "smoke_gate": {
+    "maximum_peak_allocated_gib": 75.0,
+    "maximum_starting_loss": 8.0,
+    "minimum_starting_loss": 0.1
+  },
+  "train_parquet_path": "1a/ajoish/data/processed/packed/train.parquet",
+  "train_parquet_sha256": "dc048e8d29a8229f24e672333baf8050a0dd0e1428c546d0f74a4f6e31662c08",
+  "training": {
+    "dataloader_num_workers": 0,
+    "eval_steps": 68,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.00002,
+    "max_grad_norm": 1.0,
+    "micro_batch_size": 1,
+    "num_train_epochs": 3,
+    "save_steps": 68,
+    "save_total_limit": 1,
+    "seed": 42,
+    "smoke_max_steps": 10,
+    "warmup_ratio": 0.05,
+    "weight_decay": 0.1
+  }
+}

@@ -1,0 +1,7 @@
+/cache/
+/data/extracted/
+/data/processed/domain_corpus/
+/data/processed/*.txt
+/data/processed/packed/
+/models/
+/runs/

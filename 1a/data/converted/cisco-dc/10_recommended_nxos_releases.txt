@@ -1,0 +1,52 @@
+# MD5: f0380135c806b833226b7d7ac0d959ac
+
+Recommended Cisco NX-OS Releases
+Contents
+Introduction
+General Upgrade Guidance
+Cisco Nexus 3000/9000 Recommended Upgrade Matrix
+Cisco Nexus 7000 Recommended Upgrade Matrix
+Recommended Release Documents
+Cisco Nexus 3000, 3100, 3200, 3400-S, 3500, and 3600 Series Switches
+Cisco Nexus 9000 Series Switches
+Cisco Nexus 5500 Series Switches
+Cisco Nexus 5600 Series Switches
+Cisco Nexus 6000 Series Switches
+Cisco Nexus 7000 Series Switches
+Introduction
+This document describes relevant material required to prepare a Cisco Nexus device for a Cisco NX-OS
+Upgrade.
+General Upgrade Guidance
+Cisco Nexus 3000/9000 Recommended Upgrade Matrix
+Nexus 3000/9000 series switches Upgrade Matrix:
+https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html
+Cisco Nexus 7000 Recommended Upgrade Matrix
+Nexus 7000 Series Switches Upgrade Matrix:
+https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-7k-issu-matrix/index.html
+Recommended Release Documents
+Cisco Nexus 3000, 3100, 3200, 3400-S, 3500, and 3600 Series Switches
+Recommended Cisco NX-OS Releases for Cisco Nexus 3000, 3100, 3200, 3400-S, 3500, and 3600 Series
+Switches:
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/sw/recommended_release/b_Minimum_and_Recommended_Cisco_NX-
+OS_Releases_for_Cisco_Nexus_3000_Series_Switches.html
+Cisco Nexus 9000 Series Switches
+
+Recommended Cisco NX-OS Releases for Cisco Nexus 9000 Series Switches:
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/recommended_release/b_Minimum_and_Recommended_Cisco_NX-
+OS_Releases_for_Cisco_Nexus_9000_Series_Switches.html
+Cisco Nexus 5500 Series Switches
+Recommended Cisco NX-OS Releases for Cisco Nexus 5500 Series Switches:
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5500/sw/release/recommended_releases/n5500_recommended_nx-
+os_releases.html
+Cisco Nexus 5600 Series Switches
+Recommended Cisco NX-OS Releases for Cisco Nexus 5600 Series Switches:
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5600/sw/release/recommended_releases/n5600_recommended_nx-
+os_releases.html
+Cisco Nexus 6000 Series Switches
+Recommended Cisco NX-OS Releases for Cisco Nexus 6000 Series Switches:
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus6000/sw/release/recommended_releases/recommended_nx-
+os_releases.html
+Cisco Nexus 7000 Series Switches
+Recommended Cisco NX-OS Releases for Cisco Nexus 7000 Series Switches:
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-
+os/recommended_releases/recommended_nx-os_releases.html

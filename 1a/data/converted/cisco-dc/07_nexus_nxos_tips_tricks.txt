@@ -1,0 +1,190 @@
+# MD5: 62792bfcf4b7b194f6c8d58adcdcecae
+
+Contents
+Introduction
+Quick Hex/Dec conversion
+Executing multiple CLI's in one go
+Using CLI variables
+Customize terminal settings
+Delay execution of commands per need
+Accessing Routing-Context/VRF's
+Running CLI's for respective VDC when attached to LC: N7k specific
+Switching back and forth between Linux Kernel and NX-OS without exiting debug plugin
+Loading config directly through VSH
+Using Diffs - List the differences between the counters
+Using Watch CLI - N9k specific since 7.0(3)I2(x)
+Check CPU usage internally
+Release internal build version
+Introduction
+This document describes some quick tips and tricks which may enhance troubleshooting
+experience with NX-OS.
+Quick Hex/Dec conversion
+Hex stands for Hexa Decimal , Dec for Decimal
+Executing multiple CLI's in one go
+CLI stands for Command line Interface
+# Works for configuration too:
+# Time it took for a CLI to complete:
+Using CLI variables
+Also can create your own variables:
+CCO Reference
+Customize terminal settings
+1) Avoid Terminal Session timeouts:
+2) Set width/length of the display terminal:
+
+Comes handy when you don't want output to break to a new line for long width outputs
+Delay execution of commands per need
+Accessing Routing-Context/VRF's
+VRF stands for Virtual Routing and Forwarding
+Run CLI's for a specific VRF without adding VRF <> everytime to the command:
+Running CLI's for respective VDC when attached to LC: N7k
+specific
+VDC stands for Virtual Device Context
+LC stands for Line Card
+N7K stands for Nexus 7000
+Once attached to LC, the CLI's are run in respect to default VDC, or needs to specify VDC # for
+related command.
+Instead you may run the CLI's in VDC # space just like routing context.
+Example:
+module-4# vdc 6 >>>>>>> switches LC to pull this VDC specific outputs only
+module-4# show hardware mac address-table
+FE | Valid| PI| BD | MAC | Index| Stat| SW | Modi| Age| Tmr| GM| Sec| TR| NT| RM|
+RMA| Cap| Fld|Always| PV | RD| NN| UC|PI_E8| VIF | SWID| SSWID| LID
+| | | | | | ic | | fied|Byte| Sel| | ure| AP| FY|
+| |TURE| | Learn| | | | | | | | |
+---+------+---+------+---------------+-------+-----+-----+-----+----+----+---+----+---+---+---+-
+---+----+----+------|----|---|---|---|-----|-----|-----|------|-------
+0 1 1 92 0023.ac66.1dc6 0x010c7 1 0x000 0 0 0 1 0 0 0
+0 0 0 0 0 0x00 0 0 0 0 0x000 0x000 0x000 0x010c7
+0 1 0 91 0019.3074.9c02 0x00414 0 0x009 0 118 2 0 0 0 0
+0 0 0 0 0 0x00 1 0 1 0 0x000 0x000 0x000 0x00414
+Switching back and forth between Linux Kernel and NX-OS
+without exiting debug plugin
+N5600-Lab# load dplugg
+Loading plugin version 7.1(1)N1(1)
+###############################################################
+Warning: debug-plugin is for engineering internal use only!
+For security reason, plugin image has been deleted.
+###############################################################
+Successfully loaded debug-plugin!!!
+Linux(debug)# vsh >>>>> Moves back to NX-OS prompt
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (c) 2002-2015, Cisco Systems, Inc. All rights reserved.
+
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under
+license. Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or the GNU
+Lesser General Public License (LGPL) Version 2.1. A copy of each
+such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://www.opensource.org/licenses/lgpl-2.1.php
+N5600-Lab# show clock
+20:20:07.468 UTC Mon Apr 04 2016
+N5600-Lab# exit >>>>> Moves back to Linux prompt
+Linux(debug)#
+Linux(debug)# clock
+Mon Apr 4 20:20:13 2016 -0.282195 seconds UTC
+NOTE: "Debug Plugin" should only be used in presence of Cisco TAC and is not available for
+customer use.
+Please do not modify any setting unless guided by Cisco TAC.
+Alternatively NX-OS CLI's could be run directly from debug plugin:
+N5600-Lab# load dplugg
+Loading plugin version 7.1(1)N1(1)
+###############################################################
+Warning: debug-plugin is for engineering internal use only!
+For security reason, plugin image has been deleted.
+###############################################################
+Successfully loaded debug-plugin!!!
+Linux(debug)# vsh >>>>> Moves back to NX-OS prompt
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (c) 2002-2015, Cisco Systems, Inc. All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under
+license. Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or the GNU
+Lesser General Public License (LGPL) Version 2.1. A copy of each
+such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://www.opensource.org/licenses/lgpl-2.1.php
+N5600-Lab# show clock
+20:20:07.468 UTC Mon Apr 04 2016
+N5600-Lab# exit >>>>> Moves back to Linux prompt
+Linux(debug)#
+Linux(debug)# clock
+Mon Apr 4 20:20:13 2016 -0.282195 seconds UTC
+NOTE: "Debug Plugin" should only be used in presence of Cisco TAC and is not available for
+customer use.
+Please do not modify any setting unless guided by Cisco TAC.
+Loading config directly through VSH
+VSH stands for virtual shell
+NEXUS-LABSWICTH# echo "hostname LAB" | vsh
+LAB#
+Mon Apr 4 20:51:14 2016:type=update:id=10.61.236.97@pts/1:user=admin:cmd=echo "hostname LAB" |
+vsh (SUCCESS)
+Mon Apr 4 20:51:14 2016:type=start:id=vsh.9326:user=admin:cmd=
+Mon Apr 4 20:51:14 2016:type=update:id=vsh.9326:user=admin:cmd=configure terminal ; hostname
+LAB (SUCCESS)
+
+LAB# echo "hostname NEXUS-LABSWITCH" | vsh
+NEXUS-LABSWITCH#
+Mon Apr 4 20:51:23 2016:type=update:id=10.61.236.97@pts/1:user=admin:cmd=echo "hostname NEXUS-
+LABSWITCH" | vsh (SUCCESS)
+Mon Apr 4 20:51:23 2016:type=start:id=vsh.9390:user=admin:cmd=
+Mon Apr 4 20:51:23 2016:type=update:id=vsh.9390:user=admin:cmd=configure terminal ; hostname
+NEXUS-LABSWITCH (SUCCESS)N5600-Lab# show run | i hostname | sed "s/N5600-Lab/N56128/" | vsh
+N56128#
+N56128# show accounting log | last 3
+Mon Apr 4 21:23:23 2016:type=start:id=vsh.6762:user=admin:cmd=
+Mon Apr 4 21:23:23 2016:type=update:id=vsh.6762:user=admin:cmd=configure terminal ; hostname
+N56128 (SUCCESS)
+Mon Apr 4 21:23:23 2016:type=stop:id=vsh.6762:user=admin:cmd=N5600-Lab# echo "hostname N56128"
+> bootflash:CLI
+N5600-Lab#
+N5600-Lab# show file CLI
+hostname N56128
+N5600-Lab# show file CLI | vsh
+N56128#
+Using Diffs - List the differences between the counters
+Diff stands for Difference
+N5600-Lab# echo "hostname N56128" > bootflash:CLI
+N5600-Lab#
+N5600-Lab# show file CLI
+hostname N56128
+N5600-Lab# show file CLI | vsh
+N56128#
+Using Watch CLI - N9k specific since 7.0(3)I2(x)
+N9K Stands for Nexus 9000
+N5600-Lab# echo "hostname N56128" > bootflash:CLI
+N5600-Lab#
+N5600-Lab# show file CLI
+hostname N56128
+N5600-Lab# show file CLI | vsh
+N56128#
+Check CPU usage internally
+CPU stands for Central Processing Unit
+This command provide an output every 5 seconds (can be changed) what process is consuming
+the CPU. It is the same output as the linux top commnad:
+N5600-Lab# echo "hostname N56128" > bootflash:CLI
+N5600-Lab#
+N5600-Lab# show file CLI
+hostname N56128
+N5600-Lab# show file CLI | vsh
+N56128#
+Release internal build version
+
+N7k/N9k
+N5600-Lab# echo "hostname N56128" > bootflash:CLI
+N5600-Lab#
+N5600-Lab# show file CLI
+hostname N56128
+N5600-Lab# show file CLI | vsh
+N56128#
+N5k/6k:
+N5600-Lab# echo "hostname N56128" > bootflash:CLI
+N5600-Lab#
+N5600-Lab# show file CLI
+hostname N56128
+N5600-Lab# show file CLI | vsh
+N56128#

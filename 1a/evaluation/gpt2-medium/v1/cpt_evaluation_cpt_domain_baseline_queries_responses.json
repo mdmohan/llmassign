@@ -1,0 +1,473 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T04:53:11.687532+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 24,
+    "attention_heads": 16,
+    "embedding_dimension": 1024,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 354823168,
+    "trainable_parameters": 354823168,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_baseline_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 4
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ],
+      "response": "every leaf node. The leaf nodes are connected to each other by a leaf-spine. The leaf nodes are connected to each other by a leaf-spine.\n\nThe leaf nodes are connected to each other by a leaf-spine. The leaf nodes are connected to each other by a leaf-spine.\n\nThe leaf nodes are connected to each other by a leaf-spine. The leaf nodes are connected to each other by a leaf-spine.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7945205479452055
+      }
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ],
+      "response": "a Cisco Nexus virtual port to be configured as a virtual port channel.\n\nThe vPC channel is configured as a virtual port channel by default. The vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7236842105263157
+      }
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ],
+      "response": "provide a mechanism for the peer to communicate with the vPC peer. The vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.639344262295082
+      }
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ],
+      "response": "identify the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface.\n\nThe VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8260869565217391
+      }
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ],
+      "response": "a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7647058823529411
+      }
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ],
+      "response": "a VTEP.\n\nThe VTEP is a device that is connected to the network. It is a device that is used to communicate with other devices on the network.\n\nThe VTEP is a device that is connected to the network. It is a device that is used to communicate with other devices on the network.\n\nThe VTEP is a device that is connected to the network. It is a device that is used to communicate with other devices on the network.\n\nThe",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6835443037974683
+      }
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ],
+      "response": "a cost-effective solution for high-speed, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8200000000000001
+      }
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ],
+      "response": "the following command:\n\n# ip link set interface ethernet1/10\n\nThis will create a new interface for the interface ethernet1/10.\n\nConfigure the VLAN\n\nConfigure the VLAN using the following command:\n\n# ip link set interface vlan 120\n\nThis will create a new interface for the interface vlan 120.\n\nConfigure the VLAN\n\nConfigure the VLAN using the following command:\n\n# ip",
+      "generation_metrics": {
+        "concept_hits": [
+          "vlan 120",
+          "interface Ethernet1/10"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 5,
+        "concept_recall": 0.4,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4285714285714286
+      }
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ],
+      "response": "a port channel. The port channel is a port number that identifies the port on which the port is to be forwarded. The port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6447368421052632
+      }
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ],
+      "response": "a Type-2 vPC to fail.\n\nThe following table lists the types of vPCs that are supported by the vPC interface.\n\nType-1 vPC consistency mismatch\n\nType-2 vPC consistency mismatch\n\nThe following table lists the types of vPCs that are supported by the vPC interface.\n\nType-1 vPC consistency mismatch\n\nType-2 vPC consistency mismatch\n\nThe following table lists the types of vPCs that",
+      "generation_metrics": {
+        "concept_hits": [
+          "affected VLAN or interface"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5396825396825398
+      }
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ],
+      "response": "the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8076923076923077
+      }
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ],
+      "response": "that the neighbor is still in the Idle state.\n\nVerify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8850574712643678
+      }
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ],
+      "response": "the VXLAN VTEP state.\n\nThe VXLAN VTEP state is displayed in the following table:\n\nVXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VX",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6938775510204082
+      }
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ],
+      "response": "the presence of a router and routes the traffic to the appropriate router.\n\nThe following example shows how to configure the router to use the L2VPN tunnel.\n\n# router-config interface GigabitEthernet1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4285714285714286
+      }
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ],
+      "response": "all nodes.\n\nThe MTU is configured on the node that is the source of the packet.\n\nThe MTU is configured on the node that is the destination of the packet.\n\nThe MTU is configured on the node that is the source of the packet. The MTU is configured on the node that is the destination of the packet. The MTU is configured on the node that is the source of the packet. The MTU is configured on the node that is the",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7625
+      }
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ],
+      "response": "that the MAC address of the interface is not valid.\n\nThe following table shows the MAC addresses of the interfaces that are not valid.\n\nInterface MAC Address\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3829787234042553
+      }
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ],
+      "response": "a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dash",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8133333333333334
+      }
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ],
+      "response": "the device is connected to a network. The Nexus 9300 switch is a dual-band 802.11ac wireless router that supports both 2.4GHz and 5GHz wireless networks.\n\nThe Nexus 9300 switch supports 802.11ac wireless networking, which is a wireless standard that supports both 2.4GHz and 5GHz wireless networks. The Nexus 9300 switch supports 802.11ac wireless networking, which is a wireless standard that supports both 2.4GHz and 5GHz wireless networks",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.45833333333333337
+      }
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ],
+      "response": "a single device with a single interface.\n\nThe Nexus 9500 is a modular device that can be used with any device that supports the 802.11ac standard. The Nexus 9500 supports the 802.11ac standard, which is supported by all Nexus devices.\n\nThe Nexus 9500 supports the 802.11ac standard, which is supported by all Nexus devices. The Nexus 9500 supports the 802.11ac standard, which is supported by all Nexus devices. The Nexus 9500",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4794520547945206
+      }
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ],
+      "response": "the best available network interface for the AI training cluster.\n\nThe following table shows the network interface priority for the AI training cluster.\n\nInterface Priority\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3783783783783784
+      }
+    }
+  ]
+}

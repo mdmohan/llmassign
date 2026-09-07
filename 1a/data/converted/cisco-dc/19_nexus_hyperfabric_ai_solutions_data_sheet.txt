@@ -1,0 +1,348 @@
+# MD5: 38f9defc27d1d9fba88529e109ddeb8c
+
+Data sheet Cisco public
+AI Solutions with Cisco Nexus
+Hyperfabric
+©© 22002266 CCiissccoo aanndd//oorr iittss aaffiffilliiaatteess.. AAllll rriigghhttss rreesseerrvveedd..
+
+Data sheet Cisco public
+Contents
+Overview .................................................................................................................................................................. 3
+Cloud-managed networking: connect to any AI server and storage platform ........................................................... 4
+Cisco Nexus Hyperfabric’s full-stack AI infrastructure option ................................................................................... 5
+Architecture and cloud management ........................................................................................................................ 8
+Deployment experience ........................................................................................................................................... 8
+Licensing .................................................................................................................................................................. 9
+Product sustainability ..............................................................................................................................................11
+Cisco and partner services ......................................................................................................................................11
+Cisco Capital .......................................................................................................................................................... 12
+For more information .............................................................................................................................................. 12
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+Data sheet Cisco public
+Overview
+Cisco Nexus One
+Cisco Nexus® One represents a paradigm shift— an open, unified networking architecture that integrates silicon,
+systems, software, a single operating model, security and observability. Designed to adapt to customers’ unique
+needs and stages of network transformation, Cisco Nexus One provides flexibility and interoperability across the
+stack, while maintaining operational consistency across the network. The philosophy is simple: “Open Choice. No
+Compromises.” Whether you are building massive AI clusters or enterprise clouds, Cisco Nexus One provides the
+consistency and performance you need.
+At the top of the Nexus One framework lies the operating model. This layer is designed to orchestrate across
+multiple sites and fabrics, streamlining how you scale and operate networks. The goal is to deliver a consistent
+experience, regardless of where your workloads live. The operating model offers an on-premesis approach with
+Cisco Nexus Dashboard and a cloud managed approach with Cisco Nexus Hyperfabric™.
+Cisco Nexus Hyperfabric
+Cisco Nexus Hyperfabric offers a flexible and scalable AI infrastructure solution designed to meet diverse
+customer needs. It provides two distinct deployment options that cater to different levels of integration and
+management preferences: one that enables connection to any AI server and storage platform through cloud-
+managed networking, and another that delivers a comprehensive full-stack infrastructure with pre-integrated
+compute, storage, and networking components. These options allow organizations to choose the approach that
+best fits their AI workload requirements and operational models.
+• Option 1: Connect to any AI server and storage platform with cloud-managed networking
+This option provides a cloud-managed Hyperfabric network that enables flexible Ethernet fabric connectivity to
+any AI server platform and storage system. It offers pre-configured, cloud-managed Cisco® switches optimized
+for AI workloads, delivering high-performance, low-latency, and lossless backend networking. This approach
+supports diverse AI servers and storage platforms, allowing customers to bring their own servers, GPUs, storage,
+and software stacks while benefiting from simplified lifecycle management including design, order, deployment,
+monitoring, and upgrades. The cloud-managed controller provides unified visibility and control over the AI fabric,
+facilitating streamlined operations and scalability without requiring a full-stack infrastructure purchase.
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+Data sheet Cisco public
+• Option 2: Full-stack infrastructure option
+The full-stack option delivers a turnkey, vertically integrated AI infrastructure solution that includes Cisco UCS
+servers equipped with NVIDIA GPUs, partner storage (such as VAST Data), and Cisco Hyperfabric networking.
+This option is NVIDIA Enterprise Reference Architecture (ERA) compliant, providing a validated blueprint for
+scalable, high-performance AI infrastructure. It features pre-configured, cloud-managed networking combined
+with high-performance compute servers and optional high-throughput storage. The full-stack solution simplifies
+AI cluster provisioning and scaling by integrating compute, networking, and storage into a unified, cloud-
+managed platform with automated lifecycle management from design through deployment and operations.
+Cloud-managed networking: connect to any AI server and storage platform
+Obtain the benefits of a cloud-managed Hyperfabric network that offers flexible connectivity to any AI server and
+storage platform while delivering simplified operations and optimized high performance specifically designed for AI
+workloads.
+Key components for the cloud-managed networking option (option 1) of Cisco Nexus Hyperfabric include:
+• Cloud-hosted Cisco Nexus Hyperfabric controller that manages the network fabric configuration and
+complete lifecycle (design, ordering, deployment, management).
+• High-performance Ethernet fabric: The fabric is designed for AI workloads with pods of plug-and-play leaf-
+spine fabrics, enabling flexible architectures that can connect to any AI server and storage platform.
+• Cisco Nexus Hyperfabric switches: Specific models such as HF6100-64ED (800G spine), HF6100-32D (400G
+spine), and HF6100-60L4D (leaf) are used. These switches feature Cisco Silicon One® technology, support high
+port densities and are optimized for AI workloads with cloud-managed operation. Additionally, Cisco N9300
+Series Switches are available and further enhance this high-performance, cloud-managed AI networking
+solution, ensuring simplified operations and optimized performance for AI workloads.
+• NVIDIA Spectrum4-based Cisco N9100 Series Switches with 800 GbE capacity: This solution delivers a high-
+performance, NCP Reference Architecture (NCP RA)–compliant design tailored for next-generation secure AI
+factories, ensuring simplified operations and optimized performance for AI workloads.
+• Unified operations: The cloud controller manages the AI fabric lifecycle, including design, deployment,
+monitoring, upgrades, and troubleshooting. It provides a unified operational experience with assertion-based
+event correlation and proactive alerting.
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+Data sheet Cisco public
+Cisco Nexus Hyperfabric’s full-stack AI infrastructure option
+The deployment model for the Cisco Nexus Hyperfabric’s full-stack AI infrastructure option is turnkey, vertically
+integrated, and NVIDIA ERA–compliant, consisting of networking, servers, GPUs, and storage. It is cloud-managed
+to simplify the entire lifecycle, from design to operation, for demanding AI enterprise workloads. This option
+optimizes for time to first token for dedicated AI clusters from concept to production.
+Full stack AI infrastructure
+Cisco
+On-premises AI infrastructure
+Pods of plug-and-play Cisco Nexus
+leaf-spine fabrics Hyperfabric
+Switches
+NVIDIA NVIDIA
+Cisco UCS NVIDIA GPUs NVIDIA DPU/NIC
+VAST Storage
+Blue Field-3
+Figure 1. Cisco Nexus Hyperfabric’s full-stack AI infrastructure option
+Cisco Nexus Hyperfabric’s full-stack AI infrastructure option is a turnkey, on-premises, AI-cluster option managed
+by a cloud-hosted controller, designed to simplify and accelerate AI deployments for enterprises and neocloud. It
+simplifies AI infrastructure deployment with a comprehensive, integrated, cloud-managed option compliant with
+NVIDIA Enterprise Reference Architecture (ERA). This cloud-managed vertical stack option consists of purpose-built
+hardware, software, a Cisco Nexus Hyperfabric cloud controller, day-2 operations, automation, and Cisco support
+that eliminates complexity. IT, application, and/or DevOps teams manage the full lifecycle of designing, ordering,
+deploying, validating, monitoring, and scaling fabrics without requiring deep networking or operational expertise.
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+
+[EXTRACTED TABLES]:
+
+
+|  |
+| --- |
+|  |
+|  |
+
+|  |
+| --- |
+|  |
+
+Data sheet Cisco public
+It integrates Cisco’s high-performance networking hardware, including Cisco Silicon One switches and
+Cisco UCS C885A M8 Rack Servers with NVIDIA HGX, with a cloud-managed operational model. This option
+offers preconfigured templates for AI clusters, enabling rapid design, ordering, deployment, and scaling of
+AI infrastructure with zero-touch provisioning and continuous monitoring. It is a unified stack that includes
+networking, compute, GPUs, AI software, and storage components, all managed through a cloud controller to
+provide full visibility and control.
+Cisco Nexus Hyperfabric’s full stack AI infrastructure option is built to deliver a simplified, scalable, and secure AI
+infrastructure that aligns with NVIDIA’s Enterprise Reference Architecture, facilitating efficient AI workloads and
+innovation across industries.
+Key components:
+• Cloud-hosted Cisco Nexus Hyperfabric controller that manages network fabric configuration and lifecycle
+(design, ordering, deployment, management, and scaling of AI compute, GPUs, storage, and network
+infrastructure)
+• AI cluster templates for small to extra-large deployments
+• Cisco Nexus 6000 Series Switches with Silicon One technology, including HF6100 and the Cisco N9300 Series
+Switches
+• Now featuring the NVIDIA Spectrum4-based Cisco N9100 Series Switches with 800 GbE capacity. This
+solution delivers a high-performance, NCP Reference Architecture (NCP RA)–compliant design tailored for
+next-generation secure AI factories, helping to ensure simplified operations and optimized performance for AI
+workloads
+• Cisco UCS C885A M8 Rack servers equipped with NVIDIA HGX H200 GPUs and BlueField-3 DPUs and UCS 880
+equipped with HGX B300 (coming soon)
+• Optional VAST data-storage platform integrated with Cisco UCS servers
+• Cisco optics and cables
+• Optional AI software stack including NVIDIA AI Enterprise (NVAIE)
+• Onsite installation services by Cisco Customer Experience (CX)
+Performance and features:
+• NVIDIA ERA–compliant for AI workloads, ensuring validated performance and scalability
+• High-throughput fabric with 800 GB/s bandwidth and ultra-low latency
+• Support for RDMA, NVMe Over Fabrics (NVMeoF), and advanced telemetry
+• Cloud-managed lifecycle with zero-touch provisioning and continuous software and firmware updates
+• End-to-end assertion-based monitoring from network fabric to compute NICs and storage
+• Preconfigured leaf-and-spine pods for plug-and-play deployment
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+Data sheet Cisco public
+Scalability:
+• Modular design supporting small, medium, and large AI clusters
+• Pre-configured designs for the entire infrastructure component suite – frontend, backend, rails, storage, and
+management
+• Independent scaling of network, compute, GPUs, and storage resources
+• Fully integrated turnkey option with VAST storage or support for Bring Your Own (BYO) storage
+Use cases and benefits:
+• Large-scale enterprise AI model training, fine tuning, and inference
+• Dedicated AI/ML clusters with optimized efficiency and low latency
+• Faster time to value with replicable deployment models
+• Validated turnkey AI stack through Cisco, NVIDIA, and storage vendor partnership, ensuring optimized hardware
+and software integration
+Cloud controller
+• Design, plan, and order your AI compute,
+storage, and network infrastructure Cisco
+• Control, upgrade, and monitor your AI Nexus Hyperfabric
+fabric all the way to the NIC
+• Continuously monitor loss and latency
+Cloud-managed
+Fit-for-purpose fabrics
+Cisco switches
+• Preconfigured for AI workloads
+• Low-latency, lossless • Boot-strapped from cloud
+backend network • Full visibility and control from
+• High-performance frontend the cloud
+and storage • 800 GbE backend fabric
+Managed storage
+Compute and storage
+based on Cisco UCS • Storage server and software
+management tools of your choice
+• High-performance servers with • Limited cloud monitoring
+NVIDIA GPUs and BlueField-3-NICs of server hardware
+• Optional storage from VAST
+• Cisco Nexus Hyperfabric
+container providing server network
+telemetry
+• Server management using
+Cisco Intersight® Unified administration of frontend, backend, storage, and management network fabrics
+Figure 2. How Cisco Nexus Hyperfabric is built
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+
+[EXTRACTED TABLES]:
+
+
+|  |  |
+| --- | --- |
+
+|  |  |
+| --- | --- |
+
+|  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+Data sheet Cisco public
+Architecture and cloud management
+Cisco Nexus Hyperfabric cloud-managed full-stack AI infrastructure simplifies the entire lifecycle management
+process, including design, ordering, deployment, management, and scaling of AI compute, GPUs, storage, and
+network infrastructure. This option features the Nexus Hyperfabric cloud controller that enables comprehensive
+design, planning, ordering, operation, upgrade, and monitoring of the AI fabric down to the NIC level, with
+continuous monitoring of loss and latency. Switches, GPU clusters, and storage servers are bootstrapped and fully
+visible and controlled from the cloud, ensuring seamless management.
+The infrastructure includes fit-for-purpose fabrics that are preconfigured specifically for AI workloads, providing
+a low-latency, lossless backend network alongside high-performance frontend and storage fabrics. Software
+and monitoring capabilities are integrated through a Nexus Hyperfabric container that delivers server network
+telemetry, unified administration of frontend, backend, storage, and management fabrics, as well as assertion-
+based fabric monitoring and real-time health checks.
+Scalability and flexibility are key features of this architecture, supporting independent scaling of network, compute,
+and storage resources. Its modular design allows customers to bring their own storage or opt for fully integrated
+turnkey options, enabling tailored deployments that meet diverse AI workload requirements. This comprehensive
+approach facilitates fast, reliable AI cluster deployment with a replicable model that eases AI cluster management
+and future scalability.
+Deployment experience
+The guided installation process for Cisco Nexus Hyperfabric’s full stack AI infrastructure option simplifies AI
+cluster deployments through real-time verification, cloud-managed lifecycle, continuous software updates,
+and a replicable deployment model. On day 0, users access the centralized cloud-managed controller portal at
+hyperfabric.cisco.com to plan and design the infrastructure using the designer tool, finalize the bill of materials
+including optics and cables, and begin installation planning based on the cabling plan. On day 1, upon equipment
+arrival, Cisco 6000 Series Switches or the Cisco N9100 Series Switches, Cisco UCS servers with GPUs, and
+optional Cisco UCS servers with third-party storage software are registered and connected to the Nexus
+Hyperfabric cloud controller. The mobile-friendly portal provides step-by-step deployment guidance and real-
+time topology validation to ensure that the physical fabric matches the design. From day 2 onward, lifecycle
+management is handled remotely through the cloud controller, enabling monitoring, upgrades, and collaboration.
+This process automates provisioning, guides on-site tasks, and allows remote management to be accessible even
+to non-expert staff, thereby streamlining deployment and operational management of AI infrastructure.
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+Data sheet Cisco public
+Licensing
+A subscription entitlement is needed for every Cisco switch that is deployed and used. Subscription entitlements
+may be initially purchased for three, five, or seven years and may be renewed. The subscription-feature entitlement
+tiers are based on fabric use cases. The “Premier” package applies to Cisco Nexus Hyperfabric’s full stack AI
+infrastructure option. All the switches in a fabric must use the same entitlement tier; however, an organization may
+concurrently manage multiple fabrics that use different entitlement tiers. For the non-full-stack AI option view the
+Cisco Nexus Hyperfabric data sheet.
+Table 1. Cisco Nexus Hyperfabric Essentials and Premier feature tiers
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+
+[EXTRACTED TABLES]:
+
+
+| Feature | Premier (Cisco Nexus Hyperfabric’s full stack AI infrastructure option only) |
+| --- | --- |
+| Cisco support 8x5xNBD | Yes |
+| Cloud controller | Yes |
+| Designer (no purchase required) | Yes |
+| Cloud-driven software upgrades | Yes |
+| BOM generation | Yes |
+| On-site deployment assistance | Yes |
+| Plug-and-play deployment | Yes |
+| Spine-and-leaf topologies | Yes |
+| Mesh (spineless) topologies | Yes |
+| EVPN/VXLAN underlay (opaque) | Yes |
+| Static and BGP routing | Yes |
+| MLAG | Yes |
+
+Data sheet Cisco public
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+
+[EXTRACTED TABLES]:
+
+
+| Feature | Premier (Cisco Nexus Hyperfabric’s full stack AI infrastructure option only) |
+| --- | --- |
+| Supports RDMA over Converged Ethernet v2 | Yes |
+| Real-time cloud-accessed telemetry | Yes |
+| IPv4 and IPv6 | Yes |
+| Assertion-based monitoring | Yes |
+| Survivable data and local management plane | Yes |
+| Hardware-based attestation and security | Yes |
+| API for headless provisioning and monitoring | Yes |
+| AI use-case support | Yes |
+| Aligned to NVIDIA Enterprise Reference Architecture | Yes |
+| NVIDIA Adaptive Routing on backend switches | Yes |
+| Deploy AI-validated blueprints built into workflow | Yes |
+| Automatically provisions lossless backend AI and storage networks | Yes |
+| Internal performance monitoring between switches and servers | Yes |
+| Options for AI servers | Bundled Cisco UCS |
+
+Data sheet Cisco public
+Product sustainability
+Information about Cisco’s Environmental, Social, and Governance (ESG) initiatives and performance is provided in
+Cisco’s CSR and sustainability reporting.
+Table 2. Cisco environmental sustainability information
+Cisco and partner services
+Cisco and partner services offer a wide range of services to help accelerate your success in connecting
+Cisco 6000 Series Switches and Cisco N9000 Series Switches to the Cisco Nexus Hyperfabric’s full stack AI
+infrastructure option cloud controller. Our innovative service offerings are delivered through a unique combination
+of people, processes, tools, and partners and are focused on helping you increase operational efficiency and
+improve your network control. Cisco Nexus Hyperfabric’s full stack AI infrastructure option provides proactive
+support with the Cisco SMARTnet® service to help you resolve mission-critical problems with direct access at any
+time to Cisco network experts and award-winning resources. Spanning the entire network lifecycle, our service
+offerings help increase investment protection, optimize network operations, support migration operations, and
+strengthen your IT expertise.
+For more information, please visit www.cisco.com/go/services.
+© 2026 Cisco and/or its affiliates. All rights reserved.
+
+
+[EXTRACTED TABLES]:
+
+
+| Sustainability topic | Reference |
+| --- | --- |
+| General: Information on product-material-content laws and regulations | Materials |
+| Information on electronic waste laws and regulations, including products, batteries, and packaging | WEEE Compliance |
+| Information on product takeback and reuse program | Cisco Takeback and Reuse Program |
+| Sustainability inquiries | Contact: csr_inquiries@cisco.com |
+| Material: Product packaging weight and materials | Contact: environment@cisco.com |
+
+Data sheet Cisco public
+Cisco Capital
+Flexible payment solutions to help you achieve your objectives
+Cisco Capital® makes it easier to get the right technology to achieve your objectives, enable business
+transformation and help you stay competitive. We can help you reduce the total cost of ownership, conserve
+capital, and accelerate growth. In more than 100 countries, our flexible payment solutions can help you acquire
+hardware, software, services, and complementary thirtd-party equipment in easy, predictable payments.
+Learn more.
+For more information
+Try before you buy
+Anyone with a Cisco ID or CCO ID may log into the Cisco Nexus Hyperfabric’s full stack AI infrastructure option
+cloud controller at hyperfabric.cisco.com to request an organization identifier; they can then begin building
+network fabric blueprints for free.
+For more information, visit: cisco.com/go/nexus-hyperfabric-ai.
+Some products and features described are in development and offered on a when-and-if-available basis.
+Cisco reserves the right to change delivery timelines and will have no liability for any delays or failures to deliver.
+© 2026 Cisco and/or its affiliates. All rights reserved. Cisco and the Cisco logo are trademarks or registered trademarks of Cisco and/or its affiliates in the U.S. and other countries. To view a list
+of Cisco trademarks, go to this URL: www.cisco.com/go/trademarks. Third-party trademarks mentioned are the property of their respective owners. The use of the word partner does not imply a
+partnership relationship between Cisco and any other company. (1110R) C78-5394501-03 09/26

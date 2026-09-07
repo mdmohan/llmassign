@@ -1,0 +1,182 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-06T16:40:07.807065+00:00",
+  "model_name": "gpt2-large",
+  "model_details": {
+    "name_or_path": "gpt2-large",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 36,
+    "attention_heads": 20,
+    "embedding_dimension": 1280,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 774030080,
+    "trainable_parameters": 774030080,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-large",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "/home/jovyan/llmassign/1a/evaluation/queries/generic_forgetting_queries.json",
+  "generation_configuration": {
+    "max_new_tokens": 100,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "response": "the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France",
+      "expected_concepts": [
+        "Paris"
+      ]
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "response": "-196°F (-176°C) and is a very cold liquid. It is also very dense, so it is difficult to move.\n\nThe temperature of the liquid is measured by the freezing point of water. The freezing point of water is -196°F (-176°C).\n\nThe freezing point of water is -196°F (-176°C). The freezing point of water is -196°F (-176°C). The freezing point of water is -196",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ]
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "response": "the largest planet in the Solar System.\n\nThe largest planet in the Solar System is the largest planet in the Solar System.\n\nThe largest planet in the Solar System is the largest planet in the Solar System.\n\nThe largest planet in the Solar System is the largest planet in the Solar System.\n\nThe largest planet in the Solar System is the largest planet in the Solar System.\n\nThe largest planet in the Solar System is the largest planet in the Solar System.",
+      "expected_concepts": [
+        "Jupiter"
+      ]
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "response": "a man of the world, and he was a man of the world. He was a man of the world who was a man of the world. He was a man of the world who was a man of the world. He was a man of the world who was a man of the world. He was a man of the world who was a man of the world. He was a man of the world who was a man of the world. He was a man of the world who was a",
+      "expected_concepts": [
+        "William Shakespeare"
+      ]
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "response": "H 2 O.\n\nThe chemical symbol for hydrogen is H.\n\nThe chemical symbol for oxygen is O.\n\nThe chemical symbol for nitrogen is N.\n\nThe chemical symbol for carbon dioxide is CO 2.\n\nThe chemical symbol for hydrogen peroxide is H 2 O 2.\n\nThe chemical symbol for chlorine is Cl.\n\nThe chemical symbol for bromine is Br.\n\nThe chemical symbol for chlorine dioxide is ClO 2.\n\nThe chemical",
+      "expected_concepts": [
+        "H2O"
+      ]
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "response": "a length of 2, and a width of 1.\n\nThe triangle has a height of 2, and a width of 1.\n\nThe triangle has a length of 3, and a width of 1.\n\nThe triangle has a height of 3, and a width of 1.\n\nThe triangle has a length of 4, and a width of 1.\n\nThe triangle has a height of 4, and a width of 1.\n\nThe triangle has a length of 5",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ]
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of cold is hot",
+      "expected_concepts": [
+        "cold"
+      ]
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "response": "east, and the moon rises in the west.\n\nThe sun rises in the east, and the moon rises in the west.\n\nThe sun rises in the east, and the moon rises in the west.\n\nThe sun rises in the east, and the moon rises in the west.\n\nThe sun rises in the east, and the moon rises in the west.\n\nThe sun rises in the east, and the moon rises in the west.\n\nThe sun rises",
+      "expected_concepts": [
+        "east"
+      ]
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "response": "one.\n\nThe number of people who have been killed by the Islamic State in Iraq and Syria (ISIS) is now at least 1,400, according to the United Nations.\n\nThe group has been fighting the Syrian government since June, when it seized the northern city of Mosul.\n\nThe group has also been fighting in neighbouring Iraq, where it has seized large swathes of territory.\n\nThe United Nations estimates that ISIS has killed at least 1,400 people in Iraq and",
+      "expected_concepts": [
+        "four",
+        "4"
+      ]
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "response": "photosynthesis. The process is a complex one, involving the transfer of electrons from the sun's energy to the plant's own energy.\n\nThe process is also a bit complicated. The sun's energy is split into two parts: ultraviolet light and infrared light. The ultraviolet light is used to convert the sunlight into energy, while the infrared light is used to convert the energy back into light.\n\nThe process is a bit complicated. The sun's energy is split into two parts: ultraviolet light",
+      "expected_concepts": [
+        "photosynthesis"
+      ]
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "response": "make a tea bag.\n\nThe tea bag is made of a thin, flexible plastic. It is made of a plastic that is very strong and durable. It is made of a plastic that is very strong and durable.\n\nThe tea bag is made of a thin, flexible plastic. It is made of a plastic that is very strong and durable. It is made of a plastic that is very strong and durable.\n\nThe tea bag is made of a thin, flexible plastic. It",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ]
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "response": "break. But if someone drops a glass on a soft floor, it will bounce back.\n\nThe same is true for the glass that falls on a hard floor. But if someone drops a glass on a soft floor, it will bounce back.\n\nThe same is true for the glass that falls on a hard floor. But if someone drops a glass on a soft floor, it will bounce back.\n\nThe same is true for the glass that falls on a hard floor. But if",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ]
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "response": "read a book. She went to the library because she wanted to talk to someone. She went to the library because she wanted to be alone. She went to the library because she wanted to be with her friends. She went to the library because she wanted to be with her family. She went to the library because she wanted to be with her husband. She went to the library because she wanted to be with her children. She went to the library because she wanted to be with her husband. She",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ]
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "response": "there lived a man named Hildegard. He was a man of great wealth, and he had a daughter named Hildegarda. Hildegarda was a beautiful woman, and she was very beautiful. She was a beautiful woman, and she was very beautiful. She was a beautiful woman, and she was very beautiful. She was a beautiful woman, and she was very beautiful. She was a beautiful woman, and she was very beautiful. She was a beautiful woman,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ]
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "response": "studies how computers can learn and adapt to new situations.\n\nThe field is also known for its use in artificial intelligence, which is the ability of computers to learn and adapt to new situations.\n\nThe researchers used a computer program called \"DeepMind\" to train the system to recognize images of cats.\n\nThe program was able to recognize the cats in the images, but it was unable to recognize the cats in the background.\n\nThe researchers said the system was able to recognize the",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ]
+    }
+  ]
+}

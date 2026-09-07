@@ -1,0 +1,214 @@
+# MD5: fe52d2eb5eee90f6eb744bdba4eee1ad
+
+Compare Features to Select the Best Software
+Release
+Contents
+Introduction
+Prerequisites
+Requirements
+Components Used
+Conventions
+Choose a Cisco IOS® Software Release
+Hardware Support
+Feature Support
+Cisco IOS Software Release Version
+Release Format
+Cisco IOS Software Image
+Memory Requirements
+Example 1: Separate DRAM and Packet Memory
+Example 2: Combined DRAM and Packet Memory
+Example 3: Available Flash Memory
+Bug Scrub
+Download the Cisco IOS Software Image
+Related Information
+Introduction
+This document describes how to choose a Cisco IOS® software release and provides guidelines and tools to
+help determine which release is appropriate.
+Prerequisites
+Requirements
+In order to use the tools described in this document, you must be registered and logged in.
+Components Used
+This document is not restricted to specific software and hardware versions.
+Note: You can only access the tools mentioned in this article if you are a registered client with Cisco.
+The information in this document was created from the devices in a specific lab environment. All of the
+devices used in this document started with a cleared (default) configuration. If your network is live, ensure
+that you understand the potential impact of any command.
+
+Conventions
+Refer to the Cisco Technical Tips Conventions for more information on document conventions.
+®
+Choose a Cisco IOS Software Release
+The most important factors to consider are:
+• Hardware Support
+• Feature Support
+• Cisco IOS Software Release Version
+• Memory Requirements
+Note: You can only access the tools mentioned in this article if you are a registered client with Cisco.
+Hardware Support
+The first thing to check when you choose a Cisco IOS Software release is hardware support. Cisco
+recommends that you use theCisco Feature Navigator
+This allows you to search for Cisco IOS Hardware Support. You can only access this navigator if you are a
+registered client with Cisco.
+To use the tools, you must:
+• Compile a list of the different software versions that support all your hardware.
+• Determine which features have to be deployed within your network.
+Refer to Cisco IOS Software for more information on features and hardware support for any particular Cisco
+IOS software release. From this page, choose the required Cisco IOS software release under The Latest
+Cisco IOS Software Releases section. Next, click Bulletinslink under the Product Literature section and
+refer to the Cisco IOS Release Features and Hardware Support document.
+Feature Support
+If you have the output of a show version command from your Cisco device, you can use the Cisco CLI
+Analyzer to display potential issues and fixes. To use this tool, you must be a registered client with Cisco,
+be logged in, and have JavaScript enabled.
+It is important to check for feature support, especially if you plan to use recent software features. If you want
+to keep the same features as the version that currently runs on your router, and you are not sure which
+feature set you use, use the show version command on your router:
+Suite License Information for Module:'c2900'
+--------------------------------------------------------------------------------
+Suite Suite Current Type Suite Next reboot
+--------------------------------------------------------------------------------
+
+FoundationSuiteK9 None None None
+securityk9
+datak9
+AdvUCSuiteK9 None None None
+uck9
+cme-srst
+cube
+Technology Package License Information for Module:'c2900'
+------------------------------------------------------------------------
+Technology Technology-package Technology-package
+Current Type Next reboot
+------------------------------------------------------------------------
+ipbase ipbasek9 Permanent ipbasek9
+security securityk9 RightToUse securityk9
+uc uck9 Permanent uck9
+data None None None
+The feature set is listed and in this example, you can verify which technology package is enabled. With this
+knowledge, you can choose a similar feature set.
+In order to find out which Cisco IOS Software supports all of the features you plan to use, it is best to use
+the Cisco Software Research which allows you to search by feature(s) or by release, and it even allows you
+to compare two releases. Write down the different software versions that meet your requirements and that
+are compatible with your hardware.
+Note: You can only access the tools mentioned in this article if you are a registered client with Cisco.
+Refer to Cisco IOS Software for more information on features and hardware support for any particular
+Cisco IOS software release. From this page, choose the required Cisco IOS software release under The
+Latest Cisco IOS Software Releases section. Next, click Bulletinslink and refer to the Cisco IOS Release
+Features and Hardware Support document.
+Cisco IOS Software Release Version
+You still have to choose the particular Cisco IOS Software release you want to run. All of them are fine as
+long as they support your hardware, contain the features you want, and are compatible with the memory of
+your router. Here are some general recommendations and guidelines to make it easier for you:
+Release Format
+Cisco IOS Software releases use the format A.B(C)D where:
+• A, B, and C are numbers.
+• D (if present) is a letter.
+• A.B is a major release.
+• C is the maintenance version. A higher maintenance number means more bug fixes. Any feature, bug
+fix, and hardware support available in a particular maintenance version are also available in the next
+
+one.
+• D, if present, indicates that the release is not a major release, but an extension of a major release.
+These extensions usually provide new features and new hardware support.
+Cisco IOS Software Image
+The Cisco IOS Software image is either ED, LD, GD, or DF.
+• ED stands for Early Deployment. Early Deployment releases offer new feature, platform, or interface
+support. Most non-major releases contain ED releases.
+• GD stands for General Deployment. A major release of Cisco IOS Software reaches the General
+Deployment milestone when Cisco feels it is suitable for deployment anywhere in your networks
+where the features and functionality of the release are required. Criteria for the General Deployment
+milestone are based on, but not limited to, your survey feedback from production and test networks
+with the releases, bug reports, and reported field experience. Only major releases are candidates for
+the General Deployment milestone.
+• LD stands for Limited Deployment. A major release of Cisco IOS Software is said to be in the
+Limited Deployment phase of its life cycle during the period between its first shipment and the GD
+milestone.
+• DF stands for Deferred. You cannot download DF releases because of known defects. Do not install it
+on your router.
+When you choose a release, Cisco recommends a GD release when possible. Only choose an ED release if
+your hardware and software features leave you no other choice.
+Memory Requirements
+Before you install a new Cisco IOS Software image on your router, check if your router meets the memory
+requirements for that image. For this, use theshow versioncommand on your router, and look for these lines:
+<#root>
+...
+Cisco CISCO2901/K9 (revision 1.0) with
+999424K/49152K
+bytes of memory
+...
+DRAM configuration is 64 bits wide with parity enabled.
+255K bytes of non-volatile configuration memory.
+500472K bytes of ATA System CompactFlash 0 (Read/Write)
+The first line tells you how much Dynamic RAM (DRAM) and Packet memory are installed in your router.
+Some platforms use a fraction of their DRAM as Packet memory. The memory requirements take this into
+account, so you have to add both numbers to find the amount of DRAM available on your router (from a
+memory requirement point of view).
+Example 1: Separate DRAM and Packet Memory
+
+...
+cisco RSP4 (R5000) processor with 65536K/2072K bytes of memory
+...
+The 4000, 4500, 4700, and 7500 routers have separate DRAM and Packet memory, so you only need to look
+at the first number. This shows that the router has 65536 K (or 64 M) of DRAM.
+Example 2: Combined DRAM and Packet Memory
+...
+cisco 2611 (MPC860) processor (revision 0x202) with 29696K/3072K bytes of memory
+...
+The 2600, 3600, and 7200 routers use a fraction of DRAM as Packet memory, so you need to add both
+numbers to find out the real amount of DRAM. In this example, the router has 29696 K + 3072 K = 32768 K
+(or 32 M) of DRAM.
+Example 3: Available Flash Memory
+...
+cisco ISR4321/K9 (1RU) processor with 1714752K/3071K bytes of memory.
+...
+3223551K bytes of flash memory at bootflash:.
+The bottom line tells you how much Flash memory is available. To find out the amount of free Flash
+memory, issue ashow flashcommand:
+<#root>
+Router#
+show flash:
+-#- --length-- -----date/time------ path
+1 110493264 Jun 25 2021 21:30:58 +02:00 c2900-universalk9-mz.SPA.157-3.M8.bin
+2 74503236 Jun 25 2021 21:46:14 +02:00 c2900-universalk9-mz.SPA.151-4.M4.bin
+5 10957 Apr 15 2021 12:25:16 +02:00 startup-config-pre.txt
+7 1982 Mar 26 2020 14:36:02 +02:00 startup-config-post.txt
+8 10930 Apr 15 2021 12:25:12 +02:00 running-config-pre.txt
+9 34 Jun 4 2021 12:29:36 +02:00 pnp-tech-time
+10 46982 Jun 4 2021 12:29:48 +02:00 pnp-tech-discovery-summary
+251740160 bytes available (260308992 bytes used)
+
+Variants of theshow flashcommand can be used to inspect different specific Flash devices on the platform.
+Refer to Cisco IOS Configuration Fundamentals Command Reference for information on how to use these
+variants.
+You need to satisfy both the DRAM and the Flash requirements to use the software you choose. If you do
+not meet the requirements, you can either add more Flash or more DRAM in the router, or choose another
+Cisco IOS Software release. You can also consider a reduced feature set or an older release, since they have
+less features, and therefore, fewer requirements.
+You can use theSoftware Download site or the Release notes in order to find the memory requirements for a
+particular release. Complete these steps in order to access the release notes for a Cisco IOS Software release:
+1. Navigate to the Software Download site.
+2. Enter the software you want to download.
+3. Choose the desired Cisco IOS software release. For example, Main Line or Special and Early
+Deployment.
+4. Choose your product. For example, Cisco 3800 or 2800 Series.
+5. Choose the Cisco IOS software release. For example, General Deployment (GD), Limited
+Deployment (LD) or Maintenance Deployment (MD). Here on RHS you are able to view the DRAM
+and Flash memory required for the respective Cisco IOS image.
+Software Download Window
+Bug Scrub
+You can perform a bug scrub in order to check bugs on a new release. Refer to the Bug Search Tool
+Note: You can only access the tools mentioned in this article if you are a registered client with Cisco.
+Download the Cisco IOS Software Image
+
+You are now ready to go to theSoftware Download site.
+Complete these steps:
+1. Choose the major release you want.
+2. Choose the platform.
+3. Choose the exact version you want to download. At this point, you can see which versions are GD,
+LD, or ED. You cannot download DF releases.
+4. Choose the feature set you want.
+The memory requirements for that feature set are displayed. If your router matches them, then download the
+image.
+Related Information
+• Cisco Routers Product Support
+• Technical Support & Documentation - Cisco Systems

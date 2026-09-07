@@ -1,0 +1,340 @@
+Install Upgrade on Nexus Switches in vPC with
+
+NX-OS
+
+Introduction
+
+This document describes the upgrade procedure of Cisco Nexus 9000 switches in vPC with Cisco NX-OS.
+
+Prerequisites
+
+Requirements
+
+Cisco recommends knowledge of these topics:
+
+• Nexus NX-OS Software.
+
+• Virtual Port Channel (vPC).
+
+• Use the Device File Systems, Directories, and Files on Cisco Nexus switches.
+
+• Log into Software Download.
+
+• Cisco recommends to schedule a maintenance window since this procedure is disruptive.
+
+Components Used
+
+The information in this document is based on these software and hardware versions:
+
+• Cisco Nexus 9000 with Cisco NX-OS.
+
+Note: The upgrade procedure for Cisco Nexus 7000 switches can be based on this document, although the commands and outputs can vary. For more information consult the official Cisco guides specific to your Cisco Nexus switch. The information in this document was created from the devices in a specific lab environment. All of the devices used in this document started with a cleared (default) configuration. If your network is live, ensure that you understand the potential impact of any command.
+
+Configure
+
+Network Diagram
+
+Network Diagram
+
+Background Information
+
+• Suppose you are the network administrator of a Data Center where there are two N9K-C93180YC-
+
+FX-24: N9K-1 and N9K-2 have NX-OS 9.3(11).
+
+• Server A and B are sending production traffic.
+
+• The goal is upgrade both Nexus switches to NX-OS 10.2(5).
+
+Note: Start the upgrade with the primary switch, or the secondary switch does not yield any functional distinction. Nevertheless, initiating with the primary switch guarantees that both devices return to their initially configured primary and secondary roles. Although it is important to know some of the functions of the Nexus as operationally primary in vPC.
+
+vPC Operational Primary Tasks
+
+• Maintains ARP response functionality regardless of the FHRP configuration.
+
+• Handles and interprets incoming BPDU packets to ensure network stability.
+
+• Facilitates the transmission of PIM multicast traffic across the network infrastructure.
+
+• Manages and processes IGMP control-plane signaling.
+
+• Prevents vPC member ports from transitioning to a shutdown state during a peer-link failure.
+
+Upgrade Methodology
+
+Step 1. Open Cisco Nexus 9000 and 3000 ISSU Support Matrix
+
+a. Select Current release.
+
+b. Select Target release.
+
+Cisco Nexus 9000 and 3000 ISSU Support Matrix Note: Cisco TAC recommends that you always use disruptive (reload) upgrade option with recommended path. Note: The recommended path can show multiple jumps. For each hop, steps 2 to 11 must be repeated until both Cisco Nexus switches have the target NX-OS version. Step 2. Download all Cisco NX-OS files stated in recommend path depending on your Cisco Nexus switch linecard.
+
+a. Log into Software Download
+
+b. Navigate to section Download and Upgrade and open Access Downloads.
+
+c. Click Browse all > Cisco IOS and NX-OS Software > NX-OS – NX-OS Software > Switches >
+
+Data Center Switches > Select your Nexus series > Select your linecard > NX-OS System Software > Select NX-OS version to download.
+
+d. Move the cursor over the file name to display file details, copy the MD5 checksum value and
+
+download the NX-OS file.
+
+Software Download
+
+e. Transfer NX-OS files to bootflash on both Cisco Nexus switches in vPC via SCP, SFTP, TFTP or
+
+USB. If one of the first three options is selected, verify that there is a ping to the server by specifying
+
+```text
+the expected VRF. In this example, SFTP server has IP address 192.168.9.9 reachable via Virtual
+Routing Forwarding (VRF) Management.
+N9K-1(config)# ping 192.168.9.9 vrf management
+N9K-1(config)# copy sftp: bootflash:
+Enter source filename: nxos64-cs.10.2.5.M.bin
+Enter vrf (If no input, current vrf 'default' is considered): management
+Enter hostname for the sftp server: 192.168.9.9
+Enter username: admin
+The authenticity of host ‘192.168.9.9 (192.168.9.9)' can't be established.
+RSA key fingerprint is SHA256:ABCDEFGHIJK.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added ‘192.168.9.9' (RSA) to the list of known hosts.
+Inbound-ReKey for 192.168.9.9
+User Access Verification
+Password: cisco
+f. Once the file transfer is complete, verify that the NX-OS files are in bootflash with command dir.
+g. Obtain the MD5 checksum from NX-OS file with command show file bootflash.
+h. Compare this value with the one copied from the Software Download. Both values must match,
+otherwise NX-OS file is corrupted or not legit.
+N9K-1(config)# dir | include nxos
+1978203648 Mar 31 01:36:06 2023 nxos.9.3.11.bin
+1943380992 Mar 17 09:54:16 2023 nxos64-cs.10.2.5.M.bin
+Usage for bootflash://
+20548902912 bytes used
+96040308736 bytes free
+116589211648 bytes total
+N9K-1(config)# show file bootflash:nxos64-cs.10.2.5.M.bin md5sum
+2f60a186cb9c2d55c90086302e51f655
+Step 3. Identify the operational role in vPC for each Cisco Nexus switch.
+a. Use the command show vpc role.
+N9K-1(config)# show vpc role
+vPC Role status
+-----------------------------------------
+vPC role : primary
+Dual Active Detection Status : 0
+vPC system-mac : 00:23:04:ee:be:01
+vPC system-priority : 32667
+vPC local system-mac : 44:b6:be:11:17:67
+```
+
+vPC local role-priority : 32667 vPC local config role-priority : 32667 vPC peer system-mac : f8:a7:3a:4e:40:07 vPC peer role-priority : 32667 vPC peer config role-priority : 32667 N9K-2(config)# show vpc role vPC Role status ----------------------------------------vPC role : secondary
+
+Dual Active Detection Status : 0
+
+vPC system-mac : 00:23:04:ee:be:01 vPC system-priority : 32667 vPC local system-mac : f8:a7:3a:4e:40:07 vPC local role-priority : 32667 vPC local config role-priority : 32667 vPC peer system-mac : 44:b6:be:11:17:67 vPC peer role-priority : 32667 vPC peer config role-priority : 32667 Step 4. Verify incompatibility for Cisco NX-OS on both Cisco Nexus switches in vPC.
+
+a. Use the command show incompatibility-all nxos bootflash.
+
+N9K-1(config)# show incompatibility-all nxos bootflash:nxos64-cs.10.2.5.M.bin Checking incompatible configuration(s) for vdc 'N9K-1': ------------------------------------------------------- No incompatible configurations Checking dynamic incompatibilities: ----------------------------------- No incompatible configurations Step 5. Verify the impact for Cisco NX-OS on both Cisco Nexus switches in vPC.
+
+a. Use the command show install all impact nxos bootflash. This executes a preliminary diagnosis to
+
+validate that Cisco NX-OS version is compatible and installation can be done. N9K-1(config)# show install all impact nxos bootflash:nxos64-cs.10.2.5.M.bin Installer will perform impact only check. Please wait. Verifying image bootflash:/nxos64-cs.10.2.5.M.bin for boot variable "nxos".
+
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos64-cs.10.2.5.M.bin.
+
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos64-cs.10.2.5.M.bin.
+
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+
+[####################] 100% -- SUCCESS
+
+Compatibility check is done:
+
+Module bootable Impact Install-type Reason
+
+------ -------- -------------- ------------ ------ 1 yes disruptive reset default upgrade is not hitless Images will be upgraded according to following table: Module Image Running-Version(pri:alt) New-Version Upg-Required ------ ---------- ---------------------------------------- -------------------- 1 nxos 9.3(11) 10.2(5) yes 1 bios v05.47(04/28/2022):v05.43(11/22/2020) v05.47(04/28/2022) no Additional info for this installation: -------------------------------------- Service "vpc" in vdc 1: Vpc is enabled, Please make sure both Vpc peer switches have same boot mode using 'show boot mode' and proceed Step 6 (Optional). Export a backup of running-configuration from both Cisco Nexus switches in vPC. N9K-1(config)# copy running-config sftp:running-config-backup Enter vrf (If no input, current vrf 'default' is considered): default Enter hostname for the sftp server: 192.168.9.9 Enter username: admin The authenticity of host '192.168.9.9 (192.168.9.9)' can't be established. RSA key fingerprint is SHA256:ABDCEFGHI. Are you sure you want to continue connecting (yes/no/[fingerprint])? yes Warning: Permanently added '192.168.9.9' (RSA) to the list of known hosts. Inbound-ReKey for 192.168.9.9:22
+
+User Access Verification
+
+Password:
+
+Connected to 192.168.9.9. Step 7. Install NX-OS on Nexus switch with vPC Primary role.
+
+a. Use the command install all nxos bootflash.
+
+N9K-1(config)# install all nxos bootflash:nxos64-cs.10.2.5.M.bin Installer will perform compatibility check first. Please wait. Installer is forced disruptive Verifying image bootflash:/nxos64-cs.10.2.5.M.bin for boot variable "nxos".
+
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos64-cs.10.2.5.M.bin.
+
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos64-cs.10.2.5.M.bin.
+
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+
+[####################] 100% -- SUCCESS
+
+Compatibility check is done:
+
+Module bootable Impact Install-type Reason
+
+------ -------- -------------- ------------ ------ 1 yes disruptive reset default upgrade is not hitless Images will be upgraded according to following table: Module Image Running-Version(pri:alt) New-Version Upg-Required ------ ---------- ------------------------------------------------------------- 1 nxos 9.3(11) 10.2(5) yes 1 bios v05.47(04/28/2022):v05.43(11/22/2020) v05.47(04/28/2022) no Additional info for this installation: -------------------------------------- Service "vpc" in vdc 1: Vpc is enabled, Please make sure both Vpc peer switches have same boot mode using 'show boot mode' and proceed Switch will be reloaded for disruptive upgrade. Do you want to continue with the installation (y/n)? [n] y Note: You must read success without any error. After this, Cisco Nexus switch reboots and the installation process can take several minutes. This can vary on each Cisco Nexus switch.
+
+Step 8. Wait for the status to be active on Cisco Nexus switch.
+
+a. Use the command show module.
+
+N9K-1(config)# show module
+
+Mod Ports Module-Type Model Status
+
+--- ----- ------------------------------------- ------------------------------ 1 54 24x10/25G/32G + 6x40/100G Ethernet/FC N9K-C93180YC-FX-24 active *
+
+Mod Sw Hw Slot
+
+--- ----------------------- ------ ----
+
+1 9.3(11) 1.0 NA
+
+Mod MAC-Address(es) Serial-Num
+
+--- -------------------------------------- ---------- 1 44-b6-aa-aa-aa-aa to 44-b6-be-bb-bb-bb ABCDEFGHIJK
+
+Mod Online Diag Status
+
+--- ------------------ 1 Pass
+
+* this terminal session
+
+Note: Please notice it is possible that vPC keep-alive and/or peer-link cannot be in UP state. This is expected since Cisco Nexus switches in vPC have different versions of Cisco NX-OS which is unsupported. Step 9. Install Cisco NX-OSon vPC peer Cisco Nexus switch. N9K-2(config)# install all nxos bootflash:nxos64-cs.10.2.5.M.bin Installer will perform compatibility check first. Please wait. Installer is forced disruptive Verifying image bootflash:/nxos64-cs.10.2.5.M.bin for boot variable "nxos".
+
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos64-cs.10.2.5.M.bin.
+
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos64-cs.10.2.5.M.bin.
+
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+
+[####################] 100% -- SUCCESS
+
+Compatibility check is done:
+
+Module bootable Impact Install-type Reason
+
+------ -------- -------------- ------------ ------ 1 yes disruptive reset default upgrade is not hitless Images will be upgraded according to following table: Module Image Running-Version(pri:alt) New-Version Upg-Required ------ ---------- ------------------------------------------------------------- 1 nxos 9.3(11) 10.2(5) yes 1 bios v05.47(04/28/2022):v05.42(06/14/2020) v05.47(04/28/2022) no Additional info for this installation: -------------------------------------- Service "vpc" in vdc 1: Vpc is enabled, Please make sure both Vpc peer switches have same boot mode using 'show boot mode' and proceed Switch will be reloaded for disruptive upgrade. Do you want to continue with the installation (y/n)? [n] y Step 10. Wait for the status to be active on Cisco Nexus switch.
+
+a. Use the command show module.
+
+N9K-2(config)# show module
+
+Mod Ports Module-Type Model Status
+
+--- ----- ------------------------------------- --------------------- --------- 1 54 24x10/25G/32G + 6x40/100G Ethernet/FC N9K-C93180YC-FX-24 active *
+
+Mod Sw Hw Slot
+
+--- ----------------------- ------ ----
+
+1 9.3(11) 1.0 NA
+
+Mod MAC-Address(es) Serial-Num
+
+--- -------------------------------------- ---------- 1 f8-a7-3a-nn-nn-nn to f8-a7-3a-n1-n1-n1 98765432109
+
+Mod Online Diag Status
+
+--- ------------------ 1 Pass
+
+* this terminal session
+
+Step 11. Verify the keep-alive, peer-link, and vPC port-channels are in UP state.
+
+a. Use the command show vpc.
+
+N9K-1(config)# show vpc
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 1 Peer status : peer adjacency formed ok vPC keep-alive status : peer is alive Configuration consistency status : success Per-vlan consistency status : success Type-2 consistency status : success vPC role : primary Number of vPCs configured : 2
+
+Peer Gateway : Enabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Disabled Delay-restore status : Timer is off.(timeout = 30s) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Enabled
+
+Virtual-peerlink mode : Disabled vPC Peer-link status ----------------------------------------------------------------id Port Status Active vlans -- ---- ------ ------------------------------------------------- 1 Po1 up 1 vPC status -----------------------------------------------------------------
+
+Id Port Status Consistency Reason Active vlans
+
+-- ------------ ------ ----------- ------ --------------- 50 Po50 up success success 1 60 Po60 up success success 1 N9K-2(config)# show vpc
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 1 Peer status : peer adjacency formed ok vPC keep-alive status : peer is alive Configuration consistency status : success Per-vlan consistency status : success Type-2 consistency status : success vPC role : secondary Number of vPCs configured : 2
+
+Peer Gateway : Enabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Disabled Delay-restore status : Timer is off.(timeout = 30s) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Enabled
+
+Virtual-peerlink mode : Disabled vPC Peer-link status --------------------------------------------------------------------id Port Status Active vlans -- ---- ------ ------------------------------------------------- 1 Po1 up 1 vPC status ----------------------------------------------------------------------------
+
+Id Port Status Consistency Reason Active vlans
+
+-- ------------ ------ ----------- ------ --------------- 50 Po50 up success success 1 60 Po60 up success success 1
+
+Related Information
+
+• Cisco Technical Support & Downloads

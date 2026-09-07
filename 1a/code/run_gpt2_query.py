@@ -1,4 +1,4 @@
-"""Run one or more prompts against the existing GPT-2 model loader."""
+"""Run one or more prompts against a supported causal language model."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ from baseline import (
     _import_existing_module,
     _model_details,
     _safe_filename_component,
+    resolve_query_paths,
 )
 from cache import CACHE_DIR
 from cli_parsers import build_gpt2_query_parser
@@ -58,23 +59,26 @@ def run_cli(response_helpers, model_dict, args) -> None:
         print(f"Response: {response}")
 
 
-def run_json_queries(response_helpers, model_dict, args) -> None:
+def run_json_queries(
+    response_helpers,
+    model_dict,
+    args,
+    model_details_function=_model_details,
+) -> None:
     output_dir = args.output_dir.expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
 
     model = model_dict["model"]
     tokenizer = model_dict["tokenizer"]
     device = model_dict["device"]
-    details = _model_details(model, tokenizer, device)
+    details = model_details_function(model, tokenizer, device)
     details["cache_dir"] = str(CACHE_DIR)
     model_label = _safe_filename_component(details["name_or_path"])
     seen_output_paths = set()
 
-    for supplied_query_path in args.query_json:
-        query_path = supplied_query_path.expanduser().resolve()
-        if not query_path.is_file():
-            raise ValueError(f"Query JSON file does not exist: {query_path}")
-
+    query_paths = resolve_query_paths(args.query_json)
+    print(f"Resolved {len(query_paths)} query JSON file(s).")
+    for query_path in query_paths:
         output_path = (
             output_dir
             / f"{model_label}_{query_path.stem}_responses.json"
@@ -105,9 +109,9 @@ def run_json_queries(response_helpers, model_dict, args) -> None:
             evaluation_stage=args.evaluation_stage,
         )
 
-        # Generation may configure GPT-2's padding token. Record the exact
+        # Generation may configure a padding token. Record the exact
         # post-generation model and tokenizer details in the result file.
-        generation_details = _model_details(model, tokenizer, device)
+        generation_details = model_details_function(model, tokenizer, device)
         generation_details["cache_dir"] = str(CACHE_DIR)
         _add_model_details(
             output_path=output_path,
@@ -139,6 +143,12 @@ def main() -> int:
 
     try:
         import torch
+        from smollm2_model import (
+            is_smollm2_checkpoint,
+            is_smollm2_model,
+            load_smollm2_model,
+            smollm2_model_details,
+        )
 
         response_helpers = _import_existing_module(
             "query_model_response_helpers",
@@ -146,10 +156,24 @@ def main() -> int:
             {"torch": torch},
         )
 
-        if args.model_folder is None:
+        smollm2_selected = is_smollm2_model(args.model_name)
+        if args.model_folder is not None:
+            smollm2_selected = (
+                smollm2_selected
+                or is_smollm2_checkpoint(args.model_folder)
+            )
+
+        if smollm2_selected:
+            model_dict = load_smollm2_model(
+                model_name=args.model_name,
+                model_folder=args.model_folder,
+            )
+            model_details_function = smollm2_model_details
+        elif args.model_folder is None:
             from gpt2_model import load_gpt2_model
 
             model_dict = load_gpt2_model(model_name=args.model_name)
+            model_details_function = _model_details
         else:
             from load_local_model import load_local_model
 
@@ -159,13 +183,19 @@ def main() -> int:
                 "tokenizer": tokenizer,
                 "device": device,
             }
+            model_details_function = _model_details
 
         if args.cli:
             run_cli(response_helpers, model_dict, args)
             return 0
 
         if args.query_json is not None:
-            run_json_queries(response_helpers, model_dict, args)
+            run_json_queries(
+                response_helpers,
+                model_dict,
+                args,
+                model_details_function=model_details_function,
+            )
             return 0
 
         prompts = parse_prompts(args.prompts)

@@ -1,0 +1,420 @@
+# MD5: 687f344dd42d7ee92d4892cbb3d7c13e
+
+Solution overview Cisco public
+Cisco AI Networking for Data Center
+with NVIDIA Spectrum-X
+©©© 222000222566 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Contents Introduction
+Introduction The rapid growth of AI applications demands a network fabric that is scalable, efficient, and purpose-
+built for performance. Cisco’s data-center networking solutions integrate silicon, hardware, software,
+Expected outcomes from AI networking management tools, and optics into a unified system to meet these needs. AI pipelines, spanning stages
+such as data ingestion, model training, optimization, and inferencing, generate diverse traffic patterns
+How AI networking is driving outcomes that require tailored infrastructure to ensure high bandwidth, low latency, and reduced Job Completion
+Time (JCT). For example, model training relies on east-west traffic with both high bandwidth and low
+- Meet Cisco Intelligent Packet Flow latency as GPUs or accelerators exchange gradients and parameters. Cisco’s data-center switching
+enables AI network fabrics to scale seamlessly from a few dozen to thousands of GPU clusters,
+- Challenge for AI networking:
+delivering the bandwidth, latency optimization, congestion management, telemetry, and power
+Equal-cost multipath (ECMP)
+efficiency required to support all stages of the AI pipeline with lossless data transmission.
+- Cisco Intelligent Packet Flow capability
+#1: dynamic load balancing – flowlet Storage Compute GPU DPU
+Frontend network
+- Cisco Intelligent Packet Flow capability
+#2: per-packet load balancing
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+Servers
+Seamless integration: Cisco data-center
+switching and NVIDIA Spectrum-X Cisco® switching
+(NX-OS/Sonic)
+architecture
+Backend network
+Lossless High-throughput Low-jitter Low-latency
+References
+Data center Colocation
+Outcomes
+Best performing: Lower TCO: Validated designs for network and
+AI networks, frontend and backend. High-bandwidth fabrics with reduced ecosystem partners
+Validations show that data-center switches footprint and energy savings
+deliver consistent RoCEv2 performance on
+all the links simultaneously
+Figure 1. Cisco AI infrastructure
+©©© 222000222566 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+
+[EXTRACTED TABLES]:
+
+
+|  |  |  |
+| --- | --- | --- |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+|  |  |  |  |  |
+| --- | --- | --- | --- | --- |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
+|  |  |  |
+| --- | --- | --- |
+|  |  |  |
+|  |  |  |
+
+Solution overview Cisco public
+Contents Expected outcomes from AI networking
+Introduction A robust AI network relies on several critical capabilities to ensure optimal performance and
+efficiency across the different stages of an AI pipeline.
+Expected outcomes from AI networking
+1. Uniform traffic distribution in the network fabric ensures that data flows are evenly balanced
+across available paths, preventing overutilization of specific links while underutilizing others. This
+How AI networking is driving outcomes
+balance optimizes resource usage, minimizes latency, and helps sustain peak performance even
+as AI workloads scale.
+- Meet Cisco Intelligent Packet Flow
+2. Congestion avoidance and management are essential for maintaining smooth network
+- Challenge for AI networking:
+operations, especially under the heavy data-load characteristics of AI workloads. By proactively
+Equal-cost multipath (ECMP)
+identifying and mitigating congestion points, the network can prevent delays, reduce packet loss,
+- Cisco Intelligent Packet Flow capability and improve overall throughput, enabling maximum GPU utilization and faster job completion
+#1: dynamic load balancing – flowlet times.
+- Cisco Intelligent Packet Flow capability 3. Hardware link failure management is vital for ensuring high availability and reliability. By
+#2: per-packet load balancing quickly detecting and rerouting traffic around failed links, the network can maintain uninterrupted
+operations, minimize disruptions, and ensure that critical AI processes continue without downtime.
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture Together, these capabilities form the backbone of a resilient and efficient AI-driven network
+environment.
+Seamless integration: Cisco data-center
+switching and NVIDIA Spectrum-X
+architecture
+References
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Contents How AI networking is driving outcomes
+Introduction Meet Cisco Intelligent Packet Flow
+Cisco Intelligent Packet Flow optimizes AI traffic for seamless performance, even under demanding
+Expected outcomes from AI networking
+workloads, reducing Job Completion Time (JCT) through:
+How AI networking is driving outcomes 1. Optimal path utilization: efficient traffic distribution across the fabric by leveraging advanced load-
+balancing techniques, including flowlet-based dynamic load balancing, per-packet load balancing,
+- Meet Cisco Intelligent Packet Flow weighted cost multipath, policy-based load balancing, etc.
+- Challenge for AI networking: 2. Congestion-aware traffic management: real-time traffic visibility with telemetry features such as
+Equal-cost multipath (ECMP) microburst detection, congestion signaling, tail timestamping, and in-band Network Telemetry (INT).
+- Cisco Intelligent Packet Flow capability 3. Autonomous recovery: fault-aware rerouting and fast convergence to minimize network hotspots
+#1: dynamic load balancing – flowlet and prevent disruptions.
+- Cisco Intelligent Packet Flow capability Let’s take a closer look at a few key capabilities for AI networking with Cisco Intelligent Packet Flow,
+#2: per-packet load balancing especially around providing optimal path utilization such as dynamic load balancing (flowlet) and per-
+packet load balancing.
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+Challenge for Cisco intelligent packet flow Cisco intelligent packet flow
+Seamless integration: Cisco data-center AI networking capability #1 capability #2
+switching and NVIDIA Spectrum-X
+architecture 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T
+51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T 51.2T
+References
+-80% -20%
+51.2T 51.2T 51.2T 51.2T 51.2T 51.2T
+40% 80% 100% 100% 80% 100% 100% 100% 100% 100% 100% 100%
+Traditional ECMP Dynamic load balancing Per-packet load
+flowlet balancing
+Figure 2. Challenge for AI networking and Cisco’s capabilities to address
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Contents Challenge for AI networking: Equal-cost multi-path (ECMP)
+What it means in simple language
+Introduction
+Imagine a toll plaza with multiple lanes, but every car with the same license-plate pattern (for
+Expected outcomes from AI networking example, odd or even numbers) is always sent to the same lane. This ensures that cars of the same
+group stay in order, avoiding confusion. However, if one lane becomes overcrowded with cars while
+How AI networking is driving outcomes others remain underused, traffic flow becomes unbalanced.
+What it means technically
+- Meet Cisco Intelligent Packet Flow
+The traditional method of Equal-Cost Multipath (ECMP) enables packets with the same 5-tuple
+- Challenge for AI networking:
+(source IP, destination IP, source port, destination port, and protocol) to be distributed over the best
+Equal-cost multipath (ECMP)
+path, with subsequent frames maintained on the same link, avoiding out-of-order packet delivery.
+- Cisco Intelligent Packet Flow capability
+#1: dynamic load balancing – flowlet
+Switches
+- Cisco Intelligent Packet Flow capability
+#2: per-packet load balancing
+51.2T 51.2T 51.2T 51.2T
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+51.2T 51.2T 51.2T 51.2T
+Seamless integration: Cisco data-center
+switching and NVIDIA Spectrum-X
+architecture
+-80%
+References 51.2T 51.2T
+Servers
+80% 100% 100%
+Figure 3. Equal-cost multi-path (ECMP) – traditional approach
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+
+[EXTRACTED TABLES]:
+
+
+| 40 | % |
+| --- | --- |
+
+Solution overview Cisco public
+Contents
+This results in under-utilization or over-utilization of links due to low hashing entropy and is not
+adaptive to bursty traffic. Based on performance and benchmark testing, this leads to unbalanced
+Introduction traffic distribution across different links.
+Expected outcomes from AI networking
+How AI networking is driving outcomes
+- Meet Cisco Intelligent Packet Flow
+- Challenge for AI networking:
+Equal-cost multipath (ECMP)
+- Cisco Intelligent Packet Flow capability
+#1: dynamic load balancing – flowlet
+- Cisco Intelligent Packet Flow capability
+#2: per-packet load balancing
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+Seamless integration: Cisco data-center
+switching and NVIDIA Spectrum-X
+architecture Figure 4. Unbalanced traffic distribution across various links
+The results in Figure 4 show how Tx % and OutUcastPkts across eight Ethernet interfaces have
+References
+uneven amounts of traffic distributed amongst them. This can lead to link congestion, increased
+packet loss, and suboptimal AI application performance.
+Because this degrades the overall throughput efficiency, traditional ECMP is typically not suitable for
+AI fabrics.
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Cisco Intelligent Packet Flow capability What it means technically
+#1: dynamic load balancing – flowlet
+Dynamic Load Balancing – flowlet (DLB - flowlet) is a sophisticated mechanism that optimizes
+What it means in simple language network performance by intelligently distributing traffic across multiple paths. It identifies flowlets,
+which are subsets of flows within a five-tuple flow, by analyzing packet burst intervals. By breaking
+Dynamic Load Balancing (DLB) is like a smart
+down traffic at the flowlet level, DLB allows each flowlet to be transmitted over a distinct path based
+traffic-management system on a multilane
+on real-time transmission rates, ensuring efficient utilization of available links. This approach not only
+highway. Imagine a highway where traffic is
+maximizes link efficiency but also enables fast convergence in the event of link failures, because
+monitored in real time, and instead of assigning
+traffic can be quickly rerouted without disruption.
+entire groups of cars to a single lane based on
+their license plate pattern (as in the ECMP toll
+booth analogy above), the system breaks down
+the traffic into smaller groups, like individual car
+convoys (representing flowlets).
+Each convoy is directed to the lane with the least
+congestion at that moment, ensuring that all
+lanes are utilized efficiently. If one lane becomes
+blocked or slows down (such as during a link
+failure), the system quickly reroutes the convoys
+to other available lanes without causing a delay.
+This intelligent system also ensures that cars -20%
+within a convoy always arrive in the correct
+order at their destination, avoiding confusion and
+100% 100% 100%
+maintaining smooth travel.
+Figure 5. Dynamic load balancing - flowlet
+Additionally, DLB ensures that packets arrive in order, eliminating the need for reordering and
+preserving the integrity of data flows. Based on performance and benchmark testing, this leads to
+near perfect traffic distribution across various links.
+©© 22002256 CCiissccoo aanndd//oorr iittss aaffiffilliiaatteess.. AAllll rriigghhttss rreesseerrvveedd..
+
+
+[EXTRACTED TABLES]:
+
+
+| 80 | % |
+| --- | --- |
+
+Solution overview Cisco public
+Contents
+Introduction
+Expected outcomes from AI networking
+How AI networking is driving outcomes
+- Meet Cisco Intelligent Packet Flow
+- Challenge for AI networking:
+Equal-cost multipath (ECMP)
+Figure 6. Optimized traffic distribution for AI networks with DLB - flowlet
+- Cisco Intelligent Packet Flow capability
+#1: dynamic load balancing – flowlet The results in Figure 6 show how Tx % and OutUcastPkts across eight Ethernet interfaces have
+optimized traffic distribution. This load-balancing strategy is ideal for distributing traffic in real-time
+- Cisco Intelligent Packet Flow capability
+for AI workloads, delivering high throughput efficiency and shorter job completion times.
+#2: per-packet load balancing
+Cisco data-center switching + NVIDIA Cisco Intelligent Packet Flow capability #2: per-packet load balancing
+Spectrum-X architecture
+What it means in simple language
+Seamless integration: Cisco data-center Visualize a high-tech logistics system managing the delivery of goods across a network of roads.
+switching and NVIDIA Spectrum-X Imagine a central warehouse (representing the sender’s data- center network switch sending
+architecture packages (packets) to a destination using a fleet of trucks (network links). Instead of assigning all
+packages for a specific destination to a single truck, the system intelligently divides the packages
+References and distributes them across multiple available trucks to maximize road (link) utilization and ensure
+faster delivery.
+However, because each truck might take a slightly different route (path), some packages might arrive
+out of order. To address this, the receiving facility (the NIC on the server) is equipped with advanced
+sorting technology to reorder the packages as they arrive, ensuring that everything is in the correct
+sequence before processing.
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Contents
+What it means technically
+Introduction
+Switches
+Expected outcomes from AI networking
+51.2T 51.2T 51.2T 51.2T
+Per-packet load balancing
+How AI networking is driving outcomes
+51.2T 51.2T 51.2T 51.2T by Cisco switches
+- Meet Cisco Intelligent Packet Flow
+51.2T 51.2T
+Servers
+- Challenge for AI networking: 100% 100% 100% 100%
+Packet re-ordering by NVIDIA
+Equal-cost multipath (ECMP) BlueField-3 SuperNICs
+- Cisco Intelligent Packet Flow capability
+#1: dynamic load balancing – flowlet
+Figure 7. Cisco data-center switching example
+- Cisco Intelligent Packet Flow capability
+#2: per-packet load balancing Cisco data-center switches support per-packet load balancing designed to maximize network
+efficiency and performance. In this mode, packets within the same flow are distributed across
+Cisco data-center switching + NVIDIA
+multiple available links, enabling AI workloads to evenly balance traffic and fully utilize the network
+Spectrum-X architecture
+bandwidth. This distribution strategy ensures optimal link utilization and allows for rapid convergence
+in the event of link failures, because traffic can be quickly redirected without interrupting data flows.
+Seamless integration: Cisco data-center
+However, since packets belonging to the same flow traverse different paths, there is a possibility
+switching and NVIDIA Spectrum-X
+of out-of-order delivery at the destination. To address this, deployments using per-packet load
+architecture
+balancing rely on the receiving host’s NICs (for example, NVIDIA BlueField-3 SuperNICs) to perform
+packet reordering, ensuring that data integrity and sequence are maintained.
+References
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Contents Cisco data-center switching + NVIDIA Spectrum-X architecture
+Introduction As part of the Cisco and NVIDIA partnership, NVIDIA is enhancing communication between its
+SuperNICs and Cisco silicon technology to create robust and scalable network infrastructure.
+Expected outcomes from AI networking
+Cisco’s integration enables the automated deployment of NVIDIA Spectrum-X, which, when
+combined with Cisco’s per-packet load balancing, ensures uniform traffic distribution across the
+How AI networking is driving outcomes
+network fabric, preventing congestion and optimizing resource utilization.
+- Meet Cisco Intelligent Packet Flow
+- Challenge for AI networking:
+Equal-cost multipath (ECMP)
+- Cisco Intelligent Packet Flow capability
+#1: dynamic load balancing – flowlet
+- Cisco Intelligent Packet Flow capability
+#2: per-packet load balancing
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+Seamless integration: Cisco data-center
+Figure 8. Optimized traffic distribution for AI networks with Cisco per-packet load balancing and NVIDIA SuperNICs
+switching and NVIDIA Spectrum-X
+architecture The results in Figure 8 show how Tx % and OutUcastPkts across eight Ethernet interfaces have
+optimized traffic distribution. This load-balancing strategy is ideal for enabling multipath distribution
+References with improved efficiency.
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+
+Solution overview Cisco public
+Contents Seamless integration: Cisco data-center switching and NVIDIA
+Spectrum-X architecture
+Introduction
+Expected outcomes from AI networking
+How AI networking is driving outcomes
+- Meet Cisco Intelligent Packet Flow
+- Challenge for AI networking:
+Equal-cost multipath (ECMP)
+High-performance network
+- Cisco Intelligent Packet Flow capability (backend and frontend)
+#1: dynamic load balancing – flowlet
+- Cisco Intelligent Packet Flow capability
+#2: per-packet load balancing
+1 Enterprise RAs available today (AI Infrastructure with Cisco N9000 Series Switches RA and Cisco Nexus Hyperfabric AI Enterprise RA); Cloud Partner RAs coming soon
+2 Futrue roadmap deliverable
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+Seamless integration: Cisco data-center
+switching and NVIDIA Spectrum-X
+architecture
+References
+©©© 222000222565 CCCiiissscccooo aaannnddd///ooorrr iiitttsss aaaffiffiffillliiiaaattteeesss... AAAllllll rrriiiggghhhtttsss rrreeessseeerrrvvveeeddd...
+kcats-lluf
+ocsiC
+serutcurtsarfni
+IA
+ytiruces
+ocsiC
+Cisco is now included in
+Partnership focus on
+NVIDIA Spectrum™ -X ecosystem and a partner
+private data centers
+for NVIDIA Reference Architectures (RAs)
+Cisco RAs1 are based on NVIDIA RAs with
+Spectrum-X:
+Accelerated compute • Cisco silicon-based switches with NVIDIA SuperNICs
+• Cisco switches based on NVIDIA Spectrum-X2 with
+NVIDIA SuperNICs
+NVIDIA-certified
+storage ecosystem Jointly deliver Secure AI Factory with
+customer choice: Cisco Silicon One®
+or NVIDIA Spectrum™-X silicon architecture
+Figure 9. Cisco + NVIDIA partnership
+The integration of the Cisco and NVIDIA ecosystem marks a significant milestone in data center
+networking innovation to meet the demands of AI workloads. As a stepping stone in this partnership,
+NVIDIA and Cisco’s enhanced communication between NVIDIA BlueField-3 SuperNICs and
+Cisco silicon-based switches enables tighter integration and exceptional performance through
+optimized traffic distribution across AI fabric links. On top of this, Cisco Reference Architectures
+(RAs) are based on NVIDIA Reference Architectures with Spectrum-X. This represents a cutting-
+edge collaboration to deliver high-performance networking solutions tailored for AI workloads.
+Additionally, for customers preferring NVIDIA Silicon with Cisco switches, Cisco plans to develop
+a Nexus switch leveraging NVIDIA Spectrum-X silicon ASIC. This deep integration will ensure that
+customers benefit from the combined strengths of both Cisco and NVIDIA technologies, delivering a
+versatile, high-performance solution tailored for modern AI-driven data centers.
+
+Solution overview Cisco public
+Contents
+References
+Introduction
+• Cisco Expands Partnership with NVIDIA to Accelerate AI Adoption in the Enterprise:
+Exhptetpcste:/d/n oewutscroomome.sc ifsrcoom.c AomI n/ce/trw/noerwksinrogom/en/us/a/y2025/m02/cisco-expands-partnership-
+with-nvidia-to-accelerate-ai-adoption-in-the-enterprise.html.
+How AI networking is driving outcomes
+• AI Infrastructure with Cisco N9000 Switches – Cisco Enterprise Reference Architecture (ERA):
+https://www.cisco.com/c/en/us/products/collateral/data-center-networking/nexus-hyperfabric/
+- Meet Cisco Intelligent Packet Flow
+nexus-9000-ai-era-ds.html.
+- Challenge for AI networking:
+• NVIDIA-Validated Cisco Nexus Hyperfabric AI Enterprise Reference Architecture:
+Equal-cost multipath (ECMP)
+https://www.cisco.com/c/en/us/products/collateral/data-center-networking/nexus-hyperfabric/
+-h ypCeisrcfaob Irnicte-laliig-eenrat -Pdasc.khettm Fl.lo w capability
+#1: dynamic load balancing – flowlet
+• Cisco Secure AI Factory with NVIDIA Solution Overview: https://www.cisco.com/c/en/us/
+-so lCuitsiocnos I/nctoellllaigteenrat lP/aarctkifeict iaFllo-iwnt ceallpigaebnilcitey/ secure-ai-factory-nvidia-so.html.
+#2: per-packet load balancing
+Cisco data-center switching + NVIDIA
+Spectrum-X architecture
+Seamless integration: Cisco data-center
+switching and NVIDIA Spectrum-X
+architecture
+References
+© 2026 Cisco and/or its affiliates. All rights reserved. Cisco and the Cisco logo are trademarks or registered trademarks of Cisco and/or its affiliates in the U.S. and other
+countries. To view a list of Cisco trademarks, go to this URL: www.cisco.com/go/trademarks. Third-party trademarks mentioned are the property of their respective owners.
+©©Th e22 00u22s56e oCCfii ssthcceoo waannoddrd//oo prr aiittrsstn aaeffiffir lldiiaaotteeesss ..n AAolltll irrmiiggphhlttyss arr eepssaeerrrtvvneeeddrs.. hip relationship between Cisco and any other company. (1110R) C22-5336351-01 08/26

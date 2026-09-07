@@ -1,0 +1,206 @@
+# MD5: 55540d0f064111c324a0510c47ed1218
+
+Configure Route Redistribution on Nexus Switches
+Contents
+Introduction
+Prerequisites
+Requirements
+Components Used
+Configure
+Network Diagram
+Configurations
+Redistribution into OSPF
+NEXUS B:
+Redistribution into BGP
+NEXUS B:
+NEXUS C:
+Redistribution into EIGRP
+NEXUS C:
+Verify
+Introduction
+This document describes how to configure Route Redistribution on Cisco Nexus NXOS® based switches.
+Prerequisites
+Requirements
+Cisco recommends that you have knowledge of these topics:
+• Nexus NX-OS Software.
+• Routing Protocols: Open Shortest Path First (OSPF), Border Gateway Protocol (BGP), Enhanced
+Interior Gateway Routing Protocol (EIGRP).
+Components Used
+The information in this document is based on Cisco Nexus 9000 with NXOS version 10.2.5.M.
+The information in this document was created from the devices in a specific lab environment. All of the
+devices used in this document started with a cleared (default) configuration. If your network is live, ensure
+that you understand the potential impact of any command.
+Configure
+
+Network Diagram
+• NEXUS A is advertising the loopbacks in the OSPF process 21.
+loopback0 192.168.1.1/32
+• NEXUS B is advertising the loopbacks in the OSPF process 21.
+loopback0 192.168.2.1/32
+• NEXUS C is advertising the loopbacks in the EIGRP process 19.
+loopback10 172.16.9.1/32
+• NEXUS D is advertising the loopbacks in the EIGRP process 19.
+loopback10 172.16.21.1/32
+Configurations
+In this case, Nexus switches have established neighborship sessions using OSPF, iBGP, and EIGRP
+sessions.
+
+Note: When redistributing between two or more routing protocols on a single router, the
+redistribution is not transitive. In simpler terms, if a router redistributes protocol 1 into protocol 2,
+and then protocol 2 redistributes into protocol 3, the routes from protocol 1 are not redistributed
+into protocol 3. This same limitation applies to routes injected locally by enabling a routing
+protocol at the interface level. Specifically, a route injected by protocol 1 because it was enabled on
+a Layer 3 interface cannot be redistributed from protocol 1 to protocol 2. Instead, you can use the
+redistribute direct option in protocol 2.
+Redistribution into OSPF
+NEXUS B:
+Step 1. Configure a prefix-list with the prefixes that need to be redistributed.
+Nexus-B(config)# ip prefix-list REDISTRIBUTION seq 5 permit 0.0.0.0/0 le 32
+
+Note: It is possible to skip this step by configuring a blank route-map on step 2, 0.0.0.0/0 le
+32 inside prefix-list permits all the routes, the intention of the prefix-list configuration in this article
+is to illustrate that you can select/filter the routes that are redistributed.
+Step 2. Create a route-map matching the conditions specified in the prefix-list.
+Nexus-B(config)# route-map BGP-TO-OSPF permit 10
+Nexus-B(config-route-map)# match ip address prefix-list REDISTRIBUTION
+Nexus-B(config-route-map)# match route-type internal
+
+Note: The match route-type internal command is a requirement for iBGP routes to be
+redistributed, by default, only eBGP routes are redistributed.
+Step 3. Redistribute the routes into OSPF coming from another protocol, in this case, iBGP.
+Nexus-B(config)# router ospf 21
+Nexus-B(config-router)# router-id 10.2.2.2
+Nexus-B(config-router)# redistribute bgp 6500 route-map BGP-TO-OSPF
+Redistribution into BGP
+NEXUS B:
+Step 1. Configure a prefix-list with the prefixes that need to be redistributed.
+
+Nexus-B(config)# ip prefix-list REDISTRIBUTION seq 5 permit 0.0.0.0/0 le 32
+Step 2. Create a route-map that matches the conditions specified in the prefix-list.
+Nexus-B(config)# route-map OSPF-TO-BGP permit 10
+Nexus-B(config-route-map)# match ip address prefix-list REDISTRIBUTION
+Step 3. Redistribute the routes into BGP coming from another protocol, in this case, OSPF.
+Nexus-B(config)# router bgp 6500
+Nexus-B(config-router)# address-family ipv4 unicast
+Nexus-B(config-router-af)# redistribute ospf 21 route-map OSPF-TO-BGP
+Nexus-B(config-router-af)# neighbor 10.24.1.2
+Nexus-B(config-router-neighbor)# remote-as 6500
+Nexus-B(config-router-neighbor)# address-family ipv4 unicast
+NEXUS C:
+Step 1. Configure a prefix-list with the prefixes that need to be redistributed.
+Nexus-C(config)# ip prefix-list REDISTRIBUTION seq 5 permit 0.0.0.0/0 le 32
+Step 2. Create a route-map matching the conditions specified in the prefix-list.
+Nexus-C(config)# route-map EIGRP-TO-BGP permit 10
+Nexus-C(config-route-map)# match ip address prefix-list REDISTRIBUTION
+Step 3. Redistribute the routes into BGP coming from another protocol, in this case, EIGRP.
+Nexus-C(config)# router bgp 6500
+Nexus-C(config-router)# address-family ipv4 unicast
+Nexus-C(config-router-af)# redistribute eigrp 19 route-map EIGRP-TO-BGP
+Nexus-C(config-router-af)# neighbor 10.24.1.1
+Nexus-C(config-router-neighbor)# remote-as 6500
+Nexus-C(config-router-neighbor)# address-family ipv4 unicast
+Redistribution into EIGRP
+
+NEXUS C:
+Step 1. Configure a prefix-list with the prefixes that need to be redistributed.
+Nexus-C(config)# ip prefix-list REDISTRIBUTION seq 5 permit 0.0.0.0/0 le 32
+Step 2. Create a route-map that matches the conditions specified in the prefix-list.
+Nexus-C(config)# route-map BGP-TO-EIGRP permit 10
+Nexus-C(config-route-map)# match ip address prefix-list REDISTRIBUTION
+Nexus-C(config-route-map)# match route-type internal
+Step 3. Redistribute the routes into EIGRP coming from another protocol, in this case, OSPF.
+Nexus-C(config)# router eigrp 19
+Nexus-C(config-router)# address-family ipv4 unicast
+Nexus-C(config-router-af)# autonomous-system 17
+Nexus-C(config-router-af)# router-id 10.11.11.11
+Nexus-C(config-router-af)# redistribute bgp 6500 route-map BGP-TO-EIGRP
+Verify
+Once redistribution is configured, the Nexus devices start to receive the routes coming from the other
+protocols. These routes are displayed as external routes.
+Nexus-A Routing Table:
+Nexus-A# show ip route ospf-21
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+172.16.21.1/32, ubest/mbest: 1/0
+*via 10.12.1.2, Eth1/36, [110/1], 00:00:57, ospf-21, type-2, tag 6500 <<<< this prefix is external to OSPF as it is coming from redistribution, originated from Nexus-B, the original route comes from Nexus-D.
+192.168.2.1/32, ubest/mbest: 1/0
+*via 10.12.1.2, Eth1/36, [110/2], 00:00:57, ospf-21, intra
+Nexus-A# show ip route direct
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+
+'%<string>' in via output denotes VRF <string>
+10.12.1.0/24, ubest/mbest: 1/0, attached
+*via 10.12.1.1, Eth1/36, [0/0], 01:37:21, direct
+192.168.1.1/32, ubest/mbest: 2/0, attached
+*via 192.168.1.1, Lo0, [0/0], 23:42:19, direct
+Nexus-B Routing Table:
+Nexus-B# show ip route ospf-21
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+192.168.1.1/32, ubest/mbest: 1/0
+*via 10.12.1.1, Eth1/49, [110/2], 00:15:08, ospf-21, intra
+Nexus-B# show ip route bgp-6500
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+172.16.21.1/32, ubest/mbest: 1/0
+*via 10.24.1.2, [200/128576], 00:19:49, bgp-6500, internal, tag 6500 <<< This prefix is learned by iBGP from Nexus-C, the original route is coming from the EIGRP redistribution, originated from NexusD.
+Nexus-C Routing Table:
+Nexus-C# show ip route bgp-6500
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+192.168.1.1/32, ubest/mbest: 1/0
+*via 10.24.1.1, [200/2], 00:15:59, bgp-6500, internal, tag 6500 <<< This prefix is coming from iBGP, the route was originated from Nexus-A.
+Nexus-C# show ip route eigrp-19
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+172.16.21.1/32, ubest/mbest: 1/0
+*via 10.36.1.2, Eth1/49, [90/128576], 00:26:03, eigrp-19, internal
+
+Redistribution statistics, exclusive for EIGRP:
+Nexus-C# show ip eigrp 19 route-map statistics redistribute bgp 6500
+IP-EIGRP Route-map Traffic Statistics for AS 17 VRF default
+C: No. of comparisions, M: No. of matches
+route-map BGP-TO-EIGRP permit 10
+match ip address prefix-list REDISTRIBUTION C: 2 M: 2
+match route-type internal C: 2 M: 2
+Total accept count for policy: 2
+Total reject count for policy: 0
+Nexus-D Routing Table:
+Nexus-D# show ip route eigrp-19
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+172.16.9.1/32, ubest/mbest: 1/0
+*via 10.36.1.1, Eth1/2, [90/128576], 00:29:14, eigrp-19, internal
+192.168.1.1/32, ubest/mbest: 1/0
+*via 10.36.1.1, Eth1/2, [170/51456], 00:12:49, eigrp-19, external, tag 6500 <<< This prefix is external to EIGRP as it is coming from redistribution, it comes from BGP but it was originated on Nexus-A.
+Nexus-D# sh ip route direct
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+10.36.1.0/24, ubest/mbest: 1/0, attached
+*via 10.36.1.2, Eth1/2, [0/0], 1d00h, direct
+172.16.21.1/32, ubest/mbest: 2/0, attached
+*via 172.16.21.1, Lo10, [0/0], 01:47:30, direct

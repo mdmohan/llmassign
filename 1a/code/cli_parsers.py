@@ -42,13 +42,13 @@ def non_negative_float(value: str) -> float:
 
 
 def add_model_name_argument(parser) -> None:
-    """Add the shared Hugging Face GPT-2 model-name option."""
+    """Add the shared Hugging Face causal-language-model option."""
     parser.add_argument(
         "--model-name",
         default="gpt2",
         help=(
-            "Hugging Face GPT-2 model name to download/load, such as "
-            "gpt2 or gpt2-medium."
+            "Model to download/load: gpt2, gpt2-medium, gpt2-large, "
+            "smollm2-360m, or HuggingFaceTB/SmolLM2-360M."
         ),
     )
 
@@ -57,7 +57,7 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
             "Load a directory of PDF and text files, clean and deduplicate the "
-            "documents, sequence-pack them with the GPT-2 tokenizer, and save "
+            "documents, sequence-pack them with the selected tokenizer, and save "
             "both binary and Parquet training data."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -86,6 +86,21 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
         help="JSON report containing every retained and rejected document.",
     )
     paths.add_argument(
+        "--content-audit-report",
+        type=Path,
+        default=None,
+        help=(
+            "Post-gate content-cleaning audit. When omitted, a _content suffix "
+            "is added to --audit-report."
+        ),
+    )
+    paths.add_argument(
+        "--cleaned-text-dir",
+        type=Path,
+        default=None,
+        help="Optional directory in which final training-ready text is saved.",
+    )
+    paths.add_argument(
         "--bin-file",
         type=Path,
         default=Path("data/processed/tokens.bin"),
@@ -96,6 +111,51 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
         type=Path,
         default=Path("data/processed/tokens.parquet"),
         help="Parquet output containing one packed sequence per row.",
+    )
+    paths.add_argument(
+        "--metrics-file",
+        type=Path,
+        default=None,
+        help=(
+            "Tokenizer and sequence-packing metrics JSON. When omitted, it is "
+            "saved as dataset_metrics.json beside --bin-file."
+        ),
+    )
+
+    tokenization = parser.add_argument_group("model and tokenization")
+    add_model_name_argument(tokenization)
+    tokenization.add_argument(
+        "--tokenize-only",
+        action="store_true",
+        help=(
+            "Treat --input-dir as training-ready text: recursively load only "
+            ".txt files and skip PDF extraction, quality gates, deduplication, "
+            "content cleaning, and cleaning reports."
+        ),
+    )
+    tokenization.add_argument(
+        "--context-length",
+        type=positive_int,
+        default=None,
+        help=(
+            "Packed sequence length for SmolLM2. The tokenizer maximum is "
+            "used when omitted; GPT-2 retains its existing 1,024-token behavior."
+        ),
+    )
+    tokenization.add_argument(
+        "--train-test-split",
+        choices=("90:10", "80:20"),
+        default=None,
+        help=(
+            "Deterministically hold out complete documents for evaluation. "
+            "When enabled, output filenames become token_train and token_test."
+        ),
+    )
+    tokenization.add_argument(
+        "--split-seed",
+        type=int,
+        default=42,
+        help="Random seed for the document-level train/test split.",
     )
 
     extraction = parser.add_argument_group("PDF extraction")
@@ -166,6 +226,15 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
         default=128,
         help="Number of MinHash permutations used for near deduplication.",
     )
+    cleaning.add_argument(
+        "--content-cleaning",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "After all document gates, remove TOCs, page furniture, boilerplate, "
+            "bad tables, diagrams, and extraction noise; preserve prose and CLI."
+        ),
+    )
 
     parquet = parser.add_argument_group("Parquet serialization")
     parquet.add_argument(
@@ -186,7 +255,7 @@ def build_prepare_cpt_parser() -> argparse.ArgumentParser:
 def build_baseline_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Load the existing GPT-2 model, run baseline query JSON files, "
+            "Load the selected model, run baseline query JSON files, "
             "and save one response JSON per query file."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -195,7 +264,10 @@ def build_baseline_parser() -> argparse.ArgumentParser:
         "query_json",
         type=Path,
         nargs="+",
-        help="One or more JSON files containing a top-level 'queries' list.",
+        help=(
+            "One or more query JSON files or directories. Each directory adds "
+            "all immediate *.json files in sorted order."
+        ),
     )
     add_model_name_argument(parser)
     parser.add_argument(
@@ -226,7 +298,7 @@ def build_baseline_parser() -> argparse.ArgumentParser:
 
 def build_gpt2_query_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Load GPT-2 and generate responses for supplied prompts.",
+        description="Load a supported model and generate responses for prompts.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
@@ -248,8 +320,8 @@ def build_gpt2_query_parser() -> argparse.ArgumentParser:
         nargs="+",
         default=None,
         help=(
-            "One or more baseline-format JSON files containing a top-level "
-            "'queries' list."
+            "One or more baseline-format JSON files or directories. Each "
+            "directory adds all immediate *.json files in sorted order."
         ),
     )
     parser.add_argument(
@@ -270,7 +342,7 @@ def build_gpt2_query_parser() -> argparse.ArgumentParser:
         default=None,
         help=(
             "Local CPT model/checkpoint folder. When omitted, the existing "
-            "base GPT-2 loader is used."
+            "base-model loader is used."
         ),
     )
     parser.add_argument(
@@ -291,7 +363,8 @@ def build_gpt2_query_parser() -> argparse.ArgumentParser:
 def build_cpt_train_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Load GPT-2 and packed binary tokens, run continued pre-training, "
+            "Load the selected model and packed binary tokens, run continued "
+            "pre-training, "
             "and save checkpoints and training metrics."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -304,6 +377,15 @@ def build_cpt_train_parser() -> argparse.ArgumentParser:
         type=Path,
         required=True,
         help="Flat uint16 packed-token file produced by the data pipeline.",
+    )
+    data.add_argument(
+        "--dataset-metrics",
+        type=Path,
+        default=None,
+        help=(
+            "SmolLM2 tokenization metrics JSON. When omitted, "
+            "dataset_metrics.json beside --bin-file is used if present."
+        ),
     )
     data.add_argument(
         "--save-dir",
@@ -384,5 +466,160 @@ def build_cpt_train_parser() -> argparse.ArgumentParser:
         type=int,
         default=42,
         help="Random seed used by the existing training function.",
+    )
+    return parser
+
+
+def build_cpt_evaluation_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Evaluate a base causal language model and an optional CPT model "
+            "using held-out perplexity, fixed-reference conditional "
+            "perplexity, baseline-response retention, and greedy generation."
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+
+    models = parser.add_argument_group("models")
+    add_model_name_argument(models)
+    models.add_argument(
+        "--model-folder",
+        type=Path,
+        default=None,
+        help=(
+            "Optional CPT output, final_model, last_checkpoint, or checkpoint-N. "
+            "When supplied, both the base model and this CPT model are evaluated."
+        ),
+    )
+
+    held_out = parser.add_argument_group("held-out perplexity")
+    held_out.add_argument(
+        "--test-bin",
+        type=Path,
+        required=True,
+        help="Held-out domain uint16 token file, normally token_test.bin.",
+    )
+    held_out.add_argument(
+        "--dataset-metrics",
+        type=Path,
+        default=None,
+        help="Metrics JSON describing the held-out domain token file.",
+    )
+    held_out.add_argument(
+        "--generic-test-bin",
+        type=Path,
+        default=None,
+        help="Optional held-out general-language uint16 token file.",
+    )
+    held_out.add_argument(
+        "--generic-dataset-metrics",
+        type=Path,
+        default=None,
+        help="Metrics JSON describing --generic-test-bin.",
+    )
+    held_out.add_argument(
+        "--context-length",
+        type=positive_int,
+        default=1024,
+        help="Packed sequence length used by the held-out binary files.",
+    )
+    held_out.add_argument(
+        "--batch-size",
+        type=positive_int,
+        default=4,
+        help="Sequences evaluated together for held-out perplexity.",
+    )
+    held_out.add_argument(
+        "--num-workers",
+        type=non_negative_int,
+        default=0,
+        help="DataLoader workers; zero is the safest setting with CUDA.",
+    )
+
+    queries = parser.add_argument_group("query evaluation")
+    queries.add_argument(
+        "--query-input",
+        type=Path,
+        nargs="+",
+        default=None,
+        help=(
+            "Optional query JSON files or directories. Directories add all "
+            "immediate *.json files."
+        ),
+    )
+    queries.add_argument(
+        "--baseline-responses",
+        type=Path,
+        nargs="+",
+        default=None,
+        help=(
+            "Optional baseline response JSON files or directories. Their saved "
+            "responses are fixed targets for behavioural-retention perplexity."
+        ),
+    )
+    queries.add_argument(
+        "--max-new-tokens",
+        type=positive_int,
+        default=100,
+        help="Maximum tokens generated greedily for each query.",
+    )
+    queries.add_argument(
+        "--generation-batch-size",
+        type=positive_int,
+        default=4,
+        help="Prompts generated together during qualitative evaluation.",
+    )
+
+    output = parser.add_argument_group("output")
+    output.add_argument(
+        "--output-file",
+        type=Path,
+        default=Path("evaluation_report.json"),
+        help="Comprehensive JSON evaluation report.",
+    )
+    return parser
+
+
+def build_oov_evaluation_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Measure tokenizer unknown-token rate and fragmentation over a "
+            "folder of corpus text files."
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        required=True,
+        help="Directory containing corpus .txt files.",
+    )
+    add_model_name_argument(parser)
+    parser.add_argument(
+        "--model-folder",
+        type=Path,
+        default=None,
+        help=(
+            "Optional local CPT output or checkpoint folder. Only its "
+            "tokenizer is loaded; model weights are not loaded."
+        ),
+    )
+    parser.add_argument(
+        "--recursive",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Search recursively below --input-dir.",
+    )
+    parser.add_argument(
+        "--output-file",
+        type=Path,
+        default=Path("oov_report.json"),
+        help="JSON file for aggregate and per-file results.",
+    )
+    parser.add_argument(
+        "--top-files",
+        type=non_negative_int,
+        default=10,
+        help="Number of highest-fragmentation files printed in the summary.",
     )
     return parser

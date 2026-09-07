@@ -1,0 +1,358 @@
+# MD5: 741d1532574ea90d6ee08958fc129dfc
+
+Data sheet
+Cisco public
+Cisco N9300 ACI Fixed Spine
+Switches
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 1 of 11
+
+Contents
+Product overview 3
+Switch models 3
+Specifications 4
+Cisco N9300 ACI Spine switch deployment scenarios 6
+Software requirements 6
+Regulatory standards compliance 7
+Supported optics pluggable 7
+Ordering information 8
+Warranty 9
+Cisco environmental sustainability 10
+Service and Support 10
+Cisco Capital 10
+For more information 10
+Document history 11
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 2 of 11
+
+Product overview
+Industry shifts are redefining IT at all levels. On-premise IT consumption models are shifting to cloud-
+based services. IT as a Service (IaaS) is supplanted by applications as a service. Separate development
+and operations are moving toward integrated Development and Operations (DevOps). Device-centric
+management models are migrating to application-centric management.
+Business agility requires application agility, so IT teams need to provision applications in hours instead of
+months. Resources need to scale up (or down) in minutes, not hours. Traditional approaches take a siloed
+operational view, with no common operational model for the application, network, security, and cloud
+teams. A common operational model delivers application agility, simplified operations, assured
+performance, and scale.
+The Solution: An application-centric approach to managing your infrastructure
+Cisco® Application Centric Infrastructure (ACI) is a holistic architecture with centralized automation and
+policy-based application profiles. The Cisco ACI fabric is designed from the foundation to support
+emerging industry demands while maintaining a migration path for architecture already in place. The fabric
+is designed to support the industry move to management automation, programmatic policy, and dynamic
+“workload-anywhere” models. The Cisco ACI fabric accomplishes this with a combination of hardware,
+policy-based control systems, and software closely coupled to provide advantages not possible in other
+models.
+The fabric consists of three major components: the Cisco Application Policy Infrastructure Controller (APIC),
+spine switches, and leaf switches. These three components handle both the application of network policy and
+the delivery of packets. Organizations can use the ACI-ready Cisco N9000 Series Switches as spine or leaf
+switches to take full advantage of an automated, policy-based, systems management approach. The
+Cisco N9300 Series Switches include both spine and leaf switches. For detailed information, please refer
+here.
+Switch models
+The Cisco N9336PQ ACI Spine Switch is a 2-Rack-Unit (2RU) spine switch for Cisco ACI that supports
+2.88 Tbps of bandwidth and 2.3 billion packets per second (bpps) across 36 fixed 40 QSFP+ ports
+(Figure 1). Cisco N9300 platform leaf switches are Layer 2 and 3 nonblocking 10 and 40 Gigabit Ethernet
+switches with up to 2.56 Terabits per second (Tbps) of internal bandwidth.
+Cisco N9336PQ Switch
+The Cisco N9364C ACI Spine Switch is a 2-Rack-Unit (2RU) spine switch for Cisco ACI that supports
+12.84 Tbps of bandwidth and 4.3 bpps across 64 fixed 40/100G QSFP28 ports and 2 fixed 1/10G SFP+
+ports (Figure 2). Breakout is not supported on ports 1 to 64. The last 16 ports marked in green support
+wire-rate MACsec encryption1.
+1 Software is expected in a future release. Please check the latest software update here.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 3 of 11
+
+Cisco N9364C Switch
+The Cisco N9332C is the smallest form-factor 1-Rack-Unit (1RU) spine switch for Cisco ACI that supports
+6.4 Tbps of bandwidth and 2.3 bpps across 32 fixed 40/100G QSFP28 ports and 2 fixed 1/10G SFP+ ports
+(Figure 3). Breakout is not supported on ports 1 to 32. The last 8 ports marked in green support wire-rate
+MACsec encryption2.
+Cisco N9332C Switch
+Specifications
+Table 1 lists the specifications for the Cisco N9336PQ switch. (Please check Cisco ACI software release
+notes for feature support information).
+Table 1. Cisco N9300 ACI Spine switch specifications
+2 Software is expected in a future release. Please check the latest software update here.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 4 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Cisco N9336PQ | Cisco N9364C | Cisco N9332C |
+| --- | --- | --- | --- |
+| Physical | ● 36-port 40G QSFP ports | ● 64-port 40/100G QSFP28 | ● 32-port 40/100G QSFP28 |
+|  |  | ports & 2-port 1/10G SFP+ | ports & 2-port 1/10G SFP+ |
+|  | ● 1200 watt (W) AC power |  |  |
+|  |  | ports | ports |
+|  | supplies or 930W DC power |  |  |
+|  | supplies (up to 2) | ● 1200 watt (W) AC power | ● 1100 watt (W) AC, DC or |
+|  |  | supplies or 930W DC power | HVAC/HVDC power supplies |
+|  | ● 80 Plus Platinum-rated power |  |  |
+|  |  | supplies (up to 2) | (up to 2) |
+|  | supplies that provide at least 90% |  |  |
+|  | efficiency with 20% utilization | ● Hot-swappable, dual fan trays | ● Hot-swappable, 5 fans with |
+|  |  | with redundant fans | redundancy |
+|  | ● Hot-swappable, dual fan trays |  |  |
+|  | with redundant fans | ● System memory: 32GB | ● System memory: 16 GB |
+|  | ● Port-side intake or Port side | ● SSD: 128GB | ● SSD: 128GB |
+|  | exhaust airflow direction |  |  |
+|  |  | ● USB: 1 port | ● USB: 1 port |
+|  | ● System memory: 16GB |  |  |
+|  |  | ● RS-232 serial console ports: 1 | ● RS-232 serial console ports: |
+|  | ● SSD: 64GB |  | 1 |
+|  |  | ● Management ports: |  |
+|  | ● USB: 2 ports | 2 (1 x 10/100/1000BASE-T | ● Management ports: |
+|  | ● RS-232 serial console ports: 1 | and 1 x 1-Gbps SFP+) | 2 (1 x 10/100/1000BASE-T |
+|  |  |  | and 1 x 1-Gbps SFP+) |
+|  | ● Management ports: 1 x | ● Broadwell-DE CPU: 4 cores |  |
+|  | 10/100/1000BASE-T |  | ● Broadwell-DE CPU: 4 cores |
+|  |  |  |  |
+
+3 930W-DC PSU is supported in redundancy mode if 3.5W QSFP+ modules or Passive QSFP cables are used & the system is used in
+40C ambient temp or less; for other optics or higher ambient temps, 930W-DC is supported with 2 PSU’s in
+non-redundancy mode only.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 5 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Cisco N9336PQ | Cisco N9364C | Cisco N9332C |
+| --- | --- | --- | --- |
+| Power and | ● Power: 1200W AC, 930W DC or | ● Power: 1200W AC, 930W DC3 | ● Power: 1100W AC, 1100 DC |
+| Cooling | 1200W HVAC/HVDC | or 1200W HVAC/HVDC | or 1100W HVAC/HVDC |
+|  | ● Input voltage: 100 to 240V* AC or | ● Input voltage: 100 to 240V* AC | ● Input voltage: 100 to 240V* |
+|  | -40V to -72V DC (min-max), - | or -40V to -72V DC | AC or -40V to -72V DC |
+|  | 48V to -60V DC (nominal) | (min-max), -48V to -60V DC | (min-max), -48V to -60V DC |
+|  |  | (nominal) | (nominal) |
+|  | ● *Supports input voltage of 100- |  |  |
+|  | 120V for a max output of 800W; | ● *Supports input voltage of | ● *Supports input voltage of |
+|  | 200-240V for a max output of | 100-120V for a max output of | 100-120V for a max output of |
+|  | 1200W | 800W; 200-240V for a max | 800W; 200-240V for a max |
+|  |  | output of 1200W; PSU | output of 1200W: PSU |
+|  | ● Frequency: 50 to 60 Hz (AC) |  |  |
+|  |  | redundancy is not supported | redundancy is not supported |
+|  | ● Efficiency: 90% or greater | when used in 100-120V | when used in 100-120V |
+|  | (20 to 100% load) |  |  |
+|  |  | ● Frequency: 50 to 60 Hz (AC) | ● Frequency: 50 to 60 Hz (AC) |
+|  | ● RoHS compliance: Yes |  |  |
+|  |  | ● Efficiency: 90% or greater (20 | ● Efficiency: 90% or greater |
+|  | ● Hot swappable: Yes | to 100% load) | (20 to 100% load) |
+|  | ● Port-side intake or port-side | ● RoHS compliance: Yes | ● RoHS compliance: Yes |
+|  | exhale options |  |  |
+|  |  | ● Hot swappable: Yes | ● Hot swappable: Yes |
+|  | ● Typical power: 400W (AC) |  |  |
+|  |  | ● Port-side intake or port-side | ● Port-side intake or port-side |
+|  | ● Maximum power: 660W (AC) | exhale options | exhale options |
+|  |  | ● Typical power: 429W (AC) | ● Typical power: 296W (AC) |
+|  |  | ● Maximum power: 1245W (AC) | ● Maximum power: 700W (AC) |
+| Environmental | ● Physical (H x W x D): 3.5 x 17.5 x | ● Physical (H x W x D): 3.38 x | ● Physical (H x W x D): 1.7 x |
+|  | 22.5 in. (8.9 x 44.5 x 57.1 cm) | 17.37 x 22.27 in. (8.59 x 44.13 | 17.3 x 22.9 in. (4.4 x 43.9 x |
+|  |  |  |  |
+|  |  | x 56.58 cm) | 58.1 cm) |
+|  | ● Weight: 34.4 lb |  |  |
+|  |  | ● Weight: 36.9lb (16.74kg) with | ● Weight: 25.1lb (11.4kg) with |
+|  | ● Operating temperature: 32 to |  |  |
+|  |  | power supplies and fans, 27.4 | power supplies and fans, 19 |
+|  | 104°F (0 to 40°C) |  |  |
+|  |  | lb (12.43kg) without power | lb (8.6kg) without power |
+|  | ● Nonoperating (storage) | supplies and fans | supplies and fans |
+|  | temperature: -40 to 158°F (-40 |  |  |
+|  |  | ● Operating temperature: 32 to | ● Operating temperature: 32 to |
+|  | to 70°C) |  |  |
+|  |  | 104°F (0 to 40°C) | 104°F (0 to 40°C) |
+|  | ● Humidity: 5 to 95% |  |  |
+|  |  | ● Nonoperating (storage) | ● Nonoperating (storage) |
+|  | (noncondensing) |  |  |
+|  |  | temperature: -40 to 158°F | temperature: -40 to 158°F (- |
+|  | ● Altitude: 0 to 13,123 ft (0 to | (-40 to 70°C) | 40 to 70°C) |
+|  | 4000m) |  |  |
+|  |  | ● Humidity: 5 to 85% | ● Humidity: 5 to 85% |
+|  |  | (noncondensing) | (noncondensing) |
+|  |  | ● Altitude: 0 to 13,123 ft (0 to | ● Altitude: 0 to 13,123 ft (0 to |
+|  |  | 4000m) | 4000m) |
+
+Cisco N9300 ACI Spine switch deployment scenarios
+The N9300 ACI spine switch along with N9300 leaf nodes enable an automated and policy driven ACI
+architecture. The Cisco N9300 ACI spine switch offers advanced scalability in the smallest spine switch
+form factor, and enables connectivity to up-to 64 Cisco N9300 leaf switches with its high port density of
+64 40/100 GbE ports and 12.84 Tbps throughput. The degree of redundancy in leaf-and-spine
+architectures delivers increased availability with a high level of flexibility in workload placement (Figure 3).
+Cisco N9300 Platform in a Leaf-and-Spine Architecture
+Software requirements
+For the latest software release information and recommendations, please refer to the product bulletin at
+https://www.cisco.com/go/aci and Cisco Feature Navigator.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 6 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Cisco N9336PQ | Cisco N9364C | Cisco N9332C |
+| --- | --- | --- | --- |
+| Acoustics | ● Fan speed at 40%: 64.4 dBA | ● Fan speed at 40%: 76.7 dBA | ● Fan speed at 50%: 76.4 dBA |
+|  | ● Fan speed at 70%: 79.6 dBA | ● Fan speed at 70%: 88.7 dBA | ● Fan speed at 70%: 83.3 dBA |
+|  | ● Fan speed at 100%: 89.8 dBA | ● Fan speed at 100%: 97.4 dBA | ● Fan speed at 100%: 92.1 dBA |
+| MTBF | ● 242,000 hours | ● 257,860 hours | ● 363,500 hours |
+
+Regulatory standards compliance
+Table 2 summarizes regulatory standards compliance for the Cisco N9300 Spine switch.
+Table 2. Regulatory standards compliance: Safety and EMC
+Supported optics pluggable
+For details on the optical modules available and the minimum software release required for each supported
+optical module, visit
+https://www.cisco.com/en/US/products/hw/modules/ps5455/products_device_support_tables_list.html.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 7 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Specification | Description |
+| --- | --- |
+| Regulatory compliance | Products should comply with CE Markings according to directives 2004/108/EC and |
+|  | 2006/95/EC |
+|  |  |
+| Safety | ● UL 60950-1 Second Edition |
+|  | ● CAN/CSA-C22.2 No. 60950-1 Second Edition |
+|  | ● EN 60950-1 Second Edition |
+|  | ● IEC 60950-1 Second Edition |
+|  | ● AS/NZS 60950-1 |
+|  | ● GB4943 |
+| EMC: Emissions | ● 47CFR Part 15 (CFR 47) Class A |
+|  | ● AS/NZS CISPR22 Class A |
+|  | ● CISPR22 Class A |
+|  | ● EN55022 Class A |
+|  | ● ICES003 Class A |
+|  | ● VCCI Class A |
+|  | ● EN61000-3-2 |
+|  | ● EN61000-3-3 |
+|  | ● KN22 Class A |
+|  | ● CNS13438 Class A |
+| EMC: Immunity | ● EN55024 |
+|  | ● CISPR24 |
+|  | ● EN300386 |
+|  | ● KN 61000-4 series |
+| RoHS | The product is RoHS-6 compliant with exceptions for leaded-Ball Grid-Array (BGA) balls and |
+|  | lead press-fit connectors |
+|  |  |
+
+Ordering information
+Table 3 presents ordering information for the Cisco N9300 ACI Spine Switch.
+Table 3. Ordering information
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 8 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Part Number | Product Description |
+| --- | --- |
+| Hardware |  |
+| N9K-C9336PQ | N9336 ACI Spine switch with 36p 40G QSFP |
+| N9K-C9364C | N9364C ACI Spine switch with 64p 40/100G QSFP28, 2p 1/10G SFP |
+| N9K-C9332C | N9332C ACI Spine switch with 32p 40/100G QSFP28, 2p 1/10G SFP |
+| FAN Options |  |
+| N9K-C9300-FAN3 | N9300 Fan 3, Port-side Intake |
+| N9K-C9300-FAN3-B | N9300 Fan 3, Port-side Exhaust |
+| NXA-FAN-160CFM-PI | Nexus Fan, 160CFM, port side intake airflow |
+| NXA-FAN-160CFM-PE | Nexus Fan, 160CFM, port side exhaust airflow |
+| NXA-FAN-35CFM-PI | Nexus Fan, 35CFM, port side intake airflow |
+| NXA-FAN-35CFM-PE | Nexus Fan, 35CFM, port side exhaust airflow |
+| Power Supply Options |  |
+| N9K-PAC-1200W | N9300 1200W AC PS, Port-side Intake |
+| N9K-PAC-1200W-B | N9300 1200W AC PS, Port-side Exhaust |
+| NXA-PAC-1100W-PE2 | N1100W AC PS, Port-side Exhaust |
+| NXA-PAC-1100W-PI2 | N1100W AC PS, Port-side Intake |
+| NXA-PAC-1200W-PE | N1200W AC PS, Port-side Exhaust |
+| NXA-PAC-1200W-PI | N1200W AC PS, Port-side Intake |
+| N9K-PUV-1200W | N1200W, 200-277AC,240-380DC, Dual airflow PSU |
+| UCS-PSU-6332-DC | 930W -48V DC PS, Port-side Exhaust |
+| UCSC-PSU-930WDC | 930W -48V DC PS, Port-side Intake |
+| NXA-PDC-930W-PE | N930W -48V DC PS, Port-side Exhaust |
+| NXA-PDC-930W-PI | N930W -48V DC PS, Port-side Intake |
+
+Warranty
+The Cisco N9300 switch has a 1-year limited hardware warranty. The warranty includes hardware
+replacement with a 10-day turnaround from receipt of a Return Materials Authorization (RMA).
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 9 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Part Number | Product Description |
+| --- | --- |
+| Power Cords |  |
+| CAB-250V-10A-AR | AC Power Cord - 250V, 10A - Argentina (2.5 meter) |
+| CAB-250V-10A-BR | AC Power Cord - 250V, 10A - Brazil (2.1 meter) |
+| CAB-250V-10A-CN | AC Power Cord - 250V, 10A - PRC (2.5 meter) |
+| CAB-250V-10A-ID | AC Power Cord - 250V, 10A, South Africa (2.5 meter) |
+| CAB-250V-10A-IS | AC Power Cord - 250V, 10A - Israel (2.5 meter) |
+| CAB-9K10A-AU | Power Cord, 250VAC 10A 3112 Plug, Australia (2.5 meter) |
+| CAB-9K10A-EU | Power Cord, 250VAC 10A CEE 7/7 Plug, EU (2.5 meter) |
+| CAB-9K10A-IT | Power Cord, 250VAC 10A CEI 23-16/VII Plug, Italy (2.5 meter) |
+| CAB-9K10A-SW | Power Cord, 250VAC 10A MP232 Plug, SWITZ (2.5 meter) |
+| CAB-9K10A-UK | Power Cord, 250VAC 10A BS1363 Plug (13 A fuse), UK (2.5 meter) |
+| CAB-9K12A-NA | Power Cord, 125VAC 13A NEMA 5-15 Plug, North America (2.5 meter) |
+| CAB-AC-L620-C13 | North America, NEMA L6-20-C13 (2.0 meter) |
+| CAB-C13-C14-2M | Power Cord Jumper, C13-C14 Connectors, 2 Meter Length (2 meter) |
+| CAB-C13-C14-AC | Power cord, C13 to C14 (recessed receptacle), 10A (3 meter) |
+| CAB-C13-CBN | Cabinet Jumper Power Cord, 250 VAC 10A, C14-C13 Connectors (0.7 meter) |
+| CAB-IND-10A | 10A Power cable for India (2.5 meter) |
+| CAB-N5K6A-NA | Power Cord, 200/240V 6A North America (2.5 meter) |
+| Accessories |  |
+| N9K-C9300-ACK | N9300 Accessory Kit |
+| N9K-C9300-RMK | N9300 Rack Mount Kit |
+| N3K-C3064-ACC-KIT | Nexus 1RU switch Accessory Kit |
+
+Cisco environmental sustainability
+Information about Cisco’s environmental sustainability policies and initiatives for our products, solutions,
+operations, and extended operations or supply chain is provided in the “Environment Sustainability” section
+of Cisco’s Corporate Social Responsibility (CSR) Report.
+Reference links to information about key environmental sustainability topics (mentioned in the “Environment
+Sustainability” section of the CSR Report) are provided in the following table:
+Cisco makes the packaging data available for informational purposes only. It may not reflect the most
+current legal developments, and Cisco does not represent, warrant, or guarantee that it is complete,
+accurate, or up to date. This information is subject to change without notice.
+Service and Support
+Cisco offers a wide range of services to help accelerate your success in deploying and optimizing the
+Cisco N9300 switch in your data center. The innovative Cisco Services offerings are delivered through a
+unique combination of people, processes, tools, and partners and are focused on helping you increase
+operation efficiency and improve your data center network. Cisco Advanced Services uses an architecture-
+led approach to help you align your data center infrastructure with your business goals and achieve long-
+term value. Cisco SMARTnet® Service helps you resolve mission-critical problems with direct access at any
+time to Cisco network experts and award-winning resources.
+Cisco Capital
+Flexible payment solutions to help you achieve your objectives
+Cisco Capital® makes it easier to get the right technology to achieve your objectives, enable business
+transformation, and help you stay competitive. We can help you reduce the total cost of ownership, conserve
+capital, and accelerate growth. In more than 100 countries, our flexible payment solutions can help you
+acquire hardware, software, services and complementary third-party equipment in easy, predictable
+payments. Learn more.
+For more information
+For more information on the Cisco N9000 Series and for latest software release information and
+recommendations, please visit https://www.cisco.com/go/N9000.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 10 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Sustainability topic | Reference |
+| --- | --- |
+| Information on product material content laws and regulations | Materials |
+| Information on electronic waste laws and regulations, including products, batteries, and | WEEE compliance |
+| packaging |  |
+|  |  |
+
+Document history
+Printed in USA C78-731792-15 08/26
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 11 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| New or revised topic | Described in | Date |
+| --- | --- | --- |
+| Product Name | Throughout the data sheet | August 2026 |

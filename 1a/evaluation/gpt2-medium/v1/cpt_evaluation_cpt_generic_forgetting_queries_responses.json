@@ -1,0 +1,346 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-07T04:53:11.687532+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 24,
+    "attention_heads": 16,
+    "embedding_dimension": 1024,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 354823168,
+    "trainable_parameters": 354823168,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "generic_forgetting_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 4
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "response": "Paris, and the capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United Kingdom is London, and the capital of the United States is New York.\n\nThe capital of the United States is New York, and the capital of the United Kingdom is London.\n\nThe capital of the United States is New York, and the capital of the United Kingdom is London.\n\nThe",
+      "generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6666666666666667
+      }
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "response": "-40°C.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8333333333333334
+      }
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "response": "the Earth, with a surface area of about 1.5 million square kilometers. The Earth's surface is covered by a thick atmosphere, which is composed of water vapor and carbon dioxide. The atmosphere is also composed of nitrogen, oxygen, and sulfur. The atmosphere is also composed of water vapor and carbon dioxide. The atmosphere is also composed of nitrogen, oxygen, and sulfur. The atmosphere is also composed of water vapor and carbon dioxide. The atmosphere is also composed of nitrogen, oxygen, and sulfur.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4878048780487805
+      }
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "response": "a French writer and playwright. He was born in Paris in 1808. He was educated at the Sorbonne and at the Sorbonne, and at the Sorbonne he was a member of the faculty of the Sorbonne. He was a member of the Académie Française, the Society of Authors, and the Society of Authors of France. He was a member of the Society of Authors of England, and of the Society of Authors of France. He was a",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.36363636363636365
+      }
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "response": "H2O.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol for hydrogen is H2O.\n\nThe chemical symbol for carbon dioxide is CO2.\n\nThe chemical symbol for nitrogen is N2.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol for hydrogen is H2O.\n\nThe chemical symbol for carbon dioxide is CO2.\n\nThe chemical symbol for nitrogen is N2.\n\nThe chemical",
+      "generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6101694915254237
+      }
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "response": "a length of 2, and a width of 1.\n\nThe length of the triangle is the length of the sides of the triangle.\n\nThe width of the triangle is the width of the sides of the triangle.\n\nThe length of the triangle is the length of the sides of the triangle.\n\nThe width of the triangle is the width of the sides of the triangle.\n\nThe length of the triangle is the length of the sides of the triangle.\n\nThe width",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6962025316455696
+      }
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold",
+      "generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8307692307692307
+      }
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "response": "west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises",
+      "generation_metrics": {
+        "concept_hits": [
+          "east"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8243243243243243
+      }
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "response": "the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.9591836734693877
+      }
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "response": "photosynthesis. The sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun",
+      "generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7894736842105263
+      }
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "response": "remove the tea leaves from the tea bag.\n\nTo remove the tea leaves, hold the tea bag in your hand and gently pull the leaves out.\n\nThe tea leaves will fall out of the bag and into the cup.\n\nTo remove the tea leaves, hold the tea bag in your hand and gently pull the leaves out.\n\nThe tea leaves will fall out of the bag and into the cup.\n\nTo remove the tea leaves, hold the tea bag in your hand",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5625
+      }
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "response": "not be broken.\n\nThe glass may be broken by the force of gravity.\n\nThe glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8470588235294118
+      }
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "response": "read a book. She was reading a book about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history",
+      "generation_metrics": {
+        "concept_hits": [
+          "read"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8089887640449438
+      }
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "response": "a young man named Togashi was born. He was a good-looking boy, with a good heart, and a good mind. He was also a very good cook. He was also a very good student. He was also a very good teacher. He was also a very good friend. He was also a very good friend. He was also a very good friend. He was also a very good friend. He was also a very good friend. He was also a very good friend.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5487804878048781
+      }
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "response": "deals with the problem of creating intelligent machines. AI is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of artificial intelligence is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of artificial intelligence is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of artificial intelligence is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7294117647058824
+      }
+    }
+  ]
+}

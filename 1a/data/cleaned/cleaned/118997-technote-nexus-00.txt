@@ -1,0 +1,99 @@
+Create Topologies for Routing over Virtual Port
+
+Channel
+
+Introduction
+
+This document describes supported and unsupported topologies when you create routing protocol or PIM adjacencies.
+
+Prerequisites
+
+Requirements
+
+Cisco recommends that you have a basic knowledge of how routing protocols are configured on Nexus switches and other routers. Cisco also recommends you understand the configuration and operation of vPC, vPC forwarding characteristics, and the behavior of the vPC Peer Gateway (through the peer-gateway vPC domain configuration command) and Routing/Layer 3 over vPC (through the layer3 peer-router vPC domain configuration command) enhancements. For more information about these vPC enhancements, consult the relevant sections of the Understand Virtual Port-Channel (vPC) Enhancements document.
+
+Components Used
+
+This document is not restricted to specific software and hardware versions. The information in this document was created from the devices in a specific lab environment. All of the devices used in this document started with a cleared (default) configuration. If your network is live, ensure that you understand the potential impact of any command.
+
+Background Information
+
+Routing protocol or PIM adjacencies are created between external Layer 3 (L3) devices and Cisco Nexus switches in a Virtual Port Channel (vPC) environment. The term protocol adjacency is used throughout this document to represent the formation of a protocol neighbor relationship between the referenced devices. vPC+ is not covered by this article.
+
+Supported Topologies for Routing in a vPC Environment The topology shown in Figure 1 can be used to demonstrate the various connectivity options for protocol adjacencies in a vPC environment. The Nexus switches are in a vPC domain with these details:
+
+• A pair of similar Nexus switches configured in a vPC domain.
+
+• Three Layer 3 devices (L3-A, L3-B, and L3-C) connected to a pair of Nexus switches.
+
+• L3-A is connected to an orphan port in vPC Vlan.
+
+• L3-B and L3-C are connected with vPC to Nexus-A and Nexus-B.
+
+• Nexus-A and Nexus-B have additional Layer 2 and Layer 3 links between them.
+
+Figure 1: Supported Topologies for Routing in a vPC Environment Based on the topology in Figure 1, Table 1 describes which physical links support protocol adjacencies between the two Nexus switches and between a Nexus switch and an L3 device connected to its vPC peer. Each type of link used for the protocol adjacency is detailed and references any applicable caveats which are detailed in Table 1. Table 1: Routing Protocol Adjacencies Supported over Physical Interfaces
+
+| Nexus Switch Series | Protocol Adjacency between Nexus-A and Nexus-B | Protocol Adjacency between L3- A and Nexus-B |
+| --- | --- | --- |
+| Nexus 95xx-R and 3xxxx-R | L3 link: Supported L2 link: Supported Peer Link: Supported PIM Adjacency over the peer-link: Supported *** | L3 link: N/A L2 link: Supported% Peer Link: Supported, see Table 2 requirements PIM Adjacency: Supported ** |
+
+| Nexus 3000/3100/3200/3400/3600 Series | L3 link: Supported L2 link: Supported* Peer Link: Supported PIM Adjacency over the peer-link: Supported *** | L3 link: N/A L2 link: Supported*% Peer Link: Supported, see Table 2 requirements PIM Adjacency: Supported ** |
+| --- | --- | --- |
+| Nexus 3500 Series | L3 link: Supported L2 link: Not supported Peer Link: Supported PIM Adjacency over the peer-link: supported *** | L3 link: N/A L2 link: Not supported Peer Link: Supported, see Table 2 requirements PIM Adjacency: Supported ** |
+| Nexus 5000 Series | L3 link: Supported L2 link: Not supported Peer Link: Supported PIM Adjacency over the peer-link: Supported *** | L3 link: N/A L2 link: Not supported Peer Link: Supported, see Table 2 requirements PIM Adjacency: Not supported ** |
+| Nexus 6000 Series | L3 link: Supported L2 link: Not supported Peer Link: Supported PIM Adjacency over the peer-link: Supported *** | L3 link: N/A L2 link: Not supported Peer Link: Supported, see Table 2 requirements PIM Adjacency: Not supported ** |
+| Nexus 7000 Series | L3 link: Supported L2 link: Supported Peer Link: Supported PIM Adjacency over the peer-link: Supported *** | L3 link: N/A L2 link: Supported% Peer Link: Supported, see Table 2 requirements PIM Adjacency: Supported ** |
+| Nexus 9000 Series | L3 link: Supported L2 link: Supported* Peer Link: Supported | L3 link: N/A L2 link: Supported*% Peer Link: Supported, see Table 2 requirements |
+
+* You must configure a user-defined MAC address on each relevant VLAN Switch Virtual Interface
+
+(SVI). See Cisco bug ID CSCus13433 for more details. ** PIM adjacency over a vPC Vlan between a) L3-A and Nexus-A or Nexus-B or b) between L3-B or L3- C and Nexus-A or Nexus-B, regardless of wthether the router or Layer 3 Switch is connected via an Orphan Port or a vPC Member Link, is not supported. For all platforms except the Nexus 5000 or Nexus 6000 PIM adjacency over a non-vPC Vlan between a) L3-A and Nexus-A or Nexus-B or b) between L3-B or L3-C and Nexus-A or Nexus-B is supported if established through the L2 link. *** PIM adjacency is supported between Nexus-A and Nexus-B however the type of PIM sparse-mode supported (ie SSM, ASM, BiDIR) varies by platform. See the platform configuration guides. % Layer3 peer-router capability is required to utilize the vPC peer-link as transit routing path (without a parallel L2 link). Table 2 describes which routing protocol adjacencies are supported over vPC VLANs based on the topology in Figure 1. Note: With the introduction of the Routing/Layer 3 over vPC enhancement through the layer3 peerrouter vPC domain configuration command, all Nexus switching platforms now support unicast routing protocol adjacencies across the vPC Peer-Link. Prior to development of this feature, support varied by platform. To upgrade to a version of NX-OS that contains support for the Routing/Layer 3 over vPC enhancement from an earlier release can break current topologies until the layer3 peerrouter vPC domain configuration command is enabled. The Routing/Layer 3 over vPC enhancement does not add support for a PIM adjacency over a vPC VLAN. Table 2: Routing Protocols Adjacencies Support over vPC VLANs
+
+| Nexus Switch Series | L3-A to L3-B or L3-A to L3-C | L3-A, L3-B or L3-C to Nexus-A or Nexus-B |
+| --- | --- | --- |
+| Nexus 95xx-R and 3xxxx-R Series | Yes | *7.0(3)F3(3) and later with the layer3 peer-router vPC domain configuration command enabled |
+| Nexus 3000/3100/3200/3400/3600 | Yes | *7.0(3)F3(3) and later with the layer3 peer-router vPC domain configuration command enabled |
+| Nexus 3500 Series | Yes | * 6.0(2)A8(x) and later with the layer3 peer-router vPC domain configuration command enabled |
+| Nexus 5000 Series | Yes | * 7.3(0)N1(1) and later with the layer3 peer-router vPC domain configuration command enabled |
+
+* Feature requires explicit configuration of the layer3 peer-router vPC domain configuration command.
+
+** Unsupported on M1, F1, F2, M2 series linecards.
+
+Important Notes and Caveats
+
+• L3-A to Nexus-A peering is always supported for L2/L3.
+
+• L3-B to L3-C peering is always supported for L2/L3.
+
+• When a BFD session is over SVI that uses the Virtual Port-Channel (vPC) Peer-Link, the BFD echo
+
+function is not supported. You must disable the BFD echo function for all sessions over SVI between vPC peer nodes that use the no bfd echo interface configuration command.
+
+• If the vPC Peer Link is configured on a Cisco Nexus 32-port 1/10 Gigabit Ethernet (F1-Series)
+
+module (N7K-F132XP-15), you must include the L3 backup routing VLAN in the VLAN list specified by the peer-gateway exclude-vlan command.
+
+• For all Nexus platforms, a PIM adjacency over a vPC or a vPC orphan port is not supported. To form
+
+a supported PIM adjacency, you must have a Layer 3 connection from each Nexus switch to the relevant PIM router or form the PIM adjacency over a non-vPC VLAN.
+
+• Nexus 5000, 5500, 5600, and 6000 switches in a vPC domain that receive multicast traffic from a vPC
+
+or vPC VLAN where a multicast receiver is only reachable across the vPC Peer-Link must have the vpc bind-vrf default vlan {vlan-id} global configuration command present. For each VRF, a separate VLAN must be defined, and the defined VLAN must not already be used for production traffic. Additionally, when you have a vPC topology with orphan ports or Layer 3 connections and multicast traffic must go through the peer-link to reach these receivers, it is not sent out to the receiver unless you have the command vpc bind-vrf default vlan {vlan_id}. For each VRF, a separate vlan_id can be configured, where the VLAN is not already used for production traffic. For more details, refer to the Nexus 5500 Series NX-OS Interfaces Configuration Guide, Nexus 5600 Series NX-OS Interfaces Configuration Guide, and Nexus 6000 Series NX-OS Interfaces Configuration Guide.
+
+Related Information
+
+• Understand Virtual Port Channel (vPC) Enhancements
+
+• vPC Layer 3 Backup Routing with F1 and Peer-Gateway
+
+• N5500/N6000 Binding a VRF instance to a vPC
+
+• Cisco Technical Support & Downloads
+
+| Nexus 6000 Series | Yes | * 7.3(0)N1(1) and later with the layer3 peer-router vPC domain configuration command enabled |
+| --- | --- | --- |
+| Nexus 7000 Series | Yes | * ** 7.2(0)D1(1) and later with the layer3 peer-router vPC domain configuration command enabled |
+| Nexus 9000 Series | Yes | * 7.0(3)I5(1) and later with the layer3 peer-router vPC domain configuration command enabled |

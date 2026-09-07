@@ -1,8 +1,9 @@
 """Generate reproducible baseline responses for one or more query files.
 
 The actual model loading and response-generation operations are imported from
-gpt2_model.py and model_response.py. This file only provides the command-line
-orchestration and records complete model details in each baseline JSON file.
+the model-specific loader and model_response.py. This file only provides the
+command-line orchestration and records complete model details in each baseline
+JSON file.
 
 Example:
     python 1a/code/baseline.py \
@@ -83,6 +84,37 @@ def _safe_filename_component(value: str) -> str:
     return normalized or "model"
 
 
+def resolve_query_paths(supplied_paths) -> list[Path]:
+    """Expand query files/directories into unique, sorted JSON paths."""
+    query_paths: list[Path] = []
+    seen: set[Path] = set()
+
+    for supplied_path in supplied_paths:
+        path = Path(supplied_path).expanduser().resolve()
+        if not path.exists():
+            raise ValueError(f"Query path does not exist: {path}")
+
+        if path.is_dir():
+            candidates = sorted(
+                candidate.resolve()
+                for candidate in path.glob("*.json")
+                if candidate.is_file()
+            )
+            if not candidates:
+                raise ValueError(f"Query directory contains no JSON files: {path}")
+        elif path.is_file() and path.suffix.casefold() == ".json":
+            candidates = [path]
+        else:
+            raise ValueError(f"Query input must be a JSON file or directory: {path}")
+
+        for candidate in candidates:
+            if candidate not in seen:
+                seen.add(candidate)
+                query_paths.append(candidate)
+
+    return query_paths
+
+
 def _add_model_details(
     output_path: Path,
     query_path: Path,
@@ -109,7 +141,7 @@ def _add_model_details(
 
 def run_baselines(args) -> None:
     import torch
-    from gpt2_model import load_gpt2_model
+    from smollm2_model import is_smollm2_model
 
     baseline_path = args.baseline_path.expanduser().resolve()
     baseline_path.mkdir(parents=True, exist_ok=True)
@@ -120,11 +152,24 @@ def run_baselines(args) -> None:
         {"torch": torch},
     )
 
-    model_dict = load_gpt2_model(model_name=args.model_name)
+    if is_smollm2_model(args.model_name):
+        from smollm2_model import (
+            load_smollm2_model,
+            smollm2_model_details,
+        )
+
+        model_dict = load_smollm2_model(model_name=args.model_name)
+        model_details_function = smollm2_model_details
+    else:
+        from gpt2_model import load_gpt2_model
+
+        model_dict = load_gpt2_model(model_name=args.model_name)
+        model_details_function = _model_details
+
     model = model_dict["model"]
     tokenizer = model_dict["tokenizer"]
     device = model_dict["device"]
-    details = _model_details(model, tokenizer, device)
+    details = model_details_function(model, tokenizer, device)
     details["cache_dir"] = str(CACHE_DIR)
     model_label = _safe_filename_component(details["name_or_path"])
 
@@ -132,11 +177,9 @@ def run_baselines(args) -> None:
     print(json.dumps(details, indent=2))
 
     seen_output_paths: set[Path] = set()
-    for supplied_query_path in args.query_json:
-        query_path = supplied_query_path.expanduser().resolve()
-        if not query_path.is_file():
-            raise ValueError(f"Query JSON file does not exist: {query_path}")
-
+    query_paths = resolve_query_paths(args.query_json)
+    print(f"Resolved {len(query_paths)} query JSON file(s).")
+    for query_path in query_paths:
         output_path = (
             baseline_path
             / f"{model_label}_{query_path.stem}_responses.json"
@@ -167,9 +210,13 @@ def run_baselines(args) -> None:
             max_new_tokens=args.max_new_tokens,
             evaluation_stage=args.evaluation_stage,
         )
-        # generate_responses configures GPT-2's padding token when necessary.
+        # generate_responses configures a padding token when necessary.
         # Capture details afterward so the saved tokenizer state is exact.
-        generation_model_details = _model_details(model, tokenizer, device)
+        generation_model_details = model_details_function(
+            model,
+            tokenizer,
+            device,
+        )
         generation_model_details["cache_dir"] = str(CACHE_DIR)
         _add_model_details(
             output_path=output_path,

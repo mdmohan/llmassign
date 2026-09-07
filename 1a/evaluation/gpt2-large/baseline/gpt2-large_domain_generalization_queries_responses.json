@@ -1,0 +1,155 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-06T16:40:01.490057+00:00",
+  "model_name": "gpt2-large",
+  "model_details": {
+    "name_or_path": "gpt2-large",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 36,
+    "attention_heads": 20,
+    "embedding_dimension": 1280,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 774030080,
+    "trainable_parameters": 774030080,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-large",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "/home/jovyan/llmassign/1a/evaluation/queries/domain_generalization_queries.json",
+  "generation_configuration": {
+    "max_new_tokens": 100,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DGEN01",
+      "category": "vxlan-design",
+      "prompt": "A multitenant data center needs far more than 4096 isolated Layer 2 segments over an IP fabric. The design should use",
+      "response": "a single Layer 2 segment for all data traffic.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be",
+      "expected_concepts": [
+        "VXLAN",
+        "24-bit VNI",
+        "approximately 16 million segments",
+        "Layer 3 underlay"
+      ]
+    },
+    {
+      "id": "DGEN02",
+      "category": "ospf-nssa-design",
+      "prompt": "An OSPF area should retain stub-area behavior but must import selected routes from an external routing domain. The suitable area type is",
+      "response": "determined by the OSPF routing domain.\n\nThe OSPF area must be configured to use the same routing domain as the external routing domain.\n\nThe OSPF area must be configured to use the same routing domain as the external routing domain. The OSPF area must be configured to use the same routing domain as the external routing domain. The OSPF area must be configured to use the same routing domain as the external routing domain. The OSPF area must be",
+      "expected_concepts": [
+        "NSSA",
+        "Not-So-Stubby Area",
+        "Type-7 LSA",
+        "external routes"
+      ]
+    },
+    {
+      "id": "DGEN03",
+      "category": "ospf-resiliency",
+      "prompt": "During an OSPF graceful restart, a topology change that could make forwarding stale should cause the router to",
+      "response": "re-evaluate the topology.\n\nThe following example shows how to configure a router to re-evaluate the topology when a new router is added to the network.\n\nconfigure { router { # The topology is re-evaluated when a new router is added to the network. # The topology is re-evaluated when a new router is added to the network. # The topology is re-evaluated when a new router is added to the network. #",
+      "expected_concepts": [
+        "exit graceful restart",
+        "normal OSPF restart",
+        "avoid routing loops",
+        "recalculate forwarding"
+      ]
+    },
+    {
+      "id": "DGEN04",
+      "category": "ospf-bfd",
+      "prompt": "OSPF neighbors form over a poor-quality link, but the faster BFD session repeatedly fails. BFD strict mode addresses this by",
+      "response": "requiring that the BFD session be terminated before the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe B",
+      "expected_concepts": [
+        "block OSPF adjacency formation",
+        "wait for BFD session",
+        "both neighbors advertise support"
+      ]
+    },
+    {
+      "id": "DGEN05",
+      "category": "nexus-dashboard-operations",
+      "prompt": "An operations team wants one on-premises control point for provisioning, observing, automating, and troubleshooting several Cisco data-center fabrics. The appropriate platform is",
+      "response": "a Cisco IOS or IOS XE.\n\nThe team wants to use a Cisco IOS or IOS XE to provision the data center fabric. The appropriate platform is a Cisco IOS or IOS XE. The team wants to use a Cisco IOS or IOS XE to monitor the data center fabric. The appropriate platform is a Cisco IOS or IOS XE.\n\nThe team wants to use a Cisco IOS or IOS XE to monitor",
+      "expected_concepts": [
+        "Cisco Nexus Dashboard",
+        "centralized management",
+        "visibility",
+        "automation"
+      ]
+    },
+    {
+      "id": "DGEN06",
+      "category": "ai-data-center-design",
+      "prompt": "A distributed GPU training job is slowed by congestion and packet loss between workers. The Ethernet fabric should be designed for",
+      "response": "high throughput, and the network layer should be designed to handle the load.\n\nThe Ethernet fabric should be designed for high throughput, and the network layer should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "lossless networking",
+        "congestion management",
+        "telemetry"
+      ]
+    },
+    {
+      "id": "DGEN07",
+      "category": "switching-behavior",
+      "prompt": "A Nexus switch starts transmitting a frame after reading enough of its header to choose the egress port instead of buffering the entire frame. This behavior is called",
+      "response": "\"frame-based\" or \"frame-based-receive\" (FBAR).\n\nThe Nexus switch is a \"frame-based\" switch. It does not send a frame to the host until it has read enough of the header to choose the egress port.\n\nThe Nexus switch is a \"frame-based\" switch. It does not send a frame to the host until it has read enough of the header to choose the egress port.\n\nThe Nexus switch is",
+      "expected_concepts": [
+        "cut-through switching"
+      ]
+    },
+    {
+      "id": "DGEN08",
+      "category": "vxlan-forwarding",
+      "prompt": "Two workloads must remain in the same logical Layer 2 segment while residing across a routed Layer 3 data-center fabric. VXLAN accomplishes this by",
+      "response": "using a single Layer 2 segment to route traffic across the fabric.\n\nThe VXLAN fabric is a single-layer fabric that is used to route traffic across the fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured",
+      "expected_concepts": [
+        "MAC-in-UDP encapsulation",
+        "tunneling",
+        "VTEP",
+        "Layer 2 overlay"
+      ]
+    },
+    {
+      "id": "DGEN09",
+      "category": "interface-troubleshooting",
+      "prompt": "CRC and FCS counters on a Nexus interface continue increasing between polling intervals. The investigation should focus first on",
+      "response": "the timing of the CRC and FCS counters.\n\nThe CRC and FCS counters are used to detect the CRC and FCS errors in the data stream. The CRC and FCS counters are used to detect the CRC and FCS errors in the data stream.\n\nThe CRC and FCS counters are used to detect the CRC and FCS errors in the data stream.\n\nThe CRC and FCS counters are used to detect the CRC and FCS errors in the data stream.",
+      "expected_concepts": [
+        "physical layer",
+        "cable",
+        "optics",
+        "peer interface",
+        "speed or FEC"
+      ]
+    },
+    {
+      "id": "DGEN10",
+      "category": "vpc-design",
+      "prompt": "A server should use one logical port channel while connecting redundantly to two separate Cisco Nexus switches. The switches should be configured as",
+      "response": "a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port",
+      "expected_concepts": [
+        "vPC peers",
+        "vPC domain",
+        "peer-link",
+        "logical port channel"
+      ]
+    }
+  ]
+}

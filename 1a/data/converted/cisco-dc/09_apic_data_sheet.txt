@@ -1,0 +1,290 @@
+# MD5: e8c13a0f65e5f0d68ceb9c78c72e5b85
+
+Data sheet
+Cisco public
+Cisco Application Policy
+Infrastructure Controller
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 1 of 11
+
+Contents
+About Cisco ACI 3
+Cisco ACI components 3
+Cisco Application Policy Infrastructure Controller (APIC) features 4
+Cisco APIC cluster 6
+APIC appliance product specifications 6
+Cisco environmental sustainability 9
+Cisco Capital 10
+For more information 10
+Document history 11
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 2 of 11
+
+About Cisco ACI
+The Cisco® Application Centric Infrastructure (Cisco ACI®) is part of our intent-based networking framework to enable agility
+in the datacenter. It captures higher-level business and user intent in the form of a policy and translates this into the
+network constructs necessary to dynamically provision network, security, and infrastructure services.
+Built on top of the industry-leading Cisco N9000 platform, Cisco ACI uses a holistic systems-based approach, with tight
+integration between hardware and software, between physical and virtual elements, an open ecosystem model, and
+innovative Cisco Application-Specific Integrated Circuits (ASICs) to enable unique business value for modern data centers.
+As part of the Cisco Nexus One architecture, Cisco ACI border gateways, implemented on Cisco N9000 series switches,
+provide scalable and secure Layer-3 connectivity between the ACI fabric and external networks using policy-based control
+and dynamic routing. This enables seamless any-to-any connectivity between ACI and open-standard VXLAN EVPN fabrics
+with consistent policy extension across environments.
+Cisco ACI is the industry’s most secure, open, and comprehensive software-defined networking solution.
+ACI enables automation that accelerates infrastructure deployment and governance, simplifies management to easily
+move workloads across a multifabric, multicloud framework, and proactively secures against risk arising from anywhere. It
+radically simplifies, optimizes, and expedites the application deployment lifecycle.
+Modern data centers are dynamic. IT operations must meet the expectation of quality-of-service business needs in a
+rapidly changing environment. ACI transforms IT operations from reactive to proactive with a highly intelligent set of
+software capabilities that analyzes every component of the data center to ensure business intent, guarantee reliability,
+and identify performance issues in the network before they happen.
+As application usage gets more pervasive across an enterprise’s network, IT professionals are looking to build solutions for
+consistent policy and encryption from the campus to the datacenter. With ACI integrations with SDA/DNA Center and SD-
+WAN, customers can now automate and extend policy, security, assurance, and insights across their entire networking
+ecosystem.
+Cisco ACI components
+The Cisco ACI solution consists of the following building blocks (Figure 1):
+● Cisco Application Policy Infrastructure Controller (APIC).
+● Cisco N9000 Series spine and leaf switches for Cisco ACI.
+● Cisco Nexus Dashboard, on-premises managed Nexus One.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 3 of 11
+
+Cisco ACI architectural building blocks
+Cisco Application Policy Infrastructure Controller (APIC) features
+The infrastructure controller is the main architectural component of the Cisco ACI solution. It is the unified point of
+automation and management for the Cisco ACI fabric, policy enforcement, and health monitoring. The APIC appliance is a
+centralized, clustered controller that optimizes performance and unifies the operation of physical and virtual
+environments. The controller manages and operates a scalable multitenant Cisco ACI fabric.
+The APIC provides enhanced lifecycle and operational capabilities, including optimized APIC cluster upgrades through a
+robust, centralized workflow and faster APIC reboot times. It also enables hybrid APIC cluster deployments, allowing
+seamless coexistence and interoperability between physical and virtual APICs. Operational efficiency is further improved
+through enhanced support for mixed (dual) software versions across ACI fabrics, enabling smoother upgrades and reduced
+operational risk.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 4 of 11
+
+The main features of the APIC include the following:
+● Application-centric network policies.
+● Data-model-based declarative provisioning.
+● Application and topology monitoring and troubleshooting.
+● Layer-4 through Layer-7 (L4-L7) services integration with APIC.
+● Third-party integration.
+◦ VMware vCenter and vShield
+◦ Nutanix
+◦ Openshift container and virtualization platform
+● Automation platform integrations.
+◦ Terraform
+◦ Ansible
+◦ Chef
+◦ Puppet
+◦ Python
+◦ ServiceNow
+● Image management (spine and leaf).
+● Cisco ACI inventory and configuration.
+● Implementation on a distributed framework across a cluster of appliances.
+● Health scores for critical managed objects (tenants, application profiles, switches, etc.).
+● Fault, event, and performance management.
+● Isovalent® Cilium and eBPF integration for end-to-end observability.
+The controller framework enables broad ecosystem and industry interoperability with Cisco ACI. It enables interoperability
+between a Cisco ACI environment and management, orchestration, virtualization, and L4-L7 services from a broad range of
+vendors.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 5 of 11
+
+Cisco APIC cluster
+The APIC appliance is deployed as a cluster. A minimum of three infrastructure controllers are configured in a cluster to
+provide control of the scale-out Cisco ACI fabric (Figure 2). The ultimate size of the controller cluster is directly
+proportionate to the size of the Cisco ACI deployment and is based on the transaction-rate requirements. Any controller in
+the cluster can service any user for any operation, and a controller can be transparently added to or removed from the
+cluster.
+Cisco APIC cluster
+APIC appliance product specifications
+The APIC appliance is available in different form factors (Table 1):
+Table 1. Cisco APIC sizes
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 6 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Cisco APIC configuration | Part number | Description |
+| --- | --- | --- |
+| Medium M4 | APIC-M4 | APIC with medium-size CPU, hard drive, and memory configurations (up to |
+|  |  | 1200 edge ports) |
+|  |  |  |
+| Large L4 | APIC-L4 | APIC with large CPU, hard drive, and memory configurations (more than 1200 |
+|  |  | edge ports) |
+|  |  |  |
+| Medium cluster M4 | APIC-CLUSTER-M4 | Cluster of 3 APIC-M4 with medium-size CPU, hard drive, and memory |
+|  |  | configurations (up to 1200 edge ports) |
+|  |  |  |
+| Large cluster L4 | APIC-CLUSTER-L4 | Cluster of 3 APIC-L4 with large CPU, hard drive, and memory configurations |
+|  |  | (more than 1200 edge ports) |
+|  |  |  |
+| APIC G5 node | APIC-SERVER-G5 | Fifth-Generation APIC (combined appliance; no medium/large with this |
+|  |  | generation) |
+|  |  |  |
+
+Table 2. Specifications of the APIC G5 combined appliance. Note that at least three appliances need to be configured as a cluster.
+Table 3. Cisco APIC G5 physical and environmental specs
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 7 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Cisco APIC configuration | Part number | Description |
+| --- | --- | --- |
+| APIC G5 cluster | APIC-CLUSTERG5 | Cluster of three Fifth-Generation APIC’s (combined appliance; no |
+|  |  | medium/large with this generation) |
+|  |  |  |
+
+| Cisco APIC appliance | Description | Default units |
+| --- | --- | --- |
+| APIC G5 (combined appliance) |  |  |
+| Processor | AMD 9354P 3.25GHz 280W 32C/256MB cache DDR5 4800MT/s | 1 |
+| Memory | 32GB DDR5-5600 RDIMM 1Rx4 (16Gb) | 8 |
+| Hard Drive | 1.6TB 2.5in U.3 15mm P7450 high-perf high-end NVMe (3X) | 2 |
+| PCI Express (PCIe) slots | Cisco VIC 15425 4x 10/25/50G PCIe C-Series w/secure boot | 1 |
+| Power supply | 1200w AC titanium power supply for Cisco UCS® C-Series rack servers | 2 |
+
+| Overview | Description |
+| --- | --- |
+| Physical dimensions (H x W x D) | 1 rack unit (1RU): 1.7 x 16.9 x 30 in. (4.3 x 42.9 x 76.2 cm) |
+| Temperature: Operating | 41°F to 95°F (5°C to 35°C) (operating, at sea level, with no fan fail and no CPU throttling, and with |
+|  | turbo mode) |
+|  |  |
+| Temperature: Nonoperating | Dry bulb temperature of -40°F to 149°F (-40°C to 65°C) |
+| Humidity: Operating | 8% to 90% noncondensing |
+| Humidity: Nonoperating | 5% to 93% noncondensing |
+| Altitude: Operating | 0 to 10,006 ft (0 to 3050 meters); maximum ambient temperature decreases by 1°C per 300m |
+| Altitude: Nonoperating | 0 to 39,370 ft (12,000m) |
+
+Table 4. Specifications of the APIC M4 and L4 appliance. Note that at least three appliances need to be configured as a cluster
+Table 5. Cisco APIC M4 and L4 Physical and Environmental Specs
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 8 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+|  | Medium configuration: |  | Large configuration: L4 |  |
+| --- | --- | --- | --- | --- |
+|  | M4 |  |  |  |
+|  |  |  |  |  |
+|  | Description | Default units | Description | Default units |
+| Processor | AMD 3.0GHz 7313P 155W | 1 | AMD 2.85GHz 7443P | 1 |
+|  | 16C/128MB Cache DDR4 |  | 200W 24C/128MB Cache |  |
+|  |  |  |  |  |
+|  | 3200MHz |  | DDR4 3200MHz |  |
+| Memory | 16GB RDIMM SRx4 3200 | 6 | 32GB RDIMM DRx4 3200 | 6 |
+|  | (8Gb) |  | (8Gb) |  |
+|  |  |  |  |  |
+| Hard Drive | 480GB 2.5in Enterprise | 1 each | 480GB 2.5in Enterprise | 1 each |
+|  | Performance 6GSATA SSD |  | Performance 6GSATA |  |
+|  |  |  |  |  |
+|  | (3X endurance) |  | SSD(3X endurance) |  |
+|  | 960GB 2.5in Enterprise |  | 1.6TB 2.5in U.2 WD SN840 |  |
+|  | performance 6GSATA SSD |  | NVMe Extreme Perf. High |  |
+|  | (3X endurance) |  | Endurance |  |
+| PCI Express (PCIe) slots | Intel E810XXVDA2 | None- Configurable | Intel E810XXVDA2 | None-Configurable |
+|  | 2x25/10 GbE SFP28 PCIe | Options | 2x25/10 GbE SFP28 PCIe | Options |
+|  |  |  |  |  |
+|  | NIC |  | NIC |  |
+|  |  |  |  |  |
+|  | Intel X710T2LG 2x10 GbE |  | Intel X710T2LG 2x10 GbE |  |
+|  | RJ45 PCIe NIC |  | RJ45 PCIe NIC |  |
+| Power supply | 1050W (AC and DC) and | 1 | 1050W (AC and DC) and | 1 |
+|  | 1600 W |  | 1600 W |  |
+|  |  |  |  |  |
+| FAN | Eight hot-swappable fans |  |  |  |
+| Airflow | Front to rear cooling |  |  |  |
+
+| Overview | Description |
+| --- | --- |
+| Physical Specifications | 1 Rack Unit (RU), Height (43.2 mm), Width 16.9 in. (429.0 mm), Depth (length) Server only: 29.5 |
+|  | in. (740.3 mm) |
+|  |  |
+| Temperature: Operating | 10° C to 35° C (50° F to 95° F) with no direct sunlight |
+| Temperature: Nonoperating | Below -40° C or above 65° C (below -40° F or above 149° F) |
+| Humidity (RH): Operating | 8 to 90% and 24° C (75o F) maximum dew-point temperature, non-condensing environment |
+
+Table 6. Cisco medium form factor virtual APIC requirements
+To use the APIC controller as a virtual form-factor or in AWS cloud, a DCN-vAPIC license is required. A minimum of three
+licenses are required for a cluster, and additional licenses can be ordered for expanding the cluster.
+Cisco environmental sustainability
+Information about Cisco’s environmental sustainability policies and initiatives for our products, solutions, operations, and
+extended operations or supply chain is provided in the “Environment Sustainability” section of Cisco’s Corporate Social
+Responsibility (CSR) Report.
+Reference links to information about key environmental sustainability topics (mentioned in the
+“Environment Sustainability” section of the CSR Report) are provided in the following table:
+Cisco makes the packaging data available for informational purposes only. It may not reflect the most current legal
+developments, and Cisco does not represent, warrant, or guarantee that it is complete, accurate, or up to date. This
+information is subject to change without notice.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 9 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| Overview | Description |
+| --- | --- |
+| Humidity (RH): Nonoperating | Below 5% or above 95% and 33o C (91o F) maximum dew-point temperature, |
+|  | non-condensing environment |
+|  |  |
+| Altitude: Operating | 0 to 10,000 feet |
+| Altitude: Nonoperating | 0 to 40,000 feet |
+
+| Cisco Virtual APIC Requirements | Description |
+| --- | --- |
+| Processor | 16 vCPU of 3 GHz or Higher |
+| Memory | 96 GB of RAM |
+| DiskSpace | Disk 1: SSD or NVMe – 120GB (root disk) |
+|  | Disk 2: SSD or NVMe – 360GB (data disk) |
+|  | I/O latency of 20ms |
+| ESxi | 7.0 |
+
+| Sustainability topic | Reference |
+| --- | --- |
+| Information on product material content laws and regulations | Materials |
+| Information on electronic waste laws and regulations, including products, batteries, and packaging | WEEE compliance |
+
+Cisco Capital
+Flexible payment solutions to help you achieve your objectives
+Cisco Capital® makes it easier to get the right technology to achieve your objectives, enable business transformation and
+help you stay competitive. We can help you reduce the total cost of ownership, conserve capital, and accelerate growth. In
+more than 100 countries, our flexible payment solutions can help you acquire hardware, software, services and
+complementary third-party equipment in easy, predictable payments. Learn more.
+For more information
+Use the following links for additional information:
+● Cisco ACI solution data sheet: Click here.
+● Cisco ACI ordering guide: Click here.
+● Cisco N9000 Series Switches data sheet: Click here.
+● Cisco Nexus Dashboard data sheet: Click here.
+● Cisco ACI solution general details: Click here.
+● Technical white papers: Click here.
+● Case studies: Click here.
+● Solution overviews: Click here.
+● YouTube video tutorials: Click here.
+● Release notes for Cisco ACI and APIC solutions: Click here.
+● Release notes for Cisco N9000 Series Switches: Click here.
+● Download Cisco ACI software: Click here.
+● Cisco Nexus One: Click here.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 10 of 11
+
+Document history
+Printed in USA C78-739715-13 09/26
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 11 of 11
+
+
+[EXTRACTED TABLES]:
+
+
+| New or Revised Topic | Described In | Date |
+| --- | --- | --- |
+| Remove XS Cluster, Medium Spare and Large Spare PIDs. | Table 1 | February 1, 2023 |
+| Update the table with APIC-M4/L4 PIDs |  |  |
+| Change the heading to "Cisco APIC M3 and L3 Physical and Environmental | Table 1 | February 1, 2023 |
+| Specs |  |  |
+|  |  |  |
+| Added additional specs | Table 2-6 | February 1, 2023 |
+| Revised name for Cisco Cloud APIC to Cisco Cloud Network Controller | Cisco Network Controller | February 1, 2023 |
+|  | Product Specifications |  |
+|  |  |  |

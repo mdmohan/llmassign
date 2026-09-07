@@ -1,0 +1,155 @@
+Configure BGP to Advertise a Default Route on
+
+Nexus Switches
+
+Introduction
+
+This document describes the configuration Border Gateway Protocol to advertise Default Route to BGP neighbors on Cisco Nexus NX-OS based Switches.
+
+Prerequisites
+
+Requirements
+
+Cisco recommends prior knowledge of these topics:
+
+• Nexus NX-OS Software
+
+• Routing Protocols, specifically Border Gateway Protocol (BGP).
+
+Components Used
+
+The information in this document is based on Cisco Nexus 7000 with NX-OS version 7.3(0)D1(1). The information in this document was created from the devices in a specific lab environment. All of the devices used in this document started with a cleared (default) configuration. If your network is live, ensure that you understand the potential impact of any command.
+
+Configure
+
+Network Command
+
+The network 0.0.0.0/0 command injects the default route in the BGP RIB (BGP Routing Information Base). The prerequisite is to have the default route in the Routing Table via any other Routing Protocol or manually configured with a Static Route. Once in the BGP RIB, the default route is advertised to all BGP neighbors unless specifically denied by an
+
+outbound filter configured per neighbor. BGP configuration as seen in the show running-config output. In this example, Nexus receives the default route from Enhanced Interior Gateway Routing Protocol (EIGRP) protocol. Therefore, the Nexus Routing Table shows the default route is available via EIGRP.
+
+Nexus BGP Configuration
+
+<#root> Nexus# show running-config bgp !Command: show running-config bgp !Time: Tue Dec 4 01:27:43 2018 version 7.3(0)D1(1) feature bgp router bgp 64512 address-family ipv4 unicast network 0.0.0.0/0 neighbor 10.1.3.3 remote-as 64512 address-family ipv4 unicast
+
+| Nexus Routing Table |
+| --- |
+| <#root> Nexus# show ip route 0.0.0.0 |
+
+IP Route Table for VRF "default" '*' denotes best ucast next-hop '**' denotes best mcast next-hop '[x/y]' denotes [preference/metric] '%<string>' in via output denotes VRF <string> 0.0.0.0/0, ubest/mbest: 1/0 *via 10.1.2.2, Eth2/1, [170/2816], 00:00:50, eigrp-1, external
+
+Nexus#
+
+BGP RIB shows 0.0.0.0/0 as valid and best path since prerequisites are met. Default route is in the Routing Table, and the network 0.0.0.0/0 command is configured in BGP configuration section. The advertised-routes parameter shows the default-route is advertised to BGP peer 10.1.3.3.
+
+| Nexus BGP RIB (BGP Table) |  |
+| --- | --- |
+| --- |  |
+| <#root> Nexus# show bgp ipv4 unicast BGP routing table information for VRF default, address family IPv4 Unicast BGP table version is 13, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup Network Next Hop Metric LocPrf Weight Path *>l0.0.0.0/0 0.0.0.0 100 32768 i |
+
+| Nexus BGP Routes Advertised to a Specific BGP Peer |  |
+| --- | --- |
+| --- |  |
+| <#root> Nexus# show bgp ipv4 unicast neighbors 10.1.3.3 advertised-routes Peer 10.1.3.3 routes for address family IPv4 Unicast: BGP table version is 13, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup Network Next Hop Metric LocPrf Weight Path |
+
+*>l0.0.0.0/0 0.0.0.0 100 32768 i
+
+Redistribute and Default-Information Originate Commands
+
+The redistribute command configured under the BGP process injects all the routes that exist in the Routing Table by a specific source routing protocol (and permitted by a route-map) in the BGP RIB with the exception of the default route. Additionally, to allow the default route to be installed from the source routing protocol in the BGP RIB, the command default-information originate is required. Once in the BGP RIB, the default route is advertised to all BGP neighbors unless specifically denied by an outbound filter configured per neighbor. BGP configuration section shows redistribute EIGRP and default-information originate in place. In this example, Nexus receives the default route from EIGRP protocol. Therefore, the Nexus Routing Table shows the default route is available via EIGRP.
+
+Nexus BGP Configuration
+
+<#root> Nexus# show running-config bgp !Command: show running-config bgp !Time: Tue Dec 4 01:33:41 2018 version 7.3(0)D1(1) feature bgp router bgp 64512 address-family ipv4 unicast redistribute eigrp 1 route-map PERMIT-ALL default-information originate neighbor 10.1.3.3 remote-as 64512 address-family ipv4 unicast A route map with no match entry permits all routes. route-map PERMIT-ALL permit 10
+
+| Nexus Routing Table |
+| --- |
+| <#root> Nexus# show ip route eigrp |
+
+IP Route Table for VRF "default" '*' denotes best ucast next-hop '**' denotes best mcast next-hop '[x/y]' denotes [preference/metric] '%<string>' in via output denotes VRF <string> 0.0.0.0/0, ubest/mbest: 1/0 *via 10.1.2.2, Eth2/1, [170/2816], 00:07:19, eigrp-1, external 192.168.2.0/24, ubest/mbest: 1/0 *via 10.1.2.2, Eth2/1, [170/2816], 00:00:07, eigrp-1, external BGP RIB shows 0.0.0.0/0 as valid and the best path since prerequisites are met. The default route has been redistributed from source routing protocol in BGP, and default-information originate command is configured in BGP configuration section. The advertised-routes parameter shows the default-route is advertised to BGP peer 10.1.3.3.
+
+| Nexus BGP RIB (BGP Table) |  |
+| --- | --- |
+| --- |  |
+| <#root> Nexus# show bgp ipv4 unicast BGP routing table information for VRF default, address family IPv4 Unicast BGP table version is 17, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup Network Next Hop Metric LocPrf Weight Path *>r0.0.0.0/0 0.0.0.0 2816 100 32768 ? *>r192.168.2.0/24 0.0.0.0 2816 100 32768 ? |
+
+| Nexus BGP Routes Advertised to a Specific BGP Peer |  |
+| --- | --- |
+| --- |  |
+| <#root> Nexus# show bgp ipv4 unicast neighbors 10.1.3.3 advertised-routes Peer 10.1.3.3 routes for address family IPv4 Unicast: BGP table version is 17, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup |
+
+Network Next Hop Metric LocPrf Weight Path
+
+*>r0.0.0.0/0 0.0.0.0 2816 100 32768 ? *>r192.168.2.0/24 0.0.0.0 2816 100 32768 ? In the absence of the default-information originate command from BGP configuration, the BGP RIB does not install the default route. BGP configuration section next shows only redistribute EIGRP in place. Routing Table output shows the default route is available from EIGRP protocol.
+
+Nexus BGP Configuration
+
+<#root> Nexus# show run bgp !Command: show running-config bgp !Time: Tue Dec 4 01:39:30 2018 version 7.3(0)D1(1) feature bgp router bgp 64512 address-family ipv4 unicast redistribute eigrp 1 route-map PERMIT-ALL neighbor 10.1.3.3 remote-as 64512 address-family ipv4 unicast A route-map with no match entry permits all routes. route-map PERMIT-ALL permit 10
+
+Nexus Routing Table
+
+Nexus# show ip route eigrp IP Route Table for VRF "default" '*' denotes best ucast next-hop '**' denotes best mcast next-hop '[x/y]' denotes [preference/metric] '%<string>' in via output denotes VRF <string> 0.0.0.0/0, ubest/mbest: 1/0 *via 10.1.2.2, Eth2/1, [170/2816], 00:07:19, eigrp-1, external 192.168.2.0/24, ubest/mbest: 1/0 *via 10.1.2.2, Eth2/1, [170/2816], 00:00:07, eigrp-1, external
+
+With no default-information originate command, BGP RIB does not install the 0.0.0.0/0 network prefix. Note: Before NX-OS version 6.2(2) for Nexus 7000 series and version 6.0(2)N3(1) for Nexus 5000 series, the command default-information originate was not required. Default route used to also be injected in BGP RIB only by the redistribute command.
+
+Default-Originate Command
+
+The default-originate command is configured on a per BGP neighbor basis. This command artificially generates and advertises a default route only to the specific BGP peer. The default route does not need to exist in the Routing Table, and it is not created in the BGP RIB. The default-originate command is configured on a per neighbor basis.
+
+| Nexus BGP RIB (BGP table) |  |
+| --- | --- |
+| --- |  |
+| Nexus# show bgp ipv4 unicast BGP routing table information for VRF default, address family IPv4 Unicast BGP table version is 18, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup Network Next Hop Metric LocPrf Weight Path *>r192.168.2.0/24 0.0.0.0 2816 100 32768 ? |
+
+Nexus BGP Configuration
+
+<#root> Nexus# show running-config bgp !Command: show running-config bgp !Time: Tue Dec 4 02:22:43 2018 version 7.3(0)D1(1) feature bgp router bgp 64512 address-family ipv4 unicast network 192.168.1.0/24 neighbor 10.1.3.3 remote-as 64512 address-family ipv4 unicast
+
+default-originate There is no need to have a default route in the Routing Table. No 0.0.0.0/0 entry is created in the BGP table. The entry Originating default network 0.0.0.0/0 can be found in the routes advertised to BGP peer 10.1.3.3
+
+Nexus Routing Table
+
+Nexus# show ip route 0.0.0.0 IP Route Table for VRF "default" '*' denotes best ucast next-hop '**' denotes best mcast next-hop '[x/y]' denotes [preference/metric] '%<string>' in via output denotes VRF <string> Nexus#
+
+| Nexus BGP RIB (BGP table) |  |
+| --- | --- |
+| --- |  |
+| Nexus# show bgp ipv4 unicast BGP routing table information for VRF default, address family IPv4 Unicast BGP table version is 20, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup Network Next Hop Metric LocPrf Weight Path *>l192.168.1.0/24 0.0.0.0 100 32768 i |
+
+| Nexus BGP Routes Advertised to a Specific BGP Peer |  |
+| --- | --- |
+| --- |  |
+| <#root> Nexus# show bgp ipv4 unicast neighbors 10.1.3.3 advertised-routes Peer 10.1.3.3 routes for address family IPv4 Unicast: BGP table version is 20, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup |
+
+Originating default network 0.0.0.0/0
+
+Network Next Hop Metric LocPrf Weight Path
+
+*>l192.168.1.0/24 0.0.0.0 100 32768 i Optionally, the default-originate command can use a route-map as a parameter to conditionally advertise the default-route. The route-map needs to match a route installed in the Routing Table in order to make default-originate advertise the default-route to the BGP peer. In this case, the route-map named ADVERTISE-DEFAULT-IF references a prefix-list named NETWORKS and the latter 192.168.3.0/24 network prefix, which must exist in the Routing Table in order to advertise the default-route.
+
+| Optional Default-Originate Route-Map |
+| --- |
+| <#root> Nexus(config-router-neighbor-af)# default-originate ? <CR> route-map Route-map to specify criteria for originating default |
+
+Nexus Routing Table
+
+<#root> Nexus# show ip route 192.168.3.0 IP Route Table for VRF "default" '*' denotes best ucast next-hop '**' denotes best mcast next-hop '[x/y]' denotes [preference/metric] '%<string>' in via output denotes VRF <string> Route not found
+
+| Nexus BGP Configuration |
+| --- |
+| <#root> ip prefix-list NETWORKS |
+
+seq 5 permit 192.168.3.0/24 ! route-map
+
+ADVERTISE-DEFAULT-IF
+
+permit 10 match ip address prefix-list
+
+NETWORKS
+
+! router bgp 64512 address-family ipv4 unicast network 192.168.1.0/24 neighbor 10.1.3.3 remote-as 64512 address-family ipv4 unicast default-originate route-map ADVERTISE-DEFAULT-IF Since 192.168.3.0/24 is not in the Routing Table, the default-route is not advertised.
+
+| Nexus BGP Routes Advertised to a Specific BGP Peer |  |
+| --- | --- |
+| --- |  |
+| Nexus# show bgp ipv4 unicast neighbors 10.1.3.3 advertised-routes Peer 10.1.3.3 routes for address family IPv4 Unicast: BGP table version is 20, local router ID is 10.255.255.1 Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i njected Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup Network Next Hop Metric LocPrf Weight Path *>l192.168.1.0/24 0.0.0.0 100 32768 i |

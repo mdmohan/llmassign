@@ -1,0 +1,348 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-07T04:53:11.687532+00:00",
+  "model_name": "gpt2-medium",
+  "model_details": {
+    "name_or_path": "gpt2-medium",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 24,
+    "attention_heads": 16,
+    "embedding_dimension": 1024,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 354823168,
+    "trainable_parameters": 354823168,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-medium",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": null,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "generic_forgetting_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 4
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "response": "Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of",
+      "generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8783783783783784
+      }
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "response": "-40°C.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8333333333333334
+      }
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "response": "the Earth, which is about 1.5 times the size of the Sun. The Earth is the only planet in the Solar System that is not surrounded by a thick atmosphere.\n\nThe Earth is surrounded by a thick atmosphere, which is made up of water vapor and carbon dioxide. The atmosphere is also made up of nitrogen, oxygen, and methane.\n\nThe Earth's atmosphere is also made up of water vapor and carbon dioxide. The atmosphere is also made up of nitrogen, oxygen, and",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.29268292682926833
+      }
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "response": "a French writer who lived from 1625 to 1640. He was a poet, playwright, and playwright. He was also a writer of plays and plays of prose. He was a great admirer of Shakespeare and wrote a play called Romeo and Juliet.\n\nThe play was written in 1625 and was based on the story of Romeo and Juliet. It was written in French and was performed in Paris in 1625. The play was performed in the French Theatre in Paris.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0641025641025641
+      }
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "response": "H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.",
+      "generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8727272727272728
+      }
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "response": "a square root of 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8676470588235294
+      }
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold",
+      "generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8307692307692307
+      }
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "response": "sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.891566265060241
+      }
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "response": "twelve times three.\n\nThe number twelve is the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8947368421052632
+      }
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "response": "photosynthesis. The sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun",
+      "generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7894736842105263
+      }
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "response": "boil water. The water should be at least half the volume of the tea.\n\nThe second step is to add the tea leaves. The leaves should be about the size of a pea.\n\nThe third step is to add the sugar. The sugar should be about the size of a large orange.\n\nThe fourth step is to add the water. The water should be at least half the volume of the tea.\n\nThe fifth step is to add the tea leaves. The",
+      "generation_metrics": {
+        "concept_hits": [
+          "boil water"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.36250000000000004
+      }
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "response": "not be as hard as it looks.\n\nThe glass may be too small to break, or it may be too small to break at all.\n\nThe glass may be too small to break, or it may be too small to break at all. The glass may be too small to break, or it may be too small to break at all. The glass may be too small to break, or it may be too small to break at all. The glass may be too small to break",
+      "generation_metrics": {
+        "concept_hits": [
+          "break"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7529411764705882
+      }
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "response": "read a book. She was reading a book about the history of the United States. She was reading about the Civil War. She was reading about the Civil Rights Movement. She was reading about the Civil Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading",
+      "generation_metrics": {
+        "concept_hits": [
+          "read"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6436781609195402
+      }
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "response": "a young man named Tarkus was born. He was a good boy, and he loved to play. He loved to play with his friends, and he loved to play with his father. He loved to play with his mother, and he loved to play with his brothers. He loved to play with his sisters, and he loved to play with his brothers. He loved to play with his sisters, and he loved to play with his brothers. He loved to play with his sisters, and he",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5952380952380952
+      }
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "response": "aims to make computers smarter by making them more intelligent.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6547619047619048
+      }
+    }
+  ]
+}

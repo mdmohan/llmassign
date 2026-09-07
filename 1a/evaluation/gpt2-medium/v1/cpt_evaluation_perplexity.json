@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "title": "Part 1 Perplexity Evaluation",
+  "created_at_utc": "2026-09-07T04:50:49.774680+00:00",
+  "domain_test_bin": "/home/jovyan/llmassign/1a/data/processed/gpt2/token_test.bin",
+  "generic_test_bin": null,
+  "models": {
+    "base": {
+      "requested_model_name": "gpt2-medium",
+      "model_folder": null,
+      "model_details": {
+        "name_or_path": "gpt2-medium",
+        "model_class": "GPT2LMHeadModel",
+        "model_type": "gpt2",
+        "architectures": [
+          "GPT2LMHeadModel"
+        ],
+        "transformer_layers": 24,
+        "attention_heads": 16,
+        "embedding_dimension": 1024,
+        "vocabulary_size": 50257,
+        "maximum_context_length": 1024,
+        "total_parameters": 354823168,
+        "trainable_parameters": 354823168,
+        "parameter_dtype": "torch.float32",
+        "device": "cuda",
+        "tokenizer_class": "GPT2TokenizerFast",
+        "tokenizer_name_or_path": "gpt2-medium",
+        "tokenizer_vocabulary_size": 50257,
+        "eos_token_id": 50256,
+        "pad_token_id": null,
+        "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+      },
+      "held_out_perplexity": {
+        "domain": {
+          "bin_file": "/home/jovyan/llmassign/1a/data/processed/gpt2/token_test.bin",
+          "sha256": "5201af9f069ac2f6b6ba089f432932d11051af4812ec6af6eaf171f0eb1bb445",
+          "binary_dtype": "uint16",
+          "file_size_bytes": 1398784,
+          "stored_token_count": 699392,
+          "context_length": 1024,
+          "packed_sequence_count": 683,
+          "maximum_token_id": 50256,
+          "batch_size": 8,
+          "num_workers": 0,
+          "evaluated_token_count": 698709,
+          "total_negative_log_likelihood": 1672809.2246832848,
+          "mean_cross_entropy_loss": 2.3941429474692395,
+          "perplexity": 10.95880176431027,
+          "elapsed_seconds": 33.70375370979309,
+          "method": "exp(total_negative_log_likelihood / evaluated_token_count)"
+        }
+      }
+    },
+    "cpt": {
+      "requested_model_name": "gpt2-medium",
+      "model_folder": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+      "model_details": {
+        "name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+        "model_class": "GPT2LMHeadModel",
+        "model_type": "gpt2",
+        "architectures": [
+          "GPT2LMHeadModel"
+        ],
+        "transformer_layers": 24,
+        "attention_heads": 16,
+        "embedding_dimension": 1024,
+        "vocabulary_size": 50257,
+        "maximum_context_length": 1024,
+        "total_parameters": 354823168,
+        "trainable_parameters": 354823168,
+        "parameter_dtype": "torch.float32",
+        "device": "cuda",
+        "tokenizer_class": "GPT2TokenizerFast",
+        "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+        "tokenizer_vocabulary_size": 50257,
+        "eos_token_id": 50256,
+        "pad_token_id": 50256,
+        "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+      },
+      "held_out_perplexity": {
+        "domain": {
+          "bin_file": "/home/jovyan/llmassign/1a/data/processed/gpt2/token_test.bin",
+          "sha256": "5201af9f069ac2f6b6ba089f432932d11051af4812ec6af6eaf171f0eb1bb445",
+          "binary_dtype": "uint16",
+          "file_size_bytes": 1398784,
+          "stored_token_count": 699392,
+          "context_length": 1024,
+          "packed_sequence_count": 683,
+          "maximum_token_id": 50256,
+          "batch_size": 8,
+          "num_workers": 0,
+          "evaluated_token_count": 698709,
+          "total_negative_log_likelihood": 1568604.4562559128,
+          "mean_cross_entropy_loss": 2.2450039376277,
+          "perplexity": 9.440452729375336,
+          "elapsed_seconds": 33.35920977592468,
+          "method": "exp(total_negative_log_likelihood / evaluated_token_count)"
+        }
+      }
+    }
+  },
+  "comparison": {
+    "domain": {
+      "base": 10.95880176431027,
+      "cpt": 9.440452729375336,
+      "absolute_change": -1.5183490349349338,
+      "relative_change_percent": -13.855064336319769,
+      "desired_direction": "decrease indicates successful domain adaptation",
+      "verdict": "Good",
+      "remarks": "Domain PPL decreased 13.86%; meets the 10% adaptation target."
+    }
+  }
+}

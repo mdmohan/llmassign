@@ -1,4 +1,10 @@
 
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+import torch
+
 
 @torch.inference_mode()
 def generate_responses(
@@ -80,12 +86,6 @@ def generate_responses(
 
 # Load baseline prompts from JSON
 
-import json
-from datetime import datetime, timezone
-from pathlib import Path
-
-import torch
-
 
 def load_prompt_json(json_path):
     """
@@ -134,18 +134,9 @@ def create_result_records(query_records, responses):
     results = []
 
     for query, response in zip(query_records, responses):
-        results.append(
-            {
-                "id": query.get("id"),
-                "category": query.get("category"),
-                "prompt": query.get("prompt"),
-                "response": response,
-                "expected_concepts": query.get(
-                    "expected_concepts",
-                    [],
-                ),
-            }
-        )
+        # Preserve evaluation-specific fields such as expected_continuation,
+        # evaluation_type, and source_file in the generated response report.
+        results.append({**query, "response": response})
 
     return results
 
@@ -184,4 +175,3 @@ def save_generation_results(
         )
 
     print(f"Saved {len(results)} responses to: {output_path}")
-

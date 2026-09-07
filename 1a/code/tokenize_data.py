@@ -1,5 +1,6 @@
 """Tokenize cleaned documents and save packed CPT training sequences."""
 
+import json
 from pathlib import Path
 
 import numpy as np
@@ -8,7 +9,7 @@ from cache import CACHE_DIR
 from transformers import AutoTokenizer
 
 
-def tokenize_gpt(clean_data):
+def tokenize_gpt(clean_data, model_name="gpt2", return_metrics=False):
     tokenizer = AutoTokenizer.from_pretrained(
         "gpt2",
         use_fast=True,
@@ -53,6 +54,26 @@ def tokenize_gpt(clean_data):
     total_stream_tokens = total_raw_tokens + total_docs  # One EOS per document
     total_packed_seqs = len(all_packed_chunks)
     total_packed_tokens = total_packed_seqs * context_length
+    metrics = {
+        "model_name": model_name,
+        "tokenizer_name_or_path": tokenizer.name_or_path,
+        "tokenizer_class": type(tokenizer).__name__,
+        "tokenizer_vocabulary_size": tokenizer.vocab_size,
+        "tokenizer_maximum_context_length": tokenizer.model_max_length,
+        "packing_context_length": context_length,
+        "bos_token_id": tokenizer.bos_token_id,
+        "eos_token_id": tokenizer.eos_token_id,
+        "document_count": total_docs,
+        "document_token_count_without_boundaries": total_raw_tokens,
+        "total_token_count_with_boundaries": total_stream_tokens,
+        "average_document_length_tokens": avg_doc_length,
+        "boundary_tokens_per_document": 1,
+        "packed_sequence_count": total_packed_seqs,
+        "packed_token_count": total_packed_tokens,
+        "residual_token_count": len(buffer),
+        "packing": "concatenated_document_stream_no_padding",
+        "binary_dtype": "uint16",
+    }
 
     # Print pipeline statistics
     print("==================================================")
@@ -67,7 +88,21 @@ def tokenize_gpt(clean_data):
     print(f"Residual Tokens Left in Buffer: {len(buffer):,}")
     print("==================================================\n")
 
+    if return_metrics:
+        return all_packed_chunks, context_length, metrics
     return all_packed_chunks, context_length
+
+
+def save_tokenization_metrics(metrics, filename):
+    """Save tokenizer provenance and sequence-packing statistics as JSON."""
+    output_path = Path(filename)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(metrics, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(f"Saved tokenization metrics to {output_path}")
+    return output_path
 
 
 def _validate_packed_chunks(chunks):

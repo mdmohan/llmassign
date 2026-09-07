@@ -1,0 +1,266 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-06T16:39:51.917488+00:00",
+  "model_name": "gpt2-large",
+  "model_details": {
+    "name_or_path": "gpt2-large",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 36,
+    "attention_heads": 20,
+    "embedding_dimension": 1280,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 774030080,
+    "trainable_parameters": 774030080,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-large",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": 50256,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "/home/jovyan/llmassign/1a/evaluation/queries/domain_baseline_queries.json",
+  "generation_configuration": {
+    "max_new_tokens": 100,
+    "do_sample": false,
+    "decoding": "greedy"
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "response": "every other leaf switch. The leaf switches are connected to the network via a single Ethernet cable. The leaf switches are connected to the network via a single Ethernet cable.\n\nThe leaf switches are connected to the network via a single Ethernet cable. The leaf switches are connected to the network via a single Ethernet cable. The leaf switches are connected to the network via a single Ethernet cable. The leaf switches are connected to the network via a single Ethernet cable. The leaf switches are connected to the network via",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ]
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "response": "you to create a virtual network that is a virtual port channel. This allows you to create a virtual network that is a virtual port channel. This allows you to create a virtual network that is a virtual port channel.\n\nThe vPC channel is a virtual port channel that is created by using the Cisco Nexus virtual port channel (vPC) feature. The vPC channel is a virtual port channel that is created by using the Cisco Nexus virtual port channel (vPC) feature.\n\nThe",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ]
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "response": "allow the vPC peer to communicate with the vPC peer. The vPC peer is the vPC peer that is connected to the vPC peer. The vPC peer is the vPC peer that is connected to the vPC peer. The vPC peer is the vPC peer that is connected to the vPC peer. The vPC peer is the vPC peer that is connected to the vPC peer. The vPC peer is the vPC peer that is connected to the v",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ]
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "response": "create a virtual network interface between two VXLANs. The VNI is a virtual interface that is created between two VXLANs. The VNI is a virtual interface that is created between two VXLANs.\n\nThe VNI is a virtual interface that is created between two VXLANs. The VNI is a virtual interface that is created between two VXLANs. The VNI is a virtual interface that is created between two VXLANs. The",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ]
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "response": "a single, unified, and secure path to the network.\n\nThe VXLAN fabric is a single, unified, and secure path to the network.\n\nThe VXLAN fabric is a single, unified, and secure path to the network.\n\nThe VXLAN fabric is a single, unified, and secure path to the network.\n\nThe VXLAN fabric is a single, unified, and secure path to the network.\n\nThe VXLAN fabric is",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ]
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "response": "a VTEP-based VTEP.\n\nThe VTEP is a VTEP-based VTEP.\n\nThe VTEP-based VTEP performs the function of a VTEP-based VTEP.\n\nThe VTEP-based VTEP performs the function of a VTEP-based VTEP.\n\nThe VTEP-based VTEP performs the function of a VTEP-based VTEP.\n\nThe VTEP-based VTEP performs the function of a VT",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ]
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "response": "a cost-effective solution for high-speed, high-capacity, and high-performance networks.\n\nThe new technology is based on a novel approach to the design of the fiber-optic path. The new approach uses a leaf-spine fabric, which is a type of fiber-optic fabric that is used in the design of fiber-optic networks. The leaf-spine fabric is a type of fiber-optic fabric that is used in the design of fiber-",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ]
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "response": "the following command:\n\n# ipv4 add interface vlan120\n\n# ipv4 add interface vlan10\n\n# ipv4 add interface vlan0\n\n# ipv4 add interface vlan0/10\n\n# ipv4 add interface vlan0/10/0\n\n# ipv4 add interface vlan0/10/1\n\n# ipv4 add interface vlan0/10/2\n\n# ipv",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ]
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "response": "the following configuration:\n\nInterface Name: LACP\n\nLACP Port Channel: LACP\n\nLACP Port Type: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: LACP\n\nLACP Port Protocol: L",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ]
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "response": "a host to become unresponsive.\n\nThe following table lists the possible causes of a Type-1 vPC consistency mismatch.\n\nCause of a Type-1 vPC consistency mismatch\n\nCause of a Type-1 vPC consistency mismatch Description Hosts that are not configured to use the vPC protocol are not able to communicate with each other. This can cause a host to become unresponsive.\n\nThe following table lists the possible causes of a Type-1 vPC consistency mismatch",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ]
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "response": "the following:\n\nIf the device is not connected to a network, check the following:\n\nIf the device is not connected to a network, check the following: If the device is not connected to a network, check the following: If the device is not connected to a network, check the following: If the device is not connected to a network, check the following: If the device is not connected to a network, check the following: If the device is not connected to a network",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ]
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "response": "that the neighbor is still in the Idle state. If the neighbor is not in the Idle state, then the neighbor is not in the BGP neighbor group.\n\nIf the neighbor is in the Idle state, then the neighbor is in the BGP neighbor group. If the neighbor is not in the Idle state, then the neighbor is not in the BGP neighbor group. If the neighbor is in the Idle state, then the neighbor is in the BGP neighbor group. If the neighbor is",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ]
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "response": "the following:\n\nIf the VXLAN is not configured, the VXLAN is not configured, or the VXLAN is configured but not used, the VXLAN is not configured, or the VXLAN is configured and not used, the VXLAN is configured and not used, or the VXLAN is configured and used and the VXLAN is not configured, the VXLAN is configured and not used, or the VXLAN is configured and used and",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ]
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "response": "the presence of a fiber and can be used to determine the type of fiber.\n\nThe following table lists the supported types of fiber.\n\nType of Fiber Supported by the L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/IP stack L2TP/",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ]
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "response": "all devices.\n\nThe MTU is the maximum number of bytes that can be transmitted per second.\n\nThe MTU is the maximum number of bytes that can be transmitted per second. MTU-aware frames are supported by all MTU-aware protocols.\n\nThe MTU is the maximum number of bytes that can be transmitted per second. MTU-aware frames are supported by all MTU-aware protocols. MTU-aware frames are supported by all MTU-aware",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ]
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "response": "that the interface is not up to date.\n\nThe following table shows the MAC addresses of the interfaces that are up to date.\n\nInterface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to date Interface MAC Address Up to",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ]
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "response": "a centralized view of the network.\n\nThe Dashboard is a web-based interface that allows users to view the status of their network, as well as view the status of other Dash networks.\n\nThe Dashboard is a web-based interface that allows users to view the status of their network, as well as view the status of other Dash networks.\n\nThe Dashboard is a web-based interface that allows users to view the status of their network, as well as view the",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ]
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "response": "the switch is used in a switch-mode-switch configuration. The fixed-form-factor Nexus 9300 switch is a common choice for a switch-mode-switch configuration because it is a fixed-form-factor switch. The fixed-form-factor Nexus 9300 switch is a common choice for a switch-mode-switch configuration because it is a fixed-form-factor switch.\n\nThe fixed-form-factor Nexus 9300 switch is a common choice for a switch-mode",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ]
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "response": "a large number of components to be interchangeable. The modular design allows for the use of a variety of components, such as a battery, a display, and a microSD card. The modular design also allows for the use of a variety of connectors, such as a USB-C connector, a microSD card slot, and a headphone jack.\n\nThe Nexus 9500 is a modular device, which means that the Nexus 9500 can be easily swapped out with a new one. The Nexus 9",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ]
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "response": "the following:\n\nThe number of nodes in the cluster.\n\nThe number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in the cluster. The number of nodes in",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ]
+    }
+  ]
+}

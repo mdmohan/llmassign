@@ -1,0 +1,570 @@
+# MD5: d5ca8635b51a27408c448277b5aee43c
+
+practice
+Doi:10.1145/2184319.2184335
+systems were available 15 years ago.
+Article development led by
+HPC systems rely on fast (low-latency)
+queue.acm.org
+and efficient interconnection net-
+works capable of providing both high
+A good user experience depends on predictable
+bandwidth and efficient messaging for
+performance within the data-center network. fine-grained (for example, cache-line
+size) communication. This zealous
+attention to performance and low la-
+By Dennis ABTs AnD BoB feLDeRMAn
+tency migrated to financial enterprise
+systems where a fraction of a micro-
+A Guided Tour
+second can make a difference in the
+value of a transaction.
+In recent years, Ethernet networks
+have made significant inroads into
+of Data-Center
+bridging the performance and scal-
+ability gap between capacity-oriented
+clusters built using COTS (commod-
+ity-off-the-shelf) components and
+networking
+purpose-built custom system architec-
+tures. This is evident from the growth
+of Ethernet as a cluster interconnect
+on the Top500 list of most powerful
+computers (top500.org). A decade
+ago high-performance networks were
+mostly custom and proprietary inter-
+connects, and Ethernet was used by
+only 2% of the Top500 systems. Today,
+however, more than 42% of the most
+powerful computers are using Gigabit
+Ethernet, according to the November
+2011 list of Top500 computers. A close
+second place is InfiniBand, which
+the Ma GIC of the cloud is that it is always on and is used by about 40% of the systems.
+always available from anywhere. Users have come to These standards-based interconnects
+combined with economies of scale
+expect that services are there when they need them.
+provide the genetic material of a mod-
+A data center (or warehouse-scale computer) is the ern data-center network.
+A modern data center,13,17,24 as
+nexus from which all the services flow. It is often
+shown in Figure 1, is home to tens of
+housed in a nondescript warehouse-sized building thousands of hosts, each consisting of
+bearing no indication of what lies inside. Amidst the one or more processors, memory, net-
+work interface, and local high-speed
+whirring fans and refrigerator-sized computer racks is
+I/O (disk or flash). Compute resources
+a tapestry of electrical cables and fiber optics weaving are packaged into racks and allocated
+as clusters consisting of thousands of
+everything together—the data-center network. This
+hosts that are tightly connected with
+article provides a “guided tour” through the principles a high-bandwidth network. While the
+and central ideas surrounding the network at the heart network plays a central role in the over-
+all system performance, it typically
+of a data center—the modern-day loom that weaves
+represents only 10%–15% of the clus-
+the digital fabric of the Internet. ter cost. Be careful not to confuse cost
+with value—the network is to a cluster
+Large-scale parallel computers are grounded in HPC
+computer what the central nervous sys-
+(high-performance computing) where kilo-processor
+tem is to the human body.
+44 CoMMuniCATions of The ACM | june 2012 | vol. 55 | no. 6
+
+figure 1. An example data center and warehouse-scale computer.
+Each cluster is homogeneous in are often baked into the application Web applications such as search,
+both the processor type and speed. The as programming trade-offs are made email, and document collaboration
+thousands of hosts are orchestrated to to optimize code for the underlying are scheduled resources and run with-
+exploit thread-level parallelism central system architecture. In this way, an ap- in a cluster.4,8 User-facing applications
+to many Internet workloads as they di- plication organically grows within the have soft real-time latency guaran-
+vide incoming requests into parallel confines of the system architecture. tees or SLAs that the application must
+subtasks and weave together results The cluster-application usage mod- meet. In this model, an application has
+from many subtasks across thousands el, either dedicated or shared among approximately tens of milliseconds
+of cores. In general, in order for the re- multiple applications, has a significant to reply to the user’s request, which is
+quest to complete, all parallel subtasks impact on SLAs (service-level agree- subdivided and dispatched to worker
+must complete. As a result, the maxi- ments) and application performance. threads within the cluster. The worker
+mum response time of any one subtask HPC applications typically use the sys- threads generate replies that are aggre-
+will dictate the overall response time.25 tem in a dedicated fashion to avoid gated and returned to the user. Unfor-
+Even in the presence of abundant contention from multiple applications tunately, if a portion of the workflow
+thread-level parallelism, the commu- and reduce the resulting variation in does not execute in a timely manner,
+nication overhead imposed by the net- application performance. On the other then it may exceed a specified timeout
+work and protocol stack can ultimately hand, Web applications often rely on delay—as a result of network conges-
+limit application performance as the services sourced from multiple clusters, tion, for example—and consequently
+effects of Amdahl’s Law2 creep in. where each cluster may have several ap- some portion of the coalesced results
+The high-level system architecture plications simultaneously running to will be unavailable and thus ignored.
+and programming model shape both increase overall system utilization. As This needlessly wastes both CPU cycles
+the programmer’s conceptual view a result, a data-center cluster may use and network bandwidth, and may ad-
+and application usage. The latency and virtualization for both performance and versely impact the computed result.
+bandwidth “cost” of local (DRAM) and fault isolation, and Web applications are To reduce the likelihood of conges-
+remote (network) memory references programmed with this sharing in mind. tion, the network can be overprovi-
+june 2012 | vol. 55 | no. 6 | CoMMuniCATions of The ACM 45
+
+practice
+sioned by providing ample bandwidth depends on the application. From the The transient load imbalance in-
+for even antagonistic traffic patterns. purview of the cluster, Internet traffic duced by elephant flows can adversely
+Overprovisioning within large-scale becomes highly aggregated, and as a affect any innocent-bystander flows
+networks is prohibitively expensive. Al- result the mean of traffic flows says very that are patiently waiting for a heavily
+ternatively, implementing QoS (quality little because aggregated traffic exhib- utilized link common to both routes.
+of service) policies to segregate traffic its a high degree of variability and is For example, an elephant flow from A
+into distinct classes and provide per- non-Gaussian.16 to B might share a common link with
+formance isolation and high-level traf- As a result, a network that is only a flow from C to D. Any long-lived con-
+fic engineering is a step toward ensur- 10% utilized can see lots of packet dis- tention for the shared link increases
+ing application-level SLAs are satisfied. cards when running a Web search. To the likelihood of discarding a packet
+Most QoS implementations are imple- understand individual flow character- from the C-to-D flow. Any packet dis-
+mented by switch and NIC (network istics better, applications are instru- cards will result in an unacknowl-
+interface controller) hardware where mented to “sample” messages and de- edged packet at the sender’s trans-
+traffic is segregated based on priority rive a distribution of traffic flows; this port layer and be retransmitted when
+explicitly marked by routers and hosts knowledge allows you to infer a taxono- the timeout period expires. Since the
+or implicitly steered using port ranges. my of network traffic and classify indi- timeout period is generally one or two
+The goal is the same: a high-perfor- vidual flows. The most common classi- orders of magnitude more than the
+mance network that provides predict- fication is bimodal, using the so-called network’s round-trip time, this addi-
+able latency and bandwidth character- “elephant” and “mice” classes. tional latency22 is a significant source
+istics across varying traffic patterns. Elephant flows have a large number of performance variation.3
+of packets and are generally long lived; Today’s typical multitiered data-
+Data-Center Traffic they exhibit “bursty” behavior with a center network23 has a significant
+Traffic within a data-center network is large number of packets injected in amount of oversubscription, where the
+often measured and characterized ac- the network over a short time. Traf- hosts attached to the rack switch (that
+cording to flows, which are sequences fic within a flow is generally ordered, is, first tier) have significantly more—
+of packets from a source to destination which means elephant flows can cre- say an order of magnitude more—pro-
+host. When referring to Internet proto- ate a set of “hotspot” links that can visioned bandwidth between one an-
+cols, a flow is further refined to include lead to tree saturation or discarded other than they do with hosts in other
+a specific source and destination port packets in networks that use lossy racks. This rack affinity is necessary
+number and transport type—UDP or flow control. The performance impact to reduce network cost and improve
+TCP, for example. Traffic is asymmet- from elephant flows can be significant. utilization. The traffic intensity emit-
+ric with client-to-server requests being Despite the relatively low number of ted by each host fluctuates over time,
+abundant but generally small. Server- flows—say less than 1%—they can ac- and the transient load imbalance that
+to-client responses, however, tend to count for more than half the data vol- results from this varying load can cre-
+be larger flows; of course, this, too, ume on the network. ate contention and ultimately result
+in discarded packets for flow control.
+Traffic between clusters is typically
+less time critical and as a result can
+be staged and scheduled. Inter-cluster
+traffic is less orchestrated and consists
+of much larger payloads, whereas in-
+tra-cluster traffic is often fine-grained
+with bursty behavior. At the next level,
+between data centers, bandwidth is of-
+ten very expensive over vast distances
+with highly regulated traffic streams
+and patterns so that expensive links
+are highly utilized. When congestion
+occurs the most important traffic gets
+access to the links. Understanding the
+granularity and distribution of net-
+work flows is essential to capacity plan-
+ning and traffic engineering.
+Data-Center network Architecture
+The network topology describes pre-
+cisely how switches and hosts are in-
+terconnected. This is commonly rep-
+resented as a graph in which vertices
+represent switches or hosts, and links
+46 CoMMuniCATions of The ACM | june 2012 | vol. 55 | no. 6
+
+
+[EXTRACTED TABLES]:
+
+
+| figure 2. A conventional tree-like data-center network topology. |
+| --- |
+| Internet BR BR Data-Center Border Router CR CR ... CR Cluster Router Aggregation AS AS Switches L2S L2S L2S ... L2S ToR ToR ToR Top of Rack ToR Switches ... H HH H H HH H H HH H H HH H cluster H H H H H H H H |
+
+practice
+are the edges that connect them. The plugged in and learns its identity and
+topology is central to both the perfor- exchanges route information with its
+mance and cost of the network. The peers; however, the capacity of the
+topology affects a number of design packet-forwarding tables is limited to,
+trade-offs, including performance, The high-level say, 64K entries. Further, each layer 2
+system packaging, path diversity, and switch will participate in an STP (span-
+system architecture
+redundancy, which, in turn, affect the ning tree protocol) or use the TRILL
+network’s resilience to faults, average and programming (transparent interconnect of lots of
+and maximum cable length, and, of links) link-state protocol to exchange
+course, cost.12 The Cisco Data Center In- model shape both routing information and avoid tran-
+frastructure 3.0 Design Guide6 describes sient routing loops that may arise while
+the programmer’s
+common practices based on a tree-like the link state is exchanged among
+topology15 resembling early telephony conceptual view peers. Neither layer 2 nor layer 3 rout-
+networks proposed by Charles Clos,7 ing is perfectly suited to data-center
+and application
+with bandwidth aggregation at differ- networks, so to overcome these limi-
+ent levels of the network. usage. tations many new routing algorithms
+A fat-tree or folded-Clos topology, have been proposed (for example, Port-
+similar to that shown in Figure 2, has Land1,18 and VL211).
+an aggregate bandwidth that grows in Routing. The routing algorithm de-
+proportion to the number of host ports termines the path a packet traverses
+in the system. A scalable network is through the network. A packet’s route,
+one in which increasing the number or path, through the network can be
+of ports in the network should linearly asserted when the message is cre-
+increase the delivered bisection band- ated, called source routing, or may be
+width. Scalability and reliability are asserted hop by hop in a distributed
+inseparable since growing to large sys- manner as a packet visits intermediate
+tem size requires a robust network. switches. Source routing requires that
+Network addressing. A host’s ad- every endpoint know the prescribed
+dress is how endpoints are identified path to reach all other endpoints, and
+in the network. Endpoints are distin- each source-routed packet carries the
+guished from intermediate switch- full information to determine the set of
+ing elements traversed en route since port/link traversals from source to des-
+messages are created by and delivered tination endpoint. As a result of this
+to an endpoint. In the simplest terms, overhead and inflexible fault handling,
+the address can be thought of as the source-routed packets are generally
+numerical equivalent of a host name used only for topology discovery and
+similar to that reported by the Unix network initialization, or during fault
+hostname command. recovery when the state of a switch is
+An address is unique and must be unknown. A more flexible method of
+represented in a canonical form that routing uses distributed lookup tables
+can be used by the routing function to at each switch, as shown in Figure 3.
+determine where to route a packet. The For example, consider a typical Eth-
+switch inspects the packet header cor- ernet switch. When a packet arrives at
+responding to the layer in which rout- a switch input port, it uses fields from
+ing is performed—for example, IP ad- the packet header to index into a look-
+dress from layer 3 or Ethernet address up table and determine the next hop,
+from layer 2. Switching over Ethernet or egress port, from the current switch.
+involves ARP (address resolution pro- A good topology will have abundant
+tocol) and RARP (reverse address reso- path diversity in which multiple pos-
+lution protocol) that broadcast mes- sible egress ports may exist, with each
+sages on the layer 2 network to update one leading to a distinct path. Path di-
+local caches mapping layer 2 to layer versity in the topology may yield ECMP
+3 addresses and vice versa. Routing at (equal-cost multipath) routing; in that
+layer 3 requires each switch to main- case the routing algorithm attempts to
+tain a subnet mask and assign IP ad- load-balance the traffic flowing across
+dresses statically or disseminate host the links by spreading traffic uniformly.
+addresses using DHCP (dynamic host To accomplish this uniform spreading,
+configuration protocol), for example. the routing function in the switch will
+The layer 2 routing tables are auto- hash several fields of the packet header
+matically populated when a switch is to produce a deterministic egress port.
+june 2012 | vol. 55 | no. 6 | CoMMuniCATions of The ACM 47
+
+practice
+In the event of a link or switch failure, meters—electrical signaling is cost-ef- can become unstable, as illustrated by
+the routing algorithm will take advan- fective. Longer links, however, require the dotted line in the figure, when the
+tage of path diversity in the network to fiber optics to communicate over the offered load exceeds the saturation
+find another path. longer distances. Signal propagation point, α. The saturation point is the of-
+A path through the network is said in electrical signaling (5 nanoseconds fered load beyond which the network is
+to be minimal if no shorter (that is, per meter) is faster than it is in fiber (6 said to be congested. In response to this
+fewer hops) path exists; of course, nanoseconds per meter). congestion, packets may be discarded
+there may be multiple minimal paths. Propagation delay through elec- to avoid overflowing an input buffer.
+A fat-tree topology,15 for example, has trical cables occurs at sublumenal This lossy flow control is commonplace
+multiple minimal paths between any speeds because of a frequency-de- in Ethernet networks.
+two hosts, but a butterfly topology9 has pendent component at the surface of Discarding packets, while concep-
+only a single minimal path between the conductor, or “skin effect,” in the tually simple and easy to implement,
+any two hosts. Sometimes selecting a cable. This limits the signal velocity puts an onus on transport-level mech-
+non-minimal path is advantageous— to about three-quarters the speed of anisms to detect and retransmit lost
+for example, to avoid congestion or light in a vacuum. Signal propagation packets. Note, packets that are lost or
+to route around a fault. The length of in optical fibers is even slower because corrupted during transmission are
+a non-minimal path can range from of dielectric waveguides used to al- handled by the same transport-level
+min+1 up to the length of a Hamilto- ter the refractive index profile so that reliable delivery protocol. When the of-
+nian path visiting each switch exactly higher-velocity components of the sig- fered load is low (less than α), packet
+once. In general, the routing algo- nal (such as shorter wavelengths) will loss as a result of corruption is rare,
+rithm might consider non-minimal travel longer distances and arrive at so paying the relatively large penalty
+paths of a length that is one more than the same time as lower-velocity com- for transport-level retransmission is
+a minimal path, since considering all ponents, limiting the signal velocity to generally tolerable. Increased traffic
+non-minimal paths would be prohibi- about two-thirds the speed of light in (greater than α) and adversarial traf-
+tively expensive. a vacuum. Optical signaling must also fic patterns will cause packet discards
+account for the time necessary to per- after the switch’s input queue is ex-
+network Performance form electrical-to-optical signal con- hausted. The resulting retransmission
+Here, we discuss the etiquette for version, and vice versa. will only further exacerbate an already
+sharing the network resources—spe- The average cable length, L, is large- congested network, yielding an unsta-
+cifically, the physical links and buf- ly determined by the topology and the ble network that performs poorly, as
+fer spaces are resources that require physical placement of system racks shown by the dotted line in Figure 4.
+flow control to share them efficiently. within the data center. The packet’s se- Alternatively, with lossless flow control,
+Flow control is carried out at different rialization latency, t , is the time nec- when congestion arises packets may be
+s
+levels of the network stack: data-link, essary to squeeze the packet onto a nar- blocked or held at the source until re-
+network, transport layer, and possibly row serial channel and is determined sources are available.
+within the application itself for ex- by the bit rate of the channel. For ex- A global congestion control mecha-
+plicit coordination of resources. Flow ample, a 1,500-byte Ethernet packet nism prevents the network from op-
+control that occurs at lower levels of (frame) requires more than 12µs (ig- erating in the post-saturation region.
+the communication stack is transpar- noring any interframe gap time) to be Most networks use end-to-end flow
+ent to applications. squeezed onto a 1Gb/s link. With store- control, such as TCP,5 which uses a win-
+Flow control. Network-level flow and-forward flow control, as its name dowing mechanism between pairs of
+control dictates how the input buf- suggests, a packet is buffered at each source and sink in an attempt to match
+fers at each switch or NIC are man- hop before the switch does anything the source’s injection rate with the
+aged: store-and-forward, virtual cut- with it: sink’s acceptance rate. TCP, however,
+through,14 or wormhole,19 for example. is designed for reliable packet delivery,
+To understand the performance impli- T = H(t + Lt + t ) not necessarily timely packet delivery,
+sf r p s
+cations of flow control better, you must and as a result, requires tuning (TCP
+first understand the total delay, T, a As a result, the serialization delay, congestion-control algorithms will au-
+packet incurs: t , is incurred at each hop, instead of to-tune to find the right rate) to balance
+s
+just at the destination endpoint as is performance and avoid unnecessary
+T = H(t + Lt ) + t the case with virtual cut-through and packet duplication from eagerly re-
+r p s
+wormhole flow control. This can po- transmitting packets under heavy load.
+H is the number of hops the packet tentially add on the order of 100µs to Improving the network stack. Sever-
+takes through the network; t is the the round-trip network delay in a data- al decades ago the network designers of
+r
+fall-through latency of the switch, center network. early workstations made trade-offs that
+measured from the time the first flit A stable network monotonically led to a single TCP/IP/Ethernet network
+(flow-control unit) arrives to when the delivers messages as shown by a char- stack, whether communicating over a
+first flit exits; and t is the propagation acteristic throughput-load curve in few meters or a few kilometers. As pro-
+p
+delay through average cable length Figure 4. In the absence of end-to-end cessor speed and density improved, the
+L. For short links—say, fewer than 10 flow control, however, the network cost of network communication grew
+48 CoMMuniCATions of The ACM | june 2012 | vol. 55 | no. 6
+
+practice
+relative to processor cycles, exposing can sometimes be done at the “border” ware—both applications and, to a less-
+the network stack as a critical latency of the Internet where commonly re- er extent, the operating system. The
+bottleneck.22 This is, in part, the result quested pages are cached and serviced fluid-like software demands of Web
+of a user-kernel context switch in the by edge servers, while inward computa- applications often consume the cluster
+TCP/IP/Ethernet stack—and possibly tion is generally carried out by a cluster resources that contain them, making
+additional work to copy the message in a data center with tightly coupled, flexibility a top priority in such a fluid
+from the application buffer into the orchestrated communication. User system. For example, adding 10% ad-
+kernel buffer and back again at the re- demand is diurnal for a geographic ditional storage capacity should mean
+ceiver. A two-pronged hardware/soft- region; thus, multiple data centers adding no more than 10% more serv-
+ware approach tackled this latency pen- are positioned around the globe to ers to the cluster. This linear growth
+alty: OS bypass, and zero copy, both of accommodate the varying demand. function is critical to the scalability of
+which are aimed at eliminating the us- When possible, demand may be spread the system—adding fractionally more
+er-kernel switch for every message and across nearby data centers to load-bal- servers results in a commensurate
+avoiding a redundant memory copy by ance the traffic. growth in the overall cluster capac-
+allowing the network transport to grab The sheer enormity of this comput- ity. Another aspect of this flexibility is
+the message payload directly from the ing infrastructure makes nimble de- the granularity of resource additions,
+user application buffers. ployment very challenging. Each clus- which is often tied to the cluster pack-
+To ameliorate the performance ter is built up rack by rack and tested aging constraints. For example, adding
+impact of a user/kernel switch, OS by- as units (rack, top-of-rack switch, another rack to a cluster, with, say, 100
+pass can be used to deposit a message among others), as well as in its entirety new servers, is more manageable than
+directly into a user-application buffer. with production-level workloads and adding a whole row, with tens of racks,
+The application participates in the traffic intensity. on the data-center floor.
+messaging protocol by spin-waiting The cluster ecosystem undergoes Even a modest-sized cluster will
+on a doorbell memory location. Upon organic growth over its life span, pro- have several kilometers of fiber-optic
+arrival, the NIC deposits the message pelled by the rapid evolution of soft- cable acting as a vast highway inter-
+contents in the user-application buf-
+fer, and then “rings” the doorbell to
+indicate message arrival by writing the
+offset into the buffer where the new
+message can be found. When the user
+thread detects the updated value, the
+incoming message is processed entire-
+ly from user space.
+Zero-copy message-passing proto-
+cols avoid this additional memory copy
+from user to kernel space, and vice ver-
+sa at the recipient. An interrupt signals
+the arrival of a message, and an inter-
+rupt handler services the new message
+and returns control to the user applica-
+tion. The interrupt latency—the time
+from when the interrupt is raised until
+control is handed to the interrupt han-
+dler—can be significant, especially if
+interrupt coalescing is used to amor-
+tize the latency penalty across multiple
+interrupts. Unfortunately, while in-
+terrupt coalescing improves message
+efficiency (that is, increased effective
+bandwidth), it does so at the cost of
+both increased message latency and la-
+tency variance.
+scalable, Manageable, And flexible
+In general, cloud computing requires
+two types of services: user-facing com-
+putation (for example, serving Web
+pages) and inward computation (for
+example, indexing, search, and map/
+reduce). Outward-facing functionality
+june 2012 | vol. 55 | no. 6 | CoMMuniCATions of The ACM 49
+
+
+[EXTRACTED TABLES]:
+
+
+| figure 3. example packet routing through a switch chip. |
+| --- |
+| dest. address Routing egress Lookup port Table incoming crossbar packet footer payload header F H input output output port ports ports (to next hop) |
+
+| F |  |  |  |
+| --- | --- | --- | --- |
+
+|  | H |
+| --- | --- |
+
+| figure 4. Throughput (accepted bandwidth) as load varies. |
+| --- |
+| )s/stib( tuphguorht post-saturation instability α offered load (bits/s) |
+
+practice
+connecting racks of servers organized Bad things happen to good soft-
+as multiple rows on the data-center ware. Web applications must be de-
+floor. The data-center network topol- signed to be fault aware and, to the ex-
+ogy and resulting cable complexity tent possible, resilient in the presence
+is “baked in” and remains a rigid fix- The data-center of a variety of failure scenarios.10 The
+ture of the cluster. Managing cable network is responsible for the major-
+network serves
+complexity is nontrivial, which is im- ity of the unavailability budget for a
+mediately evident from the intricately as a “central modern cluster. Whether it is a rogue
+woven tapestry of fiber-optic cabling gamma ray causing a soft error in
+laced throughout the data center. It nervous system” memory or an inattentive worker acci-
+is not uncommon to run additional dentally unearthing a fiber-optic line,
+for information
+fiber for redundancy, in the event of a the operating system and underlying
+cable failure in a “bundle” of fiber or exchange between hardware substrate work in concert to
+for planned bandwidth growth. Fiber foster a robust ecosystem for Web ap-
+cooperating tasks.
+cables are carefully measured to allow plications.
+some slack and to satisfy the cable’s The data-center network serves as
+bend radius, and they are meticulously a “central nervous system” for infor-
+labeled to make troubleshooting less mation exchange between cooperat-
+of a needle-in-a-haystack exercise. ing tasks. The network’s functionality
+is commonly divided into control and
+Reliable and Available data planes. The control plane pro-
+Abstraction is the Archimedes lever vides an ancillary network juxtaposed
+that lifts many disciplines within com- with the data network and tasked with
+puter science and is used extensively “command and control” for the pri-
+in both computer system design and mary data plane. The control plane is
+software engineering. Like an array an autonomic system for configura-
+of nested Russian dolls, the network- tion, fault detection and repair, and
+programming model provides abstrac- monitoring of the data plane. The
+tion between successive layers of the control plane is typically implement-
+networking stack, enabling platform- ed as an embedded system within
+independent access to both data and each switch component and is tasked
+system management. One such ex- with fault detection, notification, and
+ample of this type of abstraction is repair when possible.
+the protocol buffer,21 which provides a For example, when a network link
+structured message-passing interface fails or has an uncharacteristically
+for Web applications written in C++, high number of transmission errors,
+Java, or Python. the control plane will reroute the net-
+Perhaps the most common abstrac- work to avoid the faulty link. This
+tion used in networking is the notion entails recomputing the routes ac-
+of a communication channel as a virtual cording to the routing algorithm and
+resource connecting two hosts. The emplacing new entries in the rout-
+TCP communication model provides ing tables of the affected switches.
+this abstraction to the programmer in Of course, the effects of this patch-
+the form of a file descriptor, for exam- work are not instantaneous. Once
+ple, where reads and writes performed the routing algorithm computes new
+on the socket result in the correspond- routes, taking into consideration the
+ing network transactions, which are newfound faulty links, it must dis-
+hidden from the user application. In seminate the routes to the affected
+much the same way, the InfiniBand QP switches. The time needed for this in-
+(queue-pair) verb model provides an formation exchange is referred to as
+abstraction for the underlying send/ convergence time, and a primary goal
+receive hardware queues in the NIC. of the routing protocol is to ensure it
+Besides providing a more intuitive pro- is optimally confined to a small epoch.
+gramming interface, abstraction also Fault recovery is a very complicated
+serves as a protective sheath around subject and confounds all but the sim-
+software when faults arise, depositing plest of data-center networks. Among
+layers of software sediment to insu- the complicating factors are marginal
+late it from critical faults (for example, links that cause “flapping” by transi-
+memory corruption or, worse, host tioning between active and inactive
+power-supply failure). (that is, up and down), repeatedly creat-
+50 CoMMuniCATions of The ACM | june 2012 | vol. 55 | no. 6
+
+practice
+ing a deluge of error notifications and A good user experience relies on pre- Transactions on Computers 34, 10 (1985), 892–901.
+16. Mori, t., uchida, M., kawahara, r., Pan, J., and
+resulting route recomputation based dictable performance, with the data-
+Goto, s. Identifying elephant flows through
+on fluctuating and inconsistent link center network delivering predictable periodically sampled packets. In Proceedings of
+the 4th ACM SIGCOMM Conference on Internet
+status. Some link-layer protocols allow latency and bandwidth characteristics
+Measurement (2004); 115–120; http://doi.acm.
+the link speed to be adjusted down- across varying traffic patterns. With org/10.1145/1028788.1028803.
+17. Mudigonda, J., yalagandula, P., Mogul, J., stiekes, b.,
+ward in hopes of improving the link single-thread performance plateauing,
+Pouffary, y. netlord: a scalable multi-tenant network
+quality. Of course, lowering the link microprocessors are providing more architecture for virtualized datacenters. SIGCOMM
+Computer Communication Review 41, 4 (2011), 62-73;
+speed results in a reduced bandwidth cores to keep pace with the relentless http://doi.acm.org/10.1145/2043164.2018444.
+link, which in turn may limit the overall march of Moore’s Law. As a result, ap- 18. Mysore, r.n., Pamboris, a., Farrington, n., Huang,
+n., Miri, P., radhakrishnan, s., subramanya, V.,
+bandwidth of the network or at the very plications are looking for increasing Vahdat, a. Portland: a scalable fault-tolerant layer
+least will create load imbalance as a re- thread-level parallelism and scaling 2 data center network fabric. SIGCOMM Computer
+Communication Review 39, 4 (2009), 39–50; http://doi.
+sult of increased contention across the to a large core count with a commen- acm.org/10.1145/1594977.1592575.
+slow link. Because of these complicat- surate increase in communication 19. ni, l. M., Mckinley, P. k. a survey of wormhole routing
+techniques in direct networks. Computer 26, 2 (1993),
+ing factors, it is often better to logically among cores. This trend is motivating 62–76; http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=
+excise the faulty link from the routing communication-centric cluster comput- &arnumber=191995&isnumber=4947.
+20. ousterhout, J., agrawal, P. erickson, d., kozyrakis,
+algorithm until the physical link can be ing with tens of thousands of cores in C., leverich, J., Mazières, d., Mitra, s., narayanan, a.,
+Parulkar, G., rosenblum, M., rumble, s.M., stratmann,
+replaced and validated. unison, reminiscent of a flock darting
+e. and stutsman, r. the case for raMClouds:
+seamlessly amidst the clouds. scalable high-performance storage entirely in draM.
+Conclusion SIGOPS Operating Systems Review 43, 4 (2010),
+92–105; http://doi.acm.org/10.1145/1713254.171327.
+The data-center network is gener- 21. Protocol buffers; http://code.google.com/apis/
+References
+protocolbuffers/.
+ally regarded as a critical design ele- 1. al-Fares, M., loukissas, a. and Vahdat, a. a scalable,
+22. rumble, s.M., ongaro, d., stutsman, r., rosenblum,
+commodity data-center network architecture. In
+ment in the system architecture and M., and ousterhout, J.k. It’s time for low latency. In
+Proceedings of the ACM SIGCOMM 2008 Conference
+Proceedings of the 13th Usenix Conference on Hot
+the skeletal structure upon which on Data Communication (2008), 63–74; http://doi.acm. Topics in Operating Systems (2011).
+org/10.1145/1402958.1402967.
+processor, memory, and I/O devices 23. Vahdat, a., al-Fares, M., Farrington, n., Mysore, r.n.,
+2. amdahl’s law; http://en.wikipedia.org/wiki/amdahl’s_
+Porter, G., and radhakrishnan, s. scale-out networking
+are dynamically shared. The evolu- law. in the data center. IEEE Micro 30, 4 (2010), 29–41;
+3. ballani, H., Costa, P., karagiannis, t. and rowstron,
+tion from 1G to 10G Ethernet and the a. towards predictable data-center networks. http://dx.doi.org/10.1109/MM.2010.72.
+24. Vahdat, a., liu, H., zhao, X. and Johnson, C. the
+emerging 40G Ethernet has exposed In Proceedings of the ACM SIGCOMM 2011 emerging optical data center. Presented at the Optical
+Conference (2011), 242–253; http://doi.acm.
+performance bottlenecks in the com- org/10.1145/2018436.2018465. Fiber Communication Conference. osa technical
+digest (2011); http://www.opticsinfobase.org/abstract.
+munication stack that require bet- 4. barroso, l.a., dean, J. and Holzle, u. Web search cfm?urI=oFC-2011-otuH2.
+for a planet: the Google cluster architecture. IEEE
+ter hardware-software coordination Micro 23, 2 (2003), 22–28; http://ieeexplore.ieee.org/ 25. Wilson, C., ballani, H., karagiannis, t., and rowtron,
+a. better never than late: Meeting deadlines in
+for efficient communication. Other stamp/stamp.jsp?tp=&arnumber=1196112&isnumb datacenter networks. In Proceedings of the ACM
+er=26907.
+SIGCOMM 2011 Conference (2011), 50–61; http://doi.
+approaches by Solarflare, Myricom, 5. Cerf, V. and Icahn r.e. a protocol for packet
+acm.org/10.1145/2018436.2018443.
+and InfiniBand, among others, have network intercommunication. SIGCOMM Computer
+Communication Review 35, 2 (2005), 71–82; http://doi.
+sought to reshape the conventional acm.org/10.1145/1064413.1064423.
+6. Cisco Data Center Infrastructure 3.0 Design Guide.
+sockets programming model with data Center design—IP network Infrastructure; Related articles
+more efficient abstractions. Internet http://www.cisco.com/en/us/docs/solutions/ on queue.acm.org
+enterprise/data_Center/dC_3_0/dC-3_0_IPInfra.
+sockets, however, remain the domi- html. Enterprise Grid Computing
+nant programming interface for data- 7. Clos, C. a study of non-blocking switching networks. The Paul Strong
+Bell System Technical Journal 32, 2 (1953), 406–424.
+center networks. http://queue.acm.org/detail.cfm?id=1080877
+8. Fitzpatrick, b. distributed caching with Memcached.
+Network performance and reliabil- Linux Journal 2004; http://www.linuxjournal.com/ Cooling the Data Center
+article/7451.
+ity are key design goals, but they are 9. dally, W. and towles, b. Principles and Practices Andy Woods
+tempered by cost and serviceability of Interconnection Networks. Morgan kaufmann http://queue.acm.org/detail.cfm?id=1737963
+Publishers, san Francisco, Ca, 2003.
+constraints. Deploying a large cluster 10. Gill, P., Jain, n. and nagappan, n. understanding Improving Performance on the Internet
+computer is done incrementally and network failures in data centers: measurement, Tom Leighton
+analysis, and implications. In Proceedings of the ACM http://queue.acm.org/detail.cfm?id=1466449
+is often limited by the power capac- SIGCOMM 2011 Conference (2011), 350–361; http://
+ity of the building, with power being doi.acm.org/10.1145/2018436.2018477.
+11. Greenberg, a., Hamilton, J. r., Jain, n., kandula, s.,
+distributed across the cluster network kim, C., lahiri, P., Maltz, d. a., Patel, P. and sengupta, Dennis Abts is a member of the technical staff at Google,
+so that a power failure impacts only a s P . r o V c l e 2 e : d a in s g c s a o la f b th le e a A n C d M fl e S x I i G bl C e O d M at M a c 2 e 0 n 0 t 9 e r C n o e n t f w er o e r n k c . e I n w ge h n e e r r e a h ti e o n is l a in r v g o e l - v s e c d a l in e t c h lu e s a t r e c r h s. i t P e r c i t o u r r t e o a j n o d in i d n e g s G ig o n o o g f l e n , e xt-
+small fraction—say, less than 10%—of on Data Communication (2009): 51–62; http://doi.acm. abts was a senior principal engineer and system architect
+org/10.1145/1592568.1592576. at Cray Inc. He has numerous technical publications and
+the hosts in the cluster. When hard- 12. Greenberg, a., Hamilton, J., Maltz, d.a. and Patel, P. patents in areas of interconnection networks, data-center
+ware fails, as is to be expected, the the cost of a cloud: research problems in data center networking, cache-coherence protocols, high-bandwidth
+networks. SIGCOMM Computer Communications memory systems, and supercomputing.
+operating system running on the host
+Review 39, 1 (2008), 68–73; http://doi.acm.
+Bob Felderman spent time at both Princeton and uCla
+coordinates with a higher-level hyper- org/10.1145/1496091.1496103.
+before starting a short stint at Information sciences
+13. Hoelzle, u. and barroso, l. a. The Datacenter
+visor or cluster operating system to Institute. He then helped found Myricom, which became a
+as a Computer: An Introduction to the Design of
+leader in cluster-computing networking technology. after
+allow failures to be replaced in situ Warehouse-Scale Machines (1st ed.). Morgan &
+seven years there, he moved to Packet design where he
+Claypool Publishers, 2009.
+without draining traffic in the clus- 14. kermani, P. and kleinrock, l. Virtual cut-through: applied high-performance computing ideas to the IP and
+ethernet space. He later was a founder of Precision I/o.
+ter. Scalable Web applications are de- a new computer communication switching all of that experience eventually led him to Google where
+technique, Computer Networks 3, 4 (1976), 267–286;
+signed to expect occasional hardware http://www.sciencedirect.com/science/article/ he is a principal engineer working on issues in data-center
+networking and general platforms system architecture.
+failures, and the resulting software is pii/0376507579900321.
+15. leiserson, C.e. Fat-trees: universal networks
+by necessity resilient. for hardware-efficient supercomputing. IEEE © 2012 aCM 0001-0782/12/06 $10.00
+june 2012 | vol. 55 | no. 6 | CoMMuniCATions of The ACM 51

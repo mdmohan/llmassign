@@ -1,0 +1,2297 @@
+{
+  "schema_version": 1,
+  "title": "Part 2 Generated Text Evaluation",
+  "created_at_utc": "2026-09-07T04:50:49.774680+00:00",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 4
+  },
+  "models": {
+    "base": {
+      "requested_model_name": "gpt2-medium",
+      "model_folder": null,
+      "model_details": {
+        "name_or_path": "gpt2-medium",
+        "model_class": "GPT2LMHeadModel",
+        "model_type": "gpt2",
+        "architectures": [
+          "GPT2LMHeadModel"
+        ],
+        "transformer_layers": 24,
+        "attention_heads": 16,
+        "embedding_dimension": 1024,
+        "vocabulary_size": 50257,
+        "maximum_context_length": 1024,
+        "total_parameters": 354823168,
+        "trainable_parameters": 354823168,
+        "parameter_dtype": "torch.float32",
+        "device": "cuda",
+        "tokenizer_class": "GPT2TokenizerFast",
+        "tokenizer_name_or_path": "gpt2-medium",
+        "tokenizer_vocabulary_size": 50257,
+        "eos_token_id": 50256,
+        "pad_token_id": null,
+        "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+      }
+    },
+    "cpt": {
+      "requested_model_name": "gpt2-medium",
+      "model_folder": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+      "model_details": {
+        "name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+        "model_class": "GPT2LMHeadModel",
+        "model_type": "gpt2",
+        "architectures": [
+          "GPT2LMHeadModel"
+        ],
+        "transformer_layers": 24,
+        "attention_heads": 16,
+        "embedding_dimension": 1024,
+        "vocabulary_size": 50257,
+        "maximum_context_length": 1024,
+        "total_parameters": 354823168,
+        "trainable_parameters": 354823168,
+        "parameter_dtype": "torch.float32",
+        "device": "cuda",
+        "tokenizer_class": "GPT2TokenizerFast",
+        "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/gpt2-medium/v1/final_model",
+        "tokenizer_vocabulary_size": 50257,
+        "eos_token_id": 50256,
+        "pad_token_id": 50256,
+        "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+      }
+    }
+  },
+  "automatic_verdict_method": "Good indicates a measurable concept, reference-coverage, or repetition improvement without a material regression. Satisfactory indicates no material automatic change. Needs Improvement indicates lost concepts, over 10 percentage points lower reference coverage, over 10 points more repetition, or an empty CPT response. Human factual review is still required.",
+  "summary": {
+    "query_count": 55,
+    "verdict_counts": {
+      "Needs Improvement": 14,
+      "Satisfactory": 21,
+      "Good": 20
+    },
+    "comparison_by_query_set": {
+      "domain": {
+        "generation_concept_recall": {
+          "base": 0.028985507246376812,
+          "cpt": 0.043478260869565216,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT recall is 4.3% and improved by 1.4 pp."
+        },
+        "generation_repeated_trigram_ratio": {
+          "base": 0.6230979867583961,
+          "cpt": 0.6477525777795159,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT repetition is 64.8% and increased by 2.5 pp."
+        },
+        "generation_exact_continuation": {
+          "base_matches": 0,
+          "cpt_matches": 0,
+          "query_count": 0,
+          "base_average_lcp": null,
+          "cpt_average_lcp": null,
+          "base_average_token_coverage": null,
+          "cpt_average_token_coverage": null
+        },
+        "baseline_response_retention_ppl": {
+          "base": 1.898797744935106,
+          "cpt": 1.928576999160173,
+          "absolute_change": 0.029779254225066998,
+          "relative_change_percent": 1.5683215500176797,
+          "verdict": "Good",
+          "remarks": "Baseline-response PPL changed +1.57%; a small increase means limited drift."
+        }
+      },
+      "exact": {
+        "generation_concept_recall": {
+          "base": 0.03125,
+          "cpt": 0.0625,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT recall is 6.2% and improved by 3.1 pp."
+        },
+        "generation_repeated_trigram_ratio": {
+          "base": 0.6612996570002501,
+          "cpt": 0.5283969059537051,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT repetition is 52.8% and decreased by 13.3 pp."
+        },
+        "generation_exact_continuation": {
+          "base_matches": 0,
+          "cpt_matches": 0,
+          "query_count": 10,
+          "base_average_lcp": 0.039973262032085566,
+          "cpt_average_lcp": 0.039973262032085566,
+          "base_average_token_coverage": 0.2474459243512952,
+          "cpt_average_token_coverage": 0.23120876282001598,
+          "exact_match_assessment": {
+            "verdict": "Needs Improvement",
+            "remarks": "CPT exact-match rate is 0.0%."
+          },
+          "continuation_coverage_assessment": {
+            "verdict": "Needs Improvement",
+            "remarks": "CPT continuation coverage is 23.1%."
+          }
+        },
+        "fixed_reference_conditional_ppl": {
+          "base": 23.560326344201826,
+          "cpt": 18.655361616941157,
+          "absolute_change": -4.904964727260669,
+          "relative_change_percent": -20.818746971506936,
+          "verdict": "Good",
+          "remarks": "Fixed-reference PPL changed -20.82%; lower is better."
+        },
+        "baseline_response_retention_ppl": {
+          "base": 1.7993849574155758,
+          "cpt": 1.8221308713067685,
+          "absolute_change": 0.022745913891192737,
+          "relative_change_percent": 1.2640938114689078,
+          "verdict": "Good",
+          "remarks": "Baseline-response PPL changed +1.26%; a small increase means limited drift."
+        }
+      },
+      "general": {
+        "generation_concept_recall": {
+          "base": 0.28,
+          "cpt": 0.24,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT recall is 24.0% and declined by 4.0 pp."
+        },
+        "generation_repeated_trigram_ratio": {
+          "base": 0.6816357929153157,
+          "cpt": 0.7038869345143148,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT repetition is 70.4% and increased by 2.2 pp."
+        },
+        "generation_exact_continuation": {
+          "base_matches": 0,
+          "cpt_matches": 0,
+          "query_count": 0,
+          "base_average_lcp": null,
+          "cpt_average_lcp": null,
+          "base_average_token_coverage": null,
+          "cpt_average_token_coverage": null
+        },
+        "baseline_response_retention_ppl": {
+          "base": 1.7141718943927915,
+          "cpt": 1.7329722423851082,
+          "absolute_change": 0.01880034799231667,
+          "relative_change_percent": 1.0967597855159261,
+          "verdict": "Good",
+          "remarks": "Baseline-response PPL changed +1.10%; a small increase means limited drift."
+        }
+      },
+      "generalize": {
+        "generation_concept_recall": {
+          "base": 0.0,
+          "cpt": 0.02631578947368421,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT recall is 2.6% and improved by 2.6 pp."
+        },
+        "generation_repeated_trigram_ratio": {
+          "base": 0.7135317316027001,
+          "cpt": 0.5726551056090095,
+          "verdict": "Needs Improvement",
+          "remarks": "CPT repetition is 57.3% and decreased by 14.1 pp."
+        },
+        "generation_exact_continuation": {
+          "base_matches": 0,
+          "cpt_matches": 0,
+          "query_count": 0,
+          "base_average_lcp": null,
+          "cpt_average_lcp": null,
+          "base_average_token_coverage": null,
+          "cpt_average_token_coverage": null
+        },
+        "baseline_response_retention_ppl": {
+          "base": 1.8625292179594406,
+          "cpt": 1.903320943527874,
+          "absolute_change": 0.04079172556843336,
+          "relative_change_percent": 2.1901254044822003,
+          "verdict": "Good",
+          "remarks": "Baseline-response PPL changed +2.19%; a small increase means limited drift."
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ],
+      "expected_continuation": null,
+      "base_response": "every node in the network. The nodes are connected to each other by a network of leaf switches. Each leaf switch is connected to every node in the network by a network of leaf switches.\n\nThe leaf switches are connected to each other by a network of leaf switches. Each leaf switch is connected to every node in the network by a network of leaf switches.\n\nThe network of leaf switches is connected to each node in the network by a network of leaf switches. Each network of leaf switches",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5568181818181819
+      },
+      "cpt_response": "every leaf node. The leaf nodes are connected to each other by a leaf-spine. The leaf nodes are connected to each other by a leaf-spine.\n\nThe leaf nodes are connected to each other by a leaf-spine. The leaf nodes are connected to each other by a leaf-spine.\n\nThe leaf nodes are connected to each other by a leaf-spine. The leaf nodes are connected to each other by a leaf-spine.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7945205479452055
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 23.8 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ],
+      "expected_continuation": null,
+      "base_response": "you to connect to a Cisco Nexus virtual port channel (vPC) using a Cisco Nexus virtual port channel (vPC) device.\n\nThe Cisco Nexus virtual port channel (vPC) device supports the following Cisco Nexus virtual port channel (vPC) devices:\n\nCisco Nexus virtual port channel (vPC) devices that support the Cisco Nexus virtual port channel (vPC) device\n\nCisco Nexus virtual port channel (vPC) devices that support the Cisco Nexus virtual port",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5522388059701493
+      },
+      "cpt_response": "a Cisco Nexus virtual port to be configured as a virtual port channel.\n\nThe vPC channel is configured as a virtual port channel by default. The vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured as a virtual port channel by default.\n\nThe vPC channel is configured",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7236842105263157
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 17.1 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ],
+      "expected_continuation": null,
+      "base_response": "allow the vPC to communicate with the vPC peer-link. The vPC peer-link is a peer-to-peer network that allows the vPC to communicate with the vPC peer-link. The vPC peer-link is a peer-to-peer network that allows the vPC to communicate with the vPC peer-link.\n\nThe vPC peer-link is a peer-to-peer network that allows the vPC to communicate with the vPC peer",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7142857142857143
+      },
+      "cpt_response": "provide a mechanism for the peer to communicate with the vPC peer. The vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC peer-to-peer link.\n\nThe vPC peer-link is a vPC",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.639344262295082
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ],
+      "expected_continuation": null,
+      "base_response": "create a VLAN. The VNI is a single-layer VLAN that is used to create a VLAN.\n\nA VLAN is a single-layer VLAN that is used to create a VLAN. A VLAN is a single-layer VLAN that is used to create a VLAN. A VLAN is a single-layer VLAN that is used to create a VLAN. A VLAN is a single-layer VLAN that is used to create a V",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7323943661971831
+      },
+      "cpt_response": "identify the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface.\n\nThe VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The VNI is a unique identifier that identifies the VXLAN interface. The",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8260869565217391
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ],
+      "expected_continuation": null,
+      "base_response": "a single interface to the VLANs.\n\nThe VXLAN fabric is a single layer of fabric that is used to provide a single interface to the VLANs. The VXLAN fabric is a single layer of fabric that is used to provide a single interface to the VLANs.\n\nThe VXLAN fabric is a single layer of fabric that is used to provide a single interface to the VLANs.\n\nThe VXLAN fabric is a single layer of",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7222222222222222
+      },
+      "cpt_response": "a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link to the Internet.\n\nThe VXLAN fabric is designed to be a single, secure, and reliable link",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7647058823529411
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ],
+      "expected_continuation": null,
+      "base_response": "a VTEP, but it is not a VTEP.\n\nThe VTEP is a device that is used to control the flow of electricity from a power source to a device. It is a device that is used to control the flow of electricity from a power source to a device.\n\nThe VTEP is a device that is used to control the flow of electricity from a power source to a device. It is a device that is used to control the flow of electricity from a power source",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6235294117647059
+      },
+      "cpt_response": "a VTEP.\n\nThe VTEP is a device that is connected to the network. It is a device that is used to communicate with other devices on the network.\n\nThe VTEP is a device that is connected to the network. It is a device that is used to communicate with other devices on the network.\n\nThe VTEP is a device that is connected to the network. It is a device that is used to communicate with other devices on the network.\n\nThe",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6835443037974683
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ],
+      "expected_continuation": null,
+      "base_response": "a cost-effective solution for high-speed, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8200000000000001
+      },
+      "cpt_response": "a cost-effective solution for high-speed, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-capacity, high-",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8200000000000001
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ],
+      "expected_continuation": null,
+      "base_response": "the following command:\n\n# ip link set interface vlan 120 interface ethernet1/10\n\nThis will create a new VLAN 120 and configure Ethernet1/10 as an access port in NX-OS.\n\nNote: If you are using a VLAN switch, you must use the following command to create a new VLAN:\n\n# ip link set interface vlan 120 interface ethernet1/10\n\nNote: If you are using a VLAN switch,",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "vlan 120",
+          "interface Ethernet1/10"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 5,
+        "concept_recall": 0.4,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.25
+      },
+      "cpt_response": "the following command:\n\n# ip link set interface ethernet1/10\n\nThis will create a new interface for the interface ethernet1/10.\n\nConfigure the VLAN\n\nConfigure the VLAN using the following command:\n\n# ip link set interface vlan 120\n\nThis will create a new interface for the interface vlan 120.\n\nConfigure the VLAN\n\nConfigure the VLAN using the following command:\n\n# ip",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "vlan 120",
+          "interface Ethernet1/10"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 5,
+        "concept_recall": 0.4,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4285714285714286
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 17.9 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ],
+      "expected_continuation": null,
+      "base_response": "a port channel. The port channel is a channel that is used to communicate with the member interfaces. The port channel is used to communicate with the member interfaces.\n\nThe port channel is used to communicate with the member interfaces. The port channel is used to communicate with the member interfaces.\n\nThe port channel is used to communicate with the member interfaces. The port channel is used to communicate with the member interfaces.\n\nThe port channel is used to communicate with the member interfaces. The port",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7738095238095238
+      },
+      "cpt_response": "a port channel. The port channel is a port number that identifies the port on which the port is to be forwarded. The port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.\n\nThe port channel is not a port number.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6447368421052632
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 12.9 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ],
+      "expected_continuation": null,
+      "base_response": "a Type-2 vPC to fail.\n\nThe following table lists the types of vPCs that are supported by the Linux kernel.\n\nType-1 vPCs Supported by the Linux Kernel Type-2 vPCs Supported by the Linux Kernel Type-1 vPCs Supported by the Linux Kernel Type-2 vPCs Supported by the Linux Kernel Type-1 vPCs Supported by the Linux Kernel Type-2 vPCs Supported by the Linux Kernel Type-2",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6086956521739131
+      },
+      "cpt_response": "a Type-2 vPC to fail.\n\nThe following table lists the types of vPCs that are supported by the vPC interface.\n\nType-1 vPC consistency mismatch\n\nType-2 vPC consistency mismatch\n\nThe following table lists the types of vPCs that are supported by the vPC interface.\n\nType-1 vPC consistency mismatch\n\nType-2 vPC consistency mismatch\n\nThe following table lists the types of vPCs that",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "affected VLAN or interface"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5396825396825398
+      },
+      "verdict": "Good",
+      "remarks": "gained 1 expected concept(s)."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ],
+      "expected_continuation": null,
+      "base_response": "the device's firmware.\n\nIf the device is not able to connect to the Internet, check the device's firmware.\n\nIf the device is unable to connect to the Internet, check the device's firmware.\n\nIf the device is unable to connect to the Internet, check the device's firmware.\n\nIf the device is unable to connect to the Internet, check the device's firmware.\n\nIf the device is unable to connect to the Internet, check the device's firmware",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7564102564102564
+      },
+      "cpt_response": "the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check the device's status.\n\nIf the device is not responding to the device's commands, check",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8076923076923077
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ],
+      "expected_continuation": null,
+      "base_response": "that the neighbor is still in the Idle state.\n\nIf the neighbor is in the Idle state, verify that the neighbor is still in the Idle state. If the neighbor is in the Idle state, verify that the neighbor is still in the Idle state. If the neighbor is in the Idle state, verify that the neighbor is still in the Idle state. If the neighbor is in the Idle state, verify that the neighbor is still in the Idle state. If the neighbor is in the Idle state",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8275862068965517
+      },
+      "cpt_response": "that the neighbor is still in the Idle state.\n\nVerify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state. Verify that the neighbor is still in the Idle state",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8850574712643678
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ],
+      "expected_continuation": null,
+      "base_response": "the VXLAN_VTEP_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST_REQUEST",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.875
+      },
+      "cpt_response": "the VXLAN VTEP state.\n\nThe VXLAN VTEP state is displayed in the following table:\n\nVXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VXLAN VTEP state VX",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6938775510204082
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 18.1 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ],
+      "expected_continuation": null,
+      "base_response": "the presence of a fiber and will not attempt to connect to it.\n\nThe following example shows how to use the DIRLD to detect the presence of a fiber on a fiber interface.\n\n#include <DIRLD.h> #include <Wire.h> #include <DIRLD.h> #include <Wire.h> #include <DIRLD.h> #include <DIRLD.h> #include <DIRLD.h>",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3076923076923077
+      },
+      "cpt_response": "the presence of a router and routes the traffic to the appropriate router.\n\nThe following example shows how to configure the router to use the L2VPN tunnel.\n\n# router-config interface GigabitEthernet1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4285714285714286
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 12.1 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ],
+      "expected_continuation": null,
+      "base_response": "all nodes.\n\nThe MTU is configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured to be configured",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.9148936170212766
+      },
+      "cpt_response": "all nodes.\n\nThe MTU is configured on the node that is the source of the packet.\n\nThe MTU is configured on the node that is the destination of the packet.\n\nThe MTU is configured on the node that is the source of the packet. The MTU is configured on the node that is the destination of the packet. The MTU is configured on the node that is the source of the packet. The MTU is configured on the node that is the",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7625
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 15.2 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ],
+      "expected_continuation": null,
+      "base_response": "that the MAC address of the interface is not valid.\n\nThe following table shows the MAC addresses of the interfaces that are used for the MAC address of the device.\n\nInterface MAC address Description 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3846153846153846
+      },
+      "cpt_response": "that the MAC address of the interface is not valid.\n\nThe following table shows the MAC addresses of the interfaces that are not valid.\n\nInterface MAC Address\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)\n\n(in bits)",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3829787234042553
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ],
+      "expected_continuation": null,
+      "base_response": "a dashboard for your Cisco Nexus devices. It provides a list of all the devices connected to your network, as well as the IP address of each device.\n\nThe dashboard is also used to display the IP address of each device connected to your network.\n\nThe dashboard is also used to display the IP address of each device connected to your network.\n\nThe dashboard is also used to display the IP address of each device connected to your network.\n\nThe dashboard is also used to display",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5357142857142857
+      },
+      "cpt_response": "a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dashboard is a centralized location for all Cisco Nexus devices.\n\nThe Cisco Nexus Dash",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8133333333333334
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 27.8 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ],
+      "expected_continuation": null,
+      "base_response": "a device is purchased for the first time. The Nexus 9300 is a dual-core processor with 2GB of RAM and 32GB of storage. It has a 5.5-inch 1080p display with a resolution of 1280 x 800 pixels. The device is powered by a 1.2GHz quad-core Qualcomm Snapdragon 801 processor.\n\nThe Nexus 9300 is available in two colors: black and white. The device is available in two models: the Nexus 9300 Black and the",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.07894736842105265
+      },
+      "cpt_response": "the device is connected to a network. The Nexus 9300 switch is a dual-band 802.11ac wireless router that supports both 2.4GHz and 5GHz wireless networks.\n\nThe Nexus 9300 switch supports 802.11ac wireless networking, which is a wireless standard that supports both 2.4GHz and 5GHz wireless networks. The Nexus 9300 switch supports 802.11ac wireless networking, which is a wireless standard that supports both 2.4GHz and 5GHz wireless networks",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.45833333333333337
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 37.9 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ],
+      "expected_continuation": null,
+      "base_response": "a large number of components. The Nexus 9500 is a great example of this. The Nexus 9500 is a modular device that can be easily assembled and disassembled. The Nexus 9500 is also a great example of a modular device that can be easily upgraded. The Nexus 9500 is a great example of a modular device that can be easily upgraded.\n\nThe Nexus 9500 is a great example of a modular device that can be easily assembled and disassembled. The Nexus 9500 is a",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5975609756097561
+      },
+      "cpt_response": "a single device with a single interface.\n\nThe Nexus 9500 is a modular device that can be used with any device that supports the 802.11ac standard. The Nexus 9500 supports the 802.11ac standard, which is supported by all Nexus devices.\n\nThe Nexus 9500 supports the 802.11ac standard, which is supported by all Nexus devices. The Nexus 9500 supports the 802.11ac standard, which is supported by all Nexus devices. The Nexus 9500",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4794520547945206
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 11.8 pp."
+    },
+    {
+      "query_file": "domain_baseline_queries.json",
+      "query_set": "domain",
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ],
+      "expected_continuation": null,
+      "base_response": "the best available network for the training data.\n\nThe network should be configured to use the best available network for the training data.\n\nThe network should be configured to use the best available network for the training data. The network should be configured to use the best available network for the training data. The network should be configured to use the best available network for the training data. The network should be configured to use the best available network for the training data. The network should be configured to use",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8295454545454546
+      },
+      "cpt_response": "the best available network interface for the AI training cluster.\n\nThe following table shows the network interface priority for the AI training cluster.\n\nInterface Priority\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps)\n\n(Mbps",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3783783783783784
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 45.1 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX01",
+      "category": "ospfv2",
+      "prompt": "This memo documents version 2 of the OSPF protocol. OSPF is",
+      "expected_concepts": [
+        "link-state routing protocol",
+        "single Autonomous System"
+      ],
+      "expected_continuation": "a link-state routing protocol. It is designed to be run internal to a single Autonomous System.",
+      "base_response": "a protocol that allows for the transmission of data over the Internet. It is designed to allow for the transmission of data over the Internet without the need for a physical connection to the Internet.\n\nThe OSPF protocol is designed to allow for the transmission of data over the Internet without the need for a physical connection to the Internet. The OSPF protocol is designed to allow for the transmission of data over the Internet without the need for a physical connection to the Internet. The OSPF protocol",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.058823529411764705,
+        "continuation_token_coverage": 0.47058823529411764,
+        "repeated_trigram_ratio": 0.627906976744186
+      },
+      "cpt_response": "a protocol that allows for the transmission of OSPFv3 and OSPFv4 traffic over the Internet. OSPFv3 and OSPFv4 traffic are both sent over the Internet using the OSPFv3 and OSPFv4 protocols.\n\nThe OSPFv3 and OSPFv4 protocols are used to provide OSPFv3 and OSPFv4 traffic over the Internet. OSPFv3 and OSP",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.058823529411764705,
+        "continuation_token_coverage": 0.17647058823529413,
+        "repeated_trigram_ratio": 0.29166666666666663
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "reference coverage fell 29.4 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX02",
+      "category": "ospfv3",
+      "prompt": "Even with larger IPv6 addresses, most packets in OSPF for IPv6 are",
+      "expected_concepts": [
+        "compact packets",
+        "relaxed field limitations",
+        "OSPF for IPv6"
+      ],
+      "expected_continuation": "almost as compact as those in OSPF for IPv4.",
+      "base_response": "still going to be IPv4 packets.\n\nThe OSPF protocol is designed to be used with IPv4 addresses, but it is not designed to be used with IPv6 addresses.\n\nThe OSPF protocol is designed to be used with IPv4 addresses, but it is not designed to be used with IPv6 addresses.\n\nThe OSPF protocol is designed to be used with IPv4 addresses, but it is not designed to be used with IPv6 addresses.",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2222222222222222,
+        "repeated_trigram_ratio": 0.6428571428571428
+      },
+      "cpt_response": "still routed through the IPv4 network.\n\nThe OSPFv3 protocol is designed to support IPv6.\n\nThe OSPFv3 protocol is designed to support IPv6.\n\nThe OSPFv3 protocol is designed to support IPv6.\n\nThe OSPFv3 protocol is designed to support IPv6.\n\nThe OSPFv3 protocol is designed to support IPv6.\n\nThe OSPFv3 protocol is designed to",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.1111111111111111,
+        "repeated_trigram_ratio": 0.72
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "reference coverage fell 11.1 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX03",
+      "category": "ospf-nssa",
+      "prompt": "NSSAs are similar to the existing OSPF stub area configuration option but have the additional capability of",
+      "expected_concepts": [
+        "stub area",
+        "AS external routes",
+        "limited import"
+      ],
+      "expected_continuation": "importing AS external routes in a limited fashion.",
+      "base_response": "being used as a proxy for the OSPF server.\n\nThe OSPF server configuration is as follows:\n\nThe OSPF server configuration is as follows:\n\nThe OSPF server configuration is as follows:\n\nThe OSPF server configuration is as follows:\n\nThe OSPF server configuration is as follows:\n\nThe OSPF server configuration is as follows:\n\nThe OSPF server configuration is as follows:\n\nThe O",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.7241379310344828
+      },
+      "cpt_response": "being configured as a subnet mask.\n\nThe OSPF stub area configuration option is supported on all Cisco Nexus 9000 Series switches.\n\nThe OSPF stub area configuration option is supported on all Cisco Nexus 9000 Series switches.\n\nThe OSPF stub area configuration option is supported on all Cisco Nexus 9000 Series switches.\n\nThe OSPF stub area configuration option is supported on all Cisco Nexus 9000 Series switches.\n\nThe OSPF stub area configuration option is supported",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "stub area"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.7083333333333333
+      },
+      "verdict": "Good",
+      "remarks": "gained 1 expected concept(s)."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX04",
+      "category": "ospf-graceful-restart",
+      "prompt": "A restarting router may not be capable of adjusting its forwarding in a timely manner when",
+      "expected_concepts": [
+        "network topology changes",
+        "forwarding adjustment",
+        "restarting router"
+      ],
+      "expected_continuation": "the network topology changes.",
+      "base_response": "the router is not connected to the Internet.\n\nIf the router is not connected to the Internet, the router may not be able to adjust its forwarding in a timely manner when the router is not connected to the Internet.\n\nIf the router is not connected to the Internet, the router may not be able to adjust its forwarding in a timely manner when the router is not connected to the Internet.\n\nIf the router is not connected to the Internet, the router may not be able to",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.25,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.6976744186046512
+      },
+      "cpt_response": "the router is not connected to the Internet.\n\nThe following table lists the steps that must be taken to restart a router that is not connected to the Internet.\n\nStep 1\n\nThe router must be restarted.\n\nStep 2\n\nThe router must be restarted.\n\nStep 3\n\nThe router must be restarted.\n\nStep 4\n\nThe router must be restarted.\n\nStep 5\n\nThe router must be restarted.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.25,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.30645161290322576
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 39.1 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX05",
+      "category": "ospf-bfd",
+      "prompt": "Bidirectional Forwarding Detection (BFD) [RFC5880] enables routers to",
+      "expected_concepts": [
+        "data plane connectivity",
+        "bidirectional path",
+        "fault detection"
+      ],
+      "expected_continuation": "monitor data plane connectivity and to detect faults in the bidirectional path between them.",
+      "base_response": "forward packets to a destination address that is not the same as the one they are forwarding to. This allows routers to forward packets to a destination address that is not the same as the one they are forwarding to. This allows routers to forward packets to a destination address that is not the same as the one they are forwarding to.\n\nForwarding to a destination address that is not the same as the one they are forwarding to.\n\nForwarding to a destination address that is not the same as",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.14285714285714285,
+        "repeated_trigram_ratio": 0.7159090909090908
+      },
+      "cpt_response": "forward packets to a destination that is not the source. BFD is implemented by the router and is enabled by default.\n\nBFD is implemented by the router and is enabled by default. BFD is implemented by the router and is enabled by default. BFD is implemented by the router and is enabled by default. BFD is implemented by the router and is enabled by default. BFD is implemented by the router and is enabled by default. BFD is implemented by the router and is",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.21428571428571427,
+        "repeated_trigram_ratio": 0.7439024390243902
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX06",
+      "category": "nexus-dashboard",
+      "prompt": "For organizations managing on-premises data centers, the Cisco Nexus Dashboard serves as",
+      "expected_concepts": [
+        "single point of control",
+        "provisioning",
+        "visibility",
+        "troubleshooting",
+        "automation"
+      ],
+      "expected_continuation": "the single point of control for provisioning, visibility, troubleshooting, and automation.",
+      "base_response": "a central hub for all of your data center management tools. It provides a comprehensive view of your data center's performance, including:\n\nNetwork performance\n\nCPU utilization\n\nDisk usage\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic\n\nNetwork traffic",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.18181818181818182,
+        "repeated_trigram_ratio": 0.49122807017543857
+      },
+      "cpt_response": "a central hub for all Cisco Nexus products. The Cisco Nexus Dashboard provides a unified view of all Cisco Nexus products, including Cisco Nexus products that are not part of the Cisco Nexus product family.\n\nThe Cisco Nexus Dashboard provides a unified view of all Cisco Nexus products, including Cisco Nexus products that are not part of the Cisco Nexus product family. The Cisco Nexus Dashboard provides a unified view of all Cisco Nexus products, including Cisco Nexus products that are not part of the Cisco Nexus product family",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2727272727272727,
+        "repeated_trigram_ratio": 0.6436781609195402
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 15.2 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX07",
+      "category": "ai-data-center",
+      "prompt": "Cisco® data center networking with Cisco Nexus® 9000 Series Switches and the Nexus Dashboard operations and automation platform provides",
+      "expected_concepts": [
+        "high bandwidth",
+        "lossless",
+        "low latency",
+        "AI/ML networks"
+      ],
+      "expected_continuation": "the interplay of cutting-edge silicon, hardware, software, optics, and management tools to deliver high bandwidth, lossless, and low latency AI/ML networks.",
+      "base_response": "a comprehensive set of tools to help you manage and manage your Cisco Nexus network.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of tools to help you manage and manage your Cisco Nexus network.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of tools to help you manage and manage your Cisco Nexus network.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of tools to help you manage and manage your Cisco Nexus network.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2608695652173913,
+        "repeated_trigram_ratio": 0.7560975609756098
+      },
+      "cpt_response": "a comprehensive set of tools to help you manage and manage your Cisco Nexus switches.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of tools to help you manage and manage your Cisco Nexus switches.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of tools to help you manage and manage your Cisco Nexus switches.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of tools to help you manage and manage your Cisco Nexus switches.\n\nThe Cisco Nexus Dashboard provides a comprehensive set of",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2608695652173913,
+        "repeated_trigram_ratio": 0.7560975609756098
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX08",
+      "category": "vxlan",
+      "prompt": "Virtual Extensible LAN (VXLAN) provides a way to extend Layer 2 networks across",
+      "expected_concepts": [
+        "Layer 3 infrastructure",
+        "MAC-in-UDP",
+        "tunneling"
+      ],
+      "expected_continuation": "a Layer 3 infrastructure using MAC-in-UDP encapsulation and tunneling.",
+      "base_response": "a network. VXLAN is a protocol that allows for the creation of virtual networks that can be used to extend Layer 2 networks across a network.\n\nVXLAN is a protocol that allows for the creation of virtual networks that can be used to extend Layer 2 networks across a network. VXLAN is a protocol that allows for the creation of virtual networks that can be used to extend Layer 2 networks across a network.\n\nVXLAN is a protocol that allows for the creation of",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.09090909090909091,
+        "continuation_token_coverage": 0.18181818181818182,
+        "repeated_trigram_ratio": 0.7073170731707317
+      },
+      "cpt_response": "a network. VXLAN is a network protocol that allows for the creation of virtual networks that are independent of the physical network.\n\nVXLAN is supported on the following platforms:\n\nWindows Server 2008 R2\n\nWindows Server 2008 R2 with SP1\n\nWindows Server 2008 R2 with SP2\n\nWindows Server 2008 R2 with SP3\n\nWindows Server 2008 R2 with SP4\n\nWindows Server 2008 R2 with SP5\n\nWindows Server 2008",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.09090909090909091,
+        "continuation_token_coverage": 0.09090909090909091,
+        "repeated_trigram_ratio": 0.25
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 45.7 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX09",
+      "category": "vpc",
+      "prompt": "This document describes common Virtual Port Channel (vPC) enhancements configured on",
+      "expected_concepts": [
+        "Cisco Nexus switches",
+        "vPC domain"
+      ],
+      "expected_continuation": "Cisco Nexus switches in a vPC domain.",
+      "base_response": "the host operating system.\n\nThe vPC enhancements are described in the following sections.\n\nThe vPC enhancements are described in the following sections.\n\nThe vPC enhancements are described in the following sections.\n\nThe vPC enhancements are described in the following sections.\n\nThe vPC enhancements are described in the following sections.\n\nThe vPC enhancements are described in the following sections.\n\nThe vPC enhancements are described in the following sections.\n\nThe v",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2857142857142857,
+        "repeated_trigram_ratio": 0.791044776119403
+      },
+      "cpt_response": "the Cisco NX-OS switch.\n\nThis document describes the following enhancements:\n\nEnhanced VPC Channel\n\nEnhanced VPC Channel (vPC) is a feature that allows a Cisco NX-OS switch to support multiple virtual ports on a single physical port.\n\nEnhanced VPC Channel (vPC) is enabled by default on the Cisco NX-OS switch.\n\nEnhanced VPC Channel (vPC) is enabled by default on the Cisco NX-OS switch.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.42857142857142855,
+        "repeated_trigram_ratio": 0.328125
+      },
+      "verdict": "Good",
+      "remarks": "reference coverage rose 14.3 pp; repetition fell 46.3 pp."
+    },
+    {
+      "query_file": "domain_exact_generation_queries.json",
+      "query_set": "exact",
+      "id": "DEX10",
+      "category": "switching",
+      "prompt": "Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch",
+      "expected_concepts": [
+        "forwarding decision",
+        "egress interface",
+        "frame header",
+        "cut-through switching"
+      ],
+      "expected_continuation": "makes a forwarding decision on a frame and begins forwarding the frame out of an egress interface as soon as the switch has processed enough of the frame header to make a valid forwarding decision.",
+      "base_response": "is connected to a switch with a cut-through wire. This allows the switch to be used with a single wire, but it also allows the switch to be used with multiple wires.\n\nThe Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch is connected to a switch with a cut-through wire. This allows the switch to be used with a single wire, but it also allows the switch to be used with multiple wires. The Cisco",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "cut-through switching"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.22857142857142856,
+        "repeated_trigram_ratio": 0.45882352941176474
+      },
+      "cpt_response": "is connected to a router by a cable, and the router then connects the switch to the router's switch port.\n\nThe Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch is connected to a router by a cable, and the router then connects the switch to the router's switch port.\n\nThe Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch is connected to a router by",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "cut-through switching"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2571428571428571,
+        "repeated_trigram_ratio": 0.5357142857142857
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN01",
+      "category": "vxlan-design",
+      "prompt": "A multitenant data center needs far more than 4096 isolated Layer 2 segments over an IP fabric. The design should use",
+      "expected_concepts": [
+        "VXLAN",
+        "24-bit VNI",
+        "approximately 16 million segments",
+        "Layer 3 underlay"
+      ],
+      "expected_continuation": null,
+      "base_response": "a single layer of IP fabric with a single IP address.\n\nThe design should use a single layer of IP fabric with a single IP address. The design should use a single layer of IP fabric with a single IP address. The design should use a single layer of IP fabric with a single IP address. The design should use a single layer of IP fabric with a single IP address. The design should use a single layer of IP fabric with a single IP address. The design should use a single",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8333333333333334
+      },
+      "cpt_response": "a single Layer 2 segment for each of the data center's IP segments.\n\nThe following diagram shows the data center's IP segment boundaries.\n\nFigure 1. Data center IP segment boundaries\n\nThe data center's IP segment boundaries are defined by the IP address of the data center's router. The IP address of the router is the IP address of the router's local area network (LAN) address. The IP address of the router's local area network (LAN) address is the IP",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3614457831325302
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 47.2 pp."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN02",
+      "category": "ospf-nssa-design",
+      "prompt": "An OSPF area should retain stub-area behavior but must import selected routes from an external routing domain. The suitable area type is",
+      "expected_concepts": [
+        "NSSA",
+        "Not-So-Stubby Area",
+        "Type-7 LSA",
+        "external routes"
+      ],
+      "expected_continuation": null,
+      "base_response": "a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub-area must be a stub-area.\n\nThe stub",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.864406779661017
+      },
+      "cpt_response": "described in Section 4.2.\n\n4.2.1. OSPF Area Types\n\nThe OSPF area type is a subset of the OSPF area type. The OSPF area type is defined in Section 4.2.1.\n\n4.2.2. OSPF Area Types\n\nThe OSPF area type is a subset of the OSPF area type. The OSPF area type is defined in Section 4.2",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5166666666666666
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 34.8 pp."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN03",
+      "category": "ospf-resiliency",
+      "prompt": "During an OSPF graceful restart, a topology change that could make forwarding stale should cause the router to",
+      "expected_concepts": [
+        "exit graceful restart",
+        "normal OSPF restart",
+        "avoid routing loops",
+        "recalculate forwarding"
+      ],
+      "expected_continuation": null,
+      "base_response": "fail.\n\nThe OSPF graceful restart is triggered when the router is restarted after a graceful restart. The router is restarted after a graceful restart, and the OSPF graceful restart is triggered when the router is restarted after a graceful restart.\n\nThe OSPF graceful restart is triggered when the router is restarted after a graceful restart. The router is restarted after a graceful restart, and the OSPF graceful restart is triggered when the router is restarted after",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7297297297297297
+      },
+      "cpt_response": "restart.\n\nIf the topology change is not detected, the router will continue to forward traffic until the topology change is detected.\n\nIf the topology change is detected, the router will continue to forward traffic until the topology change is detected. If the topology change is detected, the router will continue to forward traffic until the topology change is detected. If the topology change is detected, the router will continue to forward traffic until the topology change is detected. If",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7402597402597403
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN04",
+      "category": "ospf-bfd",
+      "prompt": "OSPF neighbors form over a poor-quality link, but the faster BFD session repeatedly fails. BFD strict mode addresses this by",
+      "expected_concepts": [
+        "block OSPF adjacency formation",
+        "wait for BFD session",
+        "both neighbors advertise support"
+      ],
+      "expected_continuation": null,
+      "base_response": "using a different link, but the same problem occurs.\n\nThe BFD session is not able to complete the link because the link is not fast enough. The BFD session is not able to complete the link because the link is not fast enough.\n\nThe BFD session is not able to complete the link because the link is not fast enough.\n\nThe BFD session is not able to complete the link because the link is not fast enough.\n\nThe BFD session is",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6708860759493671
+      },
+      "cpt_response": "using a single BFD session per link.\n\nThe BFD session is created by the BFD server and is used to establish a link between two BFD neighbors. The BFD session is created by the BFD server and is used to establish a link between two BFD neighbors.\n\nThe BFD session is created by the BFD server and is used to establish a link between two BFD neighbors.\n\nThe BFD session is created by the BFD server and is",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6447368421052632
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN05",
+      "category": "nexus-dashboard-operations",
+      "prompt": "An operations team wants one on-premises control point for provisioning, observing, automating, and troubleshooting several Cisco data-center fabrics. The appropriate platform is",
+      "expected_concepts": [
+        "Cisco Nexus Dashboard",
+        "centralized management",
+        "visibility",
+        "automation"
+      ],
+      "expected_continuation": null,
+      "base_response": "determined by the requirements of the operations team.\n\nThe operations team needs to determine the best way to deploy the control point. The control point is a virtual machine that is running on a virtual machine host. The control point is a virtual machine that is running on a virtual machine host. The control point is a virtual machine that is running on a virtual machine host. The control point is a virtual machine that is running on a virtual machine host. The control point is a virtual machine that is running",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6222222222222222
+      },
+      "cpt_response": "determined by the following criteria:\n\n• The fabric is a Cisco Nexus 9500-based fabric\n\n• The fabric is a Cisco Nexus 9500-based fabric with a Cisco Nexus 9500-based fabric controller\n\n• The fabric is a Cisco Nexus 9500-based fabric with a Cisco Nexus 9500-based fabric controller with a Cisco Nexus 9500-based fabric controller with a Cisco Nexus 9500-based fabric controller with a Cisco Nexus 9500-based fabric controller with a",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6944444444444444
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN06",
+      "category": "ai-data-center-design",
+      "prompt": "A distributed GPU training job is slowed by congestion and packet loss between workers. The Ethernet fabric should be designed for",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "lossless networking",
+        "congestion management",
+        "telemetry"
+      ],
+      "expected_continuation": null,
+      "base_response": "this.\n\nThe Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed for this. The Ethernet fabric should be designed",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.9058823529411765
+      },
+      "cpt_response": "high-bandwidth connectivity.\n\nThe Ethernet fabric should be designed for high-bandwidth connectivity. The Ethernet fabric should be designed for high-bandwidth connectivity. The Ethernet fabric should be designed for high-bandwidth connectivity. The Ethernet fabric should be designed for high-bandwidth connectivity. The Ethernet fabric should be designed for high-bandwidth connectivity. The Ethernet fabric should be designed for high-bandwidth connectivity. The Ethernet fabric should be designed for high-bandwidth connectivity. The",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "high bandwidth"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 5,
+        "concept_recall": 0.2,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8611111111111112
+      },
+      "verdict": "Good",
+      "remarks": "gained 1 expected concept(s)."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN07",
+      "category": "switching-behavior",
+      "prompt": "A Nexus switch starts transmitting a frame after reading enough of its header to choose the egress port instead of buffering the entire frame. This behavior is called",
+      "expected_concepts": [
+        "cut-through switching"
+      ],
+      "expected_continuation": null,
+      "base_response": "\"frame-by-frame\" and is not supported by all devices.\n\nThe Nexus switch can be configured to send frames to the egress port only if the egress port is configured to receive frames.\n\nThe egress port can be configured to receive frames only if the egress port is configured to receive frames.\n\nThe egress port can be configured to receive frames only if the egress port is configured to receive frames.\n\nThe egress port can be configured",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.52
+      },
+      "cpt_response": "\"frame-by-frame\" and is not supported by the default configuration.\n\nThe default configuration uses the frame-by-frame behavior to ensure that the frame is received in the correct order. This behavior is not supported by the default configuration.\n\nThe default configuration uses the frame-by-frame behavior to ensure that the frame is received in the correct order. This behavior is not supported by the default configuration.\n\nThe default configuration uses the frame-by-frame behavior to",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5974025974025974
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN08",
+      "category": "vxlan-forwarding",
+      "prompt": "Two workloads must remain in the same logical Layer 2 segment while residing across a routed Layer 3 data-center fabric. VXLAN accomplishes this by",
+      "expected_concepts": [
+        "MAC-in-UDP encapsulation",
+        "tunneling",
+        "VTEP",
+        "Layer 2 overlay"
+      ],
+      "expected_continuation": null,
+      "base_response": "using a single, dedicated, and highly available VXLAN switch.\n\nVXLAN is a new, high-performance, high-availability, and highly scalable network technology that enables the creation of a single, highly available, and highly available VXLAN switch. VXLAN is a new, high-performance, high-availability, and highly scalable network technology that enables the creation of a single, highly available, and highly available VXLAN switch.\n\nVXLAN is",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5079365079365079
+      },
+      "cpt_response": "using a single virtual switch to provide the routing and data-center fabric-level routing.\n\nVXLAN is a multi-layer, multi-vendor, multi-layer-2 (MV2) virtual switch. It is designed to be a single-vendor switch that can be deployed across multiple data centers.\n\nVXLAN is a multi-layer, multi-vendor, multi-layer-2 (MV2) virtual switch. It is designed to",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.25
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 25.8 pp."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN09",
+      "category": "interface-troubleshooting",
+      "prompt": "CRC and FCS counters on a Nexus interface continue increasing between polling intervals. The investigation should focus first on",
+      "expected_concepts": [
+        "physical layer",
+        "cable",
+        "optics",
+        "peer interface",
+        "speed or FEC"
+      ],
+      "expected_continuation": null,
+      "base_response": "the Nexus 5X and Nexus 6P, which are both expected to be released in the second half of 2017.\n\nThe Nexus 6P is expected to be released in the second half of 2017, while the Nexus 5X is expected to be released in the second half of 2018.\n\nThe Nexus 6P is expected to be released in the second half of 2017, while the Nexus 5X is expected to be released in the second half of 2018. The Nexus 6P is expected to",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.617283950617284
+      },
+      "cpt_response": "the Nexus interface and then on the FCS counters on the Nexus interface.\n\nFigure 2.1. Nexus interface and FCS counters\n\nFigure 2.2. Nexus interface and FCS counters\n\nFigure 2.3. Nexus interface and FCS counters\n\nFigure 2.4. Nexus interface and FCS counters\n\nFigure 2.5. Nexus interface and FCS counters\n\nFigure 2.6. Nexus interface and FCS counters\n\nFigure 2.7.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4354838709677419
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 18.2 pp."
+    },
+    {
+      "query_file": "domain_generalization_queries.json",
+      "query_set": "generalize",
+      "id": "DGEN10",
+      "category": "vpc-design",
+      "prompt": "A server should use one logical port channel while connecting redundantly to two separate Cisco Nexus switches. The switches should be configured as",
+      "expected_concepts": [
+        "vPC peers",
+        "vPC domain",
+        "peer-link",
+        "logical port channel"
+      ],
+      "expected_continuation": null,
+      "base_response": "a single network interface.\n\nThe Cisco Nexus switches should be configured as a single network interface. The Cisco Nexus switches should be configured as a single network interface. The Cisco Nexus switches should be configured as a single network interface. The Cisco Nexus switches should be configured as a single network interface. The Cisco Nexus switches should be configured as a single network interface. The Cisco Nexus switches should be configured as a single network interface. The Cisco Nexus switches should be configured as a single network interface. The Cisco",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8636363636363636
+      },
+      "cpt_response": "a single switch with a single port channel.\n\nFigure 2. Cisco Nexus switches with two ports channel\n\nThe Cisco Nexus switches should be configured as a single switch with a single port channel.\n\nFigure 3. Cisco Nexus switches with two ports channel\n\nThe Cisco Nexus switches should be configured as a single switch with a single port channel.\n\nFigure 4. Cisco Nexus switches with two ports channel\n\nThe Cisco Nexus switches should be configured as a single switch with a single port",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.625
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 23.9 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "expected_continuation": null,
+      "base_response": "Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of France is Paris, and the capital of France is Paris.\n\nThe capital of",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8783783783783784
+      },
+      "cpt_response": "Paris, and the capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United Kingdom is London, and the capital of the United States is New York.\n\nThe capital of the United States is New York, and the capital of the United Kingdom is London.\n\nThe capital of the United States is New York, and the capital of the United Kingdom is London.\n\nThe",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6666666666666667
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 21.2 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "expected_continuation": null,
+      "base_response": "-40°C.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8333333333333334
+      },
+      "cpt_response": "-40°C.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature of the water is measured in degrees Celsius.\n\nThe temperature",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8333333333333334
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "expected_continuation": null,
+      "base_response": "the Earth, which is about 1.5 times the size of the Sun. The Earth is the only planet in the Solar System that is not surrounded by a thick atmosphere.\n\nThe Earth is surrounded by a thick atmosphere, which is made up of water vapor and carbon dioxide. The atmosphere is also made up of nitrogen, oxygen, and methane.\n\nThe Earth's atmosphere is also made up of water vapor and carbon dioxide. The atmosphere is also made up of nitrogen, oxygen, and",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.29268292682926833
+      },
+      "cpt_response": "the Earth, with a surface area of about 1.5 million square kilometers. The Earth's surface is covered by a thick atmosphere, which is composed of water vapor and carbon dioxide. The atmosphere is also composed of nitrogen, oxygen, and sulfur. The atmosphere is also composed of water vapor and carbon dioxide. The atmosphere is also composed of nitrogen, oxygen, and sulfur. The atmosphere is also composed of water vapor and carbon dioxide. The atmosphere is also composed of nitrogen, oxygen, and sulfur.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4878048780487805
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 19.5 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "expected_continuation": null,
+      "base_response": "a French writer who lived from 1625 to 1640. He was a poet, playwright, and playwright. He was also a writer of plays and plays of prose. He was a great admirer of Shakespeare and wrote a play called Romeo and Juliet.\n\nThe play was written in 1625 and was based on the story of Romeo and Juliet. It was written in French and was performed in Paris in 1625. The play was performed in the French Theatre in Paris.",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0641025641025641
+      },
+      "cpt_response": "a French writer and playwright. He was born in Paris in 1808. He was educated at the Sorbonne and at the Sorbonne, and at the Sorbonne he was a member of the faculty of the Sorbonne. He was a member of the Académie Française, the Society of Authors, and the Society of Authors of France. He was a member of the Society of Authors of England, and of the Society of Authors of France. He was a",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.36363636363636365
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 30.0 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "expected_continuation": null,
+      "base_response": "H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.\n\nThe chemical symbol for water is H2O.",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8727272727272728
+      },
+      "cpt_response": "H2O.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol for hydrogen is H2O.\n\nThe chemical symbol for carbon dioxide is CO2.\n\nThe chemical symbol for nitrogen is N2.\n\nThe chemical symbol for oxygen is O2.\n\nThe chemical symbol for hydrogen is H2O.\n\nThe chemical symbol for carbon dioxide is CO2.\n\nThe chemical symbol for nitrogen is N2.\n\nThe chemical",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6101694915254237
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 26.3 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "expected_continuation": null,
+      "base_response": "a square root of 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square root of 2 is 2.\n\nThe square",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8676470588235294
+      },
+      "cpt_response": "a length of 2, and a width of 1.\n\nThe length of the triangle is the length of the sides of the triangle.\n\nThe width of the triangle is the width of the sides of the triangle.\n\nThe length of the triangle is the length of the sides of the triangle.\n\nThe width of the triangle is the width of the sides of the triangle.\n\nThe length of the triangle is the length of the sides of the triangle.\n\nThe width",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6962025316455696
+      },
+      "verdict": "Good",
+      "remarks": "repetition fell 17.1 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "expected_continuation": null,
+      "base_response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8307692307692307
+      },
+      "cpt_response": "cold.\n\nThe opposite of cold is hot.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold.\n\nThe opposite of hot is cold",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8307692307692307
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "expected_continuation": null,
+      "base_response": "sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky. The sun sets in the sky. The sun rises in the sky.",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.891566265060241
+      },
+      "cpt_response": "west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises in the west, and the moon sets in the east.\n\nThe sun rises",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "east"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8243243243243243
+      },
+      "verdict": "Good",
+      "remarks": "gained 1 expected concept(s)."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "expected_continuation": null,
+      "base_response": "twelve times three.\n\nThe number twelve is the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of the number of",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8947368421052632
+      },
+      "cpt_response": "the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.9591836734693877
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "expected_continuation": null,
+      "base_response": "photosynthesis. The sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun's energy is converted into heat, which is then used to produce electricity.\n\nThe sun",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7894736842105263
+      },
+      "cpt_response": "photosynthesis. The sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun's energy is converted into heat, which is then used to generate electricity.\n\nThe sun",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7894736842105263
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "expected_continuation": null,
+      "base_response": "boil water. The water should be at least half the volume of the tea.\n\nThe second step is to add the tea leaves. The leaves should be about the size of a pea.\n\nThe third step is to add the sugar. The sugar should be about the size of a large orange.\n\nThe fourth step is to add the water. The water should be at least half the volume of the tea.\n\nThe fifth step is to add the tea leaves. The",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "boil water"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.36250000000000004
+      },
+      "cpt_response": "remove the tea leaves from the tea bag.\n\nTo remove the tea leaves, hold the tea bag in your hand and gently pull the leaves out.\n\nThe tea leaves will fall out of the bag and into the cup.\n\nTo remove the tea leaves, hold the tea bag in your hand and gently pull the leaves out.\n\nThe tea leaves will fall out of the bag and into the cup.\n\nTo remove the tea leaves, hold the tea bag in your hand",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5625
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "lost 1 expected concept(s); repetition rose 20.0 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "expected_continuation": null,
+      "base_response": "not be as hard as it looks.\n\nThe glass may be too small to break, or it may be too small to break at all.\n\nThe glass may be too small to break, or it may be too small to break at all. The glass may be too small to break, or it may be too small to break at all. The glass may be too small to break, or it may be too small to break at all. The glass may be too small to break",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "break"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7529411764705882
+      },
+      "cpt_response": "not be broken.\n\nThe glass may be broken by the force of gravity.\n\nThe glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be broken by the force of gravity. The glass may be",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8470588235294118
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "lost 1 expected concept(s)."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "expected_continuation": null,
+      "base_response": "read a book. She was reading a book about the history of the United States. She was reading about the Civil War. She was reading about the Civil Rights Movement. She was reading about the Civil Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading about the Voting Rights Act. She was reading",
+      "base_generation_metrics": {
+        "concept_hits": [
+          "read"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6436781609195402
+      },
+      "cpt_response": "read a book. She was reading a book about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history of the United States. She was reading about the history",
+      "cpt_generation_metrics": {
+        "concept_hits": [
+          "read"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8089887640449438
+      },
+      "verdict": "Needs Improvement",
+      "remarks": "repetition rose 16.5 pp."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "expected_continuation": null,
+      "base_response": "a young man named Tarkus was born. He was a good boy, and he loved to play. He loved to play with his friends, and he loved to play with his father. He loved to play with his mother, and he loved to play with his brothers. He loved to play with his sisters, and he loved to play with his brothers. He loved to play with his sisters, and he loved to play with his brothers. He loved to play with his sisters, and he",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5952380952380952
+      },
+      "cpt_response": "a young man named Togashi was born. He was a good-looking boy, with a good heart, and a good mind. He was also a very good cook. He was also a very good student. He was also a very good teacher. He was also a very good friend. He was also a very good friend. He was also a very good friend. He was also a very good friend. He was also a very good friend. He was also a very good friend.",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5487804878048781
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    },
+    {
+      "query_file": "generic_forgetting_queries.json",
+      "query_set": "general",
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "expected_continuation": null,
+      "base_response": "aims to make computers smarter by making them more intelligent.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.\n\nThe technology is being used to create artificial intelligence systems that can learn from experience and make better decisions.",
+      "base_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6547619047619048
+      },
+      "cpt_response": "deals with the problem of creating intelligent machines. AI is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of artificial intelligence is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of artificial intelligence is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of artificial intelligence is a field of computer science that deals with the problem of creating intelligent machines.\n\nThe field of",
+      "cpt_generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7294117647058824
+      },
+      "verdict": "Satisfactory",
+      "remarks": "No material automatic improvement or regression was detected."
+    }
+  ]
+}

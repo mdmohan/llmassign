@@ -1,0 +1,269 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-07T06:32:34.057655+00:00",
+  "model_name": "gpt2-large",
+  "model_details": {
+    "name_or_path": "gpt2-large",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 36,
+    "attention_heads": 20,
+    "embedding_dimension": 1280,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 774030080,
+    "trainable_parameters": 774030080,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-large",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": null,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_generalization_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 4
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DGEN01",
+      "category": "vxlan-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A multitenant data center needs far more than 4096 isolated Layer 2 segments over an IP fabric. The design should use",
+      "expected_concepts": [
+        "VXLAN",
+        "24-bit VNI",
+        "approximately 16 million segments",
+        "Layer 3 underlay"
+      ],
+      "response": "a single Layer 2 segment for all data traffic.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be designed to be able to handle the load of a single Layer 2 segment.\n\nThe design should be",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7108433734939759
+      }
+    },
+    {
+      "id": "DGEN02",
+      "category": "ospf-nssa-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An OSPF area should retain stub-area behavior but must import selected routes from an external routing domain. The suitable area type is",
+      "expected_concepts": [
+        "NSSA",
+        "Not-So-Stubby Area",
+        "Type-7 LSA",
+        "external routes"
+      ],
+      "response": "determined by the OSPF routing domain.\n\nThe OSPF area must be configured to use the same routing domain as the external routing domain.\n\nThe OSPF area must be configured to use the same routing domain as the external routing domain. The OSPF area must be configured to use the same routing domain as the external routing domain. The OSPF area must be configured to use the same routing domain as the external routing domain. The OSPF area must be",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7272727272727273
+      }
+    },
+    {
+      "id": "DGEN03",
+      "category": "ospf-resiliency",
+      "evaluation_type": "domain_generalization",
+      "prompt": "During an OSPF graceful restart, a topology change that could make forwarding stale should cause the router to",
+      "expected_concepts": [
+        "exit graceful restart",
+        "normal OSPF restart",
+        "avoid routing loops",
+        "recalculate forwarding"
+      ],
+      "response": "re-evaluate the topology.\n\nThe following example shows how to configure a router to re-evaluate the topology when a new router is added to the network.\n\nconfigure { router { # The topology is re-evaluated when a new router is added to the network. # The topology is re-evaluated when a new router is added to the network. # The topology is re-evaluated when a new router is added to the network. #",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5072463768115942
+      }
+    },
+    {
+      "id": "DGEN04",
+      "category": "ospf-bfd",
+      "evaluation_type": "domain_generalization",
+      "prompt": "OSPF neighbors form over a poor-quality link, but the faster BFD session repeatedly fails. BFD strict mode addresses this by",
+      "expected_concepts": [
+        "block OSPF adjacency formation",
+        "wait for BFD session",
+        "both neighbors advertise support"
+      ],
+      "response": "requiring that the BFD session be terminated before the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe BFD session is terminated when the BFD session is resumed.\n\nThe B",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.75
+      }
+    },
+    {
+      "id": "DGEN05",
+      "category": "nexus-dashboard-operations",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An operations team wants one on-premises control point for provisioning, observing, automating, and troubleshooting several Cisco data-center fabrics. The appropriate platform is",
+      "expected_concepts": [
+        "Cisco Nexus Dashboard",
+        "centralized management",
+        "visibility",
+        "automation"
+      ],
+      "response": "a Cisco IOS or IOS XE.\n\nThe team wants to use a Cisco IOS or IOS XE to provision the data center fabric. The appropriate platform is a Cisco IOS or IOS XE. The team wants to use a Cisco IOS or IOS XE to monitor the data center fabric. The appropriate platform is a Cisco IOS or IOS XE.\n\nThe team wants to use a Cisco IOS or IOS XE to monitor",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6338028169014085
+      }
+    },
+    {
+      "id": "DGEN06",
+      "category": "ai-data-center-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A distributed GPU training job is slowed by congestion and packet loss between workers. The Ethernet fabric should be designed for",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "lossless networking",
+        "congestion management",
+        "telemetry"
+      ],
+      "response": "high throughput, and the network layer should be designed to handle the load.\n\nThe Ethernet fabric should be designed for high throughput, and the network layer should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed to handle the load. The Ethernet fabric should be designed",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7816091954022988
+      }
+    },
+    {
+      "id": "DGEN07",
+      "category": "switching-behavior",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A Nexus switch starts transmitting a frame after reading enough of its header to choose the egress port instead of buffering the entire frame. This behavior is called",
+      "expected_concepts": [
+        "cut-through switching"
+      ],
+      "response": "\"frame-based\" or \"frame-based-receive\" (FBAR).\n\nThe Nexus switch is a \"frame-based\" switch. It does not send a frame to the host until it has read enough of the header to choose the egress port.\n\nThe Nexus switch is a \"frame-based\" switch. It does not send a frame to the host until it has read enough of the header to choose the egress port.\n\nThe Nexus switch is",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.46376811594202894
+      }
+    },
+    {
+      "id": "DGEN08",
+      "category": "vxlan-forwarding",
+      "evaluation_type": "domain_generalization",
+      "prompt": "Two workloads must remain in the same logical Layer 2 segment while residing across a routed Layer 3 data-center fabric. VXLAN accomplishes this by",
+      "expected_concepts": [
+        "MAC-in-UDP encapsulation",
+        "tunneling",
+        "VTEP",
+        "Layer 2 overlay"
+      ],
+      "response": "using a single Layer 2 segment to route traffic across the fabric.\n\nThe VXLAN fabric is a single-layer fabric that is used to route traffic across the fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured to be a single-layer fabric. The fabric is configured",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6296296296296297
+      }
+    },
+    {
+      "id": "DGEN09",
+      "category": "interface-troubleshooting",
+      "evaluation_type": "domain_generalization",
+      "prompt": "CRC and FCS counters on a Nexus interface continue increasing between polling intervals. The investigation should focus first on",
+      "expected_concepts": [
+        "physical layer",
+        "cable",
+        "optics",
+        "peer interface",
+        "speed or FEC"
+      ],
+      "response": "the timing of the CRC and FCS counters.\n\nThe CRC and FCS counters are used to detect the CRC and FCS errors in the data stream. The CRC and FCS counters are used to detect the CRC and FCS errors in the data stream.\n\nThe CRC and FCS counters are used to detect the CRC and FCS errors in the data stream.\n\nThe CRC and FCS counters are used to detect the CRC and FCS errors in the data stream.",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7307692307692308
+      }
+    },
+    {
+      "id": "DGEN10",
+      "category": "vpc-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A server should use one logical port channel while connecting redundantly to two separate Cisco Nexus switches. The switches should be configured as",
+      "expected_concepts": [
+        "vPC peers",
+        "vPC domain",
+        "peer-link",
+        "logical port channel"
+      ],
+      "response": "a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port channel.\n\nThe Cisco Nexus switches should be configured as a single logical port",
+      "generation_metrics": {
+        "concept_hits": [
+          "logical port channel"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8375
+      }
+    }
+  ]
+}

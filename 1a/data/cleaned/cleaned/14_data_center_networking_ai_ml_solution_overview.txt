@@ -1,0 +1,64 @@
+Cisco Data Center Networking AI/ML
+
+AI/ML Networking with Cisco Nexus 9000 Cisco® data center networking with Cisco Nexus® 9000 Series Switches and the Nexus Dashboard operations and automation platform provides the interplay of cutting-edge silicon, hardware, software, optics, and management tools to deliver high bandwidth, lossless, and low latency AI/ML networks.
+
+Trends and challenges Using Cisco Nexus 9000 solutions for existing For large GPU clusters, a spine-leaf network data center and AI/ML fabric enables leveraging is the optimal design because of its consistent The applications, workloads, and size of AI/ML the same silicon, hardware, software, and and predictable performance and scalability. clusters are influenced by factors such as the management tools with the ability to scale from The edge switchports (that connect to the size of datasets, desired job completion times, tens to thousands of GPUs. In addition, the GPU NIC ports) should operate at the highest type of model, and the Total Cost of Ownership forward compatibility with UEC standards allows available speeds, such as 400 GbE on the (TCO). standardization of the AI/ML fabric transport Cisco Nexus 9364D-GX2A switch. The core protocols. switchports between the leaf switches and These considerations lead to challenges that spine switches should match or exceed the impact deployment, adoption, and success of How it works speed at which the GPUs connect to the AI/ML fabrics: network. The inter-GPU network should not
+
+• Silos in network fabric: Within a data center, • Role of GPU: The complexity of be oversubscribed. For example, on a 64-port
+
+this could lead to various designs of data machine learning algorithms, collective leaf switch, if 32 ports connect to the GPUs, center networks for AI-specific and non-AI communication, and Remote Direct Memory the rest 32 ports should connect to the spine fabrics. Relying on proprietary protocols Access (RDMA) operations remain within switches. such as InfiniBand for AI fabric would require the end devices hosting the GPUs. The
+
+• Handling network congestion: Cisco Nexus
+
+the use of specialized hardware, software, network remains unaware of these details Series Switches isolate a faulty GPU Network management tools, training of resources, or and transfers the UDP/IP packets to the Interface Card (NIC) port that remains personnel trained in this new technology. destination using its standard forwarding unresponsive and unable to receive traffic mechanism. Although this simplifies the
+
+• Evolving needs of AI/ML networks: As continuously for a longer duration. After some
+
+networks for AI/ML infrastructure, the datasets grow, scaling of AI models across time, if the GPU NIC recovers, the switch continuous synchronization of the GPU states multiple clusters for compute, networking, detects this change and allows this NIC port to while calculating patterns in vast data sets and storage becomes necessary. This communicate via the network by de-isolating create unprecedented traffic patterns. For operational complexity leads to higher costs it. Both the isolation of an unresponsive NIC example, the GPUs may send and receive in power, cooling, and maintenance. port and the de-isolation of a healthy NIC port traffic at line rate. are automatically performed by the Nexus
+
+• Integration with existing data center:
+
+• Designing a network for AI: Smaller GPU switches. This feature, called Priority Flow
+
+Integrating AI/ML networks with existing clusters can use a single-switch network. Control Watchdog (PFC Watchdog), eliminates software ecosystems, databases, tools, For example, a 64-GPU cluster can be the source of congestion from the network, and processes can result in additional interconnected using the Cisco Nexus thereby ensuring other GPUs in the networks development costs. 9364D-GX2A switch. are not affected by the issue.
+
+Cisco Nexus Dashboard simplifies configuring • Managing job completion time: QoS features of Cisco Nexus Switches allow prioritizing or using the lossless networks by enabling PFC on dedicated queues for small-sized response or acknowledgment packets so that they are not delayed all network ports using a single check box. while waiting behind the large-sized data packets in the same queue. Multiple no-drop queues It has ready-made templates with optimized or priority queues can also be used based on the traffic profile from the GPU NICs. Cisco Nexus buffer thresholds to fine-tune the sending Dashboard automatically detects unusual spikes in network delay and flags them as anomalies. This of the Pause frames by the switch ports latency information is provided at a flow granularity and correlated with other relevant events such during congestion. Further optimizations as bursts and errors. Getting real-time visibility into the network hot spots gives enough insights to can be applied uniformly across the network a user to take corrective actions like adjusting the QoS thresholds, increasing network capacity, or by changing the templates with refined using an improved load-balancing scheme. To apply these actions uniformly across the network, thresholds. Nexus Dashboard offers customizable templates and full-featured APIs. Cisco Nexus Dashboard simplifies the Use cases interpretation of various congestion symptoms like the number of Pause frames Table 1. Use cases sent or received, the number of Explicit
+
+Congestion Notification (ECN) marked
+
+packets, and traffic sent and received on a link, by calculating a congestion score and an automatic assignment to mild, moderate, or severe categories. The automatic correlations in Nexus Dashboard eliminate long troubleshooting cycles by accurately detecting the source and cause of congestion. This real-time visibility simplifies the buffer fine-tuning by showing fabric-wide congestion trends and providing the ability to consistently apply the fine-tuned thresholds across the network.
+
+| Industry name | Use case description |
+| --- | --- |
+| Autonomous driving | • Process vast amount of data from sensors • Low latency to make quick decisions |
+| E-commerce | • Chatbots to handle inquiries from customers • Analyze consumer behavior and make recommendations of products or services |
+| Service providers | • Reduce congestion and provide faster service • Identify potential network issues and downtime |
+| Finance | • Quant based fast training networks • Process transactions and market trend with low latency |
+
+Services
+
+Embracing new solutions and scalability is key to de-risking AI infrastructure. The AI accelerator ecosystem is evolving, with innovations in GPUs, CPUs, and specialized AI hardware. Avoiding Cisco offers a wide range of services to help proprietary technologies enhances flexibility and reduces costs. accelerate your success in deploying and For instance, using Ethernet for GPU interconnections allows adaptation to new advancements. Cisco optimizing the Cisco Nexus 9000 solution Nexus 9000, certified to support the Intel® Gaudi 2 AI accelerator, exemplifies this. Cisco tested for your AI/ML data center networks. The Gaudi 2 servers with Nexus 9000 Ethernet fabric, ensuring performance and compatibility. The team innovative Cisco Services offerings are conducted months of extensive testing with Cisco Nexus 9364D-GX2A switches on the network and delivered through a unique combination Intel Gaudi 2 accelerators on the compute. Documented configurations provide a deployment guide, of people, processes, tools, and partners resulting in high performance and reliability. With this, Cisco is helping customers expedite their and are focused on helping you increase return on investments by validating GPU clusters for enterprise data center environments. operational efficiency and improve your data center network. Cisco Advanced Services
+
+Cisco Capital
+
+uses an architecture-led approach to help you align your data center infrastructure with Financing to help you achieve your objectives your business goals and achieve long-term Cisco Capital® can help you acquire the technology you need to achieve your objectives and stay value. Cisco SMARTnet™ Service helps you competitive. We can help you reduce CapEx. Accelerate your growth. Optimize your investment resolve mission-critical problems with direct dollars and ROI. Cisco Capital financing gives you flexibility in acquiring hardware, software, access at any time to Cisco network experts services, and complementary third-party equipment. And there’s just one predictable payment. and award-winning resources. Cisco Capital is available in more than 100 countries. Learn more.
+
+The Cisco Advantage
+
+Learn more The wide array of Cisco Nexus 9000 fixed and modular series high-speed switches, combined with
+
+• Cisco AI/ML Blueprint for data center its industry-leading Cisco NX-OS software and Cisco Nexus Dashboard operations and automation
+
+networks platform, offers the simplest and most efficient way to deploy, scale, and analyze data center fabrics for AI training and inference models. With focus on speed, power efficiency, and operational costs,
+
+• Cisco data center networking
+
+Cisco Nexus 9000 Series Switches enable organizations to build data centers that meet the evolving
+
+• Cisco Nexus Dashboard requirements of current and future AI workloads.
+
+• Intel Gaudi Platform | Intel® Gaudi® 2 AI
+
+Accelerator
+
+countries. To view a list of Cisco trademarks, go to this URL: www.cisco.com/go/trademarks. Third-party trademarks mentioned are the property of their respective owners.

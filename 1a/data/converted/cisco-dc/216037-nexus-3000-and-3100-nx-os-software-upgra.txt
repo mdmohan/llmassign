@@ -1,0 +1,1587 @@
+# MD5: 9be767014f65a2c2a45e54e954ca3e4b
+
+Upgrade Nexus 3000 and 3100 NX-OS Software
+Contents
+Introduction
+Prerequisites
+Requirements
+Components Used
+Background Information
+NX-OS Software Release Version Taxonomy
+NX-OS Software Upgrade Terminology
+Source Releases, Target Releases, and Intermediate Releases
+Types of NX-OS Software Upgrades
+Applicable Hardware
+NX-OS Software Upgrade Procedures
+Upgrade From NX-OS 6.x to NX-OS 6.x
+Step 1. Download Target Release from Cisco Software Download.
+Step 2. Copy Target Release to Cisco Nexus Switch.
+Step 3. Verify MD5 or SHA512 Checksum of Target Release.
+Step 4. Upgrade NX-OS Software via Install All Command.
+Step 5. Verify Successful NX-OS Software Upgrade.
+Step 6. Delete Source Release Binary Image Files from Cisco Nexus Switch.
+Upgrade From NX-OS 6.x to NX-OS 7.x
+Step 1. Upgrade From NX-OS 6.x to NX-OS 6.0(2)U6(10).
+Step 2. Download Target Release from Cisco Software Download.
+Step 3. Copy Target Release to Cisco Nexus Switch.
+Step 4. Verify MD5 or SHA512 Checksum of Target Release.
+Step 5. Upgrade NX-OS Software to Target Release via Install All Command.
+Step 6. Verify Successful Target NX-OS Software Upgrade.
+Step 7. Delete Intermediate Release Binary Image Files from Cisco Nexus Switch.
+Step 8. Execute NX-OS Compact Image Procedure on Target Release.
+Upgrade From NX-OS 6.x to NX-OS 9.2(x)
+Step 1. Upgrade From NX-OS 6.x to NX-OS 6.0(2)U6(10).
+Step 2. Upgrade From NX-OS 6.0(2)U6(10) to NX-OS 7.0(3)I7(9) or Later.
+Step 3. Upgrade From NX-OS 7.0(3)I7(9) or Later to NX-OS 9.2(x).
+Upgrade From NX-OS 6.x to NX-OS 9.3(x)
+Step 1. Upgrade From NX-OS 6.x to NX-OS 6.0(2)U6(10).
+Step 2. Upgrade From NX-OS 6.0(2)U6(10) to NX-OS 7.0(3)I7(9) or Later.
+Step 3. Upgrade From NX-OS 7.0(3)I7(9) or Later to NX-OS 9.3(x).
+Upgrade From NX-OS 7.x to NX-OS 7.x
+Step 1. Download Target Release from Cisco Software Download.
+Step 2. Copy Target Release to Cisco Nexus Switch.
+Step 3. Verify MD5 or SHA512 Checksum of Target Release.
+Step 4. Upgrade NX-OS Software via Install All Command.
+Step 5. Verify Successful NX-OS Software Upgrade.
+Step 6. Delete Source Release Binary Image Files from Cisco Nexus Switch.
+Step 7. Execute NX-OS Compact Image Procedure on Target Release.
+Upgrade From NX-OS 7.x to NX-OS 9.2(x)
+Step 1. Upgrade From NX-OS 7.x to NX-OS 7.0(3)I7(9).
+Step 2. Download Target Release from Cisco Software Download.
+Step 3. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via SCP.
+Step 4. Upgrade NX-OS Software to Target Release via Install All Command.
+
+Step 5. Verify Successful Target NX-OS Software Upgrade.
+Step 6. Delete Intermediate Release Binary Image Files from Cisco Nexus Switch.
+Upgrade From NX-OS 7.x to NX-OS 9.3(x)
+Step 1. Upgrade From NX-OS 7.x to NX-OS 7.0(3)I7(9).
+Step 2. Download Target Release from Cisco Software Download.
+Step 3. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via SCP.
+Step 4. Upgrade NX-OS Software to Target Release via Install All Command.
+Step 5. Verify Successful Target NX-OS Software Upgrade.
+Step 6. Delete Intermediate Release Binary Image File from Cisco Nexus Switch.
+Upgrade From NX-OS 9.2(x) to NX-OS 9.2(x)
+Step 1. Download Target Release from Cisco Software Download.
+Step 2. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via SCP.
+Step 3. Upgrade NX-OS Software to Target Release via Install All Command.
+Step 4. Verify Successful Target NX-OS Software Upgrade.
+Step 5. Delete Source Release Binary Image File from Cisco Nexus Switch.
+Upgrade From NX-OS 9.2(x) to NX-OS 9.3(x)
+Step 1. Upgrade From NX-OS 9.2(x) to NX-OS 9.2(4).
+Step 2. Download Target Release from Cisco Software Download.
+Step 3: Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via SCP
+Step 4. Upgrade NX-OS Software to Target Release via Install All Command.
+Step 5. Verify Successful Target NX-OS Software Upgrade.
+Step 6. Delete Intermediate Release Binary Image File from Cisco Nexus Switch.
+Upgrade From NX-OS 9.3(x) to NX-OS 9.3(x)
+Step 1. Download Target Release from Cisco Software Download.
+Step 2. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via SCP.
+Step 3. Upgrade NX-OS Software to Target Release via Install All Command.
+Step 4. Verify Successful Target NX-OS Software Upgrade.
+Step 5. Delete Source Release Binary Image File from Cisco Nexus Switch.
+Related Information
+Introduction
+This document describes disruptive NX-OS software upgrade processes for Cisco Nexus 3000 and 3100
+Series switches between major software releases.
+Prerequisites
+Requirements
+Cisco recommends that you understand the basics of copying files in Cisco NX-OS. For more information
+about this feature, refer to one of these applicable documents:
+• Cisco Nexus 3000 Series NX-OS Fundamentals Configuration Guide, Release 9.3(x)
+• Cisco Nexus 3000 Series NX-OS Fundamentals Configuration Guide, Release 9.2(x)
+• Cisco Nexus 3000 Series NX-OS Fundamentals Configuration Guide, Release 7.x
+Cisco recommends that you understand the basics of upgrading NX-OS software on Cisco Nexus 3000 and
+3100 Series switches. For more information about this procedure, refer to one of these applicable
+documents:
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 9.3(x)
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 9.2(x)
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 7.x
+
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 6.x
+Components Used
+The information in this document is based on the Cisco Nexus 3000 and 3100 Series switches listed in the
+Applicable Hardware section of this document. The device output in this document was taken from a Nexus
+3172PQ-10GE (model number N3K-C3172PQ-10GE) running various NX-OS software releases.
+The information in this document was created from the devices in a specific lab environment. All of the
+devices used in this document started with a cleared (default) configuration. If your network is live, ensure
+that you understand the potential impact of any command.
+Background Information
+This document describes the steps used to upgrade Cisco NX-OS software on Cisco Nexus 3000 and 3100
+Series switches from and to a variety of NX-OS software releases using supported disruptive upgrade paths.
+The intent behind this document is to provide step-by-step instructions to perform supported NX-OS
+software upgrades between common major and minor NX-OS software releases.
+This document does not describe steps used to perform any non-disruptive upgrade for Cisco NX-OS
+software on Cisco Nexus 3000 and 3100 Series switches. In-Service Software Upgrade (ISSU) procedures
+and upgrade paths are outside the scope of this document.
+NX-OS Software Release Version Taxonomy
+Cisco NX-OS software release names contain a number of components that are regularly referenced in this
+document. The names of these components are clearly defined in the Cisco NX-OS Software Release
+Naming section of the Cisco IOS and Cisco NX-OS Software Release Reference Guide. Specifically, you
+must be aware of these terms:
+• Major release number
+• Minor release number
+• Maintenance release number
+• Platform designator
+• Platform minor release number
+• Platform maintenance release number
+• Platform rebuild identifier
+For example, NX-OS software release 7.0(3)I7(5a) has these components:
+As another example, NX-OS software release 9.3(5) has these components:
+
+
+[EXTRACTED TABLES]:
+
+
+| Component Name Component Value |  |
+| --- | --- |
+| Major release number | 7 |
+| Minor release number | 0 |
+| Maintenance release number | 3 |
+| Platform Designator | I |
+| Platform minor release number | 7 |
+| Platform maintenance release number | 5 |
+| Platform rebuild identifier | a |
+
+Note: The NX-OS 9 major release (sometimes referred to as 9.x in the documentation) adopts a new,
+unified version-numbering convention that does not include platform designator, platform minor
+release number, platform maintenance release number, or platform rebuilds identifier components.
+Cisco Nexus configuration guides are typically grouped by NX-OS major release numbers. Within the title
+of these configuration guides, NX-OS major release numbers are typically displayed such that the major
+release number has a variable x appended referring to the minor release (such as 6.x, 7.x, and so on). For
+example, the Cisco Nexus 9000 Series NX-OS Fundamentals Configuration Guide, Release 7.x is applicable
+to all NX-OS 7 major releases (although specific caveats, limitations, and configuration examples could be
+specific to certain minor or maintenance release numbers).
+The exception to this rule is the NX-OS 9 major release. For the NX-OS 9 major release, Cisco Nexus
+configuration guides are grouped by the NX-OS major and minor release numbers, with a variable
+x, appended referring to the maintenance release (such as 9.2(x) and 9.3(x)).
+This document uses the formatting used by the titles of Cisco Nexus configuration guides (6.x, 7.x, 9.2(x),
+9.3(x), and so on) to describe standard disruptive NX-OS software upgrades between two NX-OS software
+releases.
+NX-OS Software Upgrade Terminology
+Source Releases, Target Releases, and Intermediate Releases
+An NX-OS software upgrade is typically performed between two releases - a source release (which is the
+NX-OS software release you are upgrading from) and a target release (which is the NX-OS software
+release you are upgrading to). For example, if you upgrade a Nexus 3172PQ-10GE switch from NX-OS
+software release 7.0(3)I7(8) to NX-OS software release 9.3(5), 7.0(3)I7(8) would be your source release
+while 9.3(5) would be your target release.
+In order to upgrade from a specific source release to a specific target release, your upgrade path
+could require an upgrade to one or more intermediate releases. For example, if you upgrade a Nexus
+3172PQ-10GE switch from NX-OS software release 7.0(3)I7(5a) to NX-OS software release 9.3(5), you
+need an upgrade to an intermediate release of 7.0(3)I7(8) or 9.2(4) before you can successfully upgrade to
+NX-OS software release 9.3(5).
+Types of NX-OS Software Upgrades
+NX-OS software upgrades can be divided into two categories:
+• Disruptive Upgrades - A disruptive upgrade between a source release and a target release where the
+Nexus switch reloads at the end of the upgrade process. The reload causes the data plane, control
+plane, and management plane of the Nexus switch to go offline in a short period of time.
+• In-Service Software Upgrade (ISSU) - A non-disruptive upgrade between a source release and a target
+release where the data plane of the Nexus switch remains online and forwards traffic as a result of
+Non-Stop Forwarding (NSF).
+The procedure for non-disruptive ISSU NX-OS software upgrades is outside the scope of this document.
+
+
+[EXTRACTED TABLES]:
+
+
+| Component Name Component Value |  |
+| --- | --- |
+| Major release number | 9 |
+| Minor release number | 3 |
+| Maintenance release number | 5 |
+
+This document only covers the standard disruptive NX-OS software upgrades.
+Applicable Hardware
+The procedure covered in this document is applicable to this hardware only:
+• N3K-C3016Q-40GE
+• N3K-C3064PQ-10GX
+• N3K-C3064TQ-10GT
+• N3K-C3064TQ-32T
+• N3K-C3132Q-40GE
+• N3K-C3132Q-40GX
+• N3K-C3132Q-XL
+• N3K-C3172PQ-10GE
+• N3K-C3172PQ-XL
+• N3K-C3172TQ-10GT
+• N3K-C3172TQ-32T
+• N3K-C3172TQ-XL
+The procedure covered in this document is not applicable to Nexus 3048 switches (N3K-C3048TP-1GE).
+Reference the Upgrade Nexus 3048 NX-OS Software document for information on how to upgrade the NX-
+OS software of Nexus 3048 switches.
+NX-OS Software Upgrade Procedures
+This section of the document describes how to perform standard disruptive NX-OS software upgrades from
+a variety of source releases to a variety of target releases.
+Upgrade From NX-OS 6.x to NX-OS 6.x
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 6.x major release to a target release in the NX-OS 6.x major release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus N3K-C3172PQ-
+10GE switch from a source release of 6.0(2)U5(1) to a target release of 6.0(2)U6(10):
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ----------------------------------- ---------------------- ------------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE-SU active *
+Mod Sw Hw World-Wide-Name(s) (WWN)
+--- -------------- ------ ----------------------------------------------------
+1 6.0(2)U5(1) 1.1 --
+Step 1. Download Target Release from Cisco Software Download.
+
+NX-OS 6.x software requires a total of two NX-OS binary image files: a system image, and a kickstart
+image. You need to download these images from Cisco's Software Download website to your local
+computer. The specific steps you need to take to download software from Cisco's Software Download
+website are outside the scope of this document.
+Step 2. Copy Target Release to Cisco Nexus Switch.
+Copy the NX-OS 6.x kickstart and system binary image files to the Nexus 3000 or 3100 Series switch you
+would like to disruptively upgrade using your file transfer protocol of choice. This example demonstrates
+how to copy the kickstart and system binary image files for the NX-OS 6.0(2)U6(1a) software release
+via File Transfer Protocol (FTP) from an FTP server 192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+37734400 Sep 21 15:32:00 2020 n3000-uk9-kickstart.6.0.2.U5.1.bin
+189984434 Sep 21 15:36:46 2020 n3000-uk9.6.0.2.U5.1.bin
+N3K-C3172PQ-10GE#
+copy ftp://username@192.0.2.100/n3000-uk9-kickstart.6.0.2.U6.10.bin bootflash: vrf management
+Password:
+Copy complete, now saving to disk (please wait)...
+N3K-C3172PQ-10GE#
+copy ftp://username@192.0.2.100/n3000-uk9.6.0.2.U6.10.bin bootflash: vrf management
+Password:
+Copy complete, now saving to disk (please wait)...
+N3K-C3172PQ-10GE#
+dir | include bin
+37734400 Sep 21 15:32:00 2020 n3000-uk9-kickstart.6.0.2.U5.1.bin
+37881856 Sep 21 17:35:37 2020 n3000-uk9-kickstart.6.0.2.U6.10.bin
+189984434 Sep 21 15:36:46 2020 n3000-uk9.6.0.2.U5.1.bin
+206130057 Sep 21 17:36:11 2020 n3000-uk9.6.0.2.U6.10.bin
+Step 3. Verify MD5 or SHA512 Checksum of Target Release.
+After the NX-OS 6.x kickstart and system binary image files are copied to the Nexus 3000 or 3100 Series
+switch, you would like to disruptively upgrade using your file transfer protocol of choice, verify that the
+binary image files were not corrupted in transport by ensuring their MD5 or SHA512 checksums match
+what is published on Cisco's Software Download website.
+You can identify the MD5 and SHA512 checksum of NX-OS binary image files through Cisco's Software
+Download website by hovering your cursor over the image on the website. An example of this is shown in
+this image.
+
+This example demonstrates how to verify the MD5 checksum of the kickstart and system binary image files
+for the NX-OS 6.0(2)U6(10) software release through the show file bootflash:{filename} md5sum
+command. The expected MD5 checksum for the NX-OS 6.0(2)U6(10) kickstart binary image file is
+f07cbe12d2e489ce02b9577b59753335, while the expected MD5 checksum for the NX-OS 6.0(2)U6(10)
+system binary image file is 98b1ba8106afbc85b83c0f985a66cd30.
+<#root>
+N3K-C3172PQ-10GE#
+show file bootflash:n3000-uk9-kickstart.6.0.2.U6.10.bin md5sum
+f07cbe12d2e489ce02b9577b59753335
+N3K-C3172PQ-10GE#
+show file bootflash:n3000-uk9.6.0.2.U6.10.bin md5sum
+98b1ba8106afbc85b83c0f985a66cd30
+Step 4. Upgrade NX-OS Software via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires both the kickstart and system parameters to be passed in with the absolute filepath of the NX-OS
+kickstart and system binary image files corresponding with the target release.
+This example shows the install all command where the kickstart parameter points to the absolute filepath
+
+of the NX-OS kickstart binary image file (bootflash:n3000-kickstart-uk9.6.0.2.U6.10.bin) and the system
+parameter points to the absolute filepath of the NX-OS system binary image file (bootflash:n3000-
+uk9.6.0.2.U6.10.bin).
+<#root>
+N3K-C3172PQ-10GE#
+install all kickstart bootflash:n3000-uk9-kickstart.6.0.2.U6.10.bin system bootflash:n3000-uk9.6.0.2.U6.10.bin
+Installer is forced disruptive
+Verifying image bootflash:/n3000-uk9-kickstart.6.0.2.U6.10.bin for boot variable "kickstart".
+[########################################] 100% -- SUCCESS
+Verifying image bootflash:/n3000-uk9.6.0.2.U6.10.bin for boot variable "system".
+[########################################] 100% -- SUCCESS
+Verifying image type.
+[########################################] 100% -- SUCCESS
+Extracting "system" version from image bootflash:/n3000-uk9.6.0.2.U6.10.bin.
+[########################################] 100% -- SUCCESS
+Extracting "kickstart" version from image bootflash:/n3000-uk9-kickstart.6.0.2.U6.10.bin.
+[########################################] 100% -- SUCCESS
+Extracting "bios" version from image bootflash:/n3000-uk9.6.0.2.U6.10.bin.
+[########################################] 100% -- SUCCESS
+Performing module support checks.
+[########################################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[########################################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset Forced by the user
+Images will be upgraded according to following table:
+Module Image Running-Version New-Version Upg-Required
+------ ---------------- ---------------------- ---------------------- ------------
+1 system 6.0(2)U5(1) 6.0(2)U6(10) yes
+1 kickstart 6.0(2)U5(1) 6.0(2)U6(10) yes
+1 bios v2.6.0(04/01/2014) v2.6.0(04/01/2014) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Time Stamp: Mon Sep 21 17:42:55 2020
+
+Install is in progress, please wait.
+Performing runtime checks.
+[########################################] 100% -- SUCCESS
+Setting boot variables.
+[########################################] 100% -- SUCCESS
+Performing configuration copy.
+[########################################] 100% -- SUCCESS
+Time Stamp: Mon Sep 21 17:43:44 2020
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 5. Verify Successful NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch is reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 6.0(2)U6(10).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ----------------------------------- ---------------------- ------------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE-SU active *
+Mod Sw Hw World-Wide-Name(s) (WWN)
+--- -------------- ------ ----------------------------------------------------
+1 6.0(2)U6(10) 1.1 --
+Step 6. Delete Source Release Binary Image Files from Cisco Nexus Switch.
+After you verify that the NX-OS software upgrade from the source release to the target release was
+successful, preserve free space on the switch's bootflash by deleting the source release's kickstart and system
+binary image files from the bootflash of the device. This can be done with the delete bootflash:{filename}
+command. An example of this is shown here, where the NX-OS 6.0(2)U5(1) kickstart and system binary
+image files are deleted from the switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+37734400 Sep 21 15:32:00 2020 n3000-uk9-kickstart.6.0.2.U5.1.bin
+37881856 Sep 21 17:35:37 2020 n3000-uk9-kickstart.6.0.2.U6.10.bin
+189984434 Sep 21 15:36:46 2020 n3000-uk9.6.0.2.U5.1.bin
+206130057 Sep 21 17:36:11 2020 n3000-uk9.6.0.2.U6.10.bin
+
+N3K-C3172PQ-10GE#
+delete bootflash:n3000-uk9-kickstart.6.0.2.U5.1.bin
+N3K-C3172PQ-10GE#
+delete bootflash:n3000-uk9.6.0.2.U5.1.bin
+N3K-C3172PQ-10GE#
+dir | include bin
+37881856 Sep 21 17:35:37 2020 n3000-uk9-kickstart.6.0.2.U6.10.bin
+206130057 Sep 21 17:36:11 2020 n3000-uk9.6.0.2.U6.10.bin
+Upgrade From NX-OS 6.x to NX-OS 7.x
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 6.x major release to a target release in the NX-OS 7.x major release.
+Note: An NX-OS software upgrade to a target release in the NX-OS 7.x major release from a source
+release in the NX-OS 6.x major release requires a mandatory intermediate upgrade to 6.0(2)U6(10)
+before upgrading to the desired target release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus N3K-C3172PQ-
+10GE switch from a source release of 6.0(2)U5(1) to a target release of 7.0(3)I7(9) with the mandatory
+intermediate upgrade to 6.0(2)U6(10):
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ----------------------------------- ---------------------- ------------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE-SU active *
+Mod Sw Hw World-Wide-Name(s) (WWN)
+--- -------------- ------ ----------------------------------------------------
+1 6.0(2)U5(1) 1.1 --
+Step 1. Upgrade From NX-OS 6.x to NX-OS 6.0(2)U6(10).
+Use the Upgrade From NX-OS 6.x to NX-OS 6.x section of this document to perform a standard disruptive
+NX-OS software upgrade from your source release to an intermediate release of NX-OS software release
+6.0(2)U6(10). This is required in order for an upgrade to a target release in the NX-OS 7.x major release to
+be successful.
+Step 2. Download Target Release from Cisco Software Download.
+NX-OS 7.x software uses a single NX-OS binary image file (sometimes referred to as a unified image file).
+
+You need to download this image from Cisco's Software Download website to your local computer. The
+specific steps you need to take to download software from Cisco's Software Download website are outside
+the scope of this document.
+Note: If you are upgrading to NX-OS software release 7.0(3)I7(8) or 7.0(3)I7(9), Cisco advises you
+download the compact NX-OS software image from Cisco's Software Download website. When
+browsing the website, select the model of Nexus switch that you are attempting to upgrade and
+navigate to the desired target NX-OS software release. Then, locate the software image with
+"Compact Image" in its description and the word "compact" in its filename. For more information,
+refer to the "Compact NX-OS Software Images on Cisco's Software Download Website" section of
+the Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 7.x
+document.
+Step 3. Copy Target Release to Cisco Nexus Switch.
+Copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch you would like to
+disruptively upgrade using your file transfer protocol of choice. This example demonstrates how to copy the
+NX-OS 7.0(3)I7(9) software release kickstart and system binary image files via FTP (File Transfer
+Protocol) from an FTP server 192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+37881856 Sep 21 17:35:37 2020 n3000-uk9-kickstart.6.0.2.U6.10.bin
+206130057 Sep 21 17:36:11 2020 n3000-uk9.6.0.2.U6.10.bin
+N3K-C3172PQ-10GE#
+copy ftp://username@192.0.2.100/nxos.7.0.3.I7.9.bin bootflash: vrf management
+Password:
+Copy complete, now saving to disk (please wait)...
+N3K-C3172PQ-10GE#
+dir | include bin
+37881856 Sep 21 17:35:37 2020 n3000-uk9-kickstart.6.0.2.U6.10.bin
+206130057 Sep 21 17:36:11 2020 n3000-uk9.6.0.2.U6.10.bin
+982694912 Sep 21 18:00:31 2020 nxos.7.0.3.I7.9.bin
+Step 4. Verify MD5 or SHA512 Checksum of Target Release.
+After the target release unified binary image files are copied to the Nexus 3000 or 3100 Series switch, you
+would like to disruptively upgrade using your file transfer protocol of choice, verify that the binary image
+file was not corrupted in transport by ensuring its MD5 or SHA512 checksum matches what is published on
+Cisco's Software Download website.
+You can identify the MD5 and SHA512 checksum of NX-OS binary image files through Cisco's Software
+Download website by hovering your cursor over the image on the website. An example of this is shown in
+this image.
+
+This example demonstrates how to verify the MD5 checksum of the unified binary image file for the NX-OS
+7.0(3)I7(9) software release through the show file bootflash:{filename} md5sum command. The expected
+MD5 checksum for the NX-OS 7.0(3)I7(9) unified binary image file is
+d31d5b556cc4d92f2ff2d83b5df7b943.
+<#root>
+N3K-C3172PQ-10GE#
+show file bootflash:nxos.7.0.3.I7.9.bin md5sum
+d31d5b556cc4d92f2ff2d83b5df7b943
+Step 5. Upgrade NX-OS Software to Target Release via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 7.0(3)I7(9) unified binary image file (bootflash:nxos.7.0.3.I7.9.bin).
+<#root>
+
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.7.0.3.I7.9.bin
+Installer is forced disruptive
+Verifying image bootflash:/nxos.7.0.3.I7.9.bin for boot variable "nxos".
+[########################################] 100% -- SUCCESS
+Verifying image type.
+[########################################] 100% -- SUCCESS
+Extracting "nxos" version from image bootflash:/nxos.7.0.3.I7.9.bin.
+[########################################] 100% -- SUCCESS
+Extracting "bios" version from image bootflash:/nxos.7.0.3.I7.9.bin.
+[########################################] 100% -- SUCCESS
+Performing runtime checks.
+[########################################] 100% -- SUCCESS
+Performing module support checks.
+[########################################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[########################################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset Unsupported in new image, module needs to be powered off
+Images will be upgraded according to following table:
+Module Image Running-Version New-Version Upg-Required
+------ ---------------- ---------------------- ---------------------- ------------
+1 kickstart 6.0(2)U6(10) 7.0(3)I7(9) yes
+1 bios v2.6.0(04/01/2014) v5.3.1(05/17/2019) yes
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Time Stamp: Mon Sep 21 18:08:21 2020
+Install is in progress, please wait.
+Performing runtime checks.
+[########################################] 100% -- SUCCESS
+Setting boot variables.
+[########################################] 100% -- SUCCESS
+Performing configuration copy.
+[########################################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom/power-seq.
+Warning: please do not remove or power off the module at this time.
+Note: Power-seq upgrade needs a power-cycle to take into effect.
+On success of power-seq upgrade, SWITCH OFF THE POWER to the system and then, power it up.
+[########################################] 100% -- SUCCESS
+Time Stamp: Mon Sep 21 18:12:48 2020
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 6. Verify Successful Target NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ---------------- ------ ----
+1 7.0(3)I7(9) 1.1 NA
+Step 7. Delete Intermediate Release Binary Image Files from Cisco Nexus Switch.
+After you verify that the NX-OS software upgrade from the intermediate release to the target release was
+successful, preserve free space on the switch's bootflash by deleting the intermediate release's kickstart and
+system binary image files from the bootflash of the device. This can be done with the delete
+bootflash:{filename} command. An example of this is shown here, where the NX-OS 6.0(2)U6(10)
+kickstart and system binary image files are deleted from the switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+37881856 Sep 21 17:35:37 2020 n3000-uk9-kickstart.6.0.2.U6.10.bin
+206130057 Sep 21 17:36:11 2020 n3000-uk9.6.0.2.U6.10.bin
+982694912 Sep 21 18:00:31 2020 nxos.7.0.3.I7.9.bin
+N3K-C3172PQ-10GE#
+delete bootflash:n3000-uk9-kickstart.6.0.2.U6.10.bin
+Do you want to delete "/n3000-uk9-kickstart.6.0.2.U6.10.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+
+delete bootflash:n3000-uk9.6.0.2.U6.10.bin
+Do you want to delete "/n3000-uk9.6.0.2.U6.10.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+982694912 Sep 21 18:00:31 2020 nxos.7.0.3.I7.9.bin
+Step 8. Execute NX-OS Compact Image Procedure on Target Release.
+Note: You must skip this step if you upgrade using a compact NX-OS software image downloaded
+directly from Cisco's Software Download website. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 7.x document.
+Run the NX-OS Compact Image Procedure on the NX-OS 7.0(3)I7(9) binary image file stored on the
+bootflash of the device with the install all nxos bootflash:{nxos-binary-image-file.bin} compact
+command. This reduces the file size of the NX-OS 7.0(3)I7(9) binary image file, which increases the amount
+of free space on the bootflash. This is a requirement for future NX-OS software upgrades to be performed,
+as the total size of the bootflash on the Nexus 3000 or 3100 Series switch is not large enough to store two
+NX-OS binary image files in the 7.x or 9.x major releases at the same time. For more information about the
+NX-OS Compact Image Procedure, refer to the Nexus 3000, 3100, and 3500 NX-OS Compact Image
+Procedure document.
+An example of the NX-OS Compact Image Procedure executed against the NX-OS 7.0(3)I7(9) binary image
+file stored on the bootflash of a Nexus switch is shown here:
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+982694912 Sep 21 18:00:31 2020 nxos.7.0.3.I7.9.bin
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.7.0.3.I7.9.bin compact
+Installer will perform compatibility check first. Please wait.
+Compacting currently loaded image bootflash:/nxos.7.0.3.I7.9.bin
+....................................
+Compact bootflash:/nxos.7.0.3.I7.9.bin done
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 21 18:24:48 2020 nxos.7.0.3.I7.9.bin
+Upgrade From NX-OS 6.x to NX-OS 9.2(x)
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 6.x major release to a target release in the NX-OS 7.x major release.
+
+Note: An NX-OS software upgrade to a target release in the NX-OS 9.2(x) minor release from a
+source release in the NX-OS 6.x major release requires two mandatory intermediate upgrades. The
+first intermediate upgrade is to NX-OS 6.0(2)U6(10). The second intermediate upgrade is to NX-OS
+7.0(3)I7(9). After the second intermediate upgrade to 7.0(3)I7(9), you must upgrade to the desired
+target release in the NX-OS 9.2(x) minor release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus N3K-C3172PQ-
+10GE switch from a source release of 6.0(2)U5(1) to a target release of 9.3(5) with mandatory intermediate
+upgrades to 6.0(2)U6(10) and 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ----------------------------------- ---------------------- ------------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE-SU active *
+Mod Sw Hw World-Wide-Name(s) (WWN)
+--- -------------- ------ ----------------------------------------------------
+1 6.0(2)U5(1) 1.1 --
+Step 1. Upgrade From NX-OS 6.x to NX-OS 6.0(2)U6(10).
+Use the Upgrade From NX-OS 6.x to NX-OS 6.x section of this document to perform a standard disruptive
+NX-OS software upgrade from your source release to an intermediate release of NX-OS software release
+6.0(2)U6(10). This is required in order for an upgrade to a target release in the NX-OS 9.2(x) minor release
+to be successful.
+Step 2. Upgrade From NX-OS 6.0(2)U6(10) to NX-OS 7.0(3)I7(9) or Later.
+Use the Upgrade From NX-OS 6.x to NX-OS 7.x section of this document to perform a standard disruptive
+NX-OS software upgrade from an intermediate release of 6.0(2)U6(10) to an intermediate release of
+7.0(3)I7(9) or later. This is required in order for an upgrade to a target release in the NX-OS 9.2(x) minor
+release to be successful.
+Step 3. Upgrade From NX-OS 7.0(3)I7(9) or Later to NX-OS 9.2(x).
+Use the Upgrade From NX-OS 7.x to NX-OS 9.2(x) section of this document to perform a standard
+disruptive NX-OS software upgrade from NX-OS software release 7.0(3)I7(9) or later to your desired target
+release in the NX-OS 9.2(x) minor release.
+Upgrade From NX-OS 6.x to NX-OS 9.3(x)
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 6.x major release to a target release in the NX-OS 9.3(x) minor release.
+Note: An NX-OS software upgrade to a target release in the NX-OS 9.3(x) minor release from a
+
+source release in the NX-OS 6.x major release requires two mandatory intermediate upgrades. The
+first intermediate upgrade is to NX-OS 6.0(2)U6(10). The second intermediate upgrade is to NX-OS
+7.0(3)I7(9) or later. After the second intermediate upgrade to 7.0(3)I7(9) or later, you must upgrade to
+the desired target release in the NX-OS 9.3(x) minor release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus N3K-C3172PQ-
+10GE switch from a source release of 6.0(2)U5(1) to a target release of 9.3(5) with mandatory intermediate
+upgrades to 6.0(2)U6(10) and 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ----------------------------------- ---------------------- ------------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE-SU active *
+Mod Sw Hw World-Wide-Name(s) (WWN)
+--- -------------- ------ ----------------------------------------------------
+1 6.0(2)U5(1) 1.1 --
+Step 1. Upgrade From NX-OS 6.x to NX-OS 6.0(2)U6(10).
+Use the Upgrade From NX-OS 6.x to NX-OS 6.x section of this document to perform a standard disruptive
+NX-OS software upgrade from your source release to an intermediate release of NX-OS software release
+6.0(2)U6(10). This is required in order for an upgrade to a target release in the NX-OS 9.2(x) minor release
+to be successful.
+Step 2. Upgrade From NX-OS 6.0(2)U6(10) to NX-OS 7.0(3)I7(9) or Later.
+Use the Upgrade From NX-OS 6.x to NX-OS 7.x section of this document to perform a standard disruptive
+NX-OS software upgrade from an intermediate release of 6.0(2)U6(10) to an intermediate release of
+7.0(3)I7(9) or later. This is required in order for an upgrade to a target release in the NX-OS 9.2(x) minor
+release to be successful.
+Step 3. Upgrade From NX-OS 7.0(3)I7(9) or Later to NX-OS 9.3(x).
+Use the Upgrade From NX-OS 7.x to NX-OS 9.3(x) section of this document to perform a standard
+disruptive NX-OS software upgrade from NX-OS software release 7.0(3)I7(9) or later to your desired target
+release in the NX-OS 9.3(x) minor release.
+Upgrade From NX-OS 7.x to NX-OS 7.x
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 7.x major release to a target release later in the NX-OS 7.x major release.
+Note: An NX-OS software upgrade from a source release of 7.0(3)I7(5) or 7.0(3)I7(5a) to a later NX-
+OS software release could fail with a "Digital signature verification failed" or "Image verification
+
+failed" error message. The root cause of this issue is Cisco bug ID CSCvm11656. Disabling NX-OS
+image verification for this upgrade with the no feature signature-verification configuration
+command works around this issue.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus 3172PQ-10GE
+switch from a source release of 7.0(3)I2(2a) to a target release of 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- ----------------- ----------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ---------------- ------ ----
+1 7.0(3)I2(2a) 1.1 NA
+Step 1. Download Target Release from Cisco Software Download.
+NX-OS 7.x software uses a single NX-OS binary image file (sometimes referred to as a unified image file).
+You need to download this image from Cisco's Software Download website to your local computer. The
+specific steps you need to take to download software from Cisco's Software Download website are outside
+the scope of this document.
+Note: If you are upgrading to NX-OS software release 7.0(3)I7(8), 7.0(3)I7(9), or 7.0(3)I7(10), Cisco
+advises you download the compact NX-OS software image from Cisco's Software Download website.
+When browsing the website, select the model of Nexus switch that you are attempting to upgrade and
+navigate to the desired target NX-OS software release. Then, locate the software image with
+"Compact Image" in its description and the word "compact" in its filename. For more information,
+refer to the "Compact NX-OS Software Images on Cisco's Software Download Website" section of
+the Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 7.x
+document.
+Step 2. Copy Target Release to Cisco Nexus Switch.
+Copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch you would like to
+disruptively upgrade using your file transfer protocol of choice. This example demonstrates how to copy the
+NX-OS 7.0(3)I7(9) software release kickstart and system binary image files via FTP (File Transfer
+Protocol) from an FTP server 192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+537972736 Sep 21 19:01:41 2020 nxos.7.0.3.I2.2a.bin
+
+N3K-C3172PQ-10GE#
+copy ftp://username@192.0.2.100/nxos.7.0.3.I7.9.bin bootflash: vrf management
+Password:
+***** Transfer of file Completed Successfully *****
+Copy complete, now saving to disk (please wait)...
+N3K-C3172PQ-10GE#
+dir | include bin
+537972736 Sep 21 19:01:41 2020 nxos.7.0.3.I2.2a.bin
+982694912 Sep 21 19:13:02 2020 nxos.7.0.3.I7.9.bin
+Note: Starting with NX-OS software release 7.0(3)I5(2) and later, in order to copy the target release
+unified binary image file via SCP, run the NX-OS Compact Image Procedure via SCP. For more
+information on this procedure, please refer to the Nexus 3000, 3100, and 3500 NX-OS Compact
+Image Procedure document.
+Step 3. Verify MD5 or SHA512 Checksum of Target Release.
+After you copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch, you
+would like to disruptively upgrade using your file transfer protocol of choice, verify that the binary image
+file was not corrupted in transport by ensuring its MD5 or SHA512 checksum matches what is published on
+Cisco's Software Download website.
+You can identify the MD5 and SHA512 checksum of NX-OS binary image files through Cisco's Software
+Download website by hovering your cursor over the image on the website. An example of this is shown in
+the image here.
+
+This example demonstrates how to verify the MD5 checksum of the unified binary image file for the NX-OS
+7.0(3)I7(9) software release through the show file bootflash:{filename} md5sum command. The expected
+MD5 checksum for the NX-OS 7.0(3)I7(9) unified binary image file is
+d31d5b556cc4d92f2ff2d83b5df7b943.
+<#root>
+N3K-C3172PQ-10GE#
+show file bootflash:nxos.7.0.3.I7.9.bin md5sum
+d31d5b556cc4d92f2ff2d83b5df7b943
+Step 4. Upgrade NX-OS Software via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 7.0(3)I7(9) unified binary image file (bootflash:nxos.7.0.3.I7.9.bin).
+<#root>
+
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.7.0.3.I7.9.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.7.0.3.I7.9.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+Verifying image type.
+[####################] 100% -- SUCCESS
+[## ] 5% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.7.0.3.I7.9.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.7.0.3.I7.9.bin.
+[####################] 100% -- SUCCESS
+Collecting "running" plugin(s) information.
+[# ] 0%
+Collecting plugin(s) information from "new" image.
+[# ] 0%
+Performing runtime checks.
+[## ] 5%
+"Running-config contains configuration that is incompatible with the new image (strict incompatibility).
+Please run 'show incompatibility-all nxos <image>' command to find out which feature needs to be disabled.".
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset Incompatible image
+Images will be upgraded according to following table:
+Module Image Running-Version(pri:alt) New-Version Upg-Required
+------ ---------- ---------------------------------------- -------------------- ------------
+1 nxos 7.0(3)I2(2a) 7.0(3)I7(9) yes
+1 bios v5.3.1(05/17/2019) v5.3.1(05/17/2019) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 5. Verify Successful NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ---------------- ------ ----
+1 7.0(3)I7(9) 1.1 NA
+Step 6. Delete Source Release Binary Image Files from Cisco Nexus Switch.
+Verify that the NX-OS software upgrade from the source release to the target release was successful. In
+order to preserve free space on the switch's bootflash, delete the source release's unified binary image files
+from the bootflash of the device. This can be done with the delete bootflash:{filename} command. An
+example of this is shown here, where the NX-OS 7.0(3)I2(2a) unified binary image file is deleted from the
+switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+537972736 Sep 21 19:01:41 2020 nxos.7.0.3.I2.2a.bin
+982694912 Sep 21 19:13:02 2020 nxos.7.0.3.I7.9.bin
+N3K-C3172PQ-10GE#
+delete bootflash:nxos.7.0.3.I2.2a.bin
+
+Do you want to delete "/nxos.7.0.3.I2.2a.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+982694912 Sep 21 19:13:02 2020 nxos.7.0.3.I7.9.bin
+Step 7. Execute NX-OS Compact Image Procedure on Target Release.
+Note: You must skip this step if you upgrade using a compact NX-OS software image downloaded
+directly from Cisco's Software Download website. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 7.x document.
+Note: This step is only required if you did not copy the target release unified binary image via SCP by
+executing the NX-OS Compact Image Procedure via SCP in Step 2.
+Run the NX-OS Compact Image Procedure on the NX-OS 7.0(3)I7(9) binary image file stored on the
+bootflash of the device with the install all nxos bootflash:{nxos-binary-image-file.bin} compact
+command. This reduces the file size of the NX-OS 7.0(3)I7(9) binary image file, which increases the amount
+of free space on the bootflash. This is a requirement for future NX-OS software upgrades to be performed,
+as the total size of the bootflash on the Nexus 3000 or 3100 Series switch is not large enough to store two
+NX-OS binary image files in the 7.x or 9.x major releases at the same time. For more information about the
+NX-OS Compact Image Procedure, refer to the Nexus 3000, 3100, and 3500 NX-OS Compact Image
+Procedure document.
+An example of the NX-OS Compact Image Procedure executed against the NX-OS 7.0(3)I7(9) binary image
+file stored on the bootflash of a Nexus switch is shown here:
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+982694912 Sep 21 19:13:02 2020 nxos.7.0.3.I7.9.bin
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.7.0.3.I7.9.bin compact
+Installer will perform compatibility check first. Please wait.
+Compacting currently loaded image bootflash:/nxos.7.0.3.I7.9.bin
+....................................
+Compact bootflash:/nxos.7.0.3.I7.9.bin done
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 21 21:48:27 2020 nxos.7.0.3.I7.9.bin
+Upgrade From NX-OS 7.x to NX-OS 9.2(x)
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+
+a source release in the NX-OS 7.x major release to a target release in the NX-OS 9.2(x) minor release.
+Note: An NX-OS software upgrade to a target release in the NX-OS 9.2(x) minor release from a
+source release that is in the NX-OS 7.x major release requires a mandatory intermediate upgrade to
+NX-OS 7.0(3)I7(9) or later before upgrading to the desired target release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus 3172PQ-10GE
+switch from a source release of 7.0(3)I2(2a) to a target release of 9.2(4) with a mandatory intermediate
+upgrade to 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- ----------------- ----------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ---------------- ------ ----
+1 7.0(3)I2(2a) 1.1 NA
+Step 1. Upgrade From NX-OS 7.x to NX-OS 7.0(3)I7(9).
+Use the Upgrade From NX-OS 7.x to NX-OS 7.x section of this document to perform a standard disruptive
+NX-OS software upgrade from your source release to NX-OS software release 7.0(3)I7(9).
+Step 2. Download Target Release from Cisco Software Download.
+NX-OS 9.2(x) software uses a single NX-OS binary image file (sometimes referred to as a unified image
+file). You need to download this image from Cisco's Software Download website to your local computer.
+The specific steps you need to take to download software from Cisco's Software Download website are
+outside the scope of this document.
+Note: If you are upgrading to NX-OS software release 9.2(4), Cisco advises you download the
+compact NX-OS software image from Cisco's Software Download website. When browsing the
+website, select the model of Nexus switch that you are attempting to upgrade and navigate to the
+desired target NX-OS software release. Then, locate the software image with "Compact Image" in its
+description and the word "compact" in its filename. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 9.2(x) document.
+Step 3. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via
+SCP.
+Copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch by executing the
+NX-OS Compact Image Procedure via SCP. For more information on this procedure, please refer to the
+Nexus 3000, 3100, and 3500 NX-OS Compact Image Procedure document
+
+Note: If a USB flash drive is attached to the Nexus 3000 or 3100 Series switch, you can also run the
+NX-OS Compact Image Procedure on the NX-OS unified binary image file located on the USB flash
+drive, then copy the resulting unified binary image file to the bootflash of the switch.
+Note: In order to run the NX-OS Compact Image Procedure and reduce the file size of the NX-OS
+unified binary image file, the MD5 and SHA512 checksum of the NX-OS unified binary image file
+changes and is different from the MD5/SHA512 checksum published on Cisco's Software Download
+website. This is expected behavior and is not indicative of an issue - proceed with an NX-OS software
+upgrade in this scenario.
+This example demonstrates how to copy the NX-OS 9.2(4) software release unified binary image files
+through the NX-OS Compact Image Procedure via SCP (Secure Copy Protocol) from an SCP server
+192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+copy scp://username@192.0.2.100/nxos.9.2.4.bin bootflash: compact vrf management
+The authenticity of host '192.0.2.100 (192.0.2.100)' can't be established.
+ECDSA key fingerprint is SHA256:TwkQiylhtFDFPPwqh3U2Oq9ugrDuTQ50bB3boV5DkXM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.0.2.100' (ECDSA) to the list of known hosts.
+username@192.0.2.100's password:
+nxos.9.2.4.bin 100% 1278MB 4.0MB/s 05:16
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 21 21:48:27 2020 nxos.7.0.3.I7.9.bin
+542848198 Sep 22 15:19:00 2020 nxos.9.2.4.bin
+Step 4. Upgrade NX-OS Software to Target Release via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 9.2(4) unified binary image file (bootflash:nxos.9.2.4.bin).
+<#root>
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.9.2.4.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.9.2.4.bin for boot variable "nxos".
+
+[####################] 100% -- SUCCESS
+Verifying image type.
+[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.9.2.4.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.2.4.bin.
+[####################] 100% -- SUCCESS
+Collecting "running" plugin(s) information.
+[####################] 100% -- SUCCESS
+Collecting plugin(s) information from "new" image.
+[####################] 100% -- SUCCESS
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset default upgrade is not hitless
+Images will be upgraded according to following table:
+Module Image Running-Version(pri:alt) New-Version Upg-Required
+------ ---------- ---------------------------------------- -------------------- ------------
+1 nxos 7.0(3)I7(9) 9.2(4) yes
+1 bios v5.3.1(05/17/2019) v5.3.1(05/17/2019) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 5. Verify Successful Target NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 9.2(4).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.2(4) 1.1 NA
+Step 6. Delete Intermediate Release Binary Image Files from Cisco Nexus Switch.
+Verify that the NX-OS software upgrade from the intermediate release to the target release is successful. In
+order to preserve free space on the switch's bootflash, delete the intermediate release's unified binary image
+files from the bootflash of the device. This can be done with the delete bootflash:{filename} command. An
+example of this is shown here, where the NX-OS 7.0(3)I7(9) unified binary image file is deleted from the
+switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 21 21:48:27 2020 nxos.7.0.3.I7.9.bin
+542848198 Sep 22 15:19:00 2020 nxos.9.2.4.bin
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 21 21:48:27 2020 nxos.7.0.3.I7.9.bin
+542848198 Sep 22 15:19:00 2020 nxos.9.2.4.bin
+N3K-C3172PQ-10GE#
+delete bootflash:nxos.7.0.3.I7.9.bin
+Do you want to delete "/nxos.7.0.3.I7.9.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+542848198 Sep 22 15:19:00 2020 nxos.9.2.4.bin
+
+Upgrade From NX-OS 7.x to NX-OS 9.3(x)
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 7.x major release to a target release in the NX-OS 9.3(x) minor release.
+Note: An NX-OS software upgrade to a target release in the NX-OS 9.3(x) minor release from a
+source release that is 7.0(3)I7(6) or earlier requires a mandatory intermediate upgrade to NX-OS
+7.0(3)I7(9) or later.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus 3172PQ-10GE
+switch from a source release of 7.0(3)I2(2a) to a target release of 9.3(5) with the mandatory intermediate
+upgrade to 7.0(3)I7(9).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- ----------------- ----------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ---------------- ------ ----
+1 7.0(3)I2(2a) 1.1 NA
+Step 1. Upgrade From NX-OS 7.x to NX-OS 7.0(3)I7(9).
+Use the Upgrade From NX-OS 7.x to NX-OS 7.x section of this document to perform a standard disruptive
+NX-OS software upgrade from your source release to NX-OS software release 7.0(3)I7(9).
+Step 2. Download Target Release from Cisco Software Download.
+NX-OS 9.3(x) software uses a single NX-OS binary image file (sometimes referred to as a unified image
+file). You need to download this image from Cisco's Software Download website to your local computer.
+The specific steps you need to take to download software from Cisco's Software Download website are
+outside the scope of this document.
+Note: If you are upgrading to NX-OS software release 9.3(4) or later, Cisco advises you download the
+compact NX-OS software image from Cisco's Software Download website. When browsing the
+website, select the model of Nexus switch that you are attempting to upgrade and navigate to the
+desired target NX-OS software release. Then, locate the software image with "Compact Image" in its
+description and the word "compact" in its filename. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 9.3(x) document.
+Step 3. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via
+SCP.
+
+Copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch by executing the
+NX-OS Compact Image Procedure via SCP. For more information on this procedure, please refer to the
+Nexus 3000, 3100, and 3500 NX-OS Compact Image Procedure document.
+Note: If a USB flash drive is attached to the Nexus 3000 or 3100 Series switch, you can also execute
+the NX-OS Compact Image Procedure on the NX-OS unified binary image file located on the USB
+flash drive, then copy the resulting unified binary image file to the bootflash of the switch.
+Note: In order to run the NX-OS Compact Image Procedure and reduce the file size of the NX-OS
+unified binary image file, the MD5 and SHA512 checksum of the NX-OS unified binary image file
+changes and is different from the MD5/SHA512 checksum published on Cisco's Software Download
+website. This is expected behavior and is not indicative of an issue - proceed with an NX-OS software
+upgrade in this scenario.
+This example demonstrates how to copy the NX-OS 9.3(5) software release unified binary image files
+through the NX-OS Compact Image Procedure via SCP (Secure Copy Protocol) from an SCP server
+192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 22 15:59:40 2020 nxos.7.0.3.I7.9.bin
+N3K-C3172PQ-10GE#
+copy scp://username@192.0.2.100/nxos.9.3.5.bin bootflash: compact vrf management
+The authenticity of host '192.0.2.100 (192.0.2.100)' can't be established.
+ECDSA key fingerprint is SHA256:TwkQiylhtFDFPPwqh3U2Oq9ugrDuTQ50bB3boV5DkXM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.0.2.100' (ECDSA) to the list of known hosts.
+username@192.0.2.100's password:
+nxos.9.3.5.bin 100% 1880MB 4.1MB/s 07:38
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 22 15:59:40 2020 nxos.7.0.3.I7.9.bin
+669892018 Sep 22 16:28:42 2020 nxos.9.3.5.bin
+Step 4. Upgrade NX-OS Software to Target Release via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 9.3(5) unified binary image file (bootflash:nxos.9.3.5.bin).
+<#root>
+
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.9.3.5.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.9.3.5.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+Verifying image type.
+[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Collecting "running" plugin(s) information.
+[####################] 100% -- SUCCESS
+Collecting plugin(s) information from "new" image.
+[####################] 100% -- SUCCESS
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset default upgrade is not hitless
+Images will be upgraded according to following table:
+Module Image Running-Version(pri:alt) New-Version Upg-Required
+------ ---------- ---------------------------------------- -------------------- ------------
+1 nxos 7.0(3)I7(9) 9.3(5) yes
+1 bios v5.3.1(05/17/2019) v5.3.1(05/17/2019) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 5. Verify Successful Target NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 9.3(5).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.3(5) 1.1 NA
+Step 6. Delete Intermediate Release Binary Image File from Cisco Nexus Switch.
+After verifying that the NX-OS software upgrade from the intermediate release to the target release was
+successful, preserve free space on the switch's bootflash by deleting the intermediate release's unified binary
+image files from the bootflash of the device. This can be done with the delete bootflash:{filename}
+command. An example of this is shown here, where the NX-OS 7.0(3)I7(9) unified binary image file is
+deleted from the switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+472320617 Sep 22 15:59:40 2020 nxos.7.0.3.I7.9.bin
+669892018 Sep 22 16:28:42 2020 nxos.9.3.5.bin
+N3K-C3172PQ-10GE#
+delete bootflash:nxos.7.0.3.I7.9.bin
+Do you want to delete "/nxos.7.0.3.I7.9.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+
+669892018 Sep 22 16:28:42 2020 nxos.9.3.5.bin
+Upgrade From NX-OS 9.2(x) to NX-OS 9.2(x)
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 9.2(x) minor release to a target release in the NX-OS 9.2(x) minor release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus 3172PQ-10GE
+switch from a source release of 9.2(1) to a target release of 9.2(4):
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.2(1) 1.1 NA
+Step 1. Download Target Release from Cisco Software Download.
+NX-OS 9.2(x) software uses a single NX-OS binary image file (sometimes referred to as a unified image
+file). You need to download this image from Cisco's Software Download website to your local computer.
+The specific steps you need to take to download software from Cisco's Software Download website are
+outside the scope of this document.
+Note: If you are upgrading to NX-OS software release 9.2(4), Cisco advises you download the
+compact NX-OS software image from Cisco's Software Download website. When browsing the
+website, select the model of Nexus switch that you are attempting to upgrade and navigate to the
+desired target NX-OS software release. Then, locate the software image with "Compact Image" in its
+description and the word "compact" in its filename. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 9.2(x) document.
+Step 2. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via
+SCP.
+Copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch by executing the
+NX-OS Compact Image Procedure via SCP. For more information on this procedure, please refer to the
+Nexus 3000, 3100, and 3500 NX-OS Compact Image Procedure document.
+Note: If a USB flash drive is attached to the Nexus 3000 or 3100 Series switch, you can also execute
+the NX-OS Compact Image Procedure on the NX-OS unified binary image file located on the USB
+flash drive, then copy the resulting unified binary image file to the bootflash of the switch.
+
+Note: In order to run the NX-OS Compact Image Procedure and reduce the file size of the NX-OS
+unified binary image file, the MD5 and SHA512 checksum of the NX-OS unified binary image file
+changes and is different from the MD5/SHA512 checksum published on Cisco's Software Download
+website. This is expected behavior and is not indicative of an issue - proceed with an NX-OS software
+upgrade in this scenario.
+This example demonstrates how to copy the NX-OS 9.2(4) software release unified binary image files
+through the NX-OS Compact Image Procedure via SCP (Secure Copy Protocol) from an SCP server
+192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+524696710 Sep 22 16:47:35 2020 nxos.9.2.1.bin
+N3K-C3172PQ-10GE#
+copy scp://username@192.0.2.100/nxos.9.2.4.bin bootflash: compact vrf management
+The authenticity of host '192.0.2.100 (192.0.2.100)' can't be established.
+ECDSA key fingerprint is SHA256:TwkQiylhtFDFPPwqh3U2Oq9ugrDuTQ50bB3boV5DkXM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.0.2.100' (ECDSA) to the list of known hosts.
+username@192.0.2.100's password:
+nxos.9.2.4.bin 100% 1278MB 4.7MB/s 04:33
+Copy complete, now saving to disk (please wait)...
+N3K-C3172PQ-10GE#
+dir | include bin
+524696710 Sep 22 16:47:35 2020 nxos.9.2.1.bin
+542848198 Sep 22 17:15:54 2020 nxos.9.2.4.bin
+Step 3. Upgrade NX-OS Software to Target Release via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 9.2(4) unified binary image file (bootflash:nxos.9.2.4.bin).
+<#root>
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.9.2.4.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.9.2.4.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.9.2.4.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.2.4.bin.
+[####################] 100% -- SUCCESS
+Collecting "running" plugin(s) information.
+[####################] 100% -- SUCCESS
+Collecting plugin(s) information from "new" image.
+[####################] 100% -- SUCCESS
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset default upgrade is not hitless
+Images will be upgraded according to following table:
+Module Image Running-Version(pri:alt) New-Version Upg-Required
+------ ---------- ---------------------------------------- -------------------- ------------
+1 nxos 9.2(1) 9.2(4) yes
+1 bios v5.3.1(05/17/2019) v5.3.1(05/17/2019) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+Finishing the upgrade, switch will reboot in 10 seconds.
+
+Step 4. Verify Successful Target NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 9.2(4).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.2(4) 1.1 NA
+Step 5. Delete Source Release Binary Image File from Cisco Nexus Switch.
+After verifying that the NX-OS software upgrade from the source release to the target release was
+successful, preserve free space on the switch's bootflash by deleting the source release's unified binary
+image files from the bootflash of the device. This can be done with the delete bootflash:{filename}
+command. An example of this is shown here, where the NX-OS 9.2(1) unified binary image file is deleted
+from the switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+524696710 Sep 22 16:47:35 2020 nxos.9.2.1.bin
+542848198 Sep 22 17:15:54 2020 nxos.9.2.4.bin
+N3K-C3172PQ-10GE#
+delete bootflash:nxos.9.2.1.bin
+Do you want to delete "/nxos.9.2.1.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+542848198 Sep 22 17:15:54 2020 nxos.9.2.4.bin
+Upgrade From NX-OS 9.2(x) to NX-OS 9.3(x)
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 9.2(x) minor release to a target release in the NX-OS 9.3(x) minor release.
+
+Note: An NX-OS software upgrade to a target release in the NX-OS 9.3(x) minor release from a
+source release that is 9.2(3) or earlier requires a mandatory intermediate upgrade to NX-OS 9.2(4).
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus 3172PQ-10GE
+switch from a source release of 9.2(1) to a target release of 9.3(5):
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.2(1) 1.1 NA
+Step 1. Upgrade From NX-OS 9.2(x) to NX-OS 9.2(4).
+Use the Upgrade From NX-OS 9.2(x) to NX-OS 9.2(x) section of this document to perform a standard
+disruptive NX-OS software upgrade from your source release to NX-OS software release 9.2(4).
+Step 2. Download Target Release from Cisco Software Download.
+NX-OS 9.3(x) software uses a single NX-OS binary image file (sometimes referred to as a unified image
+file). You need to download this image from Cisco's Software Download website to your local computer.
+The specific steps you need to take to download software from Cisco's Software Download website are
+outside the scope of this document.
+Note: If you are upgrading to NX-OS software release 9.3(4) or later, Cisco advises you download the
+compact NX-OS software image from Cisco's Software Download website. When browsing the
+website, select the model of Nexus switch that you are attempting to upgrade and navigate to the
+desired target NX-OS software release. Then, locate the software image with "Compact Image" in its
+description and the word "compact" in its filename. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 9.3(x) document.
+Step 3: Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via
+SCP
+Copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch by executing the
+NX-OS Compact Image Procedure via SCP. For more information on this procedure, please refer to the
+Nexus 3000, 3100, and 3500 NX-OS Compact Image Procedure document.
+Note: If a USB flash drive is attached to the Nexus 3000 or 3100 Series switch, you can also execute
+the NX-OS Compact Image Procedure on the NX-OS unified binary image file located on the USB
+
+flash drive, then copy the resulting unified binary image file to the bootflash of the switch.
+Note: In order to run the NX-OS Compact Image Procedure and reduce the file size of the NX-OS
+unified binary image file, the MD5 and SHA512 checksum of the NX-OS unified binary image file
+changes and is different from the MD5/SHA512 checksum published on Cisco's Software Download
+website. This is expected behavior and is not indicative of an issue - proceed with an NX-OS software
+upgrade in this scenario.
+This example demonstrates how to copy the NX-OS 9.3(5) software release unified binary image files
+through the NX-OS Compact Image Procedure via SCP (Secure Copy Protocol) from an SCP server
+192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+542848198 Sep 22 17:15:54 2020 nxos.9.2.4.bin
+N3K-C3172PQ-10GE#
+copy scp://username@192.0.2.100/nxos.9.3.5.bin bootflash: compact vrf management
+The authenticity of host '192.0.2.100 (192.0.2.100)' can't be established.
+ECDSA key fingerprint is SHA256:TwkQiylhtFDFPPwqh3U2Oq9ugrDuTQ50bB3boV5DkXM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.0.2.100' (ECDSA) to the list of known hosts.
+username@192.0.2.100's password:
+nxos.9.3.5.bin 100% 1880MB 4.8MB/s 06:33
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+N3K-C3172PQ-10GE#
+dir | include bin
+542848198 Sep 22 17:15:54 2020 nxos.9.2.4.bin
+669892018 Sep 22 19:09:35 2020 nxos.9.3.5.bin
+Step 4. Upgrade NX-OS Software to Target Release via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 9.3(5) unified binary image file (bootflash:nxos.9.3.5.bin).
+<#root>
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.9.3.5.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos.9.3.5.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+Verifying image type.
+[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Collecting "running" plugin(s) information.
+[####################] 100% -- SUCCESS
+Collecting plugin(s) information from "new" image.
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset default upgrade is not hitless
+Images will be upgraded according to following table:
+Module Image Running-Version(pri:alt) New-Version Upg-Required
+------ ---------- ---------------------------------------- -------------------- ------------
+1 nxos 9.2(4) 9.3(5) yes
+1 bios v5.3.1(05/17/2019) v5.3.1(05/17/2019) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 5. Verify Successful Target NX-OS Software Upgrade.
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 9.3(5).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.3(5) 1.1 NA
+Step 6. Delete Intermediate Release Binary Image File from Cisco Nexus Switch.
+After you verify that the NX-OS software upgrade from the intermediate release to the target release is
+successful, delete the intermediate release's unified binary image files from the bootflash of the device in
+order to preserve free space on the switch's bootflash. This can be done with the delete
+bootflash:{filename} command. An example of this is shown here, where the NX-OS 9.2(4) unified binary
+image file is deleted from the switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+542848198 Sep 22 17:15:54 2020 nxos.9.2.4.bin
+669892018 Sep 22 19:09:35 2020 nxos.9.3.5.bin
+N3K-C3172PQ-10GE#
+delete bootflash:nxos.9.2.4.bin
+Do you want to delete "/nxos.9.2.4.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+669892018 Sep 22 19:09:35 2020 nxos.9.3.5.bin
+Upgrade From NX-OS 9.3(x) to NX-OS 9.3(x)
+
+This section of the document describes how to perform a standard disruptive NX-OS software upgrade from
+a source release in the NX-OS 9.3(x) minor release to a target release in the NX-OS 9.3(x) minor release.
+An example standard disruptive NX-OS software upgrade is performed on a Cisco Nexus 3172PQ-10GE
+switch from a source release of 9.3(1) to a target release of 9.3(5):
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.3(1) 1.1 NA
+Step 1. Download Target Release from Cisco Software Download.
+NX-OS 9.3(x) software uses a single NX-OS binary image file (sometimes referred to as a unified image
+file). You need to download this image from Cisco's Software Download website to your local computer.
+The specific steps you need to take to download software from Cisco's Software Download website are
+outside the scope of this document.
+Note: If you are upgrading to NX-OS software release 9.3(4) or later, Cisco advises you download the
+compact NX-OS software image from Cisco's Software Download website. When browsing the
+website, select the model of Nexus switch that you are attempting to upgrade and navigate to the
+desired target NX-OS software release. Then, locate the software image with "Compact Image" in its
+description and the word "compact" in its filename. For more information, refer to the "Compact NX-
+OS Software Images on Cisco's Software Download Website" section of the Cisco Nexus 3000 Series
+NX-OS Software Upgrade and Downgrade Guide, Release 9.3(x) document.
+Step 2. Copy Target Release to Cisco Nexus Switch through NX-OS Compact Image Procedure via
+SCP.
+In order to copy the target release unified binary image files to the Nexus 3000 or 3100 Series switch, run
+the NX-OS Compact Image Procedure via SCP. For more information on this procedure, please refer
+toNexus 3000, 3100, and 3500 NX-OS Compact Image Procedure document
+Note: If a USB flash drive is attached to the Nexus 3000 or 3100 Series switch, you can also execute
+the NX-OS Compact Image Procedure on the NX-OS unified binary image file located on the USB
+flash drive, then copy the resulting unified binary image file to the bootflash of the switch.
+Note: As the NX-OS Compact Image Procedure is executed and the file size of the NX-OS unified
+binary image file is reduced, the MD5 and SHA512 checksum of the NX-OS unified binary image file
+changes and is different than the MD5/SHA512 checksum published on Cisco's Software Download
+
+website. This is expected behavior and is not indicative of an issue - proceed with an NX-OS software
+upgrade in this scenario.
+This example demonstrates how to copy the NX-OS 9.3(5) software release unified binary image files
+through the NX-OS Compact Image Procedure via SCP (Secure Copy Protocol) from an SCP server
+192.0.2.100 reachable via the management VRF.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+510885739 Sep 22 19:56:37 2020 nxos.9.3.1.bin
+N3K-C3172PQ-10GE#
+copy scp://username@192.0.2.100/nxos.9.3.5.bin bootflash: compact vrf management
+The authenticity of host '192.0.2.100 (192.0.2.100)' can't be established.
+ECDSA key fingerprint is SHA256:TwkQiylhtFDFPPwqh3U2Oq9ugrDuTQ50bB3boV5DkXM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.0.2.100' (ECDSA) to the list of known hosts.
+username@192.0.2.100's password:
+nxos.9.3.5.bin 100% 1880MB 5.2MB/s 06:02
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+N3K-C3172PQ-10GE#
+dir | include bin
+510885739 Sep 22 19:56:37 2020 nxos.9.3.1.bin
+669892018 Sep 22 21:38:04 2020 nxos.9.3.5.bin
+Step 3. Upgrade NX-OS Software to Target Release via Install All Command.
+Begin a standard disruptive NX-OS software upgrade through the install all command. This command
+requires the nxos parameter to be passed in with the absolute filepath of the NX-OS unified binary image
+files corresponding with the target release.
+This example shows the install all command where the nxos parameter points to the absolute filepath of the
+NX-OS 9.3(5) unified binary image file (bootflash:nxos.9.3.5.bin).
+<#root>
+N3K-C3172PQ-10GE#
+install all nxos bootflash:nxos.9.3.5.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.9.3.5.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Collecting "running" plugin(s) information.
+[####################] 100% -- SUCCESS
+Collecting plugin(s) information from "new" image.
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module bootable Impact Install-type Reason
+------ -------- -------------- ------------ ------
+1 yes disruptive reset default upgrade is not hitless
+Images will be upgraded according to following table:
+Module Image Running-Version(pri:alt) New-Version Upg-Required
+------ ---------- ---------------------------------------- -------------------- ------------
+1 nxos 9.3(1) 9.3(5) yes
+1 bios v5.3.1(05/17/2019) v5.3.1(05/17/2019) no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n]
+y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+Finishing the upgrade, switch will reboot in 10 seconds.
+Step 4. Verify Successful Target NX-OS Software Upgrade.
+
+After the Nexus 3000 or 3100 Series switch has reloaded, verify that the upgrade was successful through the
+show module command. The output of this command shows the desired target release. An example of this is
+shown here, where the switch was successfully upgraded to NX-OS software release 9.3(5).
+<#root>
+N3K-C3172PQ-10GE#
+show module
+<snip>
+Mod Ports Module-Type Model Status
+--- ----- ------------------------------------- --------------------- ---------
+1 54 48x10GE + 6x40G Supervisor N3K-C3172PQ-10GE active *
+Mod Sw Hw Slot
+--- ----------------------- ------ ----
+1 9.3(5) 1.1 NA
+Step 5. Delete Source Release Binary Image File from Cisco Nexus Switch.
+After you verify that the NX-OS software upgrade from the intermediate release to the target release was
+successful, preserve free space on the switch's bootflash by deleting the intermediate release's unified binary
+image files from the bootflash of the device. This can be done with the delete bootflash:{filename}
+command. An example of this is shown here, where the NX-OS 7.0(3)I7(8) unified binary image file is
+deleted from the switch's bootflash.
+<#root>
+N3K-C3172PQ-10GE#
+dir | include bin
+510885739 Sep 22 19:56:37 2020 nxos.9.3.1.bin
+669892018 Sep 22 21:38:04 2020 nxos.9.3.5.bin
+N3K-C3172PQ-10GE#
+delete bootflash:nxos.9.3.1.bin
+Do you want to delete "/nxos.9.3.1.bin" ? (yes/no/abort) [y]
+N3K-C3172PQ-10GE#
+dir | include bin
+669892018 Sep 22 21:38:04 2020 nxos.9.3.5.bin
+Related Information
+• YouTube - Documentation to Review Before an NX-OS Software Upgrade
+• YouTube - NX-OS Software Upgrade from NX-OS 7.x to NX-OS 7.x Example
+• YouTube - NX-OS Software Upgrade from NX-OS 6.x to NX-OS 7.x Example
+• Cisco Nexus 3000 Series Switches Install and Upgrade Guides
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 9.3(x)
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 9.2(x)
+
+• Cisco Nexus 3000 Series NX-OS Software Upgrade and Downgrade Guide, Release 7.x
+• Cisco Nexus 3000 Series Switches Release Notes
+• Nexus 3000, 3100, and 3500 NX-OS Compact Image Procedure
+• Technical Support & Documentation - Cisco Systems

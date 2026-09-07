@@ -1,0 +1,231 @@
+Troubleshoot Nexus 9000 Interface CRC Error
+
+with Script
+
+Introduction
+
+This document describes steps to execute Nexus 9000 CRC(Cyclic Redundancy Check) Script which identifies ports with CRC errors and provides remediation steps.
+
+Background Information
+
+Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch makes a forwarding decision on a frame and begins forwarding the frame out of an egress interface as soon as the switch has processed enough of the frame header to make a valid forwarding decision. This differs from store-and-forward switching, where a switch buffers the entire frame prior to forwarding the frame out of an egress interface. To troubleshoot Interface CRC errors, CRC and FCS(Frame Check Sequence)) counter incremental values need to be reviewed to troubleshoot interface counter errors in these switches. This script automates identification of CRC /FCS errors in 9200 & 9300 cloud scale ASIC(Application Specific Integrated Circuit) switches. It collects interface CRC and FCS counter values at periodic interval to see if errors are historic or live and provides remediation steps. Script execution is divided in two parts where,
+
+1. Poller Script (Script-1) collects Interface error data in files every 10-30 for maximum up to
+
+seven days of duration.
+
+2. Parser Script (Script-2) analyses these outputs and gives tabular output with interfaces which
+
+are source of Error, as well interfaces which are just forwarding the stomped packets. Run script-2 atleast after 30mins of script-1 execution, that is atleast when two or more files are collected as a part of script-1 execution.
+
+```text
+Script collects output of these set of commands and analyses same to identify the source of CRC.
+Refer to link in the "Related Information" section.
+switch# show interface
+switch# show interface counters errors non-zero
+switch# show interface hardware-mappings
+switch# slot {x} show hardware internal tah counters asic {y}
+Prerequisites
+The script is available on Git.
+It needs to downloaded and executed from client machine (jump server) with network access to
+Nexus switches, where CRC error analysis is needed.
+Click here to download the script.
+Requirements
+Ensure that these pre-requisites are installed in client machine (jump server):
+1. Python3
+2. Client machine (jump server) to have network access to Nexus Switches
+3. Nexus_CRC_requirements.txt available in git to be installed in client machine.
+(This is a one time setup in client jump host. This step installs required python libraries to
+jump-host)
+Steps to install requirements.txt
+Step-1: Download NEXUS_CRC_requirements.txt
+Step-2: Open terminal window /command prompt
+Step-3: Navigate to folder where NEXUS_CRC_requirements.txt is located and run command:
+#pip install -r Nexus_CRC_requirements.txt
+```
+
+Upon successful installation, it shows message as below: Successfully installed DateTime-4.3 numpy-1.21.2 pandas-1.3.2 paramiko-2.7.2 pythondateutil-2.8.2 stdiomask-0.0.5 tabulate-0.8.9 termcolor-1.1.0
+
+Components Used
+
+The script is tested on these jump servers: Windows-10 64 bit l
+
+MAC Monterey
+
+l The information in this document was created from the devices in a specific lab environment. All of the devices used in this document started with a cleared (default) configuration. If your network is live, ensure that you understand the potential impact of any command.
+
+Related Products
+
+This script is intended to analyse CRC errors for Nexus 9200 & 9300 Cloud Scale ASIC switches:
+
+Applicable Platforms: Nexus 9200/9300 Fixed Switches
+
+N9K-C92160YC-X
+
+l
+
+N9K-C92300YC
+
+l
+
+N9K-C92304QC
+
+l
+
+N9K-C92348GC-X
+
+l
+
+N9K-C9236C
+
+l
+
+N9K-C9272Q
+
+l
+
+N9K-C9332C
+
+l
+
+N9K-C9364C
+
+l
+
+N9K-C93108TC-EX
+
+l
+
+N9K-C93108TC-EX-24
+
+l
+
+N9K-C93180LC-EX
+
+l
+
+N9K-C93180YC-EX
+
+l
+
+N9K-C93180YC-EX-24
+
+l
+
+N9K-C93108TC-FX
+
+l
+
+N9K-C93108TC-FX-24
+
+l
+
+N9K-C93180YC-FX
+
+l
+
+N9K-C93180YC-FX-24
+
+l
+
+N9K-C9348GC-FXP
+
+l
+
+N9K-C93240YC-FX2
+
+l
+
+N9K-C93216TC-FX2
+
+l
+
+N9K-C9336C-FX2
+
+l
+
+N9K-C9336C-FX2-E
+
+l
+
+N9K-C93360YC-FX2
+
+l
+
+N9K-C93180YC-FX3
+
+l
+
+N9K-C93108TC-FX3P
+
+l
+
+N9K-C93180YC-FX3S
+
+l
+
+N9K-C9316D-GX
+
+l
+
+N9K-C93600CD-GX
+
+l
+
+N9K-C9364C-GX
+
+l
+
+N9K-C9364D-GX2A
+
+l
+
+N9K-C9332D-GX2B
+
+l
+
+Background Information
+
+Cisco Nexus 9000 series switches use cut-through switching by default. CRC and FCS counter incremental values need to be reviewed to troubleshoot interface counter errors in these switches. This script automates identification of CRC /FCS errors in 9200 & 9300 cloud scale ASIC switches. It collects interface CRC and FCS counter values at periodic interval to see if errors are historic or live and provides remediation steps. Script execution is divided in two parts where,
+
+1. Poller Script (Script-1) collects Interface error data in files every 10-30 for maximum up to
+
+seven days of duration.
+
+2. Parser Script (Script-2) analyses these outputs and gives tabular output with interfaces which
+
+are source of Error, as well interfaces which are just forwarding the stomped packets. Run script-2 atleast after 30mins of script-1 execution, that is atleast when two or more files are collected as a part of script-1 execution. Script execution Steps
+
+Poller Script (Script-1) Execution
+
+These steps are to execute Poller script, which collects CRC /FCS error counters in files at periodic interval. Step-1: Open the terminal /command prompt and execute "NEXUS_CRC_POLLER.py" : #python3 NEXUS_CRC_POLLER.py
+
+Inputs:
+
+Enter Nexus Switch IP /FQDN, Username and password:
+
+Step-2: Enter path to folder (location on your jump host), where you want to save the files: VALID folder format:
+
+EXAMPLE:
+
+Windows-> C:\Users\Admin\Desktop\Nexus\
+
+MAC -> /Users/admin/Desktop/Nexus/
+
+**PLEASE NOTE that data collection and script execution gets impacted if folder format is not as above. Also make sure that folder where you want to save files already exists** Step-3: Enter Duration for which you want to run the script: Maximum - Seven days Minimum - Run for atleast 30 mins to collect CRC counters multiple times and identify increments **Script collects Interface errors every 10 to 30 minutes and saves data to files at the path specified in earlier input. Data collection script end time based on End Time provided in input** Step-4: If there are no errors in the domain, it asks if user still wants to continue and collect data once more:
+
+Parser Script (Script-2) Execution
+
+These steps are to execute Parser script , which analyses CRC /FCS error files collected by Poller Script and provides remediation steps. Start Parser script (Script-2) execution, once there are at-least have two files generated as a part of Poller Script (Script-1) execution to compare data (that is after approximately 30 minutes of Poller script execution). Keep your terminal session font resolution to 100% for proper tabular output view. Step-1: Open the terminal /command prompt and execute "NEXUS_CRC_PARSER.py": Enter the same file location, where you have collected data from Script-1.
+
+Example:
+
+Enter the absolute path of the folder where the files are stored: /Users/rgajjar/Desktop/CRC_NEXUS/
+
+Parser Script (Script-2) Output Review
+
+Sample Execution and Output table for switch version >=10.2: Sample Execution and Output table for switch version < 10.2:
+
+Related Information
+
+To further understand the identification of N9K CRC errors, refer: https://www.cisco.com/c/en/us/support/docs/switches/nexus-9000-series-switches/216239nexus-9000-cloud-scale-asic-crc-identifi.html#anc12

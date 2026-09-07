@@ -1,0 +1,156 @@
+Data sheet Cisco public
+
+Cisco Nexus Hyperfabric
+
+Product overview As the cloud-managed operating model for Cisco Nexus One, Cisco Nexus Hyperfabric enables customers to easily design, deploy, and scale any number of data-center fabrics located anywhere. Delivered as a fabric-as-a-service solution, it reinvents and simplifies every step of IT operations, ensuring repeatable and predictable outcomes. Cisco Nexus Hyperfabric is a cloud-managed vertical stack solution consisting of purpose-built hardware, software, a cloud controller, day-2 operations, automation, and Cisco support that eliminates complexity. IT, application and DevOps teams manage the full lifecycle of designing, ordering, deploying, validating, monitoring, and scaling fabrics without requiring deep networking or operational expertise. Cisco Nexus Hyperfabric vertical stack solution
+
+Customers log in to Nexus Hyperfabric to begin building a validated fabric design tailored to their desired host and port capacity, oversubscription, and environmental considerations such as cabling and power. Customers then define the Layer-2 and Layer-3 networks the fabric exposes to hosts, maps them to ports, and specifies the routing needed to connect the fabric to the rest of the network. Nexus Hyperfabric is integrated with Cisco’s ordering tools to guarantee there are no errors when converting the components in a design into a bill of materials. When the Cisco 6000 Series, Cisco N9100 and N9300 series switches arrive on site and are deployed, they automatically connect to the cloud, to be claimed and provisioned by the cloud controller with a zero-touch plug-and-play approach. This process takes just minutes and results in a fully operational network fabric. Assertion-based monitoring of availability and reliability of the fabric and connected resources are continuously verified, and the root cause of any issue detected is immediately identified. Later, if it is necessary to change the capacity or shape of the design, customers can modify the in-flight design, approve the changes, and repeat the design-to-deploy process. Nexus Hyperfabric provides guidance for all the physical changes needed to migrate the old topology to the new desired state, including cabling adjustments, and it reconfigures itself automatically.
+
+Cisco Nexus Hyperfabric lifecycle
+
+Features and benefits Table 1. Feature and benefits Prominent feature Cloud-managed solution A cloud controller operated by Cisco manages your fabrics regardless of where they are geographically located and eliminates the need to deploy and manage your own on-premises provisioning and monitoring tools. The cloud controller is a scalable, distributed, multitenant service hosted in the public cloud. Starting from fabric design, the cloud controller spans Nexus Hyperfabric’s entire operational lifecycle. The service includes capacity and environmental planning, fabric tenant port allocation, bill-of-materials and cabling planning, web-based step-by-step deployment assistance, device claiming and assignment, day-2 monitoring, software management, and fabric redesign, all in a single interface with a consistent workflow. An API-first approach allows you to integrate your operation tools or use built-in integrations with leading industry provisioning and monitoring products.
+
+| Feature | Benefit |
+| --- | --- |
+| Cloud controller managed by Cisco | Manage any number of data-center network fabrics globally with a minimum of |
+|  | expertise |
+|  |  |
+| Ease of use | Designed for use by IT generalists and application and data-science teams; no deep |
+|  | network or operational expertise required |
+|  |  |
+| Cloud-delivered automation | After the Layer-2, Layer-3, and upstream routing services have been defined, the |
+|  | rest of the system is then automatically provisioned and becomes operative. |
+|  |  |
+| Edge and remote fabrics | Operate fabrics of one or more switches located anywhere globally, with no local |
+|  | management required |
+|  |  |
+| Designer | Guides the process of designing the topology, exposed network services, and |
+|  | upstream route peering, then generates a bill of materials, a cabling plan, and a |
+|  |  |
+|  | ready-to-operate blueprint |
+| Multi-site interconnects | Nexus Hyperfabric Multi-Site Interconnect enables interconnection of multiple |
+|  | fabrics, extending networks across them for consistent, seamless connectivity |
+|  |  |
+|  | across geographically dispersed data centers, while preserving operational isolation. |
+| Automated lifecycle management | Switch software reliably and automatically upgraded according to your schedule and |
+|  | chassis order |
+|  |  |
+| Monitor unmanaged | Cisco Nexus Hyperfabric now includes the capability to monitor unmanaged NX-OS |
+| NX-OS switches | switches. |
+| API first | DevOps tools such as HashiCorp Terraform and Red Hat Ansible integrate once to |
+|  | the Nexus Hyperfabric cloud controller, so all your fabrics are provisioned and |
+|  |  |
+|  | managed from a single API endpoint. |
+| AgenticOps | Cisco Cloud Control is Cisco's unified, AI-native management platform that provides |
+|  | a single operational interface for managing, operating, and optimizing Cisco |
+|  |  |
+|  | networking, security, observability, and collaboration products, enabling cross- |
+|  | domain visibility, automation, and AI-driven insights without replacing existing |
+|  | controllers. |
+
+Intuitive for IT generalists and application and DevOps teams to operate Designed for simplicity, Cisco Nexus Hyperfabric enables operators with a diversity of skills to reliably deliver working solutions with minimal effort. Customers do not need to manage controller or switch configurations, understand complex fabric protocols, or manage the switch-network operating system. The cloud controller guides you through all stages of building and maintaining the fabric – from designing, to ordering, to deploying, to validating, to monitoring, to scaling, to collaborating. This ensures standardization, repeatability, and reliability. Scaling the fabric up or down can be done easily. Ergonomically, it offers an operational model akin to cloud hosting rather than on-premises tooling. Add fabrics with ease High-performance fabrics Fabrics need high-performance bandwidth, reliability, simplicity, and a small footprint. With Cisco Nexus Hyperfabric, you may deploy switches wherever your organization requires them – all they need is connectivity to the public internet to tether to the cloud controller. Port speeds in the Cisco 6000 Series, Cisco N9100 Series Switches and Cisco N9300 Series Switches range from 1 to 800 Gb , allowing you to deploy scalable, high-performance fabrics. Cisco Nexus Hyperfabric switches are fully cloud-managed – all visibility and control are done through the cloud controller rather than through a command line interface. Fabrics can scale down to a single switch or pair of switches or scale up to a full spine-leaf topology to cover edge and primary data-center deployments. Fabrics are based on Ethernet VPN-virtual extensible LAN (EVPN-VXLAN) underlay networks that are automatically provisioned and monitored without the need to be integrated with your network’s addressing and upstream routing.
+
+Vertical stack solution Cisco Nexus Hyperfabric is a purpose-built data-center network fabric-as-a-service solution consisting of hardware, software, cloud management, day-2 automation, and Cisco support. Cisco Nexus Hyperfabric manages the cloud controller, which is the single point of administration for all fabrics regardless of location. Switches connect to the cloud for full lifecycle management, and fabrics are automatically built and maintained by the controller. Telemetry, monitoring, and Cisco Technical Assistance Center (Cisco TAC) support are all part of the solution. Cloud-managed switch
+
+Nexus Hyperfabric Multi-Site Interconnect
+
+Nexus Hyperfabric simplifies multi-site data center interconnection with a built-in multi-site capability, included in the Essentials license for accessible, cost-effective deployment. Using VXLAN EVPN multi-site technology, it delivers seamless connectivity across sites through full-mesh peering between border gateways. While currently supporting Layer-2 VNI extension, the roadmap includes future enhancements like Layer-3 VNI extension and support for host ports on border gateway switches, further expanding its capabilities. Nexus Hyperfabric aligns with the broader Cisco Nexus One vision, unifying Cisco ACI, Cisco NX-OS, and other Cisco networking technologies. Future releases will enable seamless peering across ACI, NX-OS, and Hyperfabric environments, delivering integrated, scalable enterprise data center networking.
+
+Monitor unmanaged Cisco NX-OS switches Cisco Nexus Hyperfabric now includes the capability to monitor unmanaged NX-OS switches. This enhancement allows the fabric to extend its visibility and control to unmanaged Cisco NX-OS switches, enabling customers to gain insights and operational telemetry within their network environment. This capability supports assertion-based monitoring, which continuously verifies the availability and reliability of the fabric and connected resources, immediately identifying the root cause of any detected issues. This advancement simplifies network operations by providing comprehensive monitoring through the cloud controller, even for unmanaged NX-OS switches, enhancing operational efficiency and fabric reliability.
+
+Cisco Cloud Control
+
+Cisco Cloud Control unifies the Cisco estate into a single-pane-of-glass environment for collaborative troubleshooting, monitoring, and single-sign-on management across the Cisco portfolio. It gives teams and AI agents shared context for managing infrastructure and resolving issues across products and IT domains. This creates a practical path to AgenticOps while helping organizations improve operational resilience, increase productivity, and gain more value from existing technology investments. AI Assistant supports everyday work, while AI Canvas gives operators and AI agents a shared workspace for complex cross-domain investigation and resolution. Teams spend less time assembling evidence and coordinating tools, and more time understanding problems and restoring service. Cisco Nexus Hyperfabric integrates seamlessly with Cisco Cloud Control to provide a unified, cloudmanaged network fabric. This synergy delivers intelligent design, automated validation, and integrated monitoring, simplifying operations while ensuring high-performance connectivity across your data center. AI solutions with Cisco Nexus Hyperfabric Cisco Nexus Hyperfabric delivers outstanding results for your AI networking needs. You have two clear options to support your AI initiatives: ● Turnkey full-stack AI infrastructure: For the fastest time to first token, select a high-performance, cloud-managed, turnkey full-stack AI infrastructure. This option is fully compliant with NVIDIA Enterprise Reference Architecture (ERA) or can scale to a cloud-reference architecture—ideal for rapid deployment and simplified management with visibility to the GPU. View data sheet. ● Bring your own AI: Alternatively, choose to bring your own AI. With this approach, you gain the flexibility to innovate by using a cloud-managed network fabric that supports your preferred compute, GPU, AI software, and storage—empowering you to tailor your AI infrastructure to your unique requirements.
+
+AI solutions with Cisco Nexus Hyperfabric Platform support Table 2. Cisco Nexus Hyperfabric switch platform support
+
+Licensing
+
+A subscription entitlement is needed for every Nexus Hyperfabric switch that is deployed and used. Subscription entitlements may be initially purchased for three, five, or seven years and may be renewed. The subscription-feature entitlement tiers are based on fabric use cases. Currently, two packages are available: one (“Essentials”) for general-purpose fabrics and the second (“Premier”) for AI fabrics. All the switches in a fabric must use the same entitlement tier; however, an organization may concurrently manage multiple fabrics that use different entitlement tiers.***
+
+| Product family | Platforms supported | Feature sets supported |
+| --- | --- | --- |
+| Cisco 6000 Series Switches | HF6100-60L4D, | Cisco Nexus Hyperfabric Essentials and Premier licenses |
+|  | HF6100-32D, |  |
+|  | HF6100-64ED |  |
+| Cisco N9100 Series Switches | N9164E-NS4-O | Cisco Nexus Hyperfabric Essentials and Premier licenses |
+| Cisco N9300 Series Switches | N9K-9336-SE1, | Cisco Nexus Hyperfabric Essentials and Premier licenses |
+|  | N9K-93180YC-FX3, |  |
+|  | N9K-93108TC-FX3 |  |
+
+Table 3. Entitlement feature tiers
+
+| Features | Essentials entitlement | Premier entitlement |
+| --- | --- | --- |
+|  |  | (needed for full-stack AI capabilities) |
+|  |  |  |
+| Cisco support 8x5xNBD | Yes | Yes |
+| Cloud controller | Yes | Yes |
+| Designer (no purchase required) | Yes | Yes |
+| Cloud-driven software upgrades | Yes | Yes |
+| BOM Generation with Optics | Yes | Yes |
+| On-site Deployment Assist | Yes | Yes |
+| Plug-and-play deployment | Yes | Yes |
+| Spine-leaf topologies | Yes | Yes |
+| Mesh (spineless) topologies | Yes | Yes |
+| EVPN/VXLAN underlay (opaque) | Yes | Yes |
+| Static and BGP routing | Yes | Yes |
+| MLAG | Yes | Yes |
+| Supports RDMA over Converged Ethernet v2 | Yes | Yes |
+| (RoCEv2) |  |  |
+|  |  |  |
+| Real-time cloud-accessed telemetry | Yes | Yes |
+| IPv4 and IPv6 | Yes | Yes |
+| Assertion-based monitoring | Yes | Yes |
+| Survivable data and local management | Yes | Yes |
+| plane |  |  |
+|  |  |  |
+| Hardware-based attestation and security | Yes | Yes |
+| API for headless provisioning and | Yes | Yes |
+| monitoring |  |  |
+|  |  |  |
+| AI use-case support | Yes | Yes |
+| Multi-Site Interconnect | Yes | Yes |
+| Aligned to NVIDIA Enterprise Reference | No | Yes |
+| Architecture |  |  |
+|  |  |  |
+| NVIDIA backend routing on backend | No | Yes |
+| switches |  |  |
+|  |  |  |
+| Deploy AI-validated blueprints built into | No | Yes |
+| workflow |  |  |
+|  |  |  |
+
+Product sustainability Information about Cisco’s environmental, social, and governance (ESG) initiatives and performance is provided in Cisco’s CSR and sustainability reporting. Table 4. Cisco environmental sustainability information Cisco and partner services Cisco and partner services offer a wide range of services to help accelerate your success in connecting Cisco 6000 Series Switches and/or Cisco N9000 Series Switches to the Nexus Hyperfabric cloud controller. Our innovative service offerings are delivered through a unique combination of people, processes, tools, and partners and are focused on helping you increase operational efficiency and improve your network control. Cisco Nexus Hyperfabric solution provides proactive support with the Cisco SMARTnet® service to help you resolve mission-critical problems with direct access at any time to Cisco network experts and award-winning resources. Spanning the entire network lifecycle, our service offerings help increase investment protection, optimize network operations, support migration operations, and strengthen your IT expertise. For more information, please visit www.cisco.com/go/services.
+
+| Features | Essentials entitlement | Premier entitlement |
+| --- | --- | --- |
+|  |  | (needed for full-stack AI capabilities) |
+|  |  |  |
+| Automatically provisions lossless backend | No | Yes |
+| AI and storage networks |  |  |
+|  |  |  |
+| Internal performance monitoring between | No | Yes |
+| switches and servers |  |  |
+|  |  |  |
+| Options for AI servers | Cisco UCS® or Bring-Your-Own | Bundled Cisco UCS |
+
+| Sustainability topic |  | Reference |
+| --- | --- | --- |
+| General | Information on product-material-content laws and regulations | Materials |
+|  | Information on electronic waste laws and regulations, including our products, batteries, and packaging | WEEE Compliance |
+|  | Information on product takeback and reuse program | Cisco Takeback and Reuse Program |
+|  | Sustainability inquiries | Contact: csr_inquiries@cisco.com |
+|  | Countries and regions supported | Table 6: Regulatory Compliance |
+| Power | Power (including pluggable) | Table 11: Card Specifications |
+| Material | Product packaging weight and materials | Contact: environment@cisco.com |
+|  | Weight | Table 11: Card Specifications |
+
+Cisco Capital
+
+Flexible payment solutions to help you achieve your objectives Cisco Capital® makes it easier to get the right technology to achieve your objectives, enable business transformation and help you stay competitive. We can help you reduce the total cost of ownership, conserve capital, and accelerate growth. In more than 100 countries, our flexible payment solutions can help you acquire hardware, software, services and complementary third-party equipment in easy, predictable payments. Learn more. For more information Try before you buy Anyone with a Cisco ID or CCO ID may log into the Cisco Nexus Hyperfabric cloud controller at hyperfabric.cisco.com to request an organization identifier; they can then begin building network fabric blueprints for free. Some products and features described are in development and offered on a when-and-if-available basis. Cisco reserves the right to change delivery timelines and will have no liability for any delays or failures to deliver. Document history Printed in USA C78-4660451-06 09/26
+
+| New or revised topic | Described in | Date |
+| --- | --- | --- |
+| Updates were made throughout the entire data sheet. | The entire data sheet. | February 2026 |
+| Cisco Cloud Control | Throughout the data sheet. | September 2026 |

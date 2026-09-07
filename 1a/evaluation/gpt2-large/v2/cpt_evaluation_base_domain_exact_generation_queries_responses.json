@@ -1,0 +1,295 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-07T06:32:34.057655+00:00",
+  "model_name": "gpt2-large",
+  "model_details": {
+    "name_or_path": "gpt2-large",
+    "model_class": "GPT2LMHeadModel",
+    "model_type": "gpt2",
+    "architectures": [
+      "GPT2LMHeadModel"
+    ],
+    "transformer_layers": 36,
+    "attention_heads": 20,
+    "embedding_dimension": 1280,
+    "vocabulary_size": 50257,
+    "maximum_context_length": 1024,
+    "total_parameters": 774030080,
+    "trainable_parameters": 774030080,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "GPT2TokenizerFast",
+    "tokenizer_name_or_path": "gpt2-large",
+    "tokenizer_vocabulary_size": 50257,
+    "eos_token_id": 50256,
+    "pad_token_id": null,
+    "cache_dir": "/home/jovyan/llmgenai/hf_cache"
+  },
+  "query_source": "domain_exact_generation_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 4
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DEX01",
+      "category": "ospfv2",
+      "evaluation_type": "exact_generation",
+      "prompt": "This memo documents version 2 of the OSPF protocol. OSPF is",
+      "expected_continuation": "a link-state routing protocol. It is designed to be run internal to a single Autonomous System.",
+      "expected_concepts": [
+        "link-state routing protocol",
+        "single Autonomous System"
+      ],
+      "source_file": "1a/data/text/rfc/rfc2328.txt",
+      "source_document": "RFC 2328",
+      "response": "a protocol for the Internet's routing system. It is a set of rules that govern the flow of traffic between routers. The protocol is designed to be flexible and adaptable to the needs of the Internet.\n\nThe OSPF protocol is a set of rules that govern the flow of traffic between routers. The protocol is designed to be flexible and adaptable to the needs of the Internet. The OSPF protocol is a set of rules that govern the flow of traffic between routers. The O",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.058823529411764705,
+        "continuation_token_coverage": 0.6470588235294118,
+        "repeated_trigram_ratio": 0.5119047619047619
+      }
+    },
+    {
+      "id": "DEX02",
+      "category": "ospfv3",
+      "evaluation_type": "exact_generation",
+      "prompt": "Even with larger IPv6 addresses, most packets in OSPF for IPv6 are",
+      "expected_continuation": "almost as compact as those in OSPF for IPv4.",
+      "expected_concepts": [
+        "compact packets",
+        "relaxed field limitations",
+        "OSPF for IPv6"
+      ],
+      "source_file": "1a/data/text/rfc/rfc5340.txt",
+      "source_document": "RFC 5340",
+      "response": "still destined for the same address space.\n\nThe OSPF protocol is designed to be flexible and adaptable to the needs of the network. It is designed to be flexible in the sense that it can be used to implement a variety of different protocols. It is designed to be adaptable in the sense that it can be used to implement a variety of different protocols.\n\nThe OSPF protocol is designed to be flexible in the sense that it can be used to implement a variety of",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.3333333333333333,
+        "repeated_trigram_ratio": 0.45238095238095233
+      }
+    },
+    {
+      "id": "DEX03",
+      "category": "ospf-nssa",
+      "evaluation_type": "exact_generation",
+      "prompt": "NSSAs are similar to the existing OSPF stub area configuration option but have the additional capability of",
+      "expected_continuation": "importing AS external routes in a limited fashion.",
+      "expected_concepts": [
+        "stub area",
+        "AS external routes",
+        "limited import"
+      ],
+      "source_file": "1a/data/text/rfc/rfc3101.txt",
+      "source_document": "RFC 3101",
+      "response": "being able to be configured to be used by multiple routers.\n\nThe OSPF stub area configuration option is used to configure the OSPF stub area for a specific subnet. The OSPF stub area configuration option is used to configure the OSPF stub area for a specific subnet.\n\nThe OSPF stub area configuration option is used to configure the OSPF stub area for a specific subnet. The OSPF stub area configuration option is used to configure",
+      "generation_metrics": {
+        "concept_hits": [
+          "stub area"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.125,
+        "repeated_trigram_ratio": 0.6301369863013699
+      }
+    },
+    {
+      "id": "DEX04",
+      "category": "ospf-graceful-restart",
+      "evaluation_type": "exact_generation",
+      "prompt": "A restarting router may not be capable of adjusting its forwarding in a timely manner when",
+      "expected_continuation": "the network topology changes.",
+      "expected_concepts": [
+        "network topology changes",
+        "forwarding adjustment",
+        "restarting router"
+      ],
+      "source_file": "1a/data/text/rfc/rfc3623.txt",
+      "source_document": "RFC 3623",
+      "response": "a new IP address is assigned.\n\nIf you are using a router that is not configured to forward packets to the Internet, you may need to configure the router to forward packets to the Internet.\n\nIf you are using a router that is configured to forward packets to the Internet, but you are not using a DHCP server, you may need to configure the router to forward packets to the Internet.\n\nIf you are using a router that is configured to forward packets to the Internet, but",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.49411764705882355
+      }
+    },
+    {
+      "id": "DEX05",
+      "category": "ospf-bfd",
+      "evaluation_type": "exact_generation",
+      "prompt": "Bidirectional Forwarding Detection (BFD) [RFC5880] enables routers to",
+      "expected_continuation": "monitor data plane connectivity and to detect faults in the bidirectional path between them.",
+      "expected_concepts": [
+        "data plane connectivity",
+        "bidirectional path",
+        "fault detection"
+      ],
+      "source_file": "1a/data/text/rfc/rfc9355.txt",
+      "source_document": "RFC 9355",
+      "response": "detect and forward packets that are not intended for the destination host. BFD is a mechanism for detecting and forwarding packets that are not intended for the destination host. BFD is a mechanism for detecting and forwarding packets that are not intended for the destination host. BFD is a mechanism for detecting and forwarding packets that are not intended for the destination host. BFD is a mechanism for detecting and forwarding packets that are not intended for the destination host. BFD is a mechanism for detecting and forwarding packets that",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.21428571428571427,
+        "repeated_trigram_ratio": 0.7727272727272727
+      }
+    },
+    {
+      "id": "DEX06",
+      "category": "nexus-dashboard",
+      "evaluation_type": "exact_generation",
+      "prompt": "For organizations managing on-premises data centers, the Cisco Nexus Dashboard serves as",
+      "expected_continuation": "the single point of control for provisioning, visibility, troubleshooting, and automation.",
+      "expected_concepts": [
+        "single point of control",
+        "provisioning",
+        "visibility",
+        "troubleshooting",
+        "automation"
+      ],
+      "source_file": "1a/data/text/cisco-dc/10_nexus_dashboard_data_sheet_2026.txt",
+      "source_document": "Cisco Nexus Dashboard data sheet",
+      "response": "a central hub for managing and monitoring the data center environment. The Dashboard provides a centralized view of the data center environment, including the status of the data center, the status of the network, and the status of the network's services.\n\nThe Dashboard provides a centralized view of the data center environment, including the status of the data center, the status of the network, and the status of the network's services. The Dashboard provides a centralized view of the data center environment, including",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.36363636363636365,
+        "repeated_trigram_ratio": 0.6024096385542168
+      }
+    },
+    {
+      "id": "DEX07",
+      "category": "ai-data-center",
+      "evaluation_type": "exact_generation",
+      "prompt": "Cisco® data center networking with Cisco Nexus® 9000 Series Switches and the Nexus Dashboard operations and automation platform provides",
+      "expected_continuation": "the interplay of cutting-edge silicon, hardware, software, optics, and management tools to deliver high bandwidth, lossless, and low latency AI/ML networks.",
+      "expected_concepts": [
+        "high bandwidth",
+        "lossless",
+        "low latency",
+        "AI/ML networks"
+      ],
+      "source_file": "1a/data/text/cisco-dc/14_data_center_networking_ai_ml_solution_overview.txt",
+      "source_document": "AI/ML Networking with Cisco Nexus 9000",
+      "response": "a unified, integrated, and scalable solution for managing and monitoring Cisco Nexus 9000 Series Switches.\n\nThe Cisco Nexus 9000 Series Switches are designed to meet the needs of a wide range of customers, including large enterprises, small businesses, and government agencies. The Cisco Nexus 9000 Series Switches are designed to meet the needs of a wide range of customers, including large enterprises, small businesses, and government agencies.\n\nThe Cisco Nexus 9000 Series Switches are designed to meet the needs of a",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.21739130434782608,
+        "repeated_trigram_ratio": 0.5189873417721519
+      }
+    },
+    {
+      "id": "DEX08",
+      "category": "vxlan",
+      "evaluation_type": "exact_generation",
+      "prompt": "Virtual Extensible LAN (VXLAN) provides a way to extend Layer 2 networks across",
+      "expected_continuation": "a Layer 3 infrastructure using MAC-in-UDP encapsulation and tunneling.",
+      "expected_concepts": [
+        "Layer 3 infrastructure",
+        "MAC-in-UDP",
+        "tunneling"
+      ],
+      "source_file": "1a/data/text/cisco-dc/05_nexus9000_nxos_vxlan_10.5x.txt",
+      "source_document": "Cisco Nexus 9000 NX-OS VXLAN Configuration Guide",
+      "response": "the Internet. VXLAN is a protocol that allows a network to be extended to include additional devices, such as a wireless access point, a wireless router, or a wireless access point and wireless router.\n\nVXLAN is a protocol that allows a network to be extended to include additional devices, such as a wireless access point, a wireless router, or a wireless access point and wireless router. VXLAN is a protocol that allows a network to be extended to include additional devices, such",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.18181818181818182,
+        "repeated_trigram_ratio": 0.6
+      }
+    },
+    {
+      "id": "DEX09",
+      "category": "vpc",
+      "evaluation_type": "exact_generation",
+      "prompt": "This document describes common Virtual Port Channel (vPC) enhancements configured on",
+      "expected_continuation": "Cisco Nexus switches in a vPC domain.",
+      "expected_concepts": [
+        "Cisco Nexus switches",
+        "vPC domain"
+      ],
+      "source_file": "1a/data/text/cisco-dc/21_vpc_enhancements.txt",
+      "source_document": "Understand Virtual Port Channel Enhancements",
+      "response": "the Cisco IOS Software Release 15.5(1)R2.\n\nThis document describes the following enhancements:\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC Enhancements\n\nvPC",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.2857142857142857,
+        "repeated_trigram_ratio": 0.5789473684210527
+      }
+    },
+    {
+      "id": "DEX10",
+      "category": "switching",
+      "evaluation_type": "exact_generation",
+      "prompt": "Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch",
+      "expected_continuation": "makes a forwarding decision on a frame and begins forwarding the frame out of an egress interface as soon as the switch has processed enough of the frame header to make a valid forwarding decision.",
+      "expected_concepts": [
+        "forwarding decision",
+        "egress interface",
+        "frame header",
+        "cut-through switching"
+      ],
+      "source_file": "1a/data/text/cisco-dc/13_nexus9000_interface_crc_script.txt",
+      "source_document": "Troubleshoot Nexus 9000 Interface CRC Error with Script",
+      "response": "is configured to use a different type of switch than the one it is connected to. This allows the switch to be configured to use a different type of switch than the one it is connected to.\n\nCut-through switching is a feature that is available on Cisco Nexus 9000 series switches. It allows a switch to be configured to use a different type of switch than the one it is connected to. This allows the switch to be configured to use a different type of switch than the one it is connected",
+      "generation_metrics": {
+        "concept_hits": [
+          "cut-through switching"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.3142857142857143,
+        "repeated_trigram_ratio": 0.5384615384615384
+      }
+    }
+  ]
+}

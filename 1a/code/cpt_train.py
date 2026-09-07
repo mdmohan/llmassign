@@ -1,13 +1,221 @@
 import json
 import math
+import platform
 import random
+import shlex
+import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import torch
 from torch.amp import GradScaler, autocast
 from torch.optim import AdamW
+import transformers
 from transformers import get_cosine_schedule_with_warmup
+
+from cache import CACHE_DIR
+
+
+TRAINING_RUN_FILENAME = "training_run.json"
+
+
+def _json_compatible(value):
+    """Convert argparse and PyTorch values into JSON-safe representations."""
+    if isinstance(value, dict):
+        return {str(key): _json_compatible(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_compatible(item) for item in value]
+    if isinstance(value, Path):
+        return str(value)
+    if isinstance(value, (torch.device, torch.dtype)):
+        return str(value)
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
+
+def _write_training_run(run_config, save_dir):
+    """Write the reproducibility record at the root of the training run."""
+    save_dir = Path(save_dir)
+    save_dir.mkdir(parents=True, exist_ok=True)
+    output_path = save_dir / TRAINING_RUN_FILENAME
+    output_path.write_text(
+        json.dumps(_json_compatible(run_config), indent=2),
+        encoding="utf-8",
+    )
+    return output_path
+
+
+def _create_cli_run_config(args, model_family, bin_file, save_dir):
+    """Capture every parsed CLI option and the reproducible invocation."""
+    command_argv = [sys.executable, *sys.argv]
+    dataset_metrics = getattr(args, "dataset_metrics", None)
+    dataset_metrics = (
+        dataset_metrics.expanduser().resolve()
+        if dataset_metrics is not None
+        else None
+    )
+
+    cuda_device_name = None
+    if torch.cuda.is_available():
+        cuda_device_name = torch.cuda.get_device_name(torch.cuda.current_device())
+
+    return {
+        "schema_version": 1,
+        "status": "initializing",
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "model_family": model_family,
+        "command": {
+            # Python cannot recover the shell's aliases or original spacing.
+            # argv is exact and this command is its safely quoted equivalent.
+            "argv": command_argv,
+            "reconstructed_full_command": shlex.join(command_argv),
+            "working_directory": str(Path.cwd()),
+        },
+        "cli_options": vars(args).copy(),
+        "resolved_paths": {
+            "bin_file": str(bin_file),
+            "dataset_metrics": (
+                str(dataset_metrics) if dataset_metrics is not None else None
+            ),
+            "save_dir": str(save_dir),
+            "cache_dir": str(CACHE_DIR),
+        },
+        "dataset": {
+            "bin_file": str(bin_file),
+            "file_size_bytes": bin_file.stat().st_size,
+            "stored_token_count": bin_file.stat().st_size // 2,
+        },
+        "environment": {
+            "python_version": platform.python_version(),
+            "python_executable": sys.executable,
+            "platform": platform.platform(),
+            "pytorch_version": torch.__version__,
+            "transformers_version": transformers.__version__,
+            "cuda_available": torch.cuda.is_available(),
+            "cuda_runtime_version": torch.version.cuda,
+            "cudnn_version": (
+                torch.backends.cudnn.version()
+                if torch.cuda.is_available()
+                else None
+            ),
+            "cuda_device_count": (
+                torch.cuda.device_count() if torch.cuda.is_available() else 0
+            ),
+            "cuda_device_name": cuda_device_name,
+        },
+    }
+
+
+def _record_training_plan(
+    run_config,
+    save_dir,
+    model,
+    tokenizer,
+    device,
+    dataloader,
+    *,
+    epochs,
+    grad_accum_steps,
+    learning_rate,
+    weight_decay,
+    warmup_ratio,
+    warmup_steps,
+    max_grad_norm,
+    log_every_steps,
+    save_every_steps,
+    seed,
+    batches_per_epoch,
+    updates_per_epoch,
+    total_steps,
+    precision,
+    gradient_scaling,
+    gradient_checkpointing,
+):
+    """Add loaded-model facts and calculated training values to the record."""
+    if run_config is None:
+        run_config = {
+            "schema_version": 1,
+            "status": "initializing",
+            "created_at_utc": datetime.now(timezone.utc).isoformat(),
+            "command": None,
+            "cli_options": None,
+            "model_family": getattr(model.config, "model_type", None),
+        }
+
+    micro_batch_size = getattr(dataloader, "batch_size", None)
+    effective_batch_size = (
+        micro_batch_size * grad_accum_steps
+        if micro_batch_size is not None
+        else None
+    )
+    dataset_samples = len(getattr(dataloader, "dataset", []))
+
+    run_config["status"] = "training"
+    run_config["model"] = {
+        "requested_name": (
+            run_config.get("cli_options", {}).get("model_name")
+            if isinstance(run_config.get("cli_options"), dict)
+            else None
+        ),
+        "loaded_name_or_path": getattr(model.config, "_name_or_path", None),
+        "model_class": type(model).__name__,
+        "model_type": getattr(model.config, "model_type", None),
+        "tokenizer_class": type(tokenizer).__name__,
+        "tokenizer_name_or_path": getattr(tokenizer, "name_or_path", None),
+        "vocabulary_size": getattr(model.config, "vocab_size", None),
+        "total_parameters": sum(parameter.numel() for parameter in model.parameters()),
+        "trainable_parameters": sum(
+            parameter.numel()
+            for parameter in model.parameters()
+            if parameter.requires_grad
+        ),
+        "parameter_dtype": str(next(model.parameters()).dtype),
+        "device": str(device),
+    }
+    run_config.setdefault("dataset", {}).update(
+        {
+            "packed_sequence_count": dataset_samples,
+            "context_length": getattr(
+                getattr(dataloader, "dataset", None),
+                "seq_len",
+                None,
+            ),
+            "batches_per_epoch": batches_per_epoch,
+            "dataloader_workers": getattr(dataloader, "num_workers", None),
+            "shuffle": True,
+            "drop_last": getattr(dataloader, "drop_last", None),
+        }
+    )
+    run_config["hyperparameters"] = {
+        "epochs": epochs,
+        "micro_batch_size": micro_batch_size,
+        "gradient_accumulation_steps": grad_accum_steps,
+        "effective_batch_size": effective_batch_size,
+        "learning_rate": learning_rate,
+        "weight_decay": weight_decay,
+        "adam_betas": [0.9, 0.95],
+        "warmup_ratio": warmup_ratio,
+        "max_grad_norm": max_grad_norm,
+        "seed": seed,
+        "precision": str(precision),
+        "gradient_scaling": gradient_scaling,
+        "gradient_checkpointing": gradient_checkpointing,
+        "optimizer": "AdamW",
+        "learning_rate_scheduler": "cosine_with_warmup",
+        "log_every_steps": log_every_steps,
+        "save_every_steps": save_every_steps,
+    }
+    run_config["derived_training_plan"] = {
+        "batches_per_epoch": batches_per_epoch,
+        "optimizer_updates_per_epoch": updates_per_epoch,
+        "total_optimizer_steps": total_steps,
+        "warmup_steps": warmup_steps,
+    }
+    output_path = _write_training_run(run_config, save_dir)
+    print(f"Training configuration saved to: {output_path}")
+    return run_config, output_path
 
 
 def _perplexity(loss):
@@ -96,6 +304,7 @@ def cpt_train(
     log_every_steps=10,
     save_every_steps=500,
     seed=42,
+    run_config=None,
 ):
     """Run continued pre-training and save checkpoints and loss history."""
     device = torch.device(device)
@@ -160,6 +369,31 @@ def cpt_train(
         micro_batch_size * grad_accum_steps
         if micro_batch_size is not None
         else "unknown"
+    )
+
+    run_config, run_config_path = _record_training_plan(
+        run_config,
+        save_dir,
+        model,
+        tokenizer,
+        device,
+        dataloader,
+        epochs=epoch,
+        grad_accum_steps=grad_accum_steps,
+        learning_rate=learning_rate,
+        weight_decay=weight_decay,
+        warmup_ratio=warmup_ratio,
+        warmup_steps=warmup_steps,
+        max_grad_norm=max_grad_norm,
+        log_every_steps=log_every_steps,
+        save_every_steps=save_every_steps,
+        seed=seed,
+        batches_per_epoch=batches_per_epoch,
+        updates_per_epoch=updates_per_epoch,
+        total_steps=total_steps,
+        precision=torch.float16 if use_amp else torch.float32,
+        gradient_scaling=use_amp,
+        gradient_checkpointing=getattr(model, "is_gradient_checkpointing", False),
     )
 
     print("--- Training Execution Plan ---")
@@ -339,6 +573,22 @@ def cpt_train(
     tokenizer.save_pretrained(final_dir)
     history_path, curve_path = _save_training_history(history, save_dir)
 
+    run_config["status"] = "completed"
+    run_config["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
+    run_config["results"] = {
+        "completed_optimizer_steps": global_step,
+        "elapsed_seconds": time.time() - start_time,
+        "final_model_dir": str(final_dir),
+        "last_checkpoint_dir": str(save_dir / "last_checkpoint"),
+        "training_history_file": str(history_path),
+        "loss_curve_file": str(curve_path) if curve_path else None,
+        "final_training_loss": history[-1]["loss"] if history else None,
+        "final_training_perplexity": (
+            history[-1]["perplexity"] if history else None
+        ),
+    }
+    _write_training_run(run_config, save_dir)
+
     print(f"\nTraining complete. Final model saved to: {final_dir}")
     print(f"Training history saved to: {history_path}")
     if curve_path is not None:
@@ -350,19 +600,36 @@ def cpt_train(
         "last_checkpoint_dir": str(save_dir / "last_checkpoint"),
         "history_file": str(history_path),
         "loss_curve_file": str(curve_path) if curve_path else None,
+        "training_run_file": str(run_config_path),
     }
 
 
 def run_cpt_from_cli(args):
     """Connect the existing model, data-loader, and CPT functions."""
-    from gpt2_model import load_gpt2_model
-    from load_tensors import load_tokens_from_bin
+    from smollm2_model import is_smollm2_model
 
     bin_file = args.bin_file.expanduser().resolve()
     save_dir = args.save_dir.expanduser().resolve()
 
     if not bin_file.is_file():
         raise ValueError(f"Packed binary token file does not exist: {bin_file}")
+
+    model_family = "smollm2" if is_smollm2_model(args.model_name) else "gpt2"
+    run_config = _create_cli_run_config(
+        args,
+        model_family=model_family,
+        bin_file=bin_file,
+        save_dir=save_dir,
+    )
+    _write_training_run(run_config, save_dir)
+
+    if is_smollm2_model(args.model_name):
+        from cpt_train_smollm2 import run_smollm2_cpt_from_cli
+
+        return run_smollm2_cpt_from_cli(args, run_config=run_config)
+
+    from gpt2_model import load_gpt2_model
+    from load_tensors import load_tokens_from_bin
 
     model_dict = load_gpt2_model(model_name=args.model_name)
     dataloader = load_tokens_from_bin(
@@ -387,6 +654,7 @@ def run_cpt_from_cli(args):
         log_every_steps=args.log_every_steps,
         save_every_steps=args.save_every_steps,
         seed=args.seed,
+        run_config=run_config,
     )
 
 
@@ -409,6 +677,7 @@ def main() -> int:
     print(f"  Training history: {artifacts['history_file']}")
     if artifacts["loss_curve_file"]:
         print(f"  Loss curve:       {artifacts['loss_curve_file']}")
+    print(f"  Training config:  {artifacts['training_run_file']}")
     return 0
 
 

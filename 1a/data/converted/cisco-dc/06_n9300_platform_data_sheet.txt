@@ -1,0 +1,663 @@
+# MD5: c94b5dd637889fd0ea9dd3e5a3315683
+
+Data sheet
+Cisco public
+Cisco N9300 Platform Switches
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 1 of 21
+
+Contents
+Product overview 3
+Models 3
+Features and benefits 6
+Cisco N9300 Power and Cooling 9
+Deployment scenarios 11
+Cisco NX-OS Software overview 14
+Software requirements 15
+Specifications 15
+Environmental properties 16
+Regulatory standards compliance 17
+Supported optics modules 18
+Ordering information 18
+Warranty 20
+Service and support 20
+For more information 21
+Document history 21
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 2 of 21
+
+Product overview
+Organizations everywhere recognize that changing application environments are creating new demands for
+the IT infrastructure that supports them. Application workloads are deployed across a mix of virtualized and
+nonvirtualized server and storage infrastructure, requiring a network infrastructure that provides consistent
+connectivity, security, and visibility across a range of bare-metal, virtualized, and cloud computing
+environments:
+● Application instances are created dynamically. As a result, the provisioning, modification, and
+removal of application network connectivity needs to be dynamic as well.
+● Business units’ demand accelerated application deployments. IT departments have to provide
+shared IT infrastructure to address time-to-market needs and to increase their return on investment
+(ROI).
+● With organizations deploying a mix of custom, open-source, and off-the-shelf commercial
+applications, IT departments must manage both security and quality of service (QoS) for
+environments that support multitenancy.
+● Applications have been transitioning over time to a less monolithic, scale-out, multinode model. IT
+infrastructure that supports this model must scale with the speed of business and support both 10
+and 40 Gigabit Ethernet connectivity.
+The Cisco N9000 Series Switches include both modular and fixed-port switches that are designed to
+overcome these challenges with a flexible, agile, low-cost, application-centric infrastructure.
+The Cisco N9300 platform consists of fixed-port switches designed for top-of-rack (ToR) and middle-of-
+row (MoR) deployment in data centers that support enterprise applications, service provider hosting, and
+cloud computing environments. They are Layer 2 and 3 nonblocking 10 and 40 Gigabit Ethernet switches
+with up to 2.56 terabits per second (Tbps) of internal bandwidth.
+Models
+Table 1 summarizes the Cisco N9300 platform switch models.
+Table 1. Cisco N9300 Platform Switches
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 3 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Description |
+| --- | --- |
+| Cisco N9332PQ Switch | 32 x 40-Gbps Quad Enhanced Small Form-Factor Pluggable (QSFP+) ports |
+| Cisco N9372PX-E Switch | 48 x 1/10-Gbps SFP+ and 6 x 40-Gbps fixed QSFP+ ports |
+| Cisco N9372TX-E Switch | 48 x 100M/1/10GBASE-T and 6 x 40-Gbps fixed QSFP+ ports |
+| Cisco N9372PX Switch | 48 x 1/10-Gbps SFP+ and 6 x 40-Gbps fixed QSFP+ ports |
+| Cisco N9372TX Switch | 48 x 100M/1/10GBASE-T and 6 x 40-Gbps fixed QSFP+ ports |
+| Cisco N9396PX Switch | 48 x 1/10-Gbps SFP+ and up to 12 x 40-Gbps QSFP+ ports |
+| Cisco N9396TX Switch | 48 x 100M/1/10GBASE-T and up to 12 x 40-Gbps QSFP+ ports |
+| Cisco N93120TX Switch | 96 x 100M/1/10GBASE-T and 6 x 40-Gbps fixed QSFP+ ports |
+
+The Cisco N9332PQ Switch is a 1-rack-unit (1RU) switch that supports 2.56 Tbps of bandwidth and over
+720 million packets per second (mpps) across thirty-two 40-Gbps Enhanced QSFP+ ports (Figure 1).
+Cisco N9332PQ Switch
+The Cisco N9372PX and N9372PX-E Switches are 1RU switches that support 1.44 Tbps of bandwidth and
+over 1150 mpps across 48 fixed 10-Gbps SFP+ ports and 6 fixed 40-Gbps QSFP+ ports (Figure 2). The
+Cisco N9372PX-E is a minor hardware revision of the Cisco N9372PX. Enhancements in the hardware are
+transparent in Cisco® NX-OS Software mode and offer feature parity.
+Cisco N9372PX-E Switch
+The Cisco N9372TX and 9372TX-E Switches are 1RU switches that support 1.44 Tbps of bandwidth and
+over 1150 mpps across 48 fixed 100M/1/10-Gbps BASE-T ports and 6 fixed 40-Gbps QSFP+ ports
+(Figure 3). The Cisco N9372TX-E is a minor hardware revision of the Cisco N9372TX. Enhancements in the
+hardware are transparent in NX-OS mode and offer feature parity.
+Cisco N9372TX-E Switch
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 4 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Description |
+| --- | --- |
+| Cisco N93128TX Switch | 96 x 100M/1/10GBASE-T and up to 8 x 40-Gbps QSFP+ ports |
+
+The Cisco N9396PX Switch is a 2RU switch that supports up to 1.92 Tbps of bandwidth and over 1500
+mpps across 48 fixed 10-Gbps SFP+ ports and an uplink module (see Figures 9,10 and 11 later in this
+document) that can support up to 12 fixed 40-Gbps QSFP+ ports (Figure 4).
+Cisco N9396PX Switch
+The Cisco N9396TX Switch is a 2RU switch that supports up to 1.92 Tbps of bandwidth and over 1500
+mpps across 48 fixed 100M/1/10GBASE-T ports and an uplink module (see Figures 9,10 and 11 later in
+this document) that can support up to 12 fixed 40-Gbps QSFP+ ports (Figure 4).
+Cisco N9396TX Switch
+The Cisco N93120TX Switch is a 2RU switch that supports 2.4 Tbps of bandwidth and over 750 mpps
+across 96 fixed 100M/1/10G BASE-T ports and 6 fixed 40-Gbps QSFP ports (Figure 6).
+Cisco N93120TX Switch
+The Cisco N93128TX Switch is a 3RU switch that supports up to 2.56 Tbps of bandwidth and over 750
+mpps across 96 fixed 100M/1/10GBASE-T ports and an uplink module (see Figures 9,10 and 11 later in
+this document) that can support up to 8 fixed 40-Gbps QSFP+ ports (Figure 7).
+Cisco N93128TX Switch
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 5 of 21
+
+All the Cisco N9300 platform switches use dual- core 2.5-GHz x86 CPUs with 64-GB Solid-State Disk
+(SSD) drives and 16 GB of memory for enhanced network performance.
+With the Cisco N9000 Series, organizations can quickly and easily upgrade existing data centers to carry
+40 Gigabit Ethernet to the aggregation layer or to the spine (in a leaf-and-spine configuration) through
+advanced and cost-effective optics that enable the use of existing 10 Gigabit Ethernet fiber (a pair of
+multimode fiber strands). Please see the Cisco 40GBASE QSFP modules data sheet for more details.
+Cisco provides two modes of operation for the Cisco N9000 Series. Organizations can use Cisco® NX-OS
+Software to deploy the Cisco N9000 Series in standard Cisco Nexus switch environments. Organizations
+also can use a hardware infrastructure that is ready to support Cisco Application Centric Infrastructure
+(Cisco ACI™) to take full advantage of an automated, policy-based, systems management approach.
+Features and benefits
+The Cisco N9300 platform switches are high-density, nonblocking, low-power-consuming switches
+designed for ToR, MoR, and end-of-row (EoR) deployment in enterprise data centers, service provider
+facilities, and large virtualized and cloud computing environments.
+The platform offers industry-leading density and performance with flexible port configurations that can
+support existing copper and fiber cabling (Tables 2 and 3). With 1/10GBASE-T support, the platform can
+deliver 10 Gigabit Ethernet over existing copper cabling, enabling a low-cost upgrade from Cisco Catalyst®
+6500 Series Switches when used in an MoR or EoR configuration.
+Table 2. Cisco N9300 Platform Switches Characteristics: Fixed-Port Switches
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 6 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Cisco N9332PQ | Cisco N9372PX and | Cisco N9372TX and | Cisco N93120TX |
+| --- | --- | --- | --- | --- |
+|  |  | 9372PX-E | 9372TX-E** |  |
+|  |  |  |  |  |
+| Ports | 32 QSFP+ ports | 48 fixed 1/10-Gbps | 48 fixed 1/10GBASE- | 96 fixed 1/10GBASE- |
+|  |  | SFP+ and 6 QSFP+ | T and 6 QSFP+ ports | T and 6 QSFP+ ports |
+|  |  |  |  |  |
+|  |  | ports |  |  |
+|  |  |  |  |  |
+| Supported speeds | 40 Gigabit Ethernet | 1/10 Gigabit Ethernet | 100 Megabit Ethernet | 100 Megabit Ethernet |
+|  | speeds | speeds | and 1/10 Gigabit | and 1/10 Gigabit |
+|  |  |  |  |  |
+|  |  |  | Ethernet speeds | Ethernet speeds |
+|  |  |  |  |  |
+| 40 Gigabit Ethernet uplink port | - | 6 fixed QSFP+ ports | 6 fixed QSFP+ ports | 6 fixed QSFP+ ports |
+|  | Advanced QSFP+ optics enable connectivity using existing 10 Gigabit Ethernet fiber. |  |  |  |
+|  | The switch offers 25 MB of additional packet buffer space shared with all ports for more resilient operations. |  |  |  |
+| Power supplies (up to 2) | 650-watt (W) AC, | 650W AC, 930W DC, | 650W AC, 930W DC, | 1200W AC, 930W DC, |
+|  | 930W DC, or 1200W | or 1200W | or 1200W | or 1200W |
+|  |  |  |  |  |
+|  | HVAC/HVDC | HVAC/HVDC | HVAC/HVDC | HVAC/HVDC |
+| Typical power* (AC & DC) | 228W | 210W | 374.5W | 542W |
+| Maximum power* | 508W | 537W | 694W | 948W |
+| (AC & DC) |  |  |  |  |
+|  |  |  |  |  |
+
+Table 3. Cisco N9300 Platform Switches Characteristics: Switches with Uplink Module Slot
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 7 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Cisco N9332PQ | Cisco N9372PX and | Cisco N9372TX and | Cisco N93120TX |
+| --- | --- | --- | --- | --- |
+|  |  | 9372PX-E | 9372TX-E** |  |
+|  |  |  |  |  |
+| Input voltage (AC) | 100 to 240V | 100 to 240V | 100 to 240V | 100 to 240V |
+|  |  |  |  | *PSU redundancy is |
+|  |  |  |  | not supported when |
+|  |  |  |  | used in 110V |
+| Input voltage (HVAC) | 200 to 277V | 200 to 277V | 200 to 277V | 200 to 277V |
+| Input voltage (DC) | -40V to -72V DC | -40V to -72V DC | -40V to -72V DC | -40V to -72V DC |
+|  | (min-max) | (min-max) | (min-max) | (min-max) |
+|  |  |  |  |  |
+|  | -48V to -60V DC | -48V to -60V DC | -48V to -60V DC | -48V to -60V DC |
+|  | (nominal) | (nominal) | (nominal) | (nominal) |
+| Input voltage (HVDC) | –240 to –380V | –240 to –380V | –240 to –380V | –240 to –380V |
+| Frequency (AC) | 50 to 60 Hz | 50 to 60 Hz | 50 to 60 Hz | 50 to 60 Hz |
+| Fans | 4 | 4 | 4 | 2 |
+| Physical (H x W x D) | 1.72 x 17.3 x 22.5 in. | 1.72 x 17.3 x 22.5 in. | 1.72 x 17.3 x 22.5 in. | 3.5 x 17.5 x 22.5 in. |
+|  | (4.4 x 43.9 x 57.1 cm) | (4.4 x 43.9 x 57.1 cm) | (4.4 x 43.9 x 57.1cm) | (8.9 x 44.5 x 57.1 cm) |
+|  |  |  |  |  |
+| Acoustics | 49.1 dBA at 40% fan | 48.5 dBA at 40% fan | 48.6 dBA at 40% fan |  |
+|  | speed, 65.6 dBA at | speed, 64.9 dBA at | speed, 65.2 dBA at |  |
+|  |  |  |  |  |
+|  | 70% fan speed, and | 70% fan speed, and | 70% fan speed, and |  |
+|  | 78.5 dB at 100% fan | 77.8 dB at 100% fan | 76.5 dB at 100% fan |  |
+|  | speed | speed | speed |  |
+| RoHS compliance | Yes | Yes | Yes | Yes |
+
+| Model | Cisco N9396PX | Cisco N9396TX | Cisco N93128TX |
+| --- | --- | --- | --- |
+| Ports | 48 fixed SPF+ ports | 48 fixed 1/10GBASE-T ports | 96 fixed 1/10GBASE-T ports |
+| Supported speeds | 1/10 Gigabit Ethernet speeds | 100 Megabit Ethernet and | 100 Megabit Ethernet and |
+|  |  | 1/10 Gigabit Ethernet speeds | 1/10 Gigabit Ethernet speeds |
+|  |  |  |  |
+| 40 Gigabit Ethernet uplink ports | 6 or 12 QFSP+ ports active through the uplink module | 6 or 12 QFSP+ ports active through the uplink module | 6 or 8 QSFP+ ports active through the uplink module |
+|  | Customers have the choice of either N9K-M6PQ or N9K-M12PQ for 40 Gigabit Ethernet uplink connectivity to aggregation or spine switches. |  |  |
+| 100 Gigabit | Customer can have 100 Gigabit Ethernet uplink connectivity to spine switches or routers |  |  |
+| Ethernet uplink ports | through the N9K-M4PC- uplink module, with CPF2 optics as well as the Cisco CPAK® 100- |  |  |
+|  | Gbps module through converters. |  |  |
+|  |  |  |  |
+|  | The N9K-M4PC-CFP2 offers 5 MB of additional buffer space for each port. |  |  |
+
+* Typical and maximum power values are based on input drawn from the power circuit. The power supply value (for example, 650W
+AC power supply: N9K-PAC-650W) is based on the output rating to the inside of the switch.
+Table 4 summarizes the features of the Cisco N9300 platform.
+Table 4. Cisco N9300 Platform Switch Features
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 8 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Model | Cisco N9396PX | Cisco N9396TX | Cisco N93128TX |
+| --- | --- | --- | --- |
+| Power supplies (up to 2) | 650W AC, 930W DC, or 1200W HVAC/HVDC | 650W AC, 930W DC, or1200W HVAC/HVDC | 930W DC, or 1200W HVAC/HVDC |
+| Typical power* (AC) | 232W | 427W | 582W |
+| Maximum power* (AC) | 455W | 712W | 853W |
+| Input voltage (AC) | 100 to 240V | 100 to 240V | 100 to 120V |
+|  |  |  | (maximum output 800W) |
+|  |  |  | 200 to 240V |
+|  |  |  | (maximum output 1200W) |
+| Input voltage (HVAC) | 200 to 277V | 200 to 277V | 200 to 277V |
+| Input voltage (DC) | –48 to –60V | -48 to -60V | -48 to -60V |
+| Input voltage (HVDC) | –240 to –380V | -240 to –380V | -240 to -380V |
+| Frequency (AC) | 50 to 60 Hz | 50 to 60 Hz | 47 to 63 Hz |
+| Fans | 3 | 3 | 3 |
+| Physical (H x W x D) | 3.5 x 17.5 x 22.5 in. | 3.5 x 17.5 x 22.5 in. | 5.3 x 17.5 x 22.5 in. |
+|  | (8.9 x 44.5 x 57.1 cm) | (8.9 x 44.5 x 57.1 cm) | (13.3 x 44.5 x 57.1 cm) |
+|  |  |  |  |
+| Acoustics | 68.3 dBA at 40% fan speed, 78.8 dBA at 70% fan speed, and 84.5 dB at 100% fan speed | 68.3 dBA at 40% fan speed, 78.8 dBA at 70% fan speed, and 84.5 dB at 100% fan speed | 71.4 dBA at 40% fan speed, 80.2 dBA at 70% fan speed, and 85.7 dB at 100% fan speed |
+| RoHS compliance | Yes | Yes | Yes |
+
+| Feature | Benefit |
+| --- | --- |
+| Predictable | Latency of 1 to 2 microseconds with up to 1.28 Tbps of bandwidth enables customers to build |
+| high performance | a robust switch fabric scaling from as few as 200 10-Gbps server ports to more than 200,000 |
+|  | 10-Gbps server ports. |
+|  |  |
+| Increased integrated | Up to a total of 50 MB of integrated shared buffer space allows better management of speed |
+| buffer space | mismatch between access and uplink ports. |
+| Designed for availability | Hot-swappable, redundant power supplies and fan trays increase availability. |
+| Flexible airflow | Port-side intake and port-side exhaust airflow configurations are both supported. |
+| configuration |  |
+|  |  |
+
+Cisco N9300 Power and Cooling
+The switches are designed to adapt to any data center hot-aisle and cold-aisle configuration. The switches
+can be installed with ports facing the rear, simplifying cabling of server racks by putting the ports closest to
+the servers they support. The switches can be installed with the ports facing the front, simplifying the
+upgrade of existing racks of switches in which network cables are wired to the front of the rack.
+The two deployment modes support front-to-back cooling through a choice of power supplies and fan
+trays designed with opposite airflow directions, denoted by red and blue tabs (Figure 8).
+The two deployment modes are available with AC power supplies. Additionally, DC power supply UCSC-
+PSU-930WDC (port-side intake) can be used for –48 to –60V DC (900W) deployments. For high-voltage
+AC or DC environments, customers can also choose the N9K-PUV-1200W, which supports either 200-
+277V AC or -200 to -380V DC and both airflow directions in one power supply unit.
+To enhance availability, the platform supports 1+1 redundant hot-swappable 80 Plus Platinum-certified
+power supplies and hot-swappable N+1 redundant fan trays.
+Cisco N9300 Platform Switch Components
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 9 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Feature | Benefit |
+| --- | --- |
+| CPU, SSD, and memory | Dual-core 2.5-GHz x86 CPUs with 64-GB SSD drive and 16 GB of memory provide enhanced |
+|  | network performance. |
+|  |  |
+| Power efficiency | All Cisco N9000 Series power supplies are 80 Plus Platinum rated. |
+| Advanced optics | Cisco offers a pluggable 40 Gigabit Ethernet QSFP+ transceiver that enables customers to use |
+|  | existing 10 Gigabit Ethernet data center cabling to support 40 Gigabit Ethernet connectivity. |
+|  |  |
+|  | This technology facilitates adoption of 40 Gigabit Ethernet with no cable infrastructure upgrade |
+|  | cost. |
+
+Cisco N9300 Platform Uplink Module
+The Cisco N9300 platform requires an uplink module to be installed for normal switch operation. This
+module can be serviced and replaced by the user. Three uplink module options are available.
+The Cisco NM6PQ and NM6PQ-E uplink module provides up to 6 QSFP+ ports for 40 Gigabit Ethernet
+connectivity to servers or aggregation-layer switches (Figure 9). The uplink module provides 6 active ports
+when installed in the Cisco N93128TX, N9396TX, and N9396PX. The Cisco NM6PQ-E uplink module is a
+minor hardware revision of Cisco NM6PQ. Enhancements in the hardware are transparent in NX-OS mode
+and offer feature parity.
+Cisco NM6PQ-E 6-Port QSFP+ Uplink Card
+The Cisco NM12PQ uplink module provides up to 12 QSFP+ ports for 40 Gigabit Ethernet connectivity to
+servers or aggregation-layer switches (Figure 10). As specified earlier in Table 3, the uplink module
+provides 8 active ports when installed in the Cisco N93128TX, and 12 active ports when installed in the
+Cisco N9396PX and N9396TX. The 40 Gigabit ports on the uplink module do not support the break-out
+mode of four 10 Gigabit Ethernet ports, but they can be converted to a single 10 Gigabit Ethernet port with
+the QSFP-to-SFP adapter (QSA).
+Cisco NM12PQ 12-Port QSFP+ Uplink Card
+The Cisco Nexus N9K-M4PC-CFP2 uplink module provides up to 4 ports for 100 Gigabit Ethernet
+connectivity to aggregation-layer switches and routers (Figure 11). It supports CFP2 optics as well as
+Cisco CPAK 100-Gbps modules through converters. It provides 2 active ports when installed in the
+Cisco N93128TX, and 4 active ports when installed in the Cisco N9396PX and N9396TX.
+Cisco Nexus N9K-M4PC-CFP2 4-Port 100-Gbps Uplink Card
+For details about the optics modules available and the minimum software release required for each
+supported module, visit https://www.cisco.com/c/en/us/support/interfaces-modules/transceiver-
+modules/products-device-support-tables-list.html
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 10 of 21
+
+Deployment scenarios
+The Cisco N9300 platform is a versatile data center switching platform with switches that can operate as
+ToR data center switches, as MoR and EoR access-layer switches deployed with or without Cisco fabric
+extender technology, and as leaf switches in a horizontally scaled leaf-and-spine architecture.
+Top-of-Rack Data Center Switch
+The Cisco N9300 platform is designed for a ToR architecture, with increased port density, deep integrated
+buffer space, and high performance (Figure 12).
+With 48 fixed ports, the Cisco N9372PX/N9372PX-E, N9372TX/N9372TX-E, N9396PX, and N9396TX have
+enough ports to support the densest 1RU server configurations. A pair of these switches can support
+redundant connectivity to each server in a rack with ports to spare. In the configuration shown earlier in
+Figure 8, the 480-Gbps uplink capacity from each switch is sufficient to provide full 10-Gbps bandwidth to
+each server with up to no oversubscription.
+The Cisco N9300 platform can support multiple racks (or pods) of dense 1RU servers. For example, the
+96-port Cisco N93128TX and N93120TX can provide 10 Gigabit Ethernet connectivity to all servers across
+two racks, with a pair of these switches providing full redundancy. In less dense configurations with 2RU
+servers, the Cisco N9300 platform can support even more racks of servers in an MoR configuration.
+Cisco N9300 Platform Switch in ToR Configurations
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 11 of 21
+
+End-of-Row Access-Layer Switch
+In addition to being an excellent ToR switch, Cisco N9300 platform switches can be configured as MoR
+and EoR access-layer switches. They can connect to almost any blade or rack server through 1 and 10
+Gigabit Ethernet connections including the following (Figure 13):
+● Third-party and standalone Cisco Unified Computing System™ (Cisco UCS®) rack servers
+● Third-party blade server chassis with chassis-resident switches or pass-through devices
+● Cisco UCS
+The Cisco N9396PX, N9372PX, and N9372PX-E can be used to connect both 10 and 40 Gigabit Ethernet -
+equipped fabric extenders, Cisco Nexus B22 Blade Fabric Extenders in Dell and HP blade chassis (not
+shown), and 10 Gigabit Ethernet - equipped servers and systems such as Cisco UCS. The Cisco N9372TX,
+N9372TX-E, N9396TX, N93120TX, and N93128TX provide excellent connectivity for large numbers of 10
+Gigabit Ethernet - equipped blade or rack servers equipped with 10GBASE-T ports.
+Cisco N9300 Platform Switches as EoR Access-Layer Switches With and Without Cisco Fabric Extender Technology
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 12 of 21
+
+Collapsed Access and Aggregation Layers
+As Figure 14 shows, the Cisco N9300 platform supports Cisco N2000 Series Fabric Extenders to establish
+a centrally managed yet physically distributed collapsed access- and aggregation-layer switch. Although
+each fabric extender resides physically at the top of each rack or within each blade server chassis, each
+device is handled as a remote line card of the Cisco N9300 platform switch, yielding massive scalability
+through flexible bandwidth oversubscription but with only a single point of management.
+By using Cisco N2000 Series Fabric Extenders at the top of each rack, organizations can reduce the
+cabling complexity, overall power consumption, and number of management points. This approach
+facilitates a “rack-and-roll” deployment model in which individual server racks can be prewired using ToR
+fabric extenders, with the only connections required to bring them into the data center being network
+uplink and power connections.
+Collapsed Access and Aggregation Layers with Cisco Fabric Extenders
+Leaf-and-Spine Architecture
+Cisco N9300 platform switches are excellent choices for leaf switches in a leaf-and-spine architecture
+(Figure 15). The Layer 3 capabilities established by both the Cisco N9500 and N9300 platforms enable the
+two to be used with equal-cost multipath (ECMP) routing to accelerate the flow of traffic and reduce
+reconvergence time in the event of a failure. The degree of redundancy in a leaf-and-spine architecture
+delivers increased availability with a high level of flexibility in workload placement.
+Cisco N9300 and 9500 Platforms in a Leaf-and-Spine Architecture
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 13 of 21
+
+Cisco NX-OS Software overview
+NX-OS is a purpose-built data center operating system designed for performance, resiliency, scalability,
+manageability, and programmability at its foundation. It provides a robust and comprehensive feature set
+that meets the demanding requirements of virtualization and automation in present and future data centers.
+The Cisco N9000 Series uses an enhanced version of NX-OS with a single binary image that supports
+every switch in the series, simplifying image management. The operating system is modular, with a
+dedicated process for each routing protocol, a design that isolates faults while increasing availability. In the
+event of a process failure, the process can be restarted without losing state. The operating system
+supports hot and cold patching and online diagnostics.
+Main features include the following:
+● Power-On Auto Provisioning (POAP) automates the process of upgrading software images and
+installing configuration files on Cisco Nexus switches that are being deployed in the network for the
+first time.
+● Intelligent API (iAPI) provides operators with a way to manage the switch through remote procedure
+calls (RPCs; JavaScript Object Notation [JSON] or XML) over HTTP/HTTPS infrastructure.
+● Patching allows NX-OS to be upgraded and patched without any interruption in switch operations.
+● Line-rate overlay support provides Virtual Extensible LAN (VXLAN) bridging and routing at full line
+rate, facilitating and accelerating communication between virtual and physical servers as well as
+between multiple data centers in a campus environment.
+● Network traffic monitoring with Cisco Nexus Data Broker builds simple, scalable, and cost-effective
+network taps or Cisco Switched Port Analyzer (SPAN) aggregation for network traffic monitoring and
+analysis.
+● Cisco Intelligent Traffic Director allows customers to build a highly scalable and flexible solution for
+hardware-based Layer 4 load balancing and traffic steering.
+The software packaging for the Cisco N9000 Series offers flexibility and a comprehensive feature set while
+being consistent with Cisco Nexus access switches. The default system software has a comprehensive
+Layer 2 security and management feature set. To enable additional functions including Layer 3 IP unicast
+and IP multicast routing and Cisco Nexus Data Broker, you must install additional licenses. The
+licensing guide illustrates the software packaging and licensing available to enable advanced features. For
+a complete list of supported features, refer to Cisco Feature Navigator.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 14 of 21
+
+Software requirements
+The Cisco N9000 Series supports Cisco NX-OS Software Release 6.1 and later. NX-OS interoperates with
+any networking operating system, including Cisco IOS® Software that conforms to the networking
+standards described in this data sheet.
+The Cisco N9000 Series runs NX-OS on a 64-bit Linux kernel (Release 3.4.10) with a single binary image
+that supports both modular (Cisco N9500 platform) and fixed-port (Cisco N9300 platform) switches.
+The software image is based on NX-OS Release 6.1(2). The single image incorporates both the Linux
+kernel and NX-OS so that the switch can be booted through a standard Linux kickstart process.
+For the latest software release information and recommendations, please refer to the product bulletin at
+http://www.cisco.com/go/n9000.
+Specifications
+Table 5 lists the specifications for the Cisco N9300 platform switches. (Please check software release
+notes for feature support information)
+Performance and Scalability
+Table 5. Product Specifications
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 15 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Item | Cisco N9300 Platform |
+| --- | --- |
+| Maximum number of longest prefix match (LPM) routes | 128,000* |
+| Maximum number of IP host entries | 208,000* |
+| Maximum number of MAC address entries | 96,000* |
+| Number of multicast routes | ● 32,000 (without virtual PortChannel [vPC]) |
+|  | ● 32,000 (with vPC) |
+| Number of Interior Gateway Management Protocol (IGMP) | ● 32,000 (without vPC) |
+| snooping groups |  |
+|  | ● 32,000 (with vPC) |
+|  |  |
+| Maximum number of Cisco N2000 Series Fabric Extenders per switch | 16 |
+| Number of access control list (ACL) entries | ● 4000 ingress |
+|  | ● 1000 egress |
+| Maximum number of VLANs | 4096 |
+| Maximum number of Virtual Routing and Forwarding (VRF) instances | 1000 |
+| Maximum number of links in a PortChannel | 32 |
+| Maximum number of ECMP paths | 64 |
+| Maximum number of PortChannels | 528 |
+| Number of active SPAN sessions | 4 |
+
+* The actual maximum scale depends on the system forwarding mode. Refer to Cisco N9000 Series Verified Scalability Guide
+documentation for the latest exact scalability values validated for specific software.
+Environmental properties
+Table 6 lists the environmental properties of Cisco N9300 platform switches, and Table 7 lists the weight.
+Table 6. Environmental Properties
+Table 7. Weight
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 16 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Item | Cisco N9300 Platform |
+| --- | --- |
+| Maximum number of Rapid per-VLAN Spanning Tree (RPVST) instances | 507 |
+| Maximum number of Hot-Standby Router Protocol (HSRP) groups | 490 |
+| Maximum number of Multiple Spanning Tree (MST) instances | 64 |
+| Maximum number of VXLAN tunnel endpoints (VTEP) | 256 |
+
+| Property | Description |
+| --- | --- |
+| Operating temperature | 32 to 104°F (0 to 40°C) |
+| Nonoperating (storage) temperature | -40 to 158°F (-40 to 70°C) |
+| Humidity | 5 to 95% (noncondensing) |
+| Altitude | 0 to 13,123 ft (0 to 4000m) |
+
+| Component | Weight |
+| --- | --- |
+| Cisco N93128TX without power supplies, fans, or uplink module | 32.56 lb (14.8 kg) |
+| Cisco N9396PX without power supplies, fans, or uplink module | 22.45 lb (10.2 kg) |
+| Cisco N9396TX without power supplies, fans, or uplink module | 22.45 lb (10.2 kg) |
+| Cisco N9372PX/9372PX-E without power supplies or fans | 22.2 lb (10.1 kg) |
+| Cisco N9372TX/9372TX-E without power supplies or fans | 22.6 lb (10.25 kg) |
+| Cisco N9332PQ without power supplies or fans | 22 lb (10.0 kg) |
+| Cisco N93120TX without power supplies or fans | 26 lb (11.8 kg) |
+| 650W AC power supply: N9K-PAC-650W or N9K-PAC-650W-B | 2.42 lb (1.1 kg) |
+| Fan tray 1: N9K-C9300-FAN1 or N9K-C9300-FAN1-B | 0.92 lb (0.4 kg) |
+| 1200W AC power supply: N9K-PAC-1200W or N9K-PAC-1200W-B | 2.64 lb (1.2 kg) |
+| Fan tray 2: N9K-C9300-FAN2 or N9K-C9300-FAN2-B | 1.14 lb (0.5 kg) |
+
+Regulatory standards compliance
+Table 8 summarizes regulatory standards compliance for the Cisco N9300 platform switches.
+Table 8. Regulatory Standards Compliance: Safety and EMC
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 17 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Component | Weight |
+| --- | --- |
+| Fan tray 3: N9K-C9300-FAN3 or N9K-C9300-FAN3-B | 1.42 lb (0.64 kg) |
+| 930W DC power supply | 2.42 lb (1.1 kg) |
+| 1200W HVDC/HVAC power supply | 2.42 lb (1.10 kg) |
+| Cisco NM6PQ/M6PQ-E 40-Gbps uplink module (1 per switch) | 2.0 lb (0.9 kg) |
+| Cisco NM12PQ 40-Gbps uplink module (1 per switch) | 3.12 lb (1.4 kg) |
+| Cisco NM4PC-CFP2 100-Gbps uplink module (1 per switch) | 2.6 lb (1.2 kg) |
+| Fan tray 4: NXA-FAN-30CFM-B and NXA-FAN-30CFM-F | 0.92 lb (0.4 kg) |
+
+| Specification | Description |
+| --- | --- |
+| Regulatory compliance | Products should comply with CE Markings according to directives 2004/108/EC and |
+|  | 2006/95/EC |
+|  |  |
+| Safety | ● UL 60950-1 Second Edition |
+|  | ● CAN/CSA-C22.2 No. 60950-1 Second Edition |
+|  | ● EN 60950-1 Second Edition |
+|  | ● IEC 60950-1 Second Edition |
+|  | ● AS/NZS 60950-1 |
+|  | ● GB4943 |
+| EMC: Emissions | ● 47CFR Part 15 (CFR 47) Class A |
+|  | ● AS/NZS CISPR22 Class A |
+|  | ● CISPR22 Class A |
+|  | ● EN55022 Class A |
+|  | ● ICES003 Class A |
+|  | ● VCCI Class A |
+|  | ● EN61000-3-2 |
+|  | ● EN61000-3-3 |
+|  | ● KN22 Class A |
+|  | ● CNS13438 Class A |
+
+Supported optics modules
+For details about the optics modules available and the minimum software release required for each
+supported module, visit https://www.cisco.com/c/en/us/support/interfaces-modules/transceiver-
+modules/products-device-support-tables-list.html
+Ordering information
+Table 9 presents ordering information for the Cisco N9300 platform switches. Note that you can order the
+Cisco N2000 Series Fabric Extenders either separately or along with the Cisco N9300 platform switches.
+Table 9. Ordering Information
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 18 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Specification | Description |
+| --- | --- |
+| EMC: Immunity | ● EN55024 |
+|  | ● CISPR24 |
+|  | ● EN300386 |
+|  | ● KN 61000-4 series |
+| RoHS | The product is RoHS-6 compliant with exceptions for leaded-ball grid-array (BGA) balls and |
+|  | lead press-fit connectors |
+|  |  |
+
+| Part Number | Product Description |
+| --- | --- |
+| Base Part Number |  |
+| N9K-C9396PX | N9300 with 48p 1/10G SFP+ and 12p 40G QSFP |
+| N9K-C9396TX | N9300 with 48p 100M/1/10G-T and 8p 40G QSFP |
+| N9K-C93128TX | N9300 with 96p 100M/1/10G-T and 8p 40G QSFP |
+| N9K-C93120TX | N9300 with 96p 100M/1/10G-T and 6p 40G QSFP |
+| N9K-C9332PQ | N9300 with 32p 40G QSFP |
+| N9K-C9372PX-E | N9300 with 48p 1/10G SFP+ and 6p 40G QSFP+ |
+| N9K-C9372TX-E | N9300 with 48p 100M/1/10G-T and 6p 40G QSFP+ |
+| N9K-C9372PX | N9300 with 48p 1/10G SFP+ and 6p 40G QSFP+ |
+| N9K-C9372TX | N9300 with 48p 100M/1/10G-T and 6p 40G QSFP+ |
+| N9K-M6PQ-E | Uplink Module for N9300, 6p 40G QSFP |
+| N9K-M6PQ | Uplink Module for N9300, 6p 40G QSFP |
+| N9K-M12PQ | Uplink Module for N9300, 12p 40G QSFP |
+| N9K-M4PC-CFP2 | Uplink Module for N9300, 4p 100G |
+
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 19 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Part Number | Product Description |
+| --- | --- |
+| Power Supplies |  |
+| N9K-PAC-650W | N9300 650W AC PS, Port-side Intake |
+| N9K-PAC-650W-B | N9300 650W AC PS, Port-side Exhaust |
+| N9K-PAC-1200W | N9300 1200W AC PS, Port-side Intake |
+| N9K-PAC-1200W-B | N9300 1200W AC PS, Port-side Exhaust |
+| N9K-PUV-1200W | N9300 1200W Universal Power Supply, Bi-directional air flow and Supports HVAC/HVDC |
+| UCS-PSU-6332-DC | N9000 930W DC PS, Port-side Exhaust |
+| UCSC-PSU-930WDC | N9300 930W DC PS, Port-side Intake |
+| Fans |  |
+| N9K-C9300-FAN2 | N93128 & 9396 Fan 2, Port-side Intake |
+| N9K-C9300-FAN2-B | N93128 & 9396 Fan 2, Port-side Exhaust |
+| NXA-FAN-30CFM-F | N9332 & 9372 Fan, Forward airflow (Port-side Exhaust) |
+| NXA-FAN-30CFM-B | N9332 & 9372 Fan, Reverse airflow (Port-side Intake) |
+| Software |  |
+| N93-LAN1K9 | Enhanced L3 including full OSPF, EIGRP, BGP |
+| NX-OS-ES-XF | NX-OS Essential SW license for a 10/25/40G+ N9K Leaf |
+| NX-OS-AD-XF | NX-OS Advantage SW license for a 10/25/40G+ N9K Leaf |
+| Power Cords |  |
+| CAB-250V-10A-AR | AC Power Cord - 250V, 10A - Argentina (2.5 meter) |
+| CAB-250V-10A-BR | AC Power Cord - 250V, 10A - Brazil (2.1 meter) |
+| CAB-250V-10A-CN | AC Power Cord - 250V, 10A - PRC (2.5 meter) |
+| CAB-250V-10A-ID | AC Power Cord - 250V, 10A, South Africa (2.5 meter) |
+| CAB-250V-10A-IS | AC Power Cord - 250V, 10A - Israel (2.5 meter) |
+| CAB-9K10A-AU | Power Cord, 250VAC 10A 3112 Plug, Australia (2.5 meter) |
+| CAB-9K10A-EU | Power Cord, 250VAC 10A CEE 7/7 Plug, EU (2.5 meter) |
+| CAB-9K10A-IT | Power Cord, 250VAC 10A CEI 23-16/VII Plug, Italy (2.5 meter) |
+| CAB-9K10A-SW | Power Cord, 250VAC 10A MP232 Plug, SWITZ (2.5 meter) |
+
+Warranty
+The Cisco N9300 platform has a 1-year limited hardware warranty. The warranty includes hardware
+replacement with a 10-day turnaround from receipt of a return materials authorization (RMA).
+Service and support
+Cisco offers a range of professional, solution, and product support services for each stage of your Cisco
+N9300 deployment:
+● Cisco Data Center Quick Start Service for Cisco N9000 Series Switches: This service offering
+provides consulting services that include technical advice and assistance to help deploy Cisco
+N9000 Series Switches.
+● Cisco Data Center Accelerated Deployment Service for Cisco N9000 Series Switches: This
+service delivers planning, design, and implementation expertise to bring your project into
+production. The service also provides recommended next steps, an architectural high-level design,
+and operation-readiness guidelines to scale the implementation to your environment.
+● Cisco Migration Service for Cisco N9000 Series Switches: This service helps you migrate from
+Cisco Catalyst 6000 Series Switches to Cisco N9000 Series Switches.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 20 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| Part Number | Product Description |
+| --- | --- |
+| CAB-9K10A-UK | Power Cord, 250VAC 10A BS1363 Plug (13 A fuse), UK (2.5 meter) |
+| CAB-9K12A-NA | Power Cord, 125VAC 13A NEMA 5-15 Plug, North America (2.5 meter) |
+| CAB-AC-L620-C13 | North America, NEMA L6-20-C13 (2.0 meter) |
+| CAB-C13-C14-2M | Power Cord Jumper, C13-C14 Connectors, 2 Meter Length (2 meter) |
+| CAB-C13-C14-AC | Power cord, C13 to C14 (recessed receptacle), 10A (3 meter) |
+| CAB-C13-CBN | Cabinet Jumper Power Cord, 250 VAC 10A, C14-C13 Connectors (0.7 meter) |
+| CAB-IND-10A | 10A Power cable for India (2.5 meter) |
+| CAB-N5K6A-NA | Power Cord, 200/240V 6A North America (2.5 meter) |
+| CAB-HVAC-SD-0.6M | HVAC Power cable for Anderson-LS-25 |
+| CAB-HVAC-C14-2M | HVAC power cable for C14, 2 meters (no more than 240 V) |
+| CAB-HVAC-RT-0.6M | HVAC Power cable with right angle connector for RF-LS-25 |
+| Accessories |  |
+| N3K-C3064-ACC-KIT | N3K/N9K Accessory Kit |
+| N9K-C9300-ACK | N9K Fixed Accessory Kit |
+| N9K-C9300-RMK | N9K Fixed Rack Mount Kit |
+
+● Cisco Product Support: Support service is available globally 24 hours a day, 7 days a week, for
+Cisco software and hardware products and technologies associated with Cisco N9000 Series
+Switches. Enhanced support options delivered by Cisco also include solution support for Cisco ACI,
+Cisco Smart Net Total Care™ Service, and Cisco Smart Net Total Care*.
+For more information, visit https://www.cisco.com/go/services.
+* Cisco products only
+Cisco Capital
+Flexible payment solutions to help you achieve your objectives
+Cisco Capital makes it easier to get the right technology to achieve your objectives, enable business
+transformation and help you stay competitive. We can help you reduce the total cost of ownership,
+conserve capital, and accelerate growth. In more than 100 countries, our flexible payment solutions can
+help you acquire hardware, software, services and complementary third-party equipment in easy,
+predictable payments. Learn more.
+For more information
+For more information about the Cisco N9000 Series and latest software release information and
+recommendations, please visit https://www.cisco.com/go/n9000.
+Document history
+Printed in USA C78-736967-06 08/26
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 21 of 21
+
+
+[EXTRACTED TABLES]:
+
+
+| New or revised topic | Described in | Date |
+| --- | --- | --- |
+| Changed product name | Throughout the data sheet | August 2026 |

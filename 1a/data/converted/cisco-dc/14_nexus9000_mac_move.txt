@@ -1,0 +1,184 @@
+# MD5: 03649ff98ab9fe5fa3114b6fe9e872b8
+
+Troubleshoot Nexus 9000 Mac Move
+Contents
+Introduction
+Prerequisites
+Background Information
+Topology
+How to Troubleshoot
+Configuration
+Verify
+Other Platforms
+Related Information
+Introduction
+This document describes how to troubleshoot when there is mac move on Nexus 9000 and how to prevent it.
+Prerequisites
+• Understand the Concept of mac-learning on the Switch and NX-OS Configuration
+• Troubleshoot Layer 2 Switching Issues
+Background Information
+2018 Nov 14 15:53:26.943 N9K %-SLOT1-5-BCM_L2_LEARN_DISABLE: MAC Learning Disabled unit=0
+2018 Nov 14 15:53:27.769 N9K %-SLOT1-5-BCM_L2_LEARN_ENABLE: MAC Learning Enabled unit=0
+You understand the concept of mac learning and how a table is maintained on a switch, when the switch
+receives a frame, and associates the MAC address of the sender with the LAN port where it was received.
+Under loop condition, it can happen that the same MAC is learned via two different ports on the switch.
+Topology
+<#root>
++-----------+
+Po6
++------------+
+| N9K_1 +----------+ N9K_2 |
+| +----------+ |
++-----------+ +--+---------+
+
+1/3
+| | 2/1
+| |
+| |
++-+---------------+--+
+| Server |
++--------------------+
+0000.117d.e02e
+How to Troubleshoot
+When BCM ASIC learns too many mac-addresses in a short duration, BCM_USD can disable/enable MAC
+learning in hardware and you can see this message that comes up. It could be caused if there are too many
+mac-moves/flaps/loops or new mac learns/moves exceed a certain threshold. By default, on Nexus9K, you
+cannot see the logs which specifically tell you that the switch experiences mac-moves. However, in case
+these movements are high, you end up seeing these logs.
+2018 Nov 14 15:53:26.943 N9K %-SLOT1-5-BCM_L2_LEARN_DISABLE: MAC Learning Disabled unit=0
+2018 Nov 14 15:53:27.769 N9K %-SLOT1-5-BCM_L2_LEARN_ENABLE: MAC Learning Enabled unit=0
+2018 Nov 14 15:53:27.863 N9K %-SLOT1-5-BCM_L2_LEARN_DISABLE: MAC Learning Disabled unit=0
+2018 Nov 14 15:53:28.770 N9K %-SLOT1-5-BCM_L2_LEARN_ENABLE: MAC Learning Enabled unit=0
+These messages are indicative of an event in the mac table. When you have continuous mac moves in the
+environment, these messages can be seen. Basically, the switch received frames with the same source MAC
+on two or more interfaces at a very high rate. The switch has a mechanism to count the number of MAC
+move-backs and weigh them based on the number of times the MAC address moves. The dynamic MAC
+learning is disabled by the switch in order to protect the control-plane.
+At this point, you can check the mac-move count to understand, if and how many mac-moves have been
+experienced on the device.
+N9K# sh mac address-table notification mac-move
+MAC Move Notify Triggers: 1
+Number of MAC Addresses added: 612336
+Number of MAC Addresses moved: 612328
+Number of MAC Addresses removed: 0
+The output of Number of MAC Addresses moved, suggests that the switch experiences mac-moves.
+Configuration
+The next obvious thing is to find out the mac address that causes this problem, the vlans, and the interface
+information where this is experienced. To look for this information, you need to raise the logging level of
+L2FM from the default value of 2 up to 5 on N9K platform.
+
+N9K# sho logging level l2fm
+Facility Default Severity Current Session Severity
+-------- ---------------- ------------------------
+l2fm 2 2
+0(emergencies) 1(alerts) 2(critical)
+3(errors) 4(warnings) 5(notifications)
+6(information) 7(debugging)
+N9K# conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+N9K(config)# logging level l2fm 5
+N9K(config)# end
+N9K# sho logging level l2fm
+Facility Default Severity Current Session Severity
+-------- ---------------- ------------------------
+l2fm 2 5
+0(emergencies) 1(alerts) 2(critical)
+3(errors) 4(warnings) 5(notifications)
+6(information) 7(debugging)
+Any mac moves at this point can be seen in the syslogs:
+2018 Nov 14 16:04:23.881 N9K %L2FM-4-L2FM_MAC_MOVE2: Mac 0000.117d.e02e in vlan 741 has moved between Po6 to Eth1/3
+2018 Nov 14 16:04:23.883 N9K %L2FM-4-L2FM_MAC_MOVE2: Mac 0000.117d.e02e in vlan 741 has moved between Po6 to Eth1/3
+In such a case, you can detect and limit the number of times that a MAC address moves from one port to
+another.
+Until Cisco NX-OS Release 6.0(2)U3(1), when a loop was detected between two ports, MAC learning was
+disabled for 180 seconds.
+However, starting with 7.0(3)I7(3), you can now configure the switch to bring down the port with the lower
+interface index, when such a loop is detected when you use the mac address-table loop-detect port-
+down command.
+N9K# conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+N9K(config)# mac address-table loop-detect port-down
+N9K(config)# exit
+N9K#
+Now, further loop detection after this command has been enabled, takes down the interface with lower
+interface index.
+2018 Nov 13 19:33:54.773 N9K %ETHPORT-5-IF_DOWN_NONE: Interface port-channel6 is down (None)
+2018 Nov 13 19:33:59.046 N9K %ETH_PORT_CHANNEL-5-PORT_DOWN: port-channel6: Ethernet2/1 is down
+2018 Nov 13 19:33:59.049 N9K %ETH_PORT_CHANNEL-5-PORT_DOWN: port-channel6: Ethernet2/2 is down
+2018 Nov 13 19:33:59.166 N9K %ETH_PORT_CHANNEL-5-FOP_CHANGED: port-channel6: first operational port changed from Ethernet2/1 to none
+2018 Nov 13 19:33:59.235 N9K %ETHPORT-5-IF_DOWN_ERROR_DISABLED: Interface port-channel6 is down (Error disabled. Reason:error)
+2018 Nov 13 19:33:59.244 N9K %ETHPORT-5-IF_DOWN_CFG_CHANGE: Interface Ethernet2/2 is down(Config change)
+2018 Nov 13 19:33:59.252 N9K %ETHPORT-5-IF_DOWN_CFG_CHANGE: Interface Ethernet2/1 is down(Config change)
+
+2018 Nov 13 19:34:05.269 N9K %ETHPORT-5-IF_DOWN_CHANNEL_ERR_DISABLED: Interface Ethernet2/2 is down (Channel error disabled)
+2018 Nov 13 19:34:05.303 N9K last message repeated 1 time
+2018 Nov 13 19:34:05.303 N9K %ETHPORT-5-IF_DOWN_CHANNEL_ERR_DISABLED: Interface Ethernet2/1 is down (Channel error disabled)
+Verify
+Use this command to verify the currently configured action.
+N9K# show mac address-table loop-detect
+Port Down Action Mac Loop Detect : disabled
+You can confirm the index of the interface to verify if the correct interface was disabled, as per the feature.
+<#root>
+N9K# show system internal l2fm l2dbg macdb address 0000.117d.e02e vlan 741
+Legend
+------
+Db: 0-MACDB, 1-GWMACDB, 2-SMACDB, 3-RMDB, 4-SECMACDB 5-STAGEDB
+Src: 0-UNKNOWN, 1-L2FM, 2-PEER, 3-LC, 4-HSRP
+5-GLBP, 6-VRRP, 7-STP, 8-DOTX, 9-PSEC 10-CLI 11-PVLAN
+12-ETHPM, 13-ALW_LRN, 14-Non_PI_MOD, 15-MCT_DOWN, 16 - SDB
+17-OTV, 18-Deounce Timer, 19-AM, 20-PCM_DOWN, 21 - MCT_UP
+22-VxLAN, 23-L2RIB 24-CTRL, 25-UFDM
+Slot:0 based for LCS 31-MCEC 20-OTV/ORIB
+VLAN: 741 MAC: 0000.117d.e02e
+Time If/swid Db Op Src Slot FE
+Wed Nov 14 16:04:28 2018 0x16000005 0 UPDATE 3 0 0
+Wed Nov 14 16:04:28 2018 0x16000005 0 REFRESH_DETECT 3 0 15
+Wed Nov 14 16:04:28 2018 0x1a000400 0 UPDATE 3 0 0
+Wed Nov 14 16:04:28 2018 0x1a000400 0 REFRESH_DETECT 3 0 15
+Wed Nov 14 16:04:28 2018 0x16000005 0 UPDATE 3 0 0
+N9K# show int snmp-ifindex
+--------------------------------------------------------------------------------
+Port IFMIB Ifindex (hex)
+--------------------------------------------------------------------------------
+mgmt0 83886080 (0x5000000 )
+Eth1/1 436207616 (0x1a000000)
+Eth1/2 436208128 (0x1a000200)
+Eth1/3
+436208640 (0x1a000400)
+<snip>
+Po6
+369098757 (0x16000005)
+Other Platforms
+
+You can enable mac move notification on the other Nexus platforms with these commands.
+N3K:
+mac address table notification mac-move
+logging level fwm 6
+logging monitor 6
+N5K/N6K:
+mac address table notification mac-move
+logging level fwm 6
+logging monitor 6
+N7K/N9K:
+logging level l2fm 5
+IOS:
+mac address table notification mac-move
+Note: To revert/remove these commands, simply use the `no` version of each command.
+These commands are also available in Nexus5K/6K that run versions 6.0(2)N2(1) and later, to shut down the
+port:
+N5K(config)# mac address-table loop-detect ?
+port-down Take port-down action for mac loop detection
+N5K(config)# mac address-table loop-detect port-down
+Further, the following command is available on the platform to err-disable the edge-port on the MAC move loop detection,
+N5K(config)# mac address-table loop-detect port-down edge-port
+With NX-OS release 6.0(2)A8(1) on Nexus 3000, you can configure the action to bring down the port with
+the lower interface index when such a loop is detected.
+N3K(config)# mac address-table loop-detect ?
+port-down Take port-down action for mac loop detection
+N3K(config)# mac address-table loop-detect port-down
+The following command is available on this platform as well, to err-disable the edge-port on the MAC move loop detection,
+N5K(config)# mac address-table loop-detect port-down edge-port
+Related Information
+• Nexus L2FM-4-L2FM_MAC_MOVE Syslog Explained
+• Nexus 5000 FAQ: What do You do when a Nxus 5000 Switch Displays the "FWM-2-STM LOOP
+DETECT" Message in the Log

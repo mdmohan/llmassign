@@ -1,0 +1,409 @@
+Troubleshoot vPC Inconsistency Issues on NX-OS
+
+Switches
+
+Introduction
+
+This document describes commonly seen virtual port channel (vPC) inconsistency issues and steps to troubleshoot them.
+
+Prerequisites
+
+Requirements
+
+There are no specific requirements for this document.
+
+Components Used
+
+This document is not restricted to specific software and hardware versions. The information in this document was created from the devices in a specific lab environment. All of the devices used in this document started with a cleared (default) configuration. If your network is live, ensure that you understand the potential impact of any command.
+
+Background Information
+
+A vPC allows links physically connected to two different switches to appear as a single port-channel by a third device. Troubleshoot vPC on NX-OS Devices Check the output of show vpc brief and see if there is any compatibility issue in one of the vPC member ports. Use the commands listed to check the specific vPC inconsistency:
+
+• show vpc consistency-parameters global
+
+• show vpc consistency-parameters interface Ethernet x/y
+
+• show vpc consistency-parameters vlans
+
+• show vpc consistency-parameters vpc vpc-id
+
+Issue #1: vPC Member Ports Incompatible Check if there is any compatibility issue between the vPC member ports, as reported with the show vpc command. If there is any issue, it is reported as "Compatibility check failed", as shown in the output: <#root> `show vpc`
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 1 Peer status : peer adjacency formed ok vPC keep-alive status : peer is alive Configuration consistency status : success
+
+Per-vlan consistency status : success Type-2 consistency status : success vPC role : secondary Number of vPCs configured : 18
+
+Peer Gateway : Enabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Enabled, timer is off.(timeout = 240s) Delay-restore status : Timer is off.(timeout = 50s) Delay-restore SVI status : Timer is off.(timeout = 10s) vPC Peer-link status --------------------------------------------------------------------id Port Status Active vlans -- ---- ------ -------------------------------------------------- 1 Po100 up 1,5,10,118,121-132,150,160,253 vPC status ---------------------------------------------------------------------id Port Status Consistency Reason Active vlans -- ---- ------ ----------- ------ ------------ 1 Po1 up success success 1,5,10,118, 121-132,150 2 Po2 down* failed Compatibility check failed - <--- for speed <#root> `show vpc consistency-parameters vpc 2`
+
+Legend:
+
+Type 1 : vPC will be suspended in case of mismatch
+
+Name Type Local Value Peer Value
+
+------------- ---- ---------------------- ----------------------delayed-lacp 1 disabled disabled mode 1 active active Switchport Isolated 1 0 0 Interface type 1 port-channel port-channel LACP Mode 1 on on
+
+Virtual-ethernet-bridge 1 Disabled Disabled
+
+Speed 1 10 Gb/s 100 Gb/s <--- speed mismatch Duplex 1 full full
+
+MTU 1 9216 9216
+
+Port Mode 1 trunk trunk Native Vlan 1 20 20 Admin port mode 1 trunk trunk
+
+STP Port Guard 1 Default Default
+
+STP Port Type 1 Edge Trunk Port Edge Trunk Port
+
+STP MST Simulate PVST 1 Default Default
+
+lag-id 1 [(64, 0-23-4-ee-be-6d, [(0, 806b, 0, 0), (ffff, 50-6b-4b-46-3a-fa, 0, 50-6b-4b-46-39-6a, 1, 0, 0), (64, 0, 0)] 0-23-4-ee-be-6d, 806b,
+
+0, 0)] Vlan xlt mapping 1 Disabled Disabled vPC card type 1 N9K TOR N9K TOR Allowed VLANs - 1,5,10,118 1,5,10,118 Local suspended VLANs - - -
+
+Troubleshoot
+
+• Make sure the vPC interfaces and remote side (server/third switch) are configured with the same
+
+speeds. Use show vpc consistency-parameters vpc vpc-id to check the speed mismatch with the peer vPC interfaces.
+
+• Additionally, confirm all member interfaces in the vPC are configured with the same speeds.
+
+Issue #2: Peer-Link Down
+
+Check if the Peer status shows the peer link is down using the show vpc command. If there is any issue with the peer link status, it must be reported as "peer link is down" for the "Peer status", as shown in this output: <#root> `show vpc brief`
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 100 Peer status : peer link is down <--- peer-link is down then vPC is down vPC keep-alive status : peer is alive Configuration consistency status : success Per-vlan consistency status : success Type-2 consistency status : failed Type-2 inconsistency reason : SVI type-2 configuration incompatible vPC role : secondary Number of vPCs configured : 1
+
+Peer Gateway : Disabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Disabled Delay-restore status : Timer is off.(timeout = 30s) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Disabled
+
+Virtual-peerlink mode : Disabled
+
+vPC Peer-link status --------------------------------------------------------------------id Port Status Active vlans -- ---- ------ ------------------------------------------------- 1 Po1 down vPC status ----------------------------------------------------------------------------
+
+Id Port Status Consistency Reason Active vlans
+
+-- ------------ ------ ----------- ------ --------------- 123 Po123 down failed Peer-link is down - <--- Reason: Peer-link down
+
+Troubleshoot
+
+• Check the status of the port-channel interface and member interfaces configured in the peer link. If
+
+they are down and not connected, check the physical connectivity, such as the cable/SFP, and so on.
+
+• It is required that the vPC peer link port-channel is configured as the Spanning-Tree Protocol (STP)
+
+port type network. Make sure the Bridge Assurance is enabled on all vPC peer links on both vPC peer switches.
+
+• Verify the vPC peer link is configured as a Layer-2 port-channel trunk that allows only vPC VLANs.
+
+• Until the vPC peer link between the peers is initially established, all vPC port-channels must stay in a
+
+suspended state. If the vPC peer link fails once it is online for some time, the vPCs on the secondary link is suspended until the peer link is recovered. Issue #3: Peers Not Reachable through peer-keepalive Check if the vPC keep-alive status displays peer is not reachable through peer-keepalive using the show vpc command. The output reports that vPC peer-keepalive is down with a reason of peer is not reachable through peerkeepalive, as shown: <#root> `show vpc brief`
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 100 Peer status : peer adjacency formed ok vPC keep-alive status : peer is not reachable through peer-keepalive <--- keep-alive is down
+
+Configuration consistency status : success Per-vlan consistency status : success Type-2 consistency status : failed Type-2 inconsistency reason : SVI type-2 configuration incompatible vPC role : secondary Number of vPCs configured : 1
+
+Peer Gateway : Disabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Disabled Delay-restore status : Timer is off.(timeout = 30s) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Disabled
+
+Virtual-peerlink mode : Disabled vPC Peer-link status --------------------------------------------------------------------id Port Status Active vlans -- ---- ------ ------------------------------------------------- 1 Po1 up 1,10 vPC status ----------------------------------------------------------------------------
+
+Id Port Status Consistency Reason Active vlans
+
+-- ------------ ------ ----------- ------ --------------- 123 Po123 up success success 1,10 <-- vpc is still up
+
+Troubleshoot
+
+• Verify the Layer 3 interface is associated to the correct Virtual Route Forwarding (VRF) used for
+
+peer-keepalive between the vPC peer switches.
+
+• If the management VRF is used for peer-keepalive, make sure a management switch is connected to
+
+the management ports on both vPC peer devices.
+
+• Verify that both the source and destination IP addresses used for the peer-keepalive messages are
+
+reachable from the VRF associated with the vPC peer-keepalive link.
+
+• Ensure the Address Resolution Protocol (ARP) is resolved and you can ping between the peer-
+
+keepalive addresses to test reachability. If no reachability exists, check for issues along the path (such as, L1, STP, and so on).
+
+Issue #4: Type-1 Inconsistency
+
+Check if Type-1 consistency status has failed using the show vpc command. The command results report the reason for the failure if the configuration consistency issues are detected: <#root>
+
+`show vpc`
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 1 Peer status : peer adjacency formed ok vPC keep-alive status : peer is alive Configuration consistency status : failed <--- consistency check failed Per-vlan consistency status : success Configuration inconsistency reason: vPC type-1 configuration incompatible - STP Mode inconsistent <--- reason of inconsistency Type-2 consistency status : success vPC role : primary Number of vPCs configured : 0
+
+Peer Gateway : Enabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Enabled, timer is off.(timeout = 360s) Delay-restore status : Timer is on.(timeout = 150s, 30s left) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Enabled
+
+Virtual-peerlink mode : Disabled
+
+Troubleshoot
+
+• Verify both peer switches control the same spanning-tree mode. For example, if the peer switch uses
+
+Multiple Spanning-Tree (MST), the spanning-tree mode and the other peer switch uses Rapid Per VLAN Spanning Tree (Rapid-PVST). Change the spanning-tree mode to be the same on both switches to clear this error.
+
+• Change the spanning tree mode with this command:
+
+Switch(config)# spanning-tree mode mst or Switch(config)# spanning-tree mode rapid-pvst To see other types of Type-1 VPC global configuration failures, use this command to identify the category, as well as, the local and peer value: <#root>
+
+`show vpc consistency-parameters global`
+
+Legend:
+
+Type 1 : vPC will be suspended in case of mismatch
+
+Name Type Local Value Peer Value
+
+------------- ---- ---------------------- -----------------------
+
+STP MST Simulate PVST 1 Enabled Enabled
+
+STP Port Type, Edge 1 Normal, Disabled, Normal, Disabled,
+
+BPDUFilter, Edge BPDUGuard Disabled Disabled
+
+STP MST Region Name 1 "" ""
+
+STP Disabled 1 None None
+
+STP Mode 1 Rapid-PVST Rapid-PVST
+
+STP Bridge Assurance 1 Enabled Enabled
+
+STP Loopguard 1 Disabled Disabled
+
+STP MST Region Instance to 1
+
+VLAN Mapping
+
+STP MST Region Revision 1 0 0
+
+Interface-vlan admin up 2 10 Interface-vlan routing 2 1 1,10 capability QoS (Cos) 2 ([0-7], [], [], [], ([0-7], [], [], [], [], []) [], []) Network QoS (MTU) 2 (1500, 1500, 1500, (1500, 1500, 1500, 1500, 1500, 1500) 1500, 1500, 1500) Network Qos (Pause: 2 (F, F, F, F, F, F) (F, F, F, F, F, F)
+
+T->Enabled, F->Disabled)
+
+Input Queuing (Bandwidth) 2 (0, 0, 0, 0, 0, 0) (0, 0, 0, 0, 0, 0) Input Queuing (Absolute 2 (F, F, F, F, F, F) (F, F, F, F, F, F) Priority: T->Enabled,
+
+F->Disabled)
+
+Output Queuing (Bandwidth 2 (0, 0, 0, 0, 0, 0) (0, 0, 0, 0, 0, 0)
+
+Remaining)
+
+Output Queuing (Absolute 2 (T, F, F, F, F, F) (T, F, F, F, F, F) Priority: T->Enabled,
+
+F->Disabled)
+
+Allowed VLANs - 1,10 1,10 Local suspended VLANs - - - This example shows how to display the vPC consistency parameters for a specific vPC port-channel: <#root> `show vpc consistency-parameters interface port-channel 10`
+
+Legend:
+
+Type 1 : vPC will be suspended in case of mismatch
+
+Name Type Local Value Peer Value
+
+------------- ---- ---------------------- -----------------------
+
+STP Mode 1 Rapid-PVST Rapid-PVST
+
+STP Disabled 1 None None
+
+STP MST Region Name 1 "" ""
+
+STP MST Region Revision 1 0 0 STP MST Region Instance to 1
+
+VLAN Mapping
+
+STP Loopguard 1 Disabled Disabled
+
+STP Bridge Assurance 1 Enabled Enabled
+
+STP Port Type 1 Normal Normal
+
+STP MST Simulate PVST 1 Enabled Enabled
+
+Allowed VLANs - 1-10,15-20,30,37,99 1-10,15-20,30,37,9
+
+• Use the global and port-channel vPC consistency-parameters, along with the current configuration to
+
+identify any disparities between the vPC peers.
+
+Issue #5: Type-2 Inconsistency
+
+Check if the Type-2 consistency status has failed using show vpc command.
+
+This command provides results on the reason of failure if configuration inconsistency is detected: <#root> `show vpc`
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 1 Peer status : peer adjacency formed ok vPC keep-alive status : peer is alive Configuration consistency status : success Per-vlan consistency status : success Type-2 consistency status : failed <--- Type-2 inconsistency found Type-2 inconsistency reason : SVI type-2 configuration incompatible <--- Reason for Type-2 inconsistency vPC role : primary Number of vPCs configured : 0
+
+Peer Gateway : Enabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Enabled, timer is off.(timeout = 360s) Delay-restore status : Timer is off.(timeout = 150s) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Enabled
+
+Virtual-peerlink mode : Disabled This command can be used to dig deeper to see all Type-2 inconsistencies, and the configuration for the peer and local values to view configuration mismatches: <#root> `show vpc consistency-parameters global`
+
+Legend:
+
+Type 1 : vPC will be suspended in case of mismatch
+
+Name Type Local Value Peer Value
+
+------------- ---- ---------------------- -----------------------
+
+STP MST Simulate PVST 1 Enabled Enabled
+
+STP Port Type, Edge 1 Normal, Disabled, Normal, Disabled,
+
+BPDUFilter, Edge BPDUGuard Disabled Disabled
+
+STP MST Region Name 1 "" ""
+
+STP Disabled 1 None None
+
+STP Mode 1 Rapid-PVST Rapid-PVST
+
+STP Bridge Assurance 1 Enabled Enabled
+
+STP Loopguard 1 Disabled Disabled
+
+STP MST Region Instance to 1
+
+VLAN Mapping
+
+STP MST Region Revision 1 0 0 Interface-vlan admin up 2 10 <--- mismatch for SVIs between peers Interface-vlan routing 2 1 1,10 <--- mismatch for SVIs between peers capability QoS (Cos) 2 ([0-7], [], [], [], ([0-7], [], [], [], [], []) [], []) Network QoS (MTU) 2 (1500, 1500, 1500, (1500, 1500, 1500, 1500, 1500, 1500) 1500, 1500, 1500) Network Qos (Pause: 2 (F, F, F, F, F, F) (F, F, F, F, F, F)
+
+T->Enabled, F->Disabled)
+
+Input Queuing (Bandwidth) 2 (0, 0, 0, 0, 0, 0) (0, 0, 0, 0, 0, 0) Input Queuing (Absolute 2 (F, F, F, F, F, F) (F, F, F, F, F, F) Priority: T->Enabled,
+
+F->Disabled)
+
+Output Queuing (Bandwidth 2 (0, 0, 0, 0, 0, 0) (0, 0, 0, 0, 0, 0)
+
+Remaining)
+
+Output Queuing (Absolute 2 (T, F, F, F, F, F) (T, F, F, F, F, F) Priority: T->Enabled,
+
+F->Disabled)
+
+Allowed VLANs - 1,10 1,10 Local suspended VLANs - - -
+
+Troubleshoot
+
+• A switched virtual interface (SVI) Type-2 configuration inconsistency can be due to many
+
+inconsistent SVIs configured between the vPC peer switches. For example, when a particular VLAN SVI is configured on one switch, however, it is not present on the peer switch.
+
+• Verify with the show running-config command on both switches to identify any differences between
+
+the SVI configuration.
+
+• If further assistance is still needed to identify any differences in the configuration with the SVI, open a
+
+TAC case. Issue #6: Interface Number and vPC ID Inconsistency
+
+Check if there are any member ports with consistency failures that were reported under the vPC status in the show vpc command results. <#root> `show vpc`
+
+Legend:
+
+(*) - local vPC is down, forwarding via vPC peer-link vPC domain id : 100 Peer status : peer adjacency formed ok vPC keep-alive status : peer is alive Configuration consistency status : success Per-vlan consistency status : success Type-2 consistency status : success vPC role : secondary Number of vPCs configured : 1
+
+Peer Gateway : Disabled
+
+Dual-active excluded VLANs : -
+
+Graceful Consistency Check : Enabled
+
+Auto-recovery status : Disabled Delay-restore status : Timer is off.(timeout = 30s) Delay-restore SVI status : Timer is off.(timeout = 10s)
+
+Operational Layer3 Peer-router : Disabled
+
+Virtual-peerlink mode : Disabled vPC Peer-link status --------------------------------------------------------------------id Port Status Active vlans -- ---- ------ ------------------------------------------------- 1 Po1 up 1 vPC status ----------------------------------------------------------------------------
+
+Id Port Status Consistency Reason Active vlans
+
+-- ------------ ------ ----------- ------ --------------- 123 Po123 down* failed vPC type-1 - <--- type-1 inconsistency configuration incompatible - STP interface port type inconsistent
+
+Troubleshoot
+
+• Verify the exact port-type mismatch between the vPC interface with the show vpc consistency-
+
+parameters vpc vpc-id command. Steps to check the STP port types mismatch: <#root> `show vpc consistency-parameters vpc 123`
+
+Legend:
+
+Type 1 : vPC will be suspended in case of mismatch
+
+Name Type Local Value Peer Value
+
+------------- ---- ---------------------- ----------------------- Interface type 1 port-channel port-channel LACP Mode 1 on on
+
+STP Port Guard 1 Default Default
+
+STP Port Type 1 Edge Trunk Port Default
+
+<--- this VPC port-channel is configured as Edge Trunk port while peer has Default STP port type.
+
+• Configure the STP port-type on both peers to match the vPC interfaces. A spanning tree port can be
+
+configured as an edge port, a network port, or a normal port. A port can only be in one of these states at a given time. The default spanning tree port type is normal.
+
+• The STP port-type can be configured globally or at the interface level.
+
+Related Information
+
+• Cisco Technical Support & Downloads

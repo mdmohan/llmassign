@@ -1,0 +1,163 @@
+The Cisco NX-OS Software advantage
+
+Cisco® NX-OS Software is an extensible, open, and programmable network operating system for next-generation data centers and cloud networks. It is the industry’s most deployed data center operating system, based on a highly resilient, Linux-based software architecture, built to enable the most performance-demanding cloud environments. Cisco NX-OS runs on Cisco N9000 data-center and Cisco MDS storage networking switches. Product overview that integrates silicon, systems, software, and a single Cisco NX-OS Software is a data center-class operating model with security and observability fused operating system built with modularity, resiliency, and at every layer. It delivers operational consistency and serviceability at its foundation. Cisco NX-OS helps flexibility across AI and enterprise cloud environments, ensure continuous availability and sets the standard supporting massive AI clusters and diverse workloads. for mission-critical data center environments. The selfhealing and highly modular design of Cisco NX-OS Cisco NX-OS offers reliability, innovation, and makes zero-impact operations a reality and enables operational consistency across data center platforms. exceptional operational flexibility. Cisco NX-OS runs on the Cisco Nexus One architecture on the Nexus amily of network switches, which include Focused on the requirements of the data center, Cisco N9000, 7000, 6000, 5000, 3000 series switches, Cisco NX-OS provides a robust and comprehensive Cisco N2000 Series Fabric Extenders, and the feature set that fulfills the switching and storage Cisco MDS family of storage network switches. networking needs of present and future data centers. Cisco NX-OS provides state-of-the-art implementations A single Cisco NX-OS image runs on flagship of relevant networking standards as well as a variety of Cisco N9000 Series Switchesand Cisco N3000 Series true data center–class Cisco innovations. Switches based on Cisco Silicon One®, Cisco Cloud Scale ASICs and NVIDIA Spectrum-X Ethernet switch Cisco NX-OS is an integral part of the software in the silicon. The latest release, Cisco NX-OS Release Cisco Nexus® One architecture. Cisco Nexus One is a 10.6(3)F, continues to expand capabilities across transformative, open, unified networking architecture the portfolio.
+
+• Modular and secure application integration • New in 10.6(2)F: Multicast flow counters for IPv4
+
+architecture, with support for Secure LXC and on Cisco N9300 Series Smart Switches, providing Docker, and third-party application-hosting options deeper visibility into multicast traffic natively on Cisco NX-OS
+
+• New in 10.6(3)F: Native integration between Cisco
+
+• Container-specific DNS resolution for third-party NX-OS and Splunk® is enabled by allowing telemetry
+
+Linux applications running in containers data to be streamed using the HTTP Event Collector (HEC) protocol. Pervasive visibility Modularity, network resiliency, and high
+
+• Network-software state is exposed through a
+
+availability comprehensive publish/subscribe centralized database, while also being accessible through dial-
+
+• Enables service-level high availability with (a)
+
+out gRPCs/Protobufs, http/JSON, and also via Dial-in process isolation and (b) process restartability. gNMI, in both industry standard and Cisco NX-OS Process isolation provides a highly fault-tolerant formats. software infrastructure and fault isolation between the services. Cisco NX-OS processes run in
+
+• The unique capabilities of N9000 switches enable
+
+protected memory spaces that are independent of monitoring real-time flows, flow paths, and latency, each other and the kernel. Process restartability which allows organizations to gain invaluable ensures that process-level failures do not cause visibility into their fabrics with Cisco Nexus system-level failure. Dashboard.
+
+• Enables system-level high availability by supporting
+
+• Network traffic management and monitoring
+
+physical redundancy (power, fan, system controller, with Cisco Nexus Data Broker (NDB), a simple, supervisor, fabric) programmable, highly scalable, and very cost effective packet broker solution. NDB uses Test
+
+• Supports nondisruptive, zero-packet-loss upgrades
+
+Access Points (TAPs) and Cisco Switched Port
+
+using: Analyzer (SPAN) to capture and aggregate all traffic within the data center and facilitate network - ISSU and enhanced ISSU with zero data-plane performance, security, and threat analysis. down time and limited control-plane down time
+
+- Graceful insertion and removal (GIR) allows
+
+• Flexible NetFlow, which enables enhanced network
+
+devices to be seamlessly removed from and reanomalies and security detection, including full inserted into the network during maintenance NetFlow v9 support on selected platforms. New operations. in 10.6(2)F: Full NetFlow v9 support provides up to 64k v4/v6 flow-records/sec and caching for export - Software Maintenance Upgrade (SMU) packages to any collector, improving visibility and analytics or RPM patches through Cisco NX-OS CLI or capabilities. Linux workflows coupled with process restarts for selective process upgrades
+
+• Support for sFlow (sampled flow) to monitor real-
+
+- New in 10.6(2)F: MACsec-enabled interfaces now
+
+time traffic in data-center networks. New in 10.6(2) support nondisruptive ISSU on N9300-GX2, H2R, F: Sampled NetFlow (SNF) is now supported on and H1 switches, enabling seamless software N9364E-SG2-O and N9364E-SG2-Q switches for upgrades with MACsec security. advanced packet-level sampling.
+
+- New in 10.6(3)F: Minimally disruptive, or mini-
+
+• New in 10.6(2)F: Dropped flow notification,
+
+disruptive (MD), ISSU is introduced on Cisco allowing network administrators to capture dropped
+
+N9364E-SG2 Silicon One–based TORs. During MD
+
+packets and export the information to a collector to ISSU, any minimal packet disruption is displayed identify the cause of packet loss to the user.
+
+• Cisco vPC (virtual port-channel) creates redundancy
+
+Cisco Data Center Interconnect (DCI) and
+
+by increasing bandwidth, enabling multiple parallel edge DC connectivity paths between nodes and provides a loop-free topology, fast-convergence during either link
+
+• Telco far-edge connectivity enablement with support
+
+or device failure, link-level resiliency, and loadof PTP Telecom profiles (G8275.1 and G8273.2 – balancing of traffic where alternative paths exist. Class B), SyncE capability along with PTP boundary clock functionality
+
+• Equal-Cost Multipath (ECMP) offers a substantial
+
+increase in bandwidth by load-balancing traffic over
+
+• Seamless hand-off between VXLAN EVPN networks
+
+multiple paths. New in 10.6(3)F: In Cisco NX-OS
+
+to L3VPN SR-MPLS, L3VPN SRv6, and L3VPN MPLS
+
+Release 10.6(3)F, resilient ECMP hashing at the VRF LDP networks for Cisco Data Center Interconnect level is supported for VXLAN EVPN overlays on (DCI) and WAN edge use cases Cisco Nexus FX2, FX3, GX, GX2, and HX platform switches. • Seamless integration of VXLAN EVPN (TRM) with MVPN (Rosen Draft) enables packets to be handed Security and services off between VXLAN (TRM) and an MVPN network.
+
+• Elastic services redirection provides the capability
+
+New hardware support to selectively load balance, redirect, or service chain workflows across various services within the data Release 10.6(2)F introduces support for new hardware center. platforms, expanding the capabilities of the Cisco
+
+• Strong line-rate encryption capability and secure N9000 Series Switches:
+
+communication on Ethernet links with MACsec (hop-
+
+• Cisco N9396Y12C-SE1: A 2RU fixed-port ToR
+
+by-hop encryption). New in 10.6(2)F: Non-disruptive switch with 12 QSFP28 ports, using the Cisco ISSU for MACsec-enabled interfaces on Cisco
+
+Silicon One® E100 ASIC for Layer-2 and Layer-3
+
+N9300-GX2, H2R, and H1 switches. New in 10.6(3)F: configurations Non-disruptive ISSU for MACsec-enabled interfaces on Cisco N9300-FX, FX2, and FX3 switches.
+
+• Cisco N9396T12C-SE1: A 2RU fixed-port ToR
+
+switch with MACsec capability on all ports, also
+
+• Secure VXLAN EVPN Multi-Site Using CloudSec,
+
+based on the Silicon One E100 ASIC which provides strong encryption capabilities for traffic running across VXLAN tunnels between
+
+• N9K-C9800-SUP-B: A new supervisor for the
+
+VXLAN EVPN multisite Border Gateways (BGW)
+
+Cisco N9800 platform, featuring an 8-core CPU, 64GB RAM, and 256GB SSD storage for enhanced
+
+• MAC Authentication Bypass (MAB) to authorize a
+
+performance and capacity supplicant based on the supplicant MAC address Cisco NX-OS Release 10.6(3)F introduces support for
+
+• FIPS 140 compliance. New in 10.6(3)F: FIPS
+
+MACSec certification: The bootup diagnostic new hardware platform: process is enhanced by introducing a mandatory
+
+• Cisco N9348Y12C-SE1: a 1RU fixed-port ToR switch
+
+security check for the following devices: N9Kwith 48 downlink SFP ports and 12 uplink QSFP
+
+C9364D-GX2A, N9K-C9348D-GX2A, and N9K-
+
+ports based on the Cisco Silicon One E100 ASIC C9332D-GX2B switches.
+
+• Measured boot support allows the switch to display
+
+the SUDI certificate chain and generate a signature for device identity verification. New in 10.6(2)F: enhanced device identity verification and integration with external systems.
+
+Service and support Cisco offers a range of professional, solution, and product support services for each stage of your Cisco Nexus platform deployment:
+
+• Cisco Data Center Deployment Services for Cisco • Cisco N9000 Advise and Implement Service for
+
+N9000 Bundle: To achieve your modernization goals, VXLAN EVPN: This service helps deliver a seamless Cisco Services provide the tools and knowledge VXLAN EVPN experience using Cisco Data Center that can help you successfully migrate your existing Network Manager (DCNM) covering planning, design, platform to the Cisco N9500 next-generation implementation and migration. switching platform. You can take advantage of
+
+• EOS/EOL data can be found on the following pages.
+
+project management plan development, basic design and topology definition, and implementation support - Cisco Nexus 9000 Series Switches as well as an implementation and migration plan with
+
+- Cisco Nexus 3000 Series Switches
+
+deployment configurations.
+
+• Cisco Data Center Accelerated Deployment For more information, visit https://www.cisco.com/c/
+
+Service for Cisco N9000 Series Switches: This en/us/solutions/data-center-virtualization/service-
+
+service delivers planning, design, and implementation listing.html. expertise to bring your project into production. The service also provides recommended next steps, an architectural high-level design, and operationreadiness guidelines to scale the implementation to your environment. For more information For more information on Data Center products please visit the following:
+
+• Data center networking
+
+• Cisco NX-OS
+
+• Data center services
+
+• Cisco Nexus 3000 EOS/EOL
+
+• Cisco Nexus 9000 EOS/EOL
+
+of Cisco trademarks, go to this URL: www.cisco.com/go/trademarks. Third-party trademarks mentioned are the property of their respective owners. The use of the word partner does not imply a partnership relationship between Cisco and any other company. (1110R) C78-652063-04 06/26

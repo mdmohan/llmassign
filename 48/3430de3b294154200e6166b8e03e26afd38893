@@ -1,0 +1,110 @@
+1a/ajoish/code/run_qlora.py
+  s_2b738edf154ab1::t_f761801c496ed9 40-44,266,294,297-301,303-305,307,314,357-363,366,477-512,546-550,557,604
+  s_2b738edf154ab1::t_fd58f480a5d154 156-162,190
+  s_2b738edf154ab1::t_276711c832d810 1-39,45-155,163-189,191-265,267-293,295-296,302,306,308-313,315-356,364-365,367-476,513-545,551-556,558-603,605-610
+1a/ajoish/code/cisco_cpt/comparable.py
+  s_c0c7d41ff0f51d::t_2f4e375e8cecfb 1-9,11-33,52-93,101-130,141-147,151,155-157,161-168,170,175-177,182-432
+  s_c0c7d41ff0f51d::t_3c9cc1ad99c327 10,34-51,94-100,131-140,148-150,152-154,158-160,169,171-174,178-181
+1a/ajoish/code/prepare_comparable_evaluation.py
+  s_c0c7d41ff0f51d::t_2f4e375e8cecfb 1-36
+1a/ajoish/code/prepare_instruction_dataset.py
+  s_2b738edf154ab1::t_3572a04a3b01d2 1-237
+1a/ajoish/configs/qlora.json
+  s_2b738edf154ab1::t_53a544692b6502 1-80
+1a/ajoish/data/processed/instructions/instruction_dataset.jsonl
+  s_2b738edf154ab1::t_de508442903a7e 1-600
+1a/ajoish/data/reports/cleaning_report.json
+  s_c0c7d41ff0f51d::t_9a6b6ea7538539 1-66
+1a/ajoish/data/reports/documents.jsonl
+  s_c0c7d41ff0f51d::t_e21c6fb4477b8e 1-91
+1a/ajoish/data/reports/eval_token_spans.jsonl
+  s_c0c7d41ff0f51d::t_c72419bccc783e 1-8
+1a/ajoish/data/reports/instruction_dataset_report.json
+  s_2b738edf154ab1::t_093371640bae46 1-55
+1a/ajoish/data/reports/rejected_documents.jsonl
+  s_c0c7d41ff0f51d::t_78074df185e491 1-9
+1a/ajoish/data/reports/tokenization_report.json
+  s_c0c7d41ff0f51d::t_6bbac0528db562 1-48
+1a/ajoish/data/reports/tokenizer_metadata.json
+  s_c0c7d41ff0f51d::t_4cfaa4f32c8d27 1-15
+1a/ajoish/data/reports/train_token_spans.jsonl
+  s_c0c7d41ff0f51d::t_86478f9df04584 1-74
+1a/ajoish/evaluation/blinded_human_review.csv
+  s_c0c7d41ff0f51d::t_0e18498cc7326b 1-51
+1a/ajoish/evaluation/blinding_key.json
+  s_c0c7d41ff0f51d::t_562d75c81f049a 1-305
+1a/ajoish/evaluation/comparable/cross_run_comparison.json
+  s_c0c7d41ff0f51d::t_e330b0f43976e6 1-71
+1a/ajoish/evaluation/comparable/cross_run_comparison.md
+  s_c0c7d41ff0f51d::t_5fe76f59f4711b 1-24
+1a/ajoish/evaluation/comparable/murali_compatible_generated_text.json
+  s_c0c7d41ff0f51d::t_8ffce13d3565fc 1-1346
+1a/ajoish/evaluation/comparable/murali_compatible_perplexity.json
+  s_c0c7d41ff0f51d::t_51e2ef36f64966 1-92
+1a/ajoish/evaluation/queries/frozen_prompts.jsonl
+  s_c0c7d41ff0f51d::t_f8f31154c6fd1d 1-50
+1a/ajoish/evaluation/queries/prompt_manifest.json
+  s_c0c7d41ff0f51d::t_f4475ddcf13d3c 1-17
+1a/ajoish/evaluation/baseline/architecture_audit.json
+  s_c0c7d41ff0f51d::t_bf09473a400831 1-22
+1a/ajoish/evaluation/baseline/base_per_sequence.csv
+  s_c0c7d41ff0f51d::t_1819c3aaab1703 1-93
+1a/ajoish/evaluation/baseline/base_perplexity.json
+  s_c0c7d41ff0f51d::t_d2e3696798ea17 1-11
+1a/ajoish/evaluation/baseline/baseline_run.json
+  s_c0c7d41ff0f51d::t_027e01f4dbc02b 1-39
+1a/ajoish/evaluation/baseline/generation_config.json
+  s_c0c7d41ff0f51d::t_b0d35d204486cb 1-7
+1a/ajoish/evaluation/baseline/responses.jsonl
+  s_c0c7d41ff0f51d::t_16c77cd105e718 1-50
+1a/ajoish/evaluation/baseline/tokenizer_metadata.json
+  s_c0c7d41ff0f51d::t_c6ed36f6fd01f1 1-15
+1a/ajoish/evaluation/perplexity/base.json
+  s_c0c7d41ff0f51d::t_2c156183fb6995 1-11
+1a/ajoish/evaluation/perplexity/comparison.json
+  s_c0c7d41ff0f51d::t_f02f1fb97781eb 1-12
+1a/ajoish/evaluation/perplexity/cpt.json
+  s_c0c7d41ff0f51d::t_b370da3678f5e6 1-12
+1a/ajoish/evaluation/perplexity/per_sequence.csv
+  s_c0c7d41ff0f51d::t_c7e05861ba418a 1-93
+1a/ajoish/evaluation/post_cpt/architecture_audit.json
+  s_c0c7d41ff0f51d::t_eb5235ae620016 1-22
+1a/ajoish/evaluation/post_cpt/cpt_per_sequence.csv
+  s_c0c7d41ff0f51d::t_3eb740902725d6 1-93
+1a/ajoish/evaluation/post_cpt/evaluation_run.json
+  s_c0c7d41ff0f51d::t_7fea132a50c5dc 1-67
+1a/ajoish/evaluation/post_cpt/evaluation_run.pid
+  s_c0c7d41ff0f51d::t_3ccd2a669cee13 1
+1a/ajoish/evaluation/post_cpt/generation_config.json
+  s_c0c7d41ff0f51d::t_5d230b2c504f5b 1-7
+1a/ajoish/evaluation/post_cpt/responses.jsonl
+  s_c0c7d41ff0f51d::t_39f93bf1b1c097 1-50
+1a/ajoish/evaluation/post_cpt/tokenizer_metadata.json
+  s_c0c7d41ff0f51d::t_1425d3166d759f 1-15
+1a/ajoish/evaluation/prompt_comparison.jsonl
+  s_c0c7d41ff0f51d::t_3668c41fe16f4b 1-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "483430de3b294154200e6166b8e03e26afd38893",
+  "prompts": {},
+  "sessions": {
+    "s_2b738edf154ab1": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "111354c0-9afb-4890-8739-beeba7ab2e5f",
+        "model": "copilot/gpt-5.6-sol"
+      },
+      "human_author": "AxleAddict <akshayjoish28@gmail.com>"
+    },
+    "s_c0c7d41ff0f51d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c734be66-4468-49ac-b04a-ce11412a4f6b",
+        "model": "copilot/gpt-5.6-sol"
+      },
+      "human_author": "AxleAddict <akshayjoish28@gmail.com>"
+    }
+  }
+}

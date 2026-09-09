@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -31,6 +32,25 @@ def resolve_model_source(model_name: str, model_folder=None):
     from load_local_model import resolve_model_folder
 
     return resolve_model_folder(model_folder), True
+
+
+def resolve_adapter_folder(adapter_folder) -> Path:
+    """Resolve a PEFT adapter directory or a run containing final_adapter."""
+    supplied = Path(adapter_folder).expanduser().resolve()
+    if not supplied.is_dir():
+        raise FileNotFoundError(f"Adapter folder was not found: {supplied}")
+
+    if (supplied / "adapter_config.json").is_file():
+        return supplied
+
+    final_adapter = supplied / "final_adapter"
+    if (final_adapter / "adapter_config.json").is_file():
+        return final_adapter
+
+    raise FileNotFoundError(
+        "No PEFT adapter_config.json was found in the supplied directory "
+        f"or its final_adapter child: {supplied}"
+    )
 
 
 def _usable_context_value(value) -> int | None:
@@ -175,10 +195,11 @@ def preferred_model_dtype(device) -> torch.dtype:
 def load_causal_lm(
     model_name: str = "gpt2",
     model_folder=None,
+    adapter_folder=None,
     device=None,
     for_training: bool = False,
 ):
-    """Load any standard Hugging Face decoder-only causal language model."""
+    """Load a decoder-only model and optionally attach a PEFT adapter."""
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     else:
@@ -192,12 +213,32 @@ def load_causal_lm(
     )
     validate_causal_config(config, source)
 
+    adapter_source = (
+        resolve_adapter_folder(adapter_folder)
+        if adapter_folder is not None
+        else None
+    )
+
     print(f"Using device: {device}")
     print(f"Loading causal LM from: {source}")
+    if adapter_source is not None:
+        print(f"Loading PEFT adapter from: {adapter_source}")
+
+    tokenizer_source = source
+    tokenizer_local_files_only = local_files_only
+    if (
+        adapter_source is not None
+        and (adapter_source / "tokenizer_config.json").is_file()
+    ):
+        # QLoRA saves the exact tokenizer used for adapter training. Prefer
+        # it so chat-template and special-token settings match the adapter.
+        tokenizer_source = adapter_source
+        tokenizer_local_files_only = True
+
     tokenizer = AutoTokenizer.from_pretrained(
-        source,
+        tokenizer_source,
         cache_dir=CACHE_DIR,
-        local_files_only=local_files_only,
+        local_files_only=tokenizer_local_files_only,
         use_fast=True,
     )
     if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
@@ -208,6 +249,25 @@ def load_causal_lm(
         cache_dir=CACHE_DIR,
         local_files_only=local_files_only,
     )
+
+    if adapter_source is not None:
+        if for_training:
+            raise ValueError(
+                "adapter_folder is intended for inference; adapter training "
+                "is handled by the LoRA/QLoRA training script"
+            )
+        try:
+            from peft import PeftModel
+        except ImportError as error:
+            raise ImportError(
+                "Loading a LoRA/QLoRA adapter requires the peft package"
+            ) from error
+
+        model = PeftModel.from_pretrained(
+            model,
+            adapter_source,
+            is_trainable=False,
+        )
     model.to(device)
     parameter_dtype = next(model.parameters()).dtype
     compute_dtype = (
@@ -241,6 +301,9 @@ def load_causal_lm(
         "dtype": compute_dtype,
         "parameter_dtype": parameter_dtype,
         "model_source": str(source),
+        "adapter_source": (
+            str(adapter_source) if adapter_source is not None else None
+        ),
     }
 
 

@@ -354,3 +354,6 @@ def load_pdf(
     print(f"\nTotal source files loaded: {len(results)}")
     return results
     
+if __name__ == "__main__":
+    print(f"Loading PDFs from {sys.argv[1]} and writing to {sys.argv[2]}")
+    result = load_pdf(sys.argv[1], sys.argv[2], max_workers=1, extract_tables=False)

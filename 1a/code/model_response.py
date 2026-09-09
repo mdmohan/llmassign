@@ -6,13 +6,71 @@ from pathlib import Path
 import torch
 
 
+GENERIC_CHAT_TEMPLATE = """{% for message in messages %}{% if message['role'] == 'system' %}System: {{ message['content'] }}
+{% elif message['role'] == 'user' %}User: {{ message['content'] }}
+{% elif message['role'] == 'assistant' %}Assistant: {{ message['content'] }}
+{% endif %}{% endfor %}{% if add_generation_prompt %}Assistant: {% endif %}"""
+
+
+def ensure_chat_template(tokenizer):
+    """Return 'model' or install and return a generic chat template."""
+    if getattr(tokenizer, "chat_template", None):
+        return "model"
+
+    tokenizer.chat_template = GENERIC_CHAT_TEMPLATE
+    return "generic"
+
+
+def chat_end_token_ids(tokenizer):
+    """Find EOS and model-specific assistant end-of-message token IDs."""
+    token_ids = []
+    eos_token_id = tokenizer.eos_token_id
+    if isinstance(eos_token_id, (list, tuple)):
+        token_ids.extend(int(token_id) for token_id in eos_token_id)
+    elif eos_token_id is not None:
+        token_ids.append(int(eos_token_id))
+
+    # A base model's generation config may know only its ordinary EOS token,
+    # while its chat template closes assistant messages with another special
+    # token (for example Qwen's <|im_end|>). Derive that terminator from the
+    # template rather than hard-coding a model family.
+    prompt_messages = [{"role": "user", "content": "x"}]
+    prompt_ids = tokenizer.apply_chat_template(
+        prompt_messages,
+        tokenize=True,
+        add_generation_prompt=True,
+    )
+    completed_ids = tokenizer.apply_chat_template(
+        [
+            *prompt_messages,
+            {"role": "assistant", "content": ""},
+        ],
+        tokenize=True,
+        add_generation_prompt=False,
+    )
+
+    if completed_ids[:len(prompt_ids)] == prompt_ids:
+        special_ids = set(tokenizer.all_special_ids)
+        for token_id in completed_ids[len(prompt_ids):]:
+            if token_id in special_ids and token_id not in token_ids:
+                token_ids.append(int(token_id))
+
+    if not token_ids:
+        return None
+    if len(token_ids) == 1:
+        return token_ids[0]
+    return token_ids
+
+
 @torch.inference_mode()
 def generate_responses(
     model,
     tokenizer,
     prompts,
     max_new_tokens=50,
-    batch_size=4):
+    batch_size=4,
+    chat=False,
+):
     """
     Generate deterministic completions and decode only the model response,
     excluding the original prompt.
@@ -48,8 +106,23 @@ def generate_responses(
 
     responses = []
 
+    generation_eos_token_ids = tokenizer.eos_token_id
+    if chat:
+        ensure_chat_template(tokenizer)
+        generation_eos_token_ids = chat_end_token_ids(tokenizer)
+
     for start in range(0, len(prompts), batch_size):
         batch_prompts = prompts[start : start + batch_size]
+
+        if chat:
+            batch_prompts = [
+                tokenizer.apply_chat_template(
+                    [{"role": "user", "content": prompt}],
+                    tokenize=False,
+                    add_generation_prompt=True,
+                )
+                for prompt in batch_prompts
+            ]
 
         encoded_inputs = tokenizer(
             batch_prompts,
@@ -58,6 +131,9 @@ def generate_responses(
             truncation=True,
             max_length=max_prompt_length,
             return_attention_mask=True,
+            # apply_chat_template has already inserted every special token
+            # required by the model; adding them again would be incorrect.
+            add_special_tokens=not chat,
         )
 
         encoded_inputs = {
@@ -70,7 +146,7 @@ def generate_responses(
             max_new_tokens=max_new_tokens,
             do_sample=False,
             pad_token_id=tokenizer.pad_token_id,
-            eos_token_id=tokenizer.eos_token_id,
+            eos_token_id=generation_eos_token_ids,
         )
 
         # All input rows have the same padded width. Everything after this
@@ -150,6 +226,7 @@ def save_generation_results(
     model,
     max_new_tokens,
     evaluation_stage="pre_cpt",
+    chat=False,
 ):
     """
     Save generated responses and generation settings as formatted JSON.
@@ -165,6 +242,7 @@ def save_generation_results(
             "max_new_tokens": max_new_tokens,
             "do_sample": False,
             "decoding": "greedy",
+            "chat": chat,
         },
         "total_prompts": len(results),
         "results": results,

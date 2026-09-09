@@ -31,7 +31,18 @@ def generate(response_helpers, model_dict, prompts, args):
         prompts=prompts,
         max_new_tokens=args.max_new_tokens,
         batch_size=args.batch_size,
+        chat=args.chat,
     )
+
+
+def add_inference_details(details, model_dict, args):
+    """Record adapter and prompt-format provenance with generated output."""
+    details["adapter_source"] = model_dict.get("adapter_source")
+    details["chat_mode"] = args.chat
+    details["chat_template_source"] = model_dict.get(
+        "chat_template_source"
+    )
+    return details
 
 
 def run_cli(response_helpers, model_dict, args) -> None:
@@ -71,7 +82,11 @@ def run_json_queries(
     model = model_dict["model"]
     tokenizer = model_dict["tokenizer"]
     device = model_dict["device"]
-    details = model_details_function(model, tokenizer, device)
+    details = add_inference_details(
+        model_details_function(model, tokenizer, device),
+        model_dict,
+        args,
+    )
     details["cache_dir"] = str(CACHE_DIR)
     model_label = _safe_filename_component(details["name_or_path"])
     seen_output_paths = set()
@@ -107,11 +122,16 @@ def run_json_queries(
             model=model,
             max_new_tokens=args.max_new_tokens,
             evaluation_stage=args.evaluation_stage,
+            chat=args.chat,
         )
 
         # Generation may configure a padding token. Record the exact
         # post-generation model and tokenizer details in the result file.
-        generation_details = model_details_function(model, tokenizer, device)
+        generation_details = add_inference_details(
+            model_details_function(model, tokenizer, device),
+            model_dict,
+            args,
+        )
         generation_details["cache_dir"] = str(CACHE_DIR)
         _add_model_details(
             output_path=output_path,
@@ -154,7 +174,23 @@ def main() -> int:
         model_dict = load_causal_lm(
             model_name=args.model_name,
             model_folder=args.model_folder,
+            adapter_folder=args.adapter_folder,
         )
+        if args.chat:
+            template_source = response_helpers.ensure_chat_template(
+                model_dict["tokenizer"]
+            )
+            model_dict["chat_template_source"] = template_source
+            if template_source == "model":
+                print("Chat mode: using the tokenizer's chat template.")
+            else:
+                print(
+                    "Chat mode: tokenizer has no chat template; using the "
+                    "generic User/Assistant template."
+                )
+        else:
+            model_dict["chat_template_source"] = None
+            print("Chat mode: disabled; prompts are passed through unchanged.")
         model_details_function = _model_details
 
         if args.cli:

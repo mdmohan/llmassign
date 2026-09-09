@@ -1,0 +1,2619 @@
+{
+  "schema_version": 1,
+  "task": "QLoRA instruction-tuning dataset preparation",
+  "generation_prompt": "Read the text and generate instruction-response pairs in JSON format based ONLY on this text. Each entry must have instruction and response keys.",
+  "generation_method": "Deterministic extractive generation from cleaned source text; no external language model was used. Responses are whitespace-normalized source passages.",
+  "input_directory": "/Users/muralidm/study/LLM-Assignment/llmassign/1a/data/cleaned",
+  "input_text_file_count": 190,
+  "candidate_pair_count_before_deduplication": 939,
+  "candidate_pair_count_after_deduplication": 810,
+  "selected_pair_count": 200,
+  "requested_train_ratio": 0.8,
+  "actual_train_ratio": 0.8,
+  "selected_content_balance": {
+    "cisco_product_and_networking_pairs": 100,
+    "rfc_pairs": 100
+  },
+  "split_unit": "source_document",
+  "split_seed": 42,
+  "source_overlap_count": 0,
+  "grounding_check": "passed",
+  "output_schema": [
+    "instruction",
+    "response"
+  ],
+  "train": {
+    "file": "/Users/muralidm/study/LLM-Assignment/llmassign/1a/data/instruction/train.jsonl",
+    "count": 160,
+    "source_document_count": 91,
+    "statistics": {
+      "minimum_response_characters": 180,
+      "average_response_characters": 602.21,
+      "maximum_response_characters": 2256,
+      "content_category_counts": {
+        "cisco_product_and_networking": 80,
+        "rfc": 80
+      },
+      "generation_method_counts": {
+        "curated_source_passage": 11,
+        "heading_extraction": 149
+      }
+    },
+    "sha256": "d454852c7a700cdeb1dcb68ec74fee0cbeeff9c2544be214f2a5b5b8cf66e793",
+    "provenance": [
+      {
+        "index": 1,
+        "instruction_sha256": "073f4003a7a0f7d0f226be1d287bc014e00705e3ed9ded60bc99fe1f5efa1814",
+        "response_sha256": "41764b3e2da6f8fc4997615767a1c23cf9a7bffe22c77da5a6c229b319514a98",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Using MAC Filtering to Enhance Port Security",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 2,
+        "instruction_sha256": "a7307e738ddb856f5459703addf5f1e9a49761af66cfe5433e013d634069c4ac",
+        "response_sha256": "e58a7f2082535830b4141f186b2c0dc6cadb57ceff58279138dc385ea28e3f09",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding QoS",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 3,
+        "instruction_sha256": "db8ec444dd6f3841780829862e98f83b48ecb3bf19d05ca67b6e8898a1cdcafb",
+        "response_sha256": "b79cef8a1bb4798ea9b88fdbc70b3da87f8bfd112bd937a81bb556a5edcace62",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configuring VPN to VRF-Lite Reachability",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 4,
+        "instruction_sha256": "63f6f25cf15da03407a8bfdb471d8b50010a5875e7348f0f9cf9450496dd069f",
+        "response_sha256": "4807b1cd4768e8bf84274ad9840c02e171e5d73e5a67695740a8fe5cf773f1ae",
+        "source": "rfc8920.txt",
+        "section": "Extended Metrics",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 5,
+        "instruction_sha256": "e5b17b6acc70174ccbad0fa2f172dc6cc76d5a584a6e7a9a101362d42de5278e",
+        "response_sha256": "ad38f6dde7dcfa739388c30a2dd106811cd9c6551704560a6271b40318f11a9f",
+        "source": "rfc3630.txt",
+        "section": "Router Address TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 6,
+        "instruction_sha256": "1b1f4550b3691d78151742c8059422e530f5111f608549b245e43966eed66935",
+        "response_sha256": "1f09b1244bafad0a428f5f5e7d1ac61af575da693d81c9c2658ac1162b26bace",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Configuring ePBR Service",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 7,
+        "instruction_sha256": "5394f201e4ed2001190e406bc06c3087f7d00d160512a9ecb7d28ef71471db42",
+        "response_sha256": "1a6ead4079051be2871d4c9c9c2b1c1ad936c3f7b3504282f779a6121e91cbaf",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Verifying the Virtual Interface",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 8,
+        "instruction_sha256": "83bd851abdc2096d69d026442ca89e0565daac9cfe32b520a644062af3f9e163",
+        "response_sha256": "d5a334078261c5d69971dade6e4e0ccca4e338dd3793c1b9395ed80a22f9af21",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configure a TRM leaf node for RP Everywhere with MSDP peering",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 9,
+        "instruction_sha256": "cdd280473cd819bccd05ed687a7c67f5f1446b8bdc91e37929f8173c8893efc2",
+        "response_sha256": "97af183a80857a12972ea446d861bd3898a7446b245a7d4640f5b353a894fb1d",
+        "source": "rfc4813.txt",
+        "section": "Cryptographic Authentication TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 10,
+        "instruction_sha256": "cf9c9224fd9dfb58f677a27c87786173817a3763ee3930fa771b50dbd7fcd039",
+        "response_sha256": "11a523ce9b3751c567c73b3056386f9ff4026d5fde5488a8e6d2f7663be95f1a",
+        "source": "rfc7884.txt",
+        "section": "Flooding Scope",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 11,
+        "instruction_sha256": "513356ba9a5617e07d84dc31a44930be051970ddd7ee08fc702a09ae9f24c3fc",
+        "response_sha256": "fd8949770b2086e6eccca560e31bc6df4406546814f7c0d6b3746a336f18668f",
+        "source": "rfc8042.txt",
+        "section": "OSPF Stub Router Behavior",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 12,
+        "instruction_sha256": "8f2b9c629838ee393fd932ec6f9262dff82e6869f5b37aec146a4c87b719708a",
+        "response_sha256": "2f78759d7cafae3ead8fa034bc262c3139e48ff6be42de738c7b5f1a28426d31",
+        "source": "Unicast_Book.txt",
+        "section": "Configuring Basic OSPFv2",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 13,
+        "instruction_sha256": "31da44d287381f2a877e6357af72f1488c6be32d778cd519024c5932defd1379",
+        "response_sha256": "f1238a64fee33a7209e96342b89f86540ee561a152c8467f9f57fcc77d0da2a0",
+        "source": "rfc4577.txt",
+        "section": "Independent OSPF Instances in PEs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 14,
+        "instruction_sha256": "c53abbbca485b6d55735bbaa5bec42b7486c28c416ab03c4f61c7de14661823e",
+        "response_sha256": "c77a7777fced8b1371dbd07a080bd4c6c731c27a545c95053f37dfd909ee1588",
+        "source": "rfc1583.txt",
+        "section": "Installing link state advertisements in the database",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 15,
+        "instruction_sha256": "50564e13647178664fd1aa43eb4d6a1aed9500026da565f9094c8b7fab3bfdb7",
+        "response_sha256": "27e9c475c92c4e29e7244cad76b17fc01da2f428c3f5382108e536fd633ee6bb",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding CIDR",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 16,
+        "instruction_sha256": "11f9dcf43921131cd137fcc5d101ede55cf1aac11871f86e021c0bfb1b716149",
+        "response_sha256": "b3adbdc5f4276a046581c912aea74220d3645dca9be5fc98ae2f62b4721f7aa6",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "AI solutions with Cisco Nexus Hyperfabric Cisco Nexus Hyperfabric delivers",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 17,
+        "instruction_sha256": "8a2a51122f8f2e04bd3c7889aca86116f5debce571894d072b00a80d475fa757",
+        "response_sha256": "295ecdde26b1c4e76beb35139441162d72d422909fde9b3b97d3b1cc9f9dbb3b",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Configuring ePBR L3 Modifying a Policy Using ePBR Session",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 18,
+        "instruction_sha256": "338890f09c229aca9f008b33ff9c5dae1661bde7db002b498581b6a3a90d0c29",
+        "response_sha256": "a664723595beae473e8a283b40d2ab12169b41524147f9bf042c161e8518fcac",
+        "source": "rfc9983.txt",
+        "section": "Protocol Security Considerations",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 19,
+        "instruction_sha256": "64710415cd2201ce7719f1be28d0140a40a3c20c89f934e7331d6dfb146f5d51",
+        "response_sha256": "c5e1ec7a96572afe1b093f15aee482a3b2b893774137d5943be4ecacbf085efe",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding Local Area",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 20,
+        "instruction_sha256": "584fffccdb86505a462de1b46808b71dbf2cd465f55a4bc4162ae0c62eb3c211",
+        "response_sha256": "453465f7933cf78bb154218ca14da3846cec521d90b84b79fa8fb5b8975400b9",
+        "source": "rfc5329.txt",
+        "section": "Local Interface IPv6 Address Sub-TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 21,
+        "instruction_sha256": "3e92881e6b59a0f261d2c3d86c49e3a3b4e9a6ec3feb06c4a47124a0d135827d",
+        "response_sha256": "d94318c0d0964cbcf9c858c40a89a86490d7e5861aac3bbc002236b298e1d46f",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Enabling Production Interfaces as Trunk Ports",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 22,
+        "instruction_sha256": "360f6edc32bf9cbc6fd6e6c0ad3de9344ec0966f2c22ee97c2bd3b14bb08b96f",
+        "response_sha256": "2a7b2ad7b6b54d0367da949c531b7314e282aa1a768682a886c842e1dd63e788",
+        "source": "rfc2370.txt",
+        "section": "Flooding Opaque LSAs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 23,
+        "instruction_sha256": "9b0f8bc6c648794e526dddc9af501384704e4f8364033179fb85d2bd7e7c9b46",
+        "response_sha256": "464f1fbe6d414185f8fde791875b343709716380bd10f6cf9489b5deb4faa787",
+        "source": "rfc3623.txt",
+        "section": "Entering Graceful Restart",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 24,
+        "instruction_sha256": "2199b06cbffdf005492faa8072708872ca627c191811930d2e6b7d1716a17b2d",
+        "response_sha256": "f7bced1af260b1a079c0e435147aa81dd268ea53ef8aff644c296c5728475586",
+        "source": "rfc5250.txt",
+        "section": "Flooding Opaque LSAs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 25,
+        "instruction_sha256": "1507fdccf8bfb80890bdafd507e5e4371efbd064e5228823106a431b50669032",
+        "response_sha256": "8d8bbdac7bda474264017fea9be3397d42ad46ee1d234400f574c37040d6ae99",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Configuring ePBR L3",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 26,
+        "instruction_sha256": "cdd79c272ba444070e42fef69cf3ecec2532d57bba8f4cf599a5e8a8021eb12c",
+        "response_sha256": "6bec9245a417b20ce4d82e0c288b90a610832e2fcdfb237a9bdc9337a23e8c07",
+        "source": "rfc5643.txt",
+        "section": "Neighbors",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 27,
+        "instruction_sha256": "a7251eab80dd1d14665f235be05b47baf3ab0876252d039eb98437a3e2bd8db0",
+        "response_sha256": "ca352543b95fdabe0f3435ec5a006e1e7a114bc4d3bcfb36bb6c22527ba9474c",
+        "source": "rfc5187.txt",
+        "section": "Preservation of LSA ID to Prefix Correspondence",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 28,
+        "instruction_sha256": "8745a55a2564c05f696ac2081e5b63a9975ba32a737f9b6ed337175f8649c9eb",
+        "response_sha256": "6472286813cff44c409c4ea032bfa73a754709f0c730d200cfca16ef5ea6d202",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configuring DCI Using EVPN Type 5 Routes",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 29,
+        "instruction_sha256": "7f2824d7af5b2e074c96a2a91db6c74eb540ebf9ff0fd035f023dabe26c9c7ff",
+        "response_sha256": "4e9de23375520879f23e02c7f2a4ef5bdbde389f181480deb19f85af8120d376",
+        "source": "Unicast_Book.txt",
+        "section": "Configuring Advanced OSPFv2",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 30,
+        "instruction_sha256": "f9e1649f0359a93f5f37f94c4a770530ba5419ed68b10e0fd38ffc524adb4ed1",
+        "response_sha256": "8c70b1e20fb9f6fc8fae05704fbc712a6c2f33f9a8ea80d7de5988d1c7efd703",
+        "source": "rfc1364.txt",
+        "section": "Semantics of the characteristics bits",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 31,
+        "instruction_sha256": "168cb1d997e0ecc5205401b5341831413baa4972d97e72c32c6d2dbd5796d031",
+        "response_sha256": "fb39cc265d83a76d69845a41f763fe2018c77d21964bef209318bef9910db498",
+        "source": "Unicast_Book.txt",
+        "section": "Configuring OSPFv2",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 32,
+        "instruction_sha256": "02135a38a13c3de9071fe602b6ec5c0bd58ce66914fe658c64f95c7f81e8d29f",
+        "response_sha256": "156cc63d4a3cd87600d4e38c38ca181248e13e4e060da6b51e44da7881442d7c",
+        "source": "Unicast_Book.txt",
+        "section": "Configuring IPv6",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 33,
+        "instruction_sha256": "bcc6bf14f3e635c0c38364a714d1754864a4b94e50c916cc872a2daf8c6a8bc9",
+        "response_sha256": "cd6ceda655f81e8cf1f7a9ba2fc40836c4d712a45438406ddc5ea1de0d2f17a7",
+        "source": "rfc1793.txt",
+        "section": "Flooding over demand circuits",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 34,
+        "instruction_sha256": "14f45bfe587c027019b8529190dfd0822c615ed1b722a8d72b4d86f3a20cb7af",
+        "response_sha256": "0e326082fb1b3e452b04422fc6a7f0ab092aff40e762965a0a470ddbf682454f",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding IPv6",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 35,
+        "instruction_sha256": "b51ca67ca0b755af5e4cd9e59eb7e3ff07f9d08482e830185eabc749c244763d",
+        "response_sha256": "323f36b4854c5aaa736ecb684c93a9ff8a24a82b51b7f33305aa7b1af440dec1",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding TCP/IP",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 36,
+        "instruction_sha256": "5a8ee1a82728fad36301c8727cdc7c37e3c4b9aefe5b1f28736c043bddc88802",
+        "response_sha256": "df55b79f11e549949a2f921fad55ce5fcbdacc274eaf0c7a61fce13a4a65da1e",
+        "source": "rfc6506.txt",
+        "section": "Sequence Number Wrap",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 37,
+        "instruction_sha256": "e6c9f3497b383900a0bbfcfa42288786e333cc95428b426c379f4a57461b43d1",
+        "response_sha256": "3822b365705691caf0b98a4f81617a2e8421a913779e2f74339b9c42e255e182",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "Monitor unmanaged Cisco NX-OS switches Cisco Nexus Hyperfabric now includes",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 38,
+        "instruction_sha256": "3258d1e31b5753ea875456568bf35b804562881ad6f21fade11a31e815370d9c",
+        "response_sha256": "35cf536f05293b02d962bcc1d3a2236dae2de873a205047e9466681c4fc4b281",
+        "source": "rfc2329.txt",
+        "section": "Cryptographic Authentication",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 39,
+        "instruction_sha256": "a040c788b2ace1a43e363ca75ef10147d16a808a2c86a54acc415c7f836fc3af",
+        "response_sha256": "e6bdf479458aa84af224f79d294f6368ec4a6b019e75ae1b03bde9c414c40c9e",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configuring the Underlay",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 40,
+        "instruction_sha256": "3830a9c934a181de584df34957a091e401941aef04d0714572d82b6156d15751",
+        "response_sha256": "3d01b5e41b3cce9414f6713b63a737c0d8a1330cfc033198c61419dcdf8c6e1a",
+        "source": "rfc1584.txt",
+        "section": "Additions to the OSPF interface structure",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 41,
+        "instruction_sha256": "09fd4c1324c7814edba16409089d2ee0e4db087baef467d7c2e99f5da255228f",
+        "response_sha256": "6cd1368f4b4c0ae75f35d6ef0b10ccbfaf8627ede676bb2e7c80a9a42dbb5601",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configure Dynamic Load Balancing on Silicon One switches",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 42,
+        "instruction_sha256": "751ab629c0688fd1cb2b3d61e4c564a3fb80521e787d336145be5eb7a2240e5c",
+        "response_sha256": "255786a4a727f4aac67be0a5d2584dad77a57e08101c485746bba20a93fd8a02",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configure External VRF Connectivity and Route Leaking",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 43,
+        "instruction_sha256": "369e2cac7b12847bc305990ad281a800473828993aac0d58a1dbf6ec6cfaf836",
+        "response_sha256": "7f37d10c39252ed1939d1efacc63ba18e722d98295e6dd6f825e36eee57a6d7d",
+        "source": "rfc1248.txt",
+        "section": "Interface and Interface Metric Tables",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 44,
+        "instruction_sha256": "ee626d63a4ba96ad0eea98b900ad6d2f4aa31a8175ea6dd9d56d63ce83ba075d",
+        "response_sha256": "7e72509093532d09cb4cd8d7f880f6bd3c477a885a8a4718ca3c18802d6a3fa1",
+        "source": "rfc6860.txt",
+        "section": "Forwarding Address",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 45,
+        "instruction_sha256": "c43f73169fa6522d90b26e57e3ed49023ef79bdef98b36a0df92c125997a8ac6",
+        "response_sha256": "c39f3dfb4fa37dfebd181967a52a5ef2cfc334a8715fe13c39e0dd4785ba416c",
+        "source": "Unicast_Book.txt",
+        "section": "Configuring a Totally Stubby Area",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 46,
+        "instruction_sha256": "754d6c6879a683ec15e24805a8561a4bbae10fe54a2c90ef97a7c8de423cf323",
+        "response_sha256": "a2d8c45e24797886b6eceac66014d9520b9e21ed105e86029ba96d112797e605",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configuring Policy-Based Routing",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 47,
+        "instruction_sha256": "7ed1b6238d3150565d42ab4031e70cd200c99a8e5dad7d4f17751db0768565bf",
+        "response_sha256": "9bf93a0de7a6f17d77378bd3c94bd6a3925d54e62b50996932b504d61ecdaa52",
+        "source": "rfc2844.txt",
+        "section": "IP address to NSAP Resolution Using Proxy-PAR",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 48,
+        "instruction_sha256": "4f0eb6669b3e8de2121102ec3cebd580c3245c0ff764d09a232819c2f37da0ad",
+        "response_sha256": "806890ff0ede3d9744750e6262588339dcbb46553f852357ec532029e027f5ac",
+        "source": "rfc1850.txt",
+        "section": "One Trap Per OSPF Event",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 49,
+        "instruction_sha256": "a06a3e8179a725e6ab4151553f671057257fcddc5e81424fbf9ede7a7659464c",
+        "response_sha256": "6074e8f9824d9829dcb408d4d2a62612525d5b7d51ced34fba53790f2682e28a",
+        "source": "rfc5787.txt",
+        "section": "Bandwidth Accounting",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 50,
+        "instruction_sha256": "efdc79e7bf7f48daf1584e83912962ba13e91c68eb56f033dd736b61f8c25a75",
+        "response_sha256": "eabdfb75c81e4f6ea197a8ccd8e0e8829c574122bb37679a6032350beb751643",
+        "source": "rfc9492.txt",
+        "section": "Use of Zero-Length Application Identifier Bit Masks",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 51,
+        "instruction_sha256": "0bc85674f9619dbe453d224f4381d594244d6cd5b403346d0ad2f73f7a6c4c94",
+        "response_sha256": "a608dba82d60f28986351d3c55816c1ea316c6701ea6af9be28ff581f595ee5d",
+        "source": "rfc9129.txt",
+        "section": "OSPF Operational State",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 52,
+        "instruction_sha256": "ba88ab310eb3dad099696e67c040ccc0998f1840047b816c04728e07466eb22f",
+        "response_sha256": "1f61d5c40050f016f5b06e8acd3e8cf43f326d4b6dfc0744f19ab26a9cfc0a2e",
+        "source": "rfc2676.txt",
+        "section": "Encoding bandwidth resource",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 53,
+        "instruction_sha256": "b9a32f9111a6d4b56d8389c2e9d29b2f26174486f8cabb2f80db0976b06c30e5",
+        "response_sha256": "4d90459e6eac1a9d3b9bc5c46e5956349c605d5b9bc859c8e2cad1d0fae33c3c",
+        "source": "rfc6549.txt",
+        "section": "Sending and Receiving OSPFv2 Packets",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 54,
+        "instruction_sha256": "3de521ac263d7478eee5c38c5df4b48f9b2dadd06bc6e6d5d09858909e494d22",
+        "response_sha256": "2e2c4058f4de5f2793762191091aed5c4c9c028f4bd79af8117a3106f6101267",
+        "source": "rfc8379.txt",
+        "section": "BGP-LS Graceful-Link-Shutdown TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 55,
+        "instruction_sha256": "ad7375ec0abc646a07c773d2d8bd8dcb1547eb6a5024bf6ba9d0d4c5243d4b36",
+        "response_sha256": "dd5993704ec74d75eb774d419b6f40a01053fad2cc2ccb94a2041ba15720259c",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "Product overview As the cloud-managed operating model for Cisco Nexus One",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 56,
+        "instruction_sha256": "1371a2bfcb1f12eb5cd849937d040d0c95628143f70d3993ed075c2ba1155aad",
+        "response_sha256": "f1f52f5c1acd874d764b07c85388cf2c3afee99c4ace5fad163dcc9393a1b5a7",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configuring a VLAN-Aware CRB Overlay with Virtual Switches or MAC",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 57,
+        "instruction_sha256": "da67f55a57e3a026b973051166f10bd4598a17195082daf7f9e57d5911a8b4d7",
+        "response_sha256": "78726e16bb2bf1b42131f0f2e6eab1920ea5dca32944974d117d692977999771",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Configuring ePBR L2 ePBR Session-based Configuration",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 58,
+        "instruction_sha256": "c9dda5b2328fafe5b7d05c582b4d983748e2f251ac88357a52f008650e29cf77",
+        "response_sha256": "b86b2d19a048a9937af4f0ec6c7e3e3301cd1d1091a5f9ca1b16f457ab02a13d",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configuring the Aggregated Ethernet Interfaces Connecting Spine",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 59,
+        "instruction_sha256": "7aa5fabb10c3528766f5317d8a53e20bc48903670c18b465099674b9be6b311e",
+        "response_sha256": "abbd6832594439a553ebd1237bb8c7ddc30869d8e54a7794bc1b0dabfd756404",
+        "source": "rfc8666.txt",
+        "section": "Adjacency SID on Broadcast or NBMA Interfaces",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 60,
+        "instruction_sha256": "d7730280db626bd88305ecb005c2605792f5ee309333bd4369f5c9652df70ff0",
+        "response_sha256": "ddd471e090aa75118c834501a47f980685fb01951be0c0a5a0e4d704c6fb2b9e",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configure EVPN-VXLAN Data Center Stitching",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 61,
+        "instruction_sha256": "97a3159330c0c8fe09e87a280fe10edae81ad8c78bda0310dd53d5bd72635017",
+        "response_sha256": "894d9408ee6538edf7ebd4b77973ef84623904375f22adaee9057087938090f4",
+        "source": "rfc8687.txt",
+        "section": "Automatically Switched Optical Networks",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 62,
+        "instruction_sha256": "d217cbef455230b1b594b3ba9b982377f18a1d288f29cfbd8d60d6746b5fa7ce",
+        "response_sha256": "2a07e1e4d78e086f8c5e2467baafcafa34328dc4a654b19dbadbbd3e4b3f8a0f",
+        "source": "rfc8362.txt",
+        "section": "Extended LSA Sparse-Mode Backward Compatibility",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 63,
+        "instruction_sha256": "3923d1c869e97f76659871be4028d30d7d2859c7704f2ff017728c0a654ffed3",
+        "response_sha256": "9db070aa32b3251ca86f59161dc21538cb83eb7d3b0e196dc9ecc6e682c982f2",
+        "source": "rfc1587.txt",
+        "section": "Calculating Type-7 AS External Routes",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 64,
+        "instruction_sha256": "e3ee5dc06d2c824e009bffdfeadef12b9eb356ca924ce8c12a39946b92b228f8",
+        "response_sha256": "83327766ec27e23fe3082638caac76958541cf8ce45c69327e4e85528bc0d364",
+        "source": "rfc2740.txt",
+        "section": "Explicit support for multiple instances per link",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 65,
+        "instruction_sha256": "0ae1904efd7a173f2bb29891d93440f07cc0000625e72d6913c9ecca5f844bff",
+        "response_sha256": "d77a4e1f0eb17227e3c8e62ddd683770208fd1607586e9f93c492d14bfb2fe64",
+        "source": "rfc4203.txt",
+        "section": "Link Local/Remote Identifiers",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 66,
+        "instruction_sha256": "183a9fb21d922cae0143916c026932819bb20a200c11c209da6dae193940250e",
+        "response_sha256": "ce71ec838ee313941314b5750fa617b3b21a9a4d509d19303627516ef6e8d433",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configure eBGP for EVPN on the spine",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 67,
+        "instruction_sha256": "4fd81df48be31d242c3a116c2cc1cd76780d4c28cbb0378b3200e22d4d796a00",
+        "response_sha256": "454319e257389047ffebc83098fecf29e19c85c2a2bfde734db41e241b5a14a1",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "High-performance fabrics Fabrics need high-performance bandwidth",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 68,
+        "instruction_sha256": "4a3147b42a0887c6f9b62c611cdf9e393f4377c9cc7a434e2979182f524809a6",
+        "response_sha256": "091365b845d1e9353bf36055768a31274d4c5e91399d9cb5b0200028002d615a",
+        "source": "rfc1403.txt",
+        "section": "Summary of the tag sub-field setting",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 69,
+        "instruction_sha256": "18eda7a645db4fcb9acfd7384c94ece41b9441ca82cff54abc45bd81ff438a18",
+        "response_sha256": "1d1a52712e2277c3bd1233702ab4162b03fb7a455cf6709041754435a5e7ee1f",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configuring HSRP",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 70,
+        "instruction_sha256": "6cba0e4854d1ba738e8ebdb4ca0c071b241cfcb6f4598d45a649fd6baea89695",
+        "response_sha256": "9be3723c92c482775f3c2f32a96001047f294e6a2483e118bea6868eb432cc9c",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding IPv4",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 71,
+        "instruction_sha256": "0ecb9b7b86f2608e9deb559e12f620da769c47e2cc02bc83012b8ed4cec5d3a1",
+        "response_sha256": "475e2401d25ac2c44b67e5e639ef0695710930b922b4b29a659976dd9ff8ac3d",
+        "source": "rfc1245.txt",
+        "section": "Key features of the OSPF protocol",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 72,
+        "instruction_sha256": "1d77e465789805f68db499de08836f6f27a989b5c0d8007b2f0782768fae85aa",
+        "response_sha256": "7677426fd2db0c565a5cc090bea98bddf2a3077033e54ad19515f38c3e3cc738",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Configuring Straight Through FEX with Host",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 73,
+        "instruction_sha256": "9d8fa2c81773d1140fc188f5fd73875f226a43bab67cd70969f3fe9a55d4927b",
+        "response_sha256": "3bffe129fa133992f4f793aa3430741451de5e94a4566be85b8a842ba952aa5e",
+        "source": "rfc9667.txt",
+        "section": "Advertising the Local Edges Enabled for Flooding",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 74,
+        "instruction_sha256": "d8549d14d7d01c9fe03916d32cb233648c7ebda1b1b58cf81a542051ac5e62df",
+        "response_sha256": "ab80f599a04e962ab8f70a55815f215d961aad3276d7db89188e77c08cf6d48b",
+        "source": "Unicast_Book.txt",
+        "section": "Configuring IPv4",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 75,
+        "instruction_sha256": "e8e955ba95f005563455f5a252b4cf275a086367f851d1ed4889b9677d5e6bf8",
+        "response_sha256": "9762579582eeb2ec4bfb1f44926d22641acec8c542f3fa11282c748fa605dc9a",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configure an OISM-Enabled EVPN MAC-VRF Instance",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 76,
+        "instruction_sha256": "85972e03b72790f653dd08334896b8dafd6080d5d11f4290b3e8c46efa03430f",
+        "response_sha256": "214afd2febb90c4d89260f8b3db272d4f564f0b5da9f2d8e928d53cb5d021916",
+        "source": "rfc7166.txt",
+        "section": "AT-Bit in Options Field",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 77,
+        "instruction_sha256": "ba901ea0834fac3b9ef2979addda007d0b7caf943771692d66e24584544ed469",
+        "response_sha256": "8139aafa610e63bd5fcfeaf9fe598ef0de9e77a61bc4ac30065269be5afbdec6",
+        "source": "rfc7471.txt",
+        "section": "Link Loss",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 78,
+        "instruction_sha256": "7de6f7800f82a4f410c55a2cd8cd2bbd644d959f75cda780b9737cac2b14de37",
+        "response_sha256": "4927ee22ae6a086ea53cfeed3cb1496818964b330a11ce95ddcfed4876f1f4e0",
+        "source": "rfc4063.txt",
+        "section": "Measuring the SPF Processing Time Externally",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 79,
+        "instruction_sha256": "8588e7af93cc2f3ed1695eae43c00b8be0568dcf39290ebd05ede6cf0a27bdcd",
+        "response_sha256": "9e5ad03d20897c5bba978a47aa51dde0a7aeabc3a60b4579de7c2c5708a7815e",
+        "source": "10_nexus_dashboard_data_sheet_2026.txt",
+        "section": "● Analyze: minimize downtime",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 80,
+        "instruction_sha256": "e7e2e0c670c3a93875fce0b92d3dd77bc23c14d3869d927cf12b2eb4278e958e",
+        "response_sha256": "b76e868597b294ce92b6fa163f4c6605c6ea842fd74974fe75f807513bc72b4b",
+        "source": "rfc9339.txt",
+        "section": "Adaptive Metric Signaling",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 81,
+        "instruction_sha256": "647b0aecf5a72f19b25394ff240a5b10dbc463a37896befe52580425b3cb7d13",
+        "response_sha256": "33a8f690a29e8decf00f0e02c9eaa0d9c5488622e5a1871fe204b3ac6d1328da",
+        "source": "Unicast_Book.txt",
+        "section": "Prerequisites for Static Routing",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 82,
+        "instruction_sha256": "0006a51c6b8f9fd27e56cb4e7245e0b5f652caa0c75f3bd2eb1a2b27d2b996d3",
+        "response_sha256": "8a370c6b79d9eae85b38de5d6cfe8a66cd5af3b2ca7e5cf7eba4f8c09dea591a",
+        "source": "rfc1246.txt",
+        "section": "BARRNet",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 83,
+        "instruction_sha256": "b0c3b978dd9b35075f46ce73748b36d79b1b0227aae9cdceab8fe091bf47bb92",
+        "response_sha256": "c8c62b149ed4110272efb5979e14d2f5e5001122166705f8cc49b8a3976d62d9",
+        "source": "rfc7949.txt",
+        "section": "Operation over Virtual Links",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 84,
+        "instruction_sha256": "8f06fb0c9e5195b08ce05db48461af988c767bf64d372d8b80a777cb88c74932",
+        "response_sha256": "08b451e78484ea722d1c072ad0b4724ad8054cee97af7c2ed52e321199e4baff",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configure L2PT over VXLAN Tunnels",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 85,
+        "instruction_sha256": "7810fdb014d6227ca053cf65a08ffcbcfa63af789d0f4984b05a89d1b63a5e76",
+        "response_sha256": "2673a80bbbc6e34efacc13dde42ede673d7e0a97d7387c25a7e0fe86a1f26bbb",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configure BGP on the VTEP",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 86,
+        "instruction_sha256": "f90f86c1e50f082edc84fffda254d54e01710f37ac50287aebd235d4f230e609",
+        "response_sha256": "fac68e9911c27d417b33388be8b65202cfaaaab6a3664d8e6a13b25c16b66f95",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configure Policy-Based Administrative Distance",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 87,
+        "instruction_sha256": "99ef1ed9fe4f5d83d73dd667622aad655fe4da7f1ed2362e41d6f4983167084e",
+        "response_sha256": "4eb682bd843603b0e5e1682dff550055cfbba0458b738797cf5413e97aa30ad2",
+        "source": "rfc4811.txt",
+        "section": "DBD Packets",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 88,
+        "instruction_sha256": "9531149be12ace7822b11ea4b29f0a051e79a68e4af275ceb6c4f375732da15c",
+        "response_sha256": "a1d5893ab3b941ffce3884fd89b1aae7d1483d0c1e4b1bbb8be28f354f3c03a4",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Configuring FCoE NPV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 89,
+        "instruction_sha256": "4c7bc6929ba8f71b39363fb615f1693f93eb6216437283423e628124cad7389b",
+        "response_sha256": "1c7d1aeb83803ccab35940195d8219dc476237a20bccce22d4ade9407a8be350",
+        "source": "rfc5613.txt",
+        "section": "Cryptographic Authentication TLV (OSPFv2 ONLY)",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 90,
+        "instruction_sha256": "3f18adf39d7ac0aa80bb76c98baf12f6cc24a94cc44007a485d61c77ee6322c6",
+        "response_sha256": "51b105f0f296f27cfa090232e8beb5e7fbc3ee1d3ecd15402e23130ca7419344",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding Wide Area",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 91,
+        "instruction_sha256": "c72c5eb19cc5f7a25f98c81eae72924152eb86b01fce55c3dc89eedcf41b4865",
+        "response_sha256": "c9c3011d2e0e3994736eef495f694c3dfd64265ce65692dded75f1b26d6a022e",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "About SAN Port Channel Modes",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 92,
+        "instruction_sha256": "f7c8003ff06be2e24208f11af88145a0aa2c5a29f258b25d13c1e82126411ebf",
+        "response_sha256": "0c45bb9b9c5f9ec644c785cdb6ec816ebbe49970f2386ea269b942bf720329aa",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configuring the Border Leaf",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 93,
+        "instruction_sha256": "a4df8108cc616e50efb8106e89fd21009ee03740e9f3046b90a5f86051570288",
+        "response_sha256": "40bd597253ed6d2ece1474aa64238c3df32d0d6afbd5fa4c52cf92bd5eb0397f",
+        "source": "rfc7684.txt",
+        "section": "OSPFv2 Extended Link TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 94,
+        "instruction_sha256": "7d777ef7890e0c599998c3a42d37cf448c123495aa66c74c18520c75470cb4af",
+        "response_sha256": "2c120107b6a575e88dc485b75ce6763842fa077481a881b99c4f7e1c72418912",
+        "source": "rfc5820.txt",
+        "section": "Motivation for Extending OSPF to Support MANETs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 95,
+        "instruction_sha256": "11ec3a34b637f2bc96f927632740eec9de405313d885be7046bd840d76e2e827",
+        "response_sha256": "2cdd65e19cced3079d2d928a9a82e9c0beee43767ea7aae609a38a627007589d",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configure Flex Stats for TRM",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 96,
+        "instruction_sha256": "1c5dc8969ff52c2611abba63effaefabac231e5a7c9c49bb37f88f468278f41d",
+        "response_sha256": "e26388802ae210478699f7e431d6ea9d3c991344bae3c275d7b1f43758b0f8bc",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Verifying SAN Port Channel Configurations",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 97,
+        "instruction_sha256": "29a2eca54e69bfcc6cfd3d70f2361a1d05015513db02967cb38cfa7d66b0b588",
+        "response_sha256": "a11ff8e5e46a5fd7fa226dd5497d3ea6b49300962b73361b695ceb919d291db1",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configuring Route Policy Manager",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 98,
+        "instruction_sha256": "55a5efabb9a5c2e2aad7fe6be4ee31744c4b8e437f734e5d215043e652092973",
+        "response_sha256": "6035010245cc50ffce0dfca9d4b97c3575f90972173a0fc901b5596f09f0c36f",
+        "source": "rfc3883.txt",
+        "section": "Neighbor Probing",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 99,
+        "instruction_sha256": "512068113329835ae4d93938537ce2e9148b5f4a35373968d6a50c8d705b1d8d",
+        "response_sha256": "015e7caf0ca6be5d6d53c0d2ec0049cde22c7874d211d7b2a97e5e57f1a21949",
+        "source": "rfc4750.txt",
+        "section": "One Trap Per OSPF Event",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 100,
+        "instruction_sha256": "3152f206106ce662fabb780b0c32e241282548d14a2ea7201d929d2f7558ebe2",
+        "response_sha256": "d09a819a41e6454964ac6673e2ac5bb96d11dd5b5e1d9766aa6f011c9198583e",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding the OSI Model",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 101,
+        "instruction_sha256": "c402351de5036c3dc1119a51c8327c007816ef542508b0d29e1b892b2eb3c1d1",
+        "response_sha256": "f5fa8896e8d0ca7c50b1e5d663783995d44e779bbdd241e91fab26adf7537b48",
+        "source": "rfc4973.txt",
+        "section": "Changes to Router Data Structure",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 102,
+        "instruction_sha256": "e65aabfb4ba064b4b334b0c4b9684f00bf5e21e471d8db963371f4c6d3f19af8",
+        "response_sha256": "6b9e584e7e5650e18f3a321feac3b510edb9bc148a49c96bfc565f25c8fd7633",
+        "source": "rfc9929.txt",
+        "section": "Propagation of UPA in IS-IS",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 103,
+        "instruction_sha256": "cc7010d24042d4aae8d65084abf95a2fd72459543898a0f764891ab9493ff786",
+        "response_sha256": "c64ff0682a1d21ef2659398a691524eb7667f9510ec4d1c5ac82daaa54d8941d",
+        "source": "cisco-nexus-9000v-9300v-9500v-guide-release-106x.txt",
+        "section": "About Cisco Nexus 9000v Platform Family",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 104,
+        "instruction_sha256": "1a110a95b6913016694fc367cd0d92a052b19c1047acc49234211878c82dd719",
+        "response_sha256": "6431f923fe08c2630124e2219d90c4e7196edc89e5352bfdb28b7e5d9c370370",
+        "source": "rfc5614.txt",
+        "section": "Changes to Neighbor Data Structure",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 105,
+        "instruction_sha256": "a9e4309cbb6175915cf522ed584ac9502aac3de21596fdf7e6e1de91c662282b",
+        "response_sha256": "1d080d7867e3de195340bc72f3130709acf730a044eb2f0f40025358024f851f",
+        "source": "rfc5709.txt",
+        "section": "Message Verification",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 106,
+        "instruction_sha256": "0a96c89899ca0163a30a21a54fc820110e5075e2c66a50b40592ad12ea31511c",
+        "response_sha256": "c5d5c26f63a13e169d600837fcd9f08cd7ce89670577b7b001c5214c4686d879",
+        "source": "Unicast_Book.txt",
+        "section": "Verifying the OSPFv2 Configuration",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 107,
+        "instruction_sha256": "b8ef184162172f2e44723debc06ae8a5266be98cdf78f01d03a048829f8a3399",
+        "response_sha256": "1344b5816cc89f9129f3bedc5b4615bfa79a8f98daf59334f1232010d7f509ec",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configure IS-IS",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 108,
+        "instruction_sha256": "97e86d193d2dd1833291ff6c437293640ee3019e6c4d51fd5b228e32850d0f9f",
+        "response_sha256": "fc8357296c2d0fb7d17fed3d8cb6e6926c3a98a0dc13bdd90ed7a30a96a98415",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "Customers log in to Nexus Hyperfabric to begin building a validated fabric design",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 109,
+        "instruction_sha256": "16ee53d1d639126e83e30803240bc0c9f71f7ac512db485890e81c9e663f2f36",
+        "response_sha256": "94b79ffd15176cd98a8fd246bbb66e6cad8a93fea9653678ee9ed9ef2f271071",
+        "source": "rfc3101.txt",
+        "section": "Incremental Updates",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 110,
+        "instruction_sha256": "1dd9ead03b256b357751657649056d84df9ec869cf77941227af1540ed00230b",
+        "response_sha256": "030d888a3ccb3db7e0565d2876e6359dfd0248a056c8ff67b9ecdb16d24020a6",
+        "source": "rfc1765.txt",
+        "section": "Originating AS-external-LSAs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 111,
+        "instruction_sha256": "1d1606c7f799018819969ee94732418b5c8756fb14c2b1364415e8c71e082b13",
+        "response_sha256": "7bfbc5772779164b48de4a341d4ee2ac682e83ff3b48bff601368b96b931e8a8",
+        "source": "rfc4812.txt",
+        "section": "Receiving Hello Packets with the RS-Bit Set",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 112,
+        "instruction_sha256": "0c9616cbdd9e85b11b07fc61034a241f946bd31ce40655fba119d676666c8751",
+        "response_sha256": "55499bbb6bfbeb06b8d13695fe92a1057b335de6fa17b309bb11998a3498ad0b",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Configuring a Bridged Overlay",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 113,
+        "instruction_sha256": "4f4d74399ef4613f6bd98a7657cad6496804399804c5b624fa10cc26b77921a5",
+        "response_sha256": "882276c9722a027145938023540c5e4bf61d9140571660cac27f4221d9df6385",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configuring VXLAN QoS",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 114,
+        "instruction_sha256": "5e3c8e91dfb9f8b9ae54eb9f3fce62145b99c354600a201289c4a7f7b93fa382",
+        "response_sha256": "41eb075cf89118dbbd4ffaff5ec09654a1fd6cf59735354fe99c7dce09e4dbd5",
+        "source": "rfc8363.txt",
+        "section": "Comparison with Fixed-Grid DWDM Links",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 115,
+        "instruction_sha256": "9eaf9a7218b6f7440d39e28c2285c53e8f09946810f264df58f701d965994fa3",
+        "response_sha256": "559cb0d7703f72e7f2eb7662d71d3877d220f217e4b0c668ad83ac6ac7b029bf",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configuring Proportional Multipath for VNF",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 116,
+        "instruction_sha256": "aeacb4a23ca7a0821b5dfb2eba6a73a61c6a51fe70f522addbede8d43606c54d",
+        "response_sha256": "b791fb06303e1e48d302991af52b775b64965c46521bab8a81bbcbeaecc876f1",
+        "source": "rfc4915.txt",
+        "section": "Exclusion of Links in the Default Topology",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 117,
+        "instruction_sha256": "cd51a17d0e7ad7d14e37ad3dd5363b2abfaa210712489757a11dda900b37491e",
+        "response_sha256": "6c7092db32e86b3dc2fca6b07fae371f5f904b7e32de0a1a46b69ba5aec1f122",
+        "source": "rfc8444.txt",
+        "section": "Flooding Scope of BIER Information",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 118,
+        "instruction_sha256": "e1ce0a9d1d12ada83384d048c943b48f51f1032163dbeaecea0b2b40e9328cf2",
+        "response_sha256": "a2493e4b41499f63debc3ae051c6ce8a42d61c591f86cc187e6cf7753cccbc6b",
+        "source": "rfc1586.txt",
+        "section": "Unnumbered Point-to-Point Logical Interfaces",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 119,
+        "instruction_sha256": "2d930ed46935da324179faacd5b8f56a92e7e95fc038b87a17db9c4478e5f351",
+        "response_sha256": "2eafb10c03aaec3c3120e21808ad9cdbec803d6a5e7a34ceb876e21ae70521df",
+        "source": "rfc1247.txt",
+        "section": "Building the non-zero-TOS portion of the routing table",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 120,
+        "instruction_sha256": "70781cedc06c9e5205aedba921f148ca2e8f59db292fd77a8c8cc75fbb529cd4",
+        "response_sha256": "252a611357ee8abafdbcb1f8eb813869a8bbf676b3bc7cbde59579a58107185c",
+        "source": "rfc7503.txt",
+        "section": "Duplicate Router ID Detection for Neighbors",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 121,
+        "instruction_sha256": "1c6f7e8c5abe272a62edc04a58c25f31c21f849e66625b34c92722546c1173a9",
+        "response_sha256": "67e755e9278bd0a206a5ec9e66de7b79781888895be897cb250bc73614d5013a",
+        "source": "rfc9355.txt",
+        "section": "Graceful Restart Considerations",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 122,
+        "instruction_sha256": "e81fad26330912ef226fe28eb31bcb16576e8d843d7812610f710dccc519db86",
+        "response_sha256": "f8371e33d3f80562e1f50af35bab8ddac8c108b895ea22a2211e32fc64443588",
+        "source": "rfc7580.txt",
+        "section": "Decomposing a Connectivity Matrix into Multiple Matrices",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 123,
+        "instruction_sha256": "76af5e126adb9d31934ea90b915b0ed1fd45127465d959aafc7570ed55b78459",
+        "response_sha256": "37bc48ec0343480d19725cb6d94c74cc56c6fae4edf5d671ced8644edef15ad4",
+        "source": "rfc4062.txt",
+        "section": "The Meaning of Single Router Control Plane Convergence",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 124,
+        "instruction_sha256": "a933f16c80eda7dc6dbef9183017eaa2f4a71c4055c4d54afb6d3e3b906a877c",
+        "response_sha256": "81ce5f0b0eac58a1e2848faed567bbd45578b507560baa86888de1b650126889",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Configuring ePBR L3 Configuring ePBR Set-VRF for an ePBR Policy",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 125,
+        "instruction_sha256": "277683d405b5af6de3a79d41c9e01c86a6953e36924a1e7bd2d08d16f408944f",
+        "response_sha256": "f2a87fc31ca45688ae9046a83c63dff66adc99bf51c06f7b2015203dd4bc1508",
+        "source": "rfc5392.txt",
+        "section": "IPv4 Remote ASBR ID Sub-TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 126,
+        "instruction_sha256": "99fc9b11d384c4dc43407cd6f78fa8f384fbd39898ae999e9cda44853397cf1a",
+        "response_sha256": "1f0e7b5dc9baabedde93e692fcbbcf20349c5cd3816fe674b1dee1af2c8fd82a",
+        "source": "rfc2178.txt",
+        "section": "Optional OSPF capabilities",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 127,
+        "instruction_sha256": "c35eca8ef6b28dc6ddce1270a94fc290d5a0d347651092500f4845ad14d5fded",
+        "response_sha256": "9ff0e227c0a752d62dbb57a4e2af806653ea677d796c3a6fee8ba44aec477da3",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configuring BGP EVPN Filtering",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 128,
+        "instruction_sha256": "459d29e2d305f5609cf157a2620893569e3541efd4b181eb1d9fccc4cbacefe0",
+        "response_sha256": "9a24849dbe9bef8abcd745ff6d0443b84ecd744268ea07e11a1836d7ef168c76",
+        "source": "DCNM_Installation_Guide_10_4_1.txt",
+        "section": "Configuring Certificates for Cisco DCNM",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 129,
+        "instruction_sha256": "834d6dab95cb8ddc95597dfa5022764c9537f34cde65b51372c6a98250f332e2",
+        "response_sha256": "81bbb76450b89c7373e8e7d68936cf3685a485f35dccef81f32d957043a39a51",
+        "source": "Unicast_Book.txt",
+        "section": "Creating an OSPFv3 Instance",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 130,
+        "instruction_sha256": "c8167c5dadf5390b0deff2c0eacd199f295d464d8c7e655dcd5b51bee420320b",
+        "response_sha256": "0a31cb7cf947c4edd07cc6fcc59574d07b276b153427570a11c931f7af5fc442",
+        "source": "rfc6827.txt",
+        "section": "Link Advertisement (Local and Remote TE Router ID Sub-TLV)",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 131,
+        "instruction_sha256": "b1453f859234e689e8fcf46a7ec2a3039a76a92f9dc4953231d6f034728e3ba9",
+        "response_sha256": "e35d478659c97803fea9c428eeef48cdeb95212a7f1fcd89bfeb8ce6fc2a7cca",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configure Dynamic Load Balancing",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 132,
+        "instruction_sha256": "ff02788d35889efd1506814c9e0bd3a6590aeac49f6ee97b2a430287a78accaa",
+        "response_sha256": "25a189a6b2eb3df025708d9ccb9b76a2d232559645a135d0ccf5d69ed3c63848",
+        "source": "10_nexus_dashboard_data_sheet_2026.txt",
+        "section": "For organizations managing on-premises data centers, the Cisco Nexus Dashboard serves",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 133,
+        "instruction_sha256": "cc630909700dde797aa8f3cc1459e490cb38e0055f76fb99de6b07cd7956df57",
+        "response_sha256": "3e7ef2b41b6c3ecf190aed854b104c97335ec890fb96aae72f2587d5b917e0db",
+        "source": "DCNM_Installation_Guide_10_4_1.txt",
+        "section": "Configuring DCNM HA",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 134,
+        "instruction_sha256": "b9d1691377dd51648f9828e9f9baa3cbbfb2fbca694b24c0104f134e106b9540",
+        "response_sha256": "b4540c2b6ddbc8d26dd4a099a8cf13e74b9a446b983370503c8d6d7104d43518",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Configuring SAN Port Channels",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 135,
+        "instruction_sha256": "430a4f18911cec15b42cf59e9869e8b4eb52538f1a132b2b88d91ff97aecaa75",
+        "response_sha256": "f87741227f88a076448641d8a933ac38f9496ac3a100335b8d262ec7f19c3a77",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configure a Graceful Restart",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 136,
+        "instruction_sha256": "662d26ab0df06c7bd2eefd9d2303f45cbc5af4558374e5fa7081c2943929b504",
+        "response_sha256": "6f582d873b4c644ef2713a5a65ac724f45cff8d1d85ac8bde6561aa142aab6e7",
+        "source": "rfc7770.txt",
+        "section": "Flooding Scope of the Router Information LSA",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 137,
+        "instruction_sha256": "0abb715006b37a1ac7831219ade2f970bc58bf3eb973fdec9b4b5a47795f9cca",
+        "response_sha256": "ce0d886950b3824bc1160ca1f5928bd621495277ec0326e5711c09b31ae78ff4",
+        "source": "05_nexus9000_nxos_vxlan_10.5x.txt",
+        "section": "Configuring Seamless Integration of EVPN with L3VPN SRv6",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 138,
+        "instruction_sha256": "487e2f4dc1abbdd0988358f33085ff4be61388084143f49766cbdf84af954161",
+        "response_sha256": "8174720c7882919e2a061260751b8e60eff966c3a659f9fcff56d92a72ed1bc6",
+        "source": "rfc4940.txt",
+        "section": "OSPFv2 Grace LSA Top Level TLVs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 139,
+        "instruction_sha256": "208b899b7246e1cce1fd08ca569585f41e77645ce050f9308520086ba2f6ecfe",
+        "response_sha256": "f72e25fef84aff6a78de23dbdfeb11827070452a91f22992eb61906552562516",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Verifying FC NPV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 140,
+        "instruction_sha256": "ec715a092e059104b72b2905832a4b478f2baabcfb587b2f0da07e95e0e9c20d",
+        "response_sha256": "83da159f6befec6c68fd98933af22470b67cc7b2aaf22a95cb49b27ff2945cce",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "About Interface Deletion from a SAN Port Channel",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 141,
+        "instruction_sha256": "90351bc0a1651bb28da1008703558d0f38a48868b8ff31c22a710fdc094d393e",
+        "response_sha256": "ce585323e7e20df8dcc32afe658373efca3e30924a6a54a8ce3270af4e012599",
+        "source": "rfc9825.txt",
+        "section": "YANG Data Model for OSPF Prefix Administrative Tags",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 142,
+        "instruction_sha256": "94db4af4ccd7886fcca3d529435415c54f613d64f541bf97628af993a72d56ad",
+        "response_sha256": "2c1f7cd50e6eb2aa5666ad8b735aa7b04a42d93c70520cd195b08c91fc5bbe9c",
+        "source": "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+        "section": "Configuring ePBR L2",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 143,
+        "instruction_sha256": "e70cbc4ad804252700df0049b677e1c5413b6af3df6833d03e730c0c600b6093",
+        "response_sha256": "16c7fe26c4e105929ca12cb4fec8a24711313412734ba4b4c425f1342a0abacf",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "Intuitive for IT generalists and application and DevOps teams to operate",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 144,
+        "instruction_sha256": "0b7ce65d89d50acbdad0d71f83779a425ceca03982f7b17fc9632e56113e965b",
+        "response_sha256": "f7d9c86b47f8631fc1b0f48d831e8fbf26d4d74020eb9177da41fe73e879b406",
+        "source": "DCNM_Installation_Guide_10_4_1.txt",
+        "section": "Using the Remote LDAP Server",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 145,
+        "instruction_sha256": "e2d217da372e611d50ec1fa644d7d34016cbdff1ad611eb34cfc5b2d37b591f8",
+        "response_sha256": "7947b33ae3d3163b5a34233c2525c575e7d018a71069d508324e5ce94d60c068",
+        "source": "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+        "section": "Configuring NPV Traffic Maps",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 146,
+        "instruction_sha256": "dcfae67d4215943e10a8057529c23f457d25ed6f2044432d58d1e7bdb2a74c0f",
+        "response_sha256": "fcf3a58020136008cca0f70cb9a50253ef0b48eadc11bd81b223f45547530910",
+        "source": "rfc5523.txt",
+        "section": "Coexistence with and Migration from OSPFv2",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 147,
+        "instruction_sha256": "3094145708a07d11e2a1533e44e37a7c32be0fe6147e59f20097006b7ca1f2f7",
+        "response_sha256": "5aba9f4d6e2edb2d9deeb3fd980e535794c1625e82e4c7eccdc81f325f8ebfcc",
+        "source": "04_nexus9000_nxos_unicast_routing_10.5x.txt",
+        "section": "Configure RIPng",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 148,
+        "instruction_sha256": "1701c295d8eaa5eb2aab72f79a61d4de9d0a6ebdd92cfd47e3543220631eefea",
+        "response_sha256": "0d6f64a5abf3e80b199a6b060873f26b1951e4a985f6f6124e13a89beea128b3",
+        "source": "10_nexus_dashboard_data_sheet_2026.txt",
+        "section": "● Configure: Leverage a centralized interface",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 149,
+        "instruction_sha256": "d6c4a3ac11e6cb7afa6da837398baf07c98017969a09375eb23fbcf9d345a607",
+        "response_sha256": "0ea165b479a3daa993a34239d03e6e7dfefecd6d185c23417c78676ce76575e8",
+        "source": "rfc5642.txt",
+        "section": "Flooding Scope",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 150,
+        "instruction_sha256": "6c5fda7439a37445340348def209c7c0f9f18abc8da8bea80a266ad2b130132c",
+        "response_sha256": "dfc8fab5e3ee93b42a4b0779677b3cb2ecf8e28de74af6f98d895e07b920efff",
+        "source": "rfc5088.txt",
+        "section": "PCE Capability Flags Registry",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 151,
+        "instruction_sha256": "666b3f7ca331761c1a59cc9acb881552234b8f1e1f33e282edb192fff0189bb6",
+        "response_sha256": "e2d23a065fc0fbdff3e01f185ca7c84ed0792e88e5a9a4ad8b8711c52f699d86",
+        "source": "sg-005-data-center-fabric.txt",
+        "section": "Overview of Collapsed Spine Reference Architecture",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 152,
+        "instruction_sha256": "5854b17b47c369a71bb13f5b57eb16fbcb4977b6e6d62441747cc27f41d99500",
+        "response_sha256": "93c4470ddacf53e79d8153e42c221cddc94d6471844a159a09a5fb5f5d7e67c7",
+        "source": "rfc2154.txt",
+        "section": "Trusted Entity Key Replacement",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 153,
+        "instruction_sha256": "81062a46dfaa7f202ebd33e584c01c9c888f544e29de36bc541f271e503ee1ef",
+        "response_sha256": "74d0a79f5afd2998826598b5e033ddd08de0c17e2501f8389259acecdec16bc1",
+        "source": "rfc5838.txt",
+        "section": "Database Description Maximum Transmission Unit (MTU) Specification for Non-IPv6 AFs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 154,
+        "instruction_sha256": "69fe25b37ae891933fdbb6282bdc76597419cb4e81e7b4352ace124fef5e8969",
+        "response_sha256": "afd0bee34ce891716cf1eede9a10e6412dd249e72ee025b5eb57a0d828064c07",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding NAT",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 155,
+        "instruction_sha256": "9af0e3518e10f0937f683e2519ebb31518e1bd7ae485ada896d31938206540e5",
+        "response_sha256": "fe68a26085988a5341adff55c558f10079ee904d8eeddf10b5cc06f12bebdbd9",
+        "source": "Networking_Fundamentals.txt",
+        "section": "Understanding Wireless",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 156,
+        "instruction_sha256": "6426f3c0cd0aa3523654afbb538237bcc83af4d179e74dd3fdcd29e2ce2b73b1",
+        "response_sha256": "8be03cea2b5a20b1c33f7a740ce0a547239b76da815099505d2f1523616fb0ae",
+        "source": "17_nexus_hyperfabric_data_sheet.txt",
+        "section": "Licensing A subscription entitlement is needed for every Nexus Hyperfabric switch",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 157,
+        "instruction_sha256": "5619c3ad6de770efdbe581b3c894eca8e606ad33f2f59a50e5c94af4d6b79b88",
+        "response_sha256": "6b417181a01ac834c73f68b2fb82aa6be76df75433bfcecc73c6179bef214061",
+        "source": "rfc5340.txt",
+        "section": "Explicit Support for Multiple Instances per Link",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 158,
+        "instruction_sha256": "11793f2da738c0dd07de007dd444526a12c2f14b25f3c6bbd8acfdbd95a55db0",
+        "response_sha256": "982e44784130f8858e52d2ffd93f0c4db6d0e1c34004f22a0633bfef22b32018",
+        "source": "rfc5449.txt",
+        "section": "MPR Topology-Reduction",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 159,
+        "instruction_sha256": "9d7a0890d2e8959de29dbdc9d31144bfd80177c1cea32d79352d5a1f229bfb4a",
+        "response_sha256": "15a7269a8e98b6e13fef22096f17932e4069f4c6b54efb25dae3d3102815317b",
+        "source": "rfc7138.txt",
+        "section": "New Sub-TLVs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 160,
+        "instruction_sha256": "0c27d08fe3b2460cd4f6116d1c5c7542fdaa71e6229ebc75fc055991b28fd297",
+        "response_sha256": "5acb1ea9cc4fe159a4d80bb62a9ff6eea9586cfbb747bb8576c376452c809531",
+        "source": "10_nexus_dashboard_data_sheet_2026.txt",
+        "section": "● Manage: See a unified view",
+        "generation_method": "curated_source_passage"
+      }
+    ]
+  },
+  "evaluation": {
+    "file": "/Users/muralidm/study/LLM-Assignment/llmassign/1a/data/instruction/evaluation.jsonl",
+    "count": 40,
+    "source_document_count": 14,
+    "statistics": {
+      "minimum_response_characters": 184,
+      "average_response_characters": 563.35,
+      "maximum_response_characters": 1848,
+      "content_category_counts": {
+        "cisco_product_and_networking": 20,
+        "rfc": 20
+      },
+      "generation_method_counts": {
+        "curated_source_passage": 12,
+        "heading_extraction": 28
+      }
+    },
+    "sha256": "fb9321fe38a3668be36b9cb8cc2c526bf3c98b7b0e285f924bc7d581748af89b",
+    "provenance": [
+      {
+        "index": 1,
+        "instruction_sha256": "f63eb437819c7447e696c636fd5b1576e133ba7aed8f19d6d84a6289b552084d",
+        "response_sha256": "e023867d7147a4f81024a95b6cd389731de0a58ec0b622605ea607f8249ce304",
+        "source": "rfc9353.txt",
+        "section": "KEY-CHAIN-NAME Sub-TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 2,
+        "instruction_sha256": "df0ef8e6495aafe8d4afcaa7e4025baa3042c3d2834113f1ce84df96d4556942",
+        "response_sha256": "70e295a7b10ddd2f68353b79af537831d9690d2b1495cb529615695122947b3a",
+        "source": "rfc9513.txt",
+        "section": "Maximum End D MSD Type",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 3,
+        "instruction_sha256": "b0095781a4349969deaff1679f6cb672399ba144615e2008f82f136d5d6bdf96",
+        "response_sha256": "77d10bb481d2d18bdfc99fe153a8ee66bbc5b8dcc4c78458ab57b50e187ea78e",
+        "source": "rfc5185.txt",
+        "section": "Multi-Area Adjacency Configuration and Neighbor Discovery",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 4,
+        "instruction_sha256": "10915602d2a214f8995e1ccb48e7734771850df402ea83a59f6e35be4904e2c0",
+        "response_sha256": "762f1cb95417b7ac242c6a474008b58b055935d7606459da15018e547e942e51",
+        "source": "rfc6565.txt",
+        "section": "BGP Extended Communities Attributes",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 5,
+        "instruction_sha256": "c41b9f8a437d920a2a470d2c763f621dcc8f90d1740633585b2c7dbc414076d2",
+        "response_sha256": "7244589c16108c2f2e1f0a5fcb92a0c855f66d7864d267b185c158e5e8967d75",
+        "source": "01_nexus9000_nxos_fundamentals_10.5x.txt",
+        "section": "About the Cisco NX-OS Setup Utility",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 6,
+        "instruction_sha256": "a2433ddaeca5c01740c2b68541da48d953b0422aa2a247fc9c00547b6c2ddc73",
+        "response_sha256": "71d921eb049add5368de0e1e8a52318c26568d3745ec48bc8d25aa99ea9fabc7",
+        "source": "07_n9500_series_data_sheet.txt",
+        "section": "The Cisco N9500 Series modular switches support a comprehensive selection",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 7,
+        "instruction_sha256": "bceae3bfb80e5e7fe07366acee94d08c4dd4605ad4a8f321ed03462f222e1a43",
+        "response_sha256": "ebd9015ec478d50b5c688ee6888f71cd495053d2077aeecca4d283d9091d9d6b",
+        "source": "02_nexus9000_nxos_interfaces_10.5x.txt",
+        "section": "Configuring BFD on EIGRP",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 8,
+        "instruction_sha256": "2d273abfd99e3f51fac3eca2c9d89451c40b2b354384964a23f7589599e7a18f",
+        "response_sha256": "ceed21060636531095677034ecd2430ca07b77c873020247f45d21fb16994853",
+        "source": "rfc6992.txt",
+        "section": "Address Translation",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 9,
+        "instruction_sha256": "8bb0706f7abf87a56176ea7249482e8a5be882abfc318a27baae65005bdc13c4",
+        "response_sha256": "ef9b621b9276612013d4bb20bcd6d9c8a94312dc594983fc65b5c1add548e129",
+        "source": "07_n9500_series_data_sheet.txt",
+        "section": "Spine-leaf fabric architecture The high port-density",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 10,
+        "instruction_sha256": "c04809c37cabf7e1c07527a64729f76fa74e1eab6bb5142cf6fa29431bf3aa00",
+        "response_sha256": "87e9554be852a613df0e28fe1f83c392da5a078e545931380f8e6dff17397a69",
+        "source": "06_n9300_platform_data_sheet.txt",
+        "section": "The Cisco N9332PQ Switch is a 1-rack-unit",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 11,
+        "instruction_sha256": "d21bfdf5855ff2b061240417ddc5e3dc54d9615f0d7fe3da070f0bdd96456c0c",
+        "response_sha256": "dd0a882e8366c20fac1221e3e3e5a8637956887a46b83519c5d73c7245320e08",
+        "source": "07_n9500_series_data_sheet.txt",
+        "section": "Product overview Application architectures and deployment modes",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 12,
+        "instruction_sha256": "b0508603a8fca422fa09262d88bd6db80c2d40ced518e032d5db12e07b2d577b",
+        "response_sha256": "6139a31183471238eaf1daff6482d7c25a954d786d20f73610850bccdf54decb",
+        "source": "rfc8099.txt",
+        "section": "Adding a Router into TTZ",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 13,
+        "instruction_sha256": "9981e7f929d5f71f0159a17932ffdfccb1bc44cdb78f5aee38d01803c810b83a",
+        "response_sha256": "52131c8fa44b5cd341d4a4086925b430a3167aae32f8144dbd00d5f3c02e08d5",
+        "source": "rfc6845.txt",
+        "section": "Neighbor Discovery and Maintenance",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 14,
+        "instruction_sha256": "09b1d51d07f961fcb09da9015ca7b1506d5d9ad9816b69dbfcb72cf56537d4c6",
+        "response_sha256": "cd95b43b9ceee09884bf78ee07f20b9f504b7da6cf71757fa4f6173dccc171a6",
+        "source": "rfc8665.txt",
+        "section": "Advertisement of Adj-SID on Point-to-Point Links",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 15,
+        "instruction_sha256": "2660d2a1d6ece730f34d6ed9a6000cc3fc7f5cd146b10500c58681f2a0a8056d",
+        "response_sha256": "763172c62fd962da7a5651a9a2029d1ed8f86ccf57bbe477597c30c172cb2488",
+        "source": "rfc9353.txt",
+        "section": "Impact on Network Operations",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 16,
+        "instruction_sha256": "dd7026348b15cffda87bd4c4062ea37e472c3428dae42eb63fc11588b062df13",
+        "response_sha256": "63098a78be4318db935b39e8bee79f93d0bd5877de28ae181ac132ef91d79b9c",
+        "source": "02_nexus9000_nxos_interfaces_10.5x.txt",
+        "section": "Configuring Access and Trunk Interfaces",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 17,
+        "instruction_sha256": "04997ddae31605739585d09d51665495ead3152351a1db5315b2e63e2565ed79",
+        "response_sha256": "938a589d677d73d5d2875808a5be7a15e8315eb37cb1c9ee58f7fab7b9f81915",
+        "source": "rfc6845.txt",
+        "section": "Neighbor Data Structure",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 18,
+        "instruction_sha256": "ec272c33285d9c1e3a77a0aba60e2d31ccf0a873bb17d81fde96dcf8567ecf72",
+        "response_sha256": "0a2af5d9e7d603a2f8b0fc0cf0e69b56e32b791dbb295de63cc5c554b93a816c",
+        "source": "01_nexus9000_nxos_fundamentals_10.5x.txt",
+        "section": "Configuring the FTP, HTTP, or TFTP Source Interface",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 19,
+        "instruction_sha256": "971c597348c3e638b90402a2ccb27485c006ceac727141e16f41be932150425f",
+        "response_sha256": "e9cecb77cdceda0e8a7803cc6db3a7191c66f8e8c7dde3cb2c07deae14364227",
+        "source": "07_n9500_series_data_sheet.txt",
+        "section": "The supervisor, system controller, power supplies",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 20,
+        "instruction_sha256": "2667061fd6cef4e17f0ef0d68d29a3fe49ef384be89dc0ac88abdac73b44fc48",
+        "response_sha256": "34b403bafe7ed5ccefcfe14c6cfaba14e2a48afbde33c6f7fe62c673f7d2a4e6",
+        "source": "rfc8099.txt",
+        "section": "TTZ ID TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 21,
+        "instruction_sha256": "3fd8d963f9871537dafca751f12125fa3c8e8c322028e5982df89ec400f67f5b",
+        "response_sha256": "42d348469a54e099c748c9a3b8ce9f00e669bb21a17c575041d14dde07d781b3",
+        "source": "rfc9353.txt",
+        "section": "KEY-ID Sub-TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 22,
+        "instruction_sha256": "d189ff2be995f42639c620b82e38174650edd439f0e1ef46c312af03ea39a898",
+        "response_sha256": "0ffbcda882b9c7a90aebb8b2fdf58039939027984c492a4b8e6411438e597b18",
+        "source": "rfc6992.txt",
+        "section": "The Scenario",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 23,
+        "instruction_sha256": "bb36312aac47c7864832ee3377f5f4358427c9215490027f0e207b0e5282fffb",
+        "response_sha256": "6511cb85c23ae653e6f46610000ed0a6ea186555b7c4778e8bcd4c9f605940dc",
+        "source": "02_nexus9000_nxos_interfaces_10.5x.txt",
+        "section": "Configuring BFD on HSRP",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 24,
+        "instruction_sha256": "e18d1ce608a395bd7822b86c9916bd6e1b212ae2e075649b72197fd1050faff3",
+        "response_sha256": "e14c45e146ff3b48543ddc90dd5d2b0758d243965b2f9643134535507cd41fbd",
+        "source": "01_nexus9000_nxos_fundamentals_10.5x.txt",
+        "section": "About Configuration Files",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 25,
+        "instruction_sha256": "8cbb77777533ecc665ca2787f2f4840ba310ebbcf6a732145a53f7cbb9802e3e",
+        "response_sha256": "544837ea55f6d25e2a2697a8ac9f30d890a9b23df1b681ec3f00a06516486c34",
+        "source": "13_nexus_dashboard_telemetry_white_paper.txt",
+        "section": "Configure Routes and LAN Device Connectivity Policy",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 26,
+        "instruction_sha256": "91264cd0e44abb2db03469c9cdfaca8dbee5274c91ab1e7d615ac52cdb968c7b",
+        "response_sha256": "800d3d3717a4677a47156d938b7208cdebf8705973df4e50a20a1063e6dbf92f",
+        "source": "rfc6565.txt",
+        "section": "OSPFv3 Domain Identifier",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 27,
+        "instruction_sha256": "750620cd23f164dcd9895132a32aa845c2648d4418d746c5a4f8fc1beaa66fb6",
+        "response_sha256": "2dfd8f6b4464ab5ddf067510631dfd3e7f934375c5db41910cc713fd77377c36",
+        "source": "14_data_center_networking_ai_ml_solution_overview.txt",
+        "section": "Cisco Nexus Dashboard simplifies configuring",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 28,
+        "instruction_sha256": "607c18eacb39f4afbb2ea07f443f10612ef23eb57b3f3d16c24d7d24497c755b",
+        "response_sha256": "ca0e0e7ab987e57b04adadcb1e308c15697476c1971502b75a7b6babc4c91908",
+        "source": "rfc8665.txt",
+        "section": "SR Local Block TLV",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 29,
+        "instruction_sha256": "9e53fc479462e6964aef32ddb5e528744f94975a7957b67325830dd9c2169cc7",
+        "response_sha256": "18e7b45ab0fa4b865b1542ff276670c12855e85d1d95f4e51561ddac181b3406",
+        "source": "14_data_center_networking_ai_ml_solution_overview.txt",
+        "section": "• Designing a network for AI: Smaller GPU",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 30,
+        "instruction_sha256": "407d1a2ff893663a8155455dc14a6503e41ee280b8ab07950a0d1ba77d243921",
+        "response_sha256": "a09deeeedec8666d03debb714b16053921ca0eca194821dec95bc32e5ce37a0c",
+        "source": "14_data_center_networking_ai_ml_solution_overview.txt",
+        "section": "For large GPU clusters, a spine-leaf network",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 31,
+        "instruction_sha256": "1fbef75d2b9c49afee55fa3205b9c379c560b6af1c1134a7bb54d61f4797eaf8",
+        "response_sha256": "3c2e3450574fc0ea5ab192110c3980effa84ddbf5189c47bce94ec1e270bc7cf",
+        "source": "rfc6992.txt",
+        "section": "Forwarding Address",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 32,
+        "instruction_sha256": "fd698105ac1787f43a7e9cb88770de7c292f8887169b85eb35ef69ae3e84bbfc",
+        "response_sha256": "2ff3e1e9ff2843b56422e92868162a53b228a364beab72ca753b24344d75bc10",
+        "source": "06_n9300_platform_data_sheet.txt",
+        "section": "The Cisco N9396PX Switch is a 2RU switch",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 33,
+        "instruction_sha256": "8f5cfc78b2eb2404434cbdd007af7c2fdfe6162736774f8f9b1394205d41e014",
+        "response_sha256": "3c219fe682dc76e28eb1210c868f2f5829563128e2c6a9a33d73a8801c9cd065",
+        "source": "06_n9300_platform_data_sheet.txt",
+        "section": "Product overview Organizations everywhere recognize",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 34,
+        "instruction_sha256": "5449a59f9b140d99afaf9de7ab998d72bd5a5bb02ddd91ea2599830596544002",
+        "response_sha256": "cb6184c8bb3e21f2d3476636c8ef9830ccca42e5f21123cba485678af67d50ec",
+        "source": "02_nexus9000_nxos_interfaces_10.5x.txt",
+        "section": "Configuring BFD on BGP",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 35,
+        "instruction_sha256": "4bc5fefeec8b1d3231d38be28ce7ee12e8a1a473fbbed9e5dd62dcf66a799800",
+        "response_sha256": "65e6839240099f387850268b2bd95624985ec59eb53969020ad42cf3972d2b6d",
+        "source": "14_data_center_networking_ai_ml_solution_overview.txt",
+        "section": "AI/ML Networking with Cisco Nexus 9000",
+        "generation_method": "curated_source_passage"
+      },
+      {
+        "index": 36,
+        "instruction_sha256": "d00ce665c33eee036c564e1f86ade88bfe4f584f42d39974e6dcced2fdfa501b",
+        "response_sha256": "75dab17e68993738b0987e81975cb029b3a35625760f1b5089f77417ffac2339",
+        "source": "rfc9513.txt",
+        "section": "Maximum End Pop MSD Type",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 37,
+        "instruction_sha256": "a1783c5fe62f64ab8f13f343d82ac1b152942176bd80fe015eb13ec4d8f7094b",
+        "response_sha256": "8d7552c20f53e24b0daf1cbcfcab633e37c8e1e2087bcc0f166b00ebfcde2d48",
+        "source": "rfc8665.txt",
+        "section": "Adjacency SID on Broadcast or NBMA Interfaces",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 38,
+        "instruction_sha256": "ccce652d4cae0acbf611105b49fad2e6fc894433457a4570f687aa57da412bc7",
+        "response_sha256": "04ef1d99da02315ad06f396e84434d7aff16acf4ca9a82e966e040ac82ce29ab",
+        "source": "rfc6845.txt",
+        "section": "Database Synchronization",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 39,
+        "instruction_sha256": "f136ad1e423df408d88c4790d642facab2bb62bb6ca653d0abccd54f0773fb09",
+        "response_sha256": "dfa1b4f88d4a30fdabe8ecd63402dc18b2fac7f43323445928808199c2362128",
+        "source": "rfc9513.txt",
+        "section": "OSPFv3 Extended-LSA Sub-TLVs",
+        "generation_method": "heading_extraction"
+      },
+      {
+        "index": 40,
+        "instruction_sha256": "964bf1cd4792f80c65d5615b45083c457374fa822228e40bc340371104dc9e94",
+        "response_sha256": "0cac0643b9c7790fc1737d39b8af7086ace26e6480be0385b15fe102c9eeebae",
+        "source": "06_n9300_platform_data_sheet.txt",
+        "section": "The Cisco N9372PX and N9372PX-E Switches are",
+        "generation_method": "curated_source_passage"
+      }
+    ]
+  },
+  "source_files": {
+    "01_bfd_for_bgp_admindown_nexus7000.txt": {
+      "sha256": "7f1789c318818f002855816f20b8cc585f555ae18efa2c0300f08703b9dc27a4",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "01_nexus9000_nxos_fundamentals_10.5x.txt": {
+      "sha256": "8a5e02b311c5aa7955942fd071cd713125e2d8241620cdc98eed05ced73a8b04",
+      "selected_split": "evaluation",
+      "selected_pair_count": 3
+    },
+    "02_compare_features_select_software_release.txt": {
+      "sha256": "253ff3b57955bd8f3be147fdc61eb961f22a6b15c7048371953826651b4441fa",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "02_nexus9000_nxos_interfaces_10.5x.txt": {
+      "sha256": "f5add439ec3ce12b88fc08a6bc2a720136dacf9b646dbc6f72446b45855118b7",
+      "selected_split": "evaluation",
+      "selected_pair_count": 4
+    },
+    "03_create_giso_iosxr_python3.txt": {
+      "sha256": "2d0e9dc898bfd81f4e5cb81811b979fcae14c2b577dc3a85f7039a4fc74ad822",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "04_nexus9000_nxos_unicast_routing_10.5x.txt": {
+      "sha256": "5091e86874a714765f114a49fc1760189ce4fb1fbca4d43668e8bc80031847bd",
+      "selected_split": "train",
+      "selected_pair_count": 10
+    },
+    "04_nx_sdk_python_nexus3000_9000.txt": {
+      "sha256": "61c9166d65cdc61906d257c09579efff7f8010b7e9fb075506255689aee8cc49",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "05_exclude_oid_nexus_snmp.txt": {
+      "sha256": "24042423c7689e80bfec0027b6215580baeaa57c34cd23f1dc1417571e8aadc3",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "05_nexus9000_nxos_vxlan_10.5x.txt": {
+      "sha256": "b2c6a4758bf92d14a8da19777c9ef406af93331b7889f20facf194a9b9889bf6",
+      "selected_split": "train",
+      "selected_pair_count": 10
+    },
+    "06_fex_power_supply_failure_troubleshooting.txt": {
+      "sha256": "f8a1fdb4b00569fab9bd297d7e9bab1313f32c2ebc6db37209dba5aee4db4edc",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "06_n9300_platform_data_sheet.txt": {
+      "sha256": "8e788dce2ec3c9f011a1ce63f0cfe21559a761468569331347c6244f24e552f0",
+      "selected_split": "evaluation",
+      "selected_pair_count": 4
+    },
+    "07_n9500_series_data_sheet.txt": {
+      "sha256": "c2b2737bb4bb2d9f877da242ee6bde73126113aff878816d071e4b064aa0d557",
+      "selected_split": "evaluation",
+      "selected_pair_count": 4
+    },
+    "07_nexus_nxos_tips_tricks.txt": {
+      "sha256": "00125290750331f3da7cca7fe2bf93d1529c2db1444b6682b48bbb6e658db60c",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "08_n9300_aci_fixed_spine_data_sheet.txt": {
+      "sha256": "a8e9b1862b87a93a1602dcaf2c2e71af77f57bfe8f13a5ef85619d195b2ddb7e",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "08_otv_site_vlans_aed_election.txt": {
+      "sha256": "e1d7fe607c83ca3a155a2ed3fdb7674d8e90c6f54754a63ad4a278fca5603b41",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "09_apic_data_sheet.txt": {
+      "sha256": "026bd29e614735e4adf668a083b7c3bb767a9d4355e9d76a7cb57fed42050a48",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "09_tac_requested_outputs_nexus.txt": {
+      "sha256": "fb1917f9f957c5c2414871ff573d26228c4d6c842530857c9edbb704e2316b75",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "10_nexus_dashboard_data_sheet_2026.txt": {
+      "sha256": "77d130e7e58a97470778266cd70bd67d27142d73ed04e0728be3057be54eec55",
+      "selected_split": "train",
+      "selected_pair_count": 4
+    },
+    "10_recommended_nxos_releases.txt": {
+      "sha256": "3b89afbd817485585ed450c95476b438d11d8f487ea19ef4f96e84945129cc4b",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "118997-technote-nexus-00.txt": {
+      "sha256": "987ad94df18e83888a5d119d5e7c8fc11dcd4c5d1c997b044e3cbc0529ea9a53",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "11_nexus_dashboard_insights_data_sheet.txt": {
+      "sha256": "ef721bfa502d7ff3892041fb4e1119160ff572eb5166f40c91481a93a0ee15ad",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "11_test_vxlan_vtep_fabric_connectivity.txt": {
+      "sha256": "07ace8d5af5535731f90f56f64ea7f22fbf7fdcec1fdb1776f71a1d834e72671",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "12_nexus9000_licensing_failures.txt": {
+      "sha256": "9090cd7638f243793260ce20bb25af7cf926548472373c83607d1bb58a0b2706",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "12_nexus_dashboard_fabric_controller_12_data_sheet.txt": {
+      "sha256": "b1e631c3a94780d9bca430ee472cb411e0eae6dfa3be722e2c059332ff8bc9ec",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "13_nexus9000_interface_crc_script.txt": {
+      "sha256": "1e511c386eb7520c9b530933f9c51e22f0c0da7099a0eaf2c57fed7ab8603938",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "13_nexus_dashboard_telemetry_white_paper.txt": {
+      "sha256": "af28bca63df60e5a3b2e5db10777afb76d8c403b06ae1e1df9e869ca12428bcf",
+      "selected_split": "evaluation",
+      "selected_pair_count": 1
+    },
+    "14_data_center_networking_ai_ml_solution_overview.txt": {
+      "sha256": "813847dbabad8ee78a293c347cbafdd11d207012eaebc244d8b38abfb4c5c874",
+      "selected_split": "evaluation",
+      "selected_pair_count": 4
+    },
+    "14_nexus9000_mac_move.txt": {
+      "sha256": "581669ee5d610ab1b2d231ed2f4621a9144a375905281b416e4946f45366f096",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "15_ai_networking_nvidia_spectrum_x_solution_overview.txt": {
+      "sha256": "73fe959091b72574b7798d0510839c80ae18e87c02912bd4be24c47884571670",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "15_nexus7000_f3_input_discards_lacp.txt": {
+      "sha256": "ab0d0cf9ac1dc1e2525c8931e5308945f123c9e7d8ecbbe4eb54f53f89a196e9",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "16_corrupted_ethernet_packet_nexus9000.txt": {
+      "sha256": "00f6cd298a7b63b1872848b44880abc75434eb675f69a291707a0a58e64c7461",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "16_nexus_9000_ai_enterprise_reference_architecture.txt": {
+      "sha256": "8be84a3a7eaac4fa487452e14e8e88c4e311b2dd798bc913d8ea449f8da1b4d4",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "17_nexus_hyperfabric_data_sheet.txt": {
+      "sha256": "8784db6404b735b96247265b16a13598abdb5142787a7e0f03241ab36463743f",
+      "selected_split": "train",
+      "selected_pair_count": 7
+    },
+    "17_vpc_inconsistency_nxos.txt": {
+      "sha256": "13d51e217886b44e1a6e72f284d0089eb67267e51872b410b11d56b53ada1956",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "18_crc_errors_nexus.txt": {
+      "sha256": "92649843ff0e655ea0fdebe49bd5bf7f67889872583604e2962f4c5e481c17ee",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "18_nexus_hyperfabric_security_white_paper.txt": {
+      "sha256": "171d91c024514b7b9ee3ff0d49a90ab41d020c8b3b0232f633e311ce8fce610f",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "19_icmp_redirect_messages.txt": {
+      "sha256": "7e2bb9e6f4805822c68a3b4e86d3122c076500177268b647cdd07bdca90fe9bc",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "19_nexus_hyperfabric_ai_solutions_data_sheet.txt": {
+      "sha256": "8affb2b4a1ea4007123b78459201d073f1bb87f42235725bb6542149689f762b",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "200185-Configure-Redistribution-of-iBGP-Routes.txt": {
+      "sha256": "a9bddfc43211d32bdad8aea02cd123d7555d15d60b0560f70fd6a488af9a6a10",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "20_nexus_hyperfabric_ai_enterprise_reference_architecture.txt": {
+      "sha256": "0aff6ea989301edbc764b50d27f6795a49044e0ff59ecabf4b61b49a4bccbbff",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "20_ospf_nssa_type7_lsa_forwarding.txt": {
+      "sha256": "a6ace28559444d2baf96331272f2c7f7ff51c8a83a7552f5f5e46c313d1bdf0d",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "213908-configure-vrf-route-leak-on-nexus.txt": {
+      "sha256": "b8c175f1c1f4911bb4f4ea23ee47d93915aa63d4b49880ac1007502c328709a6",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "213952-configure-bgp-to-advertise-a-default-rou.txt": {
+      "sha256": "3bdb435cd361ca981bbad214358356b59ad9570af97723954d3c7b6818aa1f41",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "214843-nexus-9000-cisco-intelligent-traffic-dir.txt": {
+      "sha256": "d7a14be883811d88c9a6dcf2abd7397ddcc82bcd40deaf71cfa19010b64b25ca",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "216037-nexus-3000-and-3100-nx-os-software-upgra.txt": {
+      "sha256": "5bf5830082af8111400a592cb4d7c1ffc0c7818eddf4b9621c813b7bc68c573d",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "216492-upgrade-nexus-3524-and-3548-nx-os-softwa.txt": {
+      "sha256": "d5ade872f03459193ddaa8af7cb91736f9e43d73f7fc10bdd46389dbf88de32e",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "21_vpc_enhancements.txt": {
+      "sha256": "9acc0b1ed6643117bfb299281dfd3d244be8b2c55bda42c85c34c6f053c2277c",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "220615-configure-route-redistribution-on-nexus.txt": {
+      "sha256": "9725d99cf23e4be2e7c2dbd267dfca59aa49294b90757e4471102b8d15b283c7",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "221034-install-upgrade-on-nexus-switches-in-vpc.txt": {
+      "sha256": "88166523ea119999f60d85bb56f00f4a0644e2b9b6bb83b794b8d51b2a05e18a",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "222090-configure-ciphers-macs-kex-algorithms.txt": {
+      "sha256": "40e8056bfe0f4c0abd0afaba208da25fb112c0f57abc47b5405fb1bcaf0c857e",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "22_vpc_election_process.txt": {
+      "sha256": "177438ffc93724da236e4545ff57936c6d5ece7e1eef57b04eb71cbab2c4e0a1",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "23_intelligent_traffic_director_source_ip.txt": {
+      "sha256": "71f8df29cfe2fe4daf8680a9f5eaa45c5ceaeba9eab384ba73c248ba9ef988e4",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "24_ebgp_over_vpc_nexus.txt": {
+      "sha256": "5a5045945fe2158ac883085b365f451d0903236e4f349cfc32029e73784b64bd",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "40404.txt": {
+      "sha256": "91ac51814f1f99a49f784939a9b536010f091e26e8c90676223393750579a5d7",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "COMPUTER_NETWORKS_NOTES.txt": {
+      "sha256": "03225c8830602accc7a355072eee087f01afbb27127b317f6bdaf33d1cd55565",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "DCNM_Installation_Guide_10_4_1.txt": {
+      "sha256": "78f2889ebe2d2624168625802f95eb53959c485fb0dba0aec17c738002f65062",
+      "selected_split": "train",
+      "selected_pair_count": 3
+    },
+    "MIBRef.txt": {
+      "sha256": "7c9794d54496753f6a08ac2e74a931afe2928d8486e85b9de6fbe602cf98b848",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "Networking_Fundamentals.txt": {
+      "sha256": "4d0cc5c4f8f8cf35de45f56c916d0197e73ebefd5592e465beaa79248bd51bc8",
+      "selected_split": "train",
+      "selected_pair_count": 10
+    },
+    "Unicast_Book.txt": {
+      "sha256": "077a125e1953d2e8d5c019b276a386a318abcd65f015e3ad490fcaef35452f06",
+      "selected_split": "train",
+      "selected_pair_count": 9
+    },
+    "at_a_glance_c45-712456.txt": {
+      "sha256": "2213295154c70083f4fe1f6dc7ac5df5ee868507e6c8f88915c883e3762682d3",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt": {
+      "sha256": "f9a01ca66159856ad83c45ad99fe5922deb291877c9ea638ab48a5748ba09f91",
+      "selected_split": "train",
+      "selected_pair_count": 7
+    },
+    "cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt": {
+      "sha256": "7eec55246ba280e1adbabab0da42bef123b6ceab46c83d70132790fa36410ff8",
+      "selected_split": "train",
+      "selected_pair_count": 9
+    },
+    "cisco-nexus-9000v-9300v-9500v-guide-release-106x.txt": {
+      "sha256": "58af6cecd0a7d98cdb2e1abb14129e62bbd6ce1274ebfad64b3fb1341aeba8fe",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "data_sheet_c78-652063.txt": {
+      "sha256": "23aee51511a60e7735a5f1fcd12bcefcb893b6d97b134f12708cc5e374be6e6c",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc1131.txt": {
+      "sha256": "51b54c46502a046a602eb9ced9008e88976ecc91799fdc6084cd72e627e16624",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc1245.txt": {
+      "sha256": "db75ff1f5d053b8044b38c3cea46703fcac1c98eabac7193d3d8f97dd2648c5b",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1246.txt": {
+      "sha256": "3d698ed82515b17a7ba3a78a738f62114bb9c2e752f69f1064b05907719b4ffe",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1247.txt": {
+      "sha256": "5258a0a7891b4aad4c5ace7c1e4451d6629b69a2b7c4e54b45a234f1bdbc57be",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1248.txt": {
+      "sha256": "e64be41207feda2fced0d3faccd91c5ed242e94bee2aa61275d9c42d5163eae2",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1364.txt": {
+      "sha256": "0d378da285c99e4bc491ad746de53812c0e858c6f10867c69bc9db1d0faa9fa9",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1370.txt": {
+      "sha256": "02d5cf2844ec45edaf02edc76fcded86d6381cfdec7c64594613749c0038ecb3",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc1403.txt": {
+      "sha256": "7e8be8093a0fa48206e12bd459430c8dce486a6390e137f6ec9549b920742bb7",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1583.txt": {
+      "sha256": "ab4c602a6c25e5a116912d6e2b7679cb7defca4b5dd5ff9ec2969f0f75bfcdb8",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1584.txt": {
+      "sha256": "a71dd7a26a0215d184cc3db888a51af49e793fd24a54125bd01b7ad22c63546c",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1586.txt": {
+      "sha256": "bbf651ea6ad31e153631e52bcca8b4792ce1d8c77542171764d3cd2ef6798e67",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1587.txt": {
+      "sha256": "d7355e91e64c838a8648aba1c15e961a3662f4699a32e67b5a44958561bc4c36",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1745.txt": {
+      "sha256": "b40a9c6b9ab58f7c4c45d4136a319a7d7899693cf719ac05a612081b07e7c8cc",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc1765.txt": {
+      "sha256": "79edea71321eedf847038db93a25e0faa56d6b394d8a51bac3abc5ec8566714e",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1793.txt": {
+      "sha256": "45fa1d53c0aa9855b5f486ff44c5c7d7766d6905113e863d2bcdb3072d89a28d",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc1850.txt": {
+      "sha256": "9fec20064ec59721c0c81f00d66ace591d66d0d9d448239a8abb4e72cc99579a",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2096.txt": {
+      "sha256": "249b32315c836f175da25ce5a51087ff0ba68c0b0d12838f284323bfd692cabc",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc2154.txt": {
+      "sha256": "3741d5c4476bd7fb9f5b2634e6f5d16f787df43b465131edac27cfe706601317",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2178.txt": {
+      "sha256": "e413c953d54f958a85e3cad37b119df5f062ce5e6f91f094f2bbc9164566aa0d",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2329.txt": {
+      "sha256": "e00c51567226bd018784f1e98c385bf26f843fb55ffc224734fb10a467be62d7",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2370.txt": {
+      "sha256": "97c08e4d664f95f7f5ad17a3fb1faed59c1362ef5283de3c600cab2519687d1b",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2676.txt": {
+      "sha256": "27d1186a82398e779d6855871c936b9e99e2617c5b6d14c2f83cdaf9f1624616",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2740.txt": {
+      "sha256": "daca7c9ab8b71a72cb470a45565cc7437091457880bf0fcf849b2b81b9df8566",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc2844.txt": {
+      "sha256": "b6a64ac1bd70f4b1133e45d9f44db8c37888fce8e2c5f14135e6b2ffc14af3b2",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc3101.txt": {
+      "sha256": "4802280114b18b9bddad74afb8441e05480933e4d00d2c341be83a276ade92ba",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc3137.txt": {
+      "sha256": "4ff3491fc12c6cf7cd8794707d4bd20c36760b13c08efcfcd7426e2777b7714c",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc3509.txt": {
+      "sha256": "c4243f0f524230fd14659b33628823d59e25aa70a9d4f378f2c968844da103b4",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc3623.txt": {
+      "sha256": "8de279101c81cb8bb1dac2c293c4b9d4366d7fd81934c675d6df20f6d71d7a33",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc3630.txt": {
+      "sha256": "b5999330f1245e3f2fa9d525e25272e85d75c0faa600d56cee43c8a9ea591e57",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc3883.txt": {
+      "sha256": "e2886c7b0e3fc236a41fa809d9356060b57d03c6d5ccd884675b9b2bd0d74bda",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4061.txt": {
+      "sha256": "d707394961b69bb19bdcb7b9ad47a1040ad1820c6fbffd3bf6cd87fd949a0611",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4062.txt": {
+      "sha256": "2110fec6a75881b014e07bda965318e849ff58b58b3fe3653ad4dd638aa0e57e",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4063.txt": {
+      "sha256": "fb6011503f718efccea6c721f15277eb462c4450c89d63d465bd8c87c348da55",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4136.txt": {
+      "sha256": "70381d50677898293c9b377e5ac4857f45df21887205174c83e3b3018f9307ef",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4167.txt": {
+      "sha256": "1d8ce71e3d308e37987490ca623c20d8ceb7407a2237ff4943896b4ab8dd26d2",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4203.txt": {
+      "sha256": "ee467266dac77a94c1bb1dc99e0a9af8f96dcab3da3a3710b8fbb9b0683d1285",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4222.txt": {
+      "sha256": "19700ce9b9180a7e26ea246dbaf8271ed777f17af1be8a9358695ac020e283d6",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4552.txt": {
+      "sha256": "e8c814db709c5651873b82fa62fea8048092bfb527d71d21a65aba0836de4dab",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4576.txt": {
+      "sha256": "c8f574c4dbc9c8e1be27e11340e3e2c50771e068f651f222321311f127560707",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4577.txt": {
+      "sha256": "1b7b9b0269f2917bd4f25fc1160066ccd6be3bfc90fa4848c240099cf52b85a0",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4750.txt": {
+      "sha256": "29eb9012afe78ae5042e12b8ec00dd2f28ed202e5579993fe8f46cfef0573909",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4811.txt": {
+      "sha256": "58e23deeca9694334944b32d8f683b2a7aac858848014a2cfd6dd645b00bdf30",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4812.txt": {
+      "sha256": "c39bfa5d8870e01ff33a15aa643f37dc3f9ce27966069cbb7fb3137653cdd5e4",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4813.txt": {
+      "sha256": "3a8b7839177137f63812abb7cdff4ceadd617f930dec970033b42bd05a03aa65",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4915.txt": {
+      "sha256": "21041ae9ca07143506c8b83c0eb8dea14b0413d7c59fd36a04fdf23aa66c7511",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4940.txt": {
+      "sha256": "980b06bef0be396ac83bae359e30ca83c1412b91154702cbb279fa777c09d030",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc4970.txt": {
+      "sha256": "c6b97568f11b1a67ce9d6611db7ca56ebc9b641618cc82d1c895bd77fe831123",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc4973.txt": {
+      "sha256": "79ede29751a32ba1e52294910b1fa581423028b0ff0b01f3fceea041a43038e2",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5088.txt": {
+      "sha256": "58c0bae7b2a4d2ab5e61e2e190ec6dfa4edaee54211f5f3c3a0ef0584b445a2c",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5185.txt": {
+      "sha256": "1e35430add7442fcf871c6f7c4a5294e61da0641ea09e78857a5b0f90927a18e",
+      "selected_split": "evaluation",
+      "selected_pair_count": 1
+    },
+    "rfc5187.txt": {
+      "sha256": "5b5d4e114118aa97b3ec2a41aa8d7610ccd030fb9f2603212bcf549f5f3aaae9",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5243.txt": {
+      "sha256": "b012e256fbc034370c6399f70fd595288871b8e998b8752267e7d83f2b9a548f",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc5250.txt": {
+      "sha256": "9b159b1f1ca26076318f405eab96dcb3cf31e423e91ef6ff5aa080feb9aef666",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5252.txt": {
+      "sha256": "a19e8021b1b75d1b562e6864c91906d2b1f3c16c37a060d5657c87e68960534a",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc5329.txt": {
+      "sha256": "66353a9c0ffaf594f19cf53c1ec681f3ac8f23d05e2985b34ec93dbed7db3a51",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5340.txt": {
+      "sha256": "086df0bbfcf59a05c77a0dffee29818b99a52fd674ecadeeccfa10e52553fb13",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5392.txt": {
+      "sha256": "22347af949866c1faa7da2f021e8cdaf222544960c7215d9ac1479cdaf02cafd",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5449.txt": {
+      "sha256": "9071ea86429a0e8094a6f8e14af1d7e578494d8a68b2eac2bc0d8e918cdd75f2",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5523.txt": {
+      "sha256": "26415be54337bebc41fb2825866e1dcf07a01913d88265b20d5927994f7c3e95",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5613.txt": {
+      "sha256": "c9ef7df6f9fcb63db9c58d49859032c4299951fe2737013f4f1f2a5807a1fa10",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5614.txt": {
+      "sha256": "ba09789554ec9c5cbf37069fa1cf2a050bae8cbb25406d2ff06e894a9d202b8d",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5642.txt": {
+      "sha256": "dcb0cc551cf1b7d64051282439e57008afb7597c8336144a1382fbc568f94002",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5643.txt": {
+      "sha256": "fee5fb2359d00f747634b46209a75c65d6d4be81944381c5a5d65e23a9860175",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5709.txt": {
+      "sha256": "fe7db93650092acb603ea00278a6dfc668c2b2b1ad56cff1eb5241b600130d0a",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5786.txt": {
+      "sha256": "9f05984940ace92fe9140625a9eff2f85759f2f813eed0697f3845f8fc51cc58",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc5787.txt": {
+      "sha256": "46fe447cc2003e6bb50e6e762f5325c5400e03e713531560a6e2d4c846888697",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5820.txt": {
+      "sha256": "59d7276fb1887eb42bcc5b4809a8f747ae7618054106570e7c946ba62fcf79ce",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc5838.txt": {
+      "sha256": "470c6fbab6110bf7d7adc433d5d86632779a0af7464d26173abf98f7fa1ca22d",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc6506.txt": {
+      "sha256": "5bbc6c0689d8af913f4a58e3497f43f1c9a2748e499e09fe76d25c8c055f38c6",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc6549.txt": {
+      "sha256": "466ecf1cdf9456cce7514ae7c20841f4738d536c157428cf8e8db7e6e99abe2e",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc6565.txt": {
+      "sha256": "66c90d6c246265b9cd6651e7193c07070f2d3f825801fcd45d42b1bd8b31efbf",
+      "selected_split": "evaluation",
+      "selected_pair_count": 2
+    },
+    "rfc6827.txt": {
+      "sha256": "baaa15f7c1f517e007a2a36d647180927ab71c8378c5eca4f215f97562c711a7",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc6845.txt": {
+      "sha256": "a1736e27c795b3d582c2785c25f736d4d8b10d0ec4dfaeec57f23c4ab91d4430",
+      "selected_split": "evaluation",
+      "selected_pair_count": 3
+    },
+    "rfc6860.txt": {
+      "sha256": "cba039fc7e9265c6628199453ece77b1c4080b3f826aeb2bd2ac4642a6e54d87",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc6863.txt": {
+      "sha256": "781e3f30a1e96c7e5cec02515ec1a11bdb49f83f2f33a1143200fcfbcb7ab35a",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc6969.txt": {
+      "sha256": "1ba4c1697c4a50ca31f784b86b95512c9fbfeb0649cc47ebaa31e798a5b354df",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc6987.txt": {
+      "sha256": "c10b7eda97e73ce058a320c58450fd56b77c9b1ccb9490e6aa0857d417802646",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc6992.txt": {
+      "sha256": "7e160311f72cf07c75591ce1cd575535ba344a9416d73284a7d068520eb47871",
+      "selected_split": "evaluation",
+      "selected_pair_count": 3
+    },
+    "rfc7038.txt": {
+      "sha256": "c47d3771a51faf5c991d09e4107540112d09f2ddc725a5b989479674e3643578",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc7137.txt": {
+      "sha256": "f1066ff9ca5dac322f9c38d31c4b4323c8243c82b4a0ad90b5579944b8c3a4c6",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc7138.txt": {
+      "sha256": "62ef9de7eaaec85aae07a9ec1670ec4dcdeaeb7f9ba0349699da6999604f35a2",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7166.txt": {
+      "sha256": "614ef222c0483683baca390235933770775a88bba09fb3c5e6c8d913fdf47d05",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7471.txt": {
+      "sha256": "0661cff085c564a13560382f3a93746cbe426c82982c0de8f950e6641ade491a",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7474.txt": {
+      "sha256": "9bb6e6d282be20571b0b70b1ac628d74c341b5e241a28bae43e7741d28b75a75",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc7503.txt": {
+      "sha256": "ee79ff972be1827308a960209fcad68309c4592ccbffa011e1fea1dbd9bb0c01",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7580.txt": {
+      "sha256": "43d162edfda60f95fea784bccf6ddf7bc40533810abcd17e7a30d62a2004e247",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7684.txt": {
+      "sha256": "007c428442c4048290efaa71daa306b49442b62bb43a9a40d1fa99889a66441b",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7688.txt": {
+      "sha256": "a48aa8bb4afcf7fab896ae1de5fed18a3c7a9b1353a96b4ee359ca78baaac9a1",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc7770.txt": {
+      "sha256": "591726f28e087a7688dde274328ab9c7fb6d88bfe80ea9d041220af788f4ccb4",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7777.txt": {
+      "sha256": "6123418b693992a9072046cb60bfcabccb3d328784360cf87ece7899ff1c2bd7",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc7884.txt": {
+      "sha256": "ebce53d6389b86f88422cc55d23ea3ba392b43c81af669f800c5d6e41ef6c795",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc7949.txt": {
+      "sha256": "2e13d6e597c3201b6df7ed485e15ddd6f4ea381f5cb5f5424a0271babef22ae5",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8042.txt": {
+      "sha256": "7395c6a511092a769c53cc6b15200250e4374309b27545242c1be3cfa0eefc03",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8099.txt": {
+      "sha256": "0b3cad7530af50e32503f3902cf0470eabd272420870f33892b9cfc74eb62664",
+      "selected_split": "evaluation",
+      "selected_pair_count": 2
+    },
+    "rfc8330.txt": {
+      "sha256": "d7b54c6d40cd9cd03ff1729ef303d0a0f7cabce36290a11e78e094d7a6899ae8",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc8362.txt": {
+      "sha256": "f5ff08e7db4f1f031c950e02c7f405c1f81d8bc6b5b44f617f6775e2037d4257",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8363.txt": {
+      "sha256": "b42167c618ddf8986d17831ba3ec51b14bc386ae0ab0f262dabb940f4c1689de",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8379.txt": {
+      "sha256": "d98f36156f2a4f91d14e131a34283bf84240cb45b36529dfcd4c48fdaff768e6",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8444.txt": {
+      "sha256": "7a53cb4f4f7fca55562fdcd889b9825488fc52d5b928d084bcd0f8b38e73c37c",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8476.txt": {
+      "sha256": "1cea6c80a9b1af6ab051f9c623cf7e93e85bf45dbac6435a38381d4565d03b6f",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc8510.txt": {
+      "sha256": "0e77d6e7f53d9b2075943f3b0e68204db3134fb54fe95ae4489db2a9068d4f6f",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc8665.txt": {
+      "sha256": "eb64f227dac4d0742d8839d673e1b8be17ebdf8aed4d2e288ee7b1fe0c168f8d",
+      "selected_split": "evaluation",
+      "selected_pair_count": 3
+    },
+    "rfc8666.txt": {
+      "sha256": "e9a0b706bead429f903cf37f81cf0bfd9a8ecb28ddac3b40a9dcb49cff6f8d95",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8687.txt": {
+      "sha256": "cb76415ea7d6c9523c2a2e0ac35a88f0c18097b418501ca2aca4da137f75c1c1",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc8770.txt": {
+      "sha256": "f84500c25e3835a061638dc7bc3846fb8d73321893f35a233211181f7e2aa0d3",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc8920.txt": {
+      "sha256": "c62ad549d5282cb267ef31ab8f765a9fc1ea397e3f9f69f2bd465ea32fa029fc",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9013.txt": {
+      "sha256": "f0a9647a273d97eff4deb693a4ee240915ffac34ca18e6df5fa644208881411c",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9084.txt": {
+      "sha256": "e12987819c8ba49143b198d781e3ee33c667afbf1c67275f8b410acfeaa74794",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9089.txt": {
+      "sha256": "0de1ca4cded8dcb1bae94815942d21ca302fbb5ee6cb4e7ae6ae35ecd014bc8f",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9129.txt": {
+      "sha256": "cf84b4902bba7f1331591bfefa8b353fbe29dcd5cde793c92499741a91b8a722",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9214.txt": {
+      "sha256": "ba1ce19922647d07e2205fd875eb5a9f0b970571e1f8d9da3eee215e085f1ef1",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9339.txt": {
+      "sha256": "ab7c67e5bda097ac5bd33f74f80fe59ada8ed71b79a3ec50266e9e78948979d4",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9353.txt": {
+      "sha256": "1e8bb1bd61215d03c117b011e21bcb5e0bb545c162741d6be23774b332e98dce",
+      "selected_split": "evaluation",
+      "selected_pair_count": 3
+    },
+    "rfc9355.txt": {
+      "sha256": "aa0700937ec2c09cade334828443c0a5e56c645cc7c5bf721174cb81a3316b26",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9356.txt": {
+      "sha256": "745e43194eea88b3248c2cdaab4a66d97ef323df955eb6e9d5f7f27134d24ebf",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9454.txt": {
+      "sha256": "682d74e27cc4d267d444912db46d7c136f9221e07ede2d91e7a540d3a05e485a",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9492.txt": {
+      "sha256": "29d05498994f547985d332cce60b3f576dcb2c0071d6d5248b014b2881ddb8d3",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9513.txt": {
+      "sha256": "f540f96ba1d73489f1223dfd08cac0692b7c16bb4feda7a006730bfa72ddd68c",
+      "selected_split": "evaluation",
+      "selected_pair_count": 3
+    },
+    "rfc9587.txt": {
+      "sha256": "4aeb4d0fcf89638d7c778d0df6e670f5e94189f907bf72a92d03b4b0b6b3f4d1",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9667.txt": {
+      "sha256": "d74d25a2b0cfde1a7063abe2fc40d2c4cb8ca4463d96587fe653bd6bd30807ac",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9792.txt": {
+      "sha256": "05652a13c97a285035eda0871f083afbac9fc953b9e745b383848bd3a608a1f2",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9825.txt": {
+      "sha256": "e62ffe599dbbfef62550bfd4f6a63d392eb12069661da91a8b71d67893767606",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9903.txt": {
+      "sha256": "ea143b919cce67d9d9c4bc9d47dccfb9d3b0719ead702b714929e0399af2833a",
+      "selected_split": "not_selected",
+      "selected_pair_count": 0
+    },
+    "rfc9929.txt": {
+      "sha256": "79cb39fab494844b93b29a65806c4791f9c09708ec32ce4e9208e1a397613064",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "rfc9983.txt": {
+      "sha256": "6f3ee528d0a2a53489c1a6654b768fb079e3bc42971f0ed6e2cd4e7cd64f4196",
+      "selected_split": "train",
+      "selected_pair_count": 1
+    },
+    "sg-005-data-center-fabric.txt": {
+      "sha256": "c3a7d5de4e05ba936438935279e623aee38f9dee1e6f681f6431848e855ba307",
+      "selected_split": "train",
+      "selected_pair_count": 10
+    }
+  }
+}

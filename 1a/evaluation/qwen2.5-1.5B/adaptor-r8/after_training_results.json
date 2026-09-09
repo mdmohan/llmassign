@@ -1,0 +1,8 @@
+{
+    "after_training_loss": 2.103297710418701,
+    "after_training_model_preparation_time": 0.0065,
+    "after_training_runtime": 3.9783,
+    "after_training_samples_per_second": 10.055,
+    "after_training_steps_per_second": 10.055,
+    "epoch": 3.0
+}

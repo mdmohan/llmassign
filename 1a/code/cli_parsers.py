@@ -354,6 +354,26 @@ def build_gpt2_query_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--adapter-folder",
+        type=Path,
+        default=None,
+        help=(
+            "Optional PEFT LoRA/QLoRA adapter directory, or a run directory "
+            "containing final_adapter. The adapter is attached to the model "
+            "selected by --model-name or --model-folder."
+        ),
+    )
+    parser.add_argument(
+        "--chat",
+        action="store_true",
+        help=(
+            "Format each prompt with the tokenizer's chat template before "
+            "generation. If the tokenizer has no template, use a simple "
+            "generic User/Assistant template. Without this option, prompts "
+            "are passed to the tokenizer unchanged."
+        ),
+    )
+    parser.add_argument(
         "--max-new-tokens",
         type=positive_int,
         default=50,
@@ -594,6 +614,103 @@ def build_cpt_evaluation_parser() -> argparse.ArgumentParser:
             "training run, datasets, query/baseline files, and evaluation "
             "options exactly match this invocation."
         ),
+    )
+    return parser
+
+
+def build_corpus_dedup_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Combine cleaned text files and remove exact duplicate prose "
+            "paragraphs across the corpus."
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        required=True,
+        help="Folder containing cleaned .txt documents.",
+    )
+    parser.add_argument(
+        "--output-file",
+        type=Path,
+        required=True,
+        help="Combined deduplicated text output.",
+    )
+    parser.add_argument(
+        "--audit-report",
+        type=Path,
+        default=None,
+        help="Optional JSON report with every removed paragraph and lineage.",
+    )
+    parser.add_argument(
+        "--minimum-paragraph-chars",
+        type=positive_int,
+        default=150,
+        help="Minimum normalized prose length eligible for deduplication.",
+    )
+    parser.add_argument(
+        "--max-occurrences",
+        type=positive_int,
+        default=1,
+        help="Number of copies of each normalized prose paragraph to retain.",
+    )
+    parser.add_argument(
+        "--recursive",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Read .txt files recursively below --input-dir.",
+    )
+    return parser
+
+
+def build_instruction_dataset_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Create a source-grounded instruction-response JSONL dataset from "
+            "cleaned domain text and split it by source document."
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        required=True,
+        help="Folder searched recursively for cleaned .txt documents.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help=(
+            "Folder for train.jsonl, evaluation.jsonl, and the provenance "
+            "report."
+        ),
+    )
+    parser.add_argument(
+        "--total-pairs",
+        type=positive_int,
+        default=200,
+        help="Total number of instruction-response pairs to create.",
+    )
+    parser.add_argument(
+        "--train-ratio",
+        type=unit_interval,
+        default=0.8,
+        help="Fraction of pairs assigned to training (split by source file).",
+    )
+    parser.add_argument(
+        "--max-pairs-per-document",
+        type=positive_int,
+        default=10,
+        help="Maximum selected pairs contributed by one source document.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Seed used for deterministic source assignment and pair ordering.",
     )
     return parser
 

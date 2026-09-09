@@ -1,0 +1,18 @@
+{
+    "after_training_loss": 2.103297710418701,
+    "after_training_model_preparation_time": 0.0065,
+    "after_training_runtime": 3.9783,
+    "after_training_samples_per_second": 10.055,
+    "after_training_steps_per_second": 10.055,
+    "before_training_loss": 2.18194317817688,
+    "before_training_model_preparation_time": 0.0065,
+    "before_training_runtime": 3.9089,
+    "before_training_samples_per_second": 10.233,
+    "before_training_steps_per_second": 10.233,
+    "epoch": 3.0,
+    "total_flos": 577014960503808.0,
+    "train_loss": 2.0857942660649615,
+    "train_runtime": 248.1007,
+    "train_samples_per_second": 1.935,
+    "train_steps_per_second": 0.242
+}

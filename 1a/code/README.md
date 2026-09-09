@@ -16,8 +16,9 @@ The paths used by the current commands are:
 │   ├── raw/text/                 # OSPF-related source RFC text
 │   ├── converted/cisco-dc/       # Text extracted from Cisco PDFs
 │   ├── converted/networking/     # Text extracted from other PDFs
-│   ├── cleaned/cleaned/          # Current training-ready text
+│   ├── cleaned/                  # Current training-ready text
 │   ├── cleaned-post/             # Optional standalone post-clean output
+│   ├── instruction/              # QLoRA train/evaluation JSONL and audit
 │   ├── processed/<model>/        # Model-tokenizer-specific packed dataset
 │   ├── processed/v1/             # Earlier Cisco packed dataset
 │   ├── processed/v2_ospf_rfc/    # OSPF RFC packed dataset
@@ -115,7 +116,7 @@ existing split, tokenization, and serialization stages:
 python 1a/code/prepare_cpt_dataset.py \
   --tokenize-only \
   --model-name gpt2-large \
-  --input-dir 1a/data/cleaned/cleaned \
+  --input-dir 1a/data/cleaned \
   --bin-file 1a/data/processed/gpt2/tokens.bin \
   --parquet-file 1a/data/processed/gpt2/tokens.parquet \
   --metrics-file 1a/data/processed/gpt2/dataset_metrics.json \
@@ -178,6 +179,39 @@ maximum exceeds 8,192 tokens, provide a practical `--context-length` explicitly
 instead of accidentally packing 32K or 128K sequences. EOS separates documents;
 if a tokenizer has no EOS token, supply a one-token boundary with
 `--document-separator-token`.
+
+### Optional corpus-wide paragraph deduplication
+
+`deduplicate_corpus.py` reads cleaned `.txt` files, combines them, and removes
+normalized exact duplicate prose paragraphs across the complete corpus. It
+preserves short blocks, fenced command examples, tables, lists, and CLI blocks.
+Run this after content cleaning and before tokenization:
+
+```bash
+python 1a/code/deduplicate_corpus.py \
+  --input-dir 1a/data/cleaned \
+  --output-file 1a/data/deduplicated/combined_corpus.txt \
+  --audit-report 1a/data/reports/paragraph_dedup_audit.json \
+  --minimum-paragraph-chars 150 \
+  --max-occurrences 1
+```
+
+The callable entry point returns the combined text without writing anything:
+
+```python
+from deduplicate_corpus import combine_and_deduplicate_text
+
+combined_text = combine_and_deduplicate_text(
+    "1a/data/cleaned",
+    minimum_paragraph_chars=150,
+    max_occurrences=1,
+)
+```
+
+The optional audit records every removed paragraph and the source file and
+paragraph retained as its original. The standalone output is one combined
+document; keep that in mind if a later train/test splitter expects multiple
+document files.
 
 ## 2. Capture a pre-CPT baseline
 
@@ -325,6 +359,26 @@ python 1a/code/run_gpt2_query.py \
   --max-new-tokens 100
 ```
 
+To chat with a LoRA/QLoRA adapter, supply both the complete base/CPT model and
+the saved adapter. Add `--chat` to format each input with the tokenizer's chat
+template:
+
+```bash
+python 1a/code/run_gpt2_query.py \
+  --cli \
+  --chat \
+  --model-folder 1a/output/Qwen2.5-1.5B/v1/final_model \
+  --adapter-folder 1a/output/Qwen2.5-1.5B/qlora-adapter-r8/final_adapter \
+  --max-new-tokens 200
+```
+
+The adapter directory may be either `final_adapter` itself or its parent run
+directory. In chat mode, the model's own chat template is preferred. If the
+tokenizer has no template, a generic `User: ...` / `Assistant: ...` template is
+used. Without `--chat`, prompts are tokenized exactly as supplied, preserving
+the existing plain continuation behavior. Interactive inputs are independent;
+the CLI does not retain previous turns as conversation history.
+
 To run one or more existing evaluation query files against a CPT model and
 save baseline-style JSON results, use `--query-json` and `--output-dir`:
 
@@ -468,7 +522,7 @@ three or more tokenizer pieces.
 
 ```bash
 python 1a/code/evaluate_oov.py \
-  --input-dir 1a/data/cleaned/cleaned \
+  --input-dir 1a/data/cleaned \
   --model-name gpt2-large \
   --recursive \
   --output-file 1a/evaluation/gpt2-large/oov_report.json \
@@ -492,7 +546,7 @@ indentation and tables.
 
 ```bash
 python 1a/code/post_clean_corpus.py \
-  --input-dir 1a/data/cleaned/cleaned \
+  --input-dir 1a/data/cleaned \
   --output-dir 1a/data/cleaned-post \
   --audit-report 1a/data/reports/post_cleaning_audit.json \
   --recursive \
@@ -511,6 +565,42 @@ Each boolean rule is enabled by default. The disabling forms are
 an existing non-empty experimental output directory. Run `evaluate_oov.py` on
 both the original and post-cleaned directories to compare tokenization quality.
 
+## 9. Create the QLoRA instruction dataset
+
+`create_instruction_dataset.py` reads the cleaned text corpus and creates
+extractive instruction-response pairs. Every response is a whitespace-normalized
+passage from one of the input files; no external language model supplies or
+rewrites facts. The split is performed by complete source document, preventing
+passages from the same document from appearing in both training and evaluation.
+
+```bash
+python 1a/code/create_instruction_dataset.py \
+  --input-dir 1a/data/cleaned \
+  --output-dir 1a/data/instruction \
+  --total-pairs 200 \
+  --train-ratio 0.8 \
+  --max-pairs-per-document 10 \
+  --seed 42
+```
+
+The command writes:
+
+```text
+1a/data/instruction/train.jsonl
+1a/data/instruction/evaluation.jsonl
+1a/data/instruction/instruction_dataset_report.json
+```
+
+Each JSONL record has exactly the two fields required for instruction tuning:
+
+```json
+{"instruction": "What is ...?", "response": "..."}
+```
+
+The report records counts, hashes, source-document provenance, extraction
+method, response-length statistics, grounding validation, and source overlap.
+The default 200-pair run produces 160 training pairs and 40 evaluation pairs.
+
 ## Supporting modules
 
 The remaining files are imported by the commands above:
@@ -518,6 +608,8 @@ The remaining files are imported by the commands above:
 - `load_pdf.py`: PDF extraction and direct loading of text files.
 - `clean_data.py`: normalization, quality gates, deduplication, and audit data.
 - `training_content_cleaner.py`: post-gate block cleanup and its detailed audit.
+- `deduplicate_corpus.py`: conservative corpus-wide exact prose-block deduplication.
+- `create_instruction_dataset.py`: grounded QLoRA instruction/evaluation JSONL generation.
 - `causal_lm.py`: generic AutoConfig, AutoTokenizer, and AutoModel loading,
   metadata, context/dtype detection, and compatibility checks.
 - `tokenize_data.py`: generic causal-LM tokenization, sequence packing, binary,

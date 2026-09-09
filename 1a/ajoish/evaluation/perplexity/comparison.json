@@ -1,0 +1,12 @@
+{
+  "base_mean_loss": 1.3511853472370168,
+  "base_perplexity": 3.862000630396992,
+  "base_recomputed_perplexity": 3.862000630396992,
+  "cpt_mean_loss": 1.296194016609503,
+  "cpt_perplexity": 3.655357927579825,
+  "cpt_recomputed_perplexity": 3.655357927579825,
+  "perplexity_reduction_percent": 5.350664657864787,
+  "predicted_token_count": 753572,
+  "sequence_count": 92,
+  "source_parquet_sha256": "e0b3b48dfeacb677f68187f0c726be056b04f9be8f90a7ee211e1b218021b3a3"
+}

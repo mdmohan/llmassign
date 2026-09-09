@@ -1,0 +1,1464 @@
+prompt_index,prompt_id,group,category,evidence_split,assignment_required,prompt,expected_concepts,base_generated_text,cpt_generated_text,base_concept_coverage,cpt_concept_coverage,concept_coverage_change,automatic_verdict,automatic_reason,human_review_status,human_paired_verdict,human_notes
+1,general-factual-01,general,factual_knowledge,,True,The capital of France is,"[""Paris""]"," Paris.
+
+The capital of the United States is Washington, D.C.
+
+The capital of the United Kingdom is London.
+
+The capital of Canada is Ottawa.
+
+The capital of Australia is Canberra.
+
+The capital of New Zealand is Wellington.
+
+The capital of India is New Delhi.
+
+The capital of Brazil is Brasilia.
+
+The capital of Mexico is Mexico City.
+
+The capital of Argentina is Buenos Aires.
+
+The capital of Chile is Santiago.
+
+The capital of Peru is Lima.
+
+The capital of Colombia is Bogota.
+
+The capital"," Paris.
+
+The capital of the United States is Washington, D.C.
+
+The capital of the United Kingdom is London.
+
+The capital of Canada is Ottawa.
+
+The capital of Australia is Canberra.
+
+The capital of New Zealand is Wellington.
+
+The capital of India is New Delhi.
+
+The capital of Brazil is Brasilia.
+
+The capital of Mexico is Mexico City.
+
+The capital of Argentina is Buenos Aires.
+
+The capital of Chile is Santiago.
+
+The capital of Peru is Lima.
+
+The capital of Colombia is Bogota.
+
+The capital",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+2,general-factual-02,general,factual_knowledge,,False,Who wrote the novel 1984?,"[""George Orwell""]","
+
+George Orwell
+
+What is the name of the novel 1984?
+
+Nineteen Eighty-Four
+
+What is the name of the novel 1984?
+
+Nineteen Eighty-Four
+
+What is the name of the novel 1984?
+
+Nineteen Eighty-Four
+
+What is the name of the novel 1984?
+
+Nineteen Eighty-Four
+
+What is the name of the novel 1984?
+
+Nineteen Eighty-Four
+
+What is the name of the novel","
+
+George Orwell
+
+What is the main theme of 1984?
+
+The main theme of 1984 is the loss of individuality and the loss of freedom. The book is set in a dystopian future where the government controls every aspect of the people’s lives. The government uses propaganda and surveillance to control the people and keep them in line.
+
+What is the main idea of 1984?
+
+The main idea of 1984 is that the government can control the people if they want to. The government can control the people by using propaganda and surveillance. The",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+3,general-factual-03,general,factual_knowledge,,False,What is the largest planet in the Solar System?,"[""Jupiter""]","
+
+Jupiter is the largest planet in the Solar System. It is 11 times more massive than Earth and 318 times more massive than the Moon.
+
+What is the largest planet in the Solar System?
+
+Jupiter is the largest planet in the Solar System. It is 11 times more massive than Earth and 318 times more massive than the Moon.
+
+What is the largest planet in the Solar System?
+
+Jupiter is the largest planet in the Solar System. It is 11 times more massive than Earth and 318 times more massive than the Moon","
+
+Jupiter is the largest planet in the Solar System.
+
+What is the largest planet in the Solar System?
+
+Jupiter is the largest planet in the Solar System.
+
+What is the largest planet in the Solar System?
+
+Jupiter is the largest planet in the Solar System.
+
+What is the largest planet in the Solar System?
+
+Jupiter is the largest planet in the Solar System.
+
+What is the largest planet in the Solar System?
+
+Jupiter is the largest planet in the Solar System.
+
+What is the largest planet in the Solar System?
+
+J",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+4,general-factual-04,general,factual_knowledge,,False,In what year did World War II end?,"[""1945""]","
+
+World War II ended in 1945.
+
+What was the name of the first World War?
+
+The First World War was also known as the Great War.
+
+What was the name of the second World War?
+
+The Second World War was also known as the Second World War.
+
+What was the name of the third World War?
+
+The Third World War was also known as the Third World War.
+
+What was the name of the fourth World War?
+
+The Fourth World War was also known as the Fourth World War.
+
+What was the name of the","
+
+World War II ended in 1945.
+
+What was the name of the first World War?
+
+The First World War was also known as the Great War.
+
+What was the name of the second World War?
+
+The Second World War was also known as the Second World War.
+
+What was the name of the third World War?
+
+The Third World War was also known as the Third World War.
+
+What was the name of the fourth World War?
+
+The Fourth World War was also known as the Fourth World War.
+
+What was the name of the",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+5,general-factual-05,general,factual_knowledge,,False,What is the chemical symbol for gold?,"[""Au""]","
+
+The chemical symbol for gold is Au.
+
+What is the chemical symbol for silver?
+
+The chemical symbol for silver is Ag.
+
+What is the chemical symbol for copper?
+
+The chemical symbol for copper is Cu.
+
+What is the chemical symbol for iron?
+
+The chemical symbol for iron is Fe.
+
+What is the chemical symbol for aluminum?
+
+The chemical symbol for aluminum is Al.
+
+What is the chemical symbol for lead?
+
+The chemical symbol for lead is Pb.
+
+What is the chemical symbol for mercury?
+
+The chemical symbol for mercury is","
+
+Gold is a chemical element with the symbol Au (from Latin: aurum) and atomic number 79, making it one of the higher atomic number elements that occur naturally. It is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.
+
+What is the chemical symbol for gold?
+
+Gold is a chemical element with the symbol Au (from Latin: aurum) and atomic number 79, making it one of the higher atomic number elements that occur naturally. It is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+6,general-science-01,general,science_and_arithmetic,,True,Water boils at what temperature in degrees Celsius at standard atmospheric pressure?,"[""100 degrees Celsius""]","
+
+The boiling point of water is 100 degrees Celsius at standard atmospheric pressure.
+
+### What is the boiling point of water in degrees Celsius?
+
+The boiling point of water is 100 degrees Celsius at standard atmospheric pressure.
+
+### What is the boiling point of water in degrees Fahrenheit?
+
+The boiling point of water is 212 degrees Fahrenheit at standard atmospheric pressure.
+
+### What is the boiling point of water in degrees Kelvin?
+
+The boiling point of water is 373.15 degrees Kelvin at standard atmospheric pressure.
+
+### What is the boiling","
+
+The boiling point of water at standard atmospheric pressure is 100 degrees Celsius.
+
+### What is the boiling point of water in Fahrenheit?
+
+The boiling point of water in Fahrenheit is 212 degrees Fahrenheit.
+
+### What is the boiling point of water in Kelvin?
+
+The boiling point of water in Kelvin is 373.15 Kelvin.
+
+### What is the boiling point of water in Rankine?
+
+The boiling point of water in Rankine is 671.67 Rankine.
+
+### What is the boiling point of water in R",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+7,general-science-02,general,science_and_arithmetic,,True,The speed of light in vacuum is approximately,"[""300,000 kilometers per second"", ""3 x 10^8 meters per second""]"," 300,000,000 metres per second (186,000 miles per second).
+
+## What is the speed of light in a vacuum?
+
+The speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second).
+
+## What is the speed of light in a vacuum?
+
+The speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second"," 300,000,000 metres per second (186,000 miles per second).
+
+## What is the speed of light in a vacuum?
+
+The speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second).
+
+## What is the speed of light in a vacuum?
+
+The speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+8,general-science-03,general,science_and_arithmetic,,False,Calculate 17 multiplied by 24.,"[""408""]","
+
+### Solution
+
+To work out 17 x 24, you could just count in 17s, but it’s easier to use a multiplication table:
+
+### 17 x 24 = 408
+
+The answer is 408.
+
+## How to Calculate 17 x 24
+
+The 17x 24 calculation is best solved using a column method.
+
+### Step 1
+
+Place the larger number at the top and the smaller number at the bottom of the page.
+
+### Step 2
+","
+
+### Solution
+
+To multiply 17 by 24, follow these steps:
+
+1. Add 0 to the end of 17. The result is 170.
+2. Multiply 170 by 24. The result is 3760.
+
+So, 17 multiplied by 24 equals 3760.
+
+#### Example 2:
+
+Multiply 17 by 24 using long multiplication.
+
+### Solution
+
+To multiply 17 by 24 using long multiplication, follow these",1.0,0.0,-1.0,Degraded,Expected-concept coverage changed from 1/1 to 0/1.,pending_blinded_review,,
+9,general-science-04,general,science_and_arithmetic,,False,What process do green plants use to convert light energy into chemical energy?,"[""photosynthesis""]","
+
+The process of photosynthesis is the conversion of light energy into chemical energy.
+
+What is the process of photosynthesis?
+
+Photosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can be used for energy, or can be converted to other complex organic molecules, such as fats and proteins.
+
+What is the process of photosynthesis in plants?
+
+Photosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can be","
+
+The process of photosynthesis is the conversion of light energy into chemical energy.
+
+What is the process of photosynthesis?
+
+Photosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can then be used for growth or stored in the form of starch.
+
+What is the process of photosynthesis?
+
+Photosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can then be used for growth or stored in the form of",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+10,general-science-05,general,science_and_arithmetic,,False,Solve for x: 3x + 7 = 22.,"[""x = 5""]","
+
+Solution:
+
+Step 1: Subtract 7 from both sides.
+
+3x + 7 – 7 = 22 – 7
+
+Step 2: Simplify.
+
+3x = 15
+
+Step 3: Divide both sides by 3.
+
+3x/3 = 15/3
+
+Step 4: Simplify.
+
+x = 5
+
+Example 2: Solve for x: 4x – 11 = 25.
+
+Solution:
+
+Step 1: Add 11 to both sides","
+
+Solution:
+
+Step 1: Subtract 7 from both sides.
+3x + 7 – 7 = 22 – 7
+3x = 15
+
+Step 2: Divide both sides by 3.
+3x/3 = 15/3
+x = 5
+
+Step 3: Check your solution.
+3(5) + 7 = 22
+15 + 7 = 22
+22 = 22
+
+Therefore, x = 5 is the correct solution.
+
+## 3.",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+11,general-reasoning-01,general,reasoning,,False,All squares are rectangles. Some rectangles are blue. Does it necessarily follow that some squares are blue? Explain briefly.,"[""No"", ""does not necessarily follow""]","
+
+Solution:
+
+No, it does not necessarily follow that some squares are blue.
+
+Explanation:
+
+Some squares are rectangles.
+
+Some rectangles are blue.
+
+Some squares are blue.
+
+### Exercise 1.2
+
+Question 1:
+
+Make correct statements by filling in the symbols ⊂ or ⊄ in the blank spaces:
+
+(i) {2, 3, 4} … {1, 2, 3, 4, 5}
+
+(ii) {abc} … {abc}
+
+(iii) {","
+
+Solution:
+
+No, it does not necessarily follow that some squares are blue.
+
+Explanation:
+
+Some squares are rectangles.
+
+Some rectangles are blue.
+
+Some squares are blue.
+
+### Exercise 1.10
+
+Question 1:
+
+Write the negation of the following statements:
+
+(i) p: For every positive real number x, the number x – 1 is also positive.
+
+(ii) q: All cats scratch.
+
+(iii) r: For every real number x, either x > 1 or x < 1",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 2/2 to 2/2.,pending_blinded_review,,
+12,general-reasoning-02,general,reasoning,,False,"What number comes next in the sequence 2, 6, 12, 20, 30?","[""42""]","
+
+A. 42
+B. 48
+C. 56
+D. 62
+
+Explanation:
+
+The given sequence is a series of triangular numbers.
+
+The next number in the series is 42.
+
+Question 10.
+
+What number comes next in the sequence 1, 4, 9, 16, 25?
+
+A. 36
+B. 37
+C. 38
+D. 39
+
+Explanation:
+
+The given sequence is a series of square numbers.","
+
+A. 42
+B. 48
+C. 56
+D. 60
+
+Explanation:
+
+The sequence is 2, 6, 12, 20, 30, 42, 56, 60, 72, 84, 96, 108, 120, 132, 144, 156, 168, 180, 192, 204, 216, 2",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+13,general-reasoning-03,general,reasoning,,False,A fair coin is tossed twice. What is the probability of getting exactly one head?,"[""1/2"", ""50%""]","
+
+Solution:
+
+Let E be the event of getting exactly one head.
+
+Then,
+
+E = {HH, HT, TH}
+
+P(E) = n(E) / n(S)
+
+= 3 / 4
+
+QUESTION: 10
+
+A fair coin is tossed four times. What is the probability of getting exactly one head?
+
+Solution:
+
+Let E be the event of getting exactly one head.
+
+Then,
+
+E = {HHHT, HHTH, HTHH, THHH,","
+
+Solution:
+
+Let E be the event of getting exactly one head.
+
+Then,
+
+E = {HH, HT, TH}
+
+P(E) = 3/4
+
+QUESTION: 10
+
+A fair coin is tossed twice. What is the probability of getting exactly one head?
+
+Solution:
+
+Let E be the event of getting exactly one head.
+
+Then,
+
+E = {HH, HT, TH}
+
+P(E) = 3/4
+
+QUESTION: 11
+
+A",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+14,general-reasoning-04,general,reasoning,,False,"If today is Wednesday, what day of the week will it be 10 days from today?","[""Saturday""]","
+
+A. Monday
+B. Tuesday
+C. Wednesday
+D. Thursday
+E. Friday
+
+Solution:
+
+If today is Wednesday, then tomorrow is Thursday, and the day after tomorrow is Friday.
+
+If tomorrow is Friday, then the day after tomorrow is Saturday, and the day after that is Sunday.
+
+If Sunday is 10 days from today, then Monday is 10 days from today, and the day after that is Tuesday.
+
+If Tuesday is 10 days from today, then Wednesday is 10 days from today, and the day after that is Thursday.","
+
+Solution:
+
+Given,
+
+Today is Wednesday.
+
+We have to find the day of the week after 10 days.
+
+We know that,
+
+One week has 7 days.
+
+So, 10 days = 10/7 days
+
+= 10/7 days
+
+= 1 day
+
+Hence, 10 days from today is the same day.
+
+### Question 10. If 1st January of a given year is Friday, what day of the week is 2nd January of the same year?
+
+",1.0,0.0,-1.0,Degraded,Expected-concept coverage changed from 1/1 to 0/1.,pending_blinded_review,,
+15,general-reasoning-05,general,reasoning,,False,A book and a pen cost $13 total. The book costs $9 more than the pen. How much does the pen cost?,"[""$2"", ""2 dollars""]","
+The book costs $13 - $9 = $<<13-9=4>>4 more than the pen.
+The pen costs $4/$13 = $<<4/13=0.304>>0.304.
+#### 304","
+The book costs $9 more than the pen, so the pen costs $9 less than the book, which means the pen costs $9 - $9 = $<<9-9=0>>0.
+The book and the pen cost $13 total, so the pen costs $13 - $0 = $<<13-0=13>>13.
+#### 13",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+16,general-language-01,general,language,,False,Give one synonym for the word concise.,"[""brief"", ""succinct""]","
+
+A concise sentence is one that is short and to the point.
+
+What is the opposite of concise?
+
+Antonyms: diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse","
+
+Synonyms: brief, concise, compact, compact, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise",0.0,0.5,0.5,Improved,Expected-concept coverage changed from 0/2 to 1/2.,pending_blinded_review,,
+17,general-language-02,general,language,,False,Correct this sentence: She don't have any apples.,"[""She doesn't have any apples.""]","
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any apples.
+
+Correct this sentence: She don't have any","
+
+Correct this sentence: He don't have any apples.
+
+Correct this sentence: They don't have any apples.
+
+Correct this sentence: We don't have any apples.
+
+Correct this sentence: You don't have any apples.
+
+Correct this sentence: They don't have any apples.
+
+Correct this sentence: We don't have any apples.
+
+Correct this sentence: You don't have any apples.
+
+Correct this sentence: They don't have any apples.
+
+Correct this sentence: We don't have any apples.
+
+Correct this sentence: You don't have any",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/1 to 0/1.,pending_blinded_review,,
+18,general-language-03,general,language,,False,What is the plural form of analysis?,"[""analyses""]","
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is","
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is analyses.
+
+What is the plural form of analysis?
+
+The plural form of analysis is",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 1/1 to 1/1.,pending_blinded_review,,
+19,general-language-04,general,language,,False,Rewrite in active voice: The report was reviewed by Maya.,"[""Maya reviewed the report.""]","
+
+Rewrite in passive voice: The report was reviewed by Maya.
+
+Rewrite in active voice: The report was reviewed by Maya.
+
+Rewrite in passive voice: The report was reviewed by Maya.
+
+Rewrite in active voice: The report was reviewed by Maya.
+
+Rewrite in passive voice: The report was reviewed by Maya.
+
+Rewrite in active voice: The report was reviewed by Maya.
+
+Rewrite in passive voice: The report was reviewed by Maya.
+
+Rewrite in active voice: The report was reviewed by Maya.","
+
+Explanation:
+
+The passive voice is used when the subject of the sentence is acted upon by the verb. In this case, the subject is Maya, and the verb is reviewed.
+
+Rewrite in active voice: Maya reviewed the report.
+
+Explanation:
+
+The active voice is used when the subject of the sentence is performing the action. In this case, the subject is Maya, and the verb is reviewed.
+
+Rewrite in active voice: Maya reviewed the report.
+
+Explanation:
+
+The passive voice is used when the subject of the sentence is acted upon by the verb.",0.0,1.0,1.0,Improved,Expected-concept coverage changed from 0/1 to 1/1.,pending_blinded_review,,
+20,general-language-05,general,language,,False,What does the idiom break the ice mean?,"[""initiate conversation"", ""make people feel more comfortable""]","
+
+: to make (something) easier to do or understand : to make (something) less difficult. : to make (something) less difficult or less serious. : to make (something) less serious or less difficult.
+
+What is the meaning of break the ice?
+
+: to make (something) easier to do or understand : to make (something) less difficult. : to make (something) less difficult or less serious.
+
+What is the meaning of break the ice?
+
+: to make (something) easier to do or understand : to make (something) less difficult. : to make (","
+
+: to make (something) easier to do or understand : to make (something) less difficult. : to make (something) less difficult or less serious. : to make (something) less serious or less difficult.
+
+What is the meaning of break the ice?
+
+: to make (something) easier to do or understand : to make (something) less difficult.
+
+What is the meaning of break the ice?
+
+: to make (something) easier to do or understand : to make (something) less difficult.
+
+What is the meaning of break the ice?
+
+: to make",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+21,general-common-01,general,common_knowledge_and_instruction,,False,"List the four seasons in the Northern Hemisphere in calendar order, starting with spring.","[""spring"", ""summer"", ""autumn"", ""winter""]","
+
+### 1. Spring
+
+Spring is the first season of the year, and it is the season of new life. It is the time of year when plants begin to grow and flowers bloom.
+
+### 2. Summer
+
+Summer is the second season of the year, and it is the season of warmth and sunshine. It is the time of year when the days are longest and the nights are shortest.
+
+### 3. Autumn
+
+Autumn is the third season of the year, and it is the season of change. It is the time of year when the leaves on trees begin to change","
+
+Spring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.
+
+Spring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.
+
+Spring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.
+
+Spring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.
+
+Spring is",0.75,0.75,0.0,Retained,Expected-concept coverage changed from 3/4 to 3/4.,pending_blinded_review,,
+22,general-common-02,general,common_knowledge_and_instruction,,False,What should you do first if you smell gas inside a building?,"[""leave"", ""avoid flames or electrical switches"", ""contact emergency services""]","
+
+If you smell gas inside a building, you should:
+
+• Turn off the gas supply at the meter.
+• Open windows and doors.
+• Leave the building immediately.
+• Call the gas emergency number on your gas bill.
+
+## How do you test for natural gas?
+
+To test for natural gas, you can use a gas detector or a gas leak detector. A gas detector is a device that can detect the presence of natural gas in the air. A gas leak detector is a device that can detect the presence of natural gas in a specific area.
+
+## What is the difference between","
+
+If you smell gas inside a building, you should:
+
+• Turn off the gas supply at the meter.
+• Open windows and doors.
+• Leave the building immediately.
+• Call the gas emergency number.
+
+## What happens if you smell gas in your house?
+
+If you smell gas in your home, you should:
+
+• Turn off the gas supply at the meter.
+• Open windows and doors.
+• Leave the building immediately.
+• Call the gas emergency number.
+
+## What happens if you smell gas in your house?
+
+If you smell gas in your",0.3333333333333333,0.3333333333333333,0.0,Retained,Expected-concept coverage changed from 1/3 to 1/3.,pending_blinded_review,,
+23,general-common-03,general,common_knowledge_and_instruction,,False,Name the primary colors of light.,"[""red"", ""green"", ""blue""]","
+
+The primary colors of light are red, green, and blue.
+
+What are the secondary colors of light?
+
+The secondary colors of light are cyan, magenta, and yellow.
+
+What are the tertiary colors of light?
+
+The tertiary colors of light are yellow-green, yellow-orange, red-orange, red-violet, blue-violet, blue-green, and blue-cyan.
+
+What is the complementary color of red?
+
+The complementary color of red is green.
+
+What is the complementary color of green?
+
+The complementary color of green","
+
+The primary colors of light are red, green, and blue.
+
+What are the secondary colors of light?
+
+The secondary colors of light are yellow, cyan, and magenta.
+
+What are the tertiary colors of light?
+
+The tertiary colors of light are orange, purple, and brown.
+
+What are the complementary colors of light?
+
+The complementary colors of light are red and green, blue and yellow, and magenta and cyan.
+
+What are the analogous colors of light?
+
+The analogous colors of light are red, orange, and yellow; green, cyan, and",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 3/3 to 3/3.,pending_blinded_review,,
+24,general-common-04,general,common_knowledge_and_instruction,,False,"Arrange these units from smallest to largest: kilometer, centimeter, meter, millimeter.","[""millimeter"", ""centimeter"", ""meter"", ""kilometer""]","
+
+Solution:
+
+The given units are kilometer, centimeter, meter, and millimeter.
+
+We know that,
+
+1 kilometer = 1000 meter
+
+1 meter = 100 centimeter
+
+1 centimeter = 10 millimeter
+
+Therefore,
+
+1 kilometer = 1000 x 100 centimeter = 100000 centimeter
+
+1 centimeter = 10 x 1 millimeter = 10 millimeter
+
+Hence,
+
+1 kilometer < 1 centimeter < 1 meter < 1 millimeter
+
+Example 2:
+
+Arrange these units from","
+
+Solution:
+
+The given units are kilometer, centimeter, meter, and millimeter.
+
+We know that,
+
+1 kilometer = 1000 meter
+
+1 meter = 100 centimeter
+
+1 centimeter = 10 millimeter
+
+Therefore, the units from smallest to largest are millimeter, centimeter, meter, and kilometer.
+
+Example 2: Arrange these units from largest to smallest: kilometer, centimeter, meter, millimeter.
+
+Solution:
+
+The given units are kilometer, centimeter, meter, and millimeter.
+
+We know that,
+
+1 kilometer = 1000",1.0,1.0,0.0,Retained,Expected-concept coverage changed from 4/4 to 4/4.,pending_blinded_review,,
+25,general-common-05,general,common_knowledge_and_instruction,,False,"State one reason why strong, unique passwords should be used for different online accounts.","[""limits compromise"", ""credential reuse""]","
+
+Answer: A strong password is one that is difficult to guess. It should be at least 8 characters long and include a mix of upper and lower case letters, numbers, and special characters.
+
+Question 10: What is the best way to protect your computer from viruses?
+
+Answer: The best way to protect your computer from viruses is to keep your operating system and antivirus software up to date. You should also be careful about what you download and install on your computer.
+
+Question 11: What is the best way to protect your computer from hackers?
+
+Answer: The best way to","
+
+Answer: A strong password is one that is difficult to guess or crack. It should be unique for each account to prevent unauthorized access to sensitive information.
+
+Question 10: What is the importance of regularly updating software and operating systems?
+
+Answer: Regularly updating software and operating systems helps to fix security vulnerabilities and improve performance. It also ensures that you have the latest features and bug fixes.
+
+Question 11: How can you protect your privacy while using public Wi-Fi networks?
+
+Answer: You can protect your privacy while using public Wi-Fi networks by using a VPN (Virtual Private Network",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+26,cisco-switching-01,domain,switching_vlan_stp,train,False,What problem does VTP solve when VLAN configuration changes must be propagated across switches?,"[""central configuration"", ""VTP domain"", ""propagates VLAN changes""]","
+
+A.    VTP is not a spanning-tree protocol.
+B.    VTP is not a routing protocol.
+C.    VTP is not a spanning-tree protocol.
+D.    VTP is not a routing protocol.
+
+Answer: C
+
+Which two statements about VTP are true? (Choose two.)
+
+A.    VTP is a spanning-tree protocol.
+B.    VTP is a routing protocol.
+C.    VTP is a spanning-tree protocol.
+D.","
+
+A.    VTP is not supported on Cisco Catalyst 3750X switches.
+B.    VTP is not supported on Cisco Catalyst 3750X switches.
+C.    VTP is not supported on Cisco Catalyst 3750X switches.
+D.    VTP is not supported on Cisco Catalyst 3750X switches.
+
+Answer: C
+
+Which two statements about the Cisco Catalyst 3750X switch are true? (Choose two.)
+
+A.  ",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+27,cisco-switching-02,domain,switching_vlan_stp,train,True,Why does a switch need a different bridge ID for each VLAN when using PVST+ or Rapid PVST+?,"[""each VLAN is a logical bridge"", ""unique bridge ID""]","
+
+A.    The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs.
+
+B.    The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the switch.
+
+C.    The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the switch and the","
+
+A.    The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs.
+
+B.    The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the VLANs.
+
+C.    The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the V",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+28,cisco-switching-03,domain,switching_vlan_stp,train,False,"How does vPC role priority influence the primary-device election, and which numeric value is preferred?","[""lower value"", ""better chance to become primary"", ""default 32667""]","
+
+A.    The primary-device is the device with the highest priority.
+B.    The primary-device is the device with the lowest priority.
+C.    The primary-device is the device with the highest priority, unless the device is a vPC peer.
+D.    The primary-device is the device with the lowest priority, unless the device is a vPC peer.
+
+Answer: C
+
+Which two statements about the vPC peer-to-peer feature are true? (Choose two.)
+
+A.    It is a","
+
+A.    The primary-device election is based on the role priority of the vPC role.
+B.    The primary-device election is based on the role priority of the vPC role.
+C.    The primary-device election is based on the role priority of the vPC role.
+D.    The primary-device election is based on the role priority of the vPC role.
+
+Answer: B
+
+Which two statements about the vPC role are true? (Choose two.)
+
+A.    The vPC role is a",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+29,cisco-switching-04,domain,switching_vlan_stp,eval,False,"On Cisco Nexus NX-OS, what does switchport mode trunk do and which VLANs can a trunk carry by default?","[""Layer 2 trunk"", ""multiple VLANs"", ""all VLANs by default""]","
+
+A.    It enables the port to carry VLANs 1-4094.
+B.    It enables the port to carry VLANs 1-1000.
+C.    It enables the port to carry VLANs 1-1001.
+D.    It enables the port to carry VLANs 1-1002.
+
+Answer: A
+
+Which two statements about the Cisco Nexus 7000 Series Switches are true? (Choose two.)
+
+A.","
+
+A.    It allows the switch to carry VLANs 1-4094.
+B.    It allows the switch to carry VLANs 1-1000.
+C.    It allows the switch to carry VLANs 1-1001.
+D.    It allows the switch to carry VLANs 1-1002.
+
+Answer: A
+
+Which two statements about the Cisco Nexus 9000 Series NX-OS software are true? (Choose two.)
+",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+30,cisco-switching-05,domain,switching_vlan_stp,eval,False,What are the default Layer 2 and Layer 3 port-channel load-balancing methods described for Cisco Nexus NX-OS?,"[""src-dst-mac"", ""src-dst ip-l4port""]","
+
+A.    Layer 2
+B.    Layer 3
+C.    Layer 2 and Layer 3
+D.    None
+
+Answer: C
+
+Which two statements about the Cisco Nexus 1000V are true? (Choose two.)
+
+A.    It is a virtual switch that runs on a physical switch.
+B.    It is a virtual switch that runs on a virtual switch.
+C.    It is a virtual switch that runs on a virtual switch.
+D.  ","
+
+A.    Layer 2
+B.    Layer 3
+C.    Layer 2 and Layer 3
+D.    None
+
+Answer: C
+
+Which two statements about the Cisco Nexus 9000 Series NX-OS software are true? (Choose two.)
+
+A.    It is a software-only solution.
+B.    It is a software-only solution.
+C.    It is a software-only solution.
+D.    It is a software-only",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+31,cisco-routing-01,domain,routing_ospf_bgp,train,True,"What type of routing protocol is OSPF, and what information does each OSPF router advertise?","[""link-state"", ""active links"", ""link type"", ""metric"", ""neighbor router""]","
+OSPF is a link-state routing protocol. Each OSPF router advertises the following information:
+- Link-state advertisements (LSAs)
+- Link-state database (LSDB)
+- Link-state database (LSDB) summarization
+- Link-state database (LSDB) summarization
+- Link-state database (LSDB) summarization
+- Link-state database (LSDB) summarization
+- Link-state database (LSDB) summarization
+- Link-state database (LSDB) summarization
+- Link-state database (","
+OSPF is a link-state routing protocol. Each OSPF router advertises the following information:
+- Link-state advertisements (LSAs)
+- Link-state database
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+- Link-state database summarization
+-",0.2,0.2,0.0,Retained,Expected-concept coverage changed from 1/5 to 1/5.,pending_blinded_review,,
+32,cisco-routing-02,domain,routing_ospf_bgp,train,False,"In the shown OSPF NSSA Type-7 LSA example, what forwarding address and metric are advertised?","[""192.168.1.1"", ""metric 20""]","
+
+A.    10.0.0.0/24, 1
+B.    10.0.0.0/24, 2
+C.    10.0.0.0/24, 3
+D.    10.0.0.0/24, 4
+E.    10.0.0.0/24, 5
+
+Answer: B
+
+Which two statements about the OSPF process are true? (Choose two","
+
+A.    10.0.0.1/32, 1
+B.    10.0.0.1/32, 2
+C.    10.0.0.1/32, 3
+D.    10.0.0.1/32, 4
+E.    10.0.0.1/32, 5
+
+Answer: B
+
+Which two statements about the OSPFv3 LSA type 1",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+33,cisco-routing-03,domain,routing_ospf_bgp,train,False,How are route-target export and import values used to leak routes from VRF RED into VRF BLUE?,"[""RED exports 1:1"", ""BLUE imports 1:1""]","
+
+A.    The route-target export value is used to export routes from VRF RED into VRF BLUE.
+B.    The route-target export value is used to export routes from VRF BLUE into VRF RED.
+C.    The route-target export value is used to export routes from VRF RED into VRF RED.
+D.    The route-target export value is used to export routes from VRF BLUE into VRF BLUE.
+
+Answer: A
+
+Which two statements about the Cisco IOS XR software are","
+
+A.    The route-target export value is used to export routes from VRF RED into VRF BLUE.
+B.    The route-target export value is used to export routes from VRF BLUE into VRF RED.
+C.    The route-target export value is used to export routes from VRF RED into VRF RED.
+D.    The route-target export value is used to export routes from VRF BLUE into VRF BLUE.
+
+Answer: A
+
+Which two statements about the Cisco IOS XE feature are",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+34,cisco-routing-04,domain,routing_ospf_bgp,eval,False,What is the purpose of an ICMP Redirect message in IP forwarding?,"[""shorter path"", ""host sends traffic directly to the next gateway""]","
+
+A.    To redirect the packet to the next hop
+B.    To redirect the packet to the next hop if the packet is not destined for the local host
+C.    To redirect the packet to the next hop if the packet is destined for the local host
+D.    To redirect the packet to the next hop if the packet is not destined for the local host
+
+Answer: C
+
+Which of the following is a valid IPv6 address?
+
+A.    2001:0db8:0000:00","
+
+A.    To redirect the packet to the next hop
+B.    To redirect the packet to the next hop if the packet is not destined for the local host
+C.    To redirect the packet to the next hop if the packet is destined for the local host
+D.    To redirect the packet to the next hop if the packet is not destined for the local host
+
+Answer: C
+
+Which of the following is a valid IPv6 address?
+
+A.    2001:0db8:0000:00",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+35,cisco-routing-05,domain,routing_ospf_bgp,eval,False,"Which NX-OS interface command disables ICMP Redirects, and how can its status be verified?","[""no ip redirects"", ""show ip interface"", ""redirects disabled""]","
+
+A.    ip unnumbered
+B.    no ip redirects
+C.    no ip redirects
+D.    no ip redirects
+E.    no ip redirects
+
+Answer: B
+
+Which two statements about the Cisco IOS command ip unnumbered are true? (Choose two.)
+
+A.    It enables the router to use the interface’s IP address as the local IP address.
+B.    It enables the router to use the interface’s IP address as the remote IP address.
+C.","
+
+A.    ip redirects no
+B.    ip redirects no
+C.    ip redirects no
+D.    ip redirects no
+
+Answer: A
+
+Which two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)
+
+A.    The Nexus 9000 Series Switches support the Cisco NX-OS software.
+B.    The Nexus 9000 Series Switches support the Cisco NX-OS software.
+",0.3333333333333333,0.0,-0.3333333333333333,Degraded,Expected-concept coverage changed from 1/3 to 0/3.,pending_blinded_review,,
+36,cisco-datacenter-01,domain,datacenter_vpc_vxlan_nexus,train,True,What are the packet-processing roles of ingress and egress VTEPs in a VXLAN network?,"[""ingress VTEP encapsulates"", ""egress VTEP decapsulates""]","
+
+A.    The ingress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.
+B.    The egress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.
+C.    The ingress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.
+D.    The egress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.
+
+Answer","
+
+A.    The ingress VTEP is responsible for packet processing and the egress VTEP is responsible for packet processing.
+
+B.    The ingress VTEP is responsible for packet processing and the egress VTEP is responsible for packet forwarding.
+
+C.    The ingress VTEP is responsible for packet forwarding and the egress VTEP is responsible for packet processing.
+
+D.    The ingress VTEP is responsible for packet forwarding and the egress VTEP is responsible for packet processing and forwarding.
+
+Answer: A
+
+Question No:",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+37,cisco-datacenter-02,domain,datacenter_vpc_vxlan_nexus,train,False,What should be checked in the Cisco Nexus ISSU Support Matrix before upgrading a vPC pair?,"[""current release"", ""target release"", ""supported upgrade path""]","
+
+A.    The vPC pair must be in the same VLAN.
+B.    The vPC pair must be in the same VLAN.
+C.    The vPC pair must be in the same VLAN.
+D.    The vPC pair must be in the same VLAN.
+E.    The vPC pair must be in the same VLAN.
+
+Answer: D
+
+Which two statements about the Cisco Nexus 1000V are true? (Choose two.)
+
+A.    It","
+
+A.    The vPC pair must be in the same VLAN.
+B.    The vPC pair must be in the same VLAN.
+C.    The vPC pair must be in the same VLAN.
+D.    The vPC pair must be in the same VLAN.
+E.    The vPC pair must be in the same VLAN.
+
+Answer: A
+
+Which two statements about the Cisco Nexus 9000 Series Fabric Interconnect are true? (Choose two.)
+
+A. ",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+38,cisco-datacenter-03,domain,datacenter_vpc_vxlan_nexus,eval,False,"What is the recommended basic test for VXLAN connectivity between two VTEPs, and what alternative uses loopback interfaces?","[""ping between end hosts"", ""loopback interfaces on VTEPs""]","
+
+A.    The recommended basic test is to ping the loopback interface of the VTEP.
+B.    The recommended basic test is to ping the VXLAN tunnel endpoint (VTEP) of the VTEP.
+C.    The recommended basic test is to ping the VXLAN tunnel endpoint (VTEP) of the VTEP.
+D.    The recommended basic test is to ping the loopback interface of the VTEP.
+
+Answer: D
+
+Which two statements about the VXLAN tunnel endpoint (VTEP) are true? (Choose two","
+
+A.    The recommended basic test is to ping the loopback interface of the VTEP.
+B.    The recommended basic test is to ping the VXLAN interface of the VTEP.
+C.    The recommended basic test is to ping the VXLAN interface of the VTEP.
+D.    The recommended basic test is to ping the loopback interface of the VTEP.
+
+Answer: D
+
+Which two statements about the VXLAN tunnel interface are true? (Choose two.)
+
+A.    The VXLAN tunnel interface",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+39,cisco-datacenter-04,domain,datacenter_vpc_vxlan_nexus,eval,False,How does the Cisco N9500 chassis preserve switching service when a fabric module fails?,"[""up to six fabric modules"", ""redundancy"", ""graceful degradation""]","
+
+A.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+B.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+C.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+D.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+
+Answer: B
+
+Which two statements about the Cisco N9500 chassis are true? (Choose two.)
+
+A. ","
+
+A.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+B.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+C.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+D.    The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.
+
+Answer: A
+
+Which two statements about the Cisco N9500 chassis are true? (Choose two.)
+
+A. ",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+40,cisco-datacenter-05,domain,datacenter_vpc_vxlan_nexus,eval,False,Give examples of breakout modes supported on Cisco Nexus switch ports.,"[""4x10G"", ""4x25G"", ""2x50G""]","
+
+Answer: A,D
+
+Question No: 10
+
+Which two statements about the Cisco Nexus 1000V are true? (Choose two.)
+
+  1. It is a virtual switch that runs on a virtual machine.
+
+  2. It is a virtual switch that runs on a physical server.
+
+  3. It is a virtual switch that runs on a virtual machine.
+
+  4. It is a virtual switch that runs on a physical server.
+
+Answer: A,D
+
+Question No: 11
+
+Which two statements about the Cisco Nexus 10","
+
+Answer: A, D
+
+Question No: 10
+
+Which two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)
+
+  1. The Cisco Nexus 9000 Series Switches support the Cisco Nexus 9000 Series Fabric Extender.
+
+  2. The Cisco Nexus 9000 Series Switches support the Cisco Nexus 9000 Series Fabric Extender.
+
+  3. The Cisco Nexus 9000 Series Switches support the Cisco Nexus ",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+41,cisco-security-01,domain,security_aaa_ise,train,False,"In Cisco ISE, where should an administrator find and change an authorization rule that uses an unlicensed feature?","[""Policy"", ""Policy Sets"", ""authorization rule""]","
+
+A.    In the ISE console
+B.    In the ISE policy
+C.    In the ISE policy template
+D.    In the ISE policy database
+
+Answer: D
+
+Which two statements about the Cisco ISE policy database are true? (Choose two.)
+
+A.    The policy database is stored in the ISE console.
+B.    The policy database is stored in the ISE policy.
+C.    The policy database is stored in the ISE policy template.
+D. ","
+
+A.    In the ISE console
+B.    In the ISE policy
+C.    In the ISE policy template
+D.    In the ISE policy database
+
+Answer: D
+
+Which two statements about the Cisco ISE policy database are true? (Choose two.)
+
+A.    The policy database is stored in the ISE console.
+B.    The policy database is stored in the ISE policy.
+C.    The policy database is stored in the ISE policy template.
+D. ",0.3333333333333333,0.3333333333333333,0.0,Retained,Expected-concept coverage changed from 1/3 to 1/3.,pending_blinded_review,,
+42,cisco-security-02,domain,security_aaa_ise,train,False,How does IP Source Guard use DHCP snooping information to block source-address spoofing?,"[""binding table"", ""source IP lookup"", ""untrusted interface"", ""blocks unmatched traffic""]","
+
+IP Source Guard uses DHCP snooping information to block source-address spoofing. DHCP snooping information is used to block source-address spoofing by:
+
+  • Preventing a source-address spoofer from sending packets with a source-address that is not in the DHCP snooping table.
+  • Preventing a source-address spoofer from sending packets with a source-address that is in the DHCP snooping table but is not in the DHCP snooping table for the DHCP snooping domain.
+
+What is the difference between DHCP snooping and DHCP snooping domain","
+
+IP Source Guard uses DHCP snooping information to block source-address spoofing.
+
+What is the difference between DHCP snooping and DHCP relay?
+
+DHCP snooping is a feature that is used to protect the DHCP server from spoofing attacks. DHCP relay is a feature that is used to forward DHCP requests from one network to another.
+
+What is the difference between DHCP snooping and DHCP relay?
+
+DHCP snooping is a feature that is used to protect the DHCP server from spoofing attacks. DHCP relay is a feature that is used to forward DHCP requests",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/4 to 0/4.,pending_blinded_review,,
+43,cisco-security-03,domain,security_aaa_ise,train,False,Which settings can be changed from the Cisco FDM identity policy page?,"[""identity policy"", ""default action"", ""rules"", ""order""]","
+
+A.    The number of users that can be added to the policy
+B.    The number of users that can be removed from the policy
+C.    The number of users that can be added to the policy
+D.    The number of users that can be removed from the policy
+
+Answer: C
+
+Which two statements about the Cisco FDM identity policy are true? (Choose two.)
+
+A.    The Cisco FDM identity policy can be used to create a group of users that can be added to a Cisco FDM group.
+B","
+
+A.    The number of users that can be added to the policy
+B.    The number of users that can be removed from the policy
+C.    The number of users that can be added to the policy
+D.    The number of users that can be removed from the policy
+
+Answer: C
+
+Which two statements about the Cisco FDM identity policy are true? (Choose two.)
+
+A.    The Cisco FDM identity policy is a Cisco FDM policy that is used to manage the Cisco FDM identity.
+B.  ",0.25,0.25,0.0,Retained,Expected-concept coverage changed from 1/4 to 1/4.,pending_blinded_review,,
+44,cisco-security-04,domain,security_aaa_ise,train,False,What happens when both Trusted Network Policy and Untrusted Network Policy are set to Do Nothing for Cisco Secure Client?,"[""disables Always-On VPN"", ""disables Trusted Network Detection""]","
+
+The Cisco Secure Client will not be able to connect to the Internet.
+
+What happens when both Trusted Network Policy and Untrusted Network Policy are set to Allow for Cisco Secure Client?
+
+The Cisco Secure Client will be able to connect to the Internet.
+
+What happens when both Trusted Network Policy and Untrusted Network Policy are set to Deny for Cisco Secure Client?
+
+The Cisco Secure Client will not be able to connect to the Internet.
+
+What happens when both Trusted Network Policy and Untrusted Network Policy are set to Deny for Cisco Secure Client?
+
+The Cisco Secure Client will","
+
+When both Trusted Network Policy and Untrusted Network Policy are set to Do Nothing, the client is allowed to connect to the untrusted network.
+
+What happens when both Trusted Network Policy and Untrusted Network Policy are set to Block for Cisco Secure Client?
+
+When both Trusted Network Policy and Untrusted Network Policy are set to Block, the client is not allowed to connect to the untrusted network.
+
+What happens when both Trusted Network Policy and Untrusted Network Policy are set to Prohibit for Cisco Secure Client?
+
+When both Trusted Network Policy and Untrusted Network Policy are set to",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+45,cisco-security-05,domain,security_aaa_ise,train,False,"In NX-OS SSH configuration, what do the kexalgos and macs options control?","[""key exchange"", ""per-connection keys"", ""message authentication codes"", ""detect modification""]","
+
+The kexalgos option controls the algorithm used for key exchange. The macs option controls the algorithm used for message authentication.
+
+What is the difference between the ip access-group command and the ip access-list command?
+
+The ip access-group command is used to specify a group of interfaces that are to be included in a security policy. The ip access-list command is used to specify a list of IP addresses that are to be included in a security policy.
+
+What is the difference between the ip access-group command and the ip access-list command?
+
+The ip access-group","
+
+A.    The key exchange algorithm and the MAC algorithm
+B.    The key exchange algorithm and the MAC algorithm
+C.    The key exchange algorithm and the MAC algorithm
+D.    The key exchange algorithm and the MAC algorithm
+
+Answer: A
+
+Which two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)
+
+A.    The Nexus 9000 Series Switches support the Cisco NX-OS software.
+B.    The Nexus 9",0.25,0.25,0.0,Retained,Expected-concept coverage changed from 1/4 to 1/4.,pending_blinded_review,,
+46,cisco-operations-01,domain,wireless_sdwan_operations,train,False,"What device property is one component of every Cisco SD-WAN TLOC, and why is it independent of interface addresses?","[""system IP address"", ""router ID"", ""independent of interfaces""]","
+
+A.    The device property is the device’s IP address.
+B.    The device property is the device’s MAC address.
+C.    The device property is the device’s VLAN ID.
+D.    The device property is the device’s VLAN ID and interface address.
+
+Answer: D
+
+Which two statements about the Cisco SD-WAN TLOC are true? (Choose two.)
+
+A.    The TLOC is a software-based solution that is deployed on the Cisco SD-WAN appliance.","
+
+A.    The device property is the device’s IP address.
+B.    The device property is the device’s MAC address.
+C.    The device property is the device’s VLAN ID.
+D.    The device property is the device’s VLAN ID and interface address.
+
+Answer: D
+
+Which two statements about the Cisco SD-WAN TLOC are true? (Choose two.)
+
+A.    The TLOC is a software-based solution that is deployed on the Cisco SD-WAN appliance.",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,
+47,cisco-operations-02,domain,wireless_sdwan_operations,train,False,Which Cisco SD-WAN component orchestrates admission of a new device into the overlay network?,"[""Cisco SD-WAN Validator"", ""orchestrates overlay admission""]","
+
+A.    Cisco SD-WAN
+B.    Cisco WAN optimization
+C.    Cisco WAN optimization controller
+D.    Cisco WAN optimization client
+
+Answer: C
+
+Which two statements about the Cisco WAN optimization controller are true? (Choose two.)
+
+A.    It is a software-based solution that can be deployed on any hardware platform.
+B.    It is a hardware-based solution that can be deployed on any hardware platform.
+C.    It is a software-based solution that can","
+
+A.    Cisco SD-WAN
+B.    Cisco SD-WAN Policy Manager
+C.    Cisco SD-WAN Policy Engine
+D.    Cisco SD-WAN Policy Manager
+
+Answer: A
+
+Which two statements about the Cisco SD-WAN Policy Manager are true? (Choose two.)
+
+A.    It is a Cisco SD-WAN component that is used to manage the Cisco SD-WAN Policy Engine.
+B.    It is a Cisco SD-WAN component that is used to manage the",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+48,cisco-operations-03,domain,wireless_sdwan_operations,eval,False,How is a device health score determined in Cisco Catalyst Assurance?,"[""minimum of all KPI health scores"", ""five-minute window""]","
+
+A device health score is determined by the following:
+
+  • Device health score = (number of errors) / (number of errors + number of warnings)
+
+What is a device health score of 100%?
+
+A device health score of 100% means that there are no errors or warnings.
+
+What is a device health score of 0%?
+
+A device health score of 0% means that there are errors or warnings.
+
+What is a device health score of 50%?
+
+A device health score of 50% means that there","
+
+A device health score is determined by the following:
+
+  • Device health score = (number of devices with a health score of 100) / (total number of devices)
+
+What is the difference between a device health score and a device health status?
+
+A device health score is a number between 0 and 100 that represents the health of a device. A device health status is a text message that describes the health of a device.
+
+What is the difference between a device health score and a device health status?
+
+A device health score is a number between 0 and ",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/2 to 0/2.,pending_blinded_review,,
+49,cisco-operations-04,domain,wireless_sdwan_operations,eval,False,What is the purpose of the command list in Cisco's TAC output quick reference for Nexus switches?,"[""collect diagnostics"", ""TAC case"", ""paste into switch CLI"", ""commands may fail for unavailable features""]","
+
+A.    To show the commands that are used to configure the switch
+B.    To show the commands that are used to configure the switch
+C.    To show the commands that are used to configure the switch
+D.    To show the commands that are used to configure the switch
+
+Answer: B
+
+Which two statements about the Cisco IOS XE feature set are true? (Choose two.)
+
+A.    It is a software-only feature.
+B.    It is a software-only feature.
+C. ","
+
+A.    To show the commands that are used to configure the switch
+B.    To show the commands that are used to configure the switch
+C.    To show the commands that are used to configure the switch
+D.    To show the commands that are used to configure the switch
+E.    To show the commands that are used to configure the switch
+
+Answer: A
+
+Which two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)
+
+A.    The Cisco Nex",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/4 to 0/4.,pending_blinded_review,,
+50,cisco-operations-05,domain,wireless_sdwan_operations,eval,False,What warranty duration and replacement turnaround are stated for the Cisco N9500 platform?,"[""one year"", ""10-day turnaround"", ""RMA""]","
+
+The Cisco N9500 platform is covered by a 90-day warranty.
+
+What is the warranty duration and replacement turnaround for the Cisco N9500 platform?
+
+The Cisco N9500 platform is covered by a 90-day warranty.
+
+What is the warranty duration and replacement turnaround for the Cisco N9500 platform?
+
+The Cisco N9500 platform is covered by a 90-day warranty.
+
+What is the warranty duration and replacement turnaround for the Cisco N9500 platform?
+
+The Cisco N","
+
+The Cisco N9500 platform is covered by a 90-day warranty.
+
+What is the Cisco N9500 platform's warranty duration?
+
+The Cisco N9500 platform is covered by a 90-day warranty.
+
+What is the Cisco N9500 platform's warranty duration?
+
+The Cisco N9500 platform is covered by a 90-day warranty.
+
+What is the Cisco N9500 platform's warranty duration?
+
+The Cisco N9500 platform is covered by a 90",0.0,0.0,0.0,Retained,Expected-concept coverage changed from 0/3 to 0/3.,pending_blinded_review,,

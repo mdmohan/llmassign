@@ -1,0 +1,22 @@
+{
+  "architecture_class": "LlamaForCausalLM",
+  "bos_token_id": 0,
+  "eos_token_id": 0,
+  "head_dimension": 64,
+  "hidden_size": 2048,
+  "intermediate_size": 8192,
+  "lm_head_output_dimension": 49152,
+  "max_position_embeddings": 8192,
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 24,
+  "num_key_value_heads": 32,
+  "requested_revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "resolved_revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "tie_word_embeddings": true,
+  "torch_dtype": "torch.bfloat16",
+  "total_parameters": 1711376384,
+  "trainable_parameters": 1711376384,
+  "vocab_size": 49152
+}

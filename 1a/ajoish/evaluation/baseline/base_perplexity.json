@@ -1,0 +1,11 @@
+{
+  "mean_loss": 1.3511853472370168,
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "negative_log_likelihood": 1018215.4444880933,
+  "perplexity": 3.862000630396992,
+  "precision": "torch.bfloat16",
+  "predicted_token_count": 753572,
+  "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "sequence_count": 92,
+  "source_parquet_sha256": "e0b3b48dfeacb677f68187f0c726be056b04f9be8f90a7ee211e1b218021b3a3"
+}

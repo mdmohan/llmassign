@@ -1,0 +1,80 @@
+{
+  "adapters": {
+    "A": {
+      "alpha": 16,
+      "rank": 8,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "B": {
+      "alpha": 32,
+      "rank": 16,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "C": {
+      "alpha": 32,
+      "rank": 32,
+      "target_modules": [
+        "q_proj",
+        "v_proj",
+        "o_proj"
+      ]
+    }
+  },
+  "adapters_root": "1a/ajoish/models/smollm2-1.7b-cisco-qlora-v1",
+  "dataset_path": "1a/ajoish/data/processed/instructions/instruction_dataset.jsonl",
+  "dataset_sha256": "0b38f09a1de34c9fe7741b74eef103a0b8a6b39606cbd0612ff7ef78736c2e80",
+  "evaluation_prompts": [
+    {
+      "expected_concepts": [
+        "each VLAN is a logical bridge",
+        "unique bridge ID"
+      ],
+      "prompt": "Why does a switch need a different bridge ID for each VLAN when using PVST+ or Rapid PVST+?",
+      "prompt_id": "cisco-switching-02"
+    },
+    {
+      "expected_concepts": [
+        "link-state",
+        "active links",
+        "link type",
+        "metric",
+        "neighbor router"
+      ],
+      "prompt": "What type of routing protocol is OSPF, and what information does each OSPF router advertise?",
+      "prompt_id": "cisco-routing-01"
+    },
+    {
+      "expected_concepts": [
+        "ingress VTEP encapsulates",
+        "egress VTEP decapsulates"
+      ],
+      "prompt": "What are the packet-processing roles of ingress and egress VTEPs in a VXLAN network?",
+      "prompt_id": "cisco-datacenter-01"
+    }
+  ],
+  "generation_max_new_tokens": 160,
+  "manifest_path": "1a/ajoish/data/reports/documents.jsonl",
+  "minimum_pairs": 100,
+  "model_path": "1a/ajoish/models/smollm2-1.7b-cisco-cpt-v1/final",
+  "output_root": "1a/ajoish/runs/smollm2-1.7b-cisco-qlora-v1",
+  "required_gpu_name": "A100",
+  "training": {
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 0.0002,
+    "logging_steps": 10,
+    "lora_dropout": 0.05,
+    "max_grad_norm": 1.0,
+    "max_steps": 300,
+    "micro_batch_size": 2,
+    "seed": 42,
+    "sequence_length": 1024,
+    "warmup_ratio": 0.05,
+    "weight_decay": 0.0
+  }
+}

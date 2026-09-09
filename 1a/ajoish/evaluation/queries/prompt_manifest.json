@@ -1,0 +1,17 @@
+{
+  "assignment_required_counts": {
+    "domain": 3,
+    "general": 3
+  },
+  "domain_evidence_split_counts": {
+    "eval": 10,
+    "train": 15
+  },
+  "frozen_prompts_sha256": "46a7fbcd2a68f8c6afd0e93a152372b2bdff3d070b450603bdcce7d87c94ca22",
+  "group_counts": {
+    "domain": 25,
+    "general": 25
+  },
+  "prompt_count": 50,
+  "source_manifest_sha256": "ff8c5ee3dbf7f27ed3c4701b272e409b7556f3cd74bb6bf2841e5e69dced6ad1"
+}

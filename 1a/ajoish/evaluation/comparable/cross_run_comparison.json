@@ -1,0 +1,71 @@
+{
+  "comparability": {
+    "generation_metrics": "formula-compatible but based on different prompt suites",
+    "perplexity_relative_change": "directionally comparable within each base-to-CPT run",
+    "raw_perplexity": "not comparable across tokenizers and held-out corpora"
+  },
+  "created_at_utc": "2026-09-07T10:12:12.565845+00:00",
+  "runs": [
+    {
+      "context_length": 1024,
+      "domain_concept_recall_cpt": 0.0,
+      "domain_ppl_base": 9.596926865292485,
+      "domain_ppl_cpt": 8.37289403048689,
+      "domain_ppl_reduction_percent": 12.754424952766271,
+      "domain_repetition_cpt": 0.6384083249231194,
+      "general_concept_recall_cpt": 0.32,
+      "general_repetition_cpt": 0.6579529633711124,
+      "model": "gpt2",
+      "parameters": 774030080,
+      "prompt_count": 55,
+      "prompt_suite": "Murali shared 55-prompt suite",
+      "run": "gpt2-large/v1"
+    },
+    {
+      "context_length": 1024,
+      "domain_concept_recall_cpt": 0.014492753623188406,
+      "domain_ppl_base": 9.596926865292485,
+      "domain_ppl_cpt": 7.784102111750025,
+      "domain_ppl_reduction_percent": 18.8896380996565,
+      "domain_repetition_cpt": 0.6293496408950844,
+      "general_concept_recall_cpt": 0.28,
+      "general_repetition_cpt": 0.6190633478424021,
+      "model": "gpt2",
+      "parameters": 774030080,
+      "prompt_count": 55,
+      "prompt_suite": "Murali shared 55-prompt suite",
+      "run": "gpt2-large/v2"
+    },
+    {
+      "context_length": 1024,
+      "domain_concept_recall_cpt": 0.043478260869565216,
+      "domain_ppl_base": 10.95880176431027,
+      "domain_ppl_cpt": 9.440452729375336,
+      "domain_ppl_reduction_percent": 13.855064336319769,
+      "domain_repetition_cpt": 0.6477525777795159,
+      "general_concept_recall_cpt": 0.24,
+      "general_repetition_cpt": 0.7038869345143148,
+      "model": "gpt2",
+      "parameters": 354823168,
+      "prompt_count": 55,
+      "prompt_suite": "Murali shared 55-prompt suite",
+      "run": "gpt2-medium/v1"
+    },
+    {
+      "context_length": 8192,
+      "domain_concept_recall_cpt": 0.056338028169014086,
+      "domain_ppl_base": 3.862000630396992,
+      "domain_ppl_cpt": 3.655357927579825,
+      "domain_ppl_reduction_percent": 5.350664657864787,
+      "domain_repetition_cpt": 0.43349626875875963,
+      "general_concept_recall_cpt": 0.5952380952380952,
+      "general_repetition_cpt": 0.4082831462719449,
+      "model": "LlamaForCausalLM",
+      "parameters": 1711376384,
+      "prompt_count": 50,
+      "prompt_suite": "Ajoish frozen 50-prompt suite",
+      "run": "ajoish/smollm2-1.7b-cisco-cpt-v1"
+    }
+  ],
+  "schema_version": 1
+}

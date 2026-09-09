@@ -1,0 +1,46 @@
+{
+  "groups": {
+    "domain": {
+      "automatic_degradation_rate_percent": 4.0,
+      "automatic_verdict_counts": {
+        "Degraded": 1,
+        "Retained": 24
+      },
+      "base_mean_concept_coverage": 0.05466666666666667,
+      "cpt_mean_concept_coverage": 0.041333333333333326,
+      "prompt_count": 25
+    },
+    "domain_eval_evidence": {
+      "automatic_degradation_rate_percent": 10.0,
+      "automatic_verdict_counts": {
+        "Degraded": 1,
+        "Retained": 9
+      },
+      "base_mean_concept_coverage": 0.03333333333333333,
+      "cpt_mean_concept_coverage": 0.0,
+      "prompt_count": 10
+    },
+    "domain_train_evidence": {
+      "automatic_degradation_rate_percent": 0.0,
+      "automatic_verdict_counts": {
+        "Retained": 15
+      },
+      "base_mean_concept_coverage": 0.06888888888888887,
+      "cpt_mean_concept_coverage": 0.06888888888888887,
+      "prompt_count": 15
+    },
+    "general": {
+      "automatic_degradation_rate_percent": 8.0,
+      "automatic_verdict_counts": {
+        "Degraded": 2,
+        "Improved": 2,
+        "Retained": 21
+      },
+      "base_mean_concept_coverage": 0.6433333333333334,
+      "cpt_mean_concept_coverage": 0.6233333333333334,
+      "prompt_count": 25
+    }
+  },
+  "human_review_status": "pending_blinded_review",
+  "scoring_method": "case-insensitive whole-concept coverage"
+}

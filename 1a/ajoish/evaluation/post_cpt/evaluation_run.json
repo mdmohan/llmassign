@@ -1,0 +1,67 @@
+{
+  "config_sha256": "7c18ed1388eff29f60d90669378f83541b5d6910ec3c6cb63406760baeb8a21a",
+  "cuda_device": "NVIDIA A100-SXM4-80GB",
+  "human_review_status": "pending_blinded_review",
+  "perplexity": {
+    "base_mean_loss": 1.3511853472370168,
+    "base_perplexity": 3.862000630396992,
+    "base_recomputed_perplexity": 3.862000630396992,
+    "cpt_mean_loss": 1.296194016609503,
+    "cpt_perplexity": 3.655357927579825,
+    "cpt_recomputed_perplexity": 3.655357927579825,
+    "perplexity_reduction_percent": 5.350664657864787,
+    "predicted_token_count": 753572,
+    "sequence_count": 92,
+    "source_parquet_sha256": "e0b3b48dfeacb677f68187f0c726be056b04f9be8f90a7ee211e1b218021b3a3"
+  },
+  "prompt_count": 50,
+  "prompt_manifest_sha256": "46a7fbcd2a68f8c6afd0e93a152372b2bdff3d070b450603bdcce7d87c94ca22",
+  "prompt_summary": {
+    "groups": {
+      "domain": {
+        "automatic_degradation_rate_percent": 4.0,
+        "automatic_verdict_counts": {
+          "Degraded": 1,
+          "Retained": 24
+        },
+        "base_mean_concept_coverage": 0.05466666666666667,
+        "cpt_mean_concept_coverage": 0.041333333333333326,
+        "prompt_count": 25
+      },
+      "domain_eval_evidence": {
+        "automatic_degradation_rate_percent": 10.0,
+        "automatic_verdict_counts": {
+          "Degraded": 1,
+          "Retained": 9
+        },
+        "base_mean_concept_coverage": 0.03333333333333333,
+        "cpt_mean_concept_coverage": 0.0,
+        "prompt_count": 10
+      },
+      "domain_train_evidence": {
+        "automatic_degradation_rate_percent": 0.0,
+        "automatic_verdict_counts": {
+          "Retained": 15
+        },
+        "base_mean_concept_coverage": 0.06888888888888887,
+        "cpt_mean_concept_coverage": 0.06888888888888887,
+        "prompt_count": 15
+      },
+      "general": {
+        "automatic_degradation_rate_percent": 8.0,
+        "automatic_verdict_counts": {
+          "Degraded": 2,
+          "Improved": 2,
+          "Retained": 21
+        },
+        "base_mean_concept_coverage": 0.6433333333333334,
+        "cpt_mean_concept_coverage": 0.6233333333333334,
+        "prompt_count": 25
+      }
+    },
+    "human_review_status": "pending_blinded_review",
+    "scoring_method": "case-insensitive whole-concept coverage"
+  },
+  "status": "completed_automatic_evaluation",
+  "training_manifest_sha256": "cfec939f23b7f6cd736bb02fb0cd334dd4f71c8a3706e5f18769dc145d20661e"
+}

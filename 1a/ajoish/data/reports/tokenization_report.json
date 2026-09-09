@@ -1,0 +1,48 @@
+{
+  "accepted_document_count": 82,
+  "content_token_count": 9674276,
+  "dropped_token_count": 7880,
+  "mean_document_content_tokens": 117978.9756097561,
+  "mean_document_tokens_with_boundaries": 117980.9756097561,
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "packed_sequence_count": 1180,
+  "packed_token_count": 9666560,
+  "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "sequence_length": 8192,
+  "source_manifest_sha256": "ff8c5ee3dbf7f27ed3c4701b272e409b7556f3cd74bb6bf2841e5e69dced6ad1",
+  "splits": {
+    "eval": {
+      "content_token_count": 760129,
+      "document_count": 8,
+      "dropped_token_count": 6481,
+      "mean_document_content_tokens": 95016.125,
+      "mean_document_tokens_with_boundaries": 95018.125,
+      "packed_sequence_count": 92,
+      "packed_token_count": 753664,
+      "parquet_sha256": "e0b3b48dfeacb677f68187f0c726be056b04f9be8f90a7ee211e1b218021b3a3",
+      "source_corpus_counts": {
+        "dc": 6,
+        "enterprise": 2
+      },
+      "source_spans_sha256": "e83139a952e64819f65345cf0c73383006ae578e3531fc1da38c8a72d62b785f",
+      "total_token_count": 760145
+    },
+    "train": {
+      "content_token_count": 8914147,
+      "document_count": 74,
+      "dropped_token_count": 1399,
+      "mean_document_content_tokens": 120461.44594594595,
+      "mean_document_tokens_with_boundaries": 120463.44594594595,
+      "packed_sequence_count": 1088,
+      "packed_token_count": 8912896,
+      "parquet_sha256": "dc048e8d29a8229f24e672333baf8050a0dd0e1428c546d0f74a4f6e31662c08",
+      "source_corpus_counts": {
+        "dc": 51,
+        "enterprise": 23
+      },
+      "source_spans_sha256": "5ad1fe1139442cc390eb304aabdf5b3ff3ec594b4439107afed728c40f68e3c3",
+      "total_token_count": 8914295
+    }
+  },
+  "total_token_count": 9674440
+}

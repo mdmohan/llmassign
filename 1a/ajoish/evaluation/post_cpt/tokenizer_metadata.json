@@ -1,0 +1,15 @@
+{
+  "backend_tokenizer_sha256": "2225e8fb36485529d3c826106f8bec359b719a6bcc3f5d6314a834c7be153905",
+  "bos_token": "<|endoftext|>",
+  "bos_token_id": 0,
+  "eos_token": "<|endoftext|>",
+  "eos_token_id": 0,
+  "is_fast": true,
+  "model_id": "HuggingFaceTB/SmolLM2-1.7B",
+  "model_max_length": 8192,
+  "requested_revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "resolved_revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+  "tokenizer_class": "GPT2TokenizerFast",
+  "tokenizer_length": 49152,
+  "vocabulary_size": 49152
+}

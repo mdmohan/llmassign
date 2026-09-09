@@ -1,0 +1,305 @@
+{
+  "assignments": [
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-factual-01",
+      "review_id": "review-001"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-factual-02",
+      "review_id": "review-002"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-factual-03",
+      "review_id": "review-003"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-factual-04",
+      "review_id": "review-004"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-factual-05",
+      "review_id": "review-005"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-science-01",
+      "review_id": "review-006"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-science-02",
+      "review_id": "review-007"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-science-03",
+      "review_id": "review-008"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-science-04",
+      "review_id": "review-009"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-science-05",
+      "review_id": "review-010"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-reasoning-01",
+      "review_id": "review-011"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-reasoning-02",
+      "review_id": "review-012"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-reasoning-03",
+      "review_id": "review-013"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-reasoning-04",
+      "review_id": "review-014"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-reasoning-05",
+      "review_id": "review-015"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-language-01",
+      "review_id": "review-016"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-language-02",
+      "review_id": "review-017"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-language-03",
+      "review_id": "review-018"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-language-04",
+      "review_id": "review-019"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-language-05",
+      "review_id": "review-020"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-common-01",
+      "review_id": "review-021"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-common-02",
+      "review_id": "review-022"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-common-03",
+      "review_id": "review-023"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "general-common-04",
+      "review_id": "review-024"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "general-common-05",
+      "review_id": "review-025"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-switching-01",
+      "review_id": "review-026"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-switching-02",
+      "review_id": "review-027"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-switching-03",
+      "review_id": "review-028"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-switching-04",
+      "review_id": "review-029"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-switching-05",
+      "review_id": "review-030"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-routing-01",
+      "review_id": "review-031"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-routing-02",
+      "review_id": "review-032"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-routing-03",
+      "review_id": "review-033"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-routing-04",
+      "review_id": "review-034"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-routing-05",
+      "review_id": "review-035"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-datacenter-01",
+      "review_id": "review-036"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-datacenter-02",
+      "review_id": "review-037"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-datacenter-03",
+      "review_id": "review-038"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-datacenter-04",
+      "review_id": "review-039"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-datacenter-05",
+      "review_id": "review-040"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-security-01",
+      "review_id": "review-041"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-security-02",
+      "review_id": "review-042"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-security-03",
+      "review_id": "review-043"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-security-04",
+      "review_id": "review-044"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-security-05",
+      "review_id": "review-045"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-operations-01",
+      "review_id": "review-046"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-operations-02",
+      "review_id": "review-047"
+    },
+    {
+      "output_a_model": "cpt",
+      "output_b_model": "base",
+      "prompt_id": "cisco-operations-03",
+      "review_id": "review-048"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-operations-04",
+      "review_id": "review-049"
+    },
+    {
+      "output_a_model": "base",
+      "output_b_model": "cpt",
+      "prompt_id": "cisco-operations-05",
+      "review_id": "review-050"
+    }
+  ],
+  "seed": 42
+}

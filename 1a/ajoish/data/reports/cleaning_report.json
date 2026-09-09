@@ -1,0 +1,66 @@
+{
+  "accepted_cleaned_characters": 52914004,
+  "accepted_source_corpus_counts": {
+    "dc": 57,
+    "enterprise": 25
+  },
+  "eval_fraction": 0.1,
+  "filter_counts": {
+    "exact_duplicate": {
+      "after": 82,
+      "before": 84,
+      "removed": 2
+    },
+    "language": {
+      "after": 82,
+      "before": 82,
+      "removed": 0
+    },
+    "length": {
+      "after": 90,
+      "before": 91,
+      "removed": 1
+    },
+    "repetition": {
+      "after": 84,
+      "before": 90,
+      "removed": 6
+    }
+  },
+  "greatest_impact_filter": {
+    "documents_removed": 6,
+    "filter": "repetition"
+  },
+  "output_sha256": {
+    "domain_corpus.txt": "797ef146c6b9b304e76d59de703068e6682d849999e4d66cfbb9eb5a5316362f",
+    "eval_corpus.txt": "c82652156f1d8b0f25f4b0cf52fd184deeab9d7525d680a62706ae047a309654",
+    "train_corpus.txt": "73159c33d89afb148d8382daa1495244beef0f5296f0a99c0dcdb7994477b5a9"
+  },
+  "rejections_by_reason": {
+    "exact_duplicate": 2,
+    "length": 1,
+    "repetition": 6
+  },
+  "seed": 42,
+  "source_bytes": 389502858,
+  "source_corpus_counts": {
+    "dc": 65,
+    "enterprise": 26
+  },
+  "split_character_counts": {
+    "eval": 4053346,
+    "train": 48860658
+  },
+  "split_document_counts": {
+    "eval": 8,
+    "train": 74
+  },
+  "stage_counts": {
+    "after_exact_duplicate": 82,
+    "after_language": 82,
+    "after_length": 90,
+    "after_repetition": 84,
+    "extracted": 91,
+    "inventoried": 91
+  }
+}

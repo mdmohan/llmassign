@@ -1,0 +1,1346 @@
+{
+  "created_at_utc": "2026-09-07T10:12:12.565845+00:00",
+  "methodology": {
+    "automatic_verdicts": "Murali's per-query concept-loss and 10 percentage-point repetition thresholds.",
+    "concept_recall": "Total matched expected concepts divided by total expected concepts.",
+    "human_review_status": "pending_blinded_review",
+    "repetition": "Mean repeated-trigram ratio, using Murali's lowercase alphanumeric word normalization."
+  },
+  "model": {
+    "architecture": "LlamaForCausalLM",
+    "name": "HuggingFaceTB/SmolLM2-1.7B",
+    "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+    "total_parameters": 1711376384
+  },
+  "results": [
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.15662650602409633
+      },
+      "base_response": " Paris.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United Kingdom is London.\n\nThe capital of Canada is Ottawa.\n\nThe capital of Australia is Canberra.\n\nThe capital of New Zealand is Wellington.\n\nThe capital of India is New Delhi.\n\nThe capital of Brazil is Brasilia.\n\nThe capital of Mexico is Mexico City.\n\nThe capital of Argentina is Buenos Aires.\n\nThe capital of Chile is Santiago.\n\nThe capital of Peru is Lima.\n\nThe capital of Colombia is Bogota.\n\nThe capital",
+      "category": "factual_knowledge",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.15662650602409633
+      },
+      "cpt_response": " Paris.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United Kingdom is London.\n\nThe capital of Canada is Ottawa.\n\nThe capital of Australia is Canberra.\n\nThe capital of New Zealand is Wellington.\n\nThe capital of India is New Delhi.\n\nThe capital of Brazil is Brasilia.\n\nThe capital of Mexico is Mexico City.\n\nThe capital of Argentina is Buenos Aires.\n\nThe capital of Chile is Santiago.\n\nThe capital of Peru is Lima.\n\nThe capital of Colombia is Bogota.\n\nThe capital",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "id": "general-factual-01",
+      "prompt": "The capital of France is",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Good",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.7903225806451613
+      },
+      "base_response": "\n\nGeorge Orwell\n\nWhat is the name of the novel 1984?\n\nNineteen Eighty-Four\n\nWhat is the name of the novel 1984?\n\nNineteen Eighty-Four\n\nWhat is the name of the novel 1984?\n\nNineteen Eighty-Four\n\nWhat is the name of the novel 1984?\n\nNineteen Eighty-Four\n\nWhat is the name of the novel 1984?\n\nNineteen Eighty-Four\n\nWhat is the name of the novel",
+      "category": "factual_knowledge",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.19565217391304346
+      },
+      "cpt_response": "\n\nGeorge Orwell\n\nWhat is the main theme of 1984?\n\nThe main theme of 1984 is the loss of individuality and the loss of freedom. The book is set in a dystopian future where the government controls every aspect of the people\u2019s lives. The government uses propaganda and surveillance to control the people and keep them in line.\n\nWhat is the main idea of 1984?\n\nThe main idea of 1984 is that the government can control the people if they want to. The government can control the people by using propaganda and surveillance. The",
+      "expected_concepts": [
+        "George Orwell"
+      ],
+      "id": "general-factual-02",
+      "prompt": "Who wrote the novel 1984?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.7142857142857143
+      },
+      "base_response": "\n\nJupiter is the largest planet in the Solar System. It is 11 times more massive than Earth and 318 times more massive than the Moon.\n\nWhat is the largest planet in the Solar System?\n\nJupiter is the largest planet in the Solar System. It is 11 times more massive than Earth and 318 times more massive than the Moon.\n\nWhat is the largest planet in the Solar System?\n\nJupiter is the largest planet in the Solar System. It is 11 times more massive than Earth and 318 times more massive than the Moon",
+      "category": "factual_knowledge",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.8539325842696629
+      },
+      "cpt_response": "\n\nJupiter is the largest planet in the Solar System.\n\nWhat is the largest planet in the Solar System?\n\nJupiter is the largest planet in the Solar System.\n\nWhat is the largest planet in the Solar System?\n\nJupiter is the largest planet in the Solar System.\n\nWhat is the largest planet in the Solar System?\n\nJupiter is the largest planet in the Solar System.\n\nWhat is the largest planet in the Solar System?\n\nJupiter is the largest planet in the Solar System.\n\nWhat is the largest planet in the Solar System?\n\nJ",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "id": "general-factual-03",
+      "prompt": "What is the largest planet in the Solar System?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.5698924731182795
+      },
+      "base_response": "\n\nWorld War II ended in 1945.\n\nWhat was the name of the first World War?\n\nThe First World War was also known as the Great War.\n\nWhat was the name of the second World War?\n\nThe Second World War was also known as the Second World War.\n\nWhat was the name of the third World War?\n\nThe Third World War was also known as the Third World War.\n\nWhat was the name of the fourth World War?\n\nThe Fourth World War was also known as the Fourth World War.\n\nWhat was the name of the",
+      "category": "factual_knowledge",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.5698924731182795
+      },
+      "cpt_response": "\n\nWorld War II ended in 1945.\n\nWhat was the name of the first World War?\n\nThe First World War was also known as the Great War.\n\nWhat was the name of the second World War?\n\nThe Second World War was also known as the Second World War.\n\nWhat was the name of the third World War?\n\nThe Third World War was also known as the Third World War.\n\nWhat was the name of the fourth World War?\n\nThe Fourth World War was also known as the Fourth World War.\n\nWhat was the name of the",
+      "expected_concepts": [
+        "1945"
+      ],
+      "id": "general-factual-04",
+      "prompt": "In what year did World War II end?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.4545454545454546
+      },
+      "base_response": "\n\nThe chemical symbol for gold is Au.\n\nWhat is the chemical symbol for silver?\n\nThe chemical symbol for silver is Ag.\n\nWhat is the chemical symbol for copper?\n\nThe chemical symbol for copper is Cu.\n\nWhat is the chemical symbol for iron?\n\nThe chemical symbol for iron is Fe.\n\nWhat is the chemical symbol for aluminum?\n\nThe chemical symbol for aluminum is Al.\n\nWhat is the chemical symbol for lead?\n\nThe chemical symbol for lead is Pb.\n\nWhat is the chemical symbol for mercury?\n\nThe chemical symbol for mercury is",
+      "category": "factual_knowledge",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.4482758620689655
+      },
+      "cpt_response": "\n\nGold is a chemical element with the symbol Au (from Latin: aurum) and atomic number 79, making it one of the higher atomic number elements that occur naturally. It is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.\n\nWhat is the chemical symbol for gold?\n\nGold is a chemical element with the symbol Au (from Latin: aurum) and atomic number 79, making it one of the higher atomic number elements that occur naturally. It is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.",
+      "expected_concepts": [
+        "Au"
+      ],
+      "id": "general-factual-05",
+      "prompt": "What is the chemical symbol for gold?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Good",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.5647058823529412
+      },
+      "base_response": "\n\nThe boiling point of water is 100 degrees Celsius at standard atmospheric pressure.\n\n### What is the boiling point of water in degrees Celsius?\n\nThe boiling point of water is 100 degrees Celsius at standard atmospheric pressure.\n\n### What is the boiling point of water in degrees Fahrenheit?\n\nThe boiling point of water is 212 degrees Fahrenheit at standard atmospheric pressure.\n\n### What is the boiling point of water in degrees Kelvin?\n\nThe boiling point of water is 373.15 degrees Kelvin at standard atmospheric pressure.\n\n### What is the boiling",
+      "category": "science_and_arithmetic",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.44999999999999996
+      },
+      "cpt_response": "\n\nThe boiling point of water at standard atmospheric pressure is 100 degrees Celsius.\n\n### What is the boiling point of water in Fahrenheit?\n\nThe boiling point of water in Fahrenheit is 212 degrees Fahrenheit.\n\n### What is the boiling point of water in Kelvin?\n\nThe boiling point of water in Kelvin is 373.15 Kelvin.\n\n### What is the boiling point of water in Rankine?\n\nThe boiling point of water in Rankine is 671.67 Rankine.\n\n### What is the boiling point of water in R",
+      "expected_concepts": [
+        "100 degrees Celsius"
+      ],
+      "id": "general-science-01",
+      "prompt": "Water boils at what temperature in degrees Celsius at standard atmospheric pressure?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6417910447761195
+      },
+      "base_response": " 300,000,000 metres per second (186,000 miles per second).\n\n## What is the speed of light in a vacuum?\n\nThe speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second).\n\n## What is the speed of light in a vacuum?\n\nThe speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second",
+      "category": "science_and_arithmetic",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6417910447761195
+      },
+      "cpt_response": " 300,000,000 metres per second (186,000 miles per second).\n\n## What is the speed of light in a vacuum?\n\nThe speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second).\n\n## What is the speed of light in a vacuum?\n\nThe speed of light in a vacuum is approximately 300,000,000 metres per second (186,000 miles per second",
+      "expected_concepts": [
+        "300,000 kilometers per second",
+        "3 x 10^8 meters per second"
+      ],
+      "id": "general-science-02",
+      "prompt": "The speed of light in vacuum is approximately",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.045454545454545414
+      },
+      "base_response": "\n\n### Solution\n\nTo work out 17 x 24, you could just count in 17s, but it\u2019s easier to use a multiplication table:\n\n### 17 x 24 = 408\n\nThe answer is 408.\n\n## How to Calculate 17 x 24\n\nThe 17x 24 calculation is best solved using a column method.\n\n### Step 1\n\nPlace the larger number at the top and the smaller number at the bottom of the page.\n\n### Step 2\n",
+      "category": "science_and_arithmetic",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.18181818181818177
+      },
+      "cpt_response": "\n\n### Solution\n\nTo multiply 17 by 24, follow these steps:\n\n1. Add 0 to the end of 17. The result is 170.\n2. Multiply 170 by 24. The result is 3760.\n\nSo, 17 multiplied by 24 equals 3760.\n\n#### Example 2:\n\nMultiply 17 by 24 using long multiplication.\n\n### Solution\n\nTo multiply 17 by 24 using long multiplication, follow these",
+      "expected_concepts": [
+        "408"
+      ],
+      "id": "general-science-03",
+      "prompt": "Calculate 17 multiplied by 24.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.35
+      },
+      "base_response": "\n\nThe process of photosynthesis is the conversion of light energy into chemical energy.\n\nWhat is the process of photosynthesis?\n\nPhotosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can be used for energy, or can be converted to other complex organic molecules, such as fats and proteins.\n\nWhat is the process of photosynthesis in plants?\n\nPhotosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can be",
+      "category": "science_and_arithmetic",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.4607843137254902
+      },
+      "cpt_response": "\n\nThe process of photosynthesis is the conversion of light energy into chemical energy.\n\nWhat is the process of photosynthesis?\n\nPhotosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can then be used for growth or stored in the form of starch.\n\nWhat is the process of photosynthesis?\n\nPhotosynthesis is the process by which plants, some bacteria and some protistans use the energy from sunlight to produce glucose from carbon dioxide and water. This glucose can then be used for growth or stored in the form of",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "id": "general-science-04",
+      "prompt": "What process do green plants use to convert light energy into chemical energy?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.02083333333333337
+      },
+      "base_response": "\n\nSolution:\n\nStep 1: Subtract 7 from both sides.\n\n3x + 7 \u2013 7 = 22 \u2013 7\n\nStep 2: Simplify.\n\n3x = 15\n\nStep 3: Divide both sides by 3.\n\n3x/3 = 15/3\n\nStep 4: Simplify.\n\nx = 5\n\nExample 2: Solve for x: 4x \u2013 11 = 25.\n\nSolution:\n\nStep 1: Add 11 to both sides",
+      "category": "science_and_arithmetic",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.0
+      },
+      "cpt_response": "\n\nSolution:\n\nStep 1: Subtract 7 from both sides.\n3x + 7 \u2013 7 = 22 \u2013 7\n3x = 15\n\nStep 2: Divide both sides by 3.\n3x/3 = 15/3\nx = 5\n\nStep 3: Check your solution.\n3(5) + 7 = 22\n15 + 7 = 22\n22 = 22\n\nTherefore, x = 5 is the correct solution.\n\n## 3.",
+      "expected_concepts": [
+        "x = 5"
+      ],
+      "id": "general-science-05",
+      "prompt": "Solve for x: 3x + 7 = 22.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 2,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.07407407407407407
+      },
+      "base_response": "\n\nSolution:\n\nNo, it does not necessarily follow that some squares are blue.\n\nExplanation:\n\nSome squares are rectangles.\n\nSome rectangles are blue.\n\nSome squares are blue.\n\n### Exercise 1.2\n\nQuestion 1:\n\nMake correct statements by filling in the symbols \u2282 or \u2284 in the blank spaces:\n\n(i) {2, 3, 4} \u2026 {1, 2, 3, 4, 5}\n\n(ii) {abc} \u2026 {abc}\n\n(iii) {",
+      "category": "reasoning",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 2,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.05882352941176472
+      },
+      "cpt_response": "\n\nSolution:\n\nNo, it does not necessarily follow that some squares are blue.\n\nExplanation:\n\nSome squares are rectangles.\n\nSome rectangles are blue.\n\nSome squares are blue.\n\n### Exercise 1.10\n\nQuestion 1:\n\nWrite the negation of the following statements:\n\n(i) p: For every positive real number x, the number x \u2013 1 is also positive.\n\n(ii) q: All cats scratch.\n\n(iii) r: For every real number x, either x > 1 or x < 1",
+      "expected_concepts": [
+        "No",
+        "does not necessarily follow"
+      ],
+      "id": "general-reasoning-01",
+      "prompt": "All squares are rectangles. Some rectangles are blue. Does it necessarily follow that some squares are blue? Explain briefly.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Good",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.1071428571428571
+      },
+      "base_response": "\n\nA. 42\nB. 48\nC. 56\nD. 62\n\nExplanation:\n\nThe given sequence is a series of triangular numbers.\n\nThe next number in the series is 42.\n\nQuestion 10.\n\nWhat number comes next in the sequence 1, 4, 9, 16, 25?\n\nA. 36\nB. 37\nC. 38\nD. 39\n\nExplanation:\n\nThe given sequence is a series of square numbers.",
+      "category": "reasoning",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.0
+      },
+      "cpt_response": "\n\nA. 42\nB. 48\nC. 56\nD. 60\n\nExplanation:\n\nThe sequence is 2, 6, 12, 20, 30, 42, 56, 60, 72, 84, 96, 108, 120, 132, 144, 156, 168, 180, 192, 204, 216, 2",
+      "expected_concepts": [
+        "42"
+      ],
+      "id": "general-reasoning-02",
+      "prompt": "What number comes next in the sequence 2, 6, 12, 20, 30?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.24561403508771928
+      },
+      "base_response": "\n\nSolution:\n\nLet E be the event of getting exactly one head.\n\nThen,\n\nE = {HH, HT, TH}\n\nP(E) = n(E) / n(S)\n\n= 3 / 4\n\nQUESTION: 10\n\nA fair coin is tossed four times. What is the probability of getting exactly one head?\n\nSolution:\n\nLet E be the event of getting exactly one head.\n\nThen,\n\nE = {HHHT, HHTH, HTHH, THHH,",
+      "category": "reasoning",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.3793103448275862
+      },
+      "cpt_response": "\n\nSolution:\n\nLet E be the event of getting exactly one head.\n\nThen,\n\nE = {HH, HT, TH}\n\nP(E) = 3/4\n\nQUESTION: 10\n\nA fair coin is tossed twice. What is the probability of getting exactly one head?\n\nSolution:\n\nLet E be the event of getting exactly one head.\n\nThen,\n\nE = {HH, HT, TH}\n\nP(E) = 3/4\n\nQUESTION: 11\n\nA",
+      "expected_concepts": [
+        "1/2",
+        "50%"
+      ],
+      "id": "general-reasoning-03",
+      "prompt": "A fair coin is tossed twice. What is the probability of getting exactly one head?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.30952380952380953
+      },
+      "base_response": "\n\nA. Monday\nB. Tuesday\nC. Wednesday\nD. Thursday\nE. Friday\n\nSolution:\n\nIf today is Wednesday, then tomorrow is Thursday, and the day after tomorrow is Friday.\n\nIf tomorrow is Friday, then the day after tomorrow is Saturday, and the day after that is Sunday.\n\nIf Sunday is 10 days from today, then Monday is 10 days from today, and the day after that is Tuesday.\n\nIf Tuesday is 10 days from today, then Wednesday is 10 days from today, and the day after that is Thursday.",
+      "category": "reasoning",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.06060606060606055
+      },
+      "cpt_response": "\n\nSolution:\n\nGiven,\n\nToday is Wednesday.\n\nWe have to find the day of the week after 10 days.\n\nWe know that,\n\nOne week has 7 days.\n\nSo, 10 days = 10/7 days\n\n= 10/7 days\n\n= 1 day\n\nHence, 10 days from today is the same day.\n\n### Question 10. If 1st January of a given year is Friday, what day of the week is 2nd January of the same year?\n\n",
+      "expected_concepts": [
+        "Saturday"
+      ],
+      "id": "general-reasoning-04",
+      "prompt": "If today is Wednesday, what day of the week will it be 10 days from today?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.0
+      },
+      "base_response": "\nThe book costs $13 - $9 = $<<13-9=4>>4 more than the pen.\nThe pen costs $4/$13 = $<<4/13=0.304>>0.304.\n#### 304",
+      "category": "reasoning",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.1333333333333333
+      },
+      "cpt_response": "\nThe book costs $9 more than the pen, so the pen costs $9 less than the book, which means the pen costs $9 - $9 = $<<9-9=0>>0.\nThe book and the pen cost $13 total, so the pen costs $13 - $0 = $<<13-0=13>>13.\n#### 13",
+      "expected_concepts": [
+        "$2",
+        "2 dollars"
+      ],
+      "id": "general-reasoning-05",
+      "prompt": "A book and a pen cost $13 total. The book costs $9 more than the pen. How much does the pen cost?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.7014925373134329
+      },
+      "base_response": "\n\nA concise sentence is one that is short and to the point.\n\nWhat is the opposite of concise?\n\nAntonyms: diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse, diffuse",
+      "category": "language",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 1,
+        "concept_recall": 0.5,
+        "repeated_trigram_ratio": 0.9016393442622951
+      },
+      "cpt_response": "\n\nSynonyms: brief, concise, compact, compact, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise, concise",
+      "expected_concepts": [
+        "brief",
+        "succinct"
+      ],
+      "id": "general-language-01",
+      "prompt": "Give one synonym for the word concise.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Good",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.896551724137931
+      },
+      "base_response": "\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any apples.\n\nCorrect this sentence: She don't have any",
+      "category": "language",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.7931034482758621
+      },
+      "cpt_response": "\n\nCorrect this sentence: He don't have any apples.\n\nCorrect this sentence: They don't have any apples.\n\nCorrect this sentence: We don't have any apples.\n\nCorrect this sentence: You don't have any apples.\n\nCorrect this sentence: They don't have any apples.\n\nCorrect this sentence: We don't have any apples.\n\nCorrect this sentence: You don't have any apples.\n\nCorrect this sentence: They don't have any apples.\n\nCorrect this sentence: We don't have any apples.\n\nCorrect this sentence: You don't have any",
+      "expected_concepts": [
+        "She doesn't have any apples."
+      ],
+      "id": "general-language-02",
+      "prompt": "Correct this sentence: She don't have any apples.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.875
+      },
+      "base_response": "\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is",
+      "category": "language",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.875
+      },
+      "cpt_response": "\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is analyses.\n\nWhat is the plural form of analysis?\n\nThe plural form of analysis is",
+      "expected_concepts": [
+        "analyses"
+      ],
+      "id": "general-language-03",
+      "prompt": "What is the plural form of analysis?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Good",
+      "base_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.8333333333333334
+      },
+      "base_response": "\n\nRewrite in passive voice: The report was reviewed by Maya.\n\nRewrite in active voice: The report was reviewed by Maya.\n\nRewrite in passive voice: The report was reviewed by Maya.\n\nRewrite in active voice: The report was reviewed by Maya.\n\nRewrite in passive voice: The report was reviewed by Maya.\n\nRewrite in active voice: The report was reviewed by Maya.\n\nRewrite in passive voice: The report was reviewed by Maya.\n\nRewrite in active voice: The report was reviewed by Maya.",
+      "category": "language",
+      "cpt_generation_metrics": {
+        "concept_count": 1,
+        "concept_hits": 1,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.48888888888888893
+      },
+      "cpt_response": "\n\nExplanation:\n\nThe passive voice is used when the subject of the sentence is acted upon by the verb. In this case, the subject is Maya, and the verb is reviewed.\n\nRewrite in active voice: Maya reviewed the report.\n\nExplanation:\n\nThe active voice is used when the subject of the sentence is performing the action. In this case, the subject is Maya, and the verb is reviewed.\n\nRewrite in active voice: Maya reviewed the report.\n\nExplanation:\n\nThe passive voice is used when the subject of the sentence is acted upon by the verb.",
+      "expected_concepts": [
+        "Maya reviewed the report."
+      ],
+      "id": "general-language-04",
+      "prompt": "Rewrite in active voice: The report was reviewed by Maya.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.5822784810126582
+      },
+      "base_response": "\n\n: to make (something) easier to do or understand : to make (something) less difficult. : to make (something) less difficult or less serious. : to make (something) less serious or less difficult.\n\nWhat is the meaning of break the ice?\n\n: to make (something) easier to do or understand : to make (something) less difficult. : to make (something) less difficult or less serious.\n\nWhat is the meaning of break the ice?\n\n: to make (something) easier to do or understand : to make (something) less difficult. : to make (",
+      "category": "language",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6075949367088608
+      },
+      "cpt_response": "\n\n: to make (something) easier to do or understand : to make (something) less difficult. : to make (something) less difficult or less serious. : to make (something) less serious or less difficult.\n\nWhat is the meaning of break the ice?\n\n: to make (something) easier to do or understand : to make (something) less difficult.\n\nWhat is the meaning of break the ice?\n\n: to make (something) easier to do or understand : to make (something) less difficult.\n\nWhat is the meaning of break the ice?\n\n: to make",
+      "expected_concepts": [
+        "initiate conversation",
+        "make people feel more comfortable"
+      ],
+      "id": "general-language-05",
+      "prompt": "What does the idiom break the ice mean?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 3,
+        "concept_recall": 0.75,
+        "repeated_trigram_ratio": 0.29166666666666663
+      },
+      "base_response": "\n\n### 1. Spring\n\nSpring is the first season of the year, and it is the season of new life. It is the time of year when plants begin to grow and flowers bloom.\n\n### 2. Summer\n\nSummer is the second season of the year, and it is the season of warmth and sunshine. It is the time of year when the days are longest and the nights are shortest.\n\n### 3. Autumn\n\nAutumn is the third season of the year, and it is the season of change. It is the time of year when the leaves on trees begin to change",
+      "category": "common_knowledge_and_instruction",
+      "cpt_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 3,
+        "concept_recall": 0.75,
+        "repeated_trigram_ratio": 0.75
+      },
+      "cpt_response": "\n\nSpring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.\n\nSpring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.\n\nSpring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.\n\nSpring is the season between winter and summer. It is the first season of the year in the Northern Hemisphere and the second in the Southern Hemisphere.\n\nSpring is",
+      "expected_concepts": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "id": "general-common-01",
+      "prompt": "List the four seasons in the Northern Hemisphere in calendar order, starting with spring.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 1,
+        "concept_recall": 0.3333333333333333,
+        "repeated_trigram_ratio": 0.16666666666666663
+      },
+      "base_response": "\n\nIf you smell gas inside a building, you should:\n\n\u2022 Turn off the gas supply at the meter.\n\u2022 Open windows and doors.\n\u2022 Leave the building immediately.\n\u2022 Call the gas emergency number on your gas bill.\n\n## How do you test for natural gas?\n\nTo test for natural gas, you can use a gas detector or a gas leak detector. A gas detector is a device that can detect the presence of natural gas in the air. A gas leak detector is a device that can detect the presence of natural gas in a specific area.\n\n## What is the difference between",
+      "category": "common_knowledge_and_instruction",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 1,
+        "concept_recall": 0.3333333333333333,
+        "repeated_trigram_ratio": 0.5121951219512195
+      },
+      "cpt_response": "\n\nIf you smell gas inside a building, you should:\n\n\u2022 Turn off the gas supply at the meter.\n\u2022 Open windows and doors.\n\u2022 Leave the building immediately.\n\u2022 Call the gas emergency number.\n\n## What happens if you smell gas in your house?\n\nIf you smell gas in your home, you should:\n\n\u2022 Turn off the gas supply at the meter.\n\u2022 Open windows and doors.\n\u2022 Leave the building immediately.\n\u2022 Call the gas emergency number.\n\n## What happens if you smell gas in your house?\n\nIf you smell gas in your",
+      "expected_concepts": [
+        "leave",
+        "avoid flames or electrical switches",
+        "contact emergency services"
+      ],
+      "id": "general-common-02",
+      "prompt": "What should you do first if you smell gas inside a building?",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 3,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.2911392405063291
+      },
+      "base_response": "\n\nThe primary colors of light are red, green, and blue.\n\nWhat are the secondary colors of light?\n\nThe secondary colors of light are cyan, magenta, and yellow.\n\nWhat are the tertiary colors of light?\n\nThe tertiary colors of light are yellow-green, yellow-orange, red-orange, red-violet, blue-violet, blue-green, and blue-cyan.\n\nWhat is the complementary color of red?\n\nThe complementary color of red is green.\n\nWhat is the complementary color of green?\n\nThe complementary color of green",
+      "category": "common_knowledge_and_instruction",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 3,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.3294117647058824
+      },
+      "cpt_response": "\n\nThe primary colors of light are red, green, and blue.\n\nWhat are the secondary colors of light?\n\nThe secondary colors of light are yellow, cyan, and magenta.\n\nWhat are the tertiary colors of light?\n\nThe tertiary colors of light are orange, purple, and brown.\n\nWhat are the complementary colors of light?\n\nThe complementary colors of light are red and green, blue and yellow, and magenta and cyan.\n\nWhat are the analogous colors of light?\n\nThe analogous colors of light are red, orange, and yellow; green, cyan, and",
+      "expected_concepts": [
+        "red",
+        "green",
+        "blue"
+      ],
+      "id": "general-common-03",
+      "prompt": "Name the primary colors of light.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 4,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.054545454545454564
+      },
+      "base_response": "\n\nSolution:\n\nThe given units are kilometer, centimeter, meter, and millimeter.\n\nWe know that,\n\n1 kilometer = 1000 meter\n\n1 meter = 100 centimeter\n\n1 centimeter = 10 millimeter\n\nTherefore,\n\n1 kilometer = 1000 x 100 centimeter = 100000 centimeter\n\n1 centimeter = 10 x 1 millimeter = 10 millimeter\n\nHence,\n\n1 kilometer < 1 centimeter < 1 meter < 1 millimeter\n\nExample 2:\n\nArrange these units from",
+      "category": "common_knowledge_and_instruction",
+      "cpt_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 4,
+        "concept_recall": 1.0,
+        "repeated_trigram_ratio": 0.24615384615384617
+      },
+      "cpt_response": "\n\nSolution:\n\nThe given units are kilometer, centimeter, meter, and millimeter.\n\nWe know that,\n\n1 kilometer = 1000 meter\n\n1 meter = 100 centimeter\n\n1 centimeter = 10 millimeter\n\nTherefore, the units from smallest to largest are millimeter, centimeter, meter, and kilometer.\n\nExample 2: Arrange these units from largest to smallest: kilometer, centimeter, meter, millimeter.\n\nSolution:\n\nThe given units are kilometer, centimeter, meter, and millimeter.\n\nWe know that,\n\n1 kilometer = 1000",
+      "expected_concepts": [
+        "millimeter",
+        "centimeter",
+        "meter",
+        "kilometer"
+      ],
+      "id": "general-common-04",
+      "prompt": "Arrange these units from smallest to largest: kilometer, centimeter, meter, millimeter.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.18367346938775508
+      },
+      "base_response": "\n\nAnswer: A strong password is one that is difficult to guess. It should be at least 8 characters long and include a mix of upper and lower case letters, numbers, and special characters.\n\nQuestion 10: What is the best way to protect your computer from viruses?\n\nAnswer: The best way to protect your computer from viruses is to keep your operating system and antivirus software up to date. You should also be careful about what you download and install on your computer.\n\nQuestion 11: What is the best way to protect your computer from hackers?\n\nAnswer: The best way to",
+      "category": "common_knowledge_and_instruction",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.11224489795918369
+      },
+      "cpt_response": "\n\nAnswer: A strong password is one that is difficult to guess or crack. It should be unique for each account to prevent unauthorized access to sensitive information.\n\nQuestion 10: What is the importance of regularly updating software and operating systems?\n\nAnswer: Regularly updating software and operating systems helps to fix security vulnerabilities and improve performance. It also ensures that you have the latest features and bug fixes.\n\nQuestion 11: How can you protect your privacy while using public Wi-Fi networks?\n\nAnswer: You can protect your privacy while using public Wi-Fi networks by using a VPN (Virtual Private Network",
+      "expected_concepts": [
+        "limits compromise",
+        "credential reuse"
+      ],
+      "id": "general-common-05",
+      "prompt": "State one reason why strong, unique passwords should be used for different online accounts.",
+      "query_set": "general"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.44999999999999996
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 VTP is not a spanning-tree protocol.\nB.\u00a0\u00a0\u00a0 VTP is not a routing protocol.\nC.\u00a0\u00a0\u00a0 VTP is not a spanning-tree protocol.\nD.\u00a0\u00a0\u00a0 VTP is not a routing protocol.\n\nAnswer: C\n\nWhich two statements about VTP are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 VTP is a spanning-tree protocol.\nB.\u00a0\u00a0\u00a0 VTP is a routing protocol.\nC.\u00a0\u00a0\u00a0 VTP is a spanning-tree protocol.\nD.",
+      "category": "switching_vlan_stp",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.40740740740740744
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 VTP is not supported on Cisco Catalyst 3750X switches.\nB.\u00a0\u00a0\u00a0 VTP is not supported on Cisco Catalyst 3750X switches.\nC.\u00a0\u00a0\u00a0 VTP is not supported on Cisco Catalyst 3750X switches.\nD.\u00a0\u00a0\u00a0 VTP is not supported on Cisco Catalyst 3750X switches.\n\nAnswer: C\n\nWhich two statements about the Cisco Catalyst 3750X switch are true? (Choose two.)\n\nA.\u00a0\u00a0",
+      "expected_concepts": [
+        "central configuration",
+        "VTP domain",
+        "propagates VLAN changes"
+      ],
+      "id": "cisco-switching-01",
+      "prompt": "What problem does VTP solve when VLAN configuration changes must be propagated across switches?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6236559139784946
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs.\n\nB.\u00a0\u00a0\u00a0 The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the switch.\n\nC.\u00a0\u00a0\u00a0 The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the switch and the",
+      "category": "switching_vlan_stp",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6373626373626373
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs.\n\nB.\u00a0\u00a0\u00a0 The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the VLANs.\n\nC.\u00a0\u00a0\u00a0 The switch needs a different bridge ID for each VLAN because the switch needs to be able to distinguish between the VLANs and the VLANs need to be able to distinguish between the V",
+      "expected_concepts": [
+        "each VLAN is a logical bridge",
+        "unique bridge ID"
+      ],
+      "id": "cisco-switching-02",
+      "prompt": "Why does a switch need a different bridge ID for each VLAN when using PVST+ or Rapid PVST+?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.368421052631579
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The primary-device is the device with the highest priority.\nB.\u00a0\u00a0\u00a0 The primary-device is the device with the lowest priority.\nC.\u00a0\u00a0\u00a0 The primary-device is the device with the highest priority, unless the device is a vPC peer.\nD.\u00a0\u00a0\u00a0 The primary-device is the device with the lowest priority, unless the device is a vPC peer.\n\nAnswer: C\n\nWhich two statements about the vPC peer-to-peer feature are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It is a",
+      "category": "switching_vlan_stp",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.49350649350649356
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The primary-device election is based on the role priority of the vPC role.\nB.\u00a0\u00a0\u00a0 The primary-device election is based on the role priority of the vPC role.\nC.\u00a0\u00a0\u00a0 The primary-device election is based on the role priority of the vPC role.\nD.\u00a0\u00a0\u00a0 The primary-device election is based on the role priority of the vPC role.\n\nAnswer: B\n\nWhich two statements about the vPC role are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The vPC role is a",
+      "expected_concepts": [
+        "lower value",
+        "better chance to become primary",
+        "default 32667"
+      ],
+      "id": "cisco-switching-03",
+      "prompt": "How does vPC role priority influence the primary-device election, and which numeric value is preferred?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.32727272727272727
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 It enables the port to carry VLANs 1-4094.\nB.\u00a0\u00a0\u00a0 It enables the port to carry VLANs 1-1000.\nC.\u00a0\u00a0\u00a0 It enables the port to carry VLANs 1-1001.\nD.\u00a0\u00a0\u00a0 It enables the port to carry VLANs 1-1002.\n\nAnswer: A\n\nWhich two statements about the Cisco Nexus 7000 Series Switches are true? (Choose two.)\n\nA.",
+      "category": "switching_vlan_stp",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.3214285714285714
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 It allows the switch to carry VLANs 1-4094.\nB.\u00a0\u00a0\u00a0 It allows the switch to carry VLANs 1-1000.\nC.\u00a0\u00a0\u00a0 It allows the switch to carry VLANs 1-1001.\nD.\u00a0\u00a0\u00a0 It allows the switch to carry VLANs 1-1002.\n\nAnswer: A\n\nWhich two statements about the Cisco Nexus 9000 Series NX-OS software are true? (Choose two.)\n",
+      "expected_concepts": [
+        "Layer 2 trunk",
+        "multiple VLANs",
+        "all VLANs by default"
+      ],
+      "id": "cisco-switching-04",
+      "prompt": "On Cisco Nexus NX-OS, what does switchport mode trunk do and which VLANs can a trunk carry by default?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.2698412698412699
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 Layer 2\nB.\u00a0\u00a0\u00a0 Layer 3\nC.\u00a0\u00a0\u00a0 Layer 2 and Layer 3\nD.\u00a0\u00a0\u00a0 None\n\nAnswer: C\n\nWhich two statements about the Cisco Nexus 1000V are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It is a virtual switch that runs on a physical switch.\nB.\u00a0\u00a0\u00a0 It is a virtual switch that runs on a virtual switch.\nC.\u00a0\u00a0\u00a0 It is a virtual switch that runs on a virtual switch.\nD.\u00a0\u00a0",
+      "category": "switching_vlan_stp",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.19298245614035092
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 Layer 2\nB.\u00a0\u00a0\u00a0 Layer 3\nC.\u00a0\u00a0\u00a0 Layer 2 and Layer 3\nD.\u00a0\u00a0\u00a0 None\n\nAnswer: C\n\nWhich two statements about the Cisco Nexus 9000 Series NX-OS software are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It is a software-only solution.\nB.\u00a0\u00a0\u00a0 It is a software-only solution.\nC.\u00a0\u00a0\u00a0 It is a software-only solution.\nD.\u00a0\u00a0\u00a0 It is a software-only",
+      "expected_concepts": [
+        "src-dst-mac",
+        "src-dst ip-l4port"
+      ],
+      "id": "cisco-switching-05",
+      "prompt": "What are the default Layer 2 and Layer 3 port-channel load-balancing methods described for Cisco Nexus NX-OS?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 5,
+        "concept_hits": 1,
+        "concept_recall": 0.2,
+        "repeated_trigram_ratio": 0.5283018867924528
+      },
+      "base_response": "\nOSPF is a link-state routing protocol. Each OSPF router advertises the following information:\n- Link-state advertisements (LSAs)\n- Link-state database (LSDB)\n- Link-state database (LSDB) summarization\n- Link-state database (LSDB) summarization\n- Link-state database (LSDB) summarization\n- Link-state database (LSDB) summarization\n- Link-state database (LSDB) summarization\n- Link-state database (LSDB) summarization\n- Link-state database (",
+      "category": "routing_ospf_bgp",
+      "cpt_generation_metrics": {
+        "concept_count": 5,
+        "concept_hits": 1,
+        "concept_recall": 0.2,
+        "repeated_trigram_ratio": 0.6190476190476191
+      },
+      "cpt_response": "\nOSPF is a link-state routing protocol. Each OSPF router advertises the following information:\n- Link-state advertisements (LSAs)\n- Link-state database\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n- Link-state database summarization\n-",
+      "expected_concepts": [
+        "link-state",
+        "active links",
+        "link type",
+        "metric",
+        "neighbor router"
+      ],
+      "id": "cisco-routing-01",
+      "prompt": "What type of routing protocol is OSPF, and what information does each OSPF router advertise?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.26086956521739135
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 10.0.0.0/24, 1\nB.\u00a0\u00a0\u00a0 10.0.0.0/24, 2\nC.\u00a0\u00a0\u00a0 10.0.0.0/24, 3\nD.\u00a0\u00a0\u00a0 10.0.0.0/24, 4\nE.\u00a0\u00a0\u00a0 10.0.0.0/24, 5\n\nAnswer: B\n\nWhich two statements about the OSPF process are true? (Choose two",
+      "category": "routing_ospf_bgp",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.2727272727272727
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 10.0.0.1/32, 1\nB.\u00a0\u00a0\u00a0 10.0.0.1/32, 2\nC.\u00a0\u00a0\u00a0 10.0.0.1/32, 3\nD.\u00a0\u00a0\u00a0 10.0.0.1/32, 4\nE.\u00a0\u00a0\u00a0 10.0.0.1/32, 5\n\nAnswer: B\n\nWhich two statements about the OSPFv3 LSA type 1",
+      "expected_concepts": [
+        "192.168.1.1",
+        "metric 20"
+      ],
+      "id": "cisco-routing-02",
+      "prompt": "In the shown OSPF NSSA Type-7 LSA example, what forwarding address and metric are advertised?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4871794871794872
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF RED into VRF BLUE.\nB.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF BLUE into VRF RED.\nC.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF RED into VRF RED.\nD.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF BLUE into VRF BLUE.\n\nAnswer: A\n\nWhich two statements about the Cisco IOS XR software are",
+      "category": "routing_ospf_bgp",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4871794871794872
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF RED into VRF BLUE.\nB.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF BLUE into VRF RED.\nC.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF RED into VRF RED.\nD.\u00a0\u00a0\u00a0 The route-target export value is used to export routes from VRF BLUE into VRF BLUE.\n\nAnswer: A\n\nWhich two statements about the Cisco IOS XE feature are",
+      "expected_concepts": [
+        "RED exports 1:1",
+        "BLUE imports 1:1"
+      ],
+      "id": "cisco-routing-03",
+      "prompt": "How are route-target export and import values used to leak routes from VRF RED into VRF BLUE?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.44303797468354433
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 To redirect the packet to the next hop\nB.\u00a0\u00a0\u00a0 To redirect the packet to the next hop if the packet is not destined for the local host\nC.\u00a0\u00a0\u00a0 To redirect the packet to the next hop if the packet is destined for the local host\nD.\u00a0\u00a0\u00a0 To redirect the packet to the next hop if the packet is not destined for the local host\n\nAnswer: C\n\nWhich of the following is a valid IPv6 address?\n\nA.\u00a0\u00a0\u00a0 2001:0db8:0000:00",
+      "category": "routing_ospf_bgp",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.44303797468354433
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 To redirect the packet to the next hop\nB.\u00a0\u00a0\u00a0 To redirect the packet to the next hop if the packet is not destined for the local host\nC.\u00a0\u00a0\u00a0 To redirect the packet to the next hop if the packet is destined for the local host\nD.\u00a0\u00a0\u00a0 To redirect the packet to the next hop if the packet is not destined for the local host\n\nAnswer: C\n\nWhich of the following is a valid IPv6 address?\n\nA.\u00a0\u00a0\u00a0 2001:0db8:0000:00",
+      "expected_concepts": [
+        "shorter path",
+        "host sends traffic directly to the next gateway"
+      ],
+      "id": "cisco-routing-04",
+      "prompt": "What is the purpose of an ICMP Redirect message in IP forwarding?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 1,
+        "concept_recall": 0.3333333333333333,
+        "repeated_trigram_ratio": 0.20588235294117652
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 ip unnumbered\nB.\u00a0\u00a0\u00a0 no ip redirects\nC.\u00a0\u00a0\u00a0 no ip redirects\nD.\u00a0\u00a0\u00a0 no ip redirects\nE.\u00a0\u00a0\u00a0 no ip redirects\n\nAnswer: B\n\nWhich two statements about the Cisco IOS command ip unnumbered are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It enables the router to use the interface\u2019s IP address as the local IP address.\nB.\u00a0\u00a0\u00a0 It enables the router to use the interface\u2019s IP address as the remote IP address.\nC.",
+      "category": "routing_ospf_bgp",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.2592592592592593
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 ip redirects no\nB.\u00a0\u00a0\u00a0 ip redirects no\nC.\u00a0\u00a0\u00a0 ip redirects no\nD.\u00a0\u00a0\u00a0 ip redirects no\n\nAnswer: A\n\nWhich two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The Nexus 9000 Series Switches support the Cisco NX-OS software.\nB.\u00a0\u00a0\u00a0 The Nexus 9000 Series Switches support the Cisco NX-OS software.\n",
+      "expected_concepts": [
+        "no ip redirects",
+        "show ip interface",
+        "redirects disabled"
+      ],
+      "id": "cisco-routing-05",
+      "prompt": "Which NX-OS interface command disables ICMP Redirects, and how can its status be verified?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6056338028169015
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The ingress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.\nB.\u00a0\u00a0\u00a0 The egress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.\nC.\u00a0\u00a0\u00a0 The ingress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.\nD.\u00a0\u00a0\u00a0 The egress VTEP is responsible for receiving the VXLAN packets and encapsulating them into the VXLAN header.\n\nAnswer",
+      "category": "datacenter_vpc_vxlan_nexus",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.618421052631579
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The ingress VTEP is responsible for packet processing and the egress VTEP is responsible for packet processing.\n\nB.\u00a0\u00a0\u00a0 The ingress VTEP is responsible for packet processing and the egress VTEP is responsible for packet forwarding.\n\nC.\u00a0\u00a0\u00a0 The ingress VTEP is responsible for packet forwarding and the egress VTEP is responsible for packet processing.\n\nD.\u00a0\u00a0\u00a0 The ingress VTEP is responsible for packet forwarding and the egress VTEP is responsible for packet processing and forwarding.\n\nAnswer: A\n\nQuestion No:",
+      "expected_concepts": [
+        "ingress VTEP encapsulates",
+        "egress VTEP decapsulates"
+      ],
+      "id": "cisco-datacenter-01",
+      "prompt": "What are the packet-processing roles of ingress and egress VTEPs in a VXLAN network?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4375
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nB.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nC.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nD.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nE.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\n\nAnswer: D\n\nWhich two statements about the Cisco Nexus 1000V are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It",
+      "category": "datacenter_vpc_vxlan_nexus",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4242424242424242
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nB.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nC.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nD.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\nE.\u00a0\u00a0\u00a0 The vPC pair must be in the same VLAN.\n\nAnswer: A\n\nWhich two statements about the Cisco Nexus 9000 Series Fabric Interconnect are true? (Choose two.)\n\nA.\u00a0",
+      "expected_concepts": [
+        "current release",
+        "target release",
+        "supported upgrade path"
+      ],
+      "id": "cisco-datacenter-02",
+      "prompt": "What should be checked in the Cisco Nexus ISSU Support Matrix before upgrading a vPC pair?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4657534246575342
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The recommended basic test is to ping the loopback interface of the VTEP.\nB.\u00a0\u00a0\u00a0 The recommended basic test is to ping the VXLAN tunnel endpoint (VTEP) of the VTEP.\nC.\u00a0\u00a0\u00a0 The recommended basic test is to ping the VXLAN tunnel endpoint (VTEP) of the VTEP.\nD.\u00a0\u00a0\u00a0 The recommended basic test is to ping the loopback interface of the VTEP.\n\nAnswer: D\n\nWhich two statements about the VXLAN tunnel endpoint (VTEP) are true? (Choose two",
+      "category": "datacenter_vpc_vxlan_nexus",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4383561643835616
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The recommended basic test is to ping the loopback interface of the VTEP.\nB.\u00a0\u00a0\u00a0 The recommended basic test is to ping the VXLAN interface of the VTEP.\nC.\u00a0\u00a0\u00a0 The recommended basic test is to ping the VXLAN interface of the VTEP.\nD.\u00a0\u00a0\u00a0 The recommended basic test is to ping the loopback interface of the VTEP.\n\nAnswer: D\n\nWhich two statements about the VXLAN tunnel interface are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The VXLAN tunnel interface",
+      "expected_concepts": [
+        "ping between end hosts",
+        "loopback interfaces on VTEPs"
+      ],
+      "id": "cisco-datacenter-03",
+      "prompt": "What is the recommended basic test for VXLAN connectivity between two VTEPs, and what alternative uses loopback interfaces?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.5064935064935066
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\nB.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\nC.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\nD.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\n\nAnswer: B\n\nWhich two statements about the Cisco N9500 chassis are true? (Choose two.)\n\nA.\u00a0",
+      "category": "datacenter_vpc_vxlan_nexus",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.5064935064935066
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\nB.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\nC.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\nD.\u00a0\u00a0\u00a0 The chassis automatically detects the failure and reconfigures the fabric to use the remaining modules.\n\nAnswer: A\n\nWhich two statements about the Cisco N9500 chassis are true? (Choose two.)\n\nA.\u00a0",
+      "expected_concepts": [
+        "up to six fabric modules",
+        "redundancy",
+        "graceful degradation"
+      ],
+      "id": "cisco-datacenter-04",
+      "prompt": "How does the Cisco N9500 chassis preserve switching service when a fabric module fails?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.42307692307692313
+      },
+      "base_response": "\n\nAnswer: A,D\n\nQuestion No: 10\n\nWhich two statements about the Cisco Nexus 1000V are true? (Choose two.)\n\n  1. It is a virtual switch that runs on a virtual machine.\n\n  2. It is a virtual switch that runs on a physical server.\n\n  3. It is a virtual switch that runs on a virtual machine.\n\n  4. It is a virtual switch that runs on a physical server.\n\nAnswer: A,D\n\nQuestion No: 11\n\nWhich two statements about the Cisco Nexus 10",
+      "category": "datacenter_vpc_vxlan_nexus",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4576271186440678
+      },
+      "cpt_response": "\n\nAnswer: A, D\n\nQuestion No: 10\n\nWhich two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)\n\n  1. The Cisco Nexus 9000 Series Switches support the Cisco Nexus 9000 Series Fabric Extender.\n\n  2. The Cisco Nexus 9000 Series Switches support the Cisco Nexus 9000 Series Fabric Extender.\n\n  3. The Cisco Nexus 9000 Series Switches support the Cisco Nexus ",
+      "expected_concepts": [
+        "4x10G",
+        "4x25G",
+        "2x50G"
+      ],
+      "id": "cisco-datacenter-05",
+      "prompt": "Give examples of breakout modes supported on Cisco Nexus switch ports.",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 1,
+        "concept_recall": 0.3333333333333333,
+        "repeated_trigram_ratio": 0.3880597014925373
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 In the ISE console\nB.\u00a0\u00a0\u00a0 In the ISE policy\nC.\u00a0\u00a0\u00a0 In the ISE policy template\nD.\u00a0\u00a0\u00a0 In the ISE policy database\n\nAnswer: D\n\nWhich two statements about the Cisco ISE policy database are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The policy database is stored in the ISE console.\nB.\u00a0\u00a0\u00a0 The policy database is stored in the ISE policy.\nC.\u00a0\u00a0\u00a0 The policy database is stored in the ISE policy template.\nD.\u00a0",
+      "category": "security_aaa_ise",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 1,
+        "concept_recall": 0.3333333333333333,
+        "repeated_trigram_ratio": 0.3880597014925373
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 In the ISE console\nB.\u00a0\u00a0\u00a0 In the ISE policy\nC.\u00a0\u00a0\u00a0 In the ISE policy template\nD.\u00a0\u00a0\u00a0 In the ISE policy database\n\nAnswer: D\n\nWhich two statements about the Cisco ISE policy database are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The policy database is stored in the ISE console.\nB.\u00a0\u00a0\u00a0 The policy database is stored in the ISE policy.\nC.\u00a0\u00a0\u00a0 The policy database is stored in the ISE policy template.\nD.\u00a0",
+      "expected_concepts": [
+        "Policy",
+        "Policy Sets",
+        "authorization rule"
+      ],
+      "id": "cisco-security-01",
+      "prompt": "In Cisco ISE, where should an administrator find and change an authorization rule that uses an unlicensed feature?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.3214285714285714
+      },
+      "base_response": "\n\nIP Source Guard uses DHCP snooping information to block source-address spoofing. DHCP snooping information is used to block source-address spoofing by:\n\n  \u2022 Preventing a source-address spoofer from sending packets with a source-address that is not in the DHCP snooping table.\n  \u2022 Preventing a source-address spoofer from sending packets with a source-address that is in the DHCP snooping table but is not in the DHCP snooping table for the DHCP snooping domain.\n\nWhat is the difference between DHCP snooping and DHCP snooping domain",
+      "category": "security_aaa_ise",
+      "cpt_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4505494505494505
+      },
+      "cpt_response": "\n\nIP Source Guard uses DHCP snooping information to block source-address spoofing.\n\nWhat is the difference between DHCP snooping and DHCP relay?\n\nDHCP snooping is a feature that is used to protect the DHCP server from spoofing attacks. DHCP relay is a feature that is used to forward DHCP requests from one network to another.\n\nWhat is the difference between DHCP snooping and DHCP relay?\n\nDHCP snooping is a feature that is used to protect the DHCP server from spoofing attacks. DHCP relay is a feature that is used to forward DHCP requests",
+      "expected_concepts": [
+        "binding table",
+        "source IP lookup",
+        "untrusted interface",
+        "blocks unmatched traffic"
+      ],
+      "id": "cisco-security-02",
+      "prompt": "How does IP Source Guard use DHCP snooping information to block source-address spoofing?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 1,
+        "concept_recall": 0.25,
+        "repeated_trigram_ratio": 0.36046511627906974
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The number of users that can be added to the policy\nB.\u00a0\u00a0\u00a0 The number of users that can be removed from the policy\nC.\u00a0\u00a0\u00a0 The number of users that can be added to the policy\nD.\u00a0\u00a0\u00a0 The number of users that can be removed from the policy\n\nAnswer: C\n\nWhich two statements about the Cisco FDM identity policy are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The Cisco FDM identity policy can be used to create a group of users that can be added to a Cisco FDM group.\nB",
+      "category": "security_aaa_ise",
+      "cpt_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 1,
+        "concept_recall": 0.25,
+        "repeated_trigram_ratio": 0.3414634146341463
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The number of users that can be added to the policy\nB.\u00a0\u00a0\u00a0 The number of users that can be removed from the policy\nC.\u00a0\u00a0\u00a0 The number of users that can be added to the policy\nD.\u00a0\u00a0\u00a0 The number of users that can be removed from the policy\n\nAnswer: C\n\nWhich two statements about the Cisco FDM identity policy are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The Cisco FDM identity policy is a Cisco FDM policy that is used to manage the Cisco FDM identity.\nB.\u00a0\u00a0",
+      "expected_concepts": [
+        "identity policy",
+        "default action",
+        "rules",
+        "order"
+      ],
+      "id": "cisco-security-03",
+      "prompt": "Which settings can be changed from the Cisco FDM identity policy page?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6326530612244898
+      },
+      "base_response": "\n\nThe Cisco Secure Client will not be able to connect to the Internet.\n\nWhat happens when both Trusted Network Policy and Untrusted Network Policy are set to Allow for Cisco Secure Client?\n\nThe Cisco Secure Client will be able to connect to the Internet.\n\nWhat happens when both Trusted Network Policy and Untrusted Network Policy are set to Deny for Cisco Secure Client?\n\nThe Cisco Secure Client will not be able to connect to the Internet.\n\nWhat happens when both Trusted Network Policy and Untrusted Network Policy are set to Deny for Cisco Secure Client?\n\nThe Cisco Secure Client will",
+      "category": "security_aaa_ise",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.5729166666666667
+      },
+      "cpt_response": "\n\nWhen both Trusted Network Policy and Untrusted Network Policy are set to Do Nothing, the client is allowed to connect to the untrusted network.\n\nWhat happens when both Trusted Network Policy and Untrusted Network Policy are set to Block for Cisco Secure Client?\n\nWhen both Trusted Network Policy and Untrusted Network Policy are set to Block, the client is not allowed to connect to the untrusted network.\n\nWhat happens when both Trusted Network Policy and Untrusted Network Policy are set to Prohibit for Cisco Secure Client?\n\nWhen both Trusted Network Policy and Untrusted Network Policy are set to",
+      "expected_concepts": [
+        "disables Always-On VPN",
+        "disables Trusted Network Detection"
+      ],
+      "id": "cisco-security-04",
+      "prompt": "What happens when both Trusted Network Policy and Untrusted Network Policy are set to Do Nothing for Cisco Secure Client?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Good",
+      "base_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 1,
+        "concept_recall": 0.25,
+        "repeated_trigram_ratio": 0.4040404040404041
+      },
+      "base_response": "\n\nThe kexalgos option controls the algorithm used for key exchange. The macs option controls the algorithm used for message authentication.\n\nWhat is the difference between the ip access-group command and the ip access-list command?\n\nThe ip access-group command is used to specify a group of interfaces that are to be included in a security policy. The ip access-list command is used to specify a list of IP addresses that are to be included in a security policy.\n\nWhat is the difference between the ip access-group command and the ip access-list command?\n\nThe ip access-group",
+      "category": "security_aaa_ise",
+      "cpt_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 1,
+        "concept_recall": 0.25,
+        "repeated_trigram_ratio": 0.303030303030303
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The key exchange algorithm and the MAC algorithm\nB.\u00a0\u00a0\u00a0 The key exchange algorithm and the MAC algorithm\nC.\u00a0\u00a0\u00a0 The key exchange algorithm and the MAC algorithm\nD.\u00a0\u00a0\u00a0 The key exchange algorithm and the MAC algorithm\n\nAnswer: A\n\nWhich two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The Nexus 9000 Series Switches support the Cisco NX-OS software.\nB.\u00a0\u00a0\u00a0 The Nexus 9",
+      "expected_concepts": [
+        "key exchange",
+        "per-connection keys",
+        "message authentication codes",
+        "detect modification"
+      ],
+      "id": "cisco-security-05",
+      "prompt": "In NX-OS SSH configuration, what do the kexalgos and macs options control?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.26027397260273977
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 The device property is the device\u2019s IP address.\nB.\u00a0\u00a0\u00a0 The device property is the device\u2019s MAC address.\nC.\u00a0\u00a0\u00a0 The device property is the device\u2019s VLAN ID.\nD.\u00a0\u00a0\u00a0 The device property is the device\u2019s VLAN ID and interface address.\n\nAnswer: D\n\nWhich two statements about the Cisco SD-WAN TLOC are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The TLOC is a software-based solution that is deployed on the Cisco SD-WAN appliance.",
+      "category": "wireless_sdwan_operations",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.26027397260273977
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 The device property is the device\u2019s IP address.\nB.\u00a0\u00a0\u00a0 The device property is the device\u2019s MAC address.\nC.\u00a0\u00a0\u00a0 The device property is the device\u2019s VLAN ID.\nD.\u00a0\u00a0\u00a0 The device property is the device\u2019s VLAN ID and interface address.\n\nAnswer: D\n\nWhich two statements about the Cisco SD-WAN TLOC are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The TLOC is a software-based solution that is deployed on the Cisco SD-WAN appliance.",
+      "expected_concepts": [
+        "system IP address",
+        "router ID",
+        "independent of interfaces"
+      ],
+      "id": "cisco-operations-01",
+      "prompt": "What device property is one component of every Cisco SD-WAN TLOC, and why is it independent of interface addresses?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Needs Improvement",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.27142857142857146
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 Cisco SD-WAN\nB.\u00a0\u00a0\u00a0 Cisco WAN optimization\nC.\u00a0\u00a0\u00a0 Cisco WAN optimization controller\nD.\u00a0\u00a0\u00a0 Cisco WAN optimization client\n\nAnswer: C\n\nWhich two statements about the Cisco WAN optimization controller are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It is a software-based solution that can be deployed on any hardware platform.\nB.\u00a0\u00a0\u00a0 It is a hardware-based solution that can be deployed on any hardware platform.\nC.\u00a0\u00a0\u00a0 It is a software-based solution that can",
+      "category": "wireless_sdwan_operations",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.37681159420289856
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 Cisco SD-WAN\nB.\u00a0\u00a0\u00a0 Cisco SD-WAN Policy Manager\nC.\u00a0\u00a0\u00a0 Cisco SD-WAN Policy Engine\nD.\u00a0\u00a0\u00a0 Cisco SD-WAN Policy Manager\n\nAnswer: A\n\nWhich two statements about the Cisco SD-WAN Policy Manager are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It is a Cisco SD-WAN component that is used to manage the Cisco SD-WAN Policy Engine.\nB.\u00a0\u00a0\u00a0 It is a Cisco SD-WAN component that is used to manage the",
+      "expected_concepts": [
+        "Cisco SD-WAN Validator",
+        "orchestrates overlay admission"
+      ],
+      "id": "cisco-operations-02",
+      "prompt": "Which Cisco SD-WAN component orchestrates admission of a new device into the overlay network?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.44303797468354433
+      },
+      "base_response": "\n\nA device health score is determined by the following:\n\n  \u2022 Device health score = (number of errors) / (number of errors + number of warnings)\n\nWhat is a device health score of 100%?\n\nA device health score of 100% means that there are no errors or warnings.\n\nWhat is a device health score of 0%?\n\nA device health score of 0% means that there are errors or warnings.\n\nWhat is a device health score of 50%?\n\nA device health score of 50% means that there",
+      "category": "wireless_sdwan_operations",
+      "cpt_generation_metrics": {
+        "concept_count": 2,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.37234042553191493
+      },
+      "cpt_response": "\n\nA device health score is determined by the following:\n\n  \u2022 Device health score = (number of devices with a health score of 100) / (total number of devices)\n\nWhat is the difference between a device health score and a device health status?\n\nA device health score is a number between 0 and 100 that represents the health of a device. A device health status is a text message that describes the health of a device.\n\nWhat is the difference between a device health score and a device health status?\n\nA device health score is a number between 0 and ",
+      "expected_concepts": [
+        "minimum of all KPI health scores",
+        "five-minute window"
+      ],
+      "id": "cisco-operations-03",
+      "prompt": "How is a device health score determined in Cisco Catalyst Assurance?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.4025974025974026
+      },
+      "base_response": "\n\nA.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nB.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nC.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nD.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\n\nAnswer: B\n\nWhich two statements about the Cisco IOS XE feature set are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 It is a software-only feature.\nB.\u00a0\u00a0\u00a0 It is a software-only feature.\nC.\u00a0",
+      "category": "wireless_sdwan_operations",
+      "cpt_generation_metrics": {
+        "concept_count": 4,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.46153846153846156
+      },
+      "cpt_response": "\n\nA.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nB.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nC.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nD.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\nE.\u00a0\u00a0\u00a0 To show the commands that are used to configure the switch\n\nAnswer: A\n\nWhich two statements about the Cisco Nexus 9000 Series Switches are true? (Choose two.)\n\nA.\u00a0\u00a0\u00a0 The Cisco Nex",
+      "expected_concepts": [
+        "collect diagnostics",
+        "TAC case",
+        "paste into switch CLI",
+        "commands may fail for unavailable features"
+      ],
+      "id": "cisco-operations-04",
+      "prompt": "What is the purpose of the command list in Cisco's TAC output quick reference for Nexus switches?",
+      "query_set": "domain"
+    },
+    {
+      "automatic_verdict": "Satisfactory",
+      "base_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.6849315068493151
+      },
+      "base_response": "\n\nThe Cisco N9500 platform is covered by a 90-day warranty.\n\nWhat is the warranty duration and replacement turnaround for the Cisco N9500 platform?\n\nThe Cisco N9500 platform is covered by a 90-day warranty.\n\nWhat is the warranty duration and replacement turnaround for the Cisco N9500 platform?\n\nThe Cisco N9500 platform is covered by a 90-day warranty.\n\nWhat is the warranty duration and replacement turnaround for the Cisco N9500 platform?\n\nThe Cisco N",
+      "category": "wireless_sdwan_operations",
+      "cpt_generation_metrics": {
+        "concept_count": 3,
+        "concept_hits": 0,
+        "concept_recall": 0.0,
+        "repeated_trigram_ratio": 0.7313432835820896
+      },
+      "cpt_response": "\n\nThe Cisco N9500 platform is covered by a 90-day warranty.\n\nWhat is the Cisco N9500 platform's warranty duration?\n\nThe Cisco N9500 platform is covered by a 90-day warranty.\n\nWhat is the Cisco N9500 platform's warranty duration?\n\nThe Cisco N9500 platform is covered by a 90-day warranty.\n\nWhat is the Cisco N9500 platform's warranty duration?\n\nThe Cisco N9500 platform is covered by a 90",
+      "expected_concepts": [
+        "one year",
+        "10-day turnaround",
+        "RMA"
+      ],
+      "id": "cisco-operations-05",
+      "prompt": "What warranty duration and replacement turnaround are stated for the Cisco N9500 platform?",
+      "query_set": "domain"
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "comparison_by_query_set": {
+      "domain": {
+        "baseline_response_retention_ppl": {
+          "available": false,
+          "reason": "Requires teacher-forced scoring of saved base responses with both loaded models."
+        },
+        "fixed_reference_conditional_ppl": {
+          "available": false,
+          "reason": "Requires fixed reference continuations and scoring with both loaded models."
+        },
+        "generation_concept_recall": {
+          "base": 0.07042253521126761,
+          "cpt": 0.056338028169014086,
+          "remarks": "CPT recall is 5.6% and declined by 1.4 pp.",
+          "verdict": "Needs Improvement"
+        },
+        "generation_exact_continuation": {
+          "available": false,
+          "reason": "Ajoish's frozen prompts define expected concepts, not exact continuations."
+        },
+        "generation_repeated_trigram_ratio": {
+          "base": 0.42287344680838534,
+          "cpt": 0.43349626875875963,
+          "remarks": "CPT repetition is 43.3% and increased by 1.1 pp.",
+          "verdict": "Needs Improvement"
+        },
+        "query_count": 25
+      },
+      "general": {
+        "baseline_response_retention_ppl": {
+          "available": false,
+          "reason": "Requires teacher-forced scoring of saved base responses with both loaded models."
+        },
+        "fixed_reference_conditional_ppl": {
+          "available": false,
+          "reason": "Requires fixed reference continuations and scoring with both loaded models."
+        },
+        "generation_concept_recall": {
+          "base": 0.5952380952380952,
+          "cpt": 0.5952380952380952,
+          "remarks": "CPT recall is 59.5% and was unchanged by 0.0 pp.",
+          "verdict": "Satisfactory"
+        },
+        "generation_exact_continuation": {
+          "available": false,
+          "reason": "Ajoish's frozen prompts define expected concepts, not exact continuations."
+        },
+        "generation_repeated_trigram_ratio": {
+          "base": 0.3968463953573733,
+          "cpt": 0.4082831462719449,
+          "remarks": "CPT repetition is 40.8% and increased by 1.1 pp.",
+          "verdict": "Needs Improvement"
+        },
+        "query_count": 25
+      }
+    },
+    "query_count": 50,
+    "verdict_counts": {
+      "Good": 6,
+      "Needs Improvement": 14,
+      "Satisfactory": 30
+    }
+  },
+  "title": "Part 2 Generated Text Evaluation (Murali-Compatible Subset)"
+}

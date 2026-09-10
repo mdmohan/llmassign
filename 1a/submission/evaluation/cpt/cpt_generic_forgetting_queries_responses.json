@@ -1,0 +1,518 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643
+  },
+  "query_source": "generic_forgetting_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 15,
+  "results": [
+    {
+      "id": "GEN01",
+      "category": "geography",
+      "prompt": "The capital of France is",
+      "expected_concepts": [
+        "Paris"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "Paris"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8666666666666667
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 25.247302651405334,
+        "mean_cross_entropy_loss": 0.25247302651405334,
+        "perplexity": 1.2872047752866091,
+        "combined_token_count": 105,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "Paris. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the",
+      "response": "Paris. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the capital of the European Union. The capital of France is also the"
+    },
+    {
+      "id": "GEN02",
+      "category": "science",
+      "prompt": "Water freezes at a temperature of",
+      "expected_concepts": [
+        "0 degrees Celsius",
+        "32 degrees Fahrenheit"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "0 degrees Celsius",
+          "32 degrees Fahrenheit"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 2,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.020000000000000018
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 19.711698591709137,
+        "mean_cross_entropy_loss": 0.19711698591709137,
+        "perplexity": 1.2178865079424606,
+        "combined_token_count": 106,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "$0^\\circ$ Celsius or $32^\\circ$ Fahrenheit. If the temperature is $-10^\\circ$ Celsius, what is the corresponding temperature in Fahrenheit? To convert a temperature from Celsius to Fahrenheit, we use the formula:\n\n\\[ F = \\frac{9}{5}C + 32 \\]\n\nwhere \\( F \\) is the temperature in Fahrenheit and \\( C \\) is the temperature in Celsius. We are given that the temperature in Celsius is \\(-1",
+      "response": "0 degrees Celsius or 32 degrees Fahrenheit. Water boils at 100 degrees Celsius or 212 degrees Fahrenheit. The range of temperatures that water can be at is 212 - 0 or 212 - (-40). The absolute difference in temperature between the boiling point and the freezing point of water is 212 - (-40) = 252 degrees."
+    },
+    {
+      "id": "GEN03",
+      "category": "astronomy",
+      "prompt": "The largest planet in the Solar System is",
+      "expected_concepts": [
+        "Jupiter"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "Jupiter"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.06666666666666665
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 80.84277510643005,
+        "mean_cross_entropy_loss": 0.8084277510643005,
+        "perplexity": 2.2443764926582026,
+        "combined_token_count": 108,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the gas giant Jupiter. It is the fifth planet from the Sun and the largest in the Solar System. It is also the most massive of the four giant planets. Jupiter is a gas giant. It is made mostly of hydrogen and helium. It is surrounded by a thick cloud of gases. The gases are made up of many different chemicals. The gases are held together by the planet's gravity. The gases are so thick that they do not let light through. This is why Jupiter is so bright.",
+      "response": "the gas giant Jupiter. It is the fifth planet from the Sun and the largest in the Solar System. It is also the most massive of the Solar System's eight planets, with an equatorial diameter of 142,984 km (88,846 mi) that is 11 times that of Earth. Jupiter is a giant planet, one of several in the Solar System. It is composed mostly of hydrogen and helium, with traces of other elements. It has"
+    },
+    {
+      "id": "GEN04",
+      "category": "literature",
+      "prompt": "The author of Romeo and Juliet was",
+      "expected_concepts": [
+        "William Shakespeare"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "William Shakespeare"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5087719298245614
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 46.426135301589966,
+        "mean_cross_entropy_loss": 0.46426135301589966,
+        "perplexity": 1.5908386866018898,
+        "combined_token_count": 107,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "______.\nA. William Shakespeare\nB. William Wordsworth\nC. William Blake\nD. William Cullen Bryant\n答案:\nA\n\n下列关于“三同时”制度的说法中，错误的是____。\nA. “三同时”制度是指建设项目中防治污染的设施，应当与主体工程同时设计、同时施工、同时投产使用\nB. 防治污染的设施必须经原审批环境影响报告书的环境保护行政主管部门验收合格后，该建设项目方可",
+      "response": "A. William Shakespeare\nB. William Wordsworth\nC. John Milton\nD. John Keats\nAnswer:\nA\n\nThe author of The Waste Land was\nA. William Shakespeare\nB. William Wordsworth\nC. John Milton\nD. T.S. Eliot\nAnswer:\nD\n\nThe author of The Waste Land was\nA. William Shakespeare\nB. William Wordsworth\nC. John Milton\nD. T.S. Eliot\nAnswer:\nD\n\nThe"
+    },
+    {
+      "id": "GEN05",
+      "category": "science",
+      "prompt": "The chemical symbol for water is",
+      "expected_concepts": [
+        "H2O"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "H2O"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2195121951219512
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 46.46798372268677,
+        "mean_cross_entropy_loss": 0.4646798372268677,
+        "perplexity": 1.5915045667948855,
+        "combined_token_count": 106,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "H2O, which indicates that ____\nA. Water is composed of hydrogen and oxygen elements\nB. Water is composed of hydrogen and oxygen atoms\nC. Water is composed of hydrogen molecules and oxygen molecules\nD. Water is composed of hydrogen gas and oxygen gas\nAnswer:\nA\n\nWhich of the following statements about the relationship between the number of electrons outside the nucleus and the number of valence electrons is correct?\nA. The number of valence electrons is always equal to the number of",
+      "response": "H2O. Which of the following statements about water is true?\nA. Water is composed of hydrogen gas and oxygen gas.\nB. Water is made up of hydrogen and oxygen elements.\nC. A water molecule is made up of hydrogen atoms and oxygen atoms.\nD. A water molecule is made up of hydrogen molecules and oxygen molecules.\nAnswer:\nB\n\nWhich of the following statements about the relationship between the Earth's rotation and revolution is true?\nA. The Earth's rotation and revolution are both"
+    },
+    {
+      "id": "GEN06",
+      "category": "geometry",
+      "prompt": "A triangle has",
+      "expected_concepts": [
+        "three sides",
+        "three angles"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2676056338028169
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 16.069993376731873,
+        "mean_cross_entropy_loss": 0.16069993376731873,
+        "perplexity": 1.17433253839957,
+        "combined_token_count": 103,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "sides of length 10.5, 14.5, and 18.5 units. Determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines.\nTo determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines, we first need to place the triangle in a coordinate system. Let's place the triangle such that one vertex is",
+      "response": "sides of length 10.5, 14.5, and 18.5 units. Determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines.\nTo determine the coordinates of the points that define the lines for the triangle's altitude, cevian, median, and symmedian lines, we first need to place the triangle in a coordinate system. Let's place the triangle such that one vertex is"
+    },
+    {
+      "id": "GEN07",
+      "category": "language",
+      "prompt": "The opposite of hot is",
+      "expected_concepts": [
+        "cold"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "cold"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.09836065573770492
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 65.70655107498169,
+        "mean_cross_entropy_loss": 0.6570655107498169,
+        "perplexity": 1.9291230294209591,
+        "combined_token_count": 105,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "cold, and the opposite of cold is hot. This is a _______.\nA. Metaphor\nB. Personification\nC. Hyperbole\nD. Irony\nAnswer:\nA\n\nThe main reason for the formation of the 'Three Gorges' is ____\nA. The terrain is higher in the west and lower in the east, with a large drop\nB. The terrain is higher in the east and lower in the west, with a large drop\nC. The",
+      "response": "cold, and the opposite of cold is hot. This is a kind of ____.\nA. Contradiction\nB. Contradictory relationship\nC. Contradictory relationship\nD. Contradictory relationship\nAnswer:\nC\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High viscosity\nC. High salinity\nD. High temperature\nAnswer:\nB\n\nThe main reason for the formation of the"
+    },
+    {
+      "id": "GEN08",
+      "category": "general-knowledge",
+      "prompt": "The sun rises in the",
+      "expected_concepts": [
+        "east"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "east"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.8777777777777778
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 99,
+        "negative_log_likelihood": 81.1681267619133,
+        "mean_cross_entropy_loss": 0.8198800683021545,
+        "perplexity": 2.2702275489602743,
+        "combined_token_count": 104,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "east and sets in the west. This is a characteristic of the Earth's ___\nA. Shape\nB. Size\nC. Direction of rotation\nD. Direction of revolution\nAnswer:\nC\n\nThe main reason for the formation of the'suspended river' in the figure is ____\nA. The riverbed is too low, and the river water is too deep\nB. The riverbed is too low, and the river water is too shallow\nC. The riverbed is",
+      "response": "east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in the west. The sun rises in the east and sets in"
+    },
+    {
+      "id": "GEN09",
+      "category": "arithmetic",
+      "prompt": "Twelve divided by three equals",
+      "expected_concepts": [
+        "four",
+        "4"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "four",
+          "4"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 2,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 13,
+        "negative_log_likelihood": 7.5317994356155396,
+        "mean_cross_entropy_loss": 0.5793691873550415,
+        "perplexity": 1.7849121304031734,
+        "combined_token_count": 19,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "four. 12 divided by 3 equals 4.",
+      "response": "four. 12 divided by 3 equals 4."
+    },
+    {
+      "id": "GEN10",
+      "category": "biology",
+      "prompt": "Plants use sunlight to produce energy through a process called",
+      "expected_concepts": [
+        "photosynthesis"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "photosynthesis"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 1,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 39.9062305688858,
+        "mean_cross_entropy_loss": 0.39906230568885803,
+        "perplexity": 1.490426477762935,
+        "combined_token_count": 111,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "photosynthesis. This process involves the absorption of sunlight by chlorophyll, a green pigment found in the chloroplasts of plant cells. The chlorophyll absorbs light energy and uses it to split water molecules into hydrogen and oxygen. The hydrogen is used to produce glucose, a simple sugar that is used as an energy source by the plant. The oxygen is released into the atmosphere as a byproduct of the process. Photosynthesis is a crucial process for the survival of plants and is essential for the",
+      "response": "photosynthesis. In this process, carbon dioxide and water are converted into glucose and oxygen. The glucose is used by the plant as a source of energy, while the oxygen is released into the atmosphere. This process is essential for life on Earth, as it provides the energy needed for all living organisms to survive."
+    },
+    {
+      "id": "GEN11",
+      "category": "procedural",
+      "prompt": "To make a cup of tea, the first step is to",
+      "expected_concepts": [
+        "heat water",
+        "boil water"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "boil water"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2954545454545454
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 40.414318442344666,
+        "mean_cross_entropy_loss": 0.40414318442344666,
+        "perplexity": 1.4980184245072758,
+        "combined_token_count": 112,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "boil water. The boiling point of water is 100 degrees Celsius. If you want to boil water at a temperature of 90 degrees Celsius, how much lower is this temperature compared to the boiling point? To determine how much lower the temperature of 90 degrees Celsius is compared to the boiling point of 100 degrees Celsius, we need to subtract the lower temperature from the higher temperature. Here are the steps:\n\n1. Identify the boiling point of water: 10",
+      "response": "boil water. The water is heated in a kettle, and the kettle is placed on the stove. The stove is a device that heats the water. The stove is controlled by a switch. The switch is a device that turns the stove on and off. The switch is controlled by a knob. The knob is a device that turns the switch on and off. The knob is controlled by a hand. The hand is a device that turns the knob on and off. The knob is controlled by a finger"
+    },
+    {
+      "id": "GEN12",
+      "category": "common-sense",
+      "prompt": "If someone drops a glass on a hard floor, it may",
+      "expected_concepts": [
+        "break",
+        "shatter"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "break",
+          "shatter"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 2,
+        "concept_recall": 1.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.06172839506172845
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 75,
+        "negative_log_likelihood": 40.44623672962189,
+        "mean_cross_entropy_loss": 0.5392831563949585,
+        "perplexity": 1.7147771944318833,
+        "combined_token_count": 87,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "shatter into pieces. However, if the same glass is dropped on a carpeted floor, it may not shatter. This is because the carpeted floor provides a softer surface for the glass to impact, reducing the force of the impact and preventing the glass from shattering. This is an example of how the properties of a surface can affect the outcome of an event.",
+      "response": "shatter into pieces. However, if it falls on a carpeted floor, it may break into pieces. This is because the glass is more likely to shatter when it hits a hard surface. This is an example of the effect of the surface on the force of impact.  Two identical glass cups are dropped from the same height. One cup is dropped on a hard floor, while the other is dropped on a carpeted floor.  Which cup will shatter into pieces?\nThe answer to"
+    },
+    {
+      "id": "GEN13",
+      "category": "language",
+      "prompt": "She went to the library because she wanted to",
+      "expected_concepts": [
+        "read",
+        "study",
+        "borrow a book"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "read"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.033333333333333326
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 56.82489275932312,
+        "mean_cross_entropy_loss": 0.5682489275932312,
+        "perplexity": 1.7651733971889574,
+        "combined_token_count": 109,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "borrow a book. Which of the following options correctly expresses this meaning?\nA. wanted to borrow\nB. wanted to borrow it\nC. wanted to borrow it\nD. wanted to borrow it\nAnswer:\nA\n\nWhich of the following statements about the relationship between the Earth's rotation and revolution is true?\nA. The Earth's rotation and revolution are both completed in one day.\nB. The Earth's rotation and revolution are both completed in one year.\nC. The Earth's rotation is",
+      "response": "read a book.  Given the context: What does she need to do before this?\nChoose from:\n (A). find a book;\n (B). go to the library;\n (C). find a book to read;\n(B)."
+    },
+    {
+      "id": "GEN14",
+      "category": "creative-writing",
+      "prompt": "Once upon a time, in a small village near the mountains,",
+      "expected_concepts": [
+        "coherent continuation",
+        "grammatical prose"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.0
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 57.58705735206604,
+        "mean_cross_entropy_loss": 0.5758705735206604,
+        "perplexity": 1.778678323331059,
+        "combined_token_count": 113,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "there lived a young girl named Lily. She was very curious and loved to explore the world around her. One day, while wandering through the forest, she stumbled upon a hidden cave. The cave was dark and mysterious, but Lily was determined to explore it.\n\nAs she entered the cave, she noticed that it was filled with strange and beautiful creatures. There were talking animals, magical plants, and even a talking tree. Lily was amazed by all of the wonders she had discovered, but she soon realized",
+      "response": "there lived a wise old man. He was known for his deep knowledge and wisdom. One day, a young girl named Lily came to visit him. She was very curious and wanted to learn more about the world. The old man decided to teach her a lesson about the power of knowledge.\n\n\"Listen to me carefully, Lily,\" he said. \"Knowledge is the key to success. It can help you achieve your dreams and make a difference in the world. But knowledge alone is not enough. You"
+    },
+    {
+      "id": "GEN15",
+      "category": "technology",
+      "prompt": "Artificial intelligence is a field of computer science that",
+      "expected_concepts": [
+        "intelligent systems",
+        "machine capabilities",
+        "automated reasoning or learning"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "automated reasoning or learning"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.02352941176470591
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 40.99522531032562,
+        "mean_cross_entropy_loss": 0.4099522531032562,
+        "perplexity": 1.506745840957225,
+        "combined_token_count": 110,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "deals with the development of intelligent machines that can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. AI is a rapidly growing field with many applications in various industries, including healthcare, finance, transportation, and manufacturing.\nOne of the most significant applications of AI is in healthcare. AI can be used to analyze medical images, such as X-rays and MRIs, to detect diseases and abnormalities that may be difficult for human doctors to see. AI",
+      "response": "focuses on creating intelligent machines that can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. AI is a rapidly growing field with applications in a wide range of industries, including healthcare, finance, transportation, and manufacturing.\nOne of the key areas of AI research is machine learning, which involves training algorithms to learn from data and make predictions or decisions based on that data. Another area of AI research is natural language processing, which involves enabling machines to"
+    }
+  ]
+}

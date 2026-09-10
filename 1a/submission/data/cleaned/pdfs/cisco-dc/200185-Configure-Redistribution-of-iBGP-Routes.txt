@@ -1,0 +1,104 @@
+Contents
+Introduction
+Prerequisites
+Requirements
+Components Used
+Background Information
+Configure
+Network Diagram
+ASR1001
+Nexus1
+Nexus2
+Verify
+Before "Match Route-Type Internal" Command Is Applied
+After "Match Route-Type Internal" Command Is Applied
+Related Cisco Support Community Discussions
+Introduction
+This document describes the method to redistribute iBGP route (Internal Border Gateway
+Protocol) into OSPF(Open Shortest Path First ) on Nexus platforms.
+Prerequisites
+Requirements
+Cisco recommends that you have basic knowledge of BGP(Border Gateway Protocol) and OSPF
+Routing Protocols.
+Components Used
+This document is restricted to NX-OS software and Nexus family of switches.
+The information in this document was created from the devices in a specific lab environment. All of
+the devices used in this document started with a cleared (default) configuration. If your network is
+live, make sure that you understand the potential impact of any command.
+Background Information
+On Nexus platform, when redistribution from BGP to OSPF protocol is done, by default only EBGP
+routes are redistributed. In order to redistribute the Internal BGP routes a route-map needs to be
+configured and applied in redistribute command under OSPF configuration.
+Configure
+
+Network Diagram
+Following image would be used as as sample topology for rest of the document.
+In this example topology, OSPF neighborship is configured between the two Nexus devices.
+ASR1001 router is having iBGP peering with Nexus 1. Nexus 1 learns prefix 192.168.1.0/24 from
+ASR 1001 through iBGP which is redistributed into OSPF process 10 to be sent to Nexus 2.
+ASR1001
+Following is the configuration on ASR1001 router:
+Nexus1
+Nexus2
+Verify
+This sections describe the output of prefix in Nexus1 and Nexus2 before and after applying the
+comamnd "match route-type internal".
+Before "Match Route-Type Internal" Command Is Applied
+The prefix 192.168.1.0/24 learned in Nexus 1 from ASR1001 through iBGP .
+Nexus1# sh ip bgp
+BGP routing table information for VRF default, address family IPv4 Unicast
+BGP table version is 4, local router ID is 10.10.12.2
+
+Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best
+Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i
+njected
+Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup
+Network Next Hop Metric LocPrf Weight Path
+*>i192.168.1.0/24 10.10.12.1 0 100 0 i
+Based on the below configuration in Nexus1 the iBGP route is redistributed into OSPF process 10
+.
+Nexus1# sh ip bgp
+BGP routing table information for VRF default, address family IPv4 Unicast
+BGP table version is 4, local router ID is 10.10.12.2
+Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best
+Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i
+njected
+Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup
+Network Next Hop Metric LocPrf Weight Path
+*>i192.168.1.0/24 10.10.12.1 0 100 0 i
+Here the route-map is without the statemanet "match route-type internal". As shown below, the
+prefix 192.168.1.0/24 is not found in routing table of Nexus 2.
+Nexus2# show ip route 192.168.1.0
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+Route not found
+Also the prefix 192.168.1.0/24 is not available in OSPF database in Nexus 1.
+Nexus1# show ip ospf database external 192.168.1.0
+OSPF Router with ID (2.2.2.2) (Process ID 10 VRF default)
+After "Match Route-Type Internal" Command Is Applied
+The statement "match route-type" is added to the route-map iBGP2OSPF now:
+!
+route-map iBGP2OSPF permit 10
+match ip address prefix-list iBGP2OSPF
+match route-type internal
+!
+After adding the stament, the output on Nexus1 shows the prefix 192.168.1.0/24 is present in
+OSPF database.
+Nexus1# show ip ospf database external 192.168.1.0
+OSPF Router with ID (2.2.2.2) (Process ID 10 VRF default)
+Type-5 AS External Link States
+Link ID ADV Router Age Seq# Checksum Tag
+192.168.1.0 2.2.2.2 20 0x80000002 0xa6ad 10
+The route 192.168.1.0/24 is now present in Routing table of Nexus2 as expected:
+Nexus2# show ip route 192.168.1.0
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+192.168.1.0/24, ubest/mbest: 1/0
+*via 10.10.23.2, Eth3/1, [110/1], 00:01:11, ospf-10, type-2, tag 10

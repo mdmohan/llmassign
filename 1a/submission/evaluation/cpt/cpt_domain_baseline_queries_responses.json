@@ -1,0 +1,685 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643
+  },
+  "query_source": "domain_baseline_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "id": "DC01",
+      "category": "architecture",
+      "prompt": "In a leaf-spine data center network, every leaf switch connects to",
+      "expected_concepts": [
+        "every spine switch",
+        "equal-cost paths",
+        "predictable latency"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "every spine switch"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.1428571428571429
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 31.72461986541748,
+        "mean_cross_entropy_loss": 0.3172461986541748,
+        "perplexity": 1.3733406449256966,
+        "combined_token_count": 114,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a spine switch through a single fiber. If there are 10 leaf switches and 5 spine switches, and each fiber can carry 1000 bits of data per second, how many bits of data can be transmitted per second from all the leaf switches to all the spine switches combined? To determine the total number of bits of data that can be transmitted per second from all the leaf switches to all the spine switches combined, we need to follow these steps:\n\n1. Calculate the total number",
+      "response": "every spine switch. If there are 10 leaf switches and 5 spine switches, how many connections are there in total? To determine the total number of connections in a leaf-spine data center network where each leaf switch connects to every spine switch, we can follow these steps:\n\n1. Identify the number of leaf switches and the number of spine switches.\n   - There are 10 leaf switches.\n   - There are 5 spine switches.\n\n2. Calculate the total number of connections by"
+    },
+    {
+      "id": "DC02",
+      "category": "vpc",
+      "prompt": "A Cisco Nexus virtual port channel (vPC) allows",
+      "expected_concepts": [
+        "two physical switches",
+        "one logical port channel",
+        "redundancy"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "redundancy"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.012658227848101222
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 86.52634620666504,
+        "mean_cross_entropy_loss": 0.8652634620666504,
+        "perplexity": 2.375631892423341,
+        "combined_token_count": 111,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "multiple physical ports to be aggregated into a single logical port. Which of the following statements about vPC is incorrect?\nA. A vPC can be configured with multiple physical ports.\nB. A vPC can be configured with multiple virtual ports.\nC. A vPC can be configured with multiple logical ports.\nD. A vPC can be configured with multiple physical ports and virtual ports.\nAnswer:\nC\n\nThe main function of the ____ is to provide a path for the train to enter and exit",
+      "response": "you to connect two or more Cisco Nexus 9000 Series switches together. The vPC feature provides a high-availability solution for your network by ensuring that the switches remain connected even if one of them fails. This feature is particularly useful in environments where network redundancy is critical, such as data centers or critical infrastructure.\nTo configure a vPC, you need to follow these steps:\n1. Enable the vPC feature on both switches.\n2. Configure the vPC peer links, which are"
+    },
+    {
+      "id": "DC03",
+      "category": "vpc",
+      "prompt": "The purpose of the vPC peer-link is to",
+      "expected_concepts": [
+        "synchronize state",
+        "carry selected traffic",
+        "connect vPC peers"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4683544303797469
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 66.02540016174316,
+        "mean_cross_entropy_loss": 0.6602540016174316,
+        "perplexity": 1.9352838372029746,
+        "combined_token_count": 110,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "achieve interconnectivity between two vPCs. Which of the following statements about the vPC peer-link is incorrect?\nA. The vPC peer-link is a logical link between two vPCs.\nB. The vPC peer-link is a logical link between two vPCs.\nC. The vPC peer-link is a logical link between two vPCs.\nD. The vPC peer-link is a logical link between two vPCs.\nAnswer:\nB\n\nThe main function of",
+      "response": "establish a Layer 2 link between the vPC peers. The vPC peer-link is a Layer 2 link that is configured as a trunk with the native VLAN and the secondary VLANs. The vPC peer-link is used to carry Layer 2 traffic between the vPC peers.\nThe vPC peer-link is configured as a Layer 2 trunk with the native VLAN and the secondary VLANs. The vPC peer-link is used to carry Layer 2 traffic between the vPC peers."
+    },
+    {
+      "id": "DC04",
+      "category": "vxlan",
+      "prompt": "In a VXLAN fabric, a VNI is used to",
+      "expected_concepts": [
+        "identify an overlay network",
+        "segment traffic",
+        "VXLAN network identifier"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.3098591549295775
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 81.0315489768982,
+        "mean_cross_entropy_loss": 0.8103154897689819,
+        "perplexity": 2.248617290531052,
+        "combined_token_count": 112,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "identify a VXLAN tunnel. Which of the following statements about VNI is incorrect?\nA. A VNI can be used to distinguish between different tenants.\nB. A VNI can be used to distinguish between different VXLAN tunnels.\nC. A VNI can be used to distinguish between different VXLAN subnets.\nD. A VNI can be used to distinguish between different VXLAN segments.\nAnswer:\nD\n\nThe main function of the ____ is to provide a path for the train to enter",
+      "response": "encapsulate multiple VNIs. Which of the following statements about the relationship between VNI and VNIs is correct?\nA. A VNI can be associated with multiple VNIs.\nB. A VNI can be associated with multiple VTEPs.\nC. A VNI can be associated with multiple VTEPs.\nD. A VNI can be associated with multiple VNIs.\nAnswer:\nD\n\nIn the process of handling administrative cases, which of the following statements about the use of identification is"
+    },
+    {
+      "id": "DC05",
+      "category": "evpn",
+      "prompt": "BGP EVPN provides the VXLAN fabric with",
+      "expected_concepts": [
+        "control plane",
+        "MAC reachability",
+        "IP reachability"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2432432432432432
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 44.997164607048035,
+        "mean_cross_entropy_loss": 0.44997164607048035,
+        "perplexity": 1.5682677183074092,
+        "combined_token_count": 110,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the ability to support Layer 2 and Layer 3 features. Which of the following statements about VXLAN EVPN are correct?\nA. VXLAN EVPN can provide Layer 2 and Layer 3 features.\nB. VXLAN EVPN can provide Layer 2 and Layer 3 features.\nC. VXLAN EVPN can provide Layer 2 and Layer 3 features.\nD. VXLAN EVPN can provide Layer 2 and Layer 3 features.\nAnswer:\nABCD\n\nThe",
+      "response": "the ability to advertise MAC addresses to the external network. Which of the following statements about BGP EVPN are correct? (Multiple choices)\nA. BGP EVPN supports both Type 1 and Type 2 MAC-IP address advertisement.\nB. BGP EVPN Type 2 MAC-IP address advertisement is used to advertise MAC-IP address information to the external network.\nC. BGP EVPN Type 1 MAC address advertisement is used to advertise MAC address information to the external network"
+    },
+    {
+      "id": "DC06",
+      "category": "vxlan",
+      "prompt": "A VTEP performs the function of",
+      "expected_concepts": [
+        "VXLAN encapsulation",
+        "VXLAN decapsulation",
+        "overlay tunnel endpoint"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.36111111111111116
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 63.68333101272583,
+        "mean_cross_entropy_loss": 0.6368333101272583,
+        "perplexity": 1.8904848113650945,
+        "combined_token_count": 108,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a VRF gateway, which is responsible for encapsulating and decapsulating the VRF data packets. Which of the following statements about the VTEP are correct?\nA. The VTEP is responsible for encapsulating and decapsulating the VRF data packets.\nB. The VTEP is responsible for encapsulating and decapsulating the VRF data packets.\nC. The VTEP is responsible for encapsulating and decapsulating the VRF data packets.\nD. The",
+      "response": "a Layer 3 router and a Layer 2 switch. It is connected to a Layer 2 network and a Layer 3 network. The VTEP encapsulates the Ethernet frames in VXLAN packets and forwards them to the remote VTEP. The remote VTEP decapsulates the VXLAN packets and forwards them to the Layer 3 network.\nA VTEP is a Layer 3 router and a Layer 2 switch. It is connected to a Layer 2 network and"
+    },
+    {
+      "id": "DC07",
+      "category": "routing",
+      "prompt": "Equal-cost multipath routing in a leaf-spine fabric provides",
+      "expected_concepts": [
+        "load balancing",
+        "path redundancy",
+        "multiple equal-cost paths"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.17582417582417587
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 112.5267505645752,
+        "mean_cross_entropy_loss": 1.125267505645752,
+        "perplexity": 3.08104093453412,
+        "combined_token_count": 112,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a simple and effective way to reduce the cost of routing in a network. However, the cost of a path is not always the same for all flows. In this paper, we propose a new cost model for multipath routing in a leaf-spine fabric. The cost model is based on the cost of the shortest path between the source and destination, and the cost of the shortest path between the leaf and spine. We show that the cost model is a generalization of the cost model proposed by [",
+      "response": "a mechanism to distribute traffic across multiple paths to a common destination. This is accomplished by configuring a set of leaf switches to forward traffic to a set of spine switches, which in turn forward traffic to a set of remote leaf switches. The remote leaf switches then forward traffic to the destination. The set of paths is determined by the leaf switches based on the shortest path to the destination, and the paths are distributed to the spine switches. The spine switches then forward traffic to the remote leaf switches, which in"
+    },
+    {
+      "id": "DC08",
+      "category": "configuration",
+      "prompt": "To create VLAN 120 and configure Ethernet1/10 as an access port in NX-OS, use",
+      "expected_concepts": [
+        "vlan 120",
+        "interface Ethernet1/10",
+        "switchport mode access",
+        "switchport access vlan 120",
+        "no shutdown"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "vlan 120",
+          "switchport mode access",
+          "switchport access vlan 120"
+        ],
+        "concept_hit_count": 3,
+        "concept_count": 5,
+        "concept_recall": 0.6,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.24137931034482762
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 30.537819862365723,
+        "mean_cross_entropy_loss": 0.3053781986236572,
+        "perplexity": 1.3571381737492976,
+        "combined_token_count": 124,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following commands: \nA. [Huawei]vlan 120 [Huawei-vlan120]port Ethernet1/10\nB. [Huawei]vlan 120 [Huawei-vlan120]port Ethernet1/10 access\nC. [Huawei]vlan 120 [Huawei-vlan120]port Ethernet1/10 trunk\nD. [Huawei]vlan 120 [",
+      "response": "the following commands:\nswitch(config)# vlan 120\nswitch(config-vlan)# interface ethernet 1/10\nswitch(config-if)# switchport\nswitch(config-if)# switchport mode access\nswitch(config-if)# switchport access vlan 120\nswitch(config-if)# exit\nswitch(config)# exit\nswitch(config)# exit\nswitch# copy running-config startup-config\nswitch# show vlan brief\nswitch# show interface ethernet 1/10\nswitch# show running"
+    },
+    {
+      "id": "DC09",
+      "category": "configuration",
+      "prompt": "To create an LACP port channel on Cisco NX-OS, the member interfaces require",
+      "expected_concepts": [
+        "consistent member configuration",
+        "channel-group",
+        "active or passive LACP mode"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.24
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 81.07997179031372,
+        "mean_cross_entropy_loss": 0.8107997179031372,
+        "perplexity": 2.2497063979530214,
+        "combined_token_count": 117,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following configuration: \nA. The member interfaces must be in the same VLAN. \nB. The member interfaces must be in the same subnet. \nC. The member interfaces must be in the same VRF. \nD. The member interfaces must be in the same routing domain. \nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the train to enter and exit the station, and to ensure that the train can accurately stop at the designated position.\nA.",
+      "response": "the same\nspeed and duplex settings.\nTrue\nFalse\nAnswer:\nTrue\n\nThe following is a single-choice question from a Chinese engineering exam. Please select the correct answer.\nThe main function of the ____ is to provide a path for the train to enter and exit the station.\nA. Switch\nB. Track Circuit\nC. Signal\nD. Turnout\nAnswer:\nD\n\nThe following is a single-choice question from a Chinese engineering exam. Please select the correct answer.\nThe main function"
+    },
+    {
+      "id": "DC10",
+      "category": "troubleshooting",
+      "prompt": "A Type-1 vPC consistency mismatch can cause",
+      "expected_concepts": [
+        "vPC suspension",
+        "configuration incompatibility",
+        "affected VLAN or interface"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2597402597402597
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 70.96083164215088,
+        "mean_cross_entropy_loss": 0.7096083164215088,
+        "perplexity": 2.033194733675003,
+        "combined_token_count": 110,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following issues:\nA. The vPC link fails\nB. The vPC link is in a down state\nC. The vPC link is in a suspended state\nD. The vPC link is in a suspended state\nAnswer:\nABCD\n\nThe main contents of the 'Three Meetings and One Class' system include ____.\nA. Branch Party Member Assembly\nB. Branch Committee Meeting\nC. Party Group Meeting\nD. Party Class\nAnswer:\nABCD\n\nThe main",
+      "response": "a vPC peer-link to go down. Which of the following is a possible cause of a Type-1 vPC consistency mismatch?\nA) The vPC peer-link is down.\nB) The vPC peer-link is in a different state.\nC) The vPC peer-link is in a different state.\nD) The vPC peer-link is in a different state.\nAnswer:\nB\n\nThe following is a single-choice question from a Chinese engineering exam. Please select the correct answer.\nThe"
+    },
+    {
+      "id": "DC11",
+      "category": "troubleshooting",
+      "prompt": "If CRC errors continuously increase on a Nexus interface, check",
+      "expected_concepts": [
+        "optics",
+        "cabling",
+        "peer interface",
+        "speed or FEC",
+        "physical layer"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.08571428571428574
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 71.61666750907898,
+        "mean_cross_entropy_loss": 0.7161666750907898,
+        "perplexity": 2.046572975685551,
+        "combined_token_count": 111,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following:\nA. Check the interface status\nB. Check the interface configuration\nC. Check the interface statistics\nD. Check the interface status and statistics\nAnswer:\nD\n\nThe main reason for the failure of the Xinhai Revolution was ____.\nA. The weakness of the bourgeoisie\nB. The weakness of the national bourgeoisie\nC. The weakness of the working class\nD. The weakness of the peasant class\nAnswer:\nA\n\nThe main reason for the failure of the X",
+      "response": "the interface counters to determine the cause. Which of the following counters should be examined?\nA. Interface output packet errors\nB. Interface output octets\nC. Interface input packet errors\nD. Interface input octets\nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the train to enter and exit the station.\nA. Signal\nB. Track\nC. Turnout\nD. Platform\nAnswer:\nC\n\nThe main function of the ____ is to provide"
+    },
+    {
+      "id": "DC12",
+      "category": "troubleshooting",
+      "prompt": "When a BGP neighbor remains in the Idle state, verify",
+      "expected_concepts": [
+        "IP reachability",
+        "AS numbers",
+        "neighbor address",
+        "update source",
+        "BGP configuration"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "neighbor address"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 5,
+        "concept_recall": 0.2,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6428571428571428
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 73.49674105644226,
+        "mean_cross_entropy_loss": 0.7349674105644226,
+        "perplexity": 2.0854140289314387,
+        "combined_token_count": 112,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "whether the neighbor relationship has been established. If the neighbor relationship has not been established, check whether the BGP neighbor configuration is correct. If the neighbor relationship has been established, check whether the BGP neighbor configuration is correct.\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nThe main function of the ____ is to connect the main circuit and the control circuit, and to provide insulation between the main circuit and the control circuit.\nA. Main circuit\nB. Control circuit\nC. Auxiliary",
+      "response": "whether the neighbor relationship has been established. If the neighbor relationship has not been established, check the configuration of the neighbor's IP address and the BGP neighbor address. If the neighbor relationship has been established, check the neighbor's IP address and the BGP neighbor address. If the neighbor relationship has not been established, check the neighbor's IP address and the BGP neighbor address. If the neighbor relationship has been established, check the neighbor's IP address and the BGP neighbor address.\nA. Correct"
+    },
+    {
+      "id": "DC13",
+      "category": "troubleshooting",
+      "prompt": "Failure to reach a remote VXLAN VTEP can be investigated by checking",
+      "expected_concepts": [
+        "underlay routing",
+        "VTEP loopback reachability",
+        "NVE state",
+        "BGP EVPN"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5714285714285714
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 64.55323100090027,
+        "mean_cross_entropy_loss": 0.6455323100090027,
+        "perplexity": 1.9070018753270264,
+        "combined_token_count": 115,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following:\nA. Whether the remote VTEP is reachable\nB. Whether the remote VTEP is running\nC. Whether the remote VTEP is configured\nD. Whether the remote VTEP is configured correctly\nAnswer:\nABCD\n\nThe main contents of the 'Three Meetings and One Class' system include ____.\nA. Branch Party Member Assembly\nB. Branch Committee Meeting\nC. Party Group Meeting\nD. Party Class\nAnswer:\nABCD\n\nThe main",
+      "response": "the following:\nA. The remote VTEP's VXLAN EVPN routes are not advertised to the local VTEP.\nB. The remote VTEP's VXLAN EVPN routes are not advertised to the local VTEP.\nC. The remote VTEP's VXLAN EVPN routes are not advertised to the local VTEP.\nD. The remote VTEP's VXLAN EVPN routes are not advertised to the local VTEP.\nAnswer:\nA\n\nThe"
+    },
+    {
+      "id": "DC14",
+      "category": "interfaces",
+      "prompt": "UDLD is useful on fiber interfaces because it detects",
+      "expected_concepts": [
+        "unidirectional links",
+        "one-way communication failure"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4666666666666667
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 108.93417596817017,
+        "mean_cross_entropy_loss": 1.0893417596817017,
+        "perplexity": 2.9723169296566856,
+        "combined_token_count": 110,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the presence of a fiber cable and prevents the switch from being configured with a cable that is not connected. A. Correct B. Incorrect\nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the current to flow from the positive terminal of the power supply to the negative terminal, and to ensure that the current flows in the correct direction.\nA. Power supply\nB. Switch\nC. Fuse\nD. Circuit breaker\nAnswer:\nB\n\nThe main function of the",
+      "response": "and prevents\ncollision domains between two devices. It is not useful on copper interfaces\nbecause the collision domain is not defined by the cable.\nUDLD is not supported on the following interfaces:\n• Layer 2 interfaces that are not trunk ports\n• Layer 2 interfaces that are not trunk ports\n• Layer 2 interfaces that are not trunk ports\n• Layer 2 interfaces that are not trunk ports\n• Layer 2 interfaces that are not trunk ports\n• Layer 2 interfaces that are"
+    },
+    {
+      "id": "DC15",
+      "category": "interfaces",
+      "prompt": "Jumbo frames require the MTU to be configured consistently across",
+      "expected_concepts": [
+        "the complete forwarding path",
+        "all participating interfaces",
+        "end-to-end path"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.12790697674418605
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 71.38147950172424,
+        "mean_cross_entropy_loss": 0.7138147950172424,
+        "perplexity": 2.041765337195615,
+        "combined_token_count": 112,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "all switches in the network. If the MTU is not consistent, the switch will not be able to forward the frame. A. Correct B. Incorrect\nAnswer:\nA\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High pressure\nB. High temperature\nC. High viscosity\nD. High salinity\nAnswer:\nABC\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High",
+      "response": "all switches in the network. If the MTU is not consistent, the switch will not be able to forward the frame. This is because the switch will not be able to determine the correct frame size to use when forwarding the frame.\nTo ensure that the MTU is consistent across all switches in the network, you can configure the MTU on each switch. You can also use a spanning tree protocol such as STP or MSTP to ensure that the network is not fragmented.\nIf you are using"
+    },
+    {
+      "id": "DC16",
+      "category": "troubleshooting",
+      "prompt": "Repeated MAC moves between two interfaces usually indicate",
+      "expected_concepts": [
+        "Layer 2 loop",
+        "host movement",
+        "incorrect port channel",
+        "vPC issue"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.40909090909090906
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 104.29325103759766,
+        "mean_cross_entropy_loss": 1.0429325103759766,
+        "perplexity": 2.8375258995936923,
+        "combined_token_count": 108,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "that the network is experiencing a ____.\nA. Network congestion\nB. Network failure\nC. Network attack\nD. Network virus\nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the return of the main circuit current, limiting the current passing through the main contactor coil.\nA. Main contactor\nB. Auxiliary contactor\nC. Intermediate relay\nD. Time relay\nAnswer:\nB\n\nThe main function of the ____ is to provide a path",
+      "response": "a problem with the\nswitch. The MAC address table is not updated, and the switch does not forward traffic\nbetween the two interfaces. The MAC address table is not updated because the switch\ndoes not receive the ARP request for the MAC address.\nThe switch does not forward traffic between the two interfaces because the switch does\nnot receive the ARP request for the MAC address. The switch does not receive the ARP\nrequest because the ARP request is not sent out the interface that is not the source of"
+    },
+    {
+      "id": "DC17",
+      "category": "operations",
+      "prompt": "Cisco Nexus Dashboard is used to provide",
+      "expected_concepts": [
+        "centralized operations",
+        "fabric visibility",
+        "management"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.15555555555555556
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 94,
+        "negative_log_likelihood": 64.84647452831268,
+        "mean_cross_entropy_loss": 0.6898561120033264,
+        "perplexity": 1.9934286821467766,
+        "combined_token_count": 101,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a centralized view of the network. It is a web-based interface that allows network administrators to monitor and manage their network devices. The dashboard provides a visual representation of network traffic, including metrics such as bandwidth usage, packet loss, and latency. It also allows administrators to view and manage network devices, including switches, routers, and firewalls. The dashboard is designed to be user-friendly and intuitive, making it easy for network administrators to quickly identify and troubleshoot network issues.",
+      "response": "a centralized view of Cisco Nexus Dashboard data. It is a web-based application that allows you to monitor and manage Cisco Nexus Dashboard data from a single location. The Cisco Nexus Dashboard is a cloud-based platform that provides real-time visibility into network performance, security, and compliance. It is designed to help organizations optimize their network operations by providing insights into network health, performance, and security. The Cisco Nexus Dashboard is a powerful tool that can help organizations improve their network operations by providing real-time visibility into network performance"
+    },
+    {
+      "id": "DC18",
+      "category": "product-selection",
+      "prompt": "A fixed-form-factor Nexus 9300 switch is commonly selected when",
+      "expected_concepts": [
+        "leaf deployment",
+        "top-of-rack deployment",
+        "fixed-port density"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.41666666666666663
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 39.00160193443298,
+        "mean_cross_entropy_loss": 0.39001601934432983,
+        "perplexity": 1.4770044543360603,
+        "combined_token_count": 115,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "deploying a small number of switches in a campus network. Which of the following statements about the fixed-form-factor Nexus 9300 switch is true?\nA. The fixed-form-factor Nexus 9300 switch is a 1U switch.\nB. The fixed-form-factor Nexus 9300 switch is a 2U switch.\nC. The fixed-form-factor Nexus 9300 switch is a 3U switch.\nD. The fixed-form-factor Nexus 9",
+      "response": "a customer wants to deploy a small number of Cisco Nexus switches in a data center. The switch is a single chassis with a single power supply and a single fan tray. The switch is a 1U device with a 100W power supply. The switch is a 1U device with a 100W power supply. The switch is a 1U device with a 100W power supply. The switch is a 1U device with a 1"
+    },
+    {
+      "id": "DC19",
+      "category": "product-selection",
+      "prompt": "A modular Nexus 9500 platform is appropriate when the design requires",
+      "expected_concepts": [
+        "modularity",
+        "chassis expansion",
+        "higher scale",
+        "replaceable line cards"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.15476190476190477
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 69.80568170547485,
+        "mean_cross_entropy_loss": 0.6980568170547485,
+        "perplexity": 2.009843417016745,
+        "combined_token_count": 115,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a high degree of flexibility and scalability. The platform is designed to be modular, allowing for easy expansion and customization. It is also designed to be highly scalable, allowing for the addition of more modules as needed. The platform is also designed to be highly reliable, with redundant components and failover capabilities. The platform is also designed to be highly secure, with built-in security features and encryption capabilities. The platform is also designed to be highly efficient, with optimized hardware and software configurations. The platform is also",
+      "response": "a high degree of flexibility and scalability. The platform is composed of a number of modules, each of which is a self-contained chassis that contains a number of Cisco Nexus 9000 Series switches. The modules are connected together using a modular interconnect fabric (MIF) that provides a high degree of flexibility in terms of the number of switches that can be connected together and the number of switches that can be connected to each other. The MIF also provides a high degree of scalability, allowing"
+    },
+    {
+      "id": "DC20",
+      "category": "ai-data-center",
+      "prompt": "An Ethernet fabric for an AI training cluster should prioritize",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "congestion management",
+        "telemetry"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "low latency"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.09836065573770492
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 66.42715334892273,
+        "mean_cross_entropy_loss": 0.6642715334892273,
+        "perplexity": 1.943074540921296,
+        "combined_token_count": 110,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the use of high-speed Ethernet switches, and the number of switches should be limited to no more than 10. Determine if this statement is correct: A. Correct; B. Incorrect.\nAnswer:\nB\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB. No\nAnswer:\nB\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA",
+      "response": "the use of high-speed, low-latency, and low-jitter interfaces. Which of the following options is the most suitable choice?\nA. 100G\nB. 25G\nC. 400G\nD. 10G\nAnswer:\nA\n\nIn the process of using the OSPF protocol, which of the following statements about the Hello packets sent by the Designated Router (DR) is correct?\nA. The Hello packets sent by the"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+Nexus 9000 Cisco Intelligent Traffic Director
+Contents
+Introduction
+Background
+Components used
+Topology
+Configure ITD
+Verifiy ITD
+Introduction
+This document describes the configuration and basic troubleshooting of Intelligent Traffic Director
+(ITD) on Nexus 9000 platform
+Background
+Cisco Intelligent Traffic Director (ITD) is as follows
+Providing ASIC- based (hardware) Traffic distribution for Layer 3 and 4 services and
+l
+applications using Cisco Nexus 5/6/7/9K switches.
+It perform L3 and L4 traffic distribution but does not replace layer 7 load-balancers.
+l
+Performs health monitoring and automatic failure handling of load balanced servers.
+l
+It automatically creates ACL, Route-map policies to perform PBR functionality to redirect and
+l
+Load balance traffic.
+Components used
+HW - C9372PX
+SW - 7.0(3)I7(2)
+License Requirement
+Cisco NX-OS -ITD requires a Network Services license.
+Following logs seen when “Feature ITD” is enabled and we do not have the required license.
+VDC-1 %$ iscm[31793]: !!!!!! WARNING: 'NETWORK_SERVICES_PKG' LICENSE NOT FOUND
+ON THE SYSTEM !!!!!!. You have tried
+VDC-1 %$ iscm[31793]: System supports honor based license.Feature will be enabled and fully
+functional.License usage
+VDC-1 %$ iscm[31793]: If you have enabled this feature in error, please disable the feature. If you
+
+have not purchasem
+Features that we need to enable in order to use ITD
+Feature ITD
+l
+Feature PBR
+l
+Feature Sla Sender
+l
+Feature SLA Responder *
+l
+Topology
+Configure ITD
+
+Four Primary steps to configure an ITD Service
+Create Device group
+l
+Create ITD service
+l
+Attach Device group to ITD Service
+l
+Attach the Service to ingress interface
+l
+N9K_ITD
+version 7.0(3)I7(2)
+feature itd
+itd device-group Test
+probe icmp
+node ip 192.168.1.1
+node ip 192.168.1.2
+itd Telnet
+device-group Test ( Call the device group )
+virtual ip 192.168.2.2 255.255.255.255 tcp 23 ( Optional )
+ingress interface Vlan20 ( Assign ingress interface )
+no shut
+interface Vlan20
+no shutdown
+ip address 192.168.2.2/24
+ip policy route-map Telnet_itd_pool ( This line gets automatically added when we “no shut” the
+ITD service )
+Note : Apply this to L2 interfaces gives following error. Create L3 interface or an SVI.
+N9K_ITD(config-itd)# ingress interface ethernet 1/3
+ERROR: Interface:Ethernet1/3 is not a layer-3 interface
+Please note that the below config gets automatically added, these are the buckets that get created
+to each node defined to be LB via a PBR.
+Show run | section ITD
+feature itd
+ip access-list Telnet_itd_vip_1_bucket_1
+10 permit tcp 1.1.1.0 255.255.255.127 192.168.2.4/32 eq telnet
+ip access-list Telnet_itd_vip_1_bucket_2
+10 permit tcp 1.1.1.128 255.255.255.127 192.168.2.4/32 eq telnet
+route-map Telnet_itd_pool permit 10
+description auto generated route-map for ITD service Telnet
+match ip address Telnet_itd_vip_1_bucket_1
+set ip next-hop verify-availability 192.168.1.1 track 2
+route-map Telnet_itd_pool permit 11
+description auto generated route-map for ITD service Telnet
+match ip address Telnet_itd_vip_1_bucket_2
+set ip next-hop verify-availability 192.168.1.2 track 3
+ip policy route-map Telnet_itd_pool
+switch(config)# show route-map Telnet_itd_pool
+route-map Telnet_itd_pool, permit, sequence 10
+Description: auto generated route-map for ITD service Telnet
+
+Match clauses:
+ip address (access-lists): Telnet_itd_bucket_1
+Set clauses:
+ip next-hop verify-availability 192.168.1.1 track 2 [ UP ]
+route-map Telnet_itd_pool, permit, sequence 11
+Description: auto generated route-map for ITD service Telnet
+Match clauses:
+ip address (access-lists): Telnet_itd_bucket_2
+Set clauses:
+ip next-hop verify-availability 192.168.1.2 track 3 [ UP ]
+Verifiy ITD
+N9K_ITD(config)# show itd Telnet statistics
+Service Device Group VIP/mask
+#Packets
+-------------------------------------------------------------------------------------
+Telnet Test 192.168.2.2 /
+255.255.255.255 0 (0%)
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_1 192.168.1.1
+Bypass 192.168.1.1 0 (0%) <<<<<<<<<<
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_2 192.168.1.2
+Bypass 192.168.1.2 0 (0%) <<<<<<<<<<
+N9K_ITD(config)# show itd Telnet statistics
+Service Device Group VIP/mask
+#Packets
+-------------------------------------------------------------------------------------
+Telnet Test 192.168.2.2 /
+255.255.255.255 0 (0%)
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_1 192.168.1.1
+Bypass 192.168.1.1 0 (0%) <<<<<<<<<<
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_2 192.168.1.2
+Bypass 192.168.1.2 0 (0%) <<<<<<<<<<
+Telnet to the Vlan 20 Loadbalancer VIP ( SVI )
+N9K_ITD(config)# show itd Telnet statistics
+Service Device Group VIP/mask
+#Packets
+-------------------------------------------------------------------------------------
+Telnet Test 192.168.2.2 /
+
+255.255.255.255 0 (0%)
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_1 192.168.1.1
+Bypass 192.168.1.1 0 (0%) <<<<<<<<<<
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_2 192.168.1.2
+Bypass 192.168.1.2 0 (0%) <<<<<<<<<<
+Packets received by VIP (31 packets )and forwarded to Node (192.168.1.1) 31 packets.
+N9K_ITD(config)# show it Telnet statistics
+Service Device Group VIP/mask
+#Packets
+--------------------------------------------------------------------------------
+Telnet Test 192.168.2.2 /
+255.255.255.255 31 (100.00%)
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_1 192.168.1.1
+Redirect 192.168.1.1 31 (100.00%)
+Traffic Bucket Assigned to
+Mode Original Node #Packets
+--------------- --------------
+Telnet_itd_vip_1_bucket_2 192.168.1.2
+Redirect 192.168.1.2 0 (0.00%)
+Known defects:
+https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvc73162/?reffering_site=dumpcr

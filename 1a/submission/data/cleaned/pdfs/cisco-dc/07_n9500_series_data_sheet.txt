@@ -1,0 +1,378 @@
+Data sheet
+Cisco public
+Cisco N9500 Series Switches
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 1 of 15
+
+Contents
+Product overview 3
+Deployment scenarios 4
+Spine-leaf fabric architecture 5
+Core, Aggregation, and gateway roles 5
+End-of-row access layer switch 5
+Switch components for the Cisco N9500 series 6
+Switch chassis for the Cisco N9500 series 6
+Supervisor modules for the Cisco N9500 series 9
+System controller for the Cisco N9500 platform 9
+Fabric module for the Cisco N9500 platform 10
+Fan trays for the Cisco N9500 platform 10
+Cisco N9500 platform power supply 11
+Warranty 13
+Cisco environmental sustainability 13
+Service and Support 13
+Cisco Capital 14
+For more information 14
+Document history 15
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 2 of 15
+
+Product overview
+Application architectures and deployment modes are rapidly evolving. Modern applications are multinode,
+highly modular, and deployed over a combination of bare-metal, virtual, and cloud data center
+environments. In addition to that, individual departments within an organization have varying infrastructure
+and networking needs. These factors require that data center networks be simple, programmable,
+extensible, scalable, and shareable to meet the demands of applications.
+The Cisco N9000 Series Switches operate in one of two modes – Cisco Application Centric Infrastructure
+(Cisco ACI™) or Cisco NX-OS. In Cisco ACI mode, these switches provide a turnkey, fully automated,
+policy-based architecture to design and manage data center fabrics. In Cisco NX-OS mode, these
+switches provide the capability to use foundational layer 2/3 technologies, as well as modern technologies
+such as VXLAN, with a Border Gateway Protocol‒Ethernet VPN (BGP-EVPN) control plane, Segment
+routing, Multiprotocol Label Switching (MPLS), and automation via NX-APIs.
+The Cisco N9000 Series Switches include the N9500 Series modular switches and the N9200/N9300
+Series fixed switches.
+Cisco N9000 Series Switch Chassis
+The Cisco N9500 Series modular switches support a comprehensive selection of line cards and fabric
+modules that provide 1-, 10-, 25-, 40-, 50-, 100-, 200-, and 400-Gigabit Ethernet interfaces. Using these
+line cards the Cisco N9500 Series switches can be configured with up to.
+1. 256 400-Gigabit Ethernet ports (or)
+2. 524 200-Gigabit Ethernet ports# (or)
+3. 1024 100-Gigabit Ethernet ports (or)
+4. 2048 50-Gigabit Ethernet ports (or)
+5. 1024 40-Gigabit Ethernet ports (or)
+6. 2304 25-Gigabit Ethernet ports (or)
+7. 2304 1/10-Gigabit Ethernet ports
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 3 of 15
+
+The supervisor, system controller, power supplies, and line cards are common across all three switches.
+Each switch, however, has unique fabric modules, and fan trays that plug in vertically in the rear of the
+chassis.
+Table 1. Features and benefits
+Feature Benefit
+High performance The Cisco N9500 Series switch delivers nonblocking performance at a latency of 5
+microseconds or less at 400-, 100-, 50-, 40-, 25-, 10-, and 1-Gigabit Ethernet speeds. This
+enables customers to build robust and scalable high-speed fabrics that can support several
+thousands of high-speed access ports.
+Telemetry The Cisco N9500 Series switches support extensive switch and flow telemetry capabilities
+that provide extensive real-time visibility into switch and fabric states.
+High-density 1-, 10-, 25-, Organizations can transition from low-speed (100-Megabit Ethernet and 1-Gigabit Ethernet)
+40- and 50-Gigabit server access designs to high-speed (1-, 10-, 25-, 40-, and 50-Gigabit Ethernet) server
+Ethernet access access designs with the same port density.
+configuration
+High-density 10-, 40-, The Cisco N9500 Series Switches help organizations transition from 1- and 10-Gigabit
+100- and 400-Gigabit Ethernet infrastructure to 10-, 40-, 100-, and 400-Gigabit Ethernet infrastructures to support
+Ethernet aggregation and the increased bandwidth demands of scale-out, multinode application environments. The
+spine configuration compatibility of 400-Gigabit Ethernet QSFP-DD modules, 100-Gigabit Ethernet QSFP28
+modules, and 40-Gigabit Ethernet QSFP+ modules enables the migration and coexistence of
+40-, 100- and 400-Gigabit Ethernet ports in the fabric.
+High availability, The Cisco N9500 Series Switches are designed with redundant supervisors, system
+reliability, and scalability controllers, power supplies, and fan trays, which eliminate any single point of failure in the
+chassis. These switches also support up to 6 fabric modules, which provide redundancy and
+graceful degradation of switching capacity in the event of fabric module failures. All
+transceivers are pluggable to support the highest possible Mean Time Between Failure
+(MTBF) for the switch.
+Designed for the future The Cisco N9500 Series Switches are designed for future expansion with the capability to
+support higher speed ports and more bandwidth.
+Power efficiency The Cisco N9500 Series Switches are the first switch chassis designed without a midplane.
+The line cards and fabric modules connect directly. This revolutionary design provides optimal
+front-to-back airflow and helps the switch operate with less power. In addition, all
+Cisco N9500 Series switch power supplies are rated at or higher than 80PLUS Platinum for
+AC inputs and equivalent efficiency for DC inputs.
+The typical power consumption per 10-Gigabit Ethernet port is less than 3.5 watts (W).
+The typical power consumption per 40- and 100-Gigabit Ethernet port is less than 14W and
+22W respectively.
+Deployment scenarios
+The Cisco N9500 Series Switches support various deployment scenarios:
+● Spine nodes in a spine-leaf fabric
+● Core or aggregation node in an L2/L3 network
+● Border gateway in a L2/L3 network
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 4 of 15
+
+Spine-leaf fabric architecture
+The high port-density and ability to support multispeed ports on the same chassis make the Cisco N9500
+Series Switches the ideal choice as a spine in spine-leaf fabric architectures. The Cisco N9500 Series
+Switches can function as a spine in either Cisco Application Centric Infrastructure (Cisco ACI) or Cisco NX-
+OS operating modes (Figure 2).
+Spine-Leaf Architecture using Cisco N9300 and N9500 Switches
+Cisco ACI is the most comprehensive solution to enable data center automation and application agility. It
+provides a secure, scalable, deterministic, and integrated policy-based architecture, which enables rapid
+application deployment and workload mobility in data centers. The Cisco N9000 Series cloud-scale
+switches are the foundation to deploy and run Cisco ACI. The Cisco N9500 Series cloud-scale switches
+and select Cisco N9300 Series cloud-scale switches provide the ACI spine functionality in the Cisco ACI
+fabric. The Cisco N9300 Series cloud-scale switches provide the ACI leaf functionality in the Cisco ACI
+fabric.
+In Cisco NX-OS mode, the Cisco N9500 Series Switches support foundational routing and switching
+technologies along with modern technologies such as VXLAN with BGP-EVPN control plane, segment
+routing, MPLS, and open APIs. These technologies provide the flexibility to build spine-leaf data center
+fabrics or classical three-tier data center networks. In this mode, the Cisco® Data Center Network Manager
+(DCNM) can manage the Cisco N9500 Series Switches.
+Core, Aggregation, and gateway roles
+The Cisco N9500 Series Switches support line cards that provide a choice of smart buffers, deep buffers,
+large tables, and high-density, high-speed Ethernet interfaces. These hardware capabilities, along with
+extensive routing and switching software capabilities, make the Cisco N9500 Series Switches an excellent
+choice as a core, aggregation, or gateway switch.
+End-of-row access layer switch
+As the Cisco N9500 Series Switches support high-density, multispeed Ethernet ports, these switches can
+also be deployed as end-of-row switches providing access connections to blade or rack servers. The
+Cisco N9500 Series Switches also provide the flexibility to incrementally transition from lower-speed
+server connections to higher-speed server connections.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 5 of 15
+
+Switch components for the Cisco N9500 series
+The Cisco N9500 Series Switch includes the components shown in Figure 3.
+Cisco N9500 Series Switch Components
+The Cisco N9500 Series switches support several line cards and fabric modules. The following data sheets
+describe each family of line cards and fabric modules:
+● Cisco N9500 Cloud Scale Line Cards and Fabric Modules. URL:
+https://www.cisco.com/c/en/us/products/collateral/switches/n-9000-series-switches/datasheet-c78-
+736677.html.
+● Cisco N9500 R-Series (Deep Buffer) Line Cards and Fabric Modules. URL:
+https://www.cisco.com/c/en/us/products/collateral/switches/n-9000-series-switches/datasheet-c78-
+738321.html.
+● Cisco N9500 Classic Line Cards and Fabric Modules. URL:
+https://www.cisco.com/c/en/us/products/collateral/switches/n-9000-series-switches/datasheet-c78-
+741336.html.
+Switch chassis for the Cisco N9500 series
+The Cisco N9500 Series Switch has Three Chassis – a 4-Slot, 8-Slot, and 16-Slot Chassis.
+N9K-C9504: 4-Slot Chassis ● Up to 4 line cards
+● Up to 4 power supplies
+● Up to 6 fabric modules of the same type
+● Up to 2 system controllers
+● Up to 2 supervisors of the same type
+● Up to 3 fan trays
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 6 of 15
+
+N9K-C9508: 8-Slot Chassis ● Up to 8 line cards
+● Up to 8 power supplies
+● Up to 6 fabric modules of the same type
+● Up to 2 system controllers
+● Up to 2 supervisors of the same type
+● Up to 3 fan trays
+N9K-C9516: 16-Slot Chassis ● Up to 16 line cards
+● Up to 10 power supplies
+● Up to 6 fabric modules of the same type
+● Up to 2 system controllers
+● Up to 2 supervisors of the same type
+● Up to 3 fan trays
+Table 2. Cisco N9500 series switch chassis specifications
+Cisco N9504 Chassis Cisco N9508 Chassis Cisco N9516 Chassis
+Number of line card slots 4 8 16
+Dimensions (H x W x D) 12.25 x 17.50 x 33.15 in. 22.70 x 17.50 x 31.76 in. 36.70 x 17.50 x 31.76 in.
+(31.1 x 44.50 x 84.20 cm) (57.78 x 44.50 x 80.67 cm) (93.41 x 44.50 x 80.67 cm)
+Weight 84 lb (38.2 kg) 150 lb (68.2 kg) 192 lb (87.3 kg)
+Rack Units 7 13 21
+Mean Time Between 1,038,080 928,910 680,000
+Failure (MTBF) Hours
+Operating temperature 32 to 104°F (0 to 40°C)
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 7 of 15
+
+Cisco N9504 Chassis Cisco N9508 Chassis Cisco N9516 Chassis
+Nonoperating -40 to 158°F (-40 to 70°C)
+temperature
+Humidity 5 to 95% (noncondensing)
+Altitude 0 to 13,123 ft (0 to 4,000m)
+Regulatory compliance Products should comply with CE Markings according to directives 2004/108/EC and
+2006/95/EC
+Safety UL 60950-1 Second Edition
+CAN/CSA-C22.2 No. 60950-1 Second Edition
+EN 60950-1 Second Edition
+IEC 60950-1 Second Edition
+AS/NZS 60950-1
+GB4943
+EMC: Emissions 47CFR Part 15 (CFR 47) Class A
+AS/NZS CISPR22 Class A
+CISPR22 Class A
+EN55022 Class A
+ICES003 Class A
+VCCI Class A
+EN61000-3-2
+EN61000-3-3
+KN22 Class A
+CNS13438 Class A
+EMC: Immunity EN55024
+CISPR24
+EN300386
+KN 61000-4 series
+RoHS The product is RoHS-6 compliant with exceptions for leaded-ball grid-array (BGA) balls and
+lead press-fit connectors.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 8 of 15
+
+Supervisor modules for the Cisco N9500 series
+A pair of redundant supervisor modules manages all switch operations using a state-synchronized, active-
+standby model. The supervisor accepts an external clock and supports management through multiple ports
+– two USB ports, a serial port, and a 10/100/1000-Mbps Ethernet port. All supervisors support Cisco ACI
+or NX-OS deployments. Redundant supervisors should be of the same type within a chassis.
+Table 3. Cisco N9500 series supervisor modules specifications
+N9K-SUP-A N9K-SUP-A+ N9K-SUP-B N9K-SUP-B+
+Processor 4 core, 4 thread 4 core, 8 thread 6 core, 12 thread 6 core, 12 thread
+1.8GHz x86 1.8GHz x86 2.2GHz x86 1.9GHz X86
+DRAM 16GB 16GB 24GB 32GB
+SSD 64GB 64GB 256GB 256GB
+Weight 4.84 lb (2.2 kg) 5.2 lb (2.37 kg) 6.00 lb (2.72 kg) 5.3 lb (2.39 kg)
+Typical power 69 W 69 W 75 W 75 W
+Maximum power 80 W 80 W 80 W 90 W
+MTBF hours 312,070 414,240 292,110 421,040
+Hot swappable Yes
+Airflow Port-side intake
+System controller for the Cisco N9500 platform
+A pair of redundant system controllers offloads chassis management functions from the supervisor
+modules. The controllers are responsible for managing the power supplies and fan trays; they are also the
+central point for the Gigabit Ethernet Out-of-Band Channel (EOBC) between the supervisors, fabric
+modules, and line cards.
+Table 4. Cisco N9500 series system controller specifications
+N9K-SC-A
+Weight 1.91 lb (0.9 kg)
+Typical power 14 W
+Maximum power 25 W
+MTBF hours 1,380,210
+Hot swappable Yes
+Airflow Port-side intake
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 9 of 15
+
+Fabric module for the Cisco N9500 platform
+Each Cisco N9500 Series Chassis supports up to six fabric modules, which plug in vertically at the back of
+the chassis behind the fan trays. The Cisco N9500 line card and fabric module data sheets provide
+additional information about the various fabric modules.
+Fan trays for the Cisco N9500 platform
+The Cisco N9500 chassis supports two versions of hot-swappable fan trays that are compatible with
+specific fabric modules. Each fan tray covers two fabric module slots and enables front-to-back air-flow
+for the entire chassis. An appropriate fabric module blank card should be installed in all empty fabric
+module slots to ensure proper air-flow and cooling of the chassis.
+Table 5. Fan tray specifications
+N9K-C9504-FAN N9K-C9504-FAN2 N9K-C9508-FAN N9K-C9508-FAN2 N9K-C9516-FAN
+Fabric N9K-C9504-FM-E N9K-C9504-FM-G N9K-C9508-FM-E2 N9K-C9508-FM-G N9K-C9516-FM-E2
+Module
+N9K-C9504-FM-R N9K-C9508-FM-E N9K-C9516-FM-E
+N9K-C9504-FM-S N9K-C9508-FM-R N9K-C9504-FM
+N9K-C9504-FM N9K-C9508-FM-S
+N9K-C9508-FM
+Fabric N9K-C9504-FM-CV N9K-C9504-FAN- N9K-C9508-FM-CV N9K-C9508-FAN- N9K-C9516-FM-CV
+Module Blank PWR PWR
+Weight 5.76 lb (2.6 kg) 8.2 lb (3.7 kg) 9.59 lb (4.4 kg) 8.6 lb (3.9 kg) 11.50 lb (5.2 kg)
+Typical 95 W 306W 176 W 450W 330 W
+power
+Maximum 150 W 600W 250 W 900W 451 W
+power
+Hot Yes
+swappable
+Airflow Port-side intake
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 10 of 15
+
+Cisco N9500 platform power supply
+The Cisco N9500 platform supports hot-swappable, front-panel-accessible AC, DC, and universal high
+voltage AC/DC power supplies. The total power budget required for the mix and number of line cards and
+fabric modules installed in the chassis determines the ability to support power supply redundancy modes –
+combined, n + 1, n + n, or input-source redundancy.
+The 3150W high voltage AC/DC power supply offers two power inputs each of which can provide up to
+3150 W of output power. This unique capability offers more flexibility in provisioning power redundancy for
+the chassis.
+Table 6. Power supply specifications
+Cisco N9500 3000W Cisco N9500 3000W Cisco N9500 3000W Cisco N9500 3150W
+AC Power Supply DC Power Supply HV AC/DC Power HV AC/DC Power
+Supply Supply
+Output power 3000 W 3000 W 3000 W 3150 W
+Input voltage AC: 200V to 240V DC: -48V to -60V AC: 200V to 277V AC: 200V to 277V
+(nominal)
+DC: 240V to 380V DC: 240V to 380V
+-40V to -72V (nominal) (nominal)
+(min – max)
+192V to 400V 192V to 400V
+(min – max) (min – max)
+Number of inputs 1 2 (1500 W output 1 2 (3150 W output
+per input) per input)
+Frequency 50 to 60 Hz N/A AC: 47 to 63 Hz AC: 47 to 63 Hz
+DC: N/A DC: N/A
+Efficiency 80PLUS Platinum 80PLUS Platinum 80PLUS Platinum 80PLUS Titanium
+Equivalent (AC) (AC)
+80PLUS Platinum 80PLUS Titanium
+Equivalent (DC) Equivalent (DC)
+Weight 6.2 lb (2.8 kg) 6.4 lb (2.9 kg) 5.9 lb (2. 7 kg) 9.9 lb (4.5 kg)
+MTBF hours 868,870 1,761,580 965,700 838,900
+Hot swappable Yes
+Airflow Yes
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 11 of 15
+
+Table 7. Ordering information
+Part number Product description
+Hardware
+N9K-C9504 (=) Cisco N9504 Chassis with 4 line card slots
+N9K-C9508(=) Cisco N9508 Chassis with 8 line card slots
+N9K-C9516(=) Cisco N9516 Chassis with 16 line card slots
+N9K-SUP-A+(=) Cisco N9500 4-Core/8-Thread Supervisor
+N9K-SUP-B+(=) Cisco N9500 6-Core/12-Thread Supervisor
+N9K-SUP-A(=) Cisco N9500 4-Core/4-Thread Supervisor
+N9K-SUP-B(=) Cisco N9500 6-Core/12-Thread Supervisor
+N9K-SC-A(=) Cisco N9500 System Controller
+N9K-PAC-3000W-B(=) Cisco N9500 3000W 200V to 240V AC PS, Port-Side Intake
+N9K-PDC-3000W-B(=) Cisco N9500 3000W -48V-60V DC PS, Port-Side Intake
+N9K-PUV-3000W-B(=) Cisco N9500 3000W 200V to 277V AC or 240V to 380V DC Universal high voltage AC/DC PS,
+Port-Side Intake
+N9K-PUV2-3000W-B(=) Cisco N9500 3150W 200V to 277V AC or 240V to 380V DC Universal high voltage AC/DC PS,
+Port-Side Intake
+N9K-C9504-FAN(=) Fan Tray for Cisco N9504 Chassis
+N9K-C9504-FAN2(=) N9500 4-slot chassis 400G cloud scale fan tray (Generation 2)
+N9K-C9504-FAN-PWR(=) N9500 4-slot chassis 400G cloud scale fan tray power connector
+N9K-C9508-FAN(=) Fan Tray for Cisco N9508 Chassis
+N9K-C9508-FAN2(=) N9500 8-slot chassis 400G cloud scale fan tray (Generation 2)
+N9K-C9508-FAN-PWR(=) N9500 8-slot chassis 400G cloud scale fan tray power connector
+N9K-C9516-FAN(=) Fan Tray for Cisco N9516 Chassis
+Accessories
+N9K-C9500-RMK= Cisco N9500 Rack Mount Kit for N9508 and N9516 chassis
+N9K-C9504-RMK= Cisco N9500 Rack Mount Kit for N9504
+N9K-C9500-ACK= Cisco N9500 Accessory Kit
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 12 of 15
+
+Note
+All part numbers with “=” sign refer to Spare part numbers for ordering.
+Warranty
+The Cisco N9500 platform has a 1-year limited hardware warranty. The warranty includes hardware
+replacement with a 10-day turnaround from receipt of a Return Materials Authorization (RMA).
+Cisco environmental sustainability
+Information about Cisco’s environmental sustainability policies and initiatives for our products, solutions,
+operations, and extended operations or supply chain is provided in the “Environment Sustainability” section
+of Cisco’s Corporate Social Responsibility (CSR) Report.
+Reference links to information about key environmental sustainability topics (mentioned in the “Environment
+Sustainability” section of the CSR Report) are provided in the following table:
+Sustainability topic Reference
+Information on product material content laws and regulations Materials
+Information on electronic waste laws and regulations, including products, batteries, and packaging WEEE compliance
+Cisco makes the packaging data available for informational purposes only. It may not reflect the most
+current legal developments, and Cisco does not represent, warrant, or guarantee that it is complete,
+accurate, or up to date. This information is subject to change without notice.
+Service and Support
+Cisco offers a wide range of services to help accelerate your success in deploying and optimizing the
+Cisco N9500 platform in your data center. These innovative Cisco Services offerings are delivered through
+a unique combination of people, processes, tools, and partners and are focused on helping you increase
+operation efficiency and improve your data center network.
+Cisco Advanced Services use an architecture-led approach to help you align your data center
+infrastructure with your business goals and achieve long-term value. Cisco SMARTnet™ Service helps you
+resolve mission-critical problems with direct access at any time to Cisco network experts and award-
+winning resources. With this service, you can take advantage of the Cisco Smart Call Home service, which
+offers proactive diagnostics and real-time alerts on your Cisco N9500 platform switch.
+Spanning the entire network lifecycle, Cisco Services offerings help increase investment protection,
+optimize network operations, support migration operations, and strengthen your IT expertise.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 13 of 15
+
+Cisco Capital
+Flexible Payment Solutions to Help You Achieve Your Objectives
+Cisco Capital makes it easier to get the right technology to achieve your objectives, enable business
+transformation and help you stay competitive. We can help you reduce the total cost of ownership, conserve
+capital, and accelerate growth. In more than 100 countries, our flexible payment solutions can help you
+acquire hardware, software, services and complementary third-party equipment in easy, predictable
+payments. Learn more.
+For more information
+For more information about the Cisco N9000 Series, please visit https://www.cisco.com/go/n9000.
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 14 of 15
+
+Document history
+New or revised topic Described in Date
+Product name change Throughout the data sheet August 2026
+Printed in USA C78-729404-33 08/26
+© 2026 Cisco and/or its affiliates. All rights reserved. Page 15 of 15

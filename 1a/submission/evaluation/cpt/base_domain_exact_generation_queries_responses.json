@@ -1,0 +1,492 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
+  "model_name": "Qwen/Qwen2.5-1.5B",
+  "model_details": {
+    "name_or_path": "Qwen/Qwen2.5-1.5B",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "Qwen/Qwen2.5-1.5B",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643
+  },
+  "query_source": "domain_exact_generation_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DEX01",
+      "category": "ospfv2",
+      "evaluation_type": "exact_generation",
+      "prompt": "This memo documents version 2 of the OSPF protocol. OSPF is",
+      "expected_continuation": "a link-state routing protocol. It is designed to be run internal to a single Autonomous System.",
+      "expected_concepts": [
+        "link-state routing protocol",
+        "single Autonomous System"
+      ],
+      "source_file": "1a/data/text/rfc/rfc2328.txt",
+      "source_document": "RFC 2328",
+      "generation_metrics": {
+        "concept_hits": [
+          "link-state routing protocol"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 2,
+        "concept_recall": 0.5,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.29411764705882354,
+        "continuation_token_coverage": 0.5882352941176471,
+        "repeated_trigram_ratio": 0.3666666666666667
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 19,
+        "negative_log_likelihood": 31.53441846370697,
+        "mean_cross_entropy_loss": 1.6597062349319458,
+        "perplexity": 5.257766069550322,
+        "combined_token_count": 34,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 69.08512711524963,
+        "mean_cross_entropy_loss": 0.6908512711524963,
+        "perplexity": 1.9954134483533579,
+        "combined_token_count": 115,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "a link-state routing protocol. It is designed to be run internal to a single Autonomous System.",
+      "baseline_response_target": "a link-state routing protocol that is used to build a topology database for each router. The topology database is used to calculate the best path to a destination. OSPF is a link-state protocol, which means that it uses a link-state database to calculate the best path to a destination. The link-state database is built by each router and is used by all routers to calculate the best path to a destination. OSPF is a link-state protocol, which means that it uses a link-state database to calculate",
+      "response": "a link-state routing protocol that is used to build a topology database for each router. The topology database is used to calculate the best path to a destination. OSPF is a link-state protocol, which means that it uses a link-state database to calculate the best path to a destination. The link-state database is built by each router and is used by all routers to calculate the best path to a destination. OSPF is a link-state protocol, which means that it uses a link-state database to calculate"
+    },
+    {
+      "id": "DEX02",
+      "category": "ospfv3",
+      "evaluation_type": "exact_generation",
+      "prompt": "Even with larger IPv6 addresses, most packets in OSPF for IPv6 are",
+      "expected_continuation": "almost as compact as those in OSPF for IPv4.",
+      "expected_concepts": [
+        "compact packets",
+        "relaxed field limitations",
+        "OSPF for IPv6"
+      ],
+      "source_file": "1a/data/text/rfc/rfc5340.txt",
+      "source_document": "RFC 5340",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.4444444444444444,
+        "repeated_trigram_ratio": 0.03125
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 12,
+        "negative_log_likelihood": 22.601802349090576,
+        "mean_cross_entropy_loss": 1.8834835290908813,
+        "perplexity": 6.57637399654687,
+        "combined_token_count": 28,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 99,
+        "negative_log_likelihood": 65.40419805049896,
+        "mean_cross_entropy_loss": 0.6606484651565552,
+        "perplexity": 1.9360473867009242,
+        "combined_token_count": 115,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "almost as compact as those in OSPF for IPv4.",
+      "baseline_response_target": "still small. The reason is that OSPFv3 uses the same packet format as OSPFv2, which is based on IPv4. OSPFv3 packets are encapsulated in IPv6 packets, but the IPv6 header is not included in the OSPFv3 packet. Therefore, the size of the OSPFv3 packet is the same as that of an IPv4 packet. Is the following statement true or false:\nA. True\nB. False\nAnswer:\nA",
+      "response": "still small. The reason is that OSPFv3 uses the same packet format as OSPFv2, which is based on IPv4. OSPFv3 packets are encapsulated in IPv6 packets, but the IPv6 header is not included in the OSPFv3 packet. Therefore, the size of the OSPFv3 packet is the same as that of an IPv4 packet. Is the following statement true or false:\nA. True\nB. False\nAnswer:\nA"
+    },
+    {
+      "id": "DEX03",
+      "category": "ospf-nssa",
+      "evaluation_type": "exact_generation",
+      "prompt": "NSSAs are similar to the existing OSPF stub area configuration option but have the additional capability of",
+      "expected_continuation": "importing AS external routes in a limited fashion.",
+      "expected_concepts": [
+        "stub area",
+        "AS external routes",
+        "limited import"
+      ],
+      "source_file": "1a/data/text/rfc/rfc3101.txt",
+      "source_document": "RFC 3101",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.375,
+        "repeated_trigram_ratio": 0.2987012987012987
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 9,
+        "negative_log_likelihood": 22.37810754776001,
+        "mean_cross_entropy_loss": 2.4864563941955566,
+        "perplexity": 12.018611350583999,
+        "combined_token_count": 28,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 43.12753677368164,
+        "mean_cross_entropy_loss": 0.4312753677368164,
+        "perplexity": 1.539219342951661,
+        "combined_token_count": 119,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "importing AS external routes in a limited fashion.",
+      "baseline_response_target": "supporting NSSA external routes. Which of the following statements about NSSA external routes are correct?\nA. The NSSA area's ABR advertises a Type 7 LSA to the backbone area to announce the external route.\nB. The NSSA area's ABR will convert an external route into an NSSA external route and advertise it to the NSSA area.\nC. The NSSA area's ABR will convert an external route into an NSSA external route and advertise it to the",
+      "response": "supporting NSSA external routes. Which of the following statements about NSSA external routes are correct?\nA. The NSSA area's ABR advertises a Type 7 LSA to the backbone area to announce the external route.\nB. The NSSA area's ABR will convert an external route into an NSSA external route and advertise it to the NSSA area.\nC. The NSSA area's ABR will convert an external route into an NSSA external route and advertise it to the"
+    },
+    {
+      "id": "DEX04",
+      "category": "ospf-graceful-restart",
+      "evaluation_type": "exact_generation",
+      "prompt": "A restarting router may not be capable of adjusting its forwarding in a timely manner when",
+      "expected_continuation": "the network topology changes.",
+      "expected_concepts": [
+        "network topology changes",
+        "forwarding adjustment",
+        "restarting router"
+      ],
+      "source_file": "1a/data/text/rfc/rfc3623.txt",
+      "source_document": "RFC 3623",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.25,
+        "repeated_trigram_ratio": 0.06329113924050633
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 5,
+        "negative_log_likelihood": 6.73305869102478,
+        "mean_cross_entropy_loss": 1.346611738204956,
+        "perplexity": 3.8443776803932193,
+        "combined_token_count": 21,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 69.62745189666748,
+        "mean_cross_entropy_loss": 0.6962745189666748,
+        "perplexity": 2.006264467262324,
+        "combined_token_count": 116,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "the network topology changes.",
+      "baseline_response_target": "it restarts, which can lead to a temporary loss of connectivity for some users. Is this statement correct?\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nIn the process of handling administrative cases, if the public security organ needs to conduct a re-examination, which of the following statements is correct?\nA. The re-examination should be conducted by the original forensic expert.\nB. The re-examination should be conducted by a forensic expert with the same level of expertise as the original",
+      "response": "it restarts, which can lead to a temporary loss of connectivity for some users. Is this statement correct?\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nIn the process of handling administrative cases, if the public security organ needs to conduct a re-examination, which of the following statements is correct?\nA. The re-examination should be conducted by the original forensic expert.\nB. The re-examination should be conducted by a forensic expert with the same level of expertise as the original"
+    },
+    {
+      "id": "DEX05",
+      "category": "ospf-bfd",
+      "evaluation_type": "exact_generation",
+      "prompt": "Bidirectional Forwarding Detection (BFD) [RFC5880] enables routers to",
+      "expected_continuation": "monitor data plane connectivity and to detect faults in the bidirectional path between them.",
+      "expected_concepts": [
+        "data plane connectivity",
+        "bidirectional path",
+        "fault detection"
+      ],
+      "source_file": "1a/data/text/rfc/rfc9355.txt",
+      "source_document": "RFC 9355",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.21428571428571427,
+        "repeated_trigram_ratio": 0.7439024390243902
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 16,
+        "negative_log_likelihood": 38.97686767578125,
+        "mean_cross_entropy_loss": 2.436054229736328,
+        "perplexity": 11.427859954921338,
+        "combined_token_count": 35,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 45.22405564785004,
+        "mean_cross_entropy_loss": 0.45224055647850037,
+        "perplexity": 1.571830016996112,
+        "combined_token_count": 119,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "monitor data plane connectivity and to detect faults in the bidirectional path between them.",
+      "baseline_response_target": "detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to",
+      "response": "detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to detect link failures in a short amount of time. BFD is a fast, low-overhead protocol that can be used to"
+    },
+    {
+      "id": "DEX06",
+      "category": "nexus-dashboard",
+      "evaluation_type": "exact_generation",
+      "prompt": "For organizations managing on-premises data centers, the Cisco Nexus Dashboard serves as",
+      "expected_continuation": "the single point of control for provisioning, visibility, troubleshooting, and automation.",
+      "expected_concepts": [
+        "single point of control",
+        "provisioning",
+        "visibility",
+        "troubleshooting",
+        "automation"
+      ],
+      "source_file": "1a/data/text/cisco-dc/10_nexus_dashboard_data_sheet_2026.txt",
+      "source_document": "Cisco Nexus Dashboard data sheet",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.45454545454545453,
+        "repeated_trigram_ratio": 0.31506849315068497
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 15,
+        "negative_log_likelihood": 29.787753224372864,
+        "mean_cross_entropy_loss": 1.985850214958191,
+        "perplexity": 7.2852387720536935,
+        "combined_token_count": 31,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 80.92299699783325,
+        "mean_cross_entropy_loss": 0.8092299699783325,
+        "perplexity": 2.2461776963140445,
+        "combined_token_count": 116,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "the single point of control for provisioning, visibility, troubleshooting, and automation.",
+      "baseline_response_target": "a centralized view of the network. The dashboard provides a single pane of glass for monitoring and managing the network. The dashboard is a web-based interface that provides a single view of the network. The dashboard is available on the Cisco Nexus 9000 Series Switches and the Cisco Nexus 7000 Series Switches. The dashboard is available on the Cisco Nexus 5000 Series Switches and the Cisco Nexus 4000 Series Switches. The dashboard is available",
+      "response": "a centralized view of the network. The dashboard provides a single pane of glass for monitoring and managing the network. The dashboard is a web-based interface that provides a single view of the network. The dashboard is available on the Cisco Nexus 9000 Series Switches and the Cisco Nexus 7000 Series Switches. The dashboard is available on the Cisco Nexus 5000 Series Switches and the Cisco Nexus 4000 Series Switches. The dashboard is available"
+    },
+    {
+      "id": "DEX07",
+      "category": "ai-data-center",
+      "evaluation_type": "exact_generation",
+      "prompt": "Cisco® data center networking with Cisco Nexus® 9000 Series Switches and the Nexus Dashboard operations and automation platform provides",
+      "expected_continuation": "the interplay of cutting-edge silicon, hardware, software, optics, and management tools to deliver high bandwidth, lossless, and low latency AI/ML networks.",
+      "expected_concepts": [
+        "high bandwidth",
+        "lossless",
+        "low latency",
+        "AI/ML networks"
+      ],
+      "source_file": "1a/data/text/cisco-dc/14_data_center_networking_ai_ml_solution_overview.txt",
+      "source_document": "AI/ML Networking with Cisco Nexus 9000",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.30434782608695654,
+        "repeated_trigram_ratio": 0.08045977011494254
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 33,
+        "negative_log_likelihood": 99.03954362869263,
+        "mean_cross_entropy_loss": 3.0011982917785645,
+        "perplexity": 20.109619683155703,
+        "combined_token_count": 59,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 102.9077410697937,
+        "mean_cross_entropy_loss": 1.029077410697937,
+        "perplexity": 2.7984827930521243,
+        "combined_token_count": 126,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "the interplay of cutting-edge silicon, hardware, software, optics, and management tools to deliver high bandwidth, lossless, and low latency AI/ML networks.",
+      "baseline_response_target": "a unified view of your data center network. The Nexus Dashboard provides a single pane of glass for network operations and automation, and is designed to be used by network administrators, operations engineers, and IT managers. The dashboard provides a centralized view of your network, and allows you to monitor and manage your network from a single console. The dashboard also provides a variety of tools for network operations and automation, including network monitoring, network configuration management, and network automation. The dashboard is designed to be easy to use",
+      "response": "a unified view of your data center network. The Nexus Dashboard provides a single pane of glass for network operations and automation, and is designed to be used by network administrators, operations engineers, and IT managers. The dashboard provides a centralized view of your network, and allows you to monitor and manage your network from a single console. The dashboard also provides a variety of tools for network operations and automation, including network monitoring, network configuration management, and network automation. The dashboard is designed to be easy to use"
+    },
+    {
+      "id": "DEX08",
+      "category": "vxlan",
+      "evaluation_type": "exact_generation",
+      "prompt": "Virtual Extensible LAN (VXLAN) provides a way to extend Layer 2 networks across",
+      "expected_continuation": "a Layer 3 infrastructure using MAC-in-UDP encapsulation and tunneling.",
+      "expected_concepts": [
+        "Layer 3 infrastructure",
+        "MAC-in-UDP",
+        "tunneling"
+      ],
+      "source_file": "1a/data/text/cisco-dc/05_nexus9000_nxos_vxlan_10.5x.txt",
+      "source_document": "Cisco Nexus 9000 NX-OS VXLAN Configuration Guide",
+      "generation_metrics": {
+        "concept_hits": [
+          "tunneling"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 3,
+        "concept_recall": 0.3333333333333333,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.36363636363636365,
+        "repeated_trigram_ratio": 0.28
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 16,
+        "negative_log_likelihood": 23.111642837524414,
+        "mean_cross_entropy_loss": 1.4444776773452759,
+        "perplexity": 4.239637105880596,
+        "combined_token_count": 35,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 63.0510151386261,
+        "mean_cross_entropy_loss": 0.630510151386261,
+        "perplexity": 1.8785686892740086,
+        "combined_token_count": 119,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "a Layer 3 infrastructure using MAC-in-UDP encapsulation and tunneling.",
+      "baseline_response_target": "multiple physical networks. Which of the following statements about VXLAN is incorrect?\nA. VXLAN is a Layer 2 tunneling protocol.\nB. VXLAN can be used to build a Layer 2 network across multiple physical networks.\nC. VXLAN can be used to build a Layer 3 network across multiple physical networks.\nD. VXLAN can be used to build a Layer 2 network across multiple virtual networks.\nAnswer:\nA\n\nThe main function of the ____ is to provide a path",
+      "response": "multiple physical networks. Which of the following statements about VXLAN is incorrect?\nA. VXLAN is a Layer 2 tunneling protocol.\nB. VXLAN can be used to build a Layer 2 network across multiple physical networks.\nC. VXLAN can be used to build a Layer 3 network across multiple physical networks.\nD. VXLAN can be used to build a Layer 2 network across multiple virtual networks.\nAnswer:\nA\n\nThe main function of the ____ is to provide a path"
+    },
+    {
+      "id": "DEX09",
+      "category": "vpc",
+      "evaluation_type": "exact_generation",
+      "prompt": "This document describes common Virtual Port Channel (vPC) enhancements configured on",
+      "expected_continuation": "Cisco Nexus switches in a vPC domain.",
+      "expected_concepts": [
+        "Cisco Nexus switches",
+        "vPC domain"
+      ],
+      "source_file": "1a/data/text/cisco-dc/21_vpc_enhancements.txt",
+      "source_document": "Understand Virtual Port Channel Enhancements",
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 2,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.5714285714285714,
+        "repeated_trigram_ratio": 0.6436781609195402
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 9,
+        "negative_log_likelihood": 16.519123435020447,
+        "mean_cross_entropy_loss": 1.8354581594467163,
+        "perplexity": 6.268005233487225,
+        "combined_token_count": 23,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 52.229511737823486,
+        "mean_cross_entropy_loss": 0.5222951173782349,
+        "perplexity": 1.6858925340734847,
+        "combined_token_count": 114,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "Cisco Nexus switches in a vPC domain.",
+      "baseline_response_target": "the Cisco Nexus 9000 Series Switches. These enhancements are available in the following software releases:\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following",
+      "response": "the Cisco Nexus 9000 Series Switches. These enhancements are available in the following software releases:\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following table lists the enhancements that are available in the software releases listed in the previous section.\nThe following"
+    },
+    {
+      "id": "DEX10",
+      "category": "switching",
+      "evaluation_type": "exact_generation",
+      "prompt": "Cisco Nexus 9000 series switches use cut-through switching by default. Cut-through switching is where a switch",
+      "expected_continuation": "makes a forwarding decision on a frame and begins forwarding the frame out of an egress interface as soon as the switch has processed enough of the frame header to make a valid forwarding decision.",
+      "expected_concepts": [
+        "forwarding decision",
+        "egress interface",
+        "frame header",
+        "cut-through switching"
+      ],
+      "source_file": "1a/data/text/cisco-dc/13_nexus9000_interface_crc_script.txt",
+      "source_document": "Troubleshoot Nexus 9000 Interface CRC Error with Script",
+      "generation_metrics": {
+        "concept_hits": [
+          "cut-through switching"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": false,
+        "continuation_longest_common_prefix_ratio": 0.0,
+        "continuation_token_coverage": 0.37142857142857144,
+        "repeated_trigram_ratio": 0.09302325581395354
+      },
+      "fixed_reference_conditional_ppl": {
+        "target_token_count": 37,
+        "negative_log_likelihood": 63.29527938365936,
+        "mean_cross_entropy_loss": 1.7106832265853882,
+        "perplexity": 5.532740301844693,
+        "combined_token_count": 60,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 54.19832468032837,
+        "mean_cross_entropy_loss": 0.5419832468032837,
+        "perplexity": 1.719413504298137,
+        "combined_token_count": 123,
+        "left_truncated_tokens": 0
+      },
+      "fixed_reference_field": "expected_continuation",
+      "fixed_reference": "makes a forwarding decision on a frame and begins forwarding the frame out of an egress interface as soon as the switch has processed enough of the frame header to make a valid forwarding decision.",
+      "baseline_response_target": "forwards a packet as soon as it receives it, without waiting for the entire packet to arrive. This is in contrast to store-and-forward switching, where the switch waits for the entire packet to arrive before forwarding it. Cut-through switching is faster than store-and-forward switching, but it can also be less reliable, as it can cause packet loss if the switch cannot keep up with the incoming traffic.\nThe Nexus 9000 series switches use a combination of store-and-forward and cut-through switching.",
+      "response": "forwards a packet as soon as it receives it, without waiting for the entire packet to arrive. This is in contrast to store-and-forward switching, where the switch waits for the entire packet to arrive before forwarding it. Cut-through switching is faster than store-and-forward switching, but it can also be less reliable, as it can cause packet loss if the switch cannot keep up with the incoming traffic.\nThe Nexus 9000 series switches use a combination of store-and-forward and cut-through switching."
+    }
+  ]
+}

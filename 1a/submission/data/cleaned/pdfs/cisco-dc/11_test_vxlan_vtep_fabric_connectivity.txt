@@ -1,0 +1,224 @@
+Test Fabric Connectivity Between Virtual Tunnel
+End Points in VxLAN
+Contents
+Introduction
+Prerequisites
+Requirements
+Components Used
+Configure
+Network Diagram
+Configurations
+N9K-1
+N9K-2
+Verify
+Related Information
+Introduction
+This document describes how to test fabric connectivity between two Virtual Tunnel End Points (VTEPs) in
+Virtual Extensible LAN (VxLAN).
+Prerequisites
+Requirements
+Cisco recommends that you have knowledge of these topics:
+• Nexus NX-OS Software
+• Border Gateway Protocol (BGP)
+• VxLAN
+Components Used
+The information in this document is based on Cisco Nexus N9K-C93180YC-EX with NXOS version
+10.3(3).
+The information in this document was created from the devices in a specific lab environment. All of the
+devices used in this document started with a cleared (default) configuration. If your network is live, ensure
+that you understand the potential impact of any command.
+Configure
+Once VxLAN is set up, users normally want to test if it works as expected. While the recommended way to
+do this is to do a ping test between two end hosts, which are connected to different VTEPs, it is also possible
+to test the fabric connectivity using loopback interfaces on the VTEPs.
+Note: Using Switch Virtual Interface (SVI) as either the source or destination of the ping test is not
+
+a valid test for fabric connectivity. The reason is we have the same IP on fabric SVIs due to the
+Anycast Gateway feature.
+Network Diagram
+Configurations
+Nexus N9K-2 is configured as SPINE, while both N9K-1 and N9K-2 are configured as VTEPs in this
+VxLAN deployment.
+Layer 3 is extended, so we have a layer 3 Virtual Network Interface (VNI) on both VTEPs for each Virtual
+Routing and Forwarding (VRF).
+The Layer 3 VNI configured for VRF evpn_a is 50100.
+
+N9K-1
+Step 1. We configure a loopback as part of the VRF we want to test.
+N9K-1(config)# interface loopback50
+N9K-1(config-if)# vrf member evpn_a
+Message reported by command :: vrf member evpn_a
+Warning: Deleted all L3 config on interface loopback50
+N9K-1(config-if)# ip address 10.255.255.1/32
+Step 2. We advertise this loopback into the fabric. Otherwise, even if the ICMP request reaches the
+destination, the destination itself is unable to send back the ICMP reply.
+N9K-1(config)# router bgp 65522
+N9K-1(config-router)# vrf evpn_a
+N9K-1(config-router-vrf)# address-family ipv4 unicast
+N9K-1(config-router-vrf-af)# network 10.255.255.1/32
+N9K-2
+Step 1. We configure a loopback as part of the VRF we want to test.
+N9K-2(config)# interface loopback50
+N9K-2(config-if)# vrf member evpn_a
+Message reported by command :: vrf member evpn_a
+Warning: Deleted all L3 config on interface loopback50
+N9K-2(config-if)# ip address 10.255.255.2/32
+Step 2. We advertise this loopback into the fabric. Otherwise, even if the ICMP request reaches the
+destination, the destination itself is unable to send back the ICMP reply.
+N9K-2(config)# router bgp 65522
+N9K-2(config-router)# vrf evpn_a
+N9K-2(config-router-vrf)# address-family ipv4 unicast
+N9K-2(config-router-vrf-af)# network 10.255.255.2/32
+Verify
+Step 1. Confirm loopback is present in the local BGP table for the address family IPv4 Unicast.
+N9K-1# show ip bgp 10.255.255.1/32 vrf evpn_a
+
+BGP routing table information for VRF evpn_a, address family IPv4 Unicast
+BGP routing table entry for 10.255.255.1/32, version 732
+Paths: (1 available, best #1)
+Flags: (0x80c0002) (high32 0x000020) on xmit-list, is not in urib, exported
+vpn: version 1053, (0x00000000100002) on xmit-list
+Multipath: eBGP iBGP
+Advertised path-id 1, VPN AF advertised path-id 1
+Path type: local, path is valid, is best path, no labeled nexthop, is extd
+AS-Path: NONE, path locally originated
+0.0.0.0 (metric 0) from 0.0.0.0 (10.2.254.100)
+Origin IGP, MED not set, localpref 100, weight 32768
+Extcommunity: RT:65522:50100
+VRF advertise information:
+Path-id 1 not advertised to any peer
+VPN AF advertise information:
+Path-id 1 not advertised to any peer
+N9K-2# show ip bgp 10.255.255.2/32 vrf evpn_a
+BGP routing table information for VRF evpn_a, address family IPv4 Unicast
+BGP routing table entry for 10.255.255.2/32, version 241
+Paths: (1 available, best #1)
+Flags: (0x80c0002) (high32 0x000020) on xmit-list, is not in urib, exported
+vpn: version 417, (0x00000000100002) on xmit-list
+Multipath: eBGP iBGP
+Advertised path-id 1, VPN AF advertised path-id 1
+Path type: local, path is valid, is best path, no labeled nexthop, is extd
+AS-Path: NONE, path locally originated
+0.0.0.0 (metric 0) from 0.0.0.0 (10.2.254.100)
+Origin IGP, MED not set, localpref 100, weight 32768
+Extcommunity: RT:65522:50100
+VRF advertise information:
+Path-id 1 not advertised to any peer
+VPN AF advertise information:
+Path-id 1 not advertised to any peer
+Step 2. Confirm loopback is present in the local BGP table for the address family L2VPN EVPN and is
+advertised to the expected Network Virtual Interface (NVE) peers.
+N9K-1# show bgp l2vpn evpn 10.255.255.1 vrf evpn_a
+BGP routing table information for VRF default, address family L2VPN EVPN
+Route Distinguisher: 10.2.0.49:4 (L3VNI 50100)
+BGP routing table entry for [5]:[0]:[0]:[32]:[10.255.255.1]/224, version 36993
+Paths: (1 available, best #1)
+Flags: (0x000002) (high32 00000000) on xmit-list, is not in l2rib/evpn
+Advertised path-id 1
+Path type: local, path is valid, is best path, no labeled nexthop
+Gateway IP: 0.0.0.0
+AS-Path: NONE, path locally originated
+10.2.1.49 (metric 0) from 0.0.0.0 (10.2.0.49)
+Origin IGP, MED not set, localpref 100, weight 32768
+Received label 50100
+
+Extcommunity: RT:65522:50100 ENCAP:8 Router MAC:a0e0.af67.511d
+Path-id 1 advertised to peers:
+10.2.0.33 10.2.0.34
+N9K-2#
+LEAF48# show bgp l2vpn evpn 10.255.255.2 vrf evpn_a
+BGP routing table information for VRF default, address family L2VPN EVPN
+Route Distinguisher: 10.2.0.48:4 (L3VNI 50100)
+BGP routing table entry for [5]:[0]:[0]:[32]:[10.255.255.2]/224, version 13373
+Paths: (1 available, best #1)
+Flags: (0x000002) (high32 00000000) on xmit-list, is not in l2rib/evpn
+Advertised path-id 1
+Path type: local, path is valid, is best path, no labeled nexthop
+Gateway IP: 0.0.0.0
+AS-Path: NONE, path locally originated
+10.2.1.48 (metric 0) from 0.0.0.0 (10.2.0.48)
+Origin IGP, MED not set, localpref 100, weight 32768
+Received label 50100
+Extcommunity: RT:65522:50100 ENCAP:8 Router MAC:6cb2.aeee.5a97
+Path-id 1 advertised to peers:
+10.2.0.33 10.2.0.34
+Step 3. Confirm update was received from remote NVE peer.
+N9K-1# show bgp l2vpn evpn 10.255.255.2 vrf evpn_a
+BGP routing table information for VRF default, address family L2VPN EVPN
+Route Distinguisher: 10.2.0.49:4 (L3VNI 50100)
+BGP routing table entry for [5]:[0]:[0]:[32]:[10.255.255.2]/224, version 36995
+Paths: (1 available, best #1)
+Flags: (0x000002) (high32 00000000) on xmit-list, is not in l2rib/evpn, is not in HW
+Advertised path-id 1
+Path type: internal, path is valid, is best path, no labeled nexthop
+Imported from 10.2.0.48:4:[5]:[0]:[0]:[32]:[10.255.255.2]/224
+Gateway IP: 0.0.0.0
+AS-Path: NONE, path sourced internal to AS
+10.2.1.48 (metric 6) from 10.2.0.33 (10.2.0.33)
+Origin IGP, MED not set, localpref 100, weight 0
+Received label 50100
+Extcommunity: RT:65522:50100 Route-Import:10.2.1.147:3100 Source AS:65522:0
+ENCAP:8 Router MAC:6cb2.aeee.5a97
+Originator: 10.2.0.48 Cluster list: 0.0.255.242
+Path-id 1 not advertised to any peer
+N9K-2# show bgp l2vpn evpn 10.255.255.1 vrf evpn_a
+BGP routing table information for VRF default, address family L2VPN EVPN
+Route Distinguisher: 10.2.0.48:4 (L3VNI 50100)
+BGP routing table entry for [5]:[0]:[0]:[32]:[10.255.255.1]/224, version 13372
+Paths: (1 available, best #1)
+Flags: (0x000002) (high32 00000000) on xmit-list, is not in l2rib/evpn, is not in HW
+Advertised path-id 1
+Path type: internal, path is valid, is best path, no labeled nexthop
+
+Imported from 10.2.0.49:4:[5]:[0]:[0]:[32]:[10.255.255.1]/224
+Gateway IP: 0.0.0.0
+AS-Path: NONE, path sourced internal to AS
+10.2.1.49 (metric 6) from 10.2.0.33 (10.2.0.33)
+Origin IGP, MED not set, localpref 100, weight 0
+Received label 50100
+Extcommunity: RT:65522:50100 Route-Import:10.2.1.49:3100 Source AS:65522:0
+ENCAP:8 Router MAC:a0e0.af67.511d
+Originator: 10.2.0.49 Cluster list: 0.0.255.242
+Path-id 1 not advertised to any peer
+Step 4. Confirm there is a route for remote loopback in the routing table and next-hop is the expected NVE
+peer.
+N9K-1# show ip route 10.255.255.2 vrf evpn_a
+IP Route Table for VRF "evpn_a"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+10.255.255.2/32, ubest/mbest: 1/0
+*via 10.2.1.48%default, [200/0], 00:12:39, bgp-65522, internal, tag 65522, segid: 50100 tunnelid: 0xa020130 encap: VXLAN
+N9K-2# show ip route 10.255.255.1 vrf evpn_a
+IP Route Table for VRF "evpn_a"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+10.255.255.1/32, ubest/mbest: 1/0
+*via 10.2.1.49%default, [200/0], 00:15:36, bgp-65522, internal, tag 65522, segid: 50100 tunnelid: 0xa020131 encap: VXLAN
+Step 5. Send ICMP request to remote loopback, using as source the local loopback.
+N9K-1# ping 10.255.255.2 source-interface loopback 50
+PING 10.255.255.2 (10.255.255.2): 56 data bytes
+64 bytes from 10.255.255.2: icmp_seq=0 ttl=254 time=2.009 ms
+64 bytes from 10.255.255.2: icmp_seq=1 ttl=254 time=1.26 ms
+64 bytes from 10.255.255.2: icmp_seq=2 ttl=254 time=1.231 ms
+64 bytes from 10.255.255.2: icmp_seq=3 ttl=254 time=1.142 ms
+64 bytes from 10.255.255.2: icmp_seq=4 ttl=254 time=1.127 ms
+--- 10.255.255.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.127/1.353/2.009 ms
+N9K-2# ping 10.255.255.1 source-interface loopback 50
+PING 10.255.255.1 (10.255.255.1): 56 data bytes
+64 bytes from 10.255.255.1: icmp_seq=0 ttl=254 time=1.47 ms
+64 bytes from 10.255.255.1: icmp_seq=1 ttl=254 time=1.396 ms
+
+64 bytes from 10.255.255.1: icmp_seq=2 ttl=254 time=1.327 ms
+64 bytes from 10.255.255.1: icmp_seq=3 ttl=254 time=1.451 ms
+64 bytes from 10.255.255.1: icmp_seq=4 ttl=254 time=1.366 ms
+--- 10.255.255.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.327/1.402/1.47 ms
+Related Information
+Configuring VXLAN BGP EVPN

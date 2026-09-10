@@ -1,0 +1,59 @@
+Understand NX-OS OSPF NSSA Type-7 LSA
+Forwarding Address Selection
+Contents
+Introduction
+Explanation
+Introduction
+This document extends the concepts described in another document Understand Selection of
+Forwarding Address in OSPF and explains the difference when you use NX-OS, the network
+operating system for Cisco Nexus-series Ethernet switches.
+Explanation
+According to above document, the forwarding address is selected on Autonomous System Border
+Router (ASBR) using these rules:
+1. If there is a loopback interface configured in the area, then IP address of the loopback interface
+is selected as Forwarding Address (FA).
+2. If the first condition is not met, then IP address of the first interface on the Open Shortest Path
+First (OSPF) interface list is selected as a forwarding address. You can see OSPF interface list by
+using show ip ospf interface brief command. The interface on top will be the last interface which
+was attached to OSPF.
+However, the second rule is not applicable to NX-OS.
+In NX-OS, when there is no loopback interface, OSPF interface ID determines the forwarding
+address.
+IP address of the interface with the highest ID is selected as FA, regardless of whether the
+interface is passive or not.
+Please note that interface ID is dynamic and may change after the system is reloaded.
+If an interface is removed from OSPF and is added back, its ID in OSPF interface list may change
+if another new interface is added into OSPF between the delete and add operations.
+The reason is that OSPF interface ID resource is used cyclically.
+When an interface is removed from OSPF interface list, the assigned interface ID will be recycled,
+i.e., when another interface is added to OSPF interface, the ID wil be assigned to the interface.
+Only when all recycled IDs are depleted, a new interface ID will be allocated for the next OSPF
+interface.
+
+An example is provided:
+show ip ospf interface brief vrf A OSPF Process ID 10 VRF A Total number of interface: 4
+Interface ID Area Cost State Neighbors Status Vlan101 452 0.0.0.7 5 BDR 2 up Vlan201 678 0.0.0.7
+100 DR 0 up <—————— highest ID = FA Vlan301 160 0.0.0.7 100 DR 0 up Po11 247 0.0.0.7 1000 P2P 1
+up
+When vlan201 is removed from OSPF, ID 678 is freed.
+l
+Then, when van 202 is added to OSPF, ID 678 is assigned to vlan 202.
+l
+Then vlan 201 is added back, a new larger ID is assigned to vlan 201.
+l
+show ip ospf interface brief vrf B OSPF Process ID 10 VRF B Total number of interface: 4
+Interface ID Area Cost State Neighbors Status Vlan102 490 0.0.0.7 5 BDR 2 up <—————— highest ID
+= FA Vlan202 51 0.0.0.7 100 DR 0 up Vlan302 102 0.0.0.7 100 DR 0 up Po12 275 0.0.0.7 1000 P2P 1
+up interface Vlan101 vrf member A ip address 192.168.1.1/24 <-----FA interface Vlan102 vrf
+member B ip address 10.1.1.1/24 <---------FA N7K#show ospf data nssa-external172.16.1.140 det vrf
+A OSPF Router with ID () (Process ID 21) Type-7 AS External Link States (Area 7) LS age: 162
+Options: (No TOS-capability, Type 7/5 translation, No DC) LS Type: AS External Link Link State
+ID: 172.16.1.140 (External Network Number ) Advertising Router: 100.1.1.1 LS Seq Number:80000012
+Checksum: 0x504c Length: 36 Network Mask:255.255.255.255 Metric Type: 1 (Comparable directly to
+link state metric) TOS: 0 Metric: 20 Forward Address: 192.168.1.1 --- Vlan101 External Route
+Tag: 0 N7K# show ip ospf data extroute172.16.1.150 det vrf B OSPF Router with ID () (Process ID
+10 VRF B) Type-5 AS External Link States LS age: 323 Options: 0x20 (No TOS-capability, DC) LS
+Type: Type-5 AS-External Link State ID:route172.16.1.150 (Network address) Advertising
+Router:100.1.1.2 LS Seq Number: 0x8000008f Checksum: 0x9691 Length: 36 Network Mask: /32 Metric
+Type: 1 (Same units as link state path) TOS: 0 Metric: 20 Forward Address: 10.1.1.1 --- Vlan 102
+External Route Tag: 0

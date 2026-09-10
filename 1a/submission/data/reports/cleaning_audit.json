@@ -1,0 +1,2199 @@
+{
+  "schema_version": 2,
+  "timestamp": "2026-09-09T09:11:27.196243",
+  "summary": {
+    "total_documents_processed": 196,
+    "total_clean_kept": 190,
+    "total_rejected": 6,
+    "rejection_breakdown": {
+      "failed_length_filter": 0,
+      "failed_repetition_filter": 0,
+      "failed_exact_deduplication": 2,
+      "failed_near_deduplication": 4,
+      "failed_language_filter": 0
+    }
+  },
+  "configuration": {
+    "min_chars": 50,
+    "max_dup_paragraph_ratio": 0.3,
+    "target_lang": "en",
+    "dedup_strategy": "both",
+    "similarity_threshold": 0.85
+  },
+  "retained_documents": [
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/01_bfd_for_bgp_admindown_nexus7000.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/01_bfd_for_bgp_admindown_nexus7000.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 4936,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 3,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/01_nexus9000_nxos_fundamentals_10.5x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/01_nexus9000_nxos_fundamentals_10.5x.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 287094,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 190,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/02_compare_features_select_software_release.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/02_compare_features_select_software_release.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 11310,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 7,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/02_nexus9000_nxos_interfaces_10.5x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/02_nexus9000_nxos_interfaces_10.5x.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 837558,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 504,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/03_create_giso_iosxr_python3.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/03_create_giso_iosxr_python3.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 7158,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 7,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/04_nexus9000_nxos_unicast_routing_10.5x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/04_nexus9000_nxos_unicast_routing_10.5x.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 1250594,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 712,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/04_nx_sdk_python_nexus3000_9000.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/04_nx_sdk_python_nexus3000_9000.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 42850,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 18,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/05_exclude_oid_nexus_snmp.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/05_exclude_oid_nexus_snmp.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 7541,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 10,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/05_nexus9000_nxos_vxlan_10.5x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/05_nexus9000_nxos_vxlan_10.5x.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 1356069,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 799,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/06_fex_power_supply_failure_troubleshooting.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/06_fex_power_supply_failure_troubleshooting.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 3824,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 3,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/06_n9300_platform_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/06_n9300_platform_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 34756,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 21,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/07_n9500_series_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/07_n9500_series_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 20909,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 15,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/07_nexus_nxos_tips_tricks.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/07_nexus_nxos_tips_tricks.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 7586,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 5,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/08_n9300_aci_fixed_spine_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/08_n9300_aci_fixed_spine_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 16405,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 11,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/08_otv_site_vlans_aed_election.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/08_otv_site_vlans_aed_election.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 5583,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 4,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/09_apic_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/09_apic_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 13477,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 11,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/09_tac_requested_outputs_nexus.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/09_tac_requested_outputs_nexus.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 20933,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 6,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/10_nexus_dashboard_data_sheet_2026.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/10_nexus_dashboard_data_sheet_2026.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 40558,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 20,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/10_recommended_nxos_releases.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/10_recommended_nxos_releases.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 2559,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 2,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/118997-technote-nexus-00.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/118997-technote-nexus-00.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 9504,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 5,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/11_nexus_dashboard_insights_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/11_nexus_dashboard_insights_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 18692,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 11,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/11_test_vxlan_vtep_fabric_connectivity.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/11_test_vxlan_vtep_fabric_connectivity.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 10282,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 7,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/12_nexus9000_licensing_failures.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/12_nexus9000_licensing_failures.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 6020,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 4,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/12_nexus_dashboard_fabric_controller_12_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/12_nexus_dashboard_fabric_controller_12_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 32107,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 20,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/13_nexus9000_interface_crc_script.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/13_nexus9000_interface_crc_script.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 7685,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 7,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/13_nexus_dashboard_telemetry_white_paper.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/13_nexus_dashboard_telemetry_white_paper.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 78240,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 87,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/14_data_center_networking_ai_ml_solution_overview.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/14_data_center_networking_ai_ml_solution_overview.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 12854,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 5,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/14_nexus9000_mac_move.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/14_nexus9000_mac_move.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 8826,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 5,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/15_ai_networking_nvidia_spectrum_x_solution_overview.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/15_ai_networking_nvidia_spectrum_x_solution_overview.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 20234,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 12,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/15_nexus7000_f3_input_discards_lacp.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/15_nexus7000_f3_input_discards_lacp.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 8803,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 5,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/16_corrupted_ethernet_packet_nexus9000.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/16_corrupted_ethernet_packet_nexus9000.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 3746,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 4,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/16_nexus_9000_ai_enterprise_reference_architecture.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/16_nexus_9000_ai_enterprise_reference_architecture.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 25501,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 17,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/17_nexus_hyperfabric_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/17_nexus_hyperfabric_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 18968,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 12,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/17_vpc_inconsistency_nxos.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/17_vpc_inconsistency_nxos.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 17984,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 14,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/18_crc_errors_nexus.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/18_crc_errors_nexus.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 27864,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 16,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/18_nexus_hyperfabric_security_white_paper.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/18_nexus_hyperfabric_security_white_paper.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 47168,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 23,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/19_icmp_redirect_messages.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/19_icmp_redirect_messages.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 28950,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 14,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/19_nexus_hyperfabric_ai_solutions_data_sheet.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/19_nexus_hyperfabric_ai_solutions_data_sheet.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 20736,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 12,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/200185-Configure-Redistribution-of-iBGP-Routes.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/200185-Configure-Redistribution-of-iBGP-Routes.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 4541,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 4,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/20_nexus_hyperfabric_ai_enterprise_reference_architecture.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/20_nexus_hyperfabric_ai_enterprise_reference_architecture.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 19947,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 16,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/20_ospf_nssa_type7_lsa_forwarding.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/20_ospf_nssa_type7_lsa_forwarding.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 3804,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 2,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/213908-configure-vrf-route-leak-on-nexus.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/213908-configure-vrf-route-leak-on-nexus.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 10850,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 15,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/213952-configure-bgp-to-advertise-a-default-rou.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/213952-configure-bgp-to-advertise-a-default-rou.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 12181,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 10,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/214843-nexus-9000-cisco-intelligent-traffic-dir.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/214843-nexus-9000-cisco-intelligent-traffic-dir.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 6035,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 5,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/216037-nexus-3000-and-3100-nx-os-software-upgra.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/216037-nexus-3000-and-3100-nx-os-software-upgra.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 80976,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 44,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/216492-upgrade-nexus-3524-and-3548-nx-os-softwa.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/216492-upgrade-nexus-3524-and-3548-nx-os-softwa.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 114987,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 68,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/21_vpc_enhancements.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/21_vpc_enhancements.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 73787,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 45,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/220615-configure-route-redistribution-on-nexus.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/220615-configure-route-redistribution-on-nexus.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 9372,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 9,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/221034-install-upgrade-on-nexus-switches-in-vpc.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/221034-install-upgrade-on-nexus-switches-in-vpc.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15850,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 12,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/222090-configure-ciphers-macs-kex-algorithms.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/222090-configure-ciphers-macs-kex-algorithms.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 17475,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 15,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/22_vpc_election_process.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/22_vpc_election_process.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 12230,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 10,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/23_intelligent_traffic_director_source_ip.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/23_intelligent_traffic_director_source_ip.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 11541,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 8,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/24_ebgp_over_vpc_nexus.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/24_ebgp_over_vpc_nexus.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 9730,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 8,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/DCNM_Installation_Guide_10_4_1.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/DCNM_Installation_Guide_10_4_1.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 257788,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 136,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/MIBRef.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/MIBRef.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 25341,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 12,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/Unicast_Book.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/Unicast_Book.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 271714,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 142,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/at_a_glance_c45-712456.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/at_a_glance_c45-712456.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 5305,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 1,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-epbr-configuration-guide.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-epbr-configuration-guide.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 155468,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 94,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-fc-npv-and-fcoe-npv-configuration-guide-106x.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 152211,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 108,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/cisco-nexus-9000v-9300v-9500v-guide-release-106x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/cisco-nexus-9000v-9300v-9500v-guide-release-106x.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 90925,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 60,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/data_sheet_c78-652063.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/data_sheet_c78-652063.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 19017,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 7,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/networks/40404.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/networks/40404.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 40755,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 8,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/networks/COMPUTER NETWORKS NOTES.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/networks/COMPUTER NETWORKS NOTES.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 243028,
+        "duplicate_paragraph_ratio": 0.1502,
+        "total_paragraphs": 293,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/networks/Networking Fundamentals.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/networks/Networking Fundamentals.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 569139,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 494,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/networks/sg-005-data-center-fabric.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/networks/sg-005-data-center-fabric.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 1099337,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 751,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1131.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1131.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 264,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 4,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1245.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1245.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 26682,
+        "duplicate_paragraph_ratio": 0.082,
+        "total_paragraphs": 122,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1246.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1246.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 70179,
+        "duplicate_paragraph_ratio": 0.0829,
+        "total_paragraphs": 350,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1247.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1247.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 431438,
+        "duplicate_paragraph_ratio": 0.1328,
+        "total_paragraphs": 1852,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1248.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1248.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 74527,
+        "duplicate_paragraph_ratio": 0.1039,
+        "total_paragraphs": 385,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1364.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1364.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 32045,
+        "duplicate_paragraph_ratio": 0.0609,
+        "total_paragraphs": 197,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1370.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1370.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 4288,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 28,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1403.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1403.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 35992,
+        "duplicate_paragraph_ratio": 0.0943,
+        "total_paragraphs": 212,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1583.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1583.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 521481,
+        "duplicate_paragraph_ratio": 0.1374,
+        "total_paragraphs": 1899,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1584.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1584.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 261538,
+        "duplicate_paragraph_ratio": 0.121,
+        "total_paragraphs": 851,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1586.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1586.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 14919,
+        "duplicate_paragraph_ratio": 0.069,
+        "total_paragraphs": 58,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1587.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1587.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 37225,
+        "duplicate_paragraph_ratio": 0.0862,
+        "total_paragraphs": 174,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1745.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1745.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 42681,
+        "duplicate_paragraph_ratio": 0.0708,
+        "total_paragraphs": 240,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1765.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1765.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 21553,
+        "duplicate_paragraph_ratio": 0.0654,
+        "total_paragraphs": 107,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1793.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1793.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 78441,
+        "duplicate_paragraph_ratio": 0.0987,
+        "total_paragraphs": 304,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1850.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1850.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 137291,
+        "duplicate_paragraph_ratio": 0.1292,
+        "total_paragraphs": 658,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2096.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2096.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 34337,
+        "duplicate_paragraph_ratio": 0.1314,
+        "total_paragraphs": 175,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2154.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2154.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 72464,
+        "duplicate_paragraph_ratio": 0.125,
+        "total_paragraphs": 288,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2178.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2178.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 493898,
+        "duplicate_paragraph_ratio": 0.1302,
+        "total_paragraphs": 1959,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2329.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2329.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 14964,
+        "duplicate_paragraph_ratio": 0.0889,
+        "total_paragraphs": 90,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2370.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2370.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 33626,
+        "duplicate_paragraph_ratio": 0.0892,
+        "total_paragraphs": 157,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2676.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2676.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 124153,
+        "duplicate_paragraph_ratio": 0.1378,
+        "total_paragraphs": 399,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2740.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2740.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 189170,
+        "duplicate_paragraph_ratio": 0.1144,
+        "total_paragraphs": 813,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2844.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2844.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 32005,
+        "duplicate_paragraph_ratio": 0.0915,
+        "total_paragraphs": 142,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3101.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3101.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 75890,
+        "duplicate_paragraph_ratio": 0.1036,
+        "total_paragraphs": 309,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3137.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3137.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 7914,
+        "duplicate_paragraph_ratio": 0.0656,
+        "total_paragraphs": 61,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3509.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3509.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 24171,
+        "duplicate_paragraph_ratio": 0.0917,
+        "total_paragraphs": 120,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3623.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3623.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 38539,
+        "duplicate_paragraph_ratio": 0.0881,
+        "total_paragraphs": 193,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3630.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3630.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 27555,
+        "duplicate_paragraph_ratio": 0.0877,
+        "total_paragraphs": 171,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3883.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc3883.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 13050,
+        "duplicate_paragraph_ratio": 0.0685,
+        "total_paragraphs": 73,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4061.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4061.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 32544,
+        "duplicate_paragraph_ratio": 0.1014,
+        "total_paragraphs": 207,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4062.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4062.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15679,
+        "duplicate_paragraph_ratio": 0.1732,
+        "total_paragraphs": 127,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4063.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4063.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 23299,
+        "duplicate_paragraph_ratio": 0.0781,
+        "total_paragraphs": 128,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4136.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4136.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 8442,
+        "duplicate_paragraph_ratio": 0.0741,
+        "total_paragraphs": 54,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4167.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4167.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 11713,
+        "duplicate_paragraph_ratio": 0.0667,
+        "total_paragraphs": 75,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4203.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4203.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 23037,
+        "duplicate_paragraph_ratio": 0.0741,
+        "total_paragraphs": 135,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4222.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4222.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 33989,
+        "duplicate_paragraph_ratio": 0.0933,
+        "total_paragraphs": 150,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4552.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4552.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 31403,
+        "duplicate_paragraph_ratio": 0.0795,
+        "total_paragraphs": 176,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4576.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4576.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15073,
+        "duplicate_paragraph_ratio": 0.0779,
+        "total_paragraphs": 77,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4577.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4577.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 61356,
+        "duplicate_paragraph_ratio": 0.083,
+        "total_paragraphs": 289,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4750.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4750.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 218117,
+        "duplicate_paragraph_ratio": 0.1222,
+        "total_paragraphs": 1072,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4811.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4811.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 18819,
+        "duplicate_paragraph_ratio": 0.0865,
+        "total_paragraphs": 104,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4812.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4812.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 11986,
+        "duplicate_paragraph_ratio": 0.0833,
+        "total_paragraphs": 72,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4813.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4813.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 19575,
+        "duplicate_paragraph_ratio": 0.0763,
+        "total_paragraphs": 118,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4915.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4915.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 42902,
+        "duplicate_paragraph_ratio": 0.0852,
+        "total_paragraphs": 223,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4940.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4940.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 27120,
+        "duplicate_paragraph_ratio": 0.1152,
+        "total_paragraphs": 191,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4970.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4970.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 26230,
+        "duplicate_paragraph_ratio": 0.0916,
+        "total_paragraphs": 131,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4973.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc4973.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 114882,
+        "duplicate_paragraph_ratio": 0.1095,
+        "total_paragraphs": 539,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5088.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5088.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 40743,
+        "duplicate_paragraph_ratio": 0.0742,
+        "total_paragraphs": 256,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5185.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5185.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 18499,
+        "duplicate_paragraph_ratio": 0.0783,
+        "total_paragraphs": 115,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5187.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5187.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 14787,
+        "duplicate_paragraph_ratio": 0.0588,
+        "total_paragraphs": 85,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5243.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5243.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 10972,
+        "duplicate_paragraph_ratio": 0.0784,
+        "total_paragraphs": 51,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5250.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5250.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 37478,
+        "duplicate_paragraph_ratio": 0.0847,
+        "total_paragraphs": 177,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5252.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5252.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 23121,
+        "duplicate_paragraph_ratio": 0.0726,
+        "total_paragraphs": 124,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5329.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5329.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 25308,
+        "duplicate_paragraph_ratio": 0.084,
+        "total_paragraphs": 131,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5340.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5340.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 224967,
+        "duplicate_paragraph_ratio": 0.1092,
+        "total_paragraphs": 998,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5392.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5392.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 38545,
+        "duplicate_paragraph_ratio": 0.0754,
+        "total_paragraphs": 199,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5449.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5449.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 66926,
+        "duplicate_paragraph_ratio": 0.0982,
+        "total_paragraphs": 387,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5523.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5523.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 23321,
+        "duplicate_paragraph_ratio": 0.1119,
+        "total_paragraphs": 143,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5613.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5613.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 22936,
+        "duplicate_paragraph_ratio": 0.0699,
+        "total_paragraphs": 143,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5614.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5614.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 169530,
+        "duplicate_paragraph_ratio": 0.0955,
+        "total_paragraphs": 754,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5642.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5642.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 19178,
+        "duplicate_paragraph_ratio": 0.0594,
+        "total_paragraphs": 101,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5643.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5643.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 187195,
+        "duplicate_paragraph_ratio": 0.1364,
+        "total_paragraphs": 755,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5709.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5709.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 30108,
+        "duplicate_paragraph_ratio": 0.0706,
+        "total_paragraphs": 170,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5786.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5786.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15471,
+        "duplicate_paragraph_ratio": 0.0633,
+        "total_paragraphs": 79,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5787.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5787.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 66998,
+        "duplicate_paragraph_ratio": 0.0928,
+        "total_paragraphs": 334,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5820.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5820.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 95289,
+        "duplicate_paragraph_ratio": 0.0868,
+        "total_paragraphs": 461,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5838.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc5838.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 26017,
+        "duplicate_paragraph_ratio": 0.0791,
+        "total_paragraphs": 139,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6506.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6506.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 41787,
+        "duplicate_paragraph_ratio": 0.0779,
+        "total_paragraphs": 244,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6549.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6549.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 16498,
+        "duplicate_paragraph_ratio": 0.0842,
+        "total_paragraphs": 95,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6565.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6565.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 43022,
+        "duplicate_paragraph_ratio": 0.0763,
+        "total_paragraphs": 236,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6827.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6827.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 72958,
+        "duplicate_paragraph_ratio": 0.1127,
+        "total_paragraphs": 275,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6845.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6845.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 16891,
+        "duplicate_paragraph_ratio": 0.0673,
+        "total_paragraphs": 104,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6860.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6860.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 25413,
+        "duplicate_paragraph_ratio": 0.0789,
+        "total_paragraphs": 152,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6863.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6863.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 26920,
+        "duplicate_paragraph_ratio": 0.0732,
+        "total_paragraphs": 123,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6969.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6969.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 7909,
+        "duplicate_paragraph_ratio": 0.0426,
+        "total_paragraphs": 47,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6987.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6987.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 10764,
+        "duplicate_paragraph_ratio": 0.0633,
+        "total_paragraphs": 79,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6992.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc6992.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 34566,
+        "duplicate_paragraph_ratio": 0.0828,
+        "total_paragraphs": 157,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7038.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7038.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15474,
+        "duplicate_paragraph_ratio": 0.0568,
+        "total_paragraphs": 88,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7137.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7137.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15917,
+        "duplicate_paragraph_ratio": 0.0645,
+        "total_paragraphs": 93,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7138.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7138.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 76542,
+        "duplicate_paragraph_ratio": 0.114,
+        "total_paragraphs": 307,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7166.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7166.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 49319,
+        "duplicate_paragraph_ratio": 0.0769,
+        "total_paragraphs": 286,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7471.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7471.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 38616,
+        "duplicate_paragraph_ratio": 0.1143,
+        "total_paragraphs": 245,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7474.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7474.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 31694,
+        "duplicate_paragraph_ratio": 0.1046,
+        "total_paragraphs": 153,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7503.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7503.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 33361,
+        "duplicate_paragraph_ratio": 0.0828,
+        "total_paragraphs": 157,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7580.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7580.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 24814,
+        "duplicate_paragraph_ratio": 0.0813,
+        "total_paragraphs": 123,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7684.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7684.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 31947,
+        "duplicate_paragraph_ratio": 0.1326,
+        "total_paragraphs": 181,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7688.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7688.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 25298,
+        "duplicate_paragraph_ratio": 0.0791,
+        "total_paragraphs": 139,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7770.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7770.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 32696,
+        "duplicate_paragraph_ratio": 0.0982,
+        "total_paragraphs": 163,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7777.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7777.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 33530,
+        "duplicate_paragraph_ratio": 0.0855,
+        "total_paragraphs": 152,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7884.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7884.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 13515,
+        "duplicate_paragraph_ratio": 0.0625,
+        "total_paragraphs": 80,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7949.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc7949.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 25443,
+        "duplicate_paragraph_ratio": 0.0818,
+        "total_paragraphs": 110,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8042.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8042.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 18144,
+        "duplicate_paragraph_ratio": 0.0667,
+        "total_paragraphs": 105,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8099.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8099.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 59925,
+        "duplicate_paragraph_ratio": 0.0794,
+        "total_paragraphs": 315,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8330.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8330.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 19059,
+        "duplicate_paragraph_ratio": 0.0762,
+        "total_paragraphs": 105,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8362.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8362.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 69647,
+        "duplicate_paragraph_ratio": 0.1437,
+        "total_paragraphs": 327,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8363.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8363.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 37162,
+        "duplicate_paragraph_ratio": 0.0785,
+        "total_paragraphs": 191,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8379.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8379.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 37502,
+        "duplicate_paragraph_ratio": 0.1058,
+        "total_paragraphs": 189,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8444.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8444.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 23354,
+        "duplicate_paragraph_ratio": 0.0781,
+        "total_paragraphs": 128,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8476.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8476.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 21410,
+        "duplicate_paragraph_ratio": 0.0889,
+        "total_paragraphs": 135,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8510.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8510.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 15189,
+        "duplicate_paragraph_ratio": 0.0706,
+        "total_paragraphs": 85,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8665.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8665.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 56850,
+        "duplicate_paragraph_ratio": 0.1006,
+        "total_paragraphs": 308,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8666.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8666.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 38957,
+        "duplicate_paragraph_ratio": 0.0643,
+        "total_paragraphs": 249,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8687.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8687.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 17521,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 79,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8770.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8770.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 20051,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 84,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8920.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc8920.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 45088,
+        "duplicate_paragraph_ratio": 0.0803,
+        "total_paragraphs": 249,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9013.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9013.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 21048,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 116,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9084.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9084.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 20509,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 93,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9089.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9089.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 16229,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 94,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9129.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9129.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 222239,
+        "duplicate_paragraph_ratio": 0.0071,
+        "total_paragraphs": 564,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9214.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9214.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 11192,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 61,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9339.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9339.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 26040,
+        "duplicate_paragraph_ratio": 0.0259,
+        "total_paragraphs": 116,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9353.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9353.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 30419,
+        "duplicate_paragraph_ratio": 0.0132,
+        "total_paragraphs": 152,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9355.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9355.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 22978,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 87,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9356.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9356.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 28920,
+        "duplicate_paragraph_ratio": 0.0286,
+        "total_paragraphs": 105,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9454.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9454.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 11160,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 59,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9492.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9492.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 46635,
+        "duplicate_paragraph_ratio": 0.0797,
+        "total_paragraphs": 251,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9513.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9513.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 62502,
+        "duplicate_paragraph_ratio": 0.0909,
+        "total_paragraphs": 297,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9587.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9587.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 48717,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 117,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9667.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9667.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 102178,
+        "duplicate_paragraph_ratio": 0.0272,
+        "total_paragraphs": 514,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9792.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9792.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 14541,
+        "duplicate_paragraph_ratio": 0.046,
+        "total_paragraphs": 87,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9825.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9825.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 39090,
+        "duplicate_paragraph_ratio": 0.0128,
+        "total_paragraphs": 156,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9903.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9903.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 88587,
+        "duplicate_paragraph_ratio": 0.0,
+        "total_paragraphs": 184,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9929.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9929.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 31182,
+        "duplicate_paragraph_ratio": 0.0115,
+        "total_paragraphs": 174,
+        "detected_language": "en"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9983.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc9983.txt",
+      "status": "retained",
+      "details": {
+        "char_count": 21213,
+        "duplicate_paragraph_ratio": 0.0172,
+        "total_paragraphs": 116,
+        "detected_language": "en"
+      }
+    }
+  ],
+  "rejected_documents": [
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/217989-troubleshoot-vpc-inconsistency-issues-on.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/217989-troubleshoot-vpc-inconsistency-issues-on.txt",
+      "status": "rejected",
+      "reason": "failed_exact_deduplication",
+      "retained_original": {
+        "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/17_vpc_inconsistency_nxos.pdf",
+        "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/17_vpc_inconsistency_nxos.txt"
+      },
+      "details": {
+        "doc_md5": "0a0fb5640be18229b93aca830c97e476"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-interfaces-configuration-guide-release-105x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-interfaces-configuration-guide-release-105x.txt",
+      "status": "rejected",
+      "reason": "failed_exact_deduplication",
+      "retained_original": {
+        "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/02_nexus9000_nxos_interfaces_10.5x.pdf",
+        "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/02_nexus9000_nxos_interfaces_10.5x.txt"
+      },
+      "details": {
+        "doc_md5": "dd4745d5f3736dea9e4d96c03fd3cc37"
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-interfaces-configuration-guide-release-106x.pdf",
+      "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/cisco-nexus-9000-series-nx-os-interfaces-configuration-guide-release-106x.txt",
+      "status": "rejected",
+      "reason": "failed_near_deduplication",
+      "retained_original": {
+        "source_file": "/home/jovyan/llmassign/1a/data/raw/pdfs/cisco-dc/02_nexus9000_nxos_interfaces_10.5x.pdf",
+        "output_filename": "/home/jovyan/llmassign/1a/data/processed-pdf/pdfs/cisco-dc/02_nexus9000_nxos_interfaces_10.5x.txt"
+      },
+      "details": {
+        "similarity_score": 0.8516,
+        "threshold": 0.85
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1252.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1252.txt",
+      "status": "rejected",
+      "reason": "failed_near_deduplication",
+      "retained_original": {
+        "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1248.txt",
+        "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1248.txt"
+      },
+      "details": {
+        "similarity_score": 0.9609,
+        "threshold": 0.85
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1253.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1253.txt",
+      "status": "rejected",
+      "reason": "failed_near_deduplication",
+      "retained_original": {
+        "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1248.txt",
+        "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc1248.txt"
+      },
+      "details": {
+        "similarity_score": 0.9453,
+        "threshold": 0.85
+      }
+    },
+    {
+      "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2328.txt",
+      "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2328.txt",
+      "status": "rejected",
+      "reason": "failed_near_deduplication",
+      "retained_original": {
+        "source_file": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2178.txt",
+        "output_filename": "/home/jovyan/llmassign/1a/data/raw/text/rfc/rfc2178.txt"
+      },
+      "details": {
+        "similarity_score": 0.8672,
+        "threshold": 0.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,377 @@
+{
+  "evaluation_stage": "pre_cpt",
+  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
+  "model_name": "Qwen/Qwen2.5-1.5B",
+  "model_details": {
+    "name_or_path": "Qwen/Qwen2.5-1.5B",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "Qwen/Qwen2.5-1.5B",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643
+  },
+  "query_source": "domain_generalization_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DGEN01",
+      "category": "vxlan-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A multitenant data center needs far more than 4096 isolated Layer 2 segments over an IP fabric. The design should use",
+      "expected_concepts": [
+        "VXLAN",
+        "24-bit VNI",
+        "approximately 16 million segments",
+        "Layer 3 underlay"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7078651685393258
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 54.83826398849487,
+        "mean_cross_entropy_loss": 0.5483826398849487,
+        "perplexity": 1.7304519893135264,
+        "combined_token_count": 129,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a Layer 3 fabric to provide a single Layer 3 network for all tenants. The design should also use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use",
+      "response": "a Layer 3 fabric to provide a single Layer 3 network for all tenants. The design should also use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use"
+    },
+    {
+      "id": "DGEN02",
+      "category": "ospf-nssa-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An OSPF area should retain stub-area behavior but must import selected routes from an external routing domain. The suitable area type is",
+      "expected_concepts": [
+        "NSSA",
+        "Not-So-Stubby Area",
+        "Type-7 LSA",
+        "external routes"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "NSSA"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2535211267605634
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 59.23383831977844,
+        "mean_cross_entropy_loss": 0.5923383831977844,
+        "perplexity": 1.8082117675808593,
+        "combined_token_count": 125,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "____.\nA. Backbone area\nB. Virtual link area\nC. Totally stub area\nD. Totally stub area with NSSA\nAnswer:\nD\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High crude oil viscosity\nB. High crude oil density\nC. High crude oil viscosity and high crude oil density\nD. High crude oil viscosity and high crude oil temperature\nAnswer:\nC\n\nThe main reason for the formation of the",
+      "response": "____.\nA. Backbone area\nB. Virtual link area\nC. Totally stub area\nD. Totally stub area with NSSA\nAnswer:\nD\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High crude oil viscosity\nB. High crude oil density\nC. High crude oil viscosity and high crude oil density\nD. High crude oil viscosity and high crude oil temperature\nAnswer:\nC\n\nThe main reason for the formation of the"
+    },
+    {
+      "id": "DGEN03",
+      "category": "ospf-resiliency",
+      "evaluation_type": "domain_generalization",
+      "prompt": "During an OSPF graceful restart, a topology change that could make forwarding stale should cause the router to",
+      "expected_concepts": [
+        "exit graceful restart",
+        "normal OSPF restart",
+        "avoid routing loops",
+        "recalculate forwarding"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.29850746268656714
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 64.76986408233643,
+        "mean_cross_entropy_loss": 0.6476986408233643,
+        "perplexity": 1.9111375502552206,
+        "combined_token_count": 120,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "recompute the SPF tree and recompute the LSPs. A. Correct B. Incorrect\nAnswer:\nA\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High crude oil viscosity\nC. High crude oil density\nD. High crude oil temperature\nAnswer:\nB\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High",
+      "response": "recompute the SPF tree and recompute the LSPs. A. Correct B. Incorrect\nAnswer:\nA\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High crude oil viscosity\nC. High crude oil density\nD. High crude oil temperature\nAnswer:\nB\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High"
+    },
+    {
+      "id": "DGEN04",
+      "category": "ospf-bfd",
+      "evaluation_type": "domain_generalization",
+      "prompt": "OSPF neighbors form over a poor-quality link, but the faster BFD session repeatedly fails. BFD strict mode addresses this by",
+      "expected_concepts": [
+        "block OSPF adjacency formation",
+        "wait for BFD session",
+        "both neighbors advertise support"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.2727272727272727
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 63.022297620773315,
+        "mean_cross_entropy_loss": 0.6302229762077332,
+        "perplexity": 1.8780292884302634,
+        "combined_token_count": 126,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "sending a large number of packets to the peer, causing the neighbor to be quickly removed from the neighbor table. Is this description correct?\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB. No\nAnswer:\nB\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB",
+      "response": "sending a large number of packets to the peer, causing the neighbor to be quickly removed from the neighbor table. Is this description correct?\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB. No\nAnswer:\nB\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB"
+    },
+    {
+      "id": "DGEN05",
+      "category": "nexus-dashboard-operations",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An operations team wants one on-premises control point for provisioning, observing, automating, and troubleshooting several Cisco data-center fabrics. The appropriate platform is",
+      "expected_concepts": [
+        "Cisco Nexus Dashboard",
+        "centralized management",
+        "visibility",
+        "automation"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6567164179104478
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 72.15737104415894,
+        "mean_cross_entropy_loss": 0.7215737104415894,
+        "perplexity": 2.057668838942275,
+        "combined_token_count": 131,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": ":\nA. Cisco Unified Data Center Fabric\nB. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager\nC. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager\nD. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager\n答案:\n B\n\n在华为FusionCompute中，以下关于虚拟机存储热迁移描述不正确的是____\nA",
+      "response": ":\nA. Cisco Unified Data Center Fabric\nB. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager\nC. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager\nD. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager\n答案:\n B\n\n在华为FusionCompute中，以下关于虚拟机存储热迁移描述不正确的是____\nA"
+    },
+    {
+      "id": "DGEN06",
+      "category": "ai-data-center-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A distributed GPU training job is slowed by congestion and packet loss between workers. The Ethernet fabric should be designed for",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "lossless networking",
+        "congestion management",
+        "telemetry"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "high bandwidth",
+          "low latency"
+        ],
+        "concept_hit_count": 2,
+        "concept_count": 5,
+        "concept_recall": 0.4,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5581395348837209
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 51.79067254066467,
+        "mean_cross_entropy_loss": 0.5179067254066467,
+        "perplexity": 1.678510386537589,
+        "combined_token_count": 122,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "high performance and low latency. The following are recommended best practices for designing a high-performance and low-latency Ethernet fabric for a distributed GPU training job:\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use",
+      "response": "high performance and low latency. The following are recommended best practices for designing a high-performance and low-latency Ethernet fabric for a distributed GPU training job:\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use"
+    },
+    {
+      "id": "DGEN07",
+      "category": "switching-behavior",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A Nexus switch starts transmitting a frame after reading enough of its header to choose the egress port instead of buffering the entire frame. This behavior is called",
+      "expected_concepts": [
+        "cut-through switching"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.32307692307692304
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 69.41033005714417,
+        "mean_cross_entropy_loss": 0.6941033005714417,
+        "perplexity": 2.0019131544798894,
+        "combined_token_count": 130,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "____.\nA. Frame Caching\nB. Frame Forwarding\nC. Frame Transmission\nD. Frame Transmission Delay\nAnswer:\nB\n\nThe main function of the ____ is to provide a path for the transmission of data packets between different VLANs.\nA. Hub\nB. Router\nC. Switch\nD. Bridge\nAnswer:\nC\n\nThe main function of the ____ is to provide a path for the transmission of data packets between different VLANs.\nA. Hub\nB. Router",
+      "response": "____.\nA. Frame Caching\nB. Frame Forwarding\nC. Frame Transmission\nD. Frame Transmission Delay\nAnswer:\nB\n\nThe main function of the ____ is to provide a path for the transmission of data packets between different VLANs.\nA. Hub\nB. Router\nC. Switch\nD. Bridge\nAnswer:\nC\n\nThe main function of the ____ is to provide a path for the transmission of data packets between different VLANs.\nA. Hub\nB. Router"
+    },
+    {
+      "id": "DGEN08",
+      "category": "vxlan-forwarding",
+      "evaluation_type": "domain_generalization",
+      "prompt": "Two workloads must remain in the same logical Layer 2 segment while residing across a routed Layer 3 data-center fabric. VXLAN accomplishes this by",
+      "expected_concepts": [
+        "MAC-in-UDP encapsulation",
+        "tunneling",
+        "VTEP",
+        "Layer 2 overlay"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.20270270270270274
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 80.93110918998718,
+        "mean_cross_entropy_loss": 0.8093110918998718,
+        "perplexity": 2.246359917955873,
+        "combined_token_count": 131,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "using a VXLAN tunnel between the two Layer 3 data centers. Which of the following statements is true about VXLAN tunnels?\nA. VXLAN tunnels are created by the VXLAN controller.\nB. VXLAN tunnels are created by the VXLAN gateway.\nC. VXLAN tunnels are created by the VXLAN switch.\nD. VXLAN tunnels are created by the VXLAN router.\nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the transmission of data packets between",
+      "response": "using a VXLAN tunnel between the two Layer 3 data centers. Which of the following statements is true about VXLAN tunnels?\nA. VXLAN tunnels are created by the VXLAN controller.\nB. VXLAN tunnels are created by the VXLAN gateway.\nC. VXLAN tunnels are created by the VXLAN switch.\nD. VXLAN tunnels are created by the VXLAN router.\nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the transmission of data packets between"
+    },
+    {
+      "id": "DGEN09",
+      "category": "interface-troubleshooting",
+      "evaluation_type": "domain_generalization",
+      "prompt": "CRC and FCS counters on a Nexus interface continue increasing between polling intervals. The investigation should focus first on",
+      "expected_concepts": [
+        "physical layer",
+        "cable",
+        "optics",
+        "peer interface",
+        "speed or FEC"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 99,
+        "negative_log_likelihood": 69.00520366430283,
+        "mean_cross_entropy_loss": 0.6970222592353821,
+        "perplexity": 2.0077651930007834,
+        "combined_token_count": 120,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following:\nA. The number of packets received on the interface\nB. The number of packets sent on the interface\nC. The number of packets received and sent on the interface\nD. The number of packets received and sent on the interface, and the number of packets received and sent on the interface\nAnswer:\nC\n\nThe main reason for the increase in the number of packets received and sent on the interface is ____.\nA. The number of packets received and sent on the interface",
+      "response": "the following:\nA. The number of packets received on the interface\nB. The number of packets sent on the interface\nC. The number of packets received and sent on the interface\nD. The number of packets received and sent on the interface, and the number of packets received and sent on the interface\nAnswer:\nC\n\nThe main reason for the increase in the number of packets received and sent on the interface is ____.\nA. The number of packets received and sent on the interface"
+    },
+    {
+      "id": "DGEN10",
+      "category": "vpc-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A server should use one logical port channel while connecting redundantly to two separate Cisco Nexus switches. The switches should be configured as",
+      "expected_concepts": [
+        "vPC peers",
+        "vPC domain",
+        "peer-link",
+        "logical port channel"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.5
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 48.61089289188385,
+        "mean_cross_entropy_loss": 0.4861089289188385,
+        "perplexity": 1.6259771024929992,
+        "combined_token_count": 125,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "follows: \nA. Both switches should be configured as active/standby mode.\nB. Both switches should be configured as active/standby mode, with the active switch being the primary switch.\nC. Both switches should be configured as active/standby mode, with the standby switch being the primary switch.\nD. Both switches should be configured as active/standby mode, with the active switch being the primary switch, and the standby switch being the backup switch.\nAnswer:\nD\n\nThe",
+      "response": "follows: \nA. Both switches should be configured as active/standby mode.\nB. Both switches should be configured as active/standby mode, with the active switch being the primary switch.\nC. Both switches should be configured as active/standby mode, with the standby switch being the primary switch.\nD. Both switches should be configured as active/standby mode, with the active switch being the primary switch, and the standby switch being the backup switch.\nAnswer:\nD\n\nThe"
+    }
+  ]
+}

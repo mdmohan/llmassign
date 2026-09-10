@@ -1,0 +1,93 @@
+Log in
+FEX Power Supply Failure Messages and Troubleshooting
+Updated: May 3, 2013 Document ID: 116122
+Bias-Free Langua
+Contents
+Introduction
+Continuous Messages for GPIO Access Failure
+Nexus 5000 and NX-OS Version Earlier than 5.0(3)N2(1)
+Nexus 5000 and NX-OS Version 5.0(3)N2(1) or Later
+Nexus 7000
+Other Failure Messages for FEX Power Supply
+Troubleshooting
+Related Information
+Introduction
+This document describes failure messages and general troubleshooting procedures for the Cisco Fabric
+Extender (FEX) power supply.
+Continuous Messages for GPIO Access Failure
+In this example, the logs reveal continuous messages for general purpose input/output (GPIO) access
+failure:
+%SATCTRL-FEX133-2-SOHMS_DIAG_ERROR: FEX-133 Module 1: Runtime diag
+detected major event: GPIO access failure
+%SATCTRL-FEX133-4-SOHMS_PS_GPIO: FEX-133 System PS access failure
+on Power supply: 1
+%SATCTRL-FEX133-4-SOHMS_PS_GPIO: FEX-133 System PS access failure
+on Power supply: 2
+The appropriate solution depends upon the software version on the Nexus 5000 or Nexus 7000.
+Nexus 5000 and NX-OS Version Earlier than 5.0(3)N2(1)
+This is a known cosmetic issue; see Cisco bug ID CSCtl77867 (FEX PS runtime diag detected major
+event: GPIO access failure). The solution is to reload the FEX or upgrade to version 5.0(3)N2(1) or later.
+Nexus 5000 and NX-OS Version 5.0(3)N2(1) or Later
+See Cisco bug ID CSCtz84683 (continuous GPIO access failure message seen on FEX).
+Note: Only FEX power supplies with serial numbers that start with DTN are aected; power supplies
+with serial numbers that start with LIN are not aected.
+
+Nexus 7000
+See Cisco bug ID CSCtr77620 (FEX: System minor alarm on power supply 1 & Recovered).
+Other Failure Messages for FEX Power Supply
+This example shows other failure messages for the FEX power supply:
+%SATCTRL-FEX104-2-SOHMS_DIAG_ERROR: FEX-104 Module 1: Runtime diag detected
+major event:
+Voltage failure on power supply: 1
+%SATCTRL-FEX104-2-SOHMS_DIAG_ERROR: FEX-104 System minor alarm on power supply
+1: failed
+%SATCTRL-FEX104-2-SOHMS_DIAG_ERROR: FEX-104 Recovered: System minor alarm on
+power
+supply 1: failed
+Methods to resolve these issues include:
+1. Reseat the FEX power supply; use the redundant power supply to ensure the power does not go
+oine.
+2. Submit a Return Material Authorization (RMA) for the FEX power supply; use the redundant power
+supply to ensure the power does not go oine.
+3. Repeat these steps for the second power supply.
+Troubleshooting
+The rst step in troubleshooting is to check for hardware and power issues. If you have a software issue,
+error messages continue even after you swap hardware.
+Review and answer these questions in order to help dene the circumstances of the failure:
+1. How many FEX power supplies are aected ?
+2. For a minor alarm, did you swap the input source, and did that make any dierence?
+3. Do you have other FEX power supplies that are having issues?
+4. Do you have any other boxes of the same power source?
+5. Did you replace the power cord?
+6. Was there a power surge or glitch in the environment?
+Gather output from these commands in order to investigate the failures:
+show sprom fex 100 all
+show logging log | no-more
+show tech fex 100 | no-more
+attach fex 100
+show platform software satctrl trace
+Note: Use the Command Lookup Tool (registered customers only) in order to obtain more
+information on the commands used in this section.
+Related Information
+Technical Support & Documentation - Cisco Systems
+Revision History
+
+Revision Publish Date Comments
+1.0 03-May-2013 Initial Release
+Quick Links -
+About Cisco
+Contact Us
+Careers
+Connect with a partner
+Resources and Legal -
+Feedback
+Help
+Terms & Conditions
+Privacy
+Cookies / Do not sell or share my personal data
+Accessibility
+Trademarks
+Supply Chain Transparency
+Newsroom
+Sitemap
+© 2026 Cisco Systems, Inc.

@@ -1,0 +1,321 @@
+Log in
+eBGP peering over vPC on Nexus
+Updated: May 10, 2021 Document ID: 217099
+Bias-Free Langua
+Contents
+Introduction
+Prerequisites
+Requirements
+Components Used
+Background Information
+Configure
+Network Diagram
+Congurations
+Verify
+Troubleshoot
+Introduction
+This document describes how to congure and verify e- Border Gateway Protocol (eBGP) peering
+between vPC Nеxus pair and another device. The conguration on the external device is shown as Cisco
+CLI NX-OS for clarity.
+Prerequisites
+Requirements
+Cisco recommends that you have knowledge of these topics:
+vPC operation and conguration basic concepts. For
+reference: https://www.cisco.com/c/dam/en/us/td/docs/switches/datacenter/sw/design/vpc_design/v
+pc_best_practices_design_guide.pdf
+BGP operation and conguration
+Components Used
+The information in this document is based on these software and hardware versions:
+leaf1# C93108TC-FX NXOS 9.3(3)
+leaf2# C93108TC-FX NXOS 9.3(3)
+ExternalDevice N9K-C9396PX NXOS: version 9.2(3)
+The information in this document was created from the devices in a specic lab environment. All of the
+devices used in this document started with a cleared (default) conguration. If your network is live, ensure
+
+that you understand the potential impact of any command.
+Background Information
+Routing protocols (OSPF, ISIS, RIP, EIGRP, BGP) peering between vPC pair and an external device. This is
+supported as per: https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/118997-technote-nexus-
+00.html. This article describes additional notes and conguration examples for eBGP as a routing
+protocol.
+Several problems are posed when trying to enable routing protocol peering over a vPC, which are not
+existent when using
+standard port-channel:
+1. It is not deterministic which member of the port-channel the External Device will use to forward
+trac for each mac-address. It is possible that the External Device will send BGP packets for Leaf-1
+over the link to Leaf-1. When Leaf-1 receives it, it will punt it to the CPU and discard it (not own ip
+address), thus BGP (unicast) or other protocol (multicast) will be apping constantly. Here helps the
+command peer-gateway.
+2. Even with peer-gateway command, TTL will be decreased on such a packet. THe new command in
+NX-OS - layer3 peer-router disables that.
+3. iBGP between the two vPC members is needed to obey the BGP rule for iBGP between all neighbors.
+We are running inside vrf on vPC side, thus only those two members need to run iBGP. THis is also
+needed in case of link failuire to rest of the NX-OS network (VXlan or other) and provide redundancy.
+Configure
+Network Diagram
+Two important commands are needed to enable this peering:
+Peer-gateway - The vPC peer-gateway functionality allows a vPC switch to act as the active gateway
+for packets that are addressed to the router MAC address of the vPC peer
+layer3 peer-router - no change for TTL of packets destined to the peer, external device sees the vPC
+domain as single physical entity from layer route protocol peering perspective as well.
+
+Configurations
+Leaf 1:
+! Form the vPC domain:
+vpc domain 1
+peer-switch
+role priority 10 peer-keepalive destination 192.0.2.2 source 192.0.2.1 peer-
+gateway layer3 peer-router ipv6 nd synchronize ip arp synchronize
+!
+!vPC peer-link interface members
+interface Ethernet1/53 - 54
+description vPC-Peerlink member
+switchport
+switchport mode trunk
+channel-group 11 mode active
+no shutdown
+!
+! vPC peer-link port-channel
+interface port-channel11
+description vPC-peerlink
+switchport
+switchport mode trunk
+spanning-tree port type network
+no shutdown
+vpc peer-link
+!
+! vPC port-channel member to External Device
+interface Ethernet1/52
+description ExternalDevice Eth2/13
+switchport
+switchport mode trunk
+switchport trunk allowed vlan 203,205
+mtu 9216
+channel-group 12 mode active
+no shutdown
+!
+! vPC port-channel to External Device
+interface port-channel12
+description vPC port-channel to External Device
+switchport
+switchport mode trunk
+switchport trunk allowed vlan 203,205
+mtu 9216
+vpc 12
+!
+! Layer 3 interface to the Eternal device:
+interface Vlan205
+
+no shutdown
+vrf member Customer
+! BFD for eBGP
+bfd interval 500 min_rx 500 multiplier 3
+! Disable bfd echo, as it is not supported over vPC
+no bfd echo
+no ip redirects
+! We use/29 as we need 3 ip address, one per each member of the ! vPC domain and
+ip address 198.51.100.1/29 tag 800204
+! Disable redirects - this is needed to enable BFD
+no ipv6 redirects
+!
+router bgp 65535
+router bgp 65535
+router-id 203.0.113.1
+log-neighbor-changes
+address-family ipv4 unicast
+Customer router-id 198.51.100.1 address-family ipv4 unicast neighbor 198.51.1
+! Form the vPC domain:
+vpc domain 1
+peer-switch
+role priority 10
+peer-keepalive destination 192.0.2.1 source 192.0.2.2
+peer-gateway
+layer3 peer-router
+ipv6 nd synchronize
+ip arp synchronize
+!
+!vPC peer-link interface members
+interface Ethernet1/53 - 54
+description vPC-Peerlink member
+switchport
+switchport mode trunk
+channel-group 11 mode active
+no shutdown
+!
+! vPC peer-link port-channel
+interface port-channel11
+description vPC-peerlink
+switchport
+switchport mode trunk
+spanning-tree port type network
+no shutdown
+vpc peer-link
+!
+! vPC port-channel member to External Device
+interface Ethernet1/52
+description ExternalDevice Eth2/13
+
+switchport
+switchport mode trunk
+switchport trunk allowed vlan 203,205
+mtu 9216
+channel-group 12 mode active
+no shutdown
+!
+! vPC port-channel to External Device
+interface port-channel12
+description vPC port-channel to External Device
+switchport
+switchport mode trunk
+switchport trunk allowed vlan 203,205
+mtu 9216
+vpc 12
+!
+! Layer 3 interface to the Eternal device:
+interface Vlan205
+no shutdown
+vrf member Customer
+! BFD for eBGP
+bfd interval 500 min_rx 500 multiplier 3
+! Disable bfd echo, as it is not supported over vPC
+no bfd echo
+no ip redirects
+! We use/29 as we need 3 ip address, one per each member of the ! vPC domain and
+ip address 198.51.100.2/29 tag 800204
+! Disable redirects - this is needed to enable BFD
+no ipv6 redirects
+!
+router bgp 65535
+router bgp 65535
+router-id 203.0.113.2
+log-neighbor-changes
+address-family ipv4 unicast
+vrf Customer
+router-id 198.51.100.2
+address-family ipv4 unicast
+neighbor 198.51.100.1
+description Leaf-2
+remote-as 65535
+address-family ipv4 unicast
+soft-reconfiguration inbound always
+neighbor 198.51.100.3
+description to External Device
+bfd
+remote-as 65000
+update-source Vlan205
+
+address-family ipv4 unicast
+soft-reconfiguration inbound always
+!
+External Device (NX-OS style CLI):
+interface Ethernet2/13 - 14
+switchport
+switchport mode trunk
+switchport trunk allowed vlan 203,205
+mtu 9216
+channel-group 12 mode active
+no shutdown
+!
+interface port-channel12
+switchport
+switchport mode trunk
+switchport trunk allowed vlan 203,205
+mtu 9216
+no shutdown
+!
+interface Vlan205
+no shutdown
+mtu 9216
+! See notes in Leaf-1 and Leaf 2 for BFD
+bfd interval 500 min_rx 500 multiplier 3
+no bfd echo
+no ip redirects
+ip address 198.51.100.3/29
+no ipv6 redirects
+!
+router bgp 65000
+log-neighbor-changes
+address-family ipv4 unicast
+neighbor 198.51.100.1 remote-as 65535
+description to Leaf-1
+update-source Vlan205
+bfd
+neighbor 198.51.100.2 remote-as 65535
+description to Leaf-2
+update-source Vlan205
+bfd
+end
+!
+Verify
+Below is output of show bgp ipv4 unicast neighbors. It veries that:
+1. BGP neighborship is established and stable
+
+2. BFD is enabled between external neighbors
+Leaf 1/2:
+show bgp ipv4 unicast neighbors vrf Customer
+BGP neighbor is 203.0.113.2, remote AS 65535, ibgp link, Peer index 4
+BGP version 4, remote router ID 203.0.113.2
+Neighbor previous state = OpenConrm
+BGP state = Established, up for 6d22h
+Neighbor vrf: Customer
+Peer is directly attached, interface Vlan205
+Last read 00:00:14, hold time = 180, keepalive interval is 60 seconds
+Last written 00:00:03, keepalive timer expiry due 00:00:56
+Received 10012 messages, 0 notications, 0 bytes in queue
+...
+BGP neighbor is 203.0.113.2.3, remote AS 65000, ebgp link, Peer index 3
+BGP version 4, remote router ID 203.0.113.2
+Neighbor previous state = OpenConrm
+BGP state = Established, up for 1d00h
+Neighbor vrf: Customer
+Using Vlan205 as update source for this peer
+Peer is directly attached, interface Vlan205
+BFD live-detection is congured and enabled, state is Up
+Last read 00:00:22, hold time = 180, keepalive interval is 60 seconds
+Last written 00:00:56, keepalive timer expiry due 00:00:03
+!
+External Device:
+show bgp ipv4 unicast neighbors
+BGP neighbor is 203.0.113.1, remote AS 65535, ebgp link, Peer index 3
+Inherits peer conguration from peer-template Cust_BGP_Peer
+BGP version 4, remote router ID 203.0.113.1
+BGP state = Established, up for 1d00h
+Peer is directly attached, interface Vlan205
+Enable logging neighbor events
+BFD live-detection is congured and enabled, state is Up
+Last read 0.660288, hold time = 180, keepalive interval is 60 seconds
+Last written 00:00:26, keepalive timer expiry due 00:00:33
+Received 10122 messages, 1 notications, 0 bytes in queue
+Sent 10086 messages, 1 notications, 0(0) bytes in queue
+Connections established 14, dropped 13
+Last reset by us 1d00h, due to bfd session down
+Last reset by peer 6d22h, due to other conguration change
+....
+Troubleshoot
+Following commands wil lhelp verify operation:
+show vpc
+show vpc consistency-parameters global
+show vpc consistency-parameters interface <interface>
+show bgp ipv4 unicast neighbors
+show bgp ipv4 unicast summary
+Revision History
+
+Revision Publish Date Comments
+1.0 19-May-2021 Initial Release
+Quick Links -
+About Cisco
+Contact Us
+Careers
+Connect with a partner
+Resources and Legal -
+Feedback
+Help
+Terms & Conditions
+Privacy
+Cookies / Do not sell or share my personal data
+Accessibility
+Trademarks
+Supply Chain Transparency
+Newsroom
+Sitemap
+© 2026 Cisco Systems, Inc.

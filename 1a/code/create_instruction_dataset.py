@@ -16,9 +16,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-from cli_parsers import build_instruction_dataset_parser
-
-
 GENERATION_PROMPT = (
     "Read the text and generate instruction-response pairs in JSON format based "
     "ONLY on this text. Each entry must have instruction and response keys."
@@ -841,6 +838,11 @@ def create_instruction_dataset(
 
 
 def main() -> int:
+    # CLI parsing is needed only when this file is executed as a script.
+    # Keeping the import here lets notebooks import create_instruction_dataset()
+    # without also requiring the separate cli_parsers module.
+    from cli_parsers import build_instruction_dataset_parser
+
     args = build_instruction_dataset_parser().parse_args()
     try:
         report = create_instruction_dataset(

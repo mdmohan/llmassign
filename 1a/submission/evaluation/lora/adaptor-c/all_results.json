@@ -1,0 +1,17 @@
+{
+    "after_training_loss": 2.3006784915924072,
+    "after_training_model_preparation_time": 0.0037,
+    "after_training_runtime": 3.2223,
+    "after_training_samples_per_second": 12.413,
+    "after_training_steps_per_second": 12.413,
+    "before_training_loss": 2.513874053955078,
+    "before_training_model_preparation_time": 0.0037,
+    "before_training_runtime": 3.23,
+    "before_training_samples_per_second": 12.384,
+    "before_training_steps_per_second": 12.384,
+    "epoch": 3.0,
+    "train_loss": 2.215409270922343,
+    "train_runtime": 167.2249,
+    "train_samples_per_second": 2.87,
+    "train_steps_per_second": 0.359
+}

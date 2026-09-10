@@ -1,0 +1,132 @@
+Log in
+OTV Site VLANs and AED Election Scenario
+Updated: April 22, 2015 Document ID: 118909
+Bias-Free Langua
+Contents
+Introduction
+Background Information
+Scenario
+Related Cisco Bug IDs
+Introduction
+This document discusses a common Overlay Transport Virtualization (OTV) scenario, where the site-VLAN
+does not come online or the Authoritative Edge Device (AED) does not forward a set of VLANs, and the
+steps to troubleshoot this scenario.
+Background Information
+This document assumes a multi-AED setup for either unicast or multicast OTV.
+Scenario
+AED does not become active for a VLAN.
+1. Enter the show otv command and check for errors. For example, 'Site-ID mismatch' is problematic.
+2. Enter the show otv site command and conrm the 'System-ID'.
+This is used in order to elect the AED so you know what should be active for each VLAN.
+RTP-OTV1# show otv site
+[snip]
+System-ID 8478.ac0b.6044
+Site-Identifier aaaa.aaaa.aaaa
+Site-VLAN 6 State is Up
+Site Information for Overlay1:
+Local device is AED-Capable
+Neighbor Edge Devices in Site: 1
+Hostname System-ID Adjacency- Adjacency- AED-
+State Uptime Capable
+-------------------------------------------------------------
+RTP-OTV1 8478.ac0c.7b44 Full 1w6d Yes
+3. Conrm that the site-VLAN is the same on both OTV Virtual Device Contexts (VDCs) in that site.
+
+Nexus-otv# show run | in "site-vlan"
+otv site-vlan 7
+The best practice is to use dierent site-VLANs per site.
+4. Verify the Spanning Tree Protocol (STP) state of the site-VLAN along all switches in the path
+between OTV VDCs. It should be forwarded on the Layer 2 (L2) ports to the agg and the agg should
+have its ports forwarded between VDCs as well.
+Nexus-otv# show spanning-tree vlan 7
+[snip]
+Interface Role Sts Cost Prio.Nbr Type
+---------------- ---- --- --------- -------- --------------------------------
+Po1 Root FWD 1 128.4096 Network P2p
+5. Check the event history in order to verify that hellos come in from the other AED at the local site
+through both the overlay and the site-VLAN and that the local AED sends two out.
+RTP-OTV1# show otv isis internal event-history iih | in "IIH"
+2015 Mar 26 14:35:09.227474 isis_otv default [14312]: [14321]:
+Send L1 LAN IIH over Overlay1 len 1397 prio6,dmac 0100.0cdf.dfdf
+2015 Mar 26 14:35:08.803200 isis_otv default [14312]: [14325]:
+Receive L1 LAN IIH over Overlay1 from SJ-OTV1 (8478.ac0c.7b47) len 1397
+prio 7
+2015 Mar 26 14:35:08.434157 isis_otv default [14312]: [14325]:
+Receive L1 LAN IIH over site-vlan from RTP-OTV1 (8478.ac0c.7b44) len 1497
+prio 7
+2015 Mar 26 14:35:08.345369 isis_otv default [14312]:
+[14321]: Send L1 LAN IIH over site-vlan len 1497 prio6,dmac 0100.0cdf.dfdf
+Note: If the site VLAN is the same on both sites and hello packets are switched from one site to
+another, then OTV detects the dierent site ID and inactivates the VLANs in order to shut down
+one site. This is completed in order to avoid an L2 loop. Enter the show otv output command for
+verication. A 'Site-ID mismatch' should be displayed when this occurs. You can change the site-
+VLAN or stop the loop before the site-VLAN in order to correct the issue. AED can then be
+brought up.
+6. Check the statistics in order to verify whether the hellos are received in the counters.
+RTP-OTV1# show otv isis site statistics | begin PDU
+OTV-IS-IS PDU statistics for site-vlan:
+PDU Received Sent RcvAuthErr OtherRcvErr ReTransmit
+LAN-IIH 91697 91700 0 0 n/a
+<<<<<<
+RTP-OTV2# show otv isis traffic
+OTV-IS-IS process: default
+VPN: Overlay1
+OTV-IS-IS Traffic:
+PDU Received Sent RcvAuthErr OtherRcvErr ReTransmit
+LAN-IIH 85530 23298 0 0 n/a
+<<<<<<
+7. Check the ordinal numbers in order to ensure they are assigned correctly:
+////////////////////////////////////// Note ///////////////////////////////////
+Lower IS-IS System-ID (Ordinal 0) = AED for EVEN VLANs
+Higher IS-IS System-ID (Ordinal 1) = AED for ODD VLANs
+
+///////////////////////////////////////////////////////////////////////////////
+RTP-OTV1# show otv internal site
+Group:239.1.1.1 Queue-size:2 num_site_adjs:2 fwd_rdy_cnt:2 local-present:1
+System-ID Up Time Ordinal Fwd-Rdy
+8478.ac0b.6044 1w6d 0 1
+* 8478.ac0c.7b44 1w6d 1 1 <<<<< active for ordinal 1,
+so this VDC should be AED for odd VLANs
+RTP-OTV2# show otv internal site
+Group:239.1.1.1 Queue-size:2 num_site_adjs:2 fwd_rdy_cnt:0 local-present:1
+System-ID Up Time Ordinal Fwd-Rdy
+* 8478.ac0b.6044 1w6d 0 1 <<<< active for ordinal 0,
+so this VDC should be AED for even VLANs
+8478.ac0c.7b44 1w6d 0 1
+RTP-OTV1# show otv vlan
+OTV Extended VLANs and Edge Device State Information (* - AED)
+Legend:
+(NA) - Non AED, (VD) - Vlan Disabled, (OD) - Overlay Down
+(DH) - Delete Holddown, (HW) - HW: State Down
+(NFC) - Not Forward Capable
+VLAN Auth. Edge Device Vlan State Overlay
+---- -------------------- ----------- -------
+190 RTP-OTV2 inactive(NA) Overlay1
+191* RTP-OTV1 active Overlay1 <<< This AED
+is active for odd vlans as expected
+Note: Keep Cisco bug ID CSCur30401 in mind when you look at Ordinals!
+Related Cisco Bug IDs
+Cisco bug ID CSCum54509 - Release 6.2(6), site adjacency stuck in partial state because F Series
+linecard packets destined to 0100.0cdf.dfdf are not ooded to Bridge Domain (BD)
+Cisco bug ID CSCur30401 - Ordinal in 'show otv site detail' is 0 for all switches
+Revision History
+Revision Publish Date Comments
+1.0 22-Apr-2015 Initial Release
+Quick Links -
+
+About Cisco
+Contact Us
+Careers
+Connect with a partner
+Resources and Legal -
+Feedback
+Help
+Terms & Conditions
+Privacy
+Cookies / Do not sell or share my personal data
+Accessibility
+Trademarks
+Supply Chain Transparency
+Newsroom
+Sitemap
+© 2026 Cisco Systems, Inc.

@@ -1,0 +1,376 @@
+{
+  "evaluation_stage": "post_cpt",
+  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "model_details": {
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "model_class": "Qwen2ForCausalLM",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "is_encoder_decoder": false,
+    "transformer_layers": 28,
+    "attention_heads": 12,
+    "key_value_heads": 2,
+    "embedding_dimension": 1536,
+    "vocabulary_size": 151936,
+    "maximum_context_length": 131072,
+    "total_parameters": 1543714304,
+    "trainable_parameters": 1543714304,
+    "parameter_dtype": "torch.float32",
+    "device": "cuda",
+    "tokenizer_class": "Qwen2TokenizerFast",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_vocabulary_size": 151665,
+    "tokenizer_base_vocabulary_size": 151643,
+    "tokenizer_maximum_token_id": 151664,
+    "tokenizer_vocabulary_sha256": "790c5754010656d3c0e32c79784d907f8854ab9a69bb7be87a2eed88eb998ad9",
+    "bos_token_id": null,
+    "eos_token_id": 151643,
+    "pad_token_id": 151643
+  },
+  "query_source": "domain_generalization_queries.json",
+  "generation_configuration": {
+    "decoding": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 100,
+    "batch_size": 2
+  },
+  "total_prompts": 10,
+  "results": [
+    {
+      "id": "DGEN01",
+      "category": "vxlan-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A multitenant data center needs far more than 4096 isolated Layer 2 segments over an IP fabric. The design should use",
+      "expected_concepts": [
+        "VXLAN",
+        "24-bit VNI",
+        "approximately 16 million segments",
+        "Layer 3 underlay"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.6666666666666667
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 61.638545989990234,
+        "mean_cross_entropy_loss": 0.6163854598999023,
+        "perplexity": 1.8522210006328357,
+        "combined_token_count": 129,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "a Layer 3 fabric to provide a single Layer 3 network for all tenants. The design should also use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use a single IP address space for all tenants. The design should use",
+      "response": "a scalable, Layer 3 fabric that can be expanded as needed. The fabric should be able to support multiple data center sites, each with its own set of tenants. The fabric should be able to support multiple data center sites, each with its own set of tenants. The fabric should be able to support multiple data center sites, each with its own set of tenants. The fabric should be able to support multiple data center sites, each with its own set of tenants. The fabric should be able to"
+    },
+    {
+      "id": "DGEN02",
+      "category": "ospf-nssa-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An OSPF area should retain stub-area behavior but must import selected routes from an external routing domain. The suitable area type is",
+      "expected_concepts": [
+        "NSSA",
+        "Not-So-Stubby Area",
+        "Type-7 LSA",
+        "external routes"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "NSSA"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 4,
+        "concept_recall": 0.25,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.171875
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 65.86834192276001,
+        "mean_cross_entropy_loss": 0.6586834192276001,
+        "perplexity": 1.9322467001502395,
+        "combined_token_count": 125,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "____.\nA. Backbone area\nB. Virtual link area\nC. Totally stub area\nD. Totally stub area with NSSA\nAnswer:\nD\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High crude oil viscosity\nB. High crude oil density\nC. High crude oil viscosity and high crude oil density\nD. High crude oil viscosity and high crude oil temperature\nAnswer:\nC\n\nThe main reason for the formation of the",
+      "response": ":\nA. Backbone\nB. NSSA\nC. TOS\nD. Transit\nAnswer:\nB\n\nThe main function of the OSPF AS-External-LSA is to:\nA. advertise the cost of transit networks\nB. advertise the cost of stub networks\nC. advertise the cost of transit networks and stub networks\nD. advertise the cost of transit networks and NSSA networks\nAnswer:\nA\n\nThe OSPFv3 Router-LSA is used to describe the"
+    },
+    {
+      "id": "DGEN03",
+      "category": "ospf-resiliency",
+      "evaluation_type": "domain_generalization",
+      "prompt": "During an OSPF graceful restart, a topology change that could make forwarding stale should cause the router to",
+      "expected_concepts": [
+        "exit graceful restart",
+        "normal OSPF restart",
+        "avoid routing loops",
+        "recalculate forwarding"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.4084507042253521
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 75.98906755447388,
+        "mean_cross_entropy_loss": 0.7598906755447388,
+        "perplexity": 2.138042467391513,
+        "combined_token_count": 120,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "recompute the SPF tree and recompute the LSPs. A. Correct B. Incorrect\nAnswer:\nA\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High crude oil viscosity\nC. High crude oil density\nD. High crude oil temperature\nAnswer:\nB\n\nThe main reason for the formation of the 'three highs' in oil fields is ____.\nA. High water cut\nB. High",
+      "response": ":\nA. Restart the OSPF process\nB. Restart the OSPF process and then re-advertise the changed topology\nC. Restart the OSPF process and then re-advertise the changed topology and recompute the shortest path tree\nD. Restart the OSPF process and then re-advertise the changed topology and recompute the shortest path tree and then\nrecompute the shortest path tree\nAnswer:\nC\n\nThe main function of the OSPF AS-External-LSA is to:"
+    },
+    {
+      "id": "DGEN04",
+      "category": "ospf-bfd",
+      "evaluation_type": "domain_generalization",
+      "prompt": "OSPF neighbors form over a poor-quality link, but the faster BFD session repeatedly fails. BFD strict mode addresses this by",
+      "expected_concepts": [
+        "block OSPF adjacency formation",
+        "wait for BFD session",
+        "both neighbors advertise support"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 3,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.30952380952380953
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 72.90781140327454,
+        "mean_cross_entropy_loss": 0.7290781140327454,
+        "perplexity": 2.0731685014883365,
+        "combined_token_count": 126,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "sending a large number of packets to the peer, causing the neighbor to be quickly removed from the neighbor table. Is this description correct?\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB. No\nAnswer:\nB\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB",
+      "response": "requiring a BFD session to be established before the OSPF neighbor relationship can be formed. This ensures that the BFD session is always active and functional, preventing any potential issues that could arise from a failed BFD session.\nBFD strict mode is a feature that ensures that a BFD session is always active and functional before the OSPF neighbor relationship can be formed. This is achieved by requiring a BFD session to be established before the OSPF neighbor relationship can be formed, ensuring that any potential"
+    },
+    {
+      "id": "DGEN05",
+      "category": "nexus-dashboard-operations",
+      "evaluation_type": "domain_generalization",
+      "prompt": "An operations team wants one on-premises control point for provisioning, observing, automating, and troubleshooting several Cisco data-center fabrics. The appropriate platform is",
+      "expected_concepts": [
+        "Cisco Nexus Dashboard",
+        "centralized management",
+        "visibility",
+        "automation"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.574468085106383
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 83.6423933506012,
+        "mean_cross_entropy_loss": 0.836423933506012,
+        "perplexity": 2.308098287950021,
+        "combined_token_count": 131,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": ":\nA. Cisco Unified Data Center Fabric\nB. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager\nC. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager\nD. Cisco Unified Data Center Fabric with Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager and Cisco Unified Data Center Fabric Manager\n答案:\n B\n\n在华为FusionCompute中，以下关于虚拟机存储热迁移描述不正确的是____\nA",
+      "response": ":\nCisco NX-OS\nCisco NX-OS with Cisco NX-OS Fabric Services\nCisco NX-OS with Cisco NX-OS Fabric Services and Cisco NX-OS Fabric Services\nCisco NX-OS with Cisco NX-OS Fabric Services and Cisco NX-OS Fabric Services\n答案:\nB\n\n在华为路由器上配置OSPFv3时，必须指定一个Router ID。\nA. 错误\nB. 正确\n答案:\nA\n\n在华为路由器上，如果需要"
+    },
+    {
+      "id": "DGEN06",
+      "category": "ai-data-center-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A distributed GPU training job is slowed by congestion and packet loss between workers. The Ethernet fabric should be designed for",
+      "expected_concepts": [
+        "high bandwidth",
+        "low latency",
+        "lossless networking",
+        "congestion management",
+        "telemetry"
+      ],
+      "generation_metrics": {
+        "concept_hits": [
+          "low latency"
+        ],
+        "concept_hit_count": 1,
+        "concept_count": 5,
+        "concept_recall": 0.2,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.625
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 50.124162435531616,
+        "mean_cross_entropy_loss": 0.5012416243553162,
+        "perplexity": 1.6507696345710408,
+        "combined_token_count": 122,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "high performance and low latency. The following are recommended best practices for designing a high-performance and low-latency Ethernet fabric for a distributed GPU training job:\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use a high-performance Ethernet switch with a high number of ports and high bandwidth.\n- Use",
+      "response": "high-speed, low-latency communication between GPUs.\nThe following guidelines and recommendations are for a 100G Ethernet fabric.\nUse a 100G Ethernet fabric for high-speed, low-latency communication between GPUs.\nUse a 100G Ethernet fabric for high-speed, low-latency communication between GPUs.\nUse a 100G Ethernet fabric for high-speed, low-latency communication between GPUs.\nUse a 100G Ethernet fabric for high-speed, low"
+    },
+    {
+      "id": "DGEN07",
+      "category": "switching-behavior",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A Nexus switch starts transmitting a frame after reading enough of its header to choose the egress port instead of buffering the entire frame. This behavior is called",
+      "expected_concepts": [
+        "cut-through switching"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 1,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.015873015873015928
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 76.83164477348328,
+        "mean_cross_entropy_loss": 0.7683164477348328,
+        "perplexity": 2.156133233464023,
+        "combined_token_count": 130,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "____.\nA. Frame Caching\nB. Frame Forwarding\nC. Frame Transmission\nD. Frame Transmission Delay\nAnswer:\nB\n\nThe main function of the ____ is to provide a path for the transmission of data packets between different VLANs.\nA. Hub\nB. Router\nC. Switch\nD. Bridge\nAnswer:\nC\n\nThe main function of the ____ is to provide a path for the transmission of data packets between different VLANs.\nA. Hub\nB. Router",
+      "response": "A. Coalescing\nB. Fragmentation\nC. Fragmentation\nD. Coalescing\nE. Fragmentation\nF. Fragmentation\nG. Fragmentation\nH. Fragmentation\nAnswer:\nA\n\nThe main function of the OSPF Stub area is to reduce the size of the link state database. Which of the following statements about Stub areas is incorrect?\nA. The backbone area can be configured as a Stub area.\nB. If an area is configured as a"
+    },
+    {
+      "id": "DGEN08",
+      "category": "vxlan-forwarding",
+      "evaluation_type": "domain_generalization",
+      "prompt": "Two workloads must remain in the same logical Layer 2 segment while residing across a routed Layer 3 data-center fabric. VXLAN accomplishes this by",
+      "expected_concepts": [
+        "MAC-in-UDP encapsulation",
+        "tunneling",
+        "VTEP",
+        "Layer 2 overlay"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.31343283582089554
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 96.45132422447205,
+        "mean_cross_entropy_loss": 0.9645132422447205,
+        "perplexity": 2.6235103316259325,
+        "combined_token_count": 131,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "using a VXLAN tunnel between the two Layer 3 data centers. Which of the following statements is true about VXLAN tunnels?\nA. VXLAN tunnels are created by the VXLAN controller.\nB. VXLAN tunnels are created by the VXLAN gateway.\nC. VXLAN tunnels are created by the VXLAN switch.\nD. VXLAN tunnels are created by the VXLAN router.\nAnswer:\nA\n\nThe main function of the ____ is to provide a path for the transmission of data packets between",
+      "response": "using a VXLAN tunnel encapsulation. Which two statements are true about VXLAN tunnels? (Choose two.)\nA. VXLAN tunnels are used to encapsulate Layer 2 traffic\nB. VXLAN tunnels are used to encapsulate Layer 3 traffic\nC. VXLAN tunnels are used to encapsulate both Layer 2 and Layer 3 traffic\nD. VXLAN tunnels are used to encapsulate only Layer 3 traffic\nE. VXLAN tunnels are used to encapsulate only Layer"
+    },
+    {
+      "id": "DGEN09",
+      "category": "interface-troubleshooting",
+      "evaluation_type": "domain_generalization",
+      "prompt": "CRC and FCS counters on a Nexus interface continue increasing between polling intervals. The investigation should focus first on",
+      "expected_concepts": [
+        "physical layer",
+        "cable",
+        "optics",
+        "peer interface",
+        "speed or FEC"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 5,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.7625
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 99,
+        "negative_log_likelihood": 77.10700160264969,
+        "mean_cross_entropy_loss": 0.7788586020469666,
+        "perplexity": 2.1789837579786235,
+        "combined_token_count": 120,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "the following:\nA. The number of packets received on the interface\nB. The number of packets sent on the interface\nC. The number of packets received and sent on the interface\nD. The number of packets received and sent on the interface, and the number of packets received and sent on the interface\nAnswer:\nC\n\nThe main reason for the increase in the number of packets received and sent on the interface is ____.\nA. The number of packets received and sent on the interface",
+      "response": "the following:\n• Verify the interface is not in a shutdown state.\n• Verify the interface is not in a no shutdown state.\n• Verify the interface is not in an error-disabled state.\n• Verify the interface is not in an error-disabled state.\n• Verify the interface is not in an error-disabled state.\n• Verify the interface is not in an error-disabled state.\n• Verify the interface is not in an error-disabled state.\n• Verify the interface is not in an error-disabled state.\n• Verify"
+    },
+    {
+      "id": "DGEN10",
+      "category": "vpc-design",
+      "evaluation_type": "domain_generalization",
+      "prompt": "A server should use one logical port channel while connecting redundantly to two separate Cisco Nexus switches. The switches should be configured as",
+      "expected_concepts": [
+        "vPC peers",
+        "vPC domain",
+        "peer-link",
+        "logical port channel"
+      ],
+      "generation_metrics": {
+        "concept_hits": [],
+        "concept_hit_count": 0,
+        "concept_count": 4,
+        "concept_recall": 0.0,
+        "exact_continuation_prefix": null,
+        "continuation_longest_common_prefix_ratio": null,
+        "continuation_token_coverage": null,
+        "repeated_trigram_ratio": 0.43103448275862066
+      },
+      "fixed_reference_conditional_ppl": null,
+      "baseline_response_retention_ppl": {
+        "target_token_count": 100,
+        "negative_log_likelihood": 61.08390688896179,
+        "mean_cross_entropy_loss": 0.6108390688896179,
+        "perplexity": 1.841976295558604,
+        "combined_token_count": 125,
+        "left_truncated_tokens": 0
+      },
+      "baseline_response_target": "follows: \nA. Both switches should be configured as active/standby mode.\nB. Both switches should be configured as active/standby mode, with the active switch being the primary switch.\nC. Both switches should be configured as active/standby mode, with the standby switch being the primary switch.\nD. Both switches should be configured as active/standby mode, with the active switch being the primary switch, and the standby switch being the backup switch.\nAnswer:\nD\n\nThe",
+      "response": "follows:\n• Switch A: Port-channel 10 connected to port 1/1/1, port-channel 11 connected to port 1/1/2\n• Switch B: Port-channel 10 connected to port 1/1/1, port-channel 11 connected to port 1/1/2\n• Port-channel 10 and port-channel 11 are configured as Layer 2 ports.\n• Port-channel 10 and port-channel"
+    }
+  ]
+}

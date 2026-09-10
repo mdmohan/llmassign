@@ -1,9 +1,9 @@
 {
   "evaluation_stage": "post_cpt",
-  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
-  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "timestamp_utc": "2026-09-10T01:26:00.963317+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
   "model_details": {
-    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
     "model_class": "Qwen2ForCausalLM",
     "model_type": "qwen2",
     "architectures": [
@@ -21,7 +21,7 @@
     "parameter_dtype": "torch.float32",
     "device": "cuda",
     "tokenizer_class": "Qwen2TokenizerFast",
-    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
     "tokenizer_vocabulary_size": 151665,
     "tokenizer_base_vocabulary_size": 151643,
     "tokenizer_maximum_token_id": 151664,
@@ -64,9 +64,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 61.638545989990234,
-        "mean_cross_entropy_loss": 0.6163854598999023,
-        "perplexity": 1.8522210006328357,
+        "negative_log_likelihood": 61.63928508758545,
+        "mean_cross_entropy_loss": 0.6163928508758545,
+        "perplexity": 1.8522346904042999,
         "combined_token_count": 129,
         "left_truncated_tokens": 0
       },
@@ -99,9 +99,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 65.86834192276001,
-        "mean_cross_entropy_loss": 0.6586834192276001,
-        "perplexity": 1.9322467001502395,
+        "negative_log_likelihood": 65.81889986991882,
+        "mean_cross_entropy_loss": 0.6581889986991882,
+        "perplexity": 1.931291593847267,
         "combined_token_count": 125,
         "left_truncated_tokens": 0
       },
@@ -132,9 +132,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 75.98906755447388,
-        "mean_cross_entropy_loss": 0.7598906755447388,
-        "perplexity": 2.138042467391513,
+        "negative_log_likelihood": 75.93876719474792,
+        "mean_cross_entropy_loss": 0.7593876719474792,
+        "perplexity": 2.136967294769839,
         "combined_token_count": 120,
         "left_truncated_tokens": 0
       },
@@ -164,14 +164,14 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 72.90781140327454,
-        "mean_cross_entropy_loss": 0.7290781140327454,
-        "perplexity": 2.0731685014883365,
+        "negative_log_likelihood": 72.87472486495972,
+        "mean_cross_entropy_loss": 0.7287472486495972,
+        "perplexity": 2.072482675262096,
         "combined_token_count": 126,
         "left_truncated_tokens": 0
       },
       "baseline_response_target": "sending a large number of packets to the peer, causing the neighbor to be quickly removed from the neighbor table. Is this description correct?\nA. Correct\nB. Incorrect\nAnswer:\nA\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB. No\nAnswer:\nB\n\nIn the process of using a clamp meter to measure current, can you switch ranges while the power is on?\nA. Yes\nB",
-      "response": "requiring a BFD session to be established before the OSPF neighbor relationship can be formed. This ensures that the BFD session is always active and functional, preventing any potential issues that could arise from a failed BFD session.\nBFD strict mode is a feature that ensures that a BFD session is always active and functional before the OSPF neighbor relationship can be formed. This is achieved by requiring a BFD session to be established before the OSPF neighbor relationship can be formed, ensuring that any potential"
+      "response": "requiring a BFD session to be established before the OSPF neighbor relationship can be formed. This ensures that the BFD session is always active and functional, preventing any potential issues that could arise from a failed BFD session.\nBFD strict mode is a feature that ensures that a BFD session is always active and functional before the OSPF neighbor relationship can be formed. This is done by requiring a BFD session to be established before the OSPF neighbor relationship can be formed, ensuring that any potential"
     },
     {
       "id": "DGEN05",
@@ -197,9 +197,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 83.6423933506012,
-        "mean_cross_entropy_loss": 0.836423933506012,
-        "perplexity": 2.308098287950021,
+        "negative_log_likelihood": 83.7141215801239,
+        "mean_cross_entropy_loss": 0.837141215801239,
+        "perplexity": 2.309754439880834,
         "combined_token_count": 131,
         "left_truncated_tokens": 0
       },
@@ -233,9 +233,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 50.124162435531616,
-        "mean_cross_entropy_loss": 0.5012416243553162,
-        "perplexity": 1.6507696345710408,
+        "negative_log_likelihood": 50.13731122016907,
+        "mean_cross_entropy_loss": 0.5013731122016907,
+        "perplexity": 1.6509867049858988,
         "combined_token_count": 122,
         "left_truncated_tokens": 0
       },
@@ -263,9 +263,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 76.83164477348328,
-        "mean_cross_entropy_loss": 0.7683164477348328,
-        "perplexity": 2.156133233464023,
+        "negative_log_likelihood": 76.81958675384521,
+        "mean_cross_entropy_loss": 0.7681958675384521,
+        "perplexity": 2.155873262169319,
         "combined_token_count": 130,
         "left_truncated_tokens": 0
       },
@@ -296,9 +296,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 96.45132422447205,
-        "mean_cross_entropy_loss": 0.9645132422447205,
-        "perplexity": 2.6235103316259325,
+        "negative_log_likelihood": 96.44787311553955,
+        "mean_cross_entropy_loss": 0.9644787311553955,
+        "perplexity": 2.623419792988835,
         "combined_token_count": 131,
         "left_truncated_tokens": 0
       },
@@ -330,9 +330,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 99,
-        "negative_log_likelihood": 77.10700160264969,
-        "mean_cross_entropy_loss": 0.7788586020469666,
-        "perplexity": 2.1789837579786235,
+        "negative_log_likelihood": 77.1463190317154,
+        "mean_cross_entropy_loss": 0.779255747795105,
+        "perplexity": 2.179849303975947,
         "combined_token_count": 120,
         "left_truncated_tokens": 0
       },
@@ -363,9 +363,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 61.08390688896179,
-        "mean_cross_entropy_loss": 0.6108390688896179,
-        "perplexity": 1.841976295558604,
+        "negative_log_likelihood": 61.09994649887085,
+        "mean_cross_entropy_loss": 0.6109994649887085,
+        "perplexity": 1.8422717650664737,
         "combined_token_count": 125,
         "left_truncated_tokens": 0
       },

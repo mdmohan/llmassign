@@ -1,9 +1,9 @@
 {
   "evaluation_stage": "post_cpt",
-  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
-  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+  "timestamp_utc": "2026-09-10T01:26:00.963317+00:00",
+  "model_name": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
   "model_details": {
-    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
     "model_class": "Qwen2ForCausalLM",
     "model_type": "qwen2",
     "architectures": [
@@ -21,7 +21,7 @@
     "parameter_dtype": "torch.float32",
     "device": "cuda",
     "tokenizer_class": "Qwen2TokenizerFast",
-    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
+    "tokenizer_name_or_path": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
     "tokenizer_vocabulary_size": 151665,
     "tokenizer_base_vocabulary_size": 151643,
     "tokenizer_maximum_token_id": 151664,
@@ -62,9 +62,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 25.247302651405334,
-        "mean_cross_entropy_loss": 0.25247302651405334,
-        "perplexity": 1.2872047752866091,
+        "negative_log_likelihood": 25.244855880737305,
+        "mean_cross_entropy_loss": 0.25244855880737305,
+        "perplexity": 1.2871732807230314,
         "combined_token_count": 105,
         "left_truncated_tokens": 0
       },
@@ -95,9 +95,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 19.711698591709137,
-        "mean_cross_entropy_loss": 0.19711698591709137,
-        "perplexity": 1.2178865079424606,
+        "negative_log_likelihood": 19.713880121707916,
+        "mean_cross_entropy_loss": 0.19713880121707916,
+        "perplexity": 1.2179130767917852,
         "combined_token_count": 106,
         "left_truncated_tokens": 0
       },
@@ -126,9 +126,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 80.84277510643005,
-        "mean_cross_entropy_loss": 0.8084277510643005,
-        "perplexity": 2.2443764926582026,
+        "negative_log_likelihood": 80.85296154022217,
+        "mean_cross_entropy_loss": 0.8085296154022217,
+        "perplexity": 2.244605126228279,
         "combined_token_count": 108,
         "left_truncated_tokens": 0
       },
@@ -157,9 +157,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 46.426135301589966,
-        "mean_cross_entropy_loss": 0.46426135301589966,
-        "perplexity": 1.5908386866018898,
+        "negative_log_likelihood": 46.42762839794159,
+        "mean_cross_entropy_loss": 0.4642762839794159,
+        "perplexity": 1.5908624395336062,
         "combined_token_count": 107,
         "left_truncated_tokens": 0
       },
@@ -188,9 +188,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 46.46798372268677,
-        "mean_cross_entropy_loss": 0.4646798372268677,
-        "perplexity": 1.5915045667948855,
+        "negative_log_likelihood": 46.464091539382935,
+        "mean_cross_entropy_loss": 0.46464091539382935,
+        "perplexity": 1.5914426237253336,
         "combined_token_count": 106,
         "left_truncated_tokens": 0
       },
@@ -218,9 +218,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 16.069993376731873,
-        "mean_cross_entropy_loss": 0.16069993376731873,
-        "perplexity": 1.17433253839957,
+        "negative_log_likelihood": 16.077125072479248,
+        "mean_cross_entropy_loss": 0.16077125072479248,
+        "perplexity": 1.1744162912097333,
         "combined_token_count": 103,
         "left_truncated_tokens": 0
       },
@@ -249,9 +249,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 65.70655107498169,
-        "mean_cross_entropy_loss": 0.6570655107498169,
-        "perplexity": 1.9291230294209591,
+        "negative_log_likelihood": 65.70538878440857,
+        "mean_cross_entropy_loss": 0.6570538878440857,
+        "perplexity": 1.929100607536148,
         "combined_token_count": 105,
         "left_truncated_tokens": 0
       },
@@ -280,9 +280,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 99,
-        "negative_log_likelihood": 81.1681267619133,
-        "mean_cross_entropy_loss": 0.8198800683021545,
-        "perplexity": 2.2702275489602743,
+        "negative_log_likelihood": 81.16547137498856,
+        "mean_cross_entropy_loss": 0.8198532462120056,
+        "perplexity": 2.270166657528919,
         "combined_token_count": 104,
         "left_truncated_tokens": 0
       },
@@ -313,9 +313,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 13,
-        "negative_log_likelihood": 7.5317994356155396,
-        "mean_cross_entropy_loss": 0.5793691873550415,
-        "perplexity": 1.7849121304031734,
+        "negative_log_likelihood": 7.5296213030815125,
+        "mean_cross_entropy_loss": 0.5792016386985779,
+        "perplexity": 1.7846130958259392,
         "combined_token_count": 19,
         "left_truncated_tokens": 0
       },
@@ -344,9 +344,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 39.9062305688858,
-        "mean_cross_entropy_loss": 0.39906230568885803,
-        "perplexity": 1.490426477762935,
+        "negative_log_likelihood": 39.92161154747009,
+        "mean_cross_entropy_loss": 0.3992161154747009,
+        "perplexity": 1.4906557375710432,
         "combined_token_count": 111,
         "left_truncated_tokens": 0
       },
@@ -376,9 +376,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 40.414318442344666,
-        "mean_cross_entropy_loss": 0.40414318442344666,
-        "perplexity": 1.4980184245072758,
+        "negative_log_likelihood": 40.411341190338135,
+        "mean_cross_entropy_loss": 0.40411341190338135,
+        "perplexity": 1.4979738253875914,
         "combined_token_count": 112,
         "left_truncated_tokens": 0
       },
@@ -409,9 +409,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 75,
-        "negative_log_likelihood": 40.44623672962189,
-        "mean_cross_entropy_loss": 0.5392831563949585,
-        "perplexity": 1.7147771944318833,
+        "negative_log_likelihood": 40.438100695610046,
+        "mean_cross_entropy_loss": 0.5391746759414673,
+        "perplexity": 1.7145911847135866,
         "combined_token_count": 87,
         "left_truncated_tokens": 0
       },
@@ -442,9 +442,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 56.82489275932312,
-        "mean_cross_entropy_loss": 0.5682489275932312,
-        "perplexity": 1.7651733971889574,
+        "negative_log_likelihood": 56.83168172836304,
+        "mean_cross_entropy_loss": 0.5683168172836304,
+        "perplexity": 1.7652932383323365,
         "combined_token_count": 109,
         "left_truncated_tokens": 0
       },
@@ -472,9 +472,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 57.58705735206604,
-        "mean_cross_entropy_loss": 0.5758705735206604,
-        "perplexity": 1.778678323331059,
+        "negative_log_likelihood": 57.58252143859863,
+        "mean_cross_entropy_loss": 0.5758252143859863,
+        "perplexity": 1.7785976458511934,
         "combined_token_count": 113,
         "left_truncated_tokens": 0
       },
@@ -505,9 +505,9 @@
       "fixed_reference_conditional_ppl": null,
       "baseline_response_retention_ppl": {
         "target_token_count": 100,
-        "negative_log_likelihood": 40.99522531032562,
-        "mean_cross_entropy_loss": 0.4099522531032562,
-        "perplexity": 1.506745840957225,
+        "negative_log_likelihood": 41.00952446460724,
+        "mean_cross_entropy_loss": 0.4100952446460724,
+        "perplexity": 1.50696130827429,
         "combined_token_count": 110,
         "left_truncated_tokens": 0
       },

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "completed",
-  "created_at_utc": "2026-09-09T09:22:55.259288+00:00",
+  "created_at_utc": "2026-09-10T00:48:33.598235+00:00",
   "execution": "Assignment_PartA.ipynb::run_cpt",
   "model": {
     "name_or_path": "Qwen/Qwen2.5-1.5B",
@@ -32,8 +32,8 @@
     "pad_token_id": 151643
   },
   "dataset": {
-    "bin_file": "/home/jovyan/llmassign/1a/data/tokens/token_train.bin",
-    "metrics_file": "/home/jovyan/llmassign/1a/data/tokens/dataset_metrics_train.json",
+    "bin_file": "/home/jovyan/llmassign/1a/data/tokens/Qwen2.5-1.5B/token_train.bin",
+    "metrics_file": "/home/jovyan/llmassign/1a/data/tokens/Qwen2.5-1.5B/dataset_metrics_train.json",
     "context_length": 2048,
     "binary_dtype": "uint32",
     "stored_token_count": 2811904,
@@ -71,15 +71,15 @@
     "updates_per_epoch": 86,
     "total_optimizer_steps": 258
   },
-  "completed_at_utc": "2026-09-09T09:50:45.073095+00:00",
+  "completed_at_utc": "2026-09-10T01:16:12.592544+00:00",
   "results": {
     "completed_optimizer_steps": 258,
-    "elapsed_seconds": 1669.171743631363,
-    "final_model_dir": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/final_model",
-    "last_checkpoint_dir": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/last_checkpoint",
-    "training_history_file": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/training_history.json",
-    "loss_curve_file": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v1/training_loss_curve.png",
-    "final_training_loss": 1.2102520099053016,
-    "final_training_perplexity": 3.3543298703959046
+    "elapsed_seconds": 1658.3405320644379,
+    "final_model_dir": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/final_model",
+    "last_checkpoint_dir": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/last_checkpoint",
+    "training_history_file": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/training_history.json",
+    "loss_curve_file": "/home/jovyan/llmassign/1a/output/Qwen2.5-1.5B/v3/training_loss_curve.png",
+    "final_training_loss": 1.2100508717390208,
+    "final_training_perplexity": 3.3536552544844502
   }
 }

@@ -1,8 +1,8 @@
 {
-    "after_training_loss": 2.373603343963623,
-    "after_training_model_preparation_time": 0.0047,
-    "after_training_runtime": 3.0583,
-    "after_training_samples_per_second": 13.079,
-    "after_training_steps_per_second": 13.079,
+    "after_training_loss": 3.160775661468506,
+    "after_training_model_preparation_time": 0.005,
+    "after_training_runtime": 3.0355,
+    "after_training_samples_per_second": 13.177,
+    "after_training_steps_per_second": 13.177,
     "epoch": 3.0
 }

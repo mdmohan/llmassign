@@ -1,6 +1,6 @@
 {
   "evaluation_stage": "pre_cpt",
-  "timestamp_utc": "2026-09-09T10:03:26.448446+00:00",
+  "timestamp_utc": "2026-09-10T01:26:00.963317+00:00",
   "model_name": "Qwen/Qwen2.5-1.5B",
   "model_details": {
     "name_or_path": "Qwen/Qwen2.5-1.5B",

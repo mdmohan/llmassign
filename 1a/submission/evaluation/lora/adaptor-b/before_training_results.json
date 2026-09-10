@@ -1,7 +1,7 @@
 {
-    "before_training_loss": 2.513874053955078,
-    "before_training_model_preparation_time": 0.0029,
-    "before_training_runtime": 3.0138,
-    "before_training_samples_per_second": 13.272,
-    "before_training_steps_per_second": 13.272
+    "before_training_loss": 3.538893222808838,
+    "before_training_model_preparation_time": 0.0028,
+    "before_training_runtime": 3.0377,
+    "before_training_samples_per_second": 13.168,
+    "before_training_steps_per_second": 13.168
 }
